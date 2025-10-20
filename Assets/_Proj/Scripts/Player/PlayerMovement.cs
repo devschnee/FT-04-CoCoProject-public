@@ -1,17 +1,29 @@
-﻿using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    #region Variables
+    [Header("Refs")]
     public Joystick joystick;
     public Rigidbody rb;
 
-    public float moveSpeed = 5.0f;
-    public float rotateLerp = 12f;
-
     // 캐릭터의 현재 이동 방향을 월드 좌표계에 맞게 변환하기 위해 필요
-    private Transform camTr;
+    private Transform camTr; // NOTE : 비워두면 자동으로 Camera.main을 사용
+
+    [Header("Move")]
+    public float moveSpeed = 3.0f;
+    public float accel = 25f;
+    public float rotateLerp = 10f;
+
+    [Header("Push")]
+    public float tileSize = 1f;
+    public LayerMask pushable;
+    public LayerMask blocking;
+    public float frontOffset = 0.4f;
+    public Vector3 probeHalfExtents = new Vector3(0.25f, 0.6f, 0.25f); // 앞면 검사 박스 크기
+    #endregion
 
     void Awake()
     {
@@ -63,5 +75,63 @@ public class PlayerMovement : MonoBehaviour
         Quaternion targetRot = Quaternion.LookRotation(new Vector3(moveDir.x, 0, moveDir.z), Vector3.up);
         Quaternion smoothRot = Quaternion.Slerp(rb.rotation, targetRot, rotateLerp * Time.fixedDeltaTime);
         rb.MoveRotation(smoothRot);
+
+        TryPushOnce(moveDir);
+    }
+
+    private void TryPushOnce(Vector3 moveDir)
+    {
+        // 전방 탐지. Trigger 무시
+        if (moveDir.sqrMagnitude < 1e-4f) return;
+
+        Vector3 flatDir = new Vector3(moveDir.x, 0f, moveDir.z).normalized;
+        Vector3 boxCenter = rb.worldCenterOfMass + flatDir * frontOffset;
+        Quaternion boxRot = Quaternion.identity;
+
+        Collider[] hits = Physics.OverlapBox(
+        boxCenter, probeHalfExtents, boxRot,
+        pushable, QueryTriggerInteraction.Ignore
+    );
+        if (hits == null || hits.Length == 0) return;
+
+        // 가장 가까운 상자 하나만 선택
+        Collider best = hits[0];
+        float bestDist = float.MaxValue;
+        for (int i = 0; i < hits.Length; i++)
+        {
+            float d = (hits[i].attachedRigidbody ?
+                       (hits[i].attachedRigidbody.worldCenterOfMass - rb.worldCenterOfMass).sqrMagnitude :
+                       (hits[i].bounds.center - rb.worldCenterOfMass).sqrMagnitude);
+            if (d < bestDist) { bestDist = d; best = hits[i]; }
+        }
+        if (!best.TryGetComponent<PushableObjects>(out var crate)) return;
+        if (crate.IsMoving) return;
+
+        Vector3 pushAxis;
+        if (Mathf.Abs(flatDir.x) >= Mathf.Abs(flatDir.z))
+            pushAxis = new Vector3(Mathf.Sign(flatDir.x), 0f, 0f);
+        else
+            pushAxis = new Vector3(0f, 0f, Mathf.Sign(flatDir.z));
+
+        Vector3 currCell = crate.Snap(crate.transform.position);
+        Vector3 nextCell = currCell + pushAxis * tileSize;
+
+        if (IsCellBlocked(nextCell))
+        {
+            Debug.Log("[Push] blocked next cell.");
+            return;
+        }
+
+        crate.SlideOneCell(nextCell);
+    }
+
+    bool IsCellBlocked(Vector3 cellCenter)
+    {
+        float half = tileSize * 0.45f;
+        Vector3 halfExt = new Vector3(half, tileSize * 0.6f, half);
+        return Physics.CheckBox(
+            cellCenter, halfExt, Quaternion.identity,
+            blocking, QueryTriggerInteraction.Ignore
+        );
     }
 }
