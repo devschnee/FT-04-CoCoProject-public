@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AudioLibraryBase<T> : ScriptableObject where T : Enum
+public abstract class AudioLibraryBase<T> : ScriptableObject, IAudioLibrary where T : Enum
 {
     [Serializable]
     public struct AudioEntry
@@ -33,6 +33,13 @@ public abstract class AudioLibraryBase<T> : ScriptableObject where T : Enum
             }
             return clips[index]; // 해당 index 재생
         }
+
+        return null;
+    }
+
+    public AudioClip GetClipByEnum(Enum key, int index = -1)
+    {
+        if (key is T typedKey) return GetClip(typedKey, index);
 
         return null;
     }

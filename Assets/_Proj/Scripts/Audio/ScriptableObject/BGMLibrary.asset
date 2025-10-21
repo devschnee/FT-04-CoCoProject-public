@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbc2ba3ae89de94aa165c661eb21b64, type: 3}
   m_Name: BGMLibrary
   m_EditorClassIdentifier: 
-  audioEntries: []
+  audioEntries:
+  - key: 0
+    clips:
+    - {fileID: 8300000, guid: 468008273c6e1964ca6d53d70a7acc8d, type: 3}
+    - {fileID: 8300000, guid: a0f268cdb2012254387c171115553b7a, type: 3}
+    - {fileID: 8300000, guid: 0f5b6012bdc545549a3a582d75d3efe5, type: 3}

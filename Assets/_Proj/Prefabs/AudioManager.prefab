@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5654981415320873989}
   - component: {fileID: 6745742510023782600}
-  - component: {fileID: 4657815395746636415}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -45,112 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9885bf87b474c3d4fb144b11ac2b473a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManagerSource: {fileID: 4657815395746636415}
   mixer: {fileID: 24100000, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
-  audioGroupMappings: []
-  sfxGroup: {fileID: -6687631390759110981, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
-  ambientGroup: {fileID: -5541529301919639000, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
-  cutsceneGroup: {fileID: 4231491361016882908, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
-  voiceGroup: {fileID: 8515648180258385940, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
+  groupMappings:
+  - type: 0
+    group: {fileID: -2050036553587264444, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
+  - type: 1
+    group: {fileID: -6687631390759110981, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
+  - type: 2
+    group: {fileID: -5541529301919639000, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
+  - type: 3
+    group: {fileID: 4231491361016882908, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
+  - type: 4
+    group: {fileID: 8515648180258385940, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
   bgmLibrary: {fileID: 11400000, guid: cd80a36562e93ea4f9b7e3f165efd980, type: 2}
   sfxLibrary: {fileID: 11400000, guid: 9fcb538919083264d984370cc3ef761e, type: 2}
   ambientLibrary: {fileID: 11400000, guid: 2ea2979b8a9cb614197ef9977afd96d9, type: 2}
   cutsceneLibrary: {fileID: 11400000, guid: 48162746b7a7eee4cb57e3e6ed43cd81, type: 2}
   voiceLibrary: {fileID: 11400000, guid: f655cfdfb2dff7a4881658bc89128ee1, type: 2}
---- !u!82 &4657815395746636415
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3847754152560321171}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -2050036553587264444, guid: 73b0eca9f2b5de24d878d590299cb4f7, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  poolSize: 30

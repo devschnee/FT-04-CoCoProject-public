@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -6,25 +7,19 @@ using UnityEngine;
 /// 키를 입력 받으면 오디오 타입이 정해지는게 좋을 것 같지.
 /// </summary>
 
-public interface IBGMPlayer
+public interface IAudioLibrary
 {
-    void PlayBGM(AudioClip clip, float fadeInTime = 0f, float fadeOutTime = 0f, bool loop = true);
+    AudioClip GetClipByEnum(Enum key, int index = -1);
 }
 
-// 말이 SFX이지
-internal interface ISFXPlayer
+public interface IAudioLibraryProvider
 {
-    void PlayOneShotSFX();
+    AudioClip GetClip(AudioType type, Enum key, int index = -1);
 }
 
-public interface IAudioVolumeChange
+public interface IAudioState
 {
-
-}
-
-public interface IAudioService : IBGMPlayer { }
-
-public interface IAudioChannel
-{
-    void Play(AudioType type, int index = -1, Vector3? position = null);
+    void Enter(AudioManager audio);
+    void Exit(AudioManager audio);
+    void Update(AudioManager audio);
 }
