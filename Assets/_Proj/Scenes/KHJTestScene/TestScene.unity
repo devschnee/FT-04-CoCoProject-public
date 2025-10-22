@@ -409,7 +409,6 @@ GameObject:
   m_Component:
   - component: {fileID: 172523475}
   - component: {fileID: 172523482}
-  - component: {fileID: 172523481}
   - component: {fileID: 172523478}
   - component: {fileID: 172523477}
   - component: {fileID: 172523476}
@@ -509,24 +508,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172523474}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &172523481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172523474}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45fa11e662115514d99bcfd813ebb30a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveTime: 0.5
-  tileSize: 1
-  blockingMask:
-    serializedVersion: 2
-    m_Bits: 0
-  requiredHoldtime: 0.5
 --- !u!114 &172523482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +525,15 @@ MonoBehaviour:
   blockingMask:
     serializedVersion: 2
     m_Bits: 192
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
+  slopeMask:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.9
+  allowFall: 1
+  allowSlope: 0
 --- !u!1 &196982948
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +652,6 @@ GameObject:
   m_Component:
   - component: {fileID: 233665280}
   - component: {fileID: 233665281}
-  - component: {fileID: 233665279}
   - component: {fileID: 233665277}
   - component: {fileID: 233665276}
   - component: {fileID: 233665275}
@@ -748,24 +736,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233665273}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &233665279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233665273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45fa11e662115514d99bcfd813ebb30a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveTime: 0.5
-  tileSize: 1
-  blockingMask:
-    serializedVersion: 2
-    m_Bits: 0
-  requiredHoldtime: 0.5
 --- !u!4 &233665280
 Transform:
   m_ObjectHideFlags: 0
@@ -798,7 +768,15 @@ MonoBehaviour:
   blockingMask:
     serializedVersion: 2
     m_Bits: 192
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
+  slopeMask:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.9
+  allowFall: 1
+  allowSlope: 0
 --- !u!1 &303887413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2866,9 +2844,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1377857917}
-  - component: {fileID: 1377857916}
   - component: {fileID: 1377857918}
-  - component: {fileID: 1377857915}
+  - component: {fileID: 1377857916}
   - component: {fileID: 1377857914}
   - component: {fileID: 1377857913}
   - component: {fileID: 1377857912}
@@ -2972,24 +2949,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1377857915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377857911}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33fcf4a52bb62e64db0a9b21048449cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveTime: 0.5
-  tileSize: 1
-  blockingMask:
-    serializedVersion: 2
-    m_Bits: 0
-  requiredHoldtime: 0.5
 --- !u!33 &1377857916
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3022,32 +2981,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1377857911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de09abd909b19b74fa7a2a27b1d616ff, type: 3}
+  m_Script: {fileID: 11500000, guid: e193c6de22ad74f4592698b1a79e562d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
-  rb: {fileID: 0}
-  moveSpeed: 3
-  accel: 25
-  rotateLerp: 10
+  moveTime: 0.12
   tileSize: 1
-  pushable:
+  blockingMask:
     serializedVersion: 2
-    m_Bits: 0
-  blocking:
-    serializedVersion: 2
-    m_Bits: 0
-  frontOffset: 0.4
-  probeHalfExtents: {x: 0.25, y: 0.6, z: 0.25}
-  slopeLimitDeg: 45
-  groundProbeRadius: 0.25
-  groundProbeExtra: 0.1
+    m_Bits: 192
   groundMask:
     serializedVersion: 2
+    m_Bits: 1
+  slopeMask:
+    serializedVersion: 2
     m_Bits: 0
-  enableStepAssist: 1
-  stepHeight: 0.3
-  stepCheckDistance: 0.35
+  requiredHoldtime: 0.9
+  allowFall: 1
+  allowSlope: 1
 --- !u!1 &1387481399
 GameObject:
   m_ObjectHideFlags: 0
@@ -4106,7 +4056,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1868279834}
   - component: {fileID: 1868279835}
-  - component: {fileID: 1868279833}
   - component: {fileID: 1868279831}
   - component: {fileID: 1868279830}
   - component: {fileID: 1868279829}
@@ -4191,24 +4140,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868279827}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1868279833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868279827}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45fa11e662115514d99bcfd813ebb30a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveTime: 0.5
-  tileSize: 1
-  blockingMask:
-    serializedVersion: 2
-    m_Bits: 0
-  requiredHoldtime: 0.5
 --- !u!4 &1868279834
 Transform:
   m_ObjectHideFlags: 0
@@ -4241,7 +4172,15 @@ MonoBehaviour:
   blockingMask:
     serializedVersion: 2
     m_Bits: 192
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
+  slopeMask:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.9
+  allowFall: 1
+  allowSlope: 0
 --- !u!1 &1883325018
 GameObject:
   m_ObjectHideFlags: 0
@@ -4660,50 +4599,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1980506240
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1980506242}
-  - component: {fileID: 1980506241}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1980506241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980506240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8065678956175cc49a904f7e2ae9a630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1980506242
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980506240}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2001222675
 GameObject:
   m_ObjectHideFlags: 0
@@ -5016,7 +4911,6 @@ SceneRoots:
   - {fileID: 339039917}
   - {fileID: 1416926938}
   - {fileID: 1136605780}
-  - {fileID: 1980506242}
   - {fileID: 1833812755}
   - {fileID: 1966227993}
   - {fileID: 1940160609}

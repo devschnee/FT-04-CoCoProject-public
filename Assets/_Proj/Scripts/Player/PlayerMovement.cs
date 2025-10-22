@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool TryGetGround(out Vector3 groundNormal)
     {
-        // 캡슐 아래 측정: 플레이어 콜라이더 기준으로
+        // 플레이어 콜라이더 기준으로 아래 측정
         groundNormal = Vector3.up;
 
         var pos = rb.position + Vector3.up * (groundProbeRadius + groundProbeExtra);
