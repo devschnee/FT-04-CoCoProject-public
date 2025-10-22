@@ -12,7 +12,8 @@ public class AudioLibraryProvider : IAudioLibraryProvider
         SFXLibrary sfx,
         AmbientLibrary ambient,
         CutsceneLibrary cutscene,
-        VoiceLibrary voice)
+        VoiceLibrary voice,
+        UILibrary ui)
     {
         libraryMap = new Dictionary<AudioType, IAudioLibrary>()
         {
@@ -20,7 +21,8 @@ public class AudioLibraryProvider : IAudioLibraryProvider
             { AudioType.SFX, sfx },
             { AudioType.Ambient, ambient },
             { AudioType.Cutscene, cutscene },
-            { AudioType.Voice, voice }
+            { AudioType.Voice, voice },
+            { AudioType.UI, ui }
         };
     }
 

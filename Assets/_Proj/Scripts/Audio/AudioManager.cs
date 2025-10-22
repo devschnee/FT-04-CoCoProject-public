@@ -2,15 +2,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections.Generic;
 using System;
-using DG.Tweening;
-
-
-/// <summary>
-/// 아 행복해
-/// 오디오 상태 전환 및 초기화 작업, 오디오 이벤트 부활 해야함
-/// 이것만 끝나면 오디오는 끝일 듯? 아마도?
-/// </summary>
-/// 
 
 [Serializable]
 public struct AudioGroupMapping
@@ -18,10 +9,11 @@ public struct AudioGroupMapping
     public AudioType type;
     public AudioMixerGroup group;
 }
-
-public class AudioManager : MonoBehaviour
+[DefaultExecutionOrder(-100)]
+public class AudioManager : MonoBehaviour, IAudioGroupSetting
 {
     public static AudioManager Instance { get; private set; }
+    public static IAudioGroupSetting AudioGroupProvider { get; private set; }
 
     [Header("Mixer & Group Settings")]
     [SerializeField] private AudioMixer mixer;
@@ -33,16 +25,18 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AmbientLibrary ambientLibrary;
     [SerializeField] private CutsceneLibrary cutsceneLibrary;
     [SerializeField] private VoiceLibrary voiceLibrary;
+    [SerializeField] private UILibrary uiLibrary;
 
-    [Header("Pooling Settings")]
-    [SerializeField] private int poolSize = 30;
+    [Header("AudioGroupChildren")]
+    private BGMGroup bgmGroup;
+    private SFXGroup sfxGroup;
+    private AmbientGroup ambientGroup;
+    private CutsceneGroup cutsceneGroup;
+    private VoiceGroup voiceGroup;
+    private UIGroup uiGroup;
 
     private Dictionary<AudioType, AudioMixerGroup> groupMap;
-    //private Dictionary<AudioType, List<AudioSource>> activeSources;
     private AudioLibraryProvider libraryProvider;
-    private AudioPool audioPool;
-    private BGMPlayer bgmPlayer;
-    private CutscenePlayer cutscenePlayer;
     private OptionVolumeManager volumeManager;
 
     void Awake()
@@ -60,121 +54,106 @@ public class AudioManager : MonoBehaviour
         {
             groupMap[map.type] = map.group;
         }
+        
+        AudioGroupProvider = this;
 
-        libraryProvider = new AudioLibraryProvider(bgmLibrary, sfxLibrary, ambientLibrary, cutsceneLibrary, voiceLibrary);
-        audioPool = new AudioPool(transform, groupMap[AudioType.SFX], poolSize);
-        bgmPlayer = new BGMPlayer(mixer);
-        bgmPlayer.parentPos = transform;
-        cutscenePlayer = new CutscenePlayer(mixer);
-        cutscenePlayer.parentPos = transform;
+        libraryProvider = new AudioLibraryProvider(bgmLibrary, sfxLibrary, ambientLibrary, cutsceneLibrary, voiceLibrary, uiLibrary);
         volumeManager = new OptionVolumeManager(mixer);
+
+        // AudioGroupMapping
+        bgmGroup = GetComponentInChildren<BGMGroup>();
+        sfxGroup = GetComponentInChildren<SFXGroup>();
+        ambientGroup = GetComponentInChildren<AmbientGroup>();
+        cutsceneGroup = GetComponentInChildren<CutsceneGroup>();
+        voiceGroup = GetComponentInChildren<VoiceGroup>();
+        uiGroup = GetComponentInChildren<UIGroup>();
     }
 
-    // BGM, Cutscene 재생
-    public void PlayBGM<T>(AudioType type, T key, int index = -1, float fadeIn = 1f, float fadeOut = 1f, bool loop = true) where T : Enum
+    public AudioMixer GetMixer()
     {
-        if (type == AudioType.SFX || type == AudioType.Voice || type == AudioType.Ambient) return;
-
-        var clip = libraryProvider.GetClip(type, key, index);
-        if (clip == null) return;
-
-        if(type == AudioType.BGM) bgmPlayer.Play(clip, type, groupMap[type], fadeIn, fadeOut, loop);
-
-        if (type == AudioType.Cutscene) cutscenePlayer.Play(clip, type, groupMap[type], fadeIn, fadeOut, loop);
+        return mixer;
     }
 
-    // SFX, Voice, Ambient 재생
-    public void PlaySFX<T>(AudioType type, T key, int index = -1, bool loop = false, bool pooled = false, Vector3? pos = null) where T : Enum
+    public AudioMixerGroup GetGroup(AudioType type)
     {
-        if (type == AudioType.BGM || type == AudioType.Cutscene) return;
-
-        var clip = libraryProvider.GetClip(type, key, index);
-        if (clip == null) return;
-
-        var src = pooled ? audioPool.GetSource() : new GameObject($"SFX_{clip.name}").AddComponent<AudioSource>();
-        src.outputAudioMixerGroup = groupMap[type];
-
-        // 위치가 있다면 3D 사운드로
-        if (pos.HasValue)
-        {
-            src.transform.position = pos.Value;
-            src.spatialBlend = 1f;
-            //커스텀
-            //src.rolloffMode = AudioRolloffMode.Custom;
-            //AnimationCurve curve = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(0.9f, 0.5f), new Keyframe(0.3f, 0.3f), new Keyframe(1f, 0f));
-            //src.SetCustomCurve(AudioSourceCurveType.CustomRolloff, curve);
-            //src.minDistance = 0.3f;  // float 값 이내는 항상 최대 볼륨
-            //src.maxDistance = 5f; // float 값 이상은 안 들림
-            // 보통
-            src.rolloffMode = AudioRolloffMode.Logarithmic; // 자연스럽게 감소
-            src.minDistance = 1f;  // float 값 이내는 항상 최대 볼륨
-            src.maxDistance = 50f; // float 값 이상은 안 들림
-        }
-        else src.spatialBlend = 0f;
-
-        src.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
-        src.volume = UnityEngine.Random.Range(0.95f, 1f);
-
-        //RegisterSource(type, src);
-
-        // 재생 및 삭제
-        if (pooled)
-        {
-            if (loop == true)
-            {
-                src.loop = true;
-                src.clip = clip;
-                src.Play();
-                // loop일때 정지 및 빼는거 추가 해야함
-            }
-            else 
-            {
-                src.PlayOneShot(clip);
-                StartCoroutine(audioPool.ReturnAfterDelay(src, clip.length));
-            }
-        }
-        if (!pooled)
-        {
-            if (!loop) Destroy(src.gameObject, clip.length);
-            // loop일때 정지 및 빼는거 추가 해야함
-        }
-
+        return groupMap[type];
     }
+
+    // 재생
+    public void PlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
+    {
+        switch (key)
+        {
+            case BGMKey bk:
+                PlayAudio(bk, index, fadeIn, fadeOut, loop);
+                break;
+            case SFXKey sk:
+                PlayAudio(sk, index, loop, pooled, pos);
+                break;
+            case AmbientKey ak:
+                PlayAudio(ak, index, loop, pooled, pos);
+                break;
+            case CutsceneKey ck:
+                PlayAudio(ck, index, fadeIn, fadeOut, loop);
+                break;
+            case VoiceKey vk:
+                PlayAudio(vk, index);
+                break;
+            case UIKey uk:
+                PlayAudio(uk, index);
+                break;
+            default: throw new Exception("키는 BGMKey, SFXKey, AmbientKey, CutsceneKey, VoiceKey, UIKey");
+        }
+    }
+
+    #region 오디오재생분기
+    private void PlayAudio(BGMKey key, int index = -1, float fadeIn = 1f, float fadeOut = 1f, bool loop = true)
+    {
+        var clip = libraryProvider.GetClip(AudioType.BGM, key, index);
+        if (clip == null) return;
+        // 실행
+        bgmGroup.PlayBGM(clip, fadeIn, fadeOut, loop);
+    }
+    private void PlayAudio(SFXKey key, int index = -1, bool loop = false, bool pooled = false, Vector3? pos = null)
+    {
+        var clip = libraryProvider.GetClip(AudioType.SFX, key, index);
+        if (clip == null) return;
+        // 실행
+        sfxGroup.PlaySFX(clip, loop, pooled, pos);
+    }
+    private void PlayAudio(AmbientKey key, int index = -1, bool loop = false, bool pooled = false, Vector3? pos = null)
+    {
+        var clip = libraryProvider.GetClip(AudioType.Ambient, key, index);
+        if (clip == null) return;
+        // 실행
+        ambientGroup.PlayAmbient(clip, loop, pooled, pos);
+    }
+    private void PlayAudio(CutsceneKey key, int index = -1, float fadeIn = 1f, float fadeOut = 1f, bool loop = true)
+    {
+        var clip = libraryProvider.GetClip(AudioType.Cutscene, key, index);
+        if (clip == null) return;
+        // 실행
+        cutsceneGroup.PlayCutscene(clip, fadeIn, fadeOut, loop);
+    }
+    private void PlayAudio(VoiceKey key, int index = -1)
+    {
+        var clip = libraryProvider.GetClip(AudioType.Voice, key, index);
+        if (clip == null) return;
+        // 실행
+        voiceGroup.PlayVoice(clip);
+    }
+    private void PlayAudio(UIKey key, int index = -1)
+    {
+        var clip = libraryProvider.GetClip(AudioType.UI, key, index);
+        if (clip == null) return;
+        // 실행
+        uiGroup.PlayVoice(clip);
+    }
+    #endregion
 
     // 오디오 컨트롤 // 중요한건 실행되고 있는 오디오를 정지시킬 수 있는 로직이어야함
     // 배경음과 컷신은 해당 오브젝트에서 재생되는 것이니 그 오브젝트를 정지시키면 되지않을까?
-    public void PauseBGM()
-    {
-        bgmPlayer.Pause();
-    }
-    public void ResumeBGM()
-    {
-        bgmPlayer.Resume();
-    }
 
-    public void PauseCutscene()
-    {
-        cutscenePlayer.Pause();
-    }
-    public void ResumeCutscene()
-    {
-        cutscenePlayer.Resume();
-    }
-
-    // PlaySFX으로 재생된 클립들 오디오 타입 저장
-    //private void RegisterSource(AudioType type, AudioSource src)
-    //{
-    //    if (!activeSources.ContainsKey(type))
-    //    {
-    //        activeSources[type] = new List<AudioSource>();
-    //        activeSources[type].Add(src);
-    //    }
-    //}
-    //private void UnregisterSource(AudioType type, AudioSource src)
-    //{
-    //    if (activeSources.ContainsKey(type))
-    //        activeSources[type].Remove(src);
-    //}
 
     // 볼륨
     public void SetVolume(string channel, float linear)
@@ -186,5 +165,6 @@ public class AudioManager : MonoBehaviour
     {
         return volumeManager.GetVolume(channel);
     }
+
 }
 

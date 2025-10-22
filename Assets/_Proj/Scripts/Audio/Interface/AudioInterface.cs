@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 /// <summary>
 /// Audio Key = 5°¡Áö
@@ -22,4 +23,20 @@ public interface IAudioState
     void Enter(AudioManager audio);
     void Exit(AudioManager audio);
     void Update(AudioManager audio);
+}
+
+public interface IAudioGroupSetting
+{
+    AudioMixer GetMixer();
+    AudioMixerGroup GetGroup(AudioType type);
+}
+
+public interface IAudioGroup
+{
+    void Play();
+    void Pause();
+    void Resume();
+    void StopAll();
+    void ResetGroup();
+
 }

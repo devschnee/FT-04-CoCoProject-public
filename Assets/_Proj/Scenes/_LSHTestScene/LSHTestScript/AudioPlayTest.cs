@@ -4,35 +4,39 @@ public class AudioPlayTest : MonoBehaviour
 {
     public void BGMPlay()
     {
-        AudioManager.Instance.PlayBGM<BGMKey>(AudioType.BGM, BGMKey.Main, -1, 1f, 1f, true);
+        AudioEvents.Raise(BGMKey.Main, -1, 1f, 1f, true);
     }
     public void CutsPlay()
     {
-        AudioManager.Instance.PlayBGM<CutsceneKey>(AudioType.Cutscene, CutsceneKey.CutsceneId01, -1, 1f, 1f, true);
+        AudioEvents.Raise(CutsceneKey.CutsceneId01, -1, 1f, 1f, true);
     }
     public void SFXPlay()
     {
-        AudioManager.Instance.PlaySFX<SFXKey>(AudioType.SFX, SFXKey.UIClick, -1);
+        AudioEvents.Raise(SFXKey.CocodoogyFootstep, -1, loop : false, pooled : false, pos : transform.position);
     }
     public void SFXPooledPlay()
     {
-        AudioManager.Instance.PlaySFX<SFXKey>(AudioType.SFX, SFXKey.UIClick, -1, false, true);
+        AudioEvents.Raise(SFXKey.CocodoogyFootstep, -1, loop : false, pooled : true, pos : transform.position);
     }
     public void AmbientPlay()
     {
-        AudioManager.Instance.PlaySFX<AmbientKey>(AudioType.Ambient, AmbientKey.Birdsong, -1);
+        AudioEvents.Raise(AmbientKey.Birdsong, -1, loop: false, pooled: false, pos: transform.position);
     }
     public void AmbientPooledPlay()
     {
-        AudioManager.Instance.PlaySFX<AmbientKey>(AudioType.Ambient, AmbientKey.Birdsong, -1, false, true);
+        AudioEvents.Raise(AmbientKey.Birdsong, -1, loop: false, pooled: true, pos: transform.position);
     }
     public void VoicePlay()
     {
-        AudioManager.Instance.PlaySFX<VoiceKey>(AudioType.Voice, VoiceKey.Cocodoogy, -1);
+        AudioEvents.Raise(VoiceKey.Cocodoogy, -1);
     }
-    public void VoicePooledPlay()
+    public void UIPlay()
     {
-        AudioManager.Instance.PlaySFX<VoiceKey>(AudioType.Voice, VoiceKey.Cocodoogy, -1, false, true);
+        AudioEvents.Raise(UIKey.UIClick, -1);
     }
-    
+    public void UIPlay2()
+    {
+        AudioEvents.Raise(UIKey.UIOpen, -1);
+    }
+
 }

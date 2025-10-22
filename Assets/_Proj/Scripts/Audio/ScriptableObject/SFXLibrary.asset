@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ed7b39b9eb2354195fe9fb0d3d5697, type: 3}
   m_Name: SFXLibrary
   m_EditorClassIdentifier: 
-  audioEntries: []
+  audioEntries:
+  - key: 0
+    clips:
+    - {fileID: 8300000, guid: 32e16990e34db0e40b7ddc9df8921a84, type: 3}
+    - {fileID: 8300000, guid: a45bcee9d52ee3e4288fcb6a81cebce1, type: 3}
+    - {fileID: 8300000, guid: 047729c22cfc62f449dad29a832c93e5, type: 3}

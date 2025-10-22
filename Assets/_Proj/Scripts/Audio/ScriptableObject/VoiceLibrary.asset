@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5bea733b3ef6b40b2736fe607dd3bf, type: 3}
   m_Name: VoiceLibrary
   m_EditorClassIdentifier: 
-  audioEntries: []
+  audioEntries:
+  - key: 0
+    clips:
+    - {fileID: 8300000, guid: a98dffa9d2518894d82d61a5596ed290, type: 3}

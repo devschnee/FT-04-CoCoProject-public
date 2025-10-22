@@ -2,27 +2,27 @@ using UnityEngine;
 using UnityEngine.Audio;
 using DG.Tweening;
 
-public class BGMPlayer
+public class CutscenePlayer
 {
     private readonly AudioMixer mixer;
+    private readonly Transform myTrans;
     private AudioSource currentSource;
-    public Transform parentPos;
 
-    public BGMPlayer(AudioMixer mixer)
+    public CutscenePlayer(AudioMixer mixer, Transform myTrans)
     {
         this.mixer = mixer;
+        this.myTrans = myTrans;
     }
 
-    public void Play(AudioClip clip, AudioType type, AudioMixerGroup group, float fadeIn, float fadeOut, bool loop)
+    public void PlayAudio(AudioClip clip, AudioMixerGroup group, float fadeIn, float fadeOut, bool loop)
     {
-        if (!(type == AudioType.BGM)) return;
         if (currentSource == null)
         {
-            GameObject gObj = new GameObject("BGMPlayer");
-            gObj.transform.parent = parentPos;
+            GameObject gObj = new GameObject($"Cutscene_{clip.name}");
+            gObj.transform.parent = myTrans;
             currentSource = gObj.AddComponent<AudioSource>();
             currentSource.outputAudioMixerGroup = group;
-            Object.DontDestroyOnLoad(gObj);
+            //Object.DontDestroyOnLoad(gObj);
         }
 
         if (currentSource.isPlaying && currentSource.clip == clip) return;
@@ -37,17 +37,4 @@ public class BGMPlayer
             currentSource.DOFade(1f, fadeIn);
         });
     }
-
-    public void Pause()
-    {
-        if (currentSource == null) return;
-        currentSource.Pause();
-    }
-
-    public void Resume()
-    {
-        if (currentSource == null) return;
-        currentSource.UnPause();
-    }
 }
-

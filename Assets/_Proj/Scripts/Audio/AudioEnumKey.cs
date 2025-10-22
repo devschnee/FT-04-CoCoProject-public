@@ -6,14 +6,14 @@ public enum AudioType
     SFX,
     Ambient,
     Cutscene,
-    Voice
+    Voice,
+    UI
 }
 
 public enum BGMKey
 {
     Main = 0,
     Intro,
-    Cutscene,
     Chapter01,
     Chapter02,
     Chapter03,
@@ -21,8 +21,7 @@ public enum BGMKey
 
 public enum SFXKey
 {
-    UIClick = 0,
-    CocodoogyFootstep,
+    CocodoogyFootstep = 0,
     MasterFootstep,
     Master_AndroidFootstep,
     PigFootstep
@@ -47,4 +46,11 @@ public enum VoiceKey
     Pig,
     Bird
 
+}
+
+public enum UIKey
+{
+    UIClick = 0,
+    UIOpen,
+    UIClose
 }
