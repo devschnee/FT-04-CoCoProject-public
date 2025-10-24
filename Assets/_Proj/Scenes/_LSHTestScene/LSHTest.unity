@@ -10653,6 +10653,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7073945961222906828, guid: beb7b11e960c68e49ab89c3b7f6964a5, type: 3}
+      propertyPath: settingData.audio.BGM
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073945961222906828, guid: beb7b11e960c68e49ab89c3b7f6964a5, type: 3}
+      propertyPath: settingData.audio.SFX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073945961222906828, guid: beb7b11e960c68e49ab89c3b7f6964a5, type: 3}
+      propertyPath: settingData.audio.Voice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073945961222906828, guid: beb7b11e960c68e49ab89c3b7f6964a5, type: 3}
+      propertyPath: settingData.audio.Ambient
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073945961222906828, guid: beb7b11e960c68e49ab89c3b7f6964a5, type: 3}
+      propertyPath: settingData.audio.Cutscene
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10726,7 +10746,7 @@ SceneRoots:
   - {fileID: 2145097481}
   - {fileID: 1502160894}
   - {fileID: 7082857784337492827}
+  - {fileID: 3901386383295780578}
   - {fileID: 1361760521664591207}
   - {fileID: 1736379750723613138}
   - {fileID: 219663253}
-  - {fileID: 3901386383295780578}
