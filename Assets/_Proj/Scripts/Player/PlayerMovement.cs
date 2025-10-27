@@ -4,6 +4,8 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    // 10/27 기획안 변경됨.
+    // TODO : 플레이어 낭떨어지 막힘. 경사로를 통해서만 y칸 오르내릴 수 있음. 동물친구 (일단은 거북이 제외) 올라타면 안 됨.
     #region Variables
     [Header("Refs")]
     public Joystick joystick;

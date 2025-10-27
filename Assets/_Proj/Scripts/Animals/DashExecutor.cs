@@ -14,9 +14,7 @@ public class DashExecutor
         blockingLayer = blockingMask;
     }
 
-    /// <summary>
-    /// Recursion : currTargetPos 위치에 있는 물체를 dir 방향으로 밀어내는 것이 연쇄적으로 가능한지 검증
-    /// </summary>
+    // Recursion : currTargetPos 위치에 있는 물체를 dir 방향으로 밀어내는 것이 연쇄적으로 가능한지 검증
     public bool CanChainPush(Vector3 currTargetPos, Vector2Int dir, int depth = 0)
     {
         if (depth > MAX_CHAIN_DEPTH) return false;
@@ -57,30 +55,36 @@ public class DashExecutor
         return true;
     }
 
-    
+
     // Recursion : 연쇄 검증이 끝난 후, 물체들을 뒤에서부터 1칸씩 이동
     public void ExecuteChainPush(Vector3 currTargetPos, Vector2Int dir)
     {
         Vector3 moveOffset = new Vector3(dir.x, 0, dir.y) * tileSize;
+        Vector3 nextTargetPos = currTargetPos + moveOffset;
 
         // 다음 칸에 밀어야 할 물체가 있는지 확인
         if (Physics.Raycast(currTargetPos + Vector3.up * 0.5f, moveOffset, out RaycastHit hit, tileSize + 0.05f, blockingLayer))
         {
             if (hit.distance <= tileSize && hit.collider.TryGetComponent<IPushHandler>(out var handler))
             {
+                // 재귀적으로 다음 물체에게 이동 명령을 먼저 내림
                 ExecuteChainPush(hit.collider.transform.position, dir);
             }
         }
 
-        // 가장 뒤의 물체부터 현재 물체를 1칸 밀어냄 명령
-        // 현재 물체는 멧돼지 돌진에 의해 밀려나고 있는 물체(PushableBox, PushableOrb 등)
-        if (Physics.Raycast(currTargetPos + Vector3.up * 0.5f, -moveOffset, out RaycastHit selfHit, 0.05f, blockingLayer))
+        // 현재 물체를 1칸 밀어냄 명령
+        // Note: 현재 위치의 물체를 찾기 위해 OverlapBox 사용
+        Collider[] currHits = Physics.OverlapBox(currTargetPos + Vector3.up * 0.5f, Vector3.one * 0.4f, Quaternion.identity, blockingLayer);
+
+        foreach (Collider collider in currHits)
         {
-            if (selfHit.collider.TryGetComponent<PushableObjects>(out var selfPushable))
+            // 현재 위치에서 PushableObjects 컴포넌트를 가진 오브젝트를 찾기
+            if (collider.TryGetComponent<PushableObjects>(out var pushable))
             {
-                // NOTE : 일반적인 시간 누적 TryPush가 아닌 즉시 이동을 요청해야 함.
-                // TODO : PushableObjects에 즉시 이동하는 공개 메서드 생성 후 TryPush를 대체 해야 함.
-                selfPushable.TryPush(dir);
+                // 홀드 시간 없이 즉시 밀어내기
+                pushable.ImmediatePush(dir);
+
+                break; // 타일에 하나에 하나의 PushableObject만 있다고 가정
             }
         }
     }

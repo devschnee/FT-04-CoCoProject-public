@@ -3,6 +3,12 @@ using UnityEngine;
 
 public abstract class PushableObjects : MonoBehaviour, IPushHandler
 {
+    // 10/27 기획안 변경됨.
+    /* 
+     * TODO : 박스, 구체 통과 못하는 객체로 막혀 있는 게 아니라면 밀려날 수 있음. 
+     * 박스, 철구는 한 칸 떴다 떨어지고, 이 과정에서 철구는 충격파 발생시키는 로직이 추가 되어야 함.
+     * 발생된 충격파에 의해서 다시 공중으로 뜨거나 하는 과정은 없음.
+     */
     #region Variables
     public float moveTime = 0.12f;
     public float tileSize = 1f;
@@ -149,5 +155,11 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
     {
         isHoling = false;
         currHold = 0f;
+    }
+
+    public void ImmediatePush(Vector2Int dir)
+    {
+        if (isMoving || isFalling) return;
+        TryPush(dir);
     }
 }
