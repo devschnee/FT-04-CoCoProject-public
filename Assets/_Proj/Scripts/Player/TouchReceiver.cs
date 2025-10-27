@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class TouchReceiver : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
+    // FIXME : 이 스크린이 존재하면 동물 NPC 팝업 인터랙션이 막힘.(터치 불가). joystick처리를 어떻게 할지 다시 고민 필요.
     public Joystick joystick;
 
     // 현재 트래킹 중인 포인터 ID. 멀티터치 상황에서 이 터치만 추적
