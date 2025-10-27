@@ -23,6 +23,7 @@ public class Boar : PushableObjects, IDashDirection
     [Tooltip("돌진 속도를 조정하려면 여기를 수정")]
     public float dashSpeed = 0.08f; // 돌진 속도
     public float rotateLerp = 10f;
+    //[SerializeField] float gridYawDeg = 45f; // 45도 다이아 격자로 사용하려고 할 경우 필요
 
     [Header("HitStop")]
     public bool useGlobalTimeScale = true; // 전체 일시정지(0.06s)로 타격감
@@ -116,8 +117,15 @@ public class Boar : PushableObjects, IDashDirection
     {
         if (isMoving || isFalling) return;
 
-        Vector3 moveDir = new Vector3(dashDir.x, 0, dashDir.y);
+        // NOTE : 카메라만 돌리는 게 아니라 타일 자체를 마름모 격자 스타일로 사용하려고 하면 아래 주석을 해제하고 테스트 시도.
+        //var q = Quaternion.Euler(0f, gridYawDeg, 0f);
+        //Vector3 gx = q * Vector3.right; // 회전된 X axis
+        //Vector3 gz = q * Vector3.forward; // 회전된 Z axis
+        //Vector3 moveDir = gx * dashDir.x + gz * dashDir.y; ; // 회전 축으로 방향 합성
+
+        Vector3 moveDir = new Vector3(dashDir.x, 0, dashDir.y); // 위 주석 켜면 이 줄 삭제
         StartCoroutine(DashCoroutine(moveDir, dashDir));
+
     }
 
     protected IEnumerator DashMoveTo(Vector3 target, Vector3 moveDir)

@@ -30,7 +30,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
     public bool allowFall = true;
     public bool allowSlope = false;
     #endregion
-
+    // TODO : 슬로프 탈 때 Constraints.FreezeRotation 끄기. 이게 맞나..?
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -161,5 +161,36 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
     {
         if (isMoving || isFalling) return;
         TryPush(dir);
+    }
+
+    // 충격파 맞았을 때 y+1 duration 동안 띄우기
+    public void WaveLift(float duration, float holdSec)
+    {
+        if (isMoving || isFalling) return;
+        StartCoroutine(WaveLiftCoroutine(duration, holdSec));
+    }
+
+    IEnumerator WaveLiftCoroutine(float duration, float holdSec)
+    {
+        isMoving = true;
+
+        Vector3 start = transform.position;
+        Vector3 target = start + Vector3.up * tileSize;
+        
+        float t = 0f;
+        duration = Mathf.Max(0.01f, duration);
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            transform.position = Vector3.Lerp(start, target, t / duration);
+            yield return null;
+        }
+
+        if(holdSec > 0f) 
+            yield return new WaitForSeconds(holdSec);
+        transform.position = target;
+         if (allowFall) { yield return StartCoroutine(CheckFall()); }
+        isMoving = false;
     }
 }

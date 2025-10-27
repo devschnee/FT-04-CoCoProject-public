@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
+// NOTE : [Required] Package Manager에서 Addressables(2.7.4)를 Install
 [CreateAssetMenu(menuName = "TileRegistry")]
 public class TileRegistry : ScriptableObject
 {
