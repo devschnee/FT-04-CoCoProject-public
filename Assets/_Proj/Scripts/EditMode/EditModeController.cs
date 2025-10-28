@@ -53,6 +53,13 @@ public class EditModeController : MonoBehaviour
     [SerializeField, Tooltip("저장 완료 알림 패널(확인 버튼 1개)")]
     private GameObject savedInfoPanel;
     [SerializeField] private Button savedOkButton;
+
+    [Header("Ground Limit")]
+    [SerializeField] private LayerMask groundMask;       // ✅ 허용 지면 레이어 (예: Ground)
+    [SerializeField] private float groundProbeUp = 3f;   // 위쪽으로 여유 높이
+    [SerializeField] private float groundProbeDown = 6f; // 아래쪽으로 탐색할 거리
+    [SerializeField] private bool requireGround = true;  // Ground 위에서만 허용할지
+
     #endregion
 
     #region === Public State ===
@@ -203,8 +210,19 @@ public class EditModeController : MonoBehaviour
         ToggleTopButtons(on);
         IsEditMode = on;
 
+        // 편집모드 전환 신호: EditModeManager 호출 (UI 스위칭은 스위처가 이벤트로 처리)
+        var mgr = FindAnyObjectByType<EditModeManager>();
+        if (mgr != null)
+        {
+            if (on) mgr.EnterEditMode();
+            else mgr.ExitEditMode();
+        }
+
         if (on)
         {
+            // 🔧 화면 회전(오빗) 막기 - 진입 시에 반드시 켜줘야 함
+            BlockOrbit = true;  // ← 이 줄이 누락되어 있었음
+
             history.Clear();
             CaptureBaseline();
             hasUnsavedChanges = false;
@@ -224,6 +242,8 @@ public class EditModeController : MonoBehaviour
 
             lastBeforeDrag = null;
             isDragging = false;
+
+            // 🔓 종료 시에는 해제
             BlockOrbit = false;
 
             history.Clear();
@@ -231,6 +251,7 @@ public class EditModeController : MonoBehaviour
             actionToolbar?.Hide();
         }
     }
+
 
     private void ToggleTopButtons(bool on)
     {
@@ -285,6 +306,8 @@ public class EditModeController : MonoBehaviour
     {
         pointerDown = true;
         pressScreenPos = GetPointerScreenPos();
+        if (!ScreenPosValid(pressScreenPos)) { pointerDown = false; return; } // ★ 좌표 가드
+
         pressedHitTarget = RaycastDraggable(pressScreenPos);
         movePlaneReady = false;
 
@@ -328,7 +351,9 @@ public class EditModeController : MonoBehaviour
                 actionToolbar?.Hide();
             }
 
-            DragMove(GetPointerScreenPos());
+            var sp = GetPointerScreenPos();
+            if (!ScreenPosValid(sp)) return; // ★ 좌표 가드
+            DragMove(sp);
         }
     }
 
@@ -388,6 +413,8 @@ public class EditModeController : MonoBehaviour
         if (!longPressArmed || IsEditMode || !pointerDown) return;
 
         Vector2 cur = GetPointerScreenPos();
+        if (!ScreenPosValid(cur)) { longPressArmed = false; return; } // ★ 좌표 가드
+
         if ((cur - longPressStartPos).sqrMagnitude > longPressSlopPixels * longPressSlopPixels)
         {
             longPressArmed = false;
@@ -418,6 +445,7 @@ public class EditModeController : MonoBehaviour
     private void DragMove(Vector2 screenPos)
     {
         if (!cam) return;
+        if (!ScreenPosValid(screenPos)) return; // ★ 좌표 가드
         if (!movePlaneReady) PrepareMovePlane();
 
         Ray ray = cam.ScreenPointToRay(screenPos);
@@ -433,15 +461,20 @@ public class EditModeController : MonoBehaviour
         CurrentTarget.position = hit;
         movedDuringDrag = true;
 
-        bool valid = !OverlapsOthers(CurrentTarget);
+        // 👇 추가: Ground 위 여부 + 겹침 여부를 모두 만족해야 유효
+        bool onGround = IsOverGround(hit);
+        bool noOverlap = !OverlapsOthers(CurrentTarget);
+        bool valid = onGround && noOverlap;
+
         currentPlacementValid = valid;
 
         if (CurrentTarget.TryGetComponent<Draggable>(out var drag))
         {
-            drag.SetInvalid(!valid);
+            drag.SetInvalid(!valid);   // 유효하지 않으면 빨간색(기존 로직 활용)
             drag.SetHighlighted(true);
         }
     }
+
 
     private Vector3 SnapToGrid(Vector3 world)
     {
@@ -862,28 +895,29 @@ public class EditModeController : MonoBehaviour
     {
         if (!EventSystem.current) return false;
 
-        if (TouchES.activeTouches.Count > 0)
-        {
-            for (int i = 0; i < TouchES.activeTouches.Count; i++)
-            {
-                var t = TouchES.activeTouches[i];
-                if (t.phase == UnityEngine.InputSystem.TouchPhase.Began ||
-                    t.phase == UnityEngine.InputSystem.TouchPhase.Moved ||
-                    t.phase == UnityEngine.InputSystem.TouchPhase.Stationary)
-                {
-                    if (EventSystem.current.IsPointerOverGameObject(t.touchId))
-                        return true;
-                }
-            }
-            return false;
-        }
+        // 현재 포인터 스크린 좌표
+        Vector2 pos = GetPointerScreenPos();
 
-        return EventSystem.current.IsPointerOverGameObject();
+        // 이 좌표로 UI 레이캐스트를 직접 수행
+        var data = new PointerEventData(EventSystem.current) { position = pos };
+        var results = new List<RaycastResult>(8);
+        EventSystem.current.RaycastAll(data, results);
+
+        return results.Count > 0; // 하나라도 맞으면 UI 위
+    }
+
+    // ★ 좌표 유효성 가드 (frustum 경고 방지)
+    private static bool ScreenPosValid(Vector2 sp)
+    {
+        if (float.IsNaN(sp.x) || float.IsNaN(sp.y) || float.IsInfinity(sp.x) || float.IsInfinity(sp.y))
+            return false;
+        return (sp.x >= 0 && sp.y >= 0 && sp.x <= Screen.width && sp.y <= Screen.height);
     }
 
     private Transform RaycastDraggable(Vector2 screenPos)
     {
         if (!cam) return null;
+        if (!ScreenPosValid(screenPos)) return null; // ★ 가드
         Ray ray = cam.ScreenPointToRay(screenPos);
         return Physics.Raycast(ray, out RaycastHit hit, 1000f, draggableMask) ? hit.transform : null;
     }
@@ -891,6 +925,7 @@ public class EditModeController : MonoBehaviour
     private Transform RaycastTransform(Vector2 screenPos)
     {
         if (!cam) return null;
+        if (!ScreenPosValid(screenPos)) return null; // ★ 가드
         Ray ray = cam.ScreenPointToRay(screenPos);
         return Physics.Raycast(ray, out RaycastHit hit, 1000f, ~0) ? hit.transform : null;
     }
@@ -900,4 +935,17 @@ public class EditModeController : MonoBehaviour
         if (!isDragging && BlockOrbit) BlockOrbit = false;
     }
     #endregion
+
+    // EditController.cs 내부 아무 곳 (Region Utils 등)
+    private bool IsOverGround(Vector3 worldPos)
+    {
+        if (!requireGround) return true;
+
+        // worldPos 위에서 아래로 레이캐스트 → Ground 맞으면 OK
+        Vector3 origin = new Vector3(worldPos.x, worldPos.y + groundProbeUp, worldPos.z);
+        float dist = groundProbeUp + groundProbeDown;
+
+        return Physics.Raycast(origin, Vector3.down, out _, dist, groundMask, QueryTriggerInteraction.Ignore);
+    }
+
 }
