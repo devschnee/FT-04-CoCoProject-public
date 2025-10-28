@@ -56,7 +56,7 @@ public class Boar : PushableObjects, IDashDirection
 
     void Update()
     {
-        if (isHoling && isMoving)
+        if (isHoling && !isMoving)
         {
             currHold += Time.deltaTime;
             if (currHold >= requiredHoldtime)

@@ -18,6 +18,8 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
     public LayerMask groundMask;
     [Tooltip("경사로")]
     public LayerMask slopeMask;
+    [Tooltip("통과 허용 like water")]
+    public LayerMask throughLayer;
 
     protected Rigidbody rb;
     protected bool isMoving = false;
@@ -59,22 +61,50 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
         // XZ로만 이동할 목표(1칸) 먼저 계산.
         Vector3 target = transform.position + offset;
 
+        // TODO : 경사로를 만나면 위로 1칸 -> 앞으로 2칸 이동하도록
         // 경사로가 있다면 위로 1칸 추가 이동
         if (allowSlope && Physics.Raycast(target + Vector3.up * 0.5f, Vector3.down, 1f, slopeMask))
         {
             Vector3 up = target + Vector3.up * tileSize;
-            // 위 칸이 비어있고, 그 칸이 바닥이면 경사로 위로 이동
-            if (!Physics.CheckBox(up + Vector3.up * 0.5f, Vector3.one * 0.4f, Quaternion.identity, blockingMask) &&
+            // 윗칸이 비어있고, 그 칸이 바닥이면 경사로 위로 이동
+            if (!CheckBlocking(up) &&
                 Physics.Raycast(up + Vector3.up * 0.1f, Vector3.down, 1.5f, groundMask))
             {
-                StartCoroutine(MoveTo(up));
+                StartCoroutine(MoveAndFall(up));
                 return true;
             }
         }
 
         // 목적지에 뭔가 있으면 못 감
-        if (Physics.CheckBox(target + Vector3.up * 0.5f, Vector3.one * 0.4f, Quaternion.identity, blockingMask))
+        if (CheckBlocking(target))
             return false;
+
+        // 바닥 유무 확인
+        bool hasGroundAtTarget = Physics.Raycast(target + Vector3.up * 0.1f, Vector3.down, 1.5f, groundMask);
+
+        if (!hasGroundAtTarget)
+        {
+            // 타겟 바로 아래 칸에 뭔가 있으면 전진 금지
+            Vector3 oneDown = target + Vector3.down * tileSize;
+            if (CheckBlocking(oneDown))
+                return false;
+
+            // 실제 착지 위치를 미리 계산, 그 칸이 비어있는지도 확인
+            if (Physics.Raycast(target + Vector3.up * 3f, Vector3.down, out var hit, 20f, groundMask))
+            {
+                // 착지 y를 칸 단위로 정규화
+                Vector3 landing = new Vector3(target.x, Mathf.Floor(hit.point.y / tileSize) * tileSize, target.z);
+                if (CheckBlocking(landing))
+                    return false;
+            }
+            else
+            {
+                // 아래에 바닥 자체가 전혀 없다면, 낙하 허용 여부에 따라 결정
+                if (!allowFall) return false;
+                // 허용이면 그대로 진행 (낙하 연출로 사라지는/끝층까지 떨어지는 케이스)
+            }
+        }
+
 
         // 이동 후 낙하여부까지 처리
         StartCoroutine(MoveAndFall(target));
@@ -163,6 +193,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
         TryPush(dir);
     }
 
+    // ========== 공중 띄우기용 ==========
     // 충격파 맞았을 때 y+1 duration 동안 띄우기
     public void WaveLift(float duration, float holdSec)
     {

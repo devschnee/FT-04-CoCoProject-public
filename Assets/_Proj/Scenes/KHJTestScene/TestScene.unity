@@ -651,6 +651,9 @@ MonoBehaviour:
   slopeMask:
     serializedVersion: 2
     m_Bits: 0
+  throughLayer:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.9
   allowFall: 1
   allowSlope: 1
@@ -912,6 +915,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   slopeMask:
+    serializedVersion: 2
+    m_Bits: 0
+  throughLayer:
     serializedVersion: 2
     m_Bits: 0
   requiredHoldtime: 0.9
@@ -2288,6 +2294,9 @@ MonoBehaviour:
   slopeMask:
     serializedVersion: 2
     m_Bits: 0
+  throughLayer:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.9
   allowFall: 1
   allowSlope: 1
@@ -2546,6 +2555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 795707064}
+  - component: {fileID: 795707068}
   - component: {fileID: 795707065}
   - component: {fileID: 795707066}
   - component: {fileID: 795707067}
@@ -2637,6 +2647,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.1, z: 0.5}
   m_Center: {x: 0, y: 0.05, z: -0.06}
+--- !u!114 &795707068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795707062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba13e5e0e402724baae27433b279229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileSize: 1
+  pushables:
+    serializedVersion: 2
+    m_Bits: 64
+  frontOffset: 0.4
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,7 +3504,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  radiusTiles: 5
+  radiusShock: 5
   tileHeight: 1
   targetLayer:
     serializedVersion: 2
@@ -4131,7 +4158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1270208727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4587,7 +4614,7 @@ Transform:
   m_GameObject: {fileID: 1377857911}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.5, z: -3}
+  m_LocalPosition: {x: 3, y: 0.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4616,6 +4643,9 @@ MonoBehaviour:
   slopeMask:
     serializedVersion: 2
     m_Bits: 1
+  throughLayer:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.5
   allowFall: 1
   allowSlope: 1
@@ -5421,6 +5451,9 @@ MonoBehaviour:
   slopeMask:
     serializedVersion: 2
     m_Bits: 0
+  throughLayer:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.9
   allowFall: 1
   allowSlope: 1
@@ -5915,6 +5948,9 @@ MonoBehaviour:
   slopeMask:
     serializedVersion: 2
     m_Bits: 0
+  throughLayer:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.9
   allowFall: 1
   allowSlope: 1
@@ -6265,6 +6301,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   slopeMask:
+    serializedVersion: 2
+    m_Bits: 0
+  throughLayer:
     serializedVersion: 2
     m_Bits: 0
   requiredHoldtime: 0.9
@@ -6675,6 +6714,9 @@ MonoBehaviour:
   slopeMask:
     serializedVersion: 2
     m_Bits: 0
+  throughLayer:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.9
   allowFall: 1
   allowSlope: 1
@@ -6843,6 +6885,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   slopeMask:
+    serializedVersion: 2
+    m_Bits: 0
+  throughLayer:
     serializedVersion: 2
     m_Bits: 0
   requiredHoldtime: 0.9
@@ -7382,6 +7427,9 @@ MonoBehaviour:
   slopeMask:
     serializedVersion: 2
     m_Bits: 1
+  throughLayer:
+    serializedVersion: 2
+    m_Bits: 0
   requiredHoldtime: 0.9
   allowFall: 1
   allowSlope: 0
