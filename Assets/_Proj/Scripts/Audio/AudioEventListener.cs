@@ -9,6 +9,7 @@ public class AudioEventListener : MonoBehaviour
 {
     public static AudioEventListener Instance { get; private set; }
     // DDOL하나 때문에 일단 싱글톤으로 만들었음, 싱글톤으로 접근은 안하고 이벤트 수신만
+    // 근데 AudioManager에 붙인다면 굳이 싱글톤 필요해?
 
     private void Awake()
     {

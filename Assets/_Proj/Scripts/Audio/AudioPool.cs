@@ -6,9 +6,9 @@ using UnityEngine.Audio;
 
 public class AudioPool
 {
-    private readonly Queue<AudioSource> pool = new();
     private readonly Transform parent;
     private readonly AudioMixerGroup defaultGroup;
+    private readonly Queue<AudioSource> pool = new Queue<AudioSource>();
 
     public AudioPool(Transform parent, AudioMixerGroup defaultGroup, int size)
     {
