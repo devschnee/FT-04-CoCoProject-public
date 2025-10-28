@@ -1,6 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ObjectMeta : MonoBehaviour
+public class TestObjectMeta : MonoBehaviour
 {
     public TestScriptableObject Data { get; private set; }
 

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InLobbyManager : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class InLobbyManager : MonoBehaviour
         foreach (var data in objectDatabase)
         {
             GameObject obj = Instantiate(data.prefab);
-            var meta = obj.GetComponent<ObjectMeta>();
+            var meta = obj.GetComponent<TestObjectMeta>();
             meta.Initialize(data);
         }
     }
