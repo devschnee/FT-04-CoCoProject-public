@@ -367,7 +367,8 @@ GameObject:
   - component: {fileID: 8800697740156742254}
   - component: {fileID: -5979390441113673048}
   - component: {fileID: 3407524424114810161}
-  m_Layer: 0
+  - component: {fileID: -8122564415866360419}
+  m_Layer: 31
   m_Name: Cat 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +385,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4284089282903957149}
@@ -480,7 +481,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -532,7 +533,32 @@ MonoBehaviour:
   angularSpeed: 120
   acceleration: 8
   moveRadius: 10
-  waitTime: 2
+  waitTime: 0.1
+  editController: {fileID: 0}
+--- !u!114 &-8122564415866360419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6647131506220806907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8016b02592f6844891f1518eba3324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 6647131507516179409}
+  - {fileID: 6647131507985846807}
+  - {fileID: 6647131507828160013}
+  - {fileID: 6647131507186470329}
+  highlightColor: {r: 1, g: 0.9, b: 0.3, a: 1}
+  invalidColor: {r: 1, g: 0.2, b: 0.2, a: 1}
+  loadSavedTransformOnStart: 1
+  customSaveKey: 
+  useMaterialPropertyBlock: 1
+  colorPropName: _Color
+  useFullTransformPathForKey: 0
 --- !u!1 &6647131507186470326
 GameObject:
   m_ObjectHideFlags: 0

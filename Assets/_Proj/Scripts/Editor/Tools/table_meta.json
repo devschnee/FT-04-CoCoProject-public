@@ -1,0 +1,28 @@
+﻿{
+  "entries": [
+    {
+      "name": "tbl_deco_mst",
+      "type": "SO"
+    },
+    {
+      "name": "tbl_item_mst",
+      "type": "SO"
+    },
+    {
+      "name": "tbl_character_mst",
+      "type": "SO"
+    },
+    {
+      "name": "tbl_ui_text",
+      "type": "CSV_ONLY"
+    },
+    {
+      "name": "tbl_dialogue",
+      "type": "CSV_ONLY"
+    }
+  ]
+}
+//실제 json구조
+//todo : 데이터 테이블 추가 될 시 이곳에 name, type 올릴것
+//name은 Assets/_Proj/Data/CSV에 넣은 .csv 파일 이름을 그대로 사용
+//스크립터블오브젝트화 해야 한다면 type 에 "SO", 아닐시 "CSV_ONLY"

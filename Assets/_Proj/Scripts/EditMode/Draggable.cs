@@ -160,6 +160,8 @@ public class Draggable : MonoBehaviour
         }
 
         Physics.SyncTransforms();
+        //LSH
+        InLobbyManager.Instance.NewMap();
     }
 
     /// <summary>이 오브젝트의 저장된 위치/회전 키를 삭제합니다.</summary>

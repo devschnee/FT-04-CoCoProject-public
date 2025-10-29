@@ -1,0 +1,3 @@
+﻿id,name,prefabPath,iconPath,category,tag,acquire,stack,description
+10001,deco_maple_tree,Assets/Resources/Prefabs/Deco/deco_maple_tree.prefab,Assets/Resources/Icons/Deco/ico_maple_tree.png,plant,tree,shop,99,deco_maple_tree_desc
+,,,,,,,,

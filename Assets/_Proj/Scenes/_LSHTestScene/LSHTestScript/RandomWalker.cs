@@ -11,14 +11,14 @@ public class RandomWalker : MonoBehaviour, IInteractable, IDraggable, ILongPress
 
     private NavMeshAgent agent;
     private Animator anim;
-    private ObjectAnimationController animationController;
+    private ObjectAnimationControl animationController;
     private float timer;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        animationController = new ObjectAnimationController(anim);
+        animationController = new ObjectAnimationControl(anim);
         agent.speed = moveSpeed;
         agent.angularSpeed = angularSpeed;
         agent.acceleration = acceleration;

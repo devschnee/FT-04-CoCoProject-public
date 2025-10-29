@@ -1,10 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class ObjectAnimationController
+public class ObjectAnimationControl
 {
     private readonly Animator anim;
-    public ObjectAnimationController(Animator anim)
+    public ObjectAnimationControl(Animator anim)
     {
         this.anim = anim;
     }
@@ -30,6 +30,6 @@ public class ObjectAnimationController
 
     public void StopAnim()
     {
-        anim.Play("Jump");
+        anim.Play("EditMode");
     }
 }
