@@ -2833,7 +2833,6 @@ GameObject:
   - component: {fileID: 795707065}
   - component: {fileID: 795707066}
   - component: {fileID: 795707067}
-  - component: {fileID: 795707069}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2939,28 +2938,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   frontOffset: 0.4
---- !u!114 &795707069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795707062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33a4f429845a6f24dbe541fcbab31fbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileSize: 1
-  footprintSize: {x: 0.6, y: 0.6}
-  probeHeight: 0.8
-  minSupportContacts: 1
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 513
-  slopeMask:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!1 &820643194
 GameObject:
   m_ObjectHideFlags: 0

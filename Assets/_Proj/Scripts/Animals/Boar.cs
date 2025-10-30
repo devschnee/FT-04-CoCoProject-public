@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -178,7 +179,9 @@ public class Boar : PushableObjects, IDashDirection
             // 다음 칸에 무언가 있는지 (block + pushable 모두 체크 해야 함)
             var hits = Physics.OverlapBox(nextPos + Vector3.up * 0.5f, Vector3.one * 0.4f, Quaternion.identity, collisionMask, QueryTriggerInteraction.Collide);
 
-            if (hits.Length == 0)
+            bool hitTrigger = hits.All(h => h.isTrigger);
+
+            if (hits.Length == 0 || hitTrigger)
             {
                 // 땅 없으면 멈춤
                 if (!HasGround(nextPos))

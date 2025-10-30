@@ -15,8 +15,8 @@ TagManager:
   - Wall
   - Pushables
   - Ground
-  - Slope
-  - 
+  - Animal
+  - TransparentWall
   - 
   - 
   - 
