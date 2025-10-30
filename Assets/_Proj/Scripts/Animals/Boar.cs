@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 10/29 TODO : 카메라 세팅 후 팝업 UI 조정 76라인
+// 10/30 TODO : 플레이어 마주쳐도 못 가게 막아야
+
 public class Boar : PushableObjects, IDashDirection
 {
     [Header("Canvas")]

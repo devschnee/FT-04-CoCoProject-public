@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+// 10/30 TODO : Shockwave 사용해서 버팔로와 같이 충격파 발생시킬 수 있도록 수정.
+
 public class PushableOrb : PushableObjects
 {
     SphereCollider sph;
