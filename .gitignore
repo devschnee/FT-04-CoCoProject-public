@@ -103,6 +103,10 @@ InitTestScene*.unity*
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
-====공유 불가 에셋===
+==== 공유 불가 에셋 ====
 /[Aa]ssets/_Proj/_NotShared
 /[Aa]ssets/_Proj/_NotShared.meta
+
+==== Firebase 공유 X ====
+[Aa]ssets/[Ff]irebase/
+[Aa]ssets/[Ff]irebase.meta
