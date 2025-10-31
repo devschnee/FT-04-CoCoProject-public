@@ -80,7 +80,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
             return false;
 
         // 바닥 유무 확인
-        bool hasGroundAtTarget = Physics.Raycast(target + Vector3.up * 0.1f, Vector3.down, 1.5f, groundMask);
+        bool hasGroundAtTarget = Physics.Raycast(target + Vector3.up * 0.1f, Vector3.down, 2.5f, groundMask);
 
         if (!hasGroundAtTarget)
         {

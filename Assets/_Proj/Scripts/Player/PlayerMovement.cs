@@ -34,12 +34,67 @@ public class PlayerMovement : MonoBehaviour
         moveStrategies = new List<IMoveStrategy>(GetComponents<IMoveStrategy>());
     }
 
+
+  
     void FixedUpdate()
     {
         if (joystick == null) return;
         if (camTr == null) camTr = Camera.main?.transform;
 
         Vector2 input = new Vector2(joystick.InputDir.x, joystick.InputDir.z);
+
+                Vector3 inputOffset = new(joystick.InputDir.x, 0, joystick.InputDir.z);
+        Ray ray = new(transform.position + (inputOffset * .3f), inputOffset);
+        RaycastHit[] results = new RaycastHit[10];
+
+        int hitnums = Physics.BoxCastNonAlloc(transform.position - Vector3.up * .3f + new Vector3(input.x, 0, input.y) * .2f, Vector3.one * .1f, Vector3.down, results);
+        print(hitnums);
+
+        if (hitnums < 2)
+
+
+
+            
+            
+            
+            input = Vector2.zero;
+
+        //생각을 해봅시다...
+        //내가 갈 곳에 땅바닥이 있는가? 를 판단하려면
+        //내 발밑에서 내가 입력한 방향으로 조금 보낸 지점에서부터 입력 방향으로 0.5거리만큼 레이를 발사함.
+        //콜라이더가 검출되면 => 다음 땅이 있다는 뜻.
+        //다음 땅이 단순히 있다/없다를 떠나, 다음 땅의 x,z 인접 타일도 있는지 없는지 검사해야 함.
+
+
+        //TODO: 모르겠다;
+        //Vector3 roundPos = Vector3Int.RoundToInt(transform.position);
+        //Ray ray = new Ray(roundPos, new(input.x,0, input.y));
+        //if (!Physics.Raycast(ray, .5f, LayerMask.NameToLayer("Ground")))
+        //{
+        //    input = Vector2.zero;
+        //}
+        ////1. 이동할 방향의 땅 검사: 현재 나의 위치에서, 이동방향으로 .2f만큼 레이캐스트
+        ////Ray groundcheck = new(transform.position - new Vector3(0f,.1f,0f), new Vector3(input.x, -.1f, input.y));
+
+        ////if (!Physics.Raycast(groundcheck, .5f, 9))
+        ////    input = Vector2.zero;
+
+        //Ray ray = new(transform.position - Vector3.up * .1f, input);
+
+
+
+        //RaycastHit[] hits = new RaycastHit[3];
+        //if (Physics.RaycastNonAlloc(ray, hits, .2f, LayerMask.NameToLayer("Ground")) <= 2)
+        //{
+        //    if (Physics.BoxCastNonAlloc((transform.position - Vector3.up * .1f), Vector3.one * .05f, Vector3.down, hits) < 2)
+        //    {
+        //        input = Vector2.zero;
+        //    }
+        //}
+
+
+
+
 
         if (input.sqrMagnitude < 0.01f)
         {

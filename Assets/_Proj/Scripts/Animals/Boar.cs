@@ -1,8 +1,11 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 // 10/29 TODO : 카메라 세팅 후 팝업 UI 조정 76라인
+// 10/30 TODO : 플레이어 마주쳐도 못 가게 막아야
+
 public class Boar : PushableObjects, IDashDirection
 {
     [Header("Canvas")]
@@ -176,21 +179,31 @@ public class Boar : PushableObjects, IDashDirection
             Vector3 nextPos = currentPos + moveDir * tileSize;
 
             // 다음 칸에 무언가 있는지 (block + pushable 모두 체크 해야 함)
-            var hits = Physics.OverlapBox(nextPos + Vector3.up * 0.5f, Vector3.one * 0.4f, Quaternion.identity, collisionMask, QueryTriggerInteraction.Collide);
+            var hits = Physics.OverlapBox(nextPos + Vector3.up * 0.5f,
+                               new Vector3(0.45f, tileSize * 0.25f, 0.45f),
+                               Quaternion.identity,
+                               collisionMask,
+                               QueryTriggerInteraction.Collide);
 
-            if (hits.Length == 0)
+            // 콜라이더가 있으면 막힘(!isTrigger)
+            bool anySolid = false;
+
+            foreach (var h in hits)
             {
-                // 땅 없으면 멈춤
-                if (!HasGround(nextPos))
-                {
-                    isMoving = false;
-                    yield break;
-                }
-                // 완전 비었으면 전진
+                if (h == null) continue;
+                if (h.isTrigger) continue; // 트리거는 무시
+                anySolid = true; break;
+            }
+
+            if (!anySolid)
+            {
+                // == hits가 비었거나 트리거만 있었음 == 통과
+                if (!HasGround(nextPos)) { isMoving = false; yield break; }
                 yield return StartCoroutine(DashMoveTo(nextPos, moveDir));
                 boarNextPos = nextPos;
                 continue;
             }
+
 
             // Pushable이 하나라도 있나?
             bool foundPushable = false;
@@ -217,7 +230,7 @@ public class Boar : PushableObjects, IDashDirection
                     new Vector3(0.45f, 0.5f, 0.45f),
                     Quaternion.identity,
                     collisionMask, // block + pushables
-                    QueryTriggerInteraction.Collide
+                    QueryTriggerInteraction.Ignore
                 );
 
                 bool tailHasGround = Physics.Raycast(
@@ -414,7 +427,7 @@ public class Boar : PushableObjects, IDashDirection
     protected override bool CheckBlocking(Vector3 target)
     {
         // 멧돼지 크기에 맞는 충돌체 검사
-        return Physics.CheckBox(target + Vector3.up * 0.5f, Vector3.one * 0.4f, Quaternion.identity, blockingMask);
+        return Physics.CheckBox(target + Vector3.up * 0.5f, Vector3.one * 0.4f, Quaternion.identity, blockingMask, QueryTriggerInteraction.Collide);
     }
 
     bool HasGround(Vector3 worldPos)
@@ -432,10 +445,23 @@ public class Boar : PushableObjects, IDashDirection
             out _,
             Quaternion.identity,
             castDist,
-            blockingMask,
-            QueryTriggerInteraction.Ignore
+            groundMask,
+            QueryTriggerInteraction.Collide
         );
     }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        Vector3 moveDir = Vector3.up * 0.5f;
+        Vector3 currPos = transform.position;
+        Vector3 nextPos = currPos + moveDir * tileSize;
+
+
+        StartCoroutine(DashMoveTo(nextPos, moveDir)); 
+
+    }
+
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
@@ -444,9 +470,9 @@ public class Boar : PushableObjects, IDashDirection
             Vector3 dir = transform.forward;
             Vector3 nextPos = transform.position + dir.normalized * tileSize;
 
-            float half = Mathf.Min(0.45f, tileSize * 0.45f);
+            float half = Mathf.Min(0.45f, tileSize * 0.25f);
             Vector3 halfExtents = new Vector3(half, 0.05f, half);
-            Vector3 origin = nextPos + Vector3.up * (tileSize * 0.5f);
+            Vector3 origin = nextPos + Vector3.up * (tileSize * 0.25f);
 
             Gizmos.color = Color.cyan;
             // 시작 박스

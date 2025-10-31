@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// NOTE, TODO : 최종 시점(카메라) 변경 후 UI를 시점에 맞게 rotation 설정해줘야 함. 현재는 0,0,0. 라인 76
 [DisallowMultipleComponent]
 public class Buffalo : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Buffalo : MonoBehaviour
     public float jumpDuration = 0.35f;
     [Tooltip("점프 높이 곡선 0~1 비율")]
     public AnimationCurve jumpY = AnimationCurve.EaseInOut(0, 0, 1, 0.5f);
-    // TODO : 버튼 쿨타임 필요(기본값 : 5초)
+    
     [Header("Cooldown")]
     [Tooltip("쿨타임")]
     public float coolTime = 5f;
@@ -98,7 +99,6 @@ public class Buffalo : MonoBehaviour
 
     public void Interact()
     {
-        Debug.Log("[BuffaloShockwave] Interact called");
         if (running || onCooldown) return;
         StartCoroutine(WaveRunCoroutine());
         StartCoroutine(CooldownCoroutine());

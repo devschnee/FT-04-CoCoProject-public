@@ -19,6 +19,7 @@ public class TileRegistry : ScriptableObject
         public bool ice; // 빙판
         public bool pit; // 구덩이
         public bool swamp; // 늪
+
     }
 
     [Serializable] // 오브젝트/기믹 정의
