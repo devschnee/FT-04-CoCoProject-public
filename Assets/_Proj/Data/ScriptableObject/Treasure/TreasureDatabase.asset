@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c692f2ec558a2a24ab28793587c7760d, type: 3}
+  m_Name: TreasureDatabase
+  m_EditorClassIdentifier: 
+  treasureList:
+  - treasure_id: treasure_1_1_1
+    treasureType: 0
+    reward_id: 0
+    count: 50
+  - treasure_id: treasure_1_1_2
+    treasureType: 1
+    reward_id: 0
+    count: 5000
+  - treasure_id: treasure_1_1_3
+    treasureType: 2
+    reward_id: 10001
+    count: 1
+  - treasure_id: treasure_1_2_1
+    treasureType: 0
+    reward_id: 20001
+    count: 1
+  - treasure_id: treasure_1_2_2
+    treasureType: 4
+    reward_id: 50001
+    count: 1
+  - treasure_id: treasure_1_2_3
+    treasureType: 4
+    reward_id: 50001
+    count: 1

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c717d132014a8c9459c8e64984ed55e4, type: 3}
+  m_Name: StageDatabase
+  m_EditorClassIdentifier: 
+  stageDataList:
+  - stage_id: stage_1_1
+    stage_name: "\uC232\uC5D0\uC11C \uD558\uB8FB\uBC24!"
+    stage_img: Asset/Resources/Img/Stage/stage_1_1_main.png
+    stage_desc: "\"\uC8FC\uC778\uB2D8\uC774 \uB0A0 \uB450\uACE0 \uBA3C\uC800 \uAC14\uC5B4,
+      \uC0C8\uB85C\uC6B4 \uB180\uC774 \uC2DC\uAC04\uC774\uC57C\""
+    map_id: map_1_1
+    start_cutscene: Asset/Resources/movie/Stage/stage_1_1_start.mp4
+    start_talk: talk_1_1_1
+    end_talk: talk_1_1_2
+    end_cutscene: Asset/Resources/movie/Stage/stage_1_1_end.mp4
+    treasure_01_id: treasure_1_1_1
+    treasure_02_id: treasure_1_1_2
+    treasure_03_id: treasure_1_1_3
+  - stage_id: stage_1_2
+    stage_name: "\uC2E0\uB098\uB294 \uBC15\uC2A4 \uB180\uC774!"
+    stage_img: Asset/Resources/Img/Stage/stage_1_2_main.png
+    stage_desc: "\uBC15\uC2A4\uB97C \uAC00\uC9C0\uACE0 \uC2E0\uB098\uAC8C \uB180\uC544\uBCF4\uC790"
+    map_id: map_1_2
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_1_2_1
+    treasure_02_id: treasure_1_2_2
+    treasure_03_id: treasure_1_2_3
