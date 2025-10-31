@@ -64,9 +64,9 @@ public static class TextParser
             string pattern = $"[{kvp.Key}]";
             if (raw.Contains(pattern))
             {
-                //raw = raw.Replace(pattern, kvp.Value);
+                raw = raw.Replace(pattern, kvp.Value);
                 //대괄호 유지 하며 단어로 치환
-                raw = raw.Replace(pattern, $"[{kvp.Value}]");
+                //raw = raw.Replace(pattern, $"[{kvp.Value}]");
             }
         }
         return raw; // 일반 문자열 그대로 반환
