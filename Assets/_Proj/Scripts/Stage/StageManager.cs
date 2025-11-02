@@ -133,8 +133,13 @@ public class StageManager : MonoBehaviour
                 case BlockType.Water:
                 case BlockType.FlowWater:
                 case BlockType.Turret:
+                    go.AddComponent<Turret>().Init(block);
+                    break;
                 case BlockType.Tower:
+                    go.AddComponent<Tower>().Init(block);
+                    break;
                 case BlockType.Ironball:
+                    //go.AddComponent<Ironball>().Init(block);
                 case BlockType.Hog:
                 case BlockType.Tortoise:
                 case BlockType.Buffalo:
