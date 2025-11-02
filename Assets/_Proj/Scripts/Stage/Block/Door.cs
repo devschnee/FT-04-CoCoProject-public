@@ -13,12 +13,11 @@ public class Door : Block, ISignalReceiver
 
     public void ReceiveSignal()
     {
-        StopAllCoroutines();
         IsOn = !IsOn;
-        StartCoroutine(OpenCloseCoroutine(IsOn));
+        
         // KHJ - 디버깅으로만 테스트 좀 해볼게요
         Debug.Log($"[Door] 문{(IsOn ? "열림" : "닫힘")}");
-
+        RotateDoor(IsOn);
         //if (IsOn)
         //{
         //    //TODO: 문이 열리는 로직을 여기에 집어넣기
@@ -29,16 +28,13 @@ public class Door : Block, ISignalReceiver
         //}
     }
 
-    IEnumerator OpenCloseCoroutine(bool isOn)
+    void RotateDoor(bool isOn)
     {
         Transform doorTransform = transform.Find("door_metal_left");
-        float targetRotation = isOn ? 90 : 0;
-        float currentRotation = doorTransform.rotation.eulerAngles.y;
-        while (!Mathf.Approximately(currentRotation, targetRotation))
-        {
-            doorTransform.Rotate(new(0, (targetRotation - currentRotation) * Time.deltaTime * openSpeed, 0));
-            yield return null;
-        }
+        //float startRotation = isOn ? 0 : 90;
+        float targetRotation = isOn ? 90 : -90;
+        //doorTransform.Rotate(0, startRotation, 0);
+        doorTransform.Rotate(0, targetRotation, 0);
     }
     protected override void OnEnable()
     {
