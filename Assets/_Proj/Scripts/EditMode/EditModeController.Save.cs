@@ -17,6 +17,7 @@ public partial class EditModeController
             return;
         }
 
+        // 상단 버튼 보이기/숨기기
         ToggleTopButtons(on);
         IsEditMode = on;
 
@@ -33,22 +34,18 @@ public partial class EditModeController
             BlockOrbit = true;
 
             history.Clear();
-            CaptureBaseline();      // 오브젝트 + 인벤토리
+            CaptureBaseline();      // 오브젝트 + 인벤토리 상태 기억
             hasUnsavedChanges = false;
             UpdateUndoUI();
             UpdateToolbar();
         }
         else
         {
-            // ✅ 편집 종료 시 개별 오브젝트 저장하는 부분에 필터 추가
+            // 편집 종료 시 선택 해제 + 하이라이트 제거 + 저장
             if (CurrentTarget && CurrentTarget.TryGetComponent<Draggable>(out var drag))
             {
                 drag.SetInvalid(false);
-
-                // ← 여기서 태그로 저장 제외
-                if (!ShouldSkipSave(CurrentTarget))
-                    drag.SavePosition();
-
+                drag.SavePosition();
                 drag.SetHighlighted(false);
             }
             if (!keepTarget)
@@ -64,14 +61,6 @@ public partial class EditModeController
             actionToolbar?.Hide();
         }
     }
-    // CocoDoogy, Master 태그는 위치 저장에서 제외
-    private static bool ShouldSkipSave(Transform t)
-    {
-        if (!t) return false;
-        string tag = t.tag;
-        return tag == "CocoDoogy" || tag == "Master";
-    }
-
 
     private void ToggleTopButtons(bool on)
     {
@@ -165,7 +154,7 @@ public partial class EditModeController
 #if UNITY_2022_2_OR_NEWER
         var drags = FindObjectsByType<Draggable>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 #else
-    var drags = Resources.FindObjectsOfTypeAll<Draggable>();
+        var drags = Resources.FindObjectsOfTypeAll<Draggable>();
 #endif
         int count = 0;
         foreach (var d in drags)
@@ -173,16 +162,11 @@ public partial class EditModeController
             if (!d) continue;
             if (!d.gameObject.activeInHierarchy) continue;
 
-            // ✅ CocoDoogy / Master 는 저장하지 않음
-            if (ShouldSkipSave(d.transform))
-                continue;
-
             d.SavePosition();
             count++;
         }
         Debug.Log($"[Save] Draggable (활성) {count}개 저장 완료");
     }
-
 
     // ─────────────────────────────────────────────────────────────────────
     // UI Wiring
