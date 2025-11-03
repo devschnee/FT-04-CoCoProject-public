@@ -47,9 +47,9 @@ MonoBehaviour:
   settingData:
     audio:
       Master: 1
-      BGM: 0.8
-      SFX: 0.8
-      Ambient: 0.8
-      Cutscene: 0.8
-      Voice: 0.8
+      BGM: 1
+      SFX: 1
+      Ambient: 1
+      Cutscene: 1
+      Voice: 1
       MuteMaster: 0

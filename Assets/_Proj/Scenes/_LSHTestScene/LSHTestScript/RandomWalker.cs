@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RandomWalker : MonoBehaviour, IInteractable, IDraggable, ILongPressable
+public class RandomWalker : MonoBehaviour, ILobbyInteractable, ILobbyDraggable, ILobbyPressable
 {
     [SerializeField] float moveRadius = 10f; // 이동 범위
     [SerializeField] float waitTime = 2f; // 목표 지점 도달 후 대기 시간
@@ -11,14 +11,14 @@ public class RandomWalker : MonoBehaviour, IInteractable, IDraggable, ILongPress
 
     private NavMeshAgent agent;
     private Animator anim;
-    private ObjectAnimationControl animationController;
+    private LobbyCharacterAnim animationController;
     private float timer;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        animationController = new ObjectAnimationControl(anim);
+        animationController = new LobbyCharacterAnim(anim);
         agent.speed = moveSpeed;
         agent.angularSpeed = angularSpeed;
         agent.acceleration = acceleration;
@@ -68,27 +68,27 @@ public class RandomWalker : MonoBehaviour, IInteractable, IDraggable, ILongPress
         }
     }
 
-    public void OnInteract()
+    public void OnLobbyInteract()
     {
         anim.Play("Jump");
     }
 
-    public void OnDragStart(Vector3 position)
+    public void OnLobbyBeginDrag(Vector3 position)
     {
         throw new System.NotImplementedException();
     }
 
-    public void OnDrag(Vector3 position)
+    public void OnLobbyDrag(Vector3 position)
     {
         throw new System.NotImplementedException();
     }
 
-    public void OnDragEnd(Vector3 position)
+    public void OnLobbyEndDrag(Vector3 position)
     {
         throw new System.NotImplementedException();
     }
 
-    public void OnLongPress()
+    public void OnLobbyPress()
     {
         throw new System.NotImplementedException();
     }

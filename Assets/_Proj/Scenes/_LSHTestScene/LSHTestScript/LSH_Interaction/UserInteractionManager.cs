@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class UserInteractionManager : MonoBehaviour
 {
-    
+    // 이건 어떻게 쓸까
     public static UserInteractionManager Instance { get; private set; }
 
-    public event Action<IInteractable> OnInteracted;
+    public event Action<ILobbyInteractable> OnInteracted;
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class UserInteractionManager : MonoBehaviour
         Instance = this;
     }
 
-    public void InteractionEvent(IInteractable target)
+    public void InteractionEvent(ILobbyInteractable target)
     {
         OnInteracted?.Invoke(target);
     }

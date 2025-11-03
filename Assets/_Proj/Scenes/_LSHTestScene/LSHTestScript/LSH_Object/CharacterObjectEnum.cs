@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ObjectType
+public enum CharacterType
 {
     None,
     CocoDoogy,

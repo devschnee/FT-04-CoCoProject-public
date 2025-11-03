@@ -2,7 +2,13 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections.Generic;
 using System;
-
+/// <summary>
+/// BGM, Cutscene í•©ì¹  ê²ƒ,
+/// SFX, Ambient í•©ì¹  ê²ƒ
+/// í•˜ì§€ë§Œ ì¬ìƒì€ ë¶ˆí•  í•  ìƒê°
+/// ê·¸ë˜ì•¼ ë‚´ ë¨¸ë¦¬ë¡œì„œëŠ” ìƒíƒœ ì œì–´ê°€ í¸í•¨
+/// 
+/// </summary>
 [Serializable]
 public struct AudioGroupMapping
 {
@@ -71,7 +77,7 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
 
         audioGroups = new IAudioController[6] { bgmGroup, sfxGroup, ambientGroup, cutsceneGroup, voiceGroup, uiGroup };
 
-        // ¼¼ÆÃ ºÒ·¯¿À±â
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
         if (SettingManager.Instance == null)
         {
             var settingGO = new GameObject("SettingManager");
@@ -94,7 +100,7 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         return groupMap[type];
     }
 
-    // Àç»ı
+    // ï¿½ï¿½ï¿½
     public void PlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
     {
         switch (key)
@@ -121,52 +127,52 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         }
     }
 
-    #region ¿Àµğ¿ÀÀç»ıºĞ±â
+    #region ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
     private void PlayAudio(BGMKey key, int index = -1, float fadeIn = 1f, float fadeOut = 1f, bool loop = true)
     {
         var clip = libraryProvider.GetClip(AudioType.BGM, key, index);
         if (clip == null) return;
-        // ½ÇÇà
+        // ï¿½ï¿½ï¿½ï¿½
         bgmGroup.PlayBGM(clip, fadeIn, fadeOut, loop);
     }
     private void PlayAudio(SFXKey key, int index = -1, bool loop = false, bool pooled = false, Vector3? pos = null)
     {
         var clip = libraryProvider.GetClip(AudioType.SFX, key, index);
         if (clip == null) return;
-        // ½ÇÇà
+        // ï¿½ï¿½ï¿½ï¿½
         sfxGroup.PlaySFX(clip, loop, pooled, pos);
     }
     private void PlayAudio(AmbientKey key, int index = -1, bool loop = false, bool pooled = false, Vector3? pos = null)
     {
         var clip = libraryProvider.GetClip(AudioType.Ambient, key, index);
         if (clip == null) return;
-        // ½ÇÇà
+        // ï¿½ï¿½ï¿½ï¿½
         ambientGroup.PlayAmbient(clip, loop, pooled, pos);
     }
     private void PlayAudio(CutsceneKey key, int index = -1, float fadeIn = 1f, float fadeOut = 1f, bool loop = true)
     {
         var clip = libraryProvider.GetClip(AudioType.Cutscene, key, index);
         if (clip == null) return;
-        // ½ÇÇà
+        // ï¿½ï¿½ï¿½ï¿½
         cutsceneGroup.PlayCutscene(clip, fadeIn, fadeOut, loop);
     }
     private void PlayAudio(VoiceKey key, int index = -1)
     {
         var clip = libraryProvider.GetClip(AudioType.Voice, key, index);
         if (clip == null) return;
-        // ½ÇÇà
+        // ï¿½ï¿½ï¿½ï¿½
         voiceGroup.PlayVoice(clip);
     }
     private void PlayAudio(UIKey key, int index = -1)
     {
         var clip = libraryProvider.GetClip(AudioType.UI, key, index);
         if (clip == null) return;
-        // ½ÇÇà
+        // ï¿½ï¿½ï¿½ï¿½
         uiGroup.PlayVoice(clip);
     }
     #endregion
 
-    // ¿Àµğ¿À ÄÁÆ®·Ñ
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½
     public void ResetAllAudioGroup()
     {
         foreach (var r in audioGroups)
@@ -183,8 +189,8 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         }
     }
 
-    // º¼·ı
-    // ±¸Á¶ VolumeUI <-(½Ç½Ã°£ ¿Àµğ¿Àµ¥ÀÌÅÍ º¯°æ ¹İ¿µ)-> AudioVolumeHandler(AudioManagerÀÇ ÆÄÃ÷) AudioManager <-(¿Àµğ¿Àµ¥ÀÌÅÍ ÀúÀå, ºÒ·¯¿À±â)-> SettingManager
+    // ï¿½ï¿½ï¿½ï¿½
+    // ï¿½ï¿½ï¿½ï¿½ VolumeUI <-(ï¿½Ç½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½İ¿ï¿½)-> AudioVolumeHandler(AudioManagerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) AudioManager <-(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½)-> SettingManager
     public void SetVolume(AudioType type, float value)
     {
         var data = SettingManager.Instance.settingData.audio;

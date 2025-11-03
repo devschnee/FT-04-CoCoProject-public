@@ -1,13 +1,13 @@
 using UnityEngine;
-// ÀÌ°Ç Å×½ºÆ®¿ë µ¥ÀÌÅÍÀÔ´Ï´Ù.
+// ï¿½Ì°ï¿½ ï¿½×½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
 
 [CreateAssetMenu(fileName = "ObjectData", menuName = "LSH_Test/ObjectData")]
-public class TestScriptableObject : ScriptableObject
+public class TestScriptableCharacter : ScriptableObject
 {
-    [Header("±âº» Á¤º¸")]
+    [Header("ï¿½âº» ï¿½ï¿½ï¿½ï¿½")]
     public int id;
     public string displayName;
-    public ObjectType type;
+    public CharacterType type;
 
     [Header("Prefab & Settings")]
     public GameObject prefab;

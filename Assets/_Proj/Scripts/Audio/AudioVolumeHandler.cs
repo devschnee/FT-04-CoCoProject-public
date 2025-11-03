@@ -8,8 +8,8 @@ public class AudioVolumeData
     public float Master = 1f;
     public float BGM = 1f;
     public float SFX = 1f;
-    public float Ambient = 1f;
-    public float Cutscene = 1f;
+    public float Ambient = 1f; // í•©ì¹  ì‹œ ì‚­ì œ
+    public float Cutscene = 1f; // í•©ì¹  ì‹œ ì‚­ì œ
     public float Voice = 1f;
     public bool MuteMaster = false;
     
@@ -72,7 +72,7 @@ public class AudioVolumeHandler
         
     }
 
-    // ¼ÕÀº ¼¼ÆÃÀÌÁö ¹» °¡Á®¿À´Â °Ç ¾Æ´ÏÀÝ¾Æ µéÀº °É ¼¼ÆÃ¸¸ ÇÏ¸é µÇÁö
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Æ´ï¿½ï¿½Ý¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
     //public float GetVolume(AudioType type)
     //{
     //    string paramName;

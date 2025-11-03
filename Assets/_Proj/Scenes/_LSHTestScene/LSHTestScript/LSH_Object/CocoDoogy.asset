@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab94815390068f74e812d3dab56fad36, type: 3}
-  m_Name: Catttt
+  m_Name: CocoDoogy
   m_EditorClassIdentifier: 
   id: 0
-  displayName: Cat
+  displayName: CocoDoogy
   type: 1
-  prefab: {fileID: 6647131506220806907, guid: b7190d079fe8b1143b7706cbcde97045, type: 3}
+  prefab: {fileID: 1693816920450361209, guid: 35d8cc53ecef7364f921277874d447f8, type: 3}
   isCocoDoogy: 1
   isMaster: 0

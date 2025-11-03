@@ -3,16 +3,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// ÀÏ´Ü ¸ÕÀú ÇØº¼ °ÍÀÌ Å¬¸¯ ½Ã Æ¯Á¤ ¾Ö´Ï¸ÞÀÌ¼Ç µ¿ÀÛ
-/// °á±¹ µå·¡±×´Â Å¬¸¯ 1ÃÊ ÈÄ ½ÇÇà µÇ´Â °Í ÀÌ´Ï bool º¯¼ö´Â 1°³¸¸ ÀÖ¾îµµ?
+/// ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½ï¿½ Æ¯ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+/// ï¿½á±¹ ï¿½å·¡ï¿½×´ï¿½ Å¬ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ ï¿½Ì´ï¿½ bool ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾îµµ?
 /// </summary>
 /// 
 
 public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private IInteractable interactable;
-    private IDraggable draggable;
-    private ILongPressable longPressable;
+    private ILobbyInteractable interactable;
+    private ILobbyDraggable draggable;
+    private ILobbyPressable longPressable;
 
     private bool isPressing = false;
     private bool isDragging = false;
@@ -20,17 +20,21 @@ public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPoin
     private Vector3 startPos;
 
 
-    private void Awake()
+    private void Start()
     {
-        interactable = GetComponent<IInteractable>();
-        draggable = GetComponent<IDraggable>();
-        longPressable = GetComponent<ILongPressable>();
+        var mono = gameObject.GetComponent<BaseLobbyCharacterBehaviour>();
+        if (interactable == null) interactable = mono as ILobbyInteractable;
+        if (draggable == null) draggable = mono as ILobbyDraggable;
+        if (longPressable == null) longPressable = mono as ILobbyPressable;
+        if (interactable == null) Debug.Log("interactable null");
+        if (draggable == null) Debug.Log("draggable null");
+        if (longPressable == null) Debug.Log("longPressable null");
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (isPressing) return;
-        draggable?.OnDragStart(eventData.position);
+        draggable?.OnLobbyBeginDrag(eventData.position);
         isDragging = true;
     }
 
@@ -38,7 +42,7 @@ public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPoin
     {
         if (isPressing) return;
         //Vector3 worldPos = eventData.pointerCurrentRaycast.worldPosition;
-        draggable?.OnDrag(eventData.position);
+        draggable?.OnLobbyDrag(eventData.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -46,14 +50,14 @@ public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPoin
         if (isPressing) return;
         //Vector3 setPos = eventData.pointerCurrentRaycast.worldPosition;
         //transform.position = setPos;
-        draggable?.OnDragEnd(eventData.position);
+        draggable?.OnLobbyEndDrag(eventData.position);
         isDragging = false;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (isPressing || isDragging) return;
-        interactable.OnInteract();
+        interactable.OnLobbyInteract();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -72,9 +76,9 @@ public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPoin
     {
         while (isPressing)
         {
-            if (Time.time - pressTime >= 0.15f)
+            if (Time.time - pressTime >= 0.2f)
             {
-                longPressable?.OnLongPress();
+                longPressable?.OnLobbyPress();
                 isPressing = false;
             }
             yield return null;

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class GameObjectData : MonoBehaviour
 {
-    public TestScriptableObject Data { get; private set; }
+    public TestScriptableCharacter Data { get; private set; }
 
-    public void Initialize(TestScriptableObject data)
+    public void Initialize(TestScriptableCharacter data)
     {
         Data = data;
     }

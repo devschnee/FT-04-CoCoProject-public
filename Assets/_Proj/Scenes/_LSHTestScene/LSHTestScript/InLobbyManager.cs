@@ -3,31 +3,38 @@ using System;
 using Unity.AI.Navigation;
 using UnityEngine;
 using System.Collections.Generic;
-// SurfaceÀúÀå : Áö±İÀº ¿©±â¿¡ ´Ù ¶§·Á ³Ö°ÚÁö¸¸ ³ªÁß¿¡ ºĞÇÒÇÏ°Ú½¿´Ù.
-[Serializable]
-public class  NavMeshSaveData
-{
-    public List<NavMeshObjectData> nObj = new List<NavMeshObjectData>();
-}
-[Serializable]
-public class NavMeshObjectData
-{
-    public string prefabName;
-    public Vector3 position;
-    public Quaternion rotation;
-    public Vector3 scale;
-}
-//
+// Surfaceï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°Ú½ï¿½ï¿½ï¿½.
+// [Serializable]
+// public class  NavMeshSaveData
+// {
+//     public List<NavMeshObjectData> nObj = new List<NavMeshObjectData>();
+// }
+// [Serializable]
+// public class NavMeshObjectData
+// {
+//     public string prefabName;
+//     public Vector3 position;
+//     public Quaternion rotation;
+//     public Vector3 scale;
+// }
+// //
 
 public class InLobbyManager : MonoBehaviour
 {
-    [SerializeField] TestScriptableObject[] objectDatabase;
+    [SerializeField] TestScriptableCharacter[] charDatabase;
     [SerializeField] GameObject plane;
+    [SerializeField] EditController editController;
     
     private NavMeshSurface planeSurface;
+    public Transform[] cocoWaypoints;
 
-    public Transform[] waypoints;
+    public bool isEditMode { get; private set; } // ì—ë”§ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ ë°›ì•„ì˜¤ê¸°
+    private int originalLayer; // í‰ìƒ ì‹œ ë ˆì´ì–´
+    private int editableLayer; // í¸ì§‘ëª¨ë“œ ì‹œ ë ˆì´ì–´
+    
+
     public static InLobbyManager Instance { get; private set; }
+    private List<ILobbyState> lobbyCharacter = new(); // ë§µì— í™œì„±í™” ëœ ìºë¦­í„°ë“¤ ëª¨ìŒ
 
     private void Awake()
     {
@@ -40,20 +47,111 @@ public class InLobbyManager : MonoBehaviour
 
         planeSurface = plane.GetComponent<NavMeshSurface>();
 
+        if (editController == null) editController = FindFirstObjectByType<EditController>();
+        isEditMode = false;
+
+        originalLayer = LayerMask.NameToLayer("InLobbyObject");
+        editableLayer = LayerMask.NameToLayer("Editable");
+
     }
 
-    void Start() // Áö±İÀº ½ºÅ¸Æ®ÀÌÁö¸¸ ÀÎ°ÔÀÓÀÌ¶û ÇÕÃ¼ÇÏ¸é ¾î¶»°Ô Enable·Î ÇÏ³ª? ·Îºñ¸Å´ÏÀú°¡ ÀÎ°ÔÀÓ±îÁö µş·Á°¥ ÇÊ¿ä´Â ¾øÀ»Å×°í, ¾ÀÀ» ·ÎµùÇÏ´Â °Å´Ï.. ¸ô·ç?
+    private void Start() // ê¹¨ë—í•œ í”„ë¦¬íŒ¹ì— ë¶™ì—¬ì£¼ëŠ” ë°©ë²•ì´ ì¸ê²Œì„ ì•„ì›ƒê²Œì„ ì „í™˜ì—ì„œ ì¢‹ì§€ ì•Šì„ ê¹ìˆ‘
     {
-        foreach (var data in objectDatabase)
+        planeSurface.BuildNavMesh();
+        foreach (var data in charDatabase)
         {
-            GameObject obj = Instantiate(data.prefab);
-            var meta = obj.GetComponent<GameObjectData>();
+            GameObject gObj;
+            gObj = Instantiate(data.prefab, cocoWaypoints[0].position, Quaternion.identity);
+            switch (data.type)
+            {
+                case CharacterType.None:
+                    break;
+                case CharacterType.CocoDoogy:
+                    gObj.AddComponent<CocoDoogyBehaviour>();
+                    break;
+                case CharacterType.Master:
+                    gObj.AddComponent<MasterBehaviour>();
+                    break;
+                case CharacterType.Decoration:
+                    break;
+                case CharacterType.Animal:
+                    gObj.AddComponent<AnimalBehaviour>();
+                    break;
+            }
+            gObj.tag = data.type.ToString();
+            gObj.layer = LayerMask.NameToLayer("InLobbyObject");
+            var meta = gObj.GetComponent<GameObjectData>();
             meta.Initialize(data);
+        }
+
+        foreach (var lC in lobbyCharacter)
+        {
+            if (lC == null) Debug.Log($"{lC} null");
+            if (lC != null)
+            {
+                lC.StartScene();
+            }
         }
     }
 
-    public void NewMap()
+    private void Update()
     {
-        planeSurface.BuildNavMesh();
+        bool current = editController.IsEditMode;
+        Debug.Log($"current ìƒíƒœ : {current}");
+        if (current != isEditMode)
+        {
+            isEditMode = current;
+            if (isEditMode)
+            {
+                foreach (var lC in lobbyCharacter)
+                {
+                    if (lC != null)
+                    {
+                        lC.InEdit();
+                        var mono = lC as BaseLobbyCharacterBehaviour;
+                        //gObj.InEdit();
+                        mono.gameObject.layer = editableLayer;
+                    }
+                }
+                Debug.Log("í¸ì§‘ëª¨ë“œ ì§„ì…");
+            }
+            else if (!isEditMode)
+            {
+                planeSurface.BuildNavMesh();
+                foreach (var lC in lobbyCharacter)
+                {
+                    if (lC != null)
+                    {
+                        lC.InNormal();
+                        var mono = lC as BaseLobbyCharacterBehaviour;
+                        mono.gameObject.layer = originalLayer;
+                        //lC.InUpdate();
+                    }
+                }
+                Debug.Log("ì¼ë°˜ë³´ë“œ ì§„ì…");
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var lC in lobbyCharacter)
+        {
+            if (lC != null)
+            {
+                lC.ExitScene();
+            }
+        }
+    }
+
+    // ë“±ë¡ ë° ì‚­ì œ
+    public void RegisterLobbyChar(ILobbyState gObj)
+    {
+        lobbyCharacter.Add(gObj);
+        Debug.Log($"{gObj} ë“±ë¡ë¨");
+    }
+    public void UnregisterLobbyChar(ILobbyState gObj)
+    {
+        lobbyCharacter.Remove(gObj);
     }
 }
