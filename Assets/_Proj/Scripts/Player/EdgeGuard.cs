@@ -17,7 +17,7 @@ public class EdgeGuard : MonoBehaviour
     public Vector3 castDir = Vector3.forward; // 각 Guard의 바깥 방향으로 설정
 
     [Tooltip("콜라이더 크기에 대한 BoxCast 크기 비율 (1.0 미만으로 설정)")]
-    [Range(0.01f, 0.99f)] public float castSizeMultiplier = 0.95f;
+    [Range(0.01f, 0.99f)] public float castSizeMultiplier = 0.45f;
 
     [Tooltip("BoxCast를 쏠 최대 거리 (아주 짧게 설정)")]
     [Range(0.01f, 0.5f)] public float castDistance = 0.1f;
@@ -113,8 +113,11 @@ public class EdgeGuard : MonoBehaviour
         boundaryCollider.isTrigger = shouldBeTrigger;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
+        // Yellow : 충돌 감지 위한 BoxCast 시작 위치와 크기, 감지하련느 물체의 경계
+        // Red : BoxCast 최대 도달하는 끝 지점 Box(어디까지 충돌감지하는지)
+        // Cyan : 방향, 거리
         BoxCollider currCollider = GetComponent<BoxCollider>();
         if (currCollider == null) return;
 

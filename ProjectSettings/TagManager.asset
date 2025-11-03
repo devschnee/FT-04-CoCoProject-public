@@ -11,6 +11,7 @@ TagManager:
   - Animal
   - pooled
   - newPooled
+  - WoodBox
   layers:
   - Default
   - TransparentFX

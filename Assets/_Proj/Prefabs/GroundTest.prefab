@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 1900368041606652748}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.55, y: 1, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.6, y: 1, z: 0}
+  m_LocalScale: {x: 0.3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6013323297986956255}
@@ -66,11 +66,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a4f429845a6f24dbe541fcbab31fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayerMask:
+  targetLayer:
     serializedVersion: 2
-    m_Bits: 1280
-  castDirection: {x: 1, y: 0, z: 0}
-  castSizeMultiplier: 0.66
+    m_Bits: 2304
+  castDir: {x: 1, y: 0, z: 0}
+  castSizeMultiplier: 0.45
   castDistance: 0.1
 --- !u!1 &3273342763737436980
 GameObject:
@@ -99,8 +99,8 @@ Transform:
   m_GameObject: {fileID: 3273342763737436980}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.5}
-  m_LocalScale: {x: 1, y: 1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 1, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6013323297986956255}
@@ -138,11 +138,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a4f429845a6f24dbe541fcbab31fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayerMask:
+  targetLayer:
     serializedVersion: 2
-    m_Bits: 1280
-  castDirection: {x: 0, y: 0, z: 1}
-  castSizeMultiplier: 0.66
+    m_Bits: 2304
+  castDir: {x: 0, y: 0, z: 2.42}
+  castSizeMultiplier: 0.45
   castDistance: 0.1
 --- !u!1 &3330183270982036412
 GameObject:
@@ -227,8 +227,8 @@ Transform:
   m_GameObject: {fileID: 4886476086760954615}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.5}
-  m_LocalScale: {x: 1, y: 1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 1, z: -0.6}
+  m_LocalScale: {x: 1, y: 1, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6013323297986956255}
@@ -266,11 +266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a4f429845a6f24dbe541fcbab31fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayerMask:
+  targetLayer:
     serializedVersion: 2
-    m_Bits: 1280
-  castDirection: {x: 0, y: 0, z: 1}
-  castSizeMultiplier: 0.66
+    m_Bits: 2304
+  castDir: {x: 0, y: 0, z: -1}
+  castSizeMultiplier: 0.45
   castDistance: 0.1
 --- !u!1 &9128849576524993896
 GameObject:
@@ -407,8 +407,8 @@ Transform:
   m_GameObject: {fileID: 9147441579841310239}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.55, y: 1, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.6, y: 1, z: 0}
+  m_LocalScale: {x: 0.3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6013323297986956255}
@@ -446,9 +446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a4f429845a6f24dbe541fcbab31fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayerMask:
+  targetLayer:
     serializedVersion: 2
-    m_Bits: 1280
-  castDirection: {x: -1, y: 0, z: 0}
-  castSizeMultiplier: 0.66
+    m_Bits: 2304
+  castDir: {x: -1, y: 0, z: 0}
+  castSizeMultiplier: 0.45
   castDistance: 0.1
