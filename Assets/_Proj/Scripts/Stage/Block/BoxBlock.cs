@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Box : Block
+public class BoxBlock : Block
 {
 
 

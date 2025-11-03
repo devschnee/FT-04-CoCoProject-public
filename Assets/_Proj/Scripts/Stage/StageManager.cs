@@ -111,13 +111,13 @@ public class StageManager : MonoBehaviour
             switch (block.blockType)
             {
                 case BlockType.Box:
-                    go.AddComponent<Box>().Init(block);
+                    go.AddComponent<BoxBlock>().Init(block);
                     break;
                 case BlockType.Switch:
-                    go.AddComponent<Switch>().Init(block);
+                    go.AddComponent<SwitchBlock>().Init(block);
                     break;
                 case BlockType.Door:
-                    go.AddComponent<Door>().Init(block);
+                    go.AddComponent<DoorBlock>().Init(block);
                     break;
                 case BlockType.End:
                     go.AddComponent<EndBlock>().Init(block);
@@ -133,10 +133,10 @@ public class StageManager : MonoBehaviour
                 case BlockType.Water:
                 case BlockType.FlowWater:
                 case BlockType.Turret:
-                    go.AddComponent<Turret>().Init(block);
+                    go.AddComponent<TurretBlock>().Init(block);
                     break;
                 case BlockType.Tower:
-                    go.AddComponent<Tower>().Init(block);
+                    go.AddComponent<TowerBlock>().Init(block);
                     break;
                 case BlockType.Ironball:
                     //go.AddComponent<Ironball>().Init(block);

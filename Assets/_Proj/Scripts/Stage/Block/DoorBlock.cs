@@ -5,7 +5,7 @@ using UnityEngine;
 //251031 - 연결 자체는 잘 되는 것 확인함.
 //문이 열리는 로직만 잘 구성하면 될 것같다.
 //ISignalSender를 구현한 다른 클래스(터렛, 충격감지탑)의 연결 처리도 같은 방식으로 연결하면 문제없이 작동할 것임.
-public class Door : Block, ISignalReceiver
+public class DoorBlock : Block, ISignalReceiver
 {
     public bool IsOn { get; set; }
 

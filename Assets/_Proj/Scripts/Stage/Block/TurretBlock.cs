@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Turret : Block, ISignalSender
+public class TurretBlock : Block, ISignalSender
 {
     public ISignalReceiver Receiver { get; set; }
 

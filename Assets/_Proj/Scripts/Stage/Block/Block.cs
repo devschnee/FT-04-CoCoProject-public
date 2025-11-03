@@ -16,6 +16,7 @@ public abstract class Block : MonoBehaviour
     //public bool isOverlapping;
     [Tooltip("그리드 상에서의 포지션(정수)")]
     public Vector3Int gridPosition;
+    [Tooltip("가져온 블록세이브데이터의 원본")]
     public BlockSaveData origin;
 
     public void Init(BlockSaveData saveData)

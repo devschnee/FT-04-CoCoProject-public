@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Switch : Block, ISignalSender
+public class SwitchBlock : Block, ISignalSender
 {
     public ISignalReceiver Receiver { get; set; }
     

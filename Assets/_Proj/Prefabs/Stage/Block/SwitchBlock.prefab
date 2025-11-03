@@ -683,7 +683,7 @@ GameObject:
   - component: {fileID: -2172148346262356537}
   - component: {fileID: 3235253075900008946}
   m_Layer: 0
-  m_Name: Switch
+  m_Name: SwitchBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

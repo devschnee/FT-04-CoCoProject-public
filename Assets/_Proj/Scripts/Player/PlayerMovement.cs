@@ -45,21 +45,21 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 input = new Vector2(joystick.InputDir.x, joystick.InputDir.z);
 
-        Vector3 inputOffset = new(joystick.InputDir.x, 0, joystick.InputDir.z);
-        Ray ray = new(transform.position + (inputOffset * .3f), inputOffset);
-        RaycastHit[] results = new RaycastHit[10];
+        //Vector3 inputOffset = new(joystick.InputDir.x, 0, joystick.InputDir.z);
+        //Ray ray = new(transform.position + (inputOffset * .3f), inputOffset);
+        //RaycastHit[] results = new RaycastHit[10];
 
-        int hitnums = Physics.BoxCastNonAlloc(transform.position - Vector3.up * .3f + new Vector3(input.x, 0, input.y) * .2f, Vector3.one * .1f, Vector3.down, results);
-        print(hitnums);
+        //int hitnums = Physics.BoxCastNonAlloc(transform.position - Vector3.up * .3f + new Vector3(input.x, 0, input.y) * .2f, Vector3.one * .1f, Vector3.down, results);
+        //print(hitnums);
 
-        if (hitnums < 2)
-
-
+        //if (hitnums < 2)
 
 
 
 
-            input = Vector2.zero;
+
+
+        //    input = Vector2.zero;
 
         //생각을 해봅시다...
         //내가 갈 곳에 땅바닥이 있는가? 를 판단하려면

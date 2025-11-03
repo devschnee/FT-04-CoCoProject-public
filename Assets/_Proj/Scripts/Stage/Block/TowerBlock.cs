@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Tower : Block, ISignalSender
+public class TowerBlock : Block, ISignalSender
 {
     public ISignalReceiver Receiver { get; set; }
 
