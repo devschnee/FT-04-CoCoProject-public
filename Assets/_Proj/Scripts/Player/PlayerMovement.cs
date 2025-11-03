@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         fwd.y = 0;
         right.y = 0;
         fwd.Normalize();
-        right.Normalize();
+        right.Normalize(); 
 
         Vector3 moveDir = (right * input.x) + (fwd * input.y);
         if (moveDir.sqrMagnitude > 0.1f) moveDir.Normalize();
@@ -140,6 +140,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (finalDir.sqrMagnitude < 0.0001f)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
+
         // 위치 이동
         Vector3 nextPos = rb.position + finalDir * (moveSpeed * Time.fixedDeltaTime) + stepOffset;
 
@@ -147,6 +153,7 @@ public class PlayerMovement : MonoBehaviour
         float halfTile = 0.5f;
         Vector3 boxCenter = nextPos + Vector3.up * 0.5f; // 플레이어 중심
         Vector3 halfExt = new Vector3(0.4f, 0.45f, 0.4f);
+
         Collider[] sameYHits = Physics.OverlapBox(boxCenter, halfExt, Quaternion.identity, ~0, QueryTriggerInteraction.Collide);
 
         foreach (var col in sameYHits)
