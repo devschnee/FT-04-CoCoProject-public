@@ -1,13 +1,13 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ÆíÁı¸ğµå on/off, ÀúÀå/º¹¿ø, ÀÎº¥¿¡¼­ °¡Á®¿À±â
-/// (Core¿¡¼­ ÀÌ¾îÁö´Â ºÎºĞ)
+/// í¸ì§‘ëª¨ë“œ on/off, ì €ì¥/ë³µì›, ì¸ë²¤ì—ì„œ ê°€ì ¸ì˜¤ê¸°
+/// (Coreì—ì„œ ì´ì–´ì§€ëŠ” ë¶€ë¶„)
 /// </summary>
 public partial class EditModeController
 {
-    /// <summary>ÆíÁı¸ğµå on/off</summary>
+    /// <summary>í¸ì§‘ëª¨ë“œ on/off</summary>
     private void SetEditMode(bool on, bool keepTarget)
     {
         if (IsEditMode == on)
@@ -17,11 +17,11 @@ public partial class EditModeController
             return;
         }
 
-        // »ó´Ü ¹öÆ° º¸ÀÌ±â/¼û±â±â
+        // ìƒë‹¨ ë²„íŠ¼ ë³´ì´ê¸°/ìˆ¨ê¸°ê¸°
         ToggleTopButtons(on);
         IsEditMode = on;
 
-        // ¿ÜºÎ ¸Å´ÏÀú¿¡µµ Åëº¸
+        // ì™¸ë¶€ ë§¤ë‹ˆì €ì—ë„ í†µë³´
         var mgr = FindAnyObjectByType<EditModeManager>();
         if (mgr != null)
         {
@@ -34,14 +34,14 @@ public partial class EditModeController
             BlockOrbit = true;
 
             history.Clear();
-            CaptureBaseline();      // ¿ÀºêÁ§Æ® + ÀÎº¥Åä¸® »óÅÂ ±â¾ï
+            CaptureBaseline();      // ì˜¤ë¸Œì íŠ¸ + ì¸ë²¤í† ë¦¬ ìƒíƒœ ê¸°ì–µ
             hasUnsavedChanges = false;
             UpdateUndoUI();
             UpdateToolbar();
         }
         else
         {
-            // ÆíÁı Á¾·á ½Ã ¼±ÅÃ ÇØÁ¦ + ÇÏÀÌ¶óÀÌÆ® Á¦°Å + ÀúÀå
+            // í¸ì§‘ ì¢…ë£Œ ì‹œ ì„ íƒ í•´ì œ + í•˜ì´ë¼ì´íŠ¸ ì œê±° + ì €ì¥
             if (CurrentTarget && CurrentTarget.TryGetComponent<Draggable>(out var drag))
             {
                 drag.SetInvalid(false);
@@ -69,9 +69,9 @@ public partial class EditModeController
         if (backButton) backButton.gameObject.SetActive(on);
     }
 
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
-    // µÚ·Î°¡±â/ÀúÀå ¹öÆ°
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ë’¤ë¡œê°€ê¸°/ì €ì¥ ë²„íŠ¼
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private void OnBackClicked()
     {
@@ -86,16 +86,16 @@ public partial class EditModeController
         }
     }
 
-    /// <summary>ÀúÀå ¾È ÇÏ°í ³ª°¡±â (ÇÊ¿äÇÏ¸é baseline À¸·Î º¹±¸)</summary>
+    /// <summary>ì €ì¥ ì•ˆ í•˜ê³  ë‚˜ê°€ê¸° (í•„ìš”í•˜ë©´ baseline ìœ¼ë¡œ ë³µêµ¬)</summary>
     private void ExitWithoutSave(bool restore)
     {
-        // ÀÓ½Ã ¿ÀºêÁ§Æ® Á¤¸®
+        // ì„ì‹œ ì˜¤ë¸Œì íŠ¸ ì •ë¦¬
         CleanupInventoryTemps();
 
         if (restore)
         {
-            RestoreBaseline();               // ¿ÀºêÁ§Æ® + ÀÎº¥Åä¸® º¹±¸
-            SaveAllDraggablePositions();     // º¹±¸µÈ À§Ä¡·Î ´Ù½Ã ÀúÀå
+            RestoreBaseline();               // ì˜¤ë¸Œì íŠ¸ + ì¸ë²¤í† ë¦¬ ë³µêµ¬
+            SaveAllDraggablePositions();     // ë³µêµ¬ëœ ìœ„ì¹˜ë¡œ ë‹¤ì‹œ ì €ì¥
             DecoInventoryRuntime.I?.SaveAll();
         }
 
@@ -109,20 +109,20 @@ public partial class EditModeController
 
     private void OnSaveClicked()
     {
-        // 0) OK ¾È µÈ ÀÓ½Ã¹° Á¦°Å/¹İÈ¯
+        // 0) OK ì•ˆ ëœ ì„ì‹œë¬¼ ì œê±°/ë°˜í™˜
         CleanupInventoryTemps();
 
-        // 1) ¾ÀÀÇ Draggable ÀüºÎ ÀúÀå
+        // 1) ì”¬ì˜ Draggable ì „ë¶€ ì €ì¥
         SaveAllDraggablePositions();
 
-        // 2) ¾À¿¡ ¹èÄ¡ ¿Ï·áÇÑ Deco µé ÀúÀå
+        // 2) ì”¬ì— ë°°ì¹˜ ì™„ë£Œí•œ Deco ë“¤ ì €ì¥
         DecoPlacedStore.I?.SaveAllFromScene();
 
-        // 3) ÀÎº¥ ¼ö·® ÀúÀå
+        // 3) ì¸ë²¤ ìˆ˜ëŸ‰ ì €ì¥
         DecoInventoryRuntime.I?.SaveAll();
 
         hasUnsavedChanges = false;
-        CaptureBaseline(); // ÀúÀå ÈÄ »óÅÂ¸¦ ´Ù½Ã baseline À¸·Î
+        CaptureBaseline(); // ì €ì¥ í›„ ìƒíƒœë¥¼ ë‹¤ì‹œ baseline ìœ¼ë¡œ
         if (savedInfoPanel) savedInfoPanel.SetActive(true);
     }
 
@@ -165,12 +165,12 @@ public partial class EditModeController
             d.SavePosition();
             count++;
         }
-        Debug.Log($"[Save] Draggable (È°¼º) {count}°³ ÀúÀå ¿Ï·á");
+        Debug.Log($"[Save] Draggable (í™œì„±) {count}ê°œ ì €ì¥ ì™„ë£Œ");
     }
 
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // UI Wiring
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private void WireUndoButton()
     {
@@ -230,21 +230,21 @@ public partial class EditModeController
         savedOkButton.onClick.AddListener(() => savedInfoPanel?.SetActive(false));
     }
 
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
-    // Baseline (¿ÀºêÁ§Æ® + ÀÎº¥Åä¸®)
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // Baseline (ì˜¤ë¸Œì íŠ¸ + ì¸ë²¤í† ë¦¬)
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     private static bool IsInLayerMask(int layer, LayerMask mask)
         => (mask.value & (1 << layer)) != 0;
 
-    /// <summary>ÇöÀç ¾À »óÅÂ(¿ÀºêÁ§Æ® À§Ä¡ + ÀÎº¥ ¼ö·®)¸¦ baseline À¸·Î ÀúÀå</summary>
+    /// <summary>í˜„ì¬ ì”¬ ìƒíƒœ(ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ + ì¸ë²¤ ìˆ˜ëŸ‰)ë¥¼ baseline ìœ¼ë¡œ ì €ì¥</summary>
     private void CaptureBaseline()
     {
         baseline.Clear();
         invBaseline.Clear();
         var set = new HashSet<int>();
 
-        // 1) Draggable ¸ğµÎ
+        // 1) Draggable ëª¨ë‘
 #if UNITY_2022_2_OR_NEWER
         var drags = FindObjectsByType<Draggable>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 #else
@@ -266,7 +266,7 @@ public partial class EditModeController
             }
         }
 
-        // 2) Draggable Àº ¾Æ´ÏÁö¸¸ draggableMask ¿¡ Æ÷ÇÔµÇ´Â Äİ¶óÀÌ´õµé
+        // 2) Draggable ì€ ì•„ë‹ˆì§€ë§Œ draggableMask ì— í¬í•¨ë˜ëŠ” ì½œë¼ì´ë”ë“¤
 #if UNITY_2022_2_OR_NEWER
         var cols = FindObjectsByType<Collider>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 #else
@@ -292,7 +292,7 @@ public partial class EditModeController
             }
         }
 
-        // 3) ÀÎº¥Åä¸® ½º³À¼¦
+        // 3) ì¸ë²¤í† ë¦¬ ìŠ¤ëƒ…ìƒ·
         if (DecoInventoryRuntime.I != null)
         {
             var all = DecoInventoryRuntime.I.GetAllCounts();
@@ -303,10 +303,10 @@ public partial class EditModeController
         }
     }
 
-    /// <summary>baseline ¿¡¼­ ´Ù½Ã ¾ÀÀ» º¹±¸</summary>
+    /// <summary>baseline ì—ì„œ ë‹¤ì‹œ ì”¬ì„ ë³µêµ¬</summary>
     private void RestoreBaseline()
     {
-        // 1) ¿ÀºêÁ§Æ® º¹±¸
+        // 1) ì˜¤ë¸Œì íŠ¸ ë³µêµ¬
         foreach (var s in baseline)
         {
             if (!s.t) continue;
@@ -343,62 +343,62 @@ public partial class EditModeController
 
         Physics.SyncTransforms();
 
-        // 2) ÀÎº¥Åä¸® º¹±¸
+        // 2) ì¸ë²¤í† ë¦¬ ë³µêµ¬
         if (DecoInventoryRuntime.I != null)
         {
             DecoInventoryRuntime.I.RestoreFromSnapshot(invBaseline);
         }
     }
 
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
-    // ÀÎº¥Åä¸®¿¡¼­ ²¨³»¼­ ¹Ù·Î ÆíÁı¸ğµå·Î
-    // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ì¸ë²¤í† ë¦¬ì—ì„œ êº¼ë‚´ì„œ ë°”ë¡œ í¸ì§‘ëª¨ë“œë¡œ
+    // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-    /// <summary>ÀÎº¥Åä¸®¿¡¼­ DecoData¸¦ ²¨³» ¾À¿¡ ¹èÄ¡ ½ÃÀÛ</summary>
+    /// <summary>ì¸ë²¤í† ë¦¬ì—ì„œ DecoDataë¥¼ êº¼ë‚´ ì”¬ì— ë°°ì¹˜ ì‹œì‘</summary>
     public void SpawnFromDecoData(DecoData data)
     {
         if (data == null)
         {
-            Debug.LogWarning("[EditModeController] DecoData°¡ nullÀÔ´Ï´Ù.");
+            Debug.LogWarning("[EditModeController] DecoDataê°€ nullì…ë‹ˆë‹¤.");
             return;
         }
 
-        var prefab = data.GetPrefab();
+        var prefab = DataManager.Instance.Deco.GetPrefab(data.deco_id);
         if (!prefab)
         {
-            Debug.LogWarning($"[EditModeController] DecoData({data.id})¿¡ prefabÀÌ ¾ø½À´Ï´Ù. path={data.prefabPath}");
+            Debug.LogWarning($"[EditModeController] DecoData({data.deco_id})ì— prefabì´ ì—†ìŠµë‹ˆë‹¤. path={data.deco_prefab}");
             return;
         }
 
         GameObject go = Object.Instantiate(prefab);
-        go.name = data.name;
+        go.name = data.deco_name;
 
-        // decoId Ç¥½Ã
+        // decoId í‘œì‹œ
         var tag = go.GetComponent<PlaceableTag_Deco>();
         if (!tag) tag = go.AddComponent<PlaceableTag_Deco>();
-        tag.decoId = data.id;
+        tag.decoId = data.deco_id;
 
-        // µå·¡±× °¡´ÉÇÏµµ·Ï
+        // ë“œë˜ê·¸ ê°€ëŠ¥í•˜ë„ë¡
         var drag = go.GetComponent<Draggable>();
         if (!drag) drag = go.AddComponent<Draggable>();
 
-        // ÀÎº¥ ÀÓ½Ã ¸¶Å·
+        // ì¸ë²¤ ì„ì‹œ ë§ˆí‚¹
         MarkAsInventoryTemp(go.transform, true);
         pendingFromInventory = go.transform;
 
-        // ÆíÁı¸ğµå·Î °­Á¦ ÁøÀÔ + ¼±ÅÃ
+        // í¸ì§‘ëª¨ë“œë¡œ ê°•ì œ ì§„ì… + ì„ íƒ
         SetEditMode(true, keepTarget: false);
         SelectTarget(go.transform);
 
-        // Ç×»ó (0,0,0)¿¡¼­ ½ÃÀÛ
+        // í•­ìƒ (0,0,0)ì—ì„œ ì‹œì‘
         go.transform.position = Vector3.zero;
         go.transform.rotation = Quaternion.identity;
 
-        // ±×¸®µå ½º³À
+        // ê·¸ë¦¬ë“œ ìŠ¤ëƒ…
         if (snapToGrid)
             go.transform.position = SnapToGrid(go.transform.position);
 
-        // Ã¹ »óÅÂ À¯È¿¼º Ç¥Çö
+        // ì²« ìƒíƒœ ìœ íš¨ì„± í‘œí˜„
         bool valid = IsOverGround(go.transform.position) && !OverlapsOthers(go.transform);
         if (drag)
         {

@@ -59,12 +59,12 @@ public class DecoSlot : MonoBehaviour
         var db = DecoInventoryRuntime.I.DB;
         if (!db) return;
 
-        var data = db.decoList.Find(d => d.id == decoId);
+        var data = db.decoList.Find(d => d.deco_id == decoId);
         if (data == null) return;
 
         // 아이콘
         if (icon)
-            icon.sprite = data.GetIcon();
+            icon.sprite = DataManager.Instance.Deco.GetIcon(data.deco_id);
 
         // 수량
         int c = DecoInventoryRuntime.I.Count(decoId);
@@ -86,7 +86,7 @@ public class DecoSlot : MonoBehaviour
         var db = DecoInventoryRuntime.I.DB;
         if (!db) return;
 
-        var data = db.decoList.Find(d => d.id == decoId);
+        var data = db.decoList.Find(d => d.deco_id == decoId);
         if (data == null) return;
 
         // 1) 인벤에서 1개 빼기

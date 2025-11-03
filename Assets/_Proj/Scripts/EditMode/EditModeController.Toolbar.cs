@@ -101,7 +101,7 @@ public partial class EditModeController
         }
 
         var db = DecoInventoryRuntime.I.DB;
-        var data = db.decoList.Find(d => d != null && d.id == tag.decoId);
+        var data = db.decoList.Find(d => d != null && d.deco_id == tag.decoId);
 
         if (data == null)
         {
@@ -109,8 +109,8 @@ public partial class EditModeController
             return;
         }
 
-        var title = string.IsNullOrEmpty(data.name) ? $"Deco {data.id}" : data.name;
-        var desc = string.IsNullOrEmpty(data.description) ? "설명이 없습니다." : data.description;
+        var title = string.IsNullOrEmpty(data.deco_name) ? $"Deco {data.deco_id}" : data.deco_name;
+        var desc = string.IsNullOrEmpty(data.deco_desc) ? "설명이 없습니다." : data.deco_desc;
 
         panel.Show(title, desc);
     }
@@ -213,7 +213,7 @@ public partial class EditModeController
         }
 
         var db = DecoInventoryRuntime.I.DB;
-        var data = db.decoList.Find(d => d != null && d.id == tag.decoId);
+        var data = db.decoList.Find(d => d != null && d.deco_id == tag.decoId);
 
         if (data == null)
         {
@@ -221,8 +221,8 @@ public partial class EditModeController
             return;
         }
 
-        var title = string.IsNullOrEmpty(data.name) ? $"Deco {data.id}" : data.name;
-        var desc = string.IsNullOrEmpty(data.description) ? "설명이 없습니다." : data.description;
+        var title = string.IsNullOrEmpty(data.deco_name) ? $"Deco {data.deco_id}" : data.deco_name;
+        var desc = string.IsNullOrEmpty(data.deco_desc) ? "설명이 없습니다." : data.deco_desc;
 
         panel.Toggle(title, desc);
     }

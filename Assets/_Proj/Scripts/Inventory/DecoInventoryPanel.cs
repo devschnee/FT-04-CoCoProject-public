@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ÀÎº¥Åä¸® Ã¢ÀÌ ¿­¸± ¶§ DB ±âÁØÀ¸·Î ½½·ÔÀ» ÀüºÎ ´Ù½Ã ¸¸µç´Ù.
-/// ScrollView ¾ÈÀÇ Content ¿¡ DecoSlot ÇÁ¸®ÆÕÀ» Âß ±ò¾ÆÁÖ´Â ¿ªÇÒ¸¸ ÇÑ´Ù.
+/// ì¸ë²¤í† ë¦¬ ì°½ì´ ì—´ë¦´ ë•Œ DB ê¸°ì¤€ìœ¼ë¡œ ìŠ¬ë¡¯ì„ ì „ë¶€ ë‹¤ì‹œ ë§Œë“ ë‹¤.
+/// ScrollView ì•ˆì˜ Content ì— DecoSlot í”„ë¦¬íŒ¹ì„ ì­‰ ê¹”ì•„ì£¼ëŠ” ì—­í• ë§Œ í•œë‹¤.
 /// </summary>
 public class DecoInventoryPanel : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] private RectTransform content;   // ½½·ÔµéÀÌ ºÙÀ» ÄÁÅ×ÀÌ³Ê
-    [SerializeField] private DecoSlot slotPrefab;     // °³º° ½½·Ô ÇÁ¸®ÆÕ
+    [SerializeField] private RectTransform content;   // ìŠ¬ë¡¯ë“¤ì´ ë¶™ì„ ì»¨í…Œì´ë„ˆ
+    [SerializeField] private DecoSlot slotPrefab;     // ê°œë³„ ìŠ¬ë¡¯ í”„ë¦¬íŒ¹
 
     private void OnEnable()
     {
@@ -17,19 +17,19 @@ public class DecoInventoryPanel : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇöÀç DB¿¡ ÀÖ´Â deco ¸®½ºÆ®¸¦ ÀüºÎ ½½·ÔÀ¸·Î ¸¸µç´Ù.
+    /// í˜„ì¬ DBì— ìˆëŠ” deco ë¦¬ìŠ¤íŠ¸ë¥¼ ì „ë¶€ ìŠ¬ë¡¯ìœ¼ë¡œ ë§Œë“ ë‹¤.
     /// </summary>
     public void Rebuild()
     {
-        // ÇÊ¼ö ÂüÁ¶ Ã¼Å©
+        // í•„ìˆ˜ ì°¸ì¡° ì²´í¬
         if (!content || !slotPrefab) return;
         if (DecoInventoryRuntime.I == null || DecoInventoryRuntime.I.DB == null) return;
 
-        // 1) ±âÁ¸ ½½·Ôµé Á¦°Å
+        // 1) ê¸°ì¡´ ìŠ¬ë¡¯ë“¤ ì œê±°
         for (int i = content.childCount - 1; i >= 0; i--)
             Destroy(content.GetChild(i).gameObject);
 
-        // 2) DB ¼øÈ¸ÇÏ¸é¼­ ½½·Ô »ı¼º
+        // 2) DB ìˆœíšŒí•˜ë©´ì„œ ìŠ¬ë¡¯ ìƒì„±
         var db = DecoInventoryRuntime.I.DB;
         foreach (var data in db.decoList)
         {
@@ -37,7 +37,7 @@ public class DecoInventoryPanel : MonoBehaviour
 
             var slot = Instantiate(slotPrefab, content);
 
-            // RectTransform ±âº»°ªÀ¸·Î ¸ÂÃçÁÖ±â
+            // RectTransform ê¸°ë³¸ê°’ìœ¼ë¡œ ë§ì¶°ì£¼ê¸°
             if (slot.transform is RectTransform rt)
             {
                 rt.localScale = Vector3.one;
@@ -46,10 +46,10 @@ public class DecoInventoryPanel : MonoBehaviour
                 rt.offsetMax = Vector2.zero;
             }
 
-            slot.SetDecoId(data.id);
+            slot.SetDecoId(data.deco_id);
         }
 
-        // 3) ·¹ÀÌ¾Æ¿ô °­Á¦ °»½Å (Grid / VerticalLayout °°Àº °Å ÀÖÀ» ¶§)
+        // 3) ë ˆì´ì•„ì›ƒ ê°•ì œ ê°±ì‹  (Grid / VerticalLayout ê°™ì€ ê±° ìˆì„ ë•Œ)
         LayoutRebuilder.ForceRebuildLayoutImmediate(content);
     }
 }

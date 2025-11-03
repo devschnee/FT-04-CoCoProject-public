@@ -69,7 +69,7 @@ public class DecoInventoryRuntime : MonoBehaviour
     public DecoData GetData(int decoId)
     {
         if (!database) return null;
-        return database.decoList.Find(d => d.id == decoId);
+        return database.decoList.Find(d => d.deco_id == decoId);
     }
 
     /// <summary>해당 decoId의 현재 보유 수량</summary>
@@ -134,8 +134,8 @@ public class DecoInventoryRuntime : MonoBehaviour
             foreach (var d in database.decoList)
             {
                 if (d == null) continue;
-                int c = Count(d.id);
-                PlayerPrefs.SetInt(PREF_KEY_PREFIX + d.id, c);
+                int c = Count(d.deco_id);
+                PlayerPrefs.SetInt(PREF_KEY_PREFIX + d.deco_id, c);
             }
         }
         else
@@ -162,11 +162,11 @@ public class DecoInventoryRuntime : MonoBehaviour
             foreach (var d in database.decoList)
             {
                 if (d == null) continue;
-                string key = PREF_KEY_PREFIX + d.id;
+                string key = PREF_KEY_PREFIX + d.deco_id;
                 if (PlayerPrefs.HasKey(key))
                 {
                     int c = PlayerPrefs.GetInt(key, 0);
-                    _counts[d.id] = c;
+                    _counts[d.deco_id] = c;
                     any = true;
                 }
             }

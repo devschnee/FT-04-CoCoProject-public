@@ -1,15 +1,15 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ÆíÁı¸ğµå¿¡¼­ "È®Á¤(OK)"µÈ µ¥ÄÚµéÀ» PlayerPrefs ¿¡ ÀúÀåÇØµÎ°í
-/// ´ÙÀ½¿¡ ¾ÀÀÌ ¿­¸± ¶§ ´Ù½Ã ±ò¾ÆÁÖ´Â ¿ªÇÒ.
+/// í¸ì§‘ëª¨ë“œì—ì„œ "í™•ì •(OK)"ëœ ë°ì½”ë“¤ì„ PlayerPrefs ì— ì €ì¥í•´ë‘ê³ 
+/// ë‹¤ìŒì— ì”¬ì´ ì—´ë¦´ ë•Œ ë‹¤ì‹œ ê¹”ì•„ì£¼ëŠ” ì—­í• .
 /// 
-/// Èå¸§:
-/// - EditModeController °¡ ÀúÀåÇÒ ¶§ ¡æ SaveAllFromScene() È£Ãâ
-/// - ÀÌ ½ºÅä¾î´Â PlaceableTag_Deco °¡ ÀÖ´Â ¾Öµé¸¸ ½ºÄµÇØ¼­ ÀúÀå
-/// - InventoryTempMarker °¡ ºÙÀº ¾Ö(¾ÆÁ÷ OK ¾È ÇÑ ÀÓ½Ã¹°)´Â ÀúÀåÇÏÁö ¾ÊÀ½
+/// íë¦„:
+/// - EditModeController ê°€ ì €ì¥í•  ë•Œ â†’ SaveAllFromScene() í˜¸ì¶œ
+/// - ì´ ìŠ¤í† ì–´ëŠ” PlaceableTag_Deco ê°€ ìˆëŠ” ì• ë“¤ë§Œ ìŠ¤ìº”í•´ì„œ ì €ì¥
+/// - InventoryTempMarker ê°€ ë¶™ì€ ì• (ì•„ì§ OK ì•ˆ í•œ ì„ì‹œë¬¼)ëŠ” ì €ì¥í•˜ì§€ ì•ŠìŒ
 /// </summary>
 public class DecoPlacedStore : MonoBehaviour
 {
@@ -32,17 +32,17 @@ public class DecoPlacedStore : MonoBehaviour
         if (I && I != this) { Destroy(gameObject); return; }
         I = this;
 
-        // ½ÃÀÛÇÒ ¶§ ÀúÀåµÅ ÀÖ´ø °Å ´Ù½Ã ±ò±â
+        // ì‹œì‘í•  ë•Œ ì €ì¥ë¼ ìˆë˜ ê±° ë‹¤ì‹œ ê¹”ê¸°
         LoadAndSpawnAll();
     }
 
     /// <summary>
-    /// ÇöÀç ¾À¿¡ ÀÖ´Â "È®Á¤µÈ" µ¥ÄÚµéÀ» ÀüºÎ ÀúÀåÇÑ´Ù.
-    /// (ÀÎº¥¿¡¼­ ²¨³Â´Âµ¥ ¾ÆÁ÷ OK ¾È ´©¸¥ ¾ÖµéÀº Á¦¿Ü)
+    /// í˜„ì¬ ì”¬ì— ìˆëŠ” "í™•ì •ëœ" ë°ì½”ë“¤ì„ ì „ë¶€ ì €ì¥í•œë‹¤.
+    /// (ì¸ë²¤ì—ì„œ êº¼ëƒˆëŠ”ë° ì•„ì§ OK ì•ˆ ëˆ„ë¥¸ ì• ë“¤ì€ ì œì™¸)
     /// </summary>
     public void SaveAllFromScene()
     {
-        // ¾À¿¡ ÀÖ´Â PlaceableTag_Deco ÀüºÎ Ã£±â
+        // ì”¬ì— ìˆëŠ” PlaceableTag_Deco ì „ë¶€ ì°¾ê¸°
 #if UNITY_2022_2_OR_NEWER
         var tags = FindObjectsByType<PlaceableTag_Deco>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
 #else
@@ -55,7 +55,7 @@ public class DecoPlacedStore : MonoBehaviour
         {
             if (!tag.gameObject.activeInHierarchy) continue;
 
-            // ¾ÆÁ÷ OK ¾È ÇÑ ÀÓ½Ã¹°Àº ÀúÀå ±İÁö
+            // ì•„ì§ OK ì•ˆ í•œ ì„ì‹œë¬¼ì€ ì €ì¥ ê¸ˆì§€
             if (tag.GetComponent<InventoryTempMarker>()) continue;
 
             list.Add(new Placed
@@ -66,7 +66,7 @@ public class DecoPlacedStore : MonoBehaviour
             });
         }
 
-        // JSON À¸·Î ÀúÀå
+        // JSON ìœ¼ë¡œ ì €ì¥
         string json = JsonUtility.ToJson(new Wrapper { items = list }, prettyPrint: false);
         PlayerPrefs.SetString(PREF_KEY, json);
         PlayerPrefs.Save();
@@ -75,7 +75,7 @@ public class DecoPlacedStore : MonoBehaviour
     }
 
     /// <summary>
-    /// PlayerPrefs ¿¡¼­ ÀúÀåµÈ µ¥ÄÚµéÀ» ÀĞ¾î¿Í¼­ ´Ù½Ã ¾À¿¡ ±ñ´Ù.
+    /// PlayerPrefs ì—ì„œ ì €ì¥ëœ ë°ì½”ë“¤ì„ ì½ì–´ì™€ì„œ ë‹¤ì‹œ ì”¬ì— ê¹ë‹¤.
     /// </summary>
     private void LoadAndSpawnAll()
     {
@@ -89,34 +89,34 @@ public class DecoPlacedStore : MonoBehaviour
 
         foreach (var p in w.items)
         {
-            // DB¿¡¼­ decoId¿¡ ÇØ´çÇÏ´Â µ¥ÀÌÅÍ Ã£±â
+            // DBì—ì„œ decoIdì— í•´ë‹¹í•˜ëŠ” ë°ì´í„° ì°¾ê¸°
             var data = database
-                ? database.decoList.Find(d => d != null && d.id == p.decoId)
+                ? database.decoList.Find(d => d != null && d.deco_id == p.decoId)
                 : null;
 
             if (data == null)
             {
-                Debug.LogWarning($"[DecoPlacedStore] decoId={p.decoId} ¸¦ DB¿¡¼­ Ã£Áö ¸øÇß½À´Ï´Ù.");
+                Debug.LogWarning($"[DecoPlacedStore] decoId={p.decoId} ë¥¼ DBì—ì„œ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
                 continue;
             }
 
-            var prefab = data.GetPrefab();
+            var prefab = DataManager.Instance.Deco.GetPrefab(data.deco_id);
             if (!prefab)
             {
-                Debug.LogWarning($"[DecoPlacedStore] decoId={p.decoId} ¿¡ prefabÀÌ ¾ø½À´Ï´Ù.");
+                Debug.LogWarning($"[DecoPlacedStore] decoId={p.decoId} ì— prefabì´ ì—†ìŠµë‹ˆë‹¤.");
                 continue;
             }
 
-            // ½ÇÁ¦ ½ºÆù
+            // ì‹¤ì œ ìŠ¤í°
             var go = Instantiate(prefab, p.pos, p.rot);
-            go.name = data.name;
+            go.name = data.deco_name;
 
-            // ÅÂ±× ´Ù½Ã ºÙÀÌ±â
+            // íƒœê·¸ ë‹¤ì‹œ ë¶™ì´ê¸°
             var tag = go.GetComponent<PlaceableTag_Deco>();
             if (!tag) tag = go.AddComponent<PlaceableTag_Deco>();
             tag.decoId = p.decoId;
 
-            // µå·¡±×µµ ´Ù½Ã
+            // ë“œë˜ê·¸ë„ ë‹¤ì‹œ
             var drag = go.GetComponent<Draggable>();
             if (!drag) drag = go.AddComponent<Draggable>();
         }
