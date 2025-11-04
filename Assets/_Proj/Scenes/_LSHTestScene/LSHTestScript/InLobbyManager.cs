@@ -67,6 +67,11 @@ public class InLobbyManager : MonoBehaviour
         gObj2.tag = "Animal";
         gObj2.layer = LayerMask.NameToLayer("InLobbyObject");
 
+        GameObject gObj3 = Instantiate(DataManager.Instance.Animal.GetPrefab(30003), cocoWaypoints[6].position, Quaternion.identity);
+        gObj3.AddComponent<MasterBehaviour>();
+        gObj3.tag = "Master";
+        gObj3.layer = LayerMask.NameToLayer("InLobbyObject");
+
         foreach (var lC in lobbyCharacter)
         {
             if (lC == null) Debug.Log($"{lC} null");

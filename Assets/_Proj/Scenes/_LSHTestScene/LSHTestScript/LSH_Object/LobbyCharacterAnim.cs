@@ -10,6 +10,7 @@ public class LobbyCharacterAnim
     private AnimationClip animClip;
 
     private String[] lobbyInteractionAnimalAnimsName = { "Bounce", "Roll", "Spin", "Jump" };
+    private String[] masterClick = { "Click0", "Click1" };
     
     public LobbyCharacterAnim(Animator anim)
     {
@@ -31,6 +32,15 @@ public class LobbyCharacterAnim
         int number = UnityEngine.Random.Range(0, lobbyInteractionAnimalAnimsName.Length);
 
         anim.Play(lobbyInteractionAnimalAnimsName[number]);
+        anim.speed = 0.8f;
+    }
+
+    public void ClickMaster()
+    {
+        int number = UnityEngine.Random.Range(0, masterClick.Length);
+        anim.Play(masterClick[number]);
+        anim.speed = 4;
+        
     }
     
     public void StopAnim()

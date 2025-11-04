@@ -53,7 +53,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         //originalLayer = LayerMask.NameToLayer("InLobbyObject"); // 로비매니저로
         //editableLayer = LayerMask.NameToLayer("Editable"); // 로비매니저로
         mainPlaneMask = LayerMask.NameToLayer("MainPlaneLayer");
-        waitU = new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= 0.5f);
+        waitU = new WaitUntil(() => !agent.pathPending && agent.remainingDistance < Mathf.Infinity && agent.remainingDistance <= agent.stoppingDistance);
         waitFS = new WaitForSeconds(waitTime);
         //isEditMode = false; // 상태패턴 전환 시 수정, 로비매니저로
 
@@ -87,37 +87,46 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         switch (gameObject.tag)
         {
             case "CocoDoogy":
-                StopMoving();
+                ResetMoving();
                 break;
             case "Master":
-                StopMoving();
+                ResetMoving();
                 break;
             case "Animal":
                 Unregister();
-                StopMoving();
+                ResetMoving();
                 break;
             default: throw new Exception("누구세요?");
         }
     }
 
-    protected void StopMoving()
+    protected void ResetMoving()
     {
         if (isMoving == true)
         {
             isMoving = false;
             StopAllCoroutines();
             if (agent != null && agent.isActiveAndEnabled) agent.ResetPath();
-        } 
+        }
+    }
+    
+    protected void StartMoving()
+    {
+        if (isMoving == false)
+        {
+            isMoving = true;
+            if (agent != null && agent.isActiveAndEnabled) agent.ResetPath();
+        }
     }
 
     // 애니메이션 시 에이전트 제어 근데 이곳에 쓰는게 맞나.
-    public void StopAgentBeginAnim()
+    public void StopAgent()
     {
         agent.isStopped = true;
 
     }
-    
-    public void StartAgentEndAnim()
+
+    public void StartAgent()
     {
         agent.isStopped = false;
     }
@@ -143,7 +152,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         if (InLobbyManager.Instance.isEditMode) return;
 
         originalPos = transform.position;
-        StopMoving();
+        ResetMoving();
         isDragging = true;
         charAnim.StopAnim();
         agent.isStopped = true;
@@ -196,7 +205,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     {
         if (InLobbyManager.Instance == null) return;
         if (InLobbyManager.Instance.isEditMode) return;
-
+        charAnim.InteractionAnim();
         Debug.Log($"Click");
     }
     /// <summary>
@@ -226,7 +235,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     public void InEdit()
     {
         charAnim.StopAnim();
-        StopMoving();
+        ResetMoving();
         if (!agent.isStopped) agent.isStopped = true;
         agent.enabled = false;
     }

@@ -3808,67 +3808,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545059825}
   m_CullTransparentMesh: 1
---- !u!1001 &552909228
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.5092561
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.739252
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659808, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659814, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_Name
-      value: Robobot T7 Green
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671069402030659815, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8a6e420ec488ddd42bf06a77f9ea22ea, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a3734da48cb726f4c93d9dc6415ffc82, type: 3}
 --- !u!1 &553459003
 GameObject:
   m_ObjectHideFlags: 0
@@ -6067,8 +6006,11 @@ MonoBehaviour:
   shopPanel: {fileID: 1927131684}
   friendsPanel: {fileID: 1049786289}
   settingPanel: {fileID: 689181522}
+  chapterPanel: {fileID: 0}
+  stagePanel: {fileID: 0}
   startClosed: 1
   dimOverlay: {fileID: 1709160624}
+  chapterSelectSprite: {fileID: 0}
 --- !u!1 &979596905
 GameObject:
   m_ObjectHideFlags: 0
@@ -8901,7 +8843,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 430939952}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.98966396
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14989,4 +14931,3 @@ SceneRoots:
   - {fileID: 751782442}
   - {fileID: 82501254}
   - {fileID: 2003718740}
-  - {fileID: 552909228}

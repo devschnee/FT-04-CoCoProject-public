@@ -31,3 +31,11 @@ MonoBehaviour:
     animal_acquire: 1
     animal_desc: "\uC8FC\uC778\uC774 \uBCF4\uC2E0\uD0D5 \uC7AC\uB8CC\uB85C \uC4F8\uB824\uACE0
       \uD0A4\uC6B0\uB824 \uD588\uB358 \uAC15\uC544\uC9C0"
+  - animal_id: 30003
+    animal_name: "\uC548\uB4DC\uB85C\uC774\uB4DC\uC8FC\uC778"
+    animal_type: 0
+    animal_tag: 0
+    animal_prefab: Prefabs/Animal/animal_RobobotA
+    animal_icon: Icons/Animal/animal_hog
+    animal_acquire: 1
+    animal_desc: "\uB85C\uBD07\uB3C4 \uB3D9\uBB3C\uC778 \uC2DC\uB300\uC785\uB2C8\uB2E4?"

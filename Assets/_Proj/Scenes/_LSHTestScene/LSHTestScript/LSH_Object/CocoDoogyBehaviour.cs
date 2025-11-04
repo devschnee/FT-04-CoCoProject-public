@@ -100,7 +100,7 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     public override void OnLobbyInteract()
     {
         base.OnLobbyInteract();
-        charAnim.InteractionAnim();
+        
         AudioEvents.Raise(SFXKey.CocodoogyFootstep, pooled: true, pos: transform.position);
     }
     public override void InNormal()
