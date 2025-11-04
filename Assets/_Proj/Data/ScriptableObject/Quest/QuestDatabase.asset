@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questList:
   - quest_id: 70001
-    quest_name: "\uD558\uB8E8\uD55C\uBC88 \uCF54\uCF54\uB450\uAE30\uC640"
+    quest_name: '[quest_name_gamelogin]'
     quest_type: 0
     quest_object: 0
     quest_obj_desc: "\uD558\uB8E8 1\uD68C \uC811\uC18D"

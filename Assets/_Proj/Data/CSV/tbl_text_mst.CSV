@@ -7,10 +7,8 @@ string,string
 [costume_cute_hat],귀여운 모자
 [animal_hog],호기
 [home_sweet_home],따뜻한 우리의 집
-[icon_cocodugi],반짝이는 코코두기 아이콘
 [artifact_teapot],오래된 차 주전자
 [background_basic],기본 배경
-[quest_name_gamelogin],하루한번 코코두기와
 [deco_white_fence],흰색 울타리
 [deco_fence],나무 울타리
 [deco_ground_planks],나무 바닥판
@@ -33,3 +31,14 @@ string,string
 [deco_cloud table],구름 탁자
 [deco_mini_pot],미니 화분
 [deco_helpground],구조 신호판
+[icon_01],코코두기 아이콘
+[icon_02],로봇주인 아이콘
+[icon_03],멧돼지 아이콘
+[icon_04],거북이 아이콘
+[icon_05],버팔로 아이콘
+[icon_06],즐거운 시간 아이콘
+[icon_07],첫 만남 아이콘
+[icon_08],여정의 시작 아이콘
+[icon_09],챕터 1 아이콘
+[icon_10],챕터 2 아이콘
+[icon_11],챕터 3 아이콘
