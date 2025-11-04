@@ -38,9 +38,15 @@ public class StageDetailInfo : MonoBehaviour
         var data = DataManager.Instance.Stage.GetData(currentStageId);
 
         string mapId = data.map_id;
+        
+        await FirebaseManager_FORTEST.Instance.Temp(mapId);
 
         await SceneManager.LoadSceneAsync("Chapter1_StageScene_TESTONLY");
+    }
 
-        var mapData = await FirebaseManager_FORTEST.Instance.LoadMapFromFirebase(mapId);
+    public void CloseButton()
+    {
+        currentStageId = null;
+        gameObject.SetActive(false);
     }
 }

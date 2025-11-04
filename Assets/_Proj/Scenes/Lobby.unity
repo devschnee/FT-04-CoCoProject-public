@@ -1525,6 +1525,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebebdb7025bfcf4a9a4f3cc3dace30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageManager: {fileID: 0}
+  currentMapData:
+    blocks: []
 --- !u!4 &403703626
 Transform:
   m_ObjectHideFlags: 0
