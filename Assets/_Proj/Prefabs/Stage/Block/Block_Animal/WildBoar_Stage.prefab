@@ -906,7 +906,7 @@ MonoBehaviour:
   tileSize: 1
   blockingMask:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 1664
   groundMask:
     serializedVersion: 2
     m_Bits: 513

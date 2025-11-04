@@ -12,6 +12,7 @@ TagManager:
   - pooled
   - newPooled
   - WoodBox
+  - Turtle
   layers:
   - Default
   - TransparentFX

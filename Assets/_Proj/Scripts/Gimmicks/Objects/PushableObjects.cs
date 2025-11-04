@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PushableObjects : MonoBehaviour, IPushHandler
+public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 {
     // 10/27 기획안 변경됨.
     /* 
@@ -27,6 +27,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
     protected bool isMoving = false;
     protected bool isHoling = false;
     protected bool isFalling = false;
+    protected bool isRiding = false;
     public float requiredHoldtime = 0.9f;
     protected float currHold = 0f;
     protected Vector2Int holdDir;
@@ -46,7 +47,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
     }
     void Update()
     {
-        if (!isHoling || isMoving) return;
+        if (!isHoling || isMoving || isRiding) return;
         
         // 밀고 있는 시간 누적
         currHold += Time.deltaTime;
@@ -116,8 +117,6 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
         return true;
     }
 
-
-
     // 모양에 맞는 충돌 검사 구현하도록
     protected abstract bool CheckBlocking(Vector3 target);
 
@@ -138,11 +137,6 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
         transform.position = target;
         isMoving = false;
 
-        //// 낙하 이벤트 위해 추가
-        //if (allowFall)
-        //{
-        //    yield return StartCoroutine(CheckFall());
-        //}
         yield break;
     }
 
@@ -190,7 +184,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
     // Push 시도 시작(방향 기억, 시간 누적)
     public void StartPushAttempt(Vector2Int dir)
     {
-        if(isMoving || isFalling) return;
+        if(isRiding || isMoving || isFalling) return;
         if(isHoling && dir != holdDir)
         {
             currHold = 0f;
@@ -220,6 +214,21 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler
     }
 
     protected virtual void OnLanded() { }
+
+    public void OnStartRiding()
+    {
+        isRiding = true;
+        isMoving = false;
+        isHoling = false;
+        currHold = 0f;
+
+    }
+
+    public void OnStopRiding()
+    {
+        isRiding = false;
+        StartCoroutine(CheckFall());
+    }
 
     // ========== 공중 띄우기용 ==========
     // 충격파 맞았을 때 y+1 duration 동안 띄우기

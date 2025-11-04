@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -83,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
             }
             
         }
+
+        #region 주석
         //Vector3 inputOffset = new(joystick.InputDir.x, 0, joystick.InputDir.z);
         //Ray ray = new(transform.position + (inputOffset * .3f), inputOffset);
         //RaycastHit[] results = new RaycastHit[10];
@@ -131,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         //        input = Vector2.zero;
         //    }
         //}
-
+        #endregion
 
 
 
@@ -147,8 +148,8 @@ public class PlayerMovement : MonoBehaviour
                     strategy.Execute(Vector3.zero, rb, this);
                 // 입력 없음 상태도 전략이 받아야 함. 그래서 zero로라도 실행.
             }
-
-            //return;
+            // 입력 없을 때 회전 시키는 것 차단. return 없으면 자동으로 0,0,0으로 돌아감.
+            return;
         }
 
         Vector3 fwd = camTr ? camTr.forward : Vector3.forward;
@@ -195,6 +196,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (col.attachedRigidbody == rb) continue;
             if (col.isTrigger) continue;
+
+            //if (col.CompareTag("Turtle")) continue;
+            //if (((1 << col.gameObject.layer) & LayerMask.GetMask("Ridable")) != 0) continue;
 
             // 상대의 중심 y값이 같은 층에 있다면 이동 차단
             float dy = Mathf.Abs(col.bounds.center.y - rb.position.y);
