@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6107338780212194591}
   - component: {fileID: 5937561180784654500}
+  - component: {fileID: 3683261028050005787}
+  - component: {fileID: 9170303572979979739}
+  - component: {fileID: 8611777253475136124}
   m_Layer: 0
   m_Name: IronballBlock
   m_TagString: Untagged
@@ -54,6 +57,87 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3683261028050005787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468510749670645365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3c8be0378206a4a9fe2f0f020f5b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileHeight: 1
+  radiusShock: 5
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  useOcclusion: 1
+  occluderMask:
+    serializedVersion: 2
+    m_Bits: 1416
+  riseSec: 1
+  hangSec: 0.4
+  fallSec: 1
+  affectSameFloorOnly: 0
+  alsoAffectStackedAbove: 0
+--- !u!114 &9170303572979979739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468510749670645365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663495c519e650b44b3fc5d2420a3dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTime: 0.12
+  tileSize: 1
+  blockingMask:
+    serializedVersion: 2
+    m_Bits: 384
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 513
+  slopeMask:
+    serializedVersion: 2
+    m_Bits: 16384
+  throughLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  requiredHoldtime: 0.9
+  allowFall: 1
+  allowSlope: 1
+  immuneTime: 5
+  shockwave: {fileID: 3683261028050005787}
+  shockPing: {fileID: 0}
+  orbCoolTime: 6
+  probeUp: 0.1
+  probeDown: 1.5
+--- !u!114 &8611777253475136124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468510749670645365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5036745de6c736d4c8d516aca65d33c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shockwave: {fileID: 3683261028050005787}
+  towerLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  useOcclusion: 1
+  occludeLayer:
+    serializedVersion: 2
+    m_Bits: 17296
 --- !u!1001 &3007554328182979358
 PrefabInstance:
   m_ObjectHideFlags: 0
