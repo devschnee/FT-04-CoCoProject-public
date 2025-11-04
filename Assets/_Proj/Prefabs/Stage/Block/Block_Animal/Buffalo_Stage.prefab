@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3762624979193485081}
   - component: {fileID: 7842754840454281407}
   - component: {fileID: 992193947829246877}
+  - component: {fileID: 1652673128369942235}
   m_Layer: 0
   m_Name: Buffalo_Stage
   m_TagString: Untagged
@@ -112,6 +113,27 @@ MonoBehaviour:
   fallSec: 0.2
   affectSameFloorOnly: 0
   alsoAffectStackedAbove: 0
+--- !u!114 &1652673128369942235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565766366378493080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b021aa50c9e5ec04a9219a762ca9b14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0, z: 0}
+  origin:
+    blockType: 0
+    blockName: 
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    property:
+      isOn: 0
+      linkedPos: {x: 2147483647, y: 2147483647, z: 2147483647}
 --- !u!1 &5077943504914485904
 GameObject:
   m_ObjectHideFlags: 0

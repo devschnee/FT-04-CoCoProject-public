@@ -72,7 +72,8 @@ public class StageManager : MonoBehaviour
         //2. 가져온 맵 정보로 이 씬의 블록팩토리가 맵을 생성하도록 함.
         //2-1. 블록팩토리가 맵을 생성
         LoadStage(currentMapData);
-
+        yield return null;
+        InspectBlocks();
         //TODO: 2-2. 블록팩토리가 맵의 오브젝트들 중 서로 연결된 객체를 연결해 줌.
         LinkSignals();
 
@@ -151,8 +152,18 @@ public class StageManager : MonoBehaviour
 
         foreach (var kv in blockDictionary)
             blocks.AddRange(kv.Value);
+    }
 
-
+    void InspectBlocks()
+    {
+        foreach (var block in blocks)
+        {
+            if (block is IEdgeColliderHandler handlerBlock)
+            {
+                handlerBlock.Inject();
+                handlerBlock.Inspect();
+            }
+        }
     }
 
     void LinkSignals()

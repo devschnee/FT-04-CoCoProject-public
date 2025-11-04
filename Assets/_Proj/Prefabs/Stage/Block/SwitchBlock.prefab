@@ -682,6 +682,7 @@ GameObject:
   - component: {fileID: 2686345433262008079}
   - component: {fileID: -2172148346262356537}
   - component: {fileID: 3235253075900008946}
+  - component: {fileID: 8097256321202417555}
   m_Layer: 0
   m_Name: SwitchBlock
   m_TagString: Untagged
@@ -753,6 +754,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &8097256321202417555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789850781793074749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e239c0dfd1b68428735e0b6e1ba637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0, z: 0}
+  origin:
+    blockType: 0
+    blockName: 
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    property:
+      isOn: 0
+      linkedPos: {x: 2147483647, y: 2147483647, z: 2147483647}
 --- !u!1 &8892330648096884038
 GameObject:
   m_ObjectHideFlags: 0
