@@ -16,8 +16,8 @@ string,string
 [deco_ground_planks],나무 바닥판
 [deco_fireplace],벽난로
 [deco_tree_lime],라임 나무
-[deco_weed_Pot],잡초 화분
-[deco_decorative_Pot],장식 화분
+[deco_weed_pot],잡초 화분
+[deco_decorative_pot],장식 화분
 [deco_firepit],모닥불
 [deco_well],우물
 [deco_carriage],트레일러

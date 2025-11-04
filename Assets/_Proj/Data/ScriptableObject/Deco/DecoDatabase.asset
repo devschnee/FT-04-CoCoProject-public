@@ -57,7 +57,7 @@ MonoBehaviour:
     deco_tag: 0
     deco_acquire: 1
     deco_stack: 99
-    deco_desc: "\uAE54\uB054\uD55C \uD770\uC0C9 \uC6B8\uD0C0\uB9AC\uC785\uB2C8\uB2E4."
+    deco_desc: "\uD2BC\uD2BC\uD55C \uB098\uBB34 \uC6B8\uD0C0\uB9AC\uC785\uB2C8\uB2E4."
   - deco_id: 10005
     deco_name: "\uD770\uC0C9 \uC6B8\uD0C0\uB9AC"
     deco_prefab: Prefabs/Deco/fence-picket
@@ -66,7 +66,7 @@ MonoBehaviour:
     deco_tag: 0
     deco_acquire: 2
     deco_stack: 99
-    deco_desc: "\uD2BC\uD2BC\uD55C \uB098\uBB34 \uC6B8\uD0C0\uB9AC\uC785\uB2C8\uB2E4."
+    deco_desc: "\uAE54\uB054\uD55C \uD770\uC0C9 \uC6B8\uD0C0\uB9AC\uC785\uB2C8\uB2E4."
   - deco_id: 10006
     deco_name: "\uC6B0\uBB3C"
     deco_prefab: Prefabs/Deco/SM_Env_Big_Tree_Base_01
@@ -96,7 +96,7 @@ MonoBehaviour:
     deco_acquire: 2
     deco_stack: 99
     deco_desc: "\uC9C0\uC6CC\uC9C0\uC9C0 \uC54A\uC740 \uC501\uC4F8\uD55C \uD754\uC801\uC758
-      [deco_help_ground]\uC785\uB2C8\uB2E4."
+      \uAD6C\uC870 \uC2E0\uD638\uD310\uC785\uB2C8\uB2E4."
   - deco_id: 10009
     deco_name: "\uBAA8\uB2E5\uBD88"
     deco_prefab: Prefabs/Deco/fireplace-nofire
@@ -153,7 +153,7 @@ MonoBehaviour:
     deco_stack: 99
     deco_desc: "\uB0AE\uAC8C \uC719\uC719\uAC70\uB9AC\uB294 \uBC1C\uC804\uAE30\uC785\uB2C8\uB2E4."
   - deco_id: 10015
-    deco_name: '[deco_decorative_pot]'
+    deco_name: "\uC7A5\uC2DD \uD654\uBD84"
     deco_prefab: Prefabs/Deco/Plants_15
     deco_icon: Icons/Deco/icon_deco_decorative_pot
     deco_type: 2
@@ -162,7 +162,7 @@ MonoBehaviour:
     deco_stack: 99
     deco_desc: "\uBCF4\uAE30 \uC88B\uAC8C \uAFB8\uBA70\uC9C4 \uC7A5\uC2DD \uD654\uBD84\uC785\uB2C8\uB2E4."
   - deco_id: 10016
-    deco_name: '[deco_weed_pot]'
+    deco_name: "\uC7A1\uCD08 \uD654\uBD84"
     deco_prefab: Prefabs/Deco/Plants_03
     deco_icon: Icons/Deco/icon_deco_weed_pot
     deco_type: 2
@@ -178,7 +178,7 @@ MonoBehaviour:
     deco_tag: 0
     deco_acquire: 2
     deco_stack: 99
-    deco_desc: "\uC791\uACE0 \uADC0\uC5EC\uC6B4 [deco_Mini_Plant_Pot]\uC785\uB2C8\uB2E4."
+    deco_desc: "\uC791\uACE0 \uADC0\uC5EC\uC6B4 \uBBF8\uB2C8 \uD654\uBD84\uC785\uB2C8\uB2E4."
   - deco_id: 10018
     deco_name: "\uBAA9\uC7AC \uC758\uC790"
     deco_prefab: Prefabs/Deco/egypt-market-table-short

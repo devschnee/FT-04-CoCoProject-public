@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c0e3cbcf23d94c71bcdc8746e37c8147
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 319041
+  packageName: Procedural Floating Island Generator
+  packageVersion: 1.0.0
+  assetPath: Assets/Settings/DemoSceneProfile.asset
+  uploadId: 756754
