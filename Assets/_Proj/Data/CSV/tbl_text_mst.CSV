@@ -1,13 +1,35 @@
 kr_text_id,kr_text
 string,string
-chapter_1_name,새로운 모험의 시작
-stage_1_1_name,숲에서 하룻밤!
-stage_1_2_name,신나는 박스 놀이!
-deco_maple_tree,단풍 나무
-costume_cute_hat,귀여운 모자
-animal_hog,호기
-home_sweet_home,따뜻한 우리의 집
-icon_cocodugi,반짝이는 코코두기 아이콘
-artifact_teapot,오래된 차 주전자
-background_basic,기본 배경
-quest_name_gamelogin,하루한번 코코두기와
+[chapter_1_name],새로운 모험의 시작
+[stage_1_1_name],숲에서 하룻밤!
+[stage_1_2_name],신나는 박스 놀이!
+[deco_maple_tree],단풍 나무
+[costume_cute_hat],귀여운 모자
+[animal_hog],호기
+[home_sweet_home],따뜻한 우리의 집
+[icon_cocodugi],반짝이는 코코두기 아이콘
+[artifact_teapot],오래된 차 주전자
+[background_basic],기본 배경
+[quest_name_gamelogin],하루한번 코코두기와
+[deco_white_fence],흰색 울타리
+[deco_fence],나무 울타리
+[deco_ground_planks],나무 바닥판
+[deco_fireplace],벽난로
+[deco_tree_lime],라임 나무
+[deco_weed_Pot],잡초 화분
+[deco_decorative_Pot],장식 화분
+[deco_firepit],모닥불
+[deco_well],우물
+[deco_carriage],트레일러
+[deco_traffic_cone],꼬깔콘
+[deco_tires],타이어
+[deco_generator],발전기
+[deco_wood_chair],목재 의자
+[deco_orange_audio],주황색 오디오
+[deco_tree_large],큰 나무
+[deco_tree_dead],고목 나무
+[deco_grass],잡초
+[deco_log_chair],통나무 의자
+[deco_cloud table],구름 탁자
+[deco_mini_pot],미니 화분
+[deco_helpground],구조 신호판

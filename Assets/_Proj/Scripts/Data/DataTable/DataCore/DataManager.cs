@@ -1,15 +1,16 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    //Data¸¦ ÃÊ±âÈ­ÇÏ°í µî·Ï, Provider Å¬·¡½ºµéÀ» ÅëÇØ µ¥ÀÌÅÍ¿¡ Á¢±Ù
-    //µ¥ÀÌÅÍÅ×ÀÌºíÀÌ Ãß°¡µÇ¸é Provider Å¬·¡½º¸¦ »ı¼ºÇÏ°í ÀÌ°÷¿¡ µî·Ï
+    //Dataë¥¼ ì´ˆê¸°í™”í•˜ê³  ë“±ë¡, Provider í´ë˜ìŠ¤ë“¤ì„ í†µí•´ ë°ì´í„°ì— ì ‘ê·¼
+    //ë°ì´í„°í…Œì´ë¸”ì´ ì¶”ê°€ë˜ë©´ Provider í´ë˜ìŠ¤ë¥¼ ìƒì„±í•˜ê³  ì´ê³³ì— ë“±ë¡
     public static DataManager Instance { get; private set; }
     [SerializeField] private DataRegistry dataRegistry;
 
     public AnimalProvider Animal { get; private set; }
     public ArtifactProvider Artifact { get; private set; }
     public BackgroundProvider Background { get; private set; }
+    public ChapterProvider Chapter { get; private set; }
     public CodexProvider Codex { get; private set; }
     public CostumeProvider Costume { get; private set; }
     public DecoProvider Deco { get; private set; }
@@ -39,6 +40,8 @@ public class DataManager : MonoBehaviour
         Artifact = new ArtifactProvider(dataRegistry.artifactDB, loader);
 
         Background = new BackgroundProvider(dataRegistry.backgroundDB, loader);
+
+        Chapter = new ChapterProvider(dataRegistry.chapterDB, loader);
 
         Codex = new CodexProvider(dataRegistry.codexDB, loader);
 

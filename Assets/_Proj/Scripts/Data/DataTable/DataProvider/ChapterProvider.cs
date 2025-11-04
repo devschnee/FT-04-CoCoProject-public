@@ -1,3 +1,4 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ChapterProvider : IDataProvider<string, ChapterData>
@@ -26,5 +27,10 @@ public class ChapterProvider : IDataProvider<string, ChapterData>
     {
         var data = GetData(id);
         return data?.GetChapterBgIcon(loader);
+    }
+    // 전체 챕터 반환
+    public List<ChapterData> GetAllChapters()
+    {
+        return database.chapterList;
     }
 }

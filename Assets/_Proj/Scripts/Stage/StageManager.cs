@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class StageClearInfo
@@ -16,7 +17,8 @@ public class StageManager : MonoBehaviour
 {
     //이 클래스가 해야 할 일: 스테이지 구성 요청(블록팩토리), 스테이지 내 각종 상호작용 상태 기억, 시작점에 주인공 생성, 주인공이 도착점에 도달 시 스테이지 클리어 처리.
 
-
+    [Header("IS TEST MODE??????????????????")]
+    public bool isTest;
 
 
     public Transform stageRoot;
@@ -25,6 +27,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] Transform joystickRoot;
     GameObject playerObject;
     //불러올 맵의 이름
+    [Header("PLEASE USE ONLY WHEN TEST MODE")]
     public string mapNameToLoad;
 
     Vector3Int startPoint;
@@ -42,19 +45,30 @@ public class StageManager : MonoBehaviour
      
     [SerializeField] BlockFactory factory;
 
+
+    void Awake()
+    {
+        if (!isTest)
+        {
+            currentMapData = FirebaseManager_FORTEST.Instance.currentMapData;
+        }
+    }
     async void Start()
     {
         //1. 파이어베이스가 맵 정보를 가져오길 기다림.
         //TODO: 나중에, 스테이지 들어오기 전에 이미 파이어베이스매니저는 로드할 스테이지 정보를 갖고 들어올 것이기 때문에 Start는 async일 필요 없음.
-        await Task.Delay(1000);
-        currentMapData = await FirebaseManager_FORTEST.Instance.LoadMapFromFirebase(mapNameToLoad);
+        if (isTest)
+        {
+            await Task.Delay(200); //이거 왜 하냐면 파이어베이스매니저가 아직 초기화가 안된 상황일 가능성이 높기 때문임
+            currentMapData = await FirebaseManager_FORTEST.Instance.LoadMapFromFirebase(mapNameToLoad);
+        }
 
 
         StartCoroutine(StageStart());
     }
     IEnumerator StageStart()
     {
-        stageRoot.name = mapNameToLoad;
+        //stageRoot.name = mapNameToLoad;
         //2. 가져온 맵 정보로 이 씬의 블록팩토리가 맵을 생성하도록 함.
         //2-1. 블록팩토리가 맵을 생성
         LoadStage(currentMapData);
@@ -84,6 +98,7 @@ public class StageManager : MonoBehaviour
     public void ClearStage()
     {
         Debug.Log("스테이지 클리어 확인용 로그.");
+        SceneManager.LoadScene("Lobby");
     }
 
     void SpawnPlayer()

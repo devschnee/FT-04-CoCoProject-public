@@ -1,5 +1,5 @@
 bg_id,bg_name,bg_tag,bg_icon,bg_skybox,bg_desc
-60001,[background_basic],basic,Assets/Resources/Icons/Skybox/icon_basic.png,Assets/Resources/Materials/Skybox/background_basic.mat,익숙하지만 정겨운 배경입니다
+60001,[background_basic],basic,Icons/Skybox/icon_basic,Skybox/background_basic,익숙하지만 정겨운 배경입니다
 ,,,,,
 ,,,,,
 ,,,,,

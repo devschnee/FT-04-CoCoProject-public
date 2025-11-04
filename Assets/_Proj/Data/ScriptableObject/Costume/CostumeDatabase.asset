@@ -15,8 +15,8 @@ MonoBehaviour:
   costumeList:
   - costume_id: 20001
     costume_name: "\uADC0\uC5EC\uC6B4 \uBAA8\uC790"
-    costume_prefab: Assets/Resources/Prefabs/Costume/costume_cute_hat.prefab
-    costume_icon: Assets/Resources/Icons/Costume/icon_cute_hat.png
+    costume_prefab: Prefabs/Costume/costume_cute_hat
+    costume_icon: Icons/Costume/icon_cute_hat
     cos_part: 0
     cos_tag: 0
     cos_acquire: 0

@@ -1,3 +1,3 @@
 chapter_id,chapter_name,chapter_desc,chapter_img,chapter_stagelist,chapter_bg
-chapter_1,[chapter_1_name],코코두기는 숲에서 새로운 친구를 만나게됩니다,Asset/Resources/Img/Chapter/chapter_1_main.png,"stage_1_1,stage_1_2,",Asset/Resources/Img/Chapter/chapter_1bg.png
+chapter_1,[chapter_1_name],코코두기는 숲에서 새로운 친구를 만나게됩니다,Img/Chapter/chapter_1_main,"stage_1_1,stage_1_2,",Img/Chapter/chapter_1bg
 ,,,,,

@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "236130748269",
+    "firebase_url": "https://doogymapeditor-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "doogymapeditor",
+    "storage_bucket": "doogymapeditor.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236130748269:android:b1aad775738db61b9dfc64",
+        "android_client_info": {
+          "package_name": "com.DoogyOnAndOn.CoCoDoogy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKwjmQHYA4VR6_P0tbZ3AzPWzkIZfgoOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236130748269:android:91d9ce8486247ec59dfc64",
+        "android_client_info": {
+          "package_name": "com.DoogyOnAndOn.CocoDoogy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKwjmQHYA4VR6_P0tbZ3AzPWzkIZfgoOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

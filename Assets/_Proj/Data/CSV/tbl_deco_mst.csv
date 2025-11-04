@@ -1,6 +1,23 @@
 deco_id,deco_name,deco_prefab,deco_icon,deco_type,deco_tag,deco_acquire,deco_stack,deco_desc
-10001,[deco_maple_tree],Assets/Resources/Prefabs/Deco/deco_maple_tree.prefab,Assets/Resources/Icons/Deco/icon_maple_tree.png,plant,chair,ingame,99,생명력이 강한 [deco_maple_tree]입니다
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
-,,,,,,,,
+10000,[deco_tree_large],Prefabs/Deco/SM_Env_Tree_Large_01,Icons/Deco/icon_deco_tree_large,plant,tree,shop,99,풍성한 잎이 돋아난 [deco_tree_large]입니다.
+10001,[deco_tree_lime],Prefabs/Deco/tree-lime,Icons/Deco/icon_deco_tree_lime,plant,tree,quest,99,상큼한 향을 풍기는 [deco_tree_lime]입니다.
+10002,[deco_tree_dead],Prefabs/Deco/SM_Env_Tree_Dead_04,Icons/Deco/icon_deco_tree_dead,plant,tree,quest,99,메말라버린 [deco_tree_dead]입니다
+10003,[deco_grass],Prefabs/Deco/SM_Env_Fern_01,Icons/Deco/icon_deco_grass,plant,tree,shop,99,바람에 흔들리는 [deco_grass]입니다.
+10004,[deco_fence],Prefabs/Deco/fence,Icons/Deco/icon_deco_fence,structure,fence,ingame,99,깔끔한 [deco_white_fence]입니다.
+10005,[deco_white_fence],Prefabs/Deco/fence-picket,Icons/Deco/icon_deco_white_fence,structure,fence,shop,99,튼튼한 [deco_fence]입니다.
+10006,[deco_well],Prefabs/Deco/SM_Env_Big_Tree_Base_01,Icons/Deco/icon_deco_well,structure,water,ingame,99,이곳엔 수많은 소원이 스며든 [deco_well]입니다.
+10007,[deco_ground_planks],Prefabs/Deco/SM_Prop_Ground_Planks_02,Icons/Deco/icon_deco_ground_planks,prop,ground,shop,99,발밑을 단단히 받쳐주는 [deco_ground_planks]입니다.
+10008,[deco_helpground],Prefabs/Deco/help-ground-apocalypse,Icons/Deco/icon_deco_help_ground,prop,ground,shop,99,지워지지 않은 씁쓸한 흔적의 [deco_help_ground]입니다.
+10009,[deco_firepit],Prefabs/Deco/fireplace-nofire,Icons/Deco/icon_deco_firepit,prop,lite,ingame,99,은은하게 타오르는 [deco_firepit]입니다.
+10010,[deco_fireplace],Prefabs/Deco/Fireplace_10,Icons/Deco/icon_deco_fireplace,prop,lite,quest,99,낡은 [deco_fireplace]입니다.
+10011,[deco_carriage],Prefabs/Deco/tractor-carriage,Icons/Deco/icon_deco_carriage,prop,street,ingame,99,누군가와 함께 먼 길을 달려온 [deco_carriage]입니다.
+10012,[deco_traffic_cone],Prefabs/Deco/traffic-cone,Icons/Deco/icon_deco_traffic_cone,prop,street,ingame,99,한때 길 위를 지켰던 [deco_traffic_cone]입니다
+10013,[deco_tires],Prefabs/Deco/tires,Icons/Deco/icon_deco_tires,prop,street,ingame,99,오래된 고무 냄새가 나는 [deco_tires]입니다.
+10014,[deco_generator],Prefabs/Deco/generator,Icons/Deco/icon_deco_generator,prop,street,quest,99,낮게 윙윙거리는 [deco_generator]입니다.
+10015,[deco_decorative_pot],Prefabs/Deco/Plants_15,Icons/Deco/icon_deco_decorative_pot,furniture,tree,quest,99,보기 좋게 꾸며진 [deco_decorative_Pot]입니다.
+10016,[deco_weed_pot],Prefabs/Deco/Plants_03,Icons/Deco/icon_deco_weed_pot,furniture,tree,ingame,99,무성한 [deco_weed_Pot]입니다.
+10017,[deco_mini_pot],Prefabs/Deco/Plants_11,Icons/Deco/icon_deco_mini_pot,furniture,tree,shop,99,작고 귀여운 [deco_Mini_Plant_Pot]입니다.
+10018,[deco_wood_chair],Prefabs/Deco/egypt-market-table-short,Icons/Deco/icon_deco_wood_chair,furniture,chair,ingame,99,나무 냄새가 나는 [deco_wood_chair]입니다.
+10019,[deco_orange_audio],Prefabs/Deco/Audio_02,Icons/Deco/icon_deco_orange_audio,furniture,music,shop,99,세상에 남은 마지막 [deco_orange_audio]입니다.
+10020,[deco_log_chair],Prefabs/Deco/stump,Icons/Deco/icon_deco_log_chair,furniture,chair,ingame,99,장인이 만든 [deco_log_chair]입니다.
+10021,[deco_cloud table],Prefabs/Deco/Kids_Table_02,Icons/Deco/icon_deco_cloud table,furniture,table,shop,99,어린 아이가 사용했던 [deco_cloud_table]입니다.

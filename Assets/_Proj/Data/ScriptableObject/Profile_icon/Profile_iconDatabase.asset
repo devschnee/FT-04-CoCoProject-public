@@ -15,7 +15,7 @@ MonoBehaviour:
   profileList:
   - icon_id: 120001
     icon_name: "\uBC18\uC9DD\uC774\uB294 \uCF54\uCF54\uB450\uAE30 \uC544\uC774\uCF58"
-    icon_image: Assets/Resources/Icons/Profile/icon_cocodugi.png
+    icon_image: Icons/Profile/icon_cocodugi
     icon_acquire: 0
     icon_desc: "\uC88B\uC544\uC694 500\uAC1C\uB97C \uBAA8\uC740 \uB2F9\uC2E0\uC744
       \uC704\uD55C \uC120\uBB3C\uC785\uB2C8\uB2E4"

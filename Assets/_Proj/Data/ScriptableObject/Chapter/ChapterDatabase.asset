@@ -17,8 +17,8 @@ MonoBehaviour:
     chapter_name: "\uC0C8\uB85C\uC6B4 \uBAA8\uD5D8\uC758 \uC2DC\uC791"
     chapter_desc: "\uCF54\uCF54\uB450\uAE30\uB294 \uC232\uC5D0\uC11C \uC0C8\uB85C\uC6B4
       \uCE5C\uAD6C\uB97C \uB9CC\uB098\uAC8C\uB429\uB2C8\uB2E4"
-    chapter_img: Asset/Resources/Img/Chapter/chapter_1_main.png
+    chapter_img: Img/Chapter/chapter_1_main
     chapter_staglist:
     - stage_1_1
     - stage_1_2
-    chapter_bg: Asset/Resources/Img/Chapter/chapter_1bg.png
+    chapter_bg: Img/Chapter/chapter_1bg

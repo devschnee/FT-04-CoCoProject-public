@@ -15,6 +15,7 @@ MonoBehaviour:
   animalDB: {fileID: 11400000, guid: cf238dff9788eed47831c21b58e8c07e, type: 2}
   artifactDB: {fileID: 11400000, guid: a54830c91f91a76448d894ea23cc2244, type: 2}
   backgroundDB: {fileID: 11400000, guid: 27b641d3739acc147b53051921310ee0, type: 2}
+  chapterDB: {fileID: 11400000, guid: b1350df3d3a5248488e4b08e8114afca, type: 2}
   codexDB: {fileID: 11400000, guid: e4ee84fcac1475c45a34ccec400ae50f, type: 2}
   costumeDB: {fileID: 11400000, guid: 03068cb0a80eace408fa4bf98760f6c5, type: 2}
   decoDB: {fileID: 11400000, guid: 5410dd22bd0bdc34faa6c298c0d0e778, type: 2}

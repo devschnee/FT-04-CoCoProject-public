@@ -1,5 +1,5 @@
 animal_id,animal_name,animal_type,animal_tag,animal_prefab,animal_icon,animal_acquire,animal_desc
-30001,[animal_hog],pig,basic,Assets/Resources/Prefabs/Animal/animal_hog.prefab,Assets/Resources/Icons/Animal/animal_hog.png,ingame,산에서 만난 돌직구를 좋아하는 멧돼지 친구입니다
+30001,[animal_hog],pig,basic,Prefabs/Animal/animal_hog,Icons/Animal/animal_hog,ingame,산에서 만난 돌직구를 좋아하는 멧돼지 친구입니다
 ,,,,,,,
 ,,,,,,,
 ,,,,,,,

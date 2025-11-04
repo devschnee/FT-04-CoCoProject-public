@@ -13,12 +13,206 @@ MonoBehaviour:
   m_Name: DecoDatabase
   m_EditorClassIdentifier: 
   decoList:
-  - deco_id: 10001
-    deco_name: "\uB2E8\uD48D \uB098\uBB34"
-    deco_prefab: Prefabs/Deco/deco_maple_tree
-    deco_icon: Icons/Deco/icon_maple_tree
+  - deco_id: 10000
+    deco_name: "\uD070 \uB098\uBB34"
+    deco_prefab: Prefabs/Deco/SM_Env_Tree_Large_01
+    deco_icon: Icons/Deco/icon_deco_tree_large
     deco_type: 0
+    deco_tag: 0
+    deco_acquire: 2
+    deco_stack: 99
+    deco_desc: "\uD48D\uC131\uD55C \uC78E\uC774 \uB3CB\uC544\uB09C \uD070 \uB098\uBB34\uC785\uB2C8\uB2E4."
+  - deco_id: 10001
+    deco_name: "\uB77C\uC784 \uB098\uBB34"
+    deco_prefab: Prefabs/Deco/tree-lime
+    deco_icon: Icons/Deco/icon_deco_tree_lime
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 0
+    deco_stack: 99
+    deco_desc: "\uC0C1\uD07C\uD55C \uD5A5\uC744 \uD48D\uAE30\uB294 \uB77C\uC784 \uB098\uBB34\uC785\uB2C8\uB2E4."
+  - deco_id: 10002
+    deco_name: "\uACE0\uBAA9 \uB098\uBB34"
+    deco_prefab: Prefabs/Deco/SM_Env_Tree_Dead_04
+    deco_icon: Icons/Deco/icon_deco_tree_dead
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 0
+    deco_stack: 99
+    deco_desc: "\uBA54\uB9D0\uB77C\uBC84\uB9B0 \uACE0\uBAA9 \uB098\uBB34\uC785\uB2C8\uB2E4"
+  - deco_id: 10003
+    deco_name: "\uC7A1\uCD08"
+    deco_prefab: Prefabs/Deco/SM_Env_Fern_01
+    deco_icon: Icons/Deco/icon_deco_grass
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 2
+    deco_stack: 99
+    deco_desc: "\uBC14\uB78C\uC5D0 \uD754\uB4E4\uB9AC\uB294 \uC7A1\uCD08\uC785\uB2C8\uB2E4."
+  - deco_id: 10004
+    deco_name: "\uB098\uBB34 \uC6B8\uD0C0\uB9AC"
+    deco_prefab: Prefabs/Deco/fence
+    deco_icon: Icons/Deco/icon_deco_fence
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 1
+    deco_stack: 99
+    deco_desc: "\uAE54\uB054\uD55C \uD770\uC0C9 \uC6B8\uD0C0\uB9AC\uC785\uB2C8\uB2E4."
+  - deco_id: 10005
+    deco_name: "\uD770\uC0C9 \uC6B8\uD0C0\uB9AC"
+    deco_prefab: Prefabs/Deco/fence-picket
+    deco_icon: Icons/Deco/icon_deco_white_fence
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 2
+    deco_stack: 99
+    deco_desc: "\uD2BC\uD2BC\uD55C \uB098\uBB34 \uC6B8\uD0C0\uB9AC\uC785\uB2C8\uB2E4."
+  - deco_id: 10006
+    deco_name: "\uC6B0\uBB3C"
+    deco_prefab: Prefabs/Deco/SM_Env_Big_Tree_Base_01
+    deco_icon: Icons/Deco/icon_deco_well
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 1
+    deco_stack: 99
+    deco_desc: "\uC774\uACF3\uC5D4 \uC218\uB9CE\uC740 \uC18C\uC6D0\uC774 \uC2A4\uBA70\uB4E0
+      \uC6B0\uBB3C\uC785\uB2C8\uB2E4."
+  - deco_id: 10007
+    deco_name: "\uB098\uBB34 \uBC14\uB2E5\uD310"
+    deco_prefab: Prefabs/Deco/SM_Prop_Ground_Planks_02
+    deco_icon: Icons/Deco/icon_deco_ground_planks
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 2
+    deco_stack: 99
+    deco_desc: "\uBC1C\uBC11\uC744 \uB2E8\uB2E8\uD788 \uBC1B\uCCD0\uC8FC\uB294 \uB098\uBB34
+      \uBC14\uB2E5\uD310\uC785\uB2C8\uB2E4."
+  - deco_id: 10008
+    deco_name: "\uAD6C\uC870 \uC2E0\uD638\uD310"
+    deco_prefab: Prefabs/Deco/help-ground-apocalypse
+    deco_icon: Icons/Deco/icon_deco_help_ground
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 2
+    deco_stack: 99
+    deco_desc: "\uC9C0\uC6CC\uC9C0\uC9C0 \uC54A\uC740 \uC501\uC4F8\uD55C \uD754\uC801\uC758
+      [deco_help_ground]\uC785\uB2C8\uB2E4."
+  - deco_id: 10009
+    deco_name: "\uBAA8\uB2E5\uBD88"
+    deco_prefab: Prefabs/Deco/fireplace-nofire
+    deco_icon: Icons/Deco/icon_deco_firepit
+    deco_type: 0
+    deco_tag: 4
+    deco_acquire: 1
+    deco_stack: 99
+    deco_desc: "\uC740\uC740\uD558\uAC8C \uD0C0\uC624\uB974\uB294 \uBAA8\uB2E5\uBD88\uC785\uB2C8\uB2E4."
+  - deco_id: 10010
+    deco_name: "\uBCBD\uB09C\uB85C"
+    deco_prefab: Prefabs/Deco/Fireplace_10
+    deco_icon: Icons/Deco/icon_deco_fireplace
+    deco_type: 0
+    deco_tag: 4
+    deco_acquire: 0
+    deco_stack: 99
+    deco_desc: "\uB0A1\uC740 \uBCBD\uB09C\uB85C\uC785\uB2C8\uB2E4."
+  - deco_id: 10011
+    deco_name: "\uD2B8\uB808\uC77C\uB7EC"
+    deco_prefab: Prefabs/Deco/tractor-carriage
+    deco_icon: Icons/Deco/icon_deco_carriage
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 1
+    deco_stack: 99
+    deco_desc: "\uB204\uAD70\uAC00\uC640 \uD568\uAED8 \uBA3C \uAE38\uC744 \uB2EC\uB824\uC628
+      \uD2B8\uB808\uC77C\uB7EC\uC785\uB2C8\uB2E4."
+  - deco_id: 10012
+    deco_name: "\uAF2C\uAE54\uCF58"
+    deco_prefab: Prefabs/Deco/traffic-cone
+    deco_icon: Icons/Deco/icon_deco_traffic_cone
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 1
+    deco_stack: 99
+    deco_desc: "\uD55C\uB54C \uAE38 \uC704\uB97C \uC9C0\uCF30\uB358 \uAF2C\uAE54\uCF58\uC785\uB2C8\uB2E4"
+  - deco_id: 10013
+    deco_name: "\uD0C0\uC774\uC5B4"
+    deco_prefab: Prefabs/Deco/tires
+    deco_icon: Icons/Deco/icon_deco_tires
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 1
+    deco_stack: 99
+    deco_desc: "\uC624\uB798\uB41C \uACE0\uBB34 \uB0C4\uC0C8\uAC00 \uB098\uB294 \uD0C0\uC774\uC5B4\uC785\uB2C8\uB2E4."
+  - deco_id: 10014
+    deco_name: "\uBC1C\uC804\uAE30"
+    deco_prefab: Prefabs/Deco/generator
+    deco_icon: Icons/Deco/icon_deco_generator
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 0
+    deco_stack: 99
+    deco_desc: "\uB0AE\uAC8C \uC719\uC719\uAC70\uB9AC\uB294 \uBC1C\uC804\uAE30\uC785\uB2C8\uB2E4."
+  - deco_id: 10015
+    deco_name: '[deco_decorative_pot]'
+    deco_prefab: Prefabs/Deco/Plants_15
+    deco_icon: Icons/Deco/icon_deco_decorative_pot
+    deco_type: 2
+    deco_tag: 0
+    deco_acquire: 0
+    deco_stack: 99
+    deco_desc: "\uBCF4\uAE30 \uC88B\uAC8C \uAFB8\uBA70\uC9C4 \uC7A5\uC2DD \uD654\uBD84\uC785\uB2C8\uB2E4."
+  - deco_id: 10016
+    deco_name: '[deco_weed_pot]'
+    deco_prefab: Prefabs/Deco/Plants_03
+    deco_icon: Icons/Deco/icon_deco_weed_pot
+    deco_type: 2
+    deco_tag: 0
+    deco_acquire: 1
+    deco_stack: 99
+    deco_desc: "\uBB34\uC131\uD55C \uC7A1\uCD08 \uD654\uBD84\uC785\uB2C8\uB2E4."
+  - deco_id: 10017
+    deco_name: "\uBBF8\uB2C8 \uD654\uBD84"
+    deco_prefab: Prefabs/Deco/Plants_11
+    deco_icon: Icons/Deco/icon_deco_mini_pot
+    deco_type: 2
+    deco_tag: 0
+    deco_acquire: 2
+    deco_stack: 99
+    deco_desc: "\uC791\uACE0 \uADC0\uC5EC\uC6B4 [deco_Mini_Plant_Pot]\uC785\uB2C8\uB2E4."
+  - deco_id: 10018
+    deco_name: "\uBAA9\uC7AC \uC758\uC790"
+    deco_prefab: Prefabs/Deco/egypt-market-table-short
+    deco_icon: Icons/Deco/icon_deco_wood_chair
+    deco_type: 2
     deco_tag: 2
     deco_acquire: 1
     deco_stack: 99
-    deco_desc: "\uC0DD\uBA85\uB825\uC774 \uAC15\uD55C \uB2E8\uD48D \uB098\uBB34\uC785\uB2C8\uB2E4"
+    deco_desc: "\uB098\uBB34 \uB0C4\uC0C8\uAC00 \uB098\uB294 \uBAA9\uC7AC \uC758\uC790\uC785\uB2C8\uB2E4."
+  - deco_id: 10019
+    deco_name: "\uC8FC\uD669\uC0C9 \uC624\uB514\uC624"
+    deco_prefab: Prefabs/Deco/Audio_02
+    deco_icon: Icons/Deco/icon_deco_orange_audio
+    deco_type: 2
+    deco_tag: 0
+    deco_acquire: 2
+    deco_stack: 99
+    deco_desc: "\uC138\uC0C1\uC5D0 \uB0A8\uC740 \uB9C8\uC9C0\uB9C9 \uC8FC\uD669\uC0C9
+      \uC624\uB514\uC624\uC785\uB2C8\uB2E4."
+  - deco_id: 10020
+    deco_name: "\uD1B5\uB098\uBB34 \uC758\uC790"
+    deco_prefab: Prefabs/Deco/stump
+    deco_icon: Icons/Deco/icon_deco_log_chair
+    deco_type: 2
+    deco_tag: 2
+    deco_acquire: 1
+    deco_stack: 99
+    deco_desc: "\uC7A5\uC778\uC774 \uB9CC\uB4E0 \uD1B5\uB098\uBB34 \uC758\uC790\uC785\uB2C8\uB2E4."
+  - deco_id: 10021
+    deco_name: "\uAD6C\uB984 \uD0C1\uC790"
+    deco_prefab: Prefabs/Deco/Kids_Table_02
+    deco_icon: Icons/Deco/icon_deco_cloud table
+    deco_type: 2
+    deco_tag: 0
+    deco_acquire: 2
+    deco_stack: 99
+    deco_desc: "\uC5B4\uB9B0 \uC544\uC774\uAC00 \uC0AC\uC6A9\uD588\uB358 [deco_cloud_table]\uC785\uB2C8\uB2E4."

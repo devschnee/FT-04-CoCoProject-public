@@ -28,7 +28,7 @@ public static class TextParser
             if (v.Length < 2)
                 continue;
 
-            string key = v[0].Trim().Trim('"');
+            string key = v[0].Trim().Trim('"').Trim('[', ']');
             string value = v[1].Trim().Trim('"');
             //첫 번째 컬럼을 key, 두 번째 컬럼을 value로 사용. 양쪽 공백과 큰따옴표(") 제거.
 

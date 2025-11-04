@@ -1,2 +1,2 @@
 codex_id,codex_type,item_id,codex_lore,codex_display,codex_icon
-codex_deco_maple_tree,deco,10001,과거에는 이 나무가 도시 곳곳을 차지했다고합니다. 끈질긴 생명력으로 다시 한번 세상을 아름답게 꾸밀 준비가 되었습니다.,Assets/Resources/Codex_display/Deco/codex_display_maple_tree.png,Assets/Resources/Icons/Codex/codex_icon_maple_tree.png
+codex_deco_maple_tree,deco,10001,과거에는 이 나무가 도시 곳곳을 차지했다고합니다. 끈질긴 생명력으로 다시 한번 세상을 아름답게 꾸밀 준비가 되었습니다.,Codex_display/Deco/codex_display_maple_tree,Icons/Codex/codex_icon_maple_tree

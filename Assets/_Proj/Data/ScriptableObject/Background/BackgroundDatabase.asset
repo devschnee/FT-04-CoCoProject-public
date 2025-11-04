@@ -16,6 +16,6 @@ MonoBehaviour:
   - bg_id: 60001
     bg_name: "\uAE30\uBCF8 \uBC30\uACBD"
     bg_tag: 0
-    bg_icon: Assets/Resources/Icons/Skybox/icon_basic.png
-    bg_skybox: Assets/Resources/Materials/Skybox/background_basic.mat
+    bg_icon: Icons/Skybox/icon_basic
+    bg_skybox: Skybox/background_basic
     bg_desc: "\uC775\uC219\uD558\uC9C0\uB9CC \uC815\uACA8\uC6B4 \uBC30\uACBD\uC785\uB2C8\uB2E4"

@@ -1,6 +1,6 @@
 stage_id,stage_name,stage_img,stage_desc,map_id,start_cutscene,start_talk,end_talk,end_cutscene,treasure_01_id,treasure_02_id,treasure_03_id,
-stage_1_1,[stage_1_1_name],Asset/Resources/Img/Stage/stage_1_1_main.png,"주인님이 날 두고 먼저 갔어, 새로운 놀이 시간이야",map_1_1,Asset/Resources/movie/Stage/stage_1_1_start.mp4,talk_1_1_1,talk_1_1_2,Asset/Resources/movie/Stage/stage_1_1_end.mp4,treasure_1_1_1,treasure_1_1_2,treasure_1_1_3,
-stage_1_2,[stage_1_2_name],Asset/Resources/Img/Stage/stage_1_2_main.png,박스를 가지고 신나게 놀아보자,map_1_2,-1,-1,-1,-1,treasure_1_2_1,treasure_1_2_2,treasure_1_2_3,
+stage_1_1,[stage_1_1_name],Img/Stage/stage_1_1_main,"주인님이 날 두고 먼저 갔어, 새로운 놀이 시간이야",map_1_1,/movie/Stage/stage_1_1_start.mp4,talk_1_1_1,talk_1_1_2,/movie/Stage/stage_1_1_end.mp4,treasure_1_1_1,treasure_1_1_2,treasure_1_1_3,
+stage_1_2,[stage_1_2_name],Img/Stage/stage_1_2_main,박스를 가지고 신나게 놀아보자,map_1_2,-1,-1,-1,-1,treasure_1_2_1,treasure_1_2_2,treasure_1_2_3,
 ,,,,,,,,,,,,
 ,,,,,,,,,,,,
 ,,,,,,,,,,,,

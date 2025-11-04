@@ -1,12 +1,13 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataRegistry", menuName = "GameData/DataRegistry")]
 public class DataRegistry : ScriptableObject
 {
-    //°¢ µ¥ÀÌÅÍº£ÀÌ½º¸¦ ÇÑ°÷¿¡ ¸ğ¾ÆµÎ´Â ScriptableObject
+    //ê° ë°ì´í„°ë² ì´ìŠ¤ë¥¼ í•œê³³ì— ëª¨ì•„ë‘ëŠ” ScriptableObject
     public AnimalDatabase animalDB;
     public ArtifactDatabase artifactDB;
     public BackgroundDatabase backgroundDB;
+    public ChapterDatabase chapterDB;
     public CodexDatabase codexDB;
     public CostumeDatabase costumeDB;
     public DecoDatabase decoDB;

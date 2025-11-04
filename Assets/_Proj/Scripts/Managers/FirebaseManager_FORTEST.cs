@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Firebase;
+using Firebase.Auth;
+using Firebase.Database;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using Firebase;
-using Firebase.Database;
 
 public class FirebaseManager_FORTEST : MonoBehaviour
 {
@@ -13,31 +14,34 @@ public class FirebaseManager_FORTEST : MonoBehaviour
     private DatabaseReference MapDataRef => DB.RootReference.Child($"mapData");
     private DatabaseReference MapMetaRef => DB.RootReference.Child($"mapMeta");
 
+    public StageManager stageManager;
+
     public bool IsInitialized { get; private set; }
+    public MapData currentMapData;
     async void Start()
     {
         DependencyStatus status = await FirebaseApp.CheckAndFixDependenciesAsync();
         
         //TODO: 실제 게임용 파이어베이스로 바꾸게 될 경우 아래는 필요하지 않게 됨. 테스트용 파이어베이스 참조를 위한 코드임.
-        var options = new AppOptions()
-        {
-            ApiKey = "AIzaSyCwkcOr1bVZRgdHsx773b6rO2drpjy1dyY",
-            DatabaseUrl = new("https://doogymapeditor-default-rtdb.asia-southeast1.firebasedatabase.app/"),
-            ProjectId = "doogymapeditor",
-            StorageBucket = "doogymapeditor.firebasestorage.app",
-            MessageSenderId = "236130748269",
-            AppId = "1:236130748269:web:34a94137f83bef839dfc64"
-        };
+        //var options = new AppOptions()
+        //{
+        //    ApiKey = "AIzaSyCwkcOr1bVZRgdHsx773b6rO2drpjy1dyY",
+        //    DatabaseUrl = new("https://doogymapeditor-default-rtdb.asia-southeast1.firebasedatabase.app/"),
+        //    ProjectId = "doogymapeditor",
+        //    StorageBucket = "doogymapeditor.firebasestorage.app",
+        //    MessageSenderId = "236130748269",
+        //    AppId = "1:236130748269:web:34a94137f83bef839dfc64"
+        //};
 
-        App = FirebaseApp.Create(options);
+        //App = FirebaseApp.Create(options);
 
         if (status == DependencyStatus.Available)
         {
 
             //초기화 성공
             Debug.Log($"파이어베이스 초기화 성공");
-            DB = FirebaseDatabase.GetInstance(App);
-            IsInitialized = true;
+            App = FirebaseApp.DefaultInstance;
+            DB = FirebaseDatabase.DefaultInstance;
         }
         else
         {
@@ -118,5 +122,10 @@ public class FirebaseManager_FORTEST : MonoBehaviour
             Debug.LogError(ee.Message);
             return null;
         }
+    }
+
+    public async Task Temp(string id)
+    {
+        currentMapData =  await LoadMapFromFirebase(id);
     }
 }
