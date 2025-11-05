@@ -103,5 +103,13 @@ InitTestScene*.unity*
 /[Aa]ssets/_Proj/_NotShared.meta
 
 # ==== Firebase 공유 X ====
-[Aa]ssets/[Ff]irebase/
-[Aa]ssets/[Ff]irebase.meta
+#[Aa]ssets/[Ff]irebase/
+#[Aa]ssets/[Ff]irebase.meta
+
+#아래 파일은 용량 172mb짜리임.
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-13_2_0.bundle
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-13_2_0.bundle.meta
+
+#아래 파일은 용량 110mb짜리임.
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-13_2_0.so
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-13_2_0.so.meta
