@@ -38,6 +38,8 @@ public class StageManager : MonoBehaviour
     public List<Vector3Int> blockPositions = new();
     public List<Block> blocks = new();
 
+    public string currentStageId;
+
     //맵의 이름으로 찾아온 현재 맵 데이터 객체 (초기상태로의 복귀를 위해 필요)
     private MapData currentMapData; //맵데이터는 늘 기억되고 있을 것임.
 
@@ -51,6 +53,7 @@ public class StageManager : MonoBehaviour
         if (!isTest)
         {
             currentMapData = FirebaseManager_FORTEST.Instance.currentMapData;
+            currentStageId = FirebaseManager_FORTEST.Instance.selectStageID;
         }
     }
     async void Start()
@@ -98,7 +101,24 @@ public class StageManager : MonoBehaviour
     public void ClearStage()
     {
         Debug.Log("스테이지 클리어 확인용 로그.");
-        SceneManager.LoadScene("Lobby");
+
+        //Todo : 클리어 UI 나오게 변경
+        StageUIManager.Instance.Overlay.SetActive(true);
+        StageUIManager.Instance.ResultPanel.SetActive(true);
+        StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
+
+        var data = DataManager.Instance.Stage.GetMapNameData(currentStageId);
+
+        StageUIManager.Instance.stageName.text = data.stage_name;
+
+        //Todo : 이하 코드들은 유물 획득 여부에 따라 값 변경되어야함
+        //StageUIManager.Instance.star[0].sprite = star;
+        //StageUIManager.Instance.stageImage.sprite = stage;
+        //StageUIManager.Instance.stageText.text = text;
+        //StageUIManager.Instance.reward[0].sprite = DataManager.Instance.Stage.GetIcon(data.treasure_01_id);
+        //StageUIManager.Instance.reward[1].sprite = DataManager.Instance.Stage.GetIcon(data.treasure_02_id);
+        //StageUIManager.Instance.reward[2].sprite = DataManager.Instance.Stage.GetIcon(data.treasure_03_id);
+
     }
 
     void SpawnPlayer()

@@ -1,38 +1,67 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class StageUIManager : MonoBehaviour
 {
+    public static StageUIManager Instance {  get; private set; }
+
+
     [Header("Button")]
     public Button OptionOpenButton;
     public Button OptionCloseButton;
     public Button RetryButton;
     public Button QuitButton;
+    public Button ExitButton;
 
     [Header("OptionObject")]
-    public GameObject OptionImg;
+    public GameObject OptionPanel;
+    public GameObject ResultPanel;
+    public GameObject Overlay;
 
-    private string map_id;
+    [Header("ResultPanel")]
+    public TextMeshProUGUI stageName;
+    public Image[] star;
+    public Image stageImage;
+    public TextMeshProUGUI stageText;
+    public Image[] reward;
+
+    private string currentChapter;
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         OptionOpenButton.onClick.AddListener(OptionOpen);
         OptionCloseButton.onClick.AddListener(OptionClose);
         RetryButton.onClick.AddListener(Retry);
         QuitButton.onClick.AddListener(Quit);
-        OptionImg.SetActive(false);
+        ExitButton.onClick.AddListener(Exit);
+
+        Overlay.SetActive(false);
+        OptionOpenButton.gameObject.SetActive(true);
+        OptionPanel.SetActive(false);
+        ResultPanel.SetActive(false);
     }
 
     void OptionOpen()
     {
-        OptionImg.SetActive(true);
+        OptionPanel.SetActive(true);
+        Overlay.SetActive(true);
         OptionOpenButton.gameObject.SetActive(false);
     }
 
     void OptionClose()
     {
-        OptionImg.SetActive(false);
+        OptionPanel.SetActive(false);
+        Overlay.SetActive(false);
         OptionOpenButton.gameObject.SetActive(true);
     }
 
@@ -45,6 +74,14 @@ public class StageUIManager : MonoBehaviour
     void Quit()
     {
         //Todo : 챕터에 따라 스테이지 선택화면 분기
+        //currentChapter
+        SceneManager.LoadScene("Lobby");
+    }
+
+    void Exit()
+    {
+        //Todo : 챕터에 따라 스테이지 선택화면 분기
+        //currentChapter
         SceneManager.LoadScene("Lobby");
     }
 }

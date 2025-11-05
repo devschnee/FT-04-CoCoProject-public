@@ -42,7 +42,8 @@ public class StageDetailInfo : MonoBehaviour
         await FirebaseManager_FORTEST.Instance.Temp(mapId);
 
         //Todo : 챕터에 따라 분기
-        await SceneManager.LoadSceneAsync("Chapter1_StageScene");
+        //씬 이름 수정해야함
+        await SceneManager.LoadSceneAsync("Chapter1_StageScene_TESTONLY");
 
     }
 

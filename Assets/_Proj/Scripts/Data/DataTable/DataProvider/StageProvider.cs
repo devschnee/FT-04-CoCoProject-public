@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StageProvider : IDataProvider<string, StageData>
 {
@@ -14,6 +14,10 @@ public class StageProvider : IDataProvider<string, StageData>
     public StageData GetData(string id)
     {
         return database.stageDataList.Find(a => a.stage_id == id);
+    }
+    public StageData GetMapNameData(string id)
+    {
+        return database.stageDataList.Find(a => a.map_id == id);
     }
 
     public Sprite GetIcon(string id)
