@@ -24,7 +24,7 @@ public static class ArtifactParser
 
             var v = line.Split(',');
 
-            if (v.Length < 5)
+            if (v.Length < 4)
             {
                 Debug.LogWarning($"[ArtifactParser] {i}행 데이터 부족 → 스킵");
                 continue;
@@ -36,7 +36,7 @@ public static class ArtifactParser
                 continue;
             }
 
-            Enum.TryParse(v[4], true, out ArtifactType category);
+            Enum.TryParse(v[3], true, out ArtifactType category);
 
             string rawName = v[1];
             string finalName = TextParser.Resolve(rawName, textDict);
@@ -47,7 +47,6 @@ public static class ArtifactParser
                 artifact_name = finalName,
                 artifact_icon = v[2],
                 artifact_type = category,
-                artifact_desc = v[4]
             });
         }
 
