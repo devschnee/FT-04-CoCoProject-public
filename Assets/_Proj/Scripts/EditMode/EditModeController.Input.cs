@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -6,15 +6,17 @@ using UnityEngine.InputSystem.EnhancedTouch;
 using TouchES = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 /// <summary>
-/// ÀÔ·Â & Æ÷ÀÎÅÍ ¶óÀÌÇÁ»çÀÌÅ¬
-/// - Pointer Down ¡æ ´ë»ó ¼±ÅÃ
-/// - Drag ÁßÀÏ ¶§ ¿ÀºêÁ§Æ® ÀÌµ¿
-/// - Pointer Up ¡æ µå·¡±× Á¾·á
-/// - ·ÕÇÁ·¹½º ¡æ ÆíÁı¸ğµå ÁøÀÔ
+/// ì…ë ¥ & í¬ì¸í„° ë¼ì´í”„ì‚¬ì´í´
+/// - Pointer Down â†’ ëŒ€ìƒ ì„ íƒ
+/// - Drag ì¤‘ì¼ ë•Œ ì˜¤ë¸Œì íŠ¸ ì´ë™
+/// - Pointer Up â†’ ë“œë˜ê·¸ ì¢…ë£Œ
+/// - ë¡±í”„ë ˆìŠ¤ â†’ í¸ì§‘ëª¨ë“œ ì§„ì…
 /// </summary>
 public partial class EditModeController
 {
-    /// <summary>ÇÑ ÇÁ·¹ÀÓ ¾È¿¡¼­ Æ÷ÀÎÅÍÀÇ ÀüÃ¼ Èå¸§ Ã³¸®</summary>
+    #region ===== Pointer Lifecycle (Tick) =====
+
+    /// <summary>í•œ í”„ë ˆì„ ì•ˆì—ì„œ í¬ì¸í„°ì˜ ì „ì²´ íë¦„ ì²˜ë¦¬</summary>
     private void HandlePointerLifecycle()
     {
         // Down
@@ -31,7 +33,12 @@ public partial class EditModeController
             OnPointerUp();
     }
 
-    /// <summary>Æ÷ÀÎÅÍ°¡ ´­·ÈÀ» ¶§ ÃÊ±âÈ­</summary>
+    #endregion
+
+
+    #region ===== Pointer Down / Held / Up =====
+
+    /// <summary>í¬ì¸í„°ê°€ ëˆŒë ¸ì„ ë•Œ ì´ˆê¸°í™”</summary>
     private void OnPointerDown()
     {
         pointerDown = true;
@@ -43,15 +50,15 @@ public partial class EditModeController
             return;
         }
 
-        // ´­¸° ÁöÁ¡¿¡¼­ µå·¡±× °¡´ÉÇÑ ¿ÀºêÁ§Æ®°¡ ÀÖ´ÂÁö
+        // ëˆŒë¦° ì§€ì ì—ì„œ ë“œë˜ê·¸ ê°€ëŠ¥í•œ ì˜¤ë¸Œì íŠ¸ê°€ ìˆëŠ”ì§€
         pressedHitTarget = RaycastDraggable(pressScreenPos);
         movePlaneReady = false;
 
-        // ÀÌ¹Ì ÆíÁı¸ğµå¶ó¸é ´­¸° °É ¼±ÅÃ
+        // ì´ë¯¸ í¸ì§‘ëª¨ë“œë¼ë©´ ëˆŒë¦° ê±¸ ì„ íƒ
         if (IsEditMode && pressedHitTarget)
             SelectTarget(pressedHitTarget);
 
-        // ·ÕÇÁ·¹½º ÁØºñ (ÆíÁı¸ğµå°¡ ¾Æ´Ï°í, Æ¯Á¤ ´ë»ó À§¿¡¼­ ´­·ÈÀ» ¶§¸¸)
+        // ë¡±í”„ë ˆìŠ¤ ì¤€ë¹„ (í¸ì§‘ëª¨ë“œê°€ ì•„ë‹ˆê³ , íŠ¹ì • ëŒ€ìƒ ìœ„ì—ì„œ ëˆŒë ¸ì„ ë•Œë§Œ)
         longPressArmed = false;
         longPressTimer = 0f;
         if (!IsEditMode && longPressTarget)
@@ -71,19 +78,23 @@ public partial class EditModeController
         currentPlacementValid = true;
     }
 
-    /// <summary>Æ÷ÀÎÅÍ¸¦ ´©¸¥ »óÅÂ¿¡¼­ ¿òÁ÷ÀÌ´Â µ¿¾È</summary>
+    /// <summary>í¬ì¸í„°ë¥¼ ëˆ„ë¥¸ ìƒíƒœì—ì„œ ì›€ì§ì´ëŠ” ë™ì•ˆ</summary>
     private void OnPointerHeldOrDragged()
     {
-        // ÆíÁı¸ğµå + µå·¡±× °¡´ÉÇÑ °÷¿¡¼­ ½ÃÀÛ + ½ÇÁ¦·Î ¿òÁ÷ÀÓ
+        // í¸ì§‘ëª¨ë“œ + ë“œë˜ê·¸ ê°€ëŠ¥í•œ ê³³ì—ì„œ ì‹œì‘ + ì‹¤ì œë¡œ ì›€ì§ì„
         if (IsEditMode && startedOnDraggable && CurrentTarget && IsPointerMoving())
         {
-            // µå·¡±× ½ÃÀÛ ÁøÀÔ
+            // ğŸ”’ ì§‘ì€ ì´ë™ ê¸ˆì§€ (0,0,0 ê³ ì • ì •ì±…)
+            if (IsHome(CurrentTarget))
+                return;
+
+            // ë“œë˜ê·¸ ì‹œì‘ ì§„ì…
             if (!isDragging)
             {
                 isDragging = true;
-                BlockOrbit = true; // Ä«¸Ş¶ó È¸Àü ¸·±â
+                BlockOrbit = true; // ì¹´ë©”ë¼ íšŒì „ ë§‰ê¸°
 
-                // µå·¡±× ½ÃÀÛ ½ÃÁ¡ ½º³À (Undo¿ë)
+                // ë“œë˜ê·¸ ì‹œì‘ ì‹œì  ìŠ¤ëƒ… (Undoìš©)
                 var snap = new Snap { pos = CurrentTarget.position, rot = CurrentTarget.rotation };
                 lastBeforeDrag = snap;
 
@@ -94,21 +105,21 @@ public partial class EditModeController
             var sp = GetPointerScreenPos();
             if (!ScreenPosValid(sp)) return;
 
-            // ½ÇÁ¦ ÀÌµ¿Àº Drag ÆÄ¼È¿¡¼­
+            // ì‹¤ì œ ì´ë™ì€ Drag íŒŒì…œì—ì„œ
             DragMove(sp);
         }
     }
 
-    /// <summary>Æ÷ÀÎÅÍ¸¦ ¶ÃÀ» ¶§</summary>
+    /// <summary>í¬ì¸í„°ë¥¼ ë—ì„ ë•Œ</summary>
     private void OnPointerUp()
     {
         pointerDown = false;
 
-        // ·ÕÇÁ·¹½º ÇØÁ¦
+        // ë¡±í”„ë ˆìŠ¤ í•´ì œ
         longPressArmed = false;
         longPressTimer = 0f;
 
-        // µå·¡±×°¡ ³¡³µ´Ù¸é ¸¶¹«¸®
+        // ë“œë˜ê·¸ê°€ ëë‚¬ë‹¤ë©´ ë§ˆë¬´ë¦¬
         if (isDragging)
         {
             isDragging = false;
@@ -119,12 +130,17 @@ public partial class EditModeController
         movedDuringDrag = false;
         startedOnDraggable = false;
 
-        // ´Ù½Ã Åø¹Ù À§Ä¡ °»½Å
+        // ë‹¤ì‹œ íˆ´ë°” ìœ„ì¹˜ ê°±ì‹ 
         if (IsEditMode && CurrentTarget)
             UpdateToolbar();
     }
 
-    /// <summary>±æ°Ô ´­·¯¼­ ÆíÁı¸ğµå·Î µé¾î°¡´Â Ã³¸®</summary>
+    #endregion
+
+
+    #region ===== Long Press to Enter Edit Mode =====
+
+    /// <summary>ê¸¸ê²Œ ëˆŒëŸ¬ì„œ í¸ì§‘ëª¨ë“œë¡œ ë“¤ì–´ê°€ëŠ” ì²˜ë¦¬</summary>
     private void HandleLongPress()
     {
         if (!longPressArmed || IsEditMode || !pointerDown) return;
@@ -136,7 +152,7 @@ public partial class EditModeController
             return;
         }
 
-        // ·ÕÇÁ·¹½º Áß Èçµé¸²ÀÌ ³Ê¹« Å©¸é Ãë¼Ò
+        // ë¡±í”„ë ˆìŠ¤ ì¤‘ í”ë“¤ë¦¼ì´ ë„ˆë¬´ í¬ë©´ ì·¨ì†Œ
         if ((cur - longPressStartPos).sqrMagnitude > longPressSlopPixels * longPressSlopPixels)
         {
             longPressArmed = false;
@@ -146,7 +162,7 @@ public partial class EditModeController
         longPressTimer += Time.unscaledDeltaTime;
         if (longPressTimer >= longPressSeconds)
         {
-            // ÆíÁı¸ğµå ÁøÀÔ
+            // í¸ì§‘ëª¨ë“œ ì§„ì…
             longPressArmed = false;
             SetEditMode(true, keepTarget: true);
 
@@ -155,14 +171,22 @@ public partial class EditModeController
         }
     }
 
-    /// <summary>µå·¡±×°¡ ³¡³ª¸é ÀÚµ¿À¸·Î ¿ÀºñÆ® Â÷´Ü ÇØÁ¦</summary>
+    #endregion
+
+
+    #region ===== Orbit Block Maintenance =====
+
+    /// <summary>ë“œë˜ê·¸ê°€ ëë‚˜ë©´ ìë™ìœ¼ë¡œ ì˜¤ë¹„íŠ¸ ì°¨ë‹¨ í•´ì œ</summary>
     private void MaintainOrbitBlockFlag()
     {
         if (!isDragging && BlockOrbit)
             BlockOrbit = false;
     }
 
-    #region === Static Input Helpers ===
+    #endregion
+
+
+    #region ===== Static Input Helpers =====
 
     private static Vector2 GetPointerScreenPos()
     {
@@ -224,7 +248,8 @@ public partial class EditModeController
 
     #endregion
 
-    #region === Raycast Helpers ===
+
+    #region ===== Raycast Helpers =====
 
     private Transform RaycastDraggable(Vector2 screenPos)
     {

@@ -23,61 +23,67 @@ public class QuarterView : MonoBehaviour
     [SerializeField] private CinemachineCamera cm;
 
     [Header("회전 감도")]
-    [Tooltip("좌우(Yaw) 회전 감도 (px -> deg)")]
-    [SerializeField] private float yawSpeed = 0.6f;
-    [Tooltip("상하(Pitch) 회전 감도 (px -> deg)")]
-    [SerializeField] private float pitchSpeed = 0.4f;
+    [SerializeField, Tooltip("좌우(Yaw) 회전 감도 (px -> deg)")]
+    private float yawSpeed = 0.6f;
+    [SerializeField, Tooltip("상하(Pitch) 회전 감도 (px -> deg)")]
+    private float pitchSpeed = 0.4f;
 
     [Header("줌 감도")]
-    [Tooltip("줌 속도 계수")]
-    [SerializeField] private float zoomSpeed = 0.5f;
+    [SerializeField, Tooltip("줌 속도 계수")]
+    private float zoomSpeed = 0.5f;
 
     [Header("편집 모드 팬")]
-    [Tooltip("픽셀 → 월드 변환 기본 스케일")]
-    [SerializeField] private float panBaseScale = 0.0025f;
-    [Tooltip("팬 속도 가중치")]
-    [SerializeField] private float panSpeed = 1.0f;
-    [Tooltip("마우스/손가락 이동과 반대로 화면이 움직이게 할지 여부")]
-    [SerializeField] private bool invertEditPan = true;
+    [SerializeField, Tooltip("픽셀 → 월드 변환 기본 스케일")]
+    private float panBaseScale = 0.0025f;
+    [SerializeField, Tooltip("팬 속도 가중치")]
+    private float panSpeed = 1.0f;
+    [SerializeField, Tooltip("마우스/손가락 이동과 반대로 화면이 움직이게 할지 여부")]
+    private bool invertEditPan = true;
 
     [Header("제한 (Limits)")]
-    [Tooltip("피벗-카메라 최소 거리")]
-    [SerializeField] private float minDistance = 6f;
-    [Tooltip("피벗-카메라 최대 거리")]
-    [SerializeField] private float maxDistance = 16f;
-    [Tooltip("Pitch 최소 각도")]
-    [SerializeField] private float minPitch = 5f;
-    [Tooltip("Pitch 최대 각도")]
-    [SerializeField] private float maxPitch = 90f;
+    [SerializeField, Tooltip("피벗-카메라 최소 거리")]
+    private float minDistance = 6f;
+    [SerializeField, Tooltip("피벗-카메라 최대 거리")]
+    private float maxDistance = 16f;
+    [SerializeField, Tooltip("Pitch 최소 각도")]
+    private float minPitch = 5f;
+    [SerializeField, Tooltip("Pitch 최대 각도")]
+    private float maxPitch = 90f;
+
+    [Header("옵션")]
+    [SerializeField, Tooltip("편집모드 컨트롤러를 직접 연결하지 않으면 처음 한 번만 자동 검색")]
+    private EditModeController editController;
 
     #endregion
 
     #region === Internals ===
 
-    // CM
-    private CinemachineFollow _follow;       // FollowOffset, FollowTarget 제어 대상
-    private Transform _origFollowTarget;     // 편집모드 진입 전 FollowTarget
-    private Transform _editPanPivot;         // 편집모드용 임시 피벗
+    private CinemachineFollow _follow;   // FollowOffset/Target 제어
+    private Transform _origFollowTarget; // 편집모드 진입 전 FollowTarget
+    private Transform _editPanPivot;     // 편집모드용 임시 피벗
 
-    // 회전/줌 상태
     private float _pitchDeg = 35f;
 
-    // 입력
-    private InputAction _lookDelta;          // <Pointer>/delta
-    private InputAction _primary;            // 좌클릭/탭
-    private InputAction _secondary;          // 우클릭
-    private InputAction _scrollY;            // 마우스 휠
+    // Input
+    private InputAction _lookDelta;      // <Pointer>/delta
+    private InputAction _primary;        // 좌클릭/탭
+    private InputAction _secondary;      // 우클릭
+    private InputAction _scrollY;        // 마우스 휠
 
-    // 기타
     private Camera _cam;
     private bool _wasEditMode;
-    private bool _lastBlockOrbit;            // 디버그용 추적
+    private bool _lastBlockOrbit;
 
-    // === UI-전역 오비트 차단 ===
+    // === UI-전역 오비트 차단 (외부 UI가 필요시 호출) ===
     private static int _uiOrbitBlockCount = 0;
     public static bool IsUIOrbitBlocked => _uiOrbitBlockCount > 0;
     public static void PushUIOrbitBlock() { _uiOrbitBlockCount++; }
     public static void PopUIOrbitBlock() { _uiOrbitBlockCount = Mathf.Max(0, _uiOrbitBlockCount - 1); }
+
+    // 캐시: EventSystem/Canvas 존재 여부 (UI 히트 테스트 최적화)
+    private bool _hasEventSystem;
+    private int _mousePointerId = PointerInputModule.kMouseLeftId; // -1
+    private int _touchPointerId = 0; // 첫 번째 터치만 검사
 
     #endregion
 
@@ -89,14 +95,17 @@ public class QuarterView : MonoBehaviour
 
     #endregion
 
-
     #region === Unity Lifecycle ===
+
+    private void Reset()
+    {
+        if (!cm) cm = GetComponentInChildren<CinemachineCamera>();
+    }
 
     private void Awake()
     {
-        // CM 객체 가져오기
         if (!cm)
-            cm = FindFirstObjectByType<CinemachineCamera>();
+            cm = FindFirstObjectByType<CinemachineCamera>(FindObjectsInactive.Exclude);
 
         _follow = cm ? cm.GetComponent<CinemachineFollow>() : null;
         _cam = Camera.main;
@@ -108,7 +117,7 @@ public class QuarterView : MonoBehaviour
             return;
         }
 
-        // 현재 FollowOffset으로부터 pitch 초기화
+        // pitch 초기화
         var o = _follow.FollowOffset;
         _pitchDeg = Mathf.Clamp(Rad2Deg(CurrentPitchRad(in o)), minPitch, maxPitch);
 
@@ -117,6 +126,13 @@ public class QuarterView : MonoBehaviour
         _primary = new InputAction(type: InputActionType.Button, binding: "*/{PrimaryAction}");
         _secondary = new InputAction(type: InputActionType.Button, binding: "*/{SecondaryAction}");
         _scrollY = new InputAction(type: InputActionType.PassThrough, binding: "<Mouse>/scroll/y");
+
+        // EventSystem 캐시(없으면 UI 차단 로직을 생략)
+        _hasEventSystem = EventSystem.current != null;
+
+        // EditModeController 캐시(없으면 한 번만 시도)
+        if (!editController)
+            editController = FindFirstObjectByType<EditModeController>(FindObjectsInactive.Exclude);
     }
 
     private void OnEnable()
@@ -130,11 +146,11 @@ public class QuarterView : MonoBehaviour
 
     private void OnDisable()
     {
-        EnhancedTouchSupport.Disable();
         _lookDelta?.Disable();
         _primary?.Disable();
         _secondary?.Disable();
         _scrollY?.Disable();
+        // EnhancedTouchSupport.Disable(); // 전역 기능이라 다른 시스템이 쓸 수 있음: 여기서 끄지 않는다.
     }
 
     private void OnDestroy()
@@ -149,53 +165,39 @@ public class QuarterView : MonoBehaviour
     {
         if (!_follow) return;
 
-        // 1) 편집모드 상태 체크 → 피벗 교체
         SyncEditModePivot();
-
-        // 2) 입력 처리
         HandlePointerInput();
-
-        // 3) (디버그용) EditModeController.BlockOrbit 상태 추적
         TrackBlockOrbitChange();
-
-        // 4) 카메라 z 플립 방지
         ClampZBehindTarget();
     }
 
     #endregion
 
-
     #region === 편집모드 피벗 교체 ===
 
-    /// <summary>편집모드 진입/이탈을 감지해서 임시 피벗을 만든다/지운다.</summary>
+    private bool IsEditModeOn()
+    {
+        if (!editController)
+            editController = FindFirstObjectByType<EditModeController>(FindObjectsInactive.Exclude);
+        return editController && editController.IsEditMode;
+    }
+
     private void SyncEditModePivot()
     {
         bool isEdit = IsEditModeOn();
-
-        if (isEdit == _wasEditMode)
-            return; // 상태 변화 없음
+        if (isEdit == _wasEditMode) return;
 
         _wasEditMode = isEdit;
-
         if (isEdit) EnterEditPan();
         else ExitEditPan();
     }
 
-    /// <summary>EditModeController가 있고 IsEditMode == true 인지 확인.</summary>
-    private bool IsEditModeOn()
-    {
-        var emc = FindFirstObjectByType<EditModeController>();
-        return emc != null && emc.IsEditMode;
-    }
-
-    /// <summary>편집모드 진입 시: FollowTarget 자식에 임시 피벗을 만들어서 그걸 Follow 로 바꾼다.</summary>
     private void EnterEditPan()
     {
-        // 이미 만들어졌으면 무시
         if (_editPanPivot) return;
 
         _origFollowTarget = _follow.FollowTarget;
-        if (_origFollowTarget == null)
+        if (!_origFollowTarget)
         {
             Debug.LogWarning("[QuarterView] FollowTarget 이 비어 있어서 편집용 피벗을 만들 수 없습니다.");
             return;
@@ -207,18 +209,14 @@ public class QuarterView : MonoBehaviour
         _editPanPivot.localPosition = Vector3.zero;
         _editPanPivot.localRotation = Quaternion.identity;
 
-        // 이제 카메라는 이 임시 피벗을 따라다닌다
+        // CM.Follow 교체
         cm.Follow = _editPanPivot;
     }
 
-    /// <summary>편집모드가 끝나면 임시 피벗을 파괴하고 FollowTarget 을 원복.</summary>
     private void ExitEditPan()
     {
-        if (_editPanPivot)
-            _editPanPivot.localPosition = Vector3.zero;
-
-        if (_origFollowTarget)
-            cm.Follow = _origFollowTarget;
+        if (_editPanPivot) _editPanPivot.localPosition = Vector3.zero;
+        if (_origFollowTarget) cm.Follow = _origFollowTarget;
 
         if (_editPanPivot)
             Destroy(_editPanPivot.gameObject);
@@ -229,17 +227,16 @@ public class QuarterView : MonoBehaviour
 
     #endregion
 
-
     #region === 입력 처리 (PC + 모바일 공통) ===
 
     private void HandlePointerInput()
     {
         if (IsUIOrbitBlocked) return;
+
         HandleMouseInput();
         HandleTouchInput();
     }
 
-    /// <summary>PC 입력 처리: 좌/우클릭 드래그, 휠 줌</summary>
     private void HandleMouseInput()
     {
         var mouse = Mouse.current;
@@ -248,13 +245,13 @@ public class QuarterView : MonoBehaviour
         bool leftPressed = _primary.IsPressed();
         bool rightPressed = _secondary.IsPressed();
 
-        // 1) 편집모드 + 우클릭 드래그 → 팬
+        // 팬 (편집모드 + 우클릭 드래그)
         if (_editPanPivot && rightPressed && !IsPointerOverUI())
         {
             Vector2 delta = _lookDelta.ReadValue<Vector2>();
             ApplyPanFromScreenDelta(delta);
         }
-        // 2) 일반 회전 (편집모드 아니거나, 편집모드인데 우클릭이 팬으로 안쓰일 때)
+        // 회전
         else if ((leftPressed || rightPressed) &&
                  !EditModeController.BlockOrbit &&
                  !IsPointerOverUI())
@@ -263,15 +260,12 @@ public class QuarterView : MonoBehaviour
             RotateByDelta(delta);
         }
 
-        // 3) 휠 줌
+        // 휠 줌
         float wheel = _scrollY.ReadValue<float>();
         if (Mathf.Abs(wheel) > 0.01f)
-        {
             ApplyZoom(-wheel * WHEEL_SCALE);
-        }
     }
 
-    /// <summary>모바일 터치 입력 처리</summary>
     private void HandleTouchInput()
     {
         int count = TouchES.activeTouches.Count;
@@ -288,13 +282,12 @@ public class QuarterView : MonoBehaviour
                 RotateByDelta(t.delta);
             }
         }
-        // 2손가락 이상 → 핀치 줌, (편집모드일 때) 팬
+        // 2손가락 이상 → 핀치 + (편집모드) 팬
         else
         {
             var t0 = TouchES.activeTouches[0];
             var t1 = TouchES.activeTouches[1];
 
-            // 핀치 줌 계산
             Vector2 p0Prev = t0.screenPosition - t0.delta;
             Vector2 p1Prev = t1.screenPosition - t1.delta;
             float prevMag = (p0Prev - p1Prev).magnitude;
@@ -302,7 +295,6 @@ public class QuarterView : MonoBehaviour
             float pinch = curMag - prevMag;
             ApplyZoom(-pinch * PINCH_SCALE);
 
-            // 편집모드일 때만 평균 델타로 팬
             if (_editPanPivot && !IsPointerOverUI())
             {
                 Vector2 avgDelta = 0.5f * (t0.delta + t1.delta);
@@ -311,42 +303,37 @@ public class QuarterView : MonoBehaviour
         }
     }
 
-    /// <summary>포인터가 UI 위에 있는지 검사 (마우스/첫번째 터치 기준)</summary>
-    private static bool IsPointerOverUI()
+    /// <summary>UI 위인지 정확/저비용 판정:
+    /// - 마우스: EventSystem.IsPointerOverGameObject()
+    /// - 터치:   첫 터치 id 기준
+    /// EventSystem 이 없으면 false</summary>
+    private bool IsPointerOverUI()
     {
-        if (!EventSystem.current) return false;
+        if (!_hasEventSystem || EventSystem.current == null) return false;
 
-        Vector2 pos;
         if (Mouse.current != null)
-            pos = Mouse.current.position.ReadValue();
-        else if (TouchES.activeTouches.Count > 0)
-            pos = TouchES.activeTouches[0].screenPosition;
-        else
-            return false;
+            return EventSystem.current.IsPointerOverGameObject();
 
-        var data = new PointerEventData(EventSystem.current) { position = pos };
-        var results = new System.Collections.Generic.List<RaycastResult>(8);
-        EventSystem.current.RaycastAll(data, results);
-        return results.Count > 0;
+        // 터치 존재 시 첫 포인터 id 사용
+        if (TouchES.activeTouches.Count > 0)
+            return EventSystem.current.IsPointerOverGameObject(_touchPointerId);
+
+        return false;
     }
 
     #endregion
 
-
     #region === 카메라 연산 ===
 
-    /// <summary>화면 델타 → 편집 피벗 이동(XZ 평면)</summary>
     private void ApplyPanFromScreenDelta(Vector2 screenDelta)
     {
         if (!_editPanPivot) return;
-        if (_cam == null) _cam = Camera.main;
+        if (!_cam) _cam = Camera.main;
 
-        // 현재 거리로 스케일 보정
         var o = _follow.FollowOffset;
         float dist = Mathf.Max(1f, CurrentDistance(in o));
         float scale = dist * panBaseScale * panSpeed;
 
-        // 화면 → 월드
         Vector3 right = _cam.transform.right; right.y = 0f; right.Normalize();
         Vector3 fwd = _cam.transform.forward; fwd.y = 0f; fwd.Normalize();
 
@@ -356,18 +343,16 @@ public class QuarterView : MonoBehaviour
         _editPanPivot.localPosition += worldMove;
     }
 
-    /// <summary>마우스/터치 드래그로 회전</summary>
     private void RotateByDelta(Vector2 delta)
     {
-        // 수평(Yaw): 월드 Y축 기준
+        // 수평(Yaw)
         transform.Rotate(Vector3.up, delta.x * yawSpeed, Space.World);
 
-        // 수직(Pitch): FollowOffset 값으로 계산
+        // 수직(Pitch)
         _pitchDeg = Mathf.Clamp(_pitchDeg - delta.y * pitchSpeed, minPitch, maxPitch);
         ApplyPitchToOffset();
     }
 
-    /// <summary>휠/핀치로 줌</summary>
     private void ApplyZoom(float delta)
     {
         var o = _follow.FollowOffset;
@@ -379,17 +364,14 @@ public class QuarterView : MonoBehaviour
         o.y = Mathf.Sin(rad) * newDist;
         o.z = -Mathf.Cos(rad) * newDist;
 
-        // 플립 방지
-        if (o.z > -Z_EPS)
-            o.z = -Z_EPS;
+        if (o.z > -Z_EPS) o.z = -Z_EPS;
 
         _follow.FollowOffset = o;
 
-        // 경계 보정 후 pitch 다시 계산 (일관성 유지)
+        // 경계 보정 후 pitch 재계산
         _pitchDeg = Mathf.Clamp(Rad2Deg(CurrentPitchRad(in o)), minPitch, maxPitch);
     }
 
-    /// <summary>현재 pitch 값으로 FollowOffset 적용</summary>
     private void ApplyPitchToOffset()
     {
         var o = _follow.FollowOffset;
@@ -399,13 +381,11 @@ public class QuarterView : MonoBehaviour
         o.y = Mathf.Sin(rad) * dist;
         o.z = -Mathf.Cos(rad) * dist;
 
-        if (o.z > -Z_EPS)
-            o.z = -Z_EPS;
+        if (o.z > -Z_EPS) o.z = -Z_EPS;
 
         _follow.FollowOffset = o;
     }
 
-    /// <summary>z가 너무 앞으로 넘어오는 것 방지</summary>
     private void ClampZBehindTarget()
     {
         var o = _follow.FollowOffset;
@@ -418,7 +398,6 @@ public class QuarterView : MonoBehaviour
 
     #endregion
 
-
     #region === Debug Track ===
 
     private void TrackBlockOrbitChange()
@@ -428,7 +407,6 @@ public class QuarterView : MonoBehaviour
     }
 
     #endregion
-
 
     #region === Math Helpers ===
 

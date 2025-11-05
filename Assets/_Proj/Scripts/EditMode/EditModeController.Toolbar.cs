@@ -1,61 +1,40 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// EditModeController - Toolbar / Selection 파트
-/// (partial 분리용)
-/// 
-/// 요구사항
-/// 1. 편집모드에서 "처음" 오브젝트를 선택하면 InfoPanel 이 자동으로 떠 있어야 한다.
-///    → 그래야 설명 버튼을 처음 눌렀을 때도 바로 반응하는 것처럼 보임
-/// 2. 그 다음에 "다른" 오브젝트를 선택하면 InfoPanel 은 닫힌다.
-///    → 오브젝트가 바뀌면 설명도 초기화
-/// 3. 설명 버튼(툴바 Info)을 누르면 현재 선택된 오브젝트 정보만 토글
-/// 4. 인벤에서 꺼낸 오브젝트면 OK/Cancel 이 있는 툴바, 씬에 있는 거면 기본 툴바
+/// EditModeController - Toolbar / Selection 파트 (리팩토링)
+/// - Home: 인벤 버튼 숨김
+/// - Home 프리뷰: OK/Cancel 제공
+/// - Animal/Deco: 확정 = Info/Rotate/인벤, 프리뷰 = Info/Rotate/OK/Cancel
 /// </summary>
 public partial class EditModeController
 {
-    /// <summary>
-    /// InfoPanel 을 우리가 "자동으로" 한 번이라도 띄웠는지
-    /// (처음 선택에서만 자동으로 띄우고 그 다음부턴 안 띄우려고)
-    /// </summary>
     private bool infoPanelAutoOpened = false;
 
-    /// <summary>
-    /// 오브젝트 선택 로직
-    /// </summary>
+    #region Selection
+    // ─────────────────────────────────────────────────────────────
+    // Selection
+    // ─────────────────────────────────────────────────────────────
     public void SelectTarget(Transform t)
     {
         bool targetChanged = (CurrentTarget != t);
 
-        // 1) 이전 대상 하이라이트 해제
-        if (CurrentTarget && CurrentTarget.TryGetComponent<Draggable>(out var prev))
-        {
-            prev.SetInvalid(false);
-            prev.SetHighlighted(false);
-        }
+        // 이전 대상 하이라이트 해제
+        SetHighlight(CurrentTarget, on: false, invalid: false);
 
-        // 2) 새 대상 설정
         CurrentTarget = t;
 
-        // 3) 새 대상 하이라이트
-        if (CurrentTarget && CurrentTarget.TryGetComponent<Draggable>(out var now))
-        {
-            now.SetInvalid(false);
-            now.SetHighlighted(true);
-        }
+        // 신규 대상 하이라이트
+        SetHighlight(CurrentTarget, on: true, invalid: false);
 
-        // 4) InfoPanel 처리
+        // InfoPanel 처리
         var panel = InfoPanel.FindInScene();
-
         if (IsEditMode && CurrentTarget)
         {
-            // 4-1) 아직 한 번도 자동으로 안 켜봤으면 → 지금 선택된 애 정보로 한 번 켠다
             if (!infoPanelAutoOpened && panel)
             {
                 ShowInfoOfCurrentTarget(panel);
                 infoPanelAutoOpened = true;
             }
-            // 4-2) 그 다음부터는 "다른 오브젝트"로 바뀌면 닫아준다
             else if (targetChanged && panel && panel.IsVisible)
             {
                 panel.Hide();
@@ -63,20 +42,28 @@ public partial class EditModeController
         }
         else
         {
-            // 편집모드가 아니면 그냥 닫아둠
-            if (panel && panel.IsVisible)
-                panel.Hide();
+            if (panel && panel.IsVisible) panel.Hide();
         }
 
-        // 5) 툴바 / Undo 갱신
         UpdateToolbar();
         UpdateUndoUI();
     }
 
-    /// <summary>
-    /// 현재 선택된 오브젝트의 Deco 정보를 InfoPanel에 보여준다.
-    /// (형식 맞춰서 Show)
-    /// </summary>
+    private static void SetHighlight(Transform t, bool on, bool invalid)
+    {
+        if (!t) return;
+        if (t.TryGetComponent<Draggable>(out var d))
+        {
+            d.SetInvalid(invalid);
+            d.SetHighlighted(on);
+        }
+    }
+    #endregion Selection
+
+    #region Info Panel
+    // ─────────────────────────────────────────────────────────────
+    // Info Panel
+    // ─────────────────────────────────────────────────────────────
     private void ShowInfoOfCurrentTarget(InfoPanel panel)
     {
         if (!CurrentTarget)
@@ -85,18 +72,20 @@ public partial class EditModeController
             return;
         }
 
-        // 새 공통 태그만 사용
-        var ptag = CurrentTarget.GetComponentInParent<PlaceableTag>()
-                 ?? CurrentTarget.GetComponentInChildren<PlaceableTag>();
-
-        if (!ptag)
+        if (!TryGetPlaceableTag(CurrentTarget, out var ptag))
         {
             panel.Show("정보 없음", "PlaceableTag가 없습니다.");
             return;
         }
 
-        string title = $"{ptag.category} {ptag.id}";
-        string desc = "설명이 없습니다.";
+        ResolveTitleAndDesc(ptag, out var title, out var desc);
+        panel.Show(title, desc);
+    }
+
+    private static void ResolveTitleAndDesc(PlaceableTag ptag, out string title, out string desc)
+    {
+        title = $"{ptag.category} {ptag.id}";
+        desc = "설명이 없습니다.";
 
         switch (ptag.category)
         {
@@ -115,94 +104,105 @@ public partial class EditModeController
             case PlaceableCategory.Home:
                 {
                     var hd = DataManager.Instance?.Home?.GetData(ptag.id);
-                    if (hd != null) { title = hd.home_name; /* 설명 필드 있으면 desc 설정 */ }
+                    if (hd != null) title = hd.home_name;
                     break;
                 }
 
             case PlaceableCategory.Animal:
                 {
                     var ad = DataManager.Instance?.Animal?.GetData(ptag.id);
-                    if (ad != null) { title = ad.animal_name; /* 설명 필드 있으면 desc 설정 */ }
+                    if (ad != null) title = ad.animal_name;
                     break;
                 }
         }
-
-        panel.Show(title, desc);
     }
+    #endregion Info Panel
 
-
-
-    // ─────────────────────────────────────────────────────
-    // 툴바 표시
-    // ─────────────────────────────────────────────────────
-
-    /// <summary>
-    /// 현재 선택/편집 상태에 맞게 툴바를 보여준다
-    /// </summary>
+    #region Toolbar (layout & dispatch)
+    // ─────────────────────────────────────────────────────────────
+    // Toolbar
+    // ─────────────────────────────────────────────────────────────
     private void UpdateToolbar()
     {
         if (!actionToolbar) return;
 
-        // 편집모드가 아니거나 타겟이 없으면 숨김
         if (!IsEditMode || !CurrentTarget)
         {
             actionToolbar.Hide();
             return;
         }
 
-        // 인벤에서 꺼낸 임시 오브젝트냐?
-        bool isInventoryTemp = IsInventoryTempObject(CurrentTarget);
+        bool isTemp = IsInventoryTempObject(CurrentTarget);
 
-        if (isInventoryTemp)
-            ShowToolbar_ForInventoryTemp(CurrentTarget);
-        else
-            ShowToolbar_ForSceneObject(CurrentTarget);
+        // 태그 없으면 안전 기본(Info/Rotate만)
+        if (!TryGetPlaceableTag(CurrentTarget, out var ptag))
+        {
+            ShowToolbar(CurrentTarget, onInfo: OnToolbarInfo, onRotate: OnToolbarRotate);
+            return;
+        }
+
+        switch (ptag.category)
+        {
+            case PlaceableCategory.Home:
+                if (isTemp)
+                {
+                    // 인벤에서 꺼낸 집(프리뷰): Info / Rotate / OK / Cancel
+                    ShowToolbar(CurrentTarget, OnToolbarInfo, OnToolbarRotate, onInventory: null, onOk: OnToolbarOk, onCancel: OnToolbarCancel);
+                }
+                else
+                {
+                    // 확정된 집: Info / Rotate
+                    ShowToolbar(CurrentTarget, OnToolbarInfo, OnToolbarRotate);
+                }
+                break;
+
+            case PlaceableCategory.Animal:
+            case PlaceableCategory.Deco:
+                if (isTemp)
+                {
+                    // 프리뷰: Info / Rotate / OK / Cancel
+                    ShowToolbar(CurrentTarget, OnToolbarInfo, OnToolbarRotate, onInventory: null, onOk: OnToolbarOk, onCancel: OnToolbarCancel);
+                }
+                else
+                {
+                    // 확정: Info / Rotate / 인벤
+                    ShowToolbar(CurrentTarget, OnToolbarInfo, OnToolbarRotate, onInventory: () => ReturnToInventory(CurrentTarget));
+                }
+                break;
+        }
     }
 
-    /// <summary>
-    /// 씬에 원래 있던 오브젝트용 툴바
-    /// </summary>
-    private void ShowToolbar_ForSceneObject(Transform target)
+    private void ShowToolbar(Transform target,
+                             System.Action onInfo,
+                             System.Action onRotate,
+                             System.Action onInventory = null,
+                             System.Action onOk = null,
+                             System.Action onCancel = null)
     {
-        if (!actionToolbar) return;
-
         actionToolbar.Show(
             target: target,
             worldCamera: cam,
-            onInfo: OnToolbarInfo,
-            onRotate: OnToolbarRotate,
-            onInventory: OnToolbarStore,
-            onOk: null,
-            onCancel: null
+            onInfo: onInfo,
+            onRotate: onRotate,
+            onInventory: onInventory,
+            onOk: onOk,
+            onCancel: onCancel
         );
     }
 
-    /// <summary>
-    /// 인벤에서 막 꺼낸 임시 오브젝트용 툴바 (OK/Cancel 있음)
-    /// </summary>
-    private void ShowToolbar_ForInventoryTemp(Transform target)
+    private bool TryGetPlaceableTag(Transform t, out PlaceableTag tag)
     {
-        if (!actionToolbar) return;
-
-        actionToolbar.Show(
-            target: target,
-            worldCamera: cam,
-            onInfo: OnToolbarInfo,
-            onRotate: OnToolbarRotate,
-            onInventory: OnToolbarStore,
-            onOk: OnToolbarOk,
-            onCancel: OnToolbarCancel
-        );
+        tag = null;
+        if (!t) return false;
+        tag = t.GetComponentInParent<PlaceableTag>() ?? t.GetComponentInChildren<PlaceableTag>();
+        return tag != null;
     }
+    #endregion Toolbar (layout & dispatch)
 
-    // ─────────────────────────────────────────────────────
-    // 툴바 버튼 콜백
-    // ─────────────────────────────────────────────────────
-
-    /// <summary>
-    /// Info 버튼: 현재 선택된 오브젝트 정보 토글
-    /// - 패널은 이미 처음에 한 번 자동으로 떠 있어야 하므로 여기서는 토글만
-    /// </summary>
+    #region Toolbar Actions
+    // ─────────────────────────────────────────────────────────────
+    // Toolbar Actions
+    // ─────────────────────────────────────────────────────────────
     private void OnToolbarInfo()
     {
         if (!CurrentTarget) return;
@@ -214,155 +214,81 @@ public partial class EditModeController
             return;
         }
 
-        // 공통 태그만 사용
-        var ptag = CurrentTarget.GetComponentInParent<PlaceableTag>()
-                 ?? CurrentTarget.GetComponentInChildren<PlaceableTag>();
-
-        if (!ptag)
+        if (!TryGetPlaceableTag(CurrentTarget, out var ptag))
         {
             panel.Toggle("정보 없음", "PlaceableTag가 없습니다.");
             return;
         }
 
-        string title = $"{ptag.category} {ptag.id}";
-        string desc = "설명이 없습니다.";
-
-        switch (ptag.category)
-        {
-            case PlaceableCategory.Deco:
-                if (DecoInventoryRuntime.I?.DB)
-                {
-                    var d = DecoInventoryRuntime.I.DB.decoList.Find(x => x != null && x.deco_id == ptag.id);
-                    if (d != null)
-                    {
-                        title = string.IsNullOrEmpty(d.deco_name) ? $"Deco {d.deco_id}" : d.deco_name;
-                        if (!string.IsNullOrEmpty(d.deco_desc)) desc = d.deco_desc;
-                    }
-                }
-                break;
-
-            case PlaceableCategory.Home:
-                {
-                    var hd = DataManager.Instance?.Home?.GetData(ptag.id);
-                    if (hd != null) { title = hd.home_name; /* desc 설정 가능하면 여기서 */ }
-                    break;
-                }
-
-            case PlaceableCategory.Animal:
-                {
-                    var ad = DataManager.Instance?.Animal?.GetData(ptag.id);
-                    if (ad != null) { title = ad.animal_name; /* desc 설정 가능하면 여기서 */ }
-                    break;
-                }
-        }
-
-        // Toggle로 열고/닫기
+        ResolveTitleAndDesc(ptag, out var title, out var desc);
         panel.Toggle(title, desc);
     }
 
-
-    /// <summary>
-    /// Rotate 버튼: 90도 회전 + 겹치면 롤백 + Undo 기록
-    /// </summary>
     private void OnToolbarRotate()
     {
         if (!CurrentTarget) return;
 
-        // Undo용 원본 저장
-        var originalSnap = new Snap
-        {
-            pos = CurrentTarget.position,
-            rot = CurrentTarget.rotation
-        };
+        // (원한다면 Home 회전 금지)
+        // if (IsHome(CurrentTarget)) return;
 
-        // 90도 회전
+        var original = new Snap { pos = CurrentTarget.position, rot = CurrentTarget.rotation };
         CurrentTarget.Rotate(0f, 90f, 0f, Space.World);
 
-        // 회전했는데 겹치면 원복
         if (OverlapsOthers(CurrentTarget))
         {
-            CurrentTarget.position = originalSnap.pos;
-            CurrentTarget.rotation = originalSnap.rot;
-
-            if (CurrentTarget.TryGetComponent<Draggable>(out var dragFail))
-            {
-                dragFail.SetInvalid(true);
-                dragFail.SetHighlighted(true);
-            }
-
+            // 되돌림
+            CurrentTarget.position = original.pos;
+            CurrentTarget.rotation = original.rot;
+            SetHighlight(CurrentTarget, on: true, invalid: true);
             Debug.Log("[Rotate] 겹쳐서 회전을 취소했습니다.");
             return;
         }
 
-        // Undo 스택에 기록
+        // 히스토리 저장
         var stack = GetOrCreateHistory(CurrentTarget);
-        stack.Push(originalSnap);
+        stack.Push(original);
         TrimHistoryIfNeeded(stack);
         UpdateUndoUI();
 
-        // 시각 피드백
-        if (CurrentTarget.TryGetComponent<Draggable>(out var dragOk))
-        {
-            dragOk.SetInvalid(false);
-            dragOk.SetHighlighted(true);
-        }
-
+        SetHighlight(CurrentTarget, on: true, invalid: false);
         hasUnsavedChanges = true;
     }
 
-    /// <summary>
-    /// 보관 버튼: 씬 오브젝트/임시 오브젝트 상관없이 인벤으로 되돌림
-    /// </summary>
-    private void OnToolbarStore()
-    {
-        if (!CurrentTarget) return;
-
-        // 공통 태그
-        var ptag = CurrentTarget.GetComponent<PlaceableTag>();
-        int decoId = (ptag != null && ptag.category == PlaceableCategory.Deco) ? ptag.id : 0;
-
-        var go = CurrentTarget.gameObject;
-
-        // 선택 해제 + 툴바 숨김
-        SelectTarget(null);
-        actionToolbar?.Hide();
-
-        // 오브젝트 삭제 (인벤으로 회수하는 의미)
-        Object.Destroy(go);
-
-        // 데코만 인벤 수량 +1
-        if (decoId != 0 && DecoInventoryRuntime.I != null)
-            DecoInventoryRuntime.I.Add(decoId, 1);
-
-        hasUnsavedChanges = true;
-        pendingFromInventory = null;
-    }
-
-
-    /// <summary>
-    /// OK 버튼: 인벤에서 꺼낸 임시 오브젝트를 "진짜 배치"로 확정
-    /// </summary>
     private void OnToolbarOk()
     {
         if (!CurrentTarget) return;
 
-        // 마지막으로 유효성 체크
+        // Home 프리뷰 확정
+        if (IsHome(CurrentTarget) && IsInventoryTempObject(CurrentTarget))
+        {
+            if (homePrev) Destroy(homePrev.gameObject);
+
+            MarkAsInventoryTemp(CurrentTarget, false);
+            homePreview = null;
+            homePrev = CurrentTarget;
+
+            if (homePrev.TryGetComponent<PlaceableTag>(out var t)) homePrevId = t.id;
+
+            // 선택 해제 + 툴바 숨김
+            SelectTarget(null);
+            actionToolbar?.Hide();
+
+            hasUnsavedChanges = true;
+            pendingFromInventory = null;
+            return;
+        }
+
+        // Animal/Deco 프리뷰 확정
         bool valid = IsOverGround(CurrentTarget.position) && !OverlapsOthers(CurrentTarget);
         if (!valid)
         {
-            if (CurrentTarget.TryGetComponent<Draggable>(out var dragBad))
-            {
-                dragBad.SetInvalid(true);
-                dragBad.SetHighlighted(true);
-            }
+            SetHighlight(CurrentTarget, on: true, invalid: true);
             Debug.Log("[EditModeController] 겹치거나 바닥이 아니어서 확정할 수 없습니다.");
             return;
         }
 
-        // 임시 마커 제거 → 이제 씬 상의 정식 오브젝트
         MarkAsInventoryTemp(CurrentTarget, false);
 
-        // 선택 해제 + 툴바 숨김
         SelectTarget(null);
         actionToolbar?.Hide();
 
@@ -370,46 +296,95 @@ public partial class EditModeController
         pendingFromInventory = null;
     }
 
-    /// <summary>
-    /// Cancel 버튼: 인벤에서 꺼낸 걸 다시 인벤으로
-    /// </summary>
     private void OnToolbarCancel()
     {
         if (!CurrentTarget) return;
 
-        // 공통 태그
-        var ptag = CurrentTarget.GetComponent<PlaceableTag>();
-        int decoId = (ptag != null && ptag.category == PlaceableCategory.Deco) ? ptag.id : 0;
+        // Home 프리뷰 취소 → 기존 집 복구
+        if (IsHome(CurrentTarget) && IsInventoryTempObject(CurrentTarget))
+        {
+            var previewGo = CurrentTarget.gameObject;
+
+            SelectTarget(null);
+            actionToolbar?.Hide();
+            Destroy(previewGo);
+
+            if (homePrev)
+            {
+                homePrev.gameObject.SetActive(true);
+                SelectTarget(homePrev);
+                SetLongPressTarget(homePrev);
+            }
+
+            homePreview = null;
+            hasUnsavedChanges = false;
+            pendingFromInventory = null;
+            return;
+        }
+
+        // Animal/Deco 프리뷰 취소
+        if (TryGetPlaceableTag(CurrentTarget, out var ptag))
+        {
+            // Animal: 슬롯 복귀 이벤트
+            if (ptag.category == PlaceableCategory.Animal)
+                AnimalReturnedToInventory?.Invoke(ptag.id);
+
+            // Deco: 인벤 수량 원복
+            if (ptag.category == PlaceableCategory.Deco && DecoInventoryRuntime.I != null)
+                DecoInventoryRuntime.I.Add(ptag.id, 1);
+        }
 
         var go = CurrentTarget.gameObject;
-
-        // 선택 해제 + 툴바 숨김
         SelectTarget(null);
         actionToolbar?.Hide();
-
-        // 임시 배치물 취소 → 삭제
-        Object.Destroy(go);
-
-        // 데코만 인벤 수량 되돌리기(+1)
-        if (decoId != 0 && DecoInventoryRuntime.I != null)
-            DecoInventoryRuntime.I.Add(decoId, 1);
+        Destroy(go);
 
         hasUnsavedChanges = true;
         pendingFromInventory = null;
     }
+    #endregion Toolbar Actions
 
-    // ─────────────────────────────────────────────────────
-    // 인벤 임시 마커 유틸
-    // ─────────────────────────────────────────────────────
+    #region Return To Inventory
+    private void ReturnToInventory(Transform t)
+    {
+        if (!t || !TryGetPlaceableTag(t, out var tag)) return;
 
-    /// <summary>이 오브젝트가 인벤에서 막 꺼낸 임시 오브젝트인지</summary>
+        // 선택 해제 & 툴바 숨김
+        if (t == CurrentTarget) SelectTarget(null);
+        actionToolbar?.Hide();
+
+        switch (tag.category)
+        {
+            case PlaceableCategory.Deco:
+                if (DecoInventoryRuntime.I != null) DecoInventoryRuntime.I.Add(tag.id, 1);
+                Destroy(t.gameObject);
+                hasUnsavedChanges = true;
+                break;
+
+            case PlaceableCategory.Animal:
+                AnimalReturnedToInventory?.Invoke(tag.id);
+                Destroy(t.gameObject);
+                hasUnsavedChanges = true;
+                break;
+
+            case PlaceableCategory.Home:
+                // Home은 인벤 버튼 없음
+                Debug.Log("[ReturnToInventory] Home은 인벤 버튼이 없습니다.");
+                break;
+        }
+    }
+    #endregion Return To Inventory
+
+    #region InventoryTemp Marker
+    // ─────────────────────────────────────────────────────────────
+    // InventoryTemp Marker
+    // ─────────────────────────────────────────────────────────────
     private bool IsInventoryTempObject(Transform tr)
     {
         if (!tr) return false;
         return tr.gameObject.GetComponent<InventoryTempMarker>() != null;
     }
 
-    /// <summary>임시 마커 붙이기/제거</summary>
     private void MarkAsInventoryTemp(Transform tr, bool on)
     {
         if (!tr) return;
@@ -420,7 +395,8 @@ public partial class EditModeController
         }
         else
         {
-            if (m) Object.Destroy(m);
+            if (m) Destroy(m);
         }
     }
+    #endregion InventoryTemp Marker
 }

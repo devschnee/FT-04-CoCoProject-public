@@ -2,11 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// 인벤토리 안의 슬롯 하나.
-/// - 아이콘 / 수량 텍스트 보여주고
-/// - 클릭하면 EditModeController 에게 "이거 배치해" 라고 요청
-/// </summary>
 public class DecoSlot : MonoBehaviour
 {
     [Header("UI Refs")]
@@ -15,20 +10,27 @@ public class DecoSlot : MonoBehaviour
     [SerializeField] private Button clickArea;
 
     [Header("Data")]
-    [SerializeField] private int decoId;  // 이 슬롯이 나타내는 decoId
+    [SerializeField] private int decoId;
 
-    private void OnEnable()
+    // 캐시
+    private static EditModeController _edit;   // UnityEngine.Object 이므로 if (!_edit) 가능
+    private static ResourcesLoader _loader;
+
+    private void Awake()
     {
-        // 클릭 연결
+        // 🔧 null 체크 방식 수정
+        if (_loader == null) _loader = new ResourcesLoader();
+
         if (clickArea)
         {
             clickArea.onClick.RemoveAllListeners();
             clickArea.onClick.AddListener(OnClick);
         }
+    }
 
+    private void OnEnable()
+    {
         RefreshNow();
-
-        // 인벤 변경 감지
         if (DecoInventoryRuntime.I != null)
             DecoInventoryRuntime.I.OnChanged += OnInvChanged;
     }
@@ -41,72 +43,57 @@ public class DecoSlot : MonoBehaviour
 
     private void OnInvChanged(int changedId, int newCount)
     {
-        if (changedId == decoId)
-            RefreshNow();
+        if (changedId == decoId) RefreshNow();
     }
 
-    /// <summary>슬롯이 어떤 decoId 를 표시할지 설정</summary>
     public void SetDecoId(int id)
     {
         decoId = id;
         RefreshNow();
     }
 
-    /// <summary>UI 갱신</summary>
     public void RefreshNow()
     {
         if (!DecoInventoryRuntime.I) return;
         var db = DecoInventoryRuntime.I.DB;
         if (!db) return;
 
-        var data = db.decoList.Find(d => d.deco_id == decoId);
+        var data = db.decoList.Find(d => d != null && d.deco_id == decoId);
         if (data == null) return;
 
-        // 아이콘
-        if (icon)
-            icon.sprite = DataManager.Instance.Deco.GetIcon(data.deco_id);
+        // 🔧 2-인수 GetIcon 제거 → 1-인수 버전 사용
+        if (icon) icon.sprite = DataManager.Instance.Deco.GetIcon(data.deco_id);
 
-        // 수량
         int c = DecoInventoryRuntime.I.Count(decoId);
         if (countText)
         {
             if (c > 1) countText.text = $"x{c}";
-            else if (c == 1) countText.text = "";     // 1개일 때는 숫자 안 보여줌
-            else countText.text = "0";    // 0일 때는 0
+            else if (c == 1) countText.text = "";
+            else countText.text = "0";
         }
     }
 
-    /// <summary>
-    /// 슬롯 클릭 → 수량 1 소비 → 편집모드 컨트롤러에 스폰 요청
-    /// </summary>
     private void OnClick()
     {
-        // 인벤/DB 체크
         if (!DecoInventoryRuntime.I) return;
         var db = DecoInventoryRuntime.I.DB;
         if (!db) return;
 
-        var data = db.decoList.Find(d => d.deco_id == decoId);
+        var data = db.decoList.Find(d => d != null && d.deco_id == decoId);
         if (data == null) return;
 
-        // 1) 인벤에서 1개 빼기
         if (!DecoInventoryRuntime.I.TryConsume(decoId, 1))
-        {
-            // 수량이 없으면 끝
             return;
-        }
 
-        // 2) 편집모드 컨트롤러 찾기
-        var edit = FindFirstObjectByType<EditModeController>();
-        if (!edit)
+        if (!_edit) _edit = FindFirstObjectByType<EditModeController>();
+        if (!_edit)
         {
-            // 컨트롤러가 없으면 다시 되돌려줘야 함
+            // 스폰 실패 롤백
             DecoInventoryRuntime.I.Add(decoId, 1);
-            Debug.LogWarning("[DecoSlot] EditModeController를 찾지 못했습니다.");
+            Debug.LogWarning("[DecoSlot] EditModeController를 찾지 못했습니다. 소비를 되돌립니다.");
             return;
         }
 
-        // 3) 실제로 씬에 프리팹 배치
-        edit.SpawnFromDecoData(data);
+        _edit.SpawnFromDecoData(data);
     }
 }

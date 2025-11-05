@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643181390489734174}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10686241, y: -0.000000013303739, z: 0.0000000010924661, w: 0.99427384}
-  m_LocalPosition: {x: 0, y: 8, z: -20}
+  m_LocalRotation: {x: -0.021126766, y: -0.0000000014060667, z: -2.971227e-11, w: 0.99977684}
+  m_LocalPosition: {x: 0, y: 8.74, z: -96.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,7 +95,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 8, z: -20}
+  FollowOffset: {x: 0, y: 8.74, z: -96.2}
 --- !u!114 &6914796455846309558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,10 +173,12 @@ MonoBehaviour:
   cm: {fileID: 2066417832453071654}
   yawSpeed: 0.2
   pitchSpeed: 0.2
-  zoomSpeed: 2
+  zoomSpeed: 5
   panBaseScale: 0.0025
   panSpeed: 1
+  invertEditPan: 1
   minDistance: 6
-  maxDistance: 35
+  maxDistance: 90
   minPitch: 6
   maxPitch: 90
+  editController: {fileID: 0}

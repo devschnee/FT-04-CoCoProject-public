@@ -4,9 +4,16 @@ using UnityEngine.UI;
 public class BackgroundInventoryPanel : MonoBehaviour
 {
     [Header("DB & UI")]
-    [SerializeField] private BackgroundDatabase bgDB;      // ← 인스펙터에 할당
+    [SerializeField] private BackgroundDatabase bgDB;
     [SerializeField] private RectTransform content;
     [SerializeField] private GenericInvSlot slotPrefab;
+
+    private ResourcesLoader _loader;
+
+    private void Awake()
+    {
+        _loader = new ResourcesLoader();
+    }
 
     public void OnEnable() => Rebuild();
 
@@ -21,15 +28,12 @@ public class BackgroundInventoryPanel : MonoBehaviour
         {
             if (data == null) continue;
             var slot = Instantiate(slotPrefab, content);
-
-            var icon = data.GetIcon(new ResourcesLoader());
-            slot.SetIcon(icon);
+            slot.SetIcon(data.GetIcon(_loader));
             slot.SetCountVisible(false);
-
             slot.SetOnClick(() =>
             {
                 Debug.Log($"[BackgroundInventory] 클릭: {data.bg_name} ({data.bg_id})");
-                // TODO: RenderSettings.skybox = data.GetMaterial(new ResourcesLoader());
+                // TODO: 실제 배경 적용 로직 (예: RenderSettings.skybox = data.GetMaterial(_loader);)
             });
         }
 

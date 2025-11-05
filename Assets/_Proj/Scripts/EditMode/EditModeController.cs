@@ -10,8 +10,9 @@ using TouchES = UnityEngine.InputSystem.EnhancedTouch.Touch;
 /// EditModeController (Core)
 /// - 인스펙터 설정
 /// - 공용 필드 (다른 partial에서 씀)
-/// - 모드 on/off
-/// - 저장/복원(Baseline)
+/// - 모드 on/off는 다른 partial에 있음
+/// - 저장/복원(Baseline)과 연계되는 공용 상태
+/// - Home(집) 프리뷰/확정/취소 흐름의 공통 상태
 /// </summary>
 public partial class EditModeController : MonoBehaviour
 {
@@ -77,6 +78,7 @@ public partial class EditModeController : MonoBehaviour
 
     #endregion
 
+
     #region === Public State ===
 
     /// <summary>현재 편집모드 여부</summary>
@@ -90,12 +92,13 @@ public partial class EditModeController : MonoBehaviour
 
     #endregion
 
+
     #region === Shared State (다른 partial에서 씀) ===
 
     // 카메라
     private Camera cam;
 
-    // 포인터 상태
+    // 포인터/드래그 상태
     private bool pointerDown;
     private Vector2 pressScreenPos;
     private Transform pressedHitTarget;
@@ -126,7 +129,24 @@ public partial class EditModeController : MonoBehaviour
     // 인벤에서 막 꺼낸 오브젝트
     private Transform pendingFromInventory;
 
+    // === Home 전용 상태 ===
+    private Transform homePrev;     // 현재 씬의 "확정된" 집
+    private int homePrevId;    // 확정 집 id
+    private Transform homePreview;  // 인벤에서 고른 새 집(프리뷰, OK/Cancel 대기)
+    private bool _homeSwapBusy; // 프리뷰 중복 생성 방지
+
+    // 공용 로더 캐시
+    private ResourcesLoader _loader;
+
+    // 동물 슬롯 토글 이벤트
+    public static Action<int> AnimalTakenFromInventory;   // 동물을 꺼냈을 때(슬롯 숨김)
+    public static Action<int> AnimalReturnedToInventory;  // 동물을 되돌렸을 때(슬롯 표시)
+
+    // baseline에 존재했던 Transform 집합(InstanceID로 추적)
+    private readonly HashSet<int> baselineIds = new();
+
     #endregion
+
 
     #region === Snapshot Structs ===
 
@@ -147,19 +167,43 @@ public partial class EditModeController : MonoBehaviour
 
     #endregion
 
+
+    #region === Unity Lifecycle ===
+
     private void Awake()
     {
         cam = Camera.main;
-        if (!cam)
-            Debug.LogWarning("[EditModeController] Main Camera를 찾지 못했습니다.");
+        if (!cam) Debug.LogWarning("[EditModeController] Main Camera를 찾지 못했습니다.");
 
-        // 상단 버튼들 연결
+        _loader ??= new ResourcesLoader();
+
+        // UI/Wiring
         WireUndoButton();
         actionToolbar?.Hide();
         WireSaveButton();
         WireBackButton();
         WireExitPanels();
         WireSavedInfoPanel();
+    }
+
+    private void Start()
+    {
+        // 씬 복원(PlaceableStore) 이후 시점에서 집을 찾아 캐시하고 롱프레스 타깃으로 설정
+#if UNITY_2022_2_OR_NEWER
+        var tags = FindObjectsByType<PlaceableTag>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+#else
+        var tags = FindObjectsOfType<PlaceableTag>();
+#endif
+        foreach (var t in tags)
+        {
+            if (t && t.category == PlaceableCategory.Home)
+            {
+                homePrev = t.transform;
+                homePrevId = t.id;
+                SetLongPressTarget(homePrev);
+                break;
+            }
+        }
     }
 
     private void OnEnable()
@@ -180,9 +224,145 @@ public partial class EditModeController : MonoBehaviour
 
     private void Update()
     {
-        // 입력/포인터 처리
         HandlePointerLifecycle();
         HandleLongPress();
         MaintainOrbitBlockFlag();
     }
+
+    #endregion
+
+
+    #region === Home Helpers ===
+
+    private static bool IsHome(Transform t)
+    {
+        if (!t) return false;
+        var tag = t.GetComponent<PlaceableTag>() ?? t.GetComponentInParent<PlaceableTag>();
+        return tag && tag.category == PlaceableCategory.Home;
+    }
+
+    private static int GetPlaceableId(Transform t)
+    {
+        var tag = t ? t.GetComponent<PlaceableTag>() ?? t.GetComponentInParent<PlaceableTag>() : null;
+        return tag ? tag.id : 0;
+    }
+
+    private void SetLongPressTarget(Transform t)
+    {
+        longPressTarget = t;
+    }
+
+    private bool TryCacheExistingHome()
+    {
+#if UNITY_2022_2_OR_NEWER
+        var tags = FindObjectsByType<PlaceableTag>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+#else
+        var tags = FindObjectsOfType<PlaceableTag>();
+#endif
+        foreach (var tt in tags)
+        {
+            if (tt && tt.category == PlaceableCategory.Home)
+            {
+                homePrev = tt.transform;
+                homePrevId = tt.id;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    #endregion
+
+
+    #region === Home Preview Swap (중복 생성 방지 + 같은 집 재클릭 무시) ===
+
+    /// <summary>
+    /// 인벤에서 선택한 '집'을 (0,0,0)에 프리뷰로 교체한다. (OK/Cancel 대기)
+    /// - 이미 같은 집이 프리뷰/확정 상태면 새로 생성하지 않음.
+    /// - 빠르게 연속 클릭해도 1개만 생성되도록 reentrancy 가드.
+    /// </summary>
+    public void PreviewSwapHome(IPlaceableData data)
+    {
+        if (data is not HomePlaceable)
+        {
+            Debug.LogWarning("[EditModeController] PreviewSwapHome: Home 데이터가 아닙니다.");
+            return;
+        }
+
+        if (_homeSwapBusy) return; // 중복 호출 가드
+        _homeSwapBusy = true;
+
+        try
+        {
+            int targetId = data.Id;
+            int previewId = homePreview ? GetPlaceableId(homePreview) : 0;
+            int currentId = homePrev ? homePrevId : 0;
+
+            // 1) 이미 같은 집이 '프리뷰' 중이면: 새로 생성하지 않고 선택만
+            if (homePreview && previewId == targetId)
+            {
+                if (!IsEditMode) SetEditMode(true, keepTarget: false);
+                SelectTarget(homePreview);
+                SetLongPressTarget(homePreview);
+                return;
+            }
+
+            // 2) 이미 같은 집이 '확정' 상태면: 생성하지 않음 (선택만)
+            if (!homePreview && homePrev && currentId == targetId)
+            {
+                if (!IsEditMode) SetEditMode(true, keepTarget: false);
+                SelectTarget(homePrev);
+                SetLongPressTarget(homePrev);
+                return;
+            }
+
+            // 3) 이전 프리뷰가 있으면 제거 (한 번에 하나만 유지)
+            if (homePreview)
+            {
+                Destroy(homePreview.gameObject);
+                homePreview = null;
+            }
+
+            // 4) 현재 확정 집 캐시 + 겹침 방지를 위해 비활성
+            if (!homePrev) TryCacheExistingHome();
+            if (homePrev) homePrev.gameObject.SetActive(false);
+
+            // 5) 프리팹 로드
+            _loader ??= new ResourcesLoader();
+            var prefab = data.GetPrefab(_loader);
+            if (!prefab)
+            {
+                Debug.LogWarning("[EditModeController] PreviewSwapHome: 프리팹 없음");
+                if (homePrev) homePrev.gameObject.SetActive(true);
+                return;
+            }
+
+            // 6) 프리뷰 생성 (0,0,0), 기존 집 회전 유지
+            Quaternion rot = homePrev ? homePrev.rotation : Quaternion.identity;
+            var preview = Instantiate(prefab, Vector3.zero, rot);
+            preview.name = data.DisplayName;
+
+            // 7) 태그/드래그/임시마커
+            var tag = preview.GetComponent<PlaceableTag>() ?? preview.AddComponent<PlaceableTag>();
+            tag.category = PlaceableCategory.Home;
+            tag.id = targetId;
+
+            if (!preview.TryGetComponent<Draggable>(out _)) preview.AddComponent<Draggable>();
+            MarkAsInventoryTemp(preview.transform, true);
+
+            // 8) 편집모드 + 선택 + 롱프레스 타깃
+            SetEditMode(true, keepTarget: false);
+            SelectTarget(preview.transform);
+            SetLongPressTarget(preview.transform);
+
+            homePreview = preview.transform;
+            hasUnsavedChanges = true; // Cancel 시 해제됨
+        }
+        finally
+        {
+            _homeSwapBusy = false;
+        }
+    }
+
+    #endregion
 }

@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public partial class EditModeController
 {
+    #region ===== Edit Mode Toggle =====
+
     /// <summary>편집모드 on/off</summary>
     private void SetEditMode(bool on, bool keepTarget)
     {
@@ -64,6 +66,7 @@ public partial class EditModeController
             actionToolbar?.Hide();
         }
     }
+
     // CocoDoogy, Master 태그는 위치 저장에서 제외
     private static bool ShouldSkipSave(Transform t)
     {
@@ -72,8 +75,6 @@ public partial class EditModeController
         return tag == "CocoDoogy" || tag == "Master";
     }
 
-
-
     private void ToggleTopButtons(bool on)
     {
         if (undoButton) undoButton.gameObject.SetActive(on);
@@ -81,9 +82,10 @@ public partial class EditModeController
         if (backButton) backButton.gameObject.SetActive(on);
     }
 
-    // ─────────────────────────────────────────────────────────────────────
-    // 뒤로가기/저장 버튼
-    // ─────────────────────────────────────────────────────────────────────
+    #endregion
+
+
+    #region ===== Back / Save Buttons =====
 
     private void OnBackClicked()
     {
@@ -106,6 +108,7 @@ public partial class EditModeController
 
         if (restore)
         {
+            RemoveNewlyCreatedSinceBaseline();
             RestoreBaseline();               // 오브젝트 + 인벤토리 복구
             SaveAllDraggablePositions();     // 복구된 위치로 다시 저장
             DecoInventoryRuntime.I?.SaveAll();
@@ -116,6 +119,7 @@ public partial class EditModeController
         hasUnsavedChanges = false;
         baseline.Clear();
         invBaseline.Clear();
+        baselineIds.Clear();
         pendingFromInventory = null;
     }
 
@@ -127,15 +131,61 @@ public partial class EditModeController
         // 1) 씬의 Draggable 전부 저장
         SaveAllDraggablePositions();
 
-        // 2) 씬에 배치 완료한 Deco 들 저장
+        // 2) 씬에 배치 완료한 Placeable 들 저장
         PlaceableStore.I?.SaveAllFromScene();
 
         // 3) 인벤 수량 저장
         DecoInventoryRuntime.I?.SaveAll();
 
+        // 4) 상태 정리
         hasUnsavedChanges = false;
-        CaptureBaseline(); // 저장 후 상태를 다시 baseline 으로
-        if (savedInfoPanel) savedInfoPanel.SetActive(true);
+        CaptureBaseline(); // 저장 후 상태를 baseline으로
+
+        // 🔹 선택된 오브젝트 해제 → 툴바도 자동으로 Hide됨
+        SelectTarget(null);
+
+        // 5) 저장 완료 패널 표시
+        if (savedInfoPanel)
+            savedInfoPanel.SetActive(true);
+    }
+
+    #endregion
+
+
+    #region ===== Cleanup Helpers =====
+
+    private void RemoveNewlyCreatedSinceBaseline()
+    {
+#if UNITY_2022_2_OR_NEWER
+        var tags = FindObjectsByType<PlaceableTag>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+#else
+        var tags = FindObjectsOfType<PlaceableTag>();
+#endif
+        for (int i = 0; i < tags.Length; i++)
+        {
+            var tag = tags[i];
+            if (!tag) continue;
+            var tr = tag.transform;
+
+            // 임시물은 이미 제거됨
+            if (tr.GetComponent<InventoryTempMarker>()) continue;
+
+            // baseline에 있던 오브젝트는 유지
+            if (baselineIds.Contains(tr.GetInstanceID())) continue;
+
+            // ✅ baseline 이후 새로 생긴 확정 배치물 → 제거 + 인벤 복귀
+            switch (tag.category)
+            {
+                case PlaceableCategory.Deco:
+                    DecoInventoryRuntime.I?.Add(tag.id, 1);
+                    break;
+                case PlaceableCategory.Animal:
+                    EditModeController.AnimalReturnedToInventory?.Invoke(tag.id);
+                    break;
+            }
+
+            Destroy(tr.gameObject);
+        }
     }
 
     // ✅ 최종 버전
@@ -144,7 +194,7 @@ public partial class EditModeController
 #if UNITY_2022_2_OR_NEWER
         var temps = FindObjectsByType<InventoryTempMarker>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 #else
-    var temps = Resources.FindObjectsOfTypeAll<InventoryTempMarker>();
+        var temps = Resources.FindObjectsOfTypeAll<InventoryTempMarker>();
 #endif
         foreach (var temp in temps)
         {
@@ -156,6 +206,9 @@ public partial class EditModeController
             if (ptag != null && ptag.category == PlaceableCategory.Deco)
                 decoId = ptag.id;
 
+            if (ptag != null && ptag.category == PlaceableCategory.Animal)
+                AnimalReturnedToInventory?.Invoke(ptag.id);
+
             Object.Destroy(tr.gameObject);
 
             if (decoId != 0 && DecoInventoryRuntime.I != null)
@@ -163,13 +216,17 @@ public partial class EditModeController
         }
     }
 
+    #endregion
+
+
+    #region ===== Save Draggable Positions =====
 
     private void SaveAllDraggablePositions()
     {
 #if UNITY_2022_2_OR_NEWER
         var drags = FindObjectsByType<Draggable>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 #else
-    var drags = Resources.FindObjectsOfTypeAll<Draggable>();
+        var drags = Resources.FindObjectsOfTypeAll<Draggable>();
 #endif
         int count = 0;
         foreach (var d in drags)
@@ -186,13 +243,11 @@ public partial class EditModeController
         }
         Debug.Log($"[Save] Draggable (활성) {count}개 저장 완료");
     }
-    // CocoDoogy, Master 태그는 위치 저장에서 제외
+
+    #endregion
 
 
-
-    // ─────────────────────────────────────────────────────────────────────
-    // UI Wiring
-    // ─────────────────────────────────────────────────────────────────────
+    #region ===== UI Wiring =====
 
     private void WireUndoButton()
     {
@@ -252,9 +307,10 @@ public partial class EditModeController
         savedOkButton.onClick.AddListener(() => savedInfoPanel?.SetActive(false));
     }
 
-    // ─────────────────────────────────────────────────────────────────────
-    // Baseline (오브젝트 + 인벤토리)
-    // ─────────────────────────────────────────────────────────────────────
+    #endregion
+
+
+    #region ===== Baseline (Objects + Inventory) =====
 
     private static bool IsInLayerMask(int layer, LayerMask mask)
         => (mask.value & (1 << layer)) != 0;
@@ -264,6 +320,7 @@ public partial class EditModeController
     {
         baseline.Clear();
         invBaseline.Clear();
+        baselineIds.Clear();
         var set = new HashSet<int>();
 
         // 1) Draggable 모두
@@ -288,7 +345,7 @@ public partial class EditModeController
             }
         }
 
-        // 2) Draggable 은 아니지만 draggableMask 에 포함되는 콜라이더들
+        // 2) Draggable은 아니지만 draggableMask에 포함되는 콜라이더들
 #if UNITY_2022_2_OR_NEWER
         var cols = FindObjectsByType<Collider>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 #else
@@ -312,6 +369,13 @@ public partial class EditModeController
                     activeSelf = tr.gameObject.activeSelf
                 });
             }
+        }
+
+        // ⬇️ baseline에 담긴 트랜스폼들을 baselineIds 집합으로 기록
+        for (int i = 0; i < baseline.Count; i++)
+        {
+            var tr = baseline[i].t;
+            if (tr) baselineIds.Add(tr.GetInstanceID());
         }
 
         // 3) 인벤토리 스냅샷
@@ -372,62 +436,11 @@ public partial class EditModeController
         }
     }
 
-    // ─────────────────────────────────────────────────────────────────────
-    // 인벤토리에서 꺼내서 바로 편집모드로
-    // ─────────────────────────────────────────────────────────────────────
+    #endregion
 
-    /// <summary>인벤토리에서 DecoData를 꺼내 씬에 배치 시작</summary>
-    //public void SpawnFromDecoData(DecoData data)
-    //{
-    //    if (data == null)
-    //    {
-    //        Debug.LogWarning("[EditModeController] DecoData가 null입니다.");
-    //        return;
-    //    }
 
-    //    var prefab = DataManager.Instance.Deco.GetPrefab(data.deco_id);
-    //    if (!prefab)
-    //    {
-    //        Debug.LogWarning($"[EditModeController] DecoData({data.deco_id})에 prefab이 없습니다. path={data.deco_prefab}");
-    //        return;
-    //    }
+    #region ===== Spawn From Inventory =====
 
-    //    GameObject go = Object.Instantiate(prefab);
-    //    go.name = data.deco_name;
-
-    //    // decoId 표시
-    //    var tag = go.GetComponent<PlaceableTag_Deco>();
-    //    if (!tag) tag = go.AddComponent<PlaceableTag_Deco>();
-    //    tag.decoId = data.deco_id;
-
-    //    // 드래그 가능하도록
-    //    var drag = go.GetComponent<Draggable>();
-    //    if (!drag) drag = go.AddComponent<Draggable>();
-
-    //    // 인벤 임시 마킹
-    //    MarkAsInventoryTemp(go.transform, true);
-    //    pendingFromInventory = go.transform;
-
-    //    // 편집모드로 강제 진입 + 선택
-    //    SetEditMode(true, keepTarget: false);
-    //    SelectTarget(go.transform);
-
-    //    // 항상 (0,0,0)에서 시작
-    //    go.transform.position = Vector3.zero;
-    //    go.transform.rotation = Quaternion.identity;
-
-    //    // 그리드 스냅
-    //    if (snapToGrid)
-    //        go.transform.position = SnapToGrid(go.transform.position);
-
-    //    // 첫 상태 유효성 표현
-    //    bool valid = IsOverGround(go.transform.position) && !OverlapsOthers(go.transform);
-    //    if (drag)
-    //    {
-    //        drag.SetInvalid(!valid);
-    //        drag.SetHighlighted(true);
-    //    }
-    //}
     // 공통 스폰 진입점
     public void SpawnFromPlaceable(IPlaceableData data, PlaceableCategory cat)
     {
@@ -440,7 +453,7 @@ public partial class EditModeController
         GameObject go = Instantiate(prefab);
         go.name = data.DisplayName;
 
-        // 공통 태그 달기
+        // 공통 태그
         var tag = go.GetComponent<PlaceableTag>() ?? go.AddComponent<PlaceableTag>();
         tag.category = cat;
         tag.id = data.Id;
@@ -456,14 +469,22 @@ public partial class EditModeController
         SetEditMode(true, keepTarget: false);
         SelectTarget(go.transform);
 
-        // 0,0,0 시작 + 스냅
-        go.transform.position = Vector3.zero;
+        // ✅ 스폰 위치: (0, 0, -10)
+        go.transform.position = new Vector3(0f, 0f, -10f);
         go.transform.rotation = Quaternion.identity;
+
+        // 그리드 스냅 옵션
         if (snapToGrid) go.transform.position = SnapToGrid(go.transform.position);
 
-        // 유효성 마킹
+        // 최초 유효성 마킹
         bool valid = IsOverGround(go.transform.position) && !OverlapsOthers(go.transform);
         if (drag) { drag.SetInvalid(!valid); drag.SetHighlighted(true); }
+
+        if (cat == PlaceableCategory.Animal)
+            AnimalTakenFromInventory?.Invoke(data.Id);
+
+        // 선택 직후 툴바 갱신
+        UpdateToolbar();
     }
 
     // (기존) Deco 전용을 공통 스폰으로 라우팅
@@ -472,5 +493,5 @@ public partial class EditModeController
         SpawnFromPlaceable(new DecoPlaceable(data), PlaceableCategory.Deco);
     }
 
+    #endregion
 }
-

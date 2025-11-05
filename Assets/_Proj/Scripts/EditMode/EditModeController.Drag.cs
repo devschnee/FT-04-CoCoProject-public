@@ -9,6 +9,12 @@ public partial class EditModeController
     // 드래그 시작 직전 스냅
     private Snap? lastBeforeDrag;
 
+    // ── Overlap 임시 버퍼(무할당) ──────────────────────────────────────
+    // 필요 시 자동 확장
+    private static Collider[] _ovlBuf = new Collider[64];
+
+    #region ===== Move Plane & Drag =====
+
     /// <summary>드래그용 평면 생성(Y 고정)</summary>
     private void PrepareMovePlane()
     {
@@ -43,7 +49,7 @@ public partial class EditModeController
         CurrentTarget.position = hit;
         movedDuringDrag = true;
 
-        // 배치 유효성 검사
+        // 배치 유효성 검사(빠른 탈출 + 무할당)
         bool onGround = IsOverGround(hit);
         bool noOverlap = !OverlapsOthers(CurrentTarget);
         bool valid = onGround && noOverlap;
@@ -68,6 +74,7 @@ public partial class EditModeController
             {
                 CurrentTarget.position = lastBeforeDrag.Value.pos;
                 CurrentTarget.rotation = lastBeforeDrag.Value.rot;
+                Physics.SyncTransforms(); // 물리/충돌 동기화
             }
 
             if (CurrentTarget.TryGetComponent<Draggable>(out var drag0))
@@ -92,6 +99,11 @@ public partial class EditModeController
         currentPlacementValid = true;
     }
 
+    #endregion ===== Move Plane & Drag =====
+
+
+    #region ===== Grid & Ground =====
+
     /// <summary>그리드 스냅</summary>
     private Vector3 SnapToGrid(Vector3 world)
     {
@@ -113,36 +125,61 @@ public partial class EditModeController
         return Physics.Raycast(origin, Vector3.down, out _, dist, groundMask, QueryTriggerInteraction.Ignore);
     }
 
-    /// <summary>다른 오브젝트와 겹치는지 검사</summary>
+    #endregion ===== Grid & Ground =====
+
+
+    #region ===== Overlap Check (NonAlloc) =====
+
+    /// <summary>
+    /// 다른 오브젝트와 겹치는지 검사 (무할당 버전)
+    /// - OverlapBoxNonAlloc 로 후보 수집 → 필요 시 버퍼 확장
+    /// - 실제 충돌은 ComputePenetration 으로 확정
+    /// </summary>
     private bool OverlapsOthers(Transform t)
     {
+        if (!t) return false;
+
         var myCols = t.GetComponentsInChildren<Collider>();
         if (myCols == null || myCols.Length == 0) return false;
         if (!TryGetCombinedBoundsFromColliders(myCols, out Bounds myBounds)) return false;
 
-        var half = myBounds.extents;
         var center = myBounds.center;
+        var half = myBounds.extents;
 
-        // 후보들만 모으기
-        var candidates = Physics.OverlapBox(
+        // 후보 수집 (draggableMask만)
+        int count = Physics.OverlapBoxNonAlloc(
             center,
             half,
+            _ovlBuf,
             Quaternion.identity,
             draggableMask,
             QueryTriggerInteraction.Ignore
         );
 
-        if (candidates == null || candidates.Length == 0) return false;
-
-        foreach (var other in candidates)
+        // 버퍼가 모자라면 2배로 확장해 한 번 더
+        if (count == _ovlBuf.Length)
         {
+            _ovlBuf = new Collider[_ovlBuf.Length * 2];
+            count = Physics.OverlapBoxNonAlloc(
+                center, half, _ovlBuf, Quaternion.identity, draggableMask, QueryTriggerInteraction.Ignore);
+        }
+
+        if (count <= 0) return false;
+
+        for (int i = 0; i < count; i++)
+        {
+            var other = _ovlBuf[i];
             if (!other || !other.enabled) continue;
             if (IsSameRootOrChild(t, other.transform)) continue;
 
-            foreach (var my in myCols)
+            // 트리거 제외
+            if (other.isTrigger) continue;
+
+            // 세부 충돌 체크
+            for (int m = 0; m < myCols.Length; m++)
             {
-                if (!my || !my.enabled) continue;
-                if (my.isTrigger || other.isTrigger) continue;
+                var my = myCols[m];
+                if (!my || !my.enabled || my.isTrigger) continue;
 
                 if (Physics.ComputePenetration(
                         my, my.transform.position, my.transform.rotation,
@@ -159,22 +196,28 @@ public partial class EditModeController
     }
 
     private static bool IsSameRootOrChild(Transform root, Transform other)
-        => other == root || other.IsChildOf(root);
+        => other == root || (other && other.IsChildOf(root));
 
     private static bool TryGetCombinedBoundsFromColliders(Collider[] cols, out Bounds combined)
     {
-        combined = new Bounds();
+        combined = default;
         bool hasAny = false;
-        foreach (var c in cols)
+        for (int i = 0; i < cols.Length; i++)
         {
+            var c = cols[i];
             if (!c || !c.enabled) continue;
-            if (!hasAny) { combined = c.bounds; hasAny = true; }
-            else combined.Encapsulate(c.bounds);
+
+            var b = c.bounds;
+            if (!hasAny) { combined = b; hasAny = true; }
+            else combined.Encapsulate(b);
         }
         return hasAny;
     }
 
-    #region === Undo ===
+    #endregion ===== Overlap Check (NonAlloc) =====
+
+
+    #region ===== Undo =====
 
     public void UndoLastMove()
     {
@@ -191,12 +234,14 @@ public partial class EditModeController
             // 되돌리기
             CurrentTarget.position = prev.pos;
             CurrentTarget.rotation = prev.rot;
+            Physics.SyncTransforms();
 
             // 되돌렸더니 또 겹치면 취소
             if (OverlapsOthers(CurrentTarget))
             {
                 CurrentTarget.position = curPos;
                 CurrentTarget.rotation = curRot;
+                Physics.SyncTransforms();
 
                 if (CurrentTarget.TryGetComponent<Draggable>(out var dragFail))
                 {
@@ -245,21 +290,14 @@ public partial class EditModeController
         if (undoMax <= 0) return;
         if (stack.Count <= undoMax) return;
 
-        // Stack에는 최신이 위에 있어서 ToArray() 후 뒤집어서 잘라야 한다
-        var arr = stack.ToArray();
-        System.Array.Reverse(arr);
-        int removeCount = stack.Count - undoMax;
-
-        var trimmed = new List<Snap>(undoMax);
-        for (int i = 0; i < arr.Length; i++)
-        {
-            if (i < removeCount) continue;
-            trimmed.Add(arr[i]);
-        }
+        // 최신(Top) 유지, 오래된 것부터 제거
+        var tmp = stack.ToArray();        // [old ... new]
+        System.Array.Reverse(tmp);        // [new ... old]
+        int keep = Mathf.Min(undoMax, tmp.Length);
 
         stack.Clear();
-        for (int i = trimmed.Count - 1; i >= 0; i--)
-            stack.Push(trimmed[i]);
+        for (int i = 0; i < keep; i++)
+            stack.Push(tmp[i]);
     }
 
     private void UpdateUndoUI()
@@ -279,5 +317,5 @@ public partial class EditModeController
         undoButton.interactable = canUndo;
     }
 
-    #endregion
+    #endregion ===== Undo =====
 }

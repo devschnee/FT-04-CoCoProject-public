@@ -1,12 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class HomeInventoryPanel : MonoBehaviour
 {
     [Header("DB & UI")]
-    [SerializeField] private HomeDatabase homeDB;          // ¡ç ÀÎ½ºÆåÅÍ¿¡ ÇÒ´ç
+    [SerializeField] private HomeDatabase homeDB;          // â† ì¸ìŠ¤íŽ™í„°ì— í• ë‹¹
     [SerializeField] private RectTransform content;        // Grid/Content
-    [SerializeField] private GenericInvSlot slotPrefab;    // °ø¿ë ½½·Ô ÇÁ¸®ÆÕ
+    [SerializeField] private GenericInvSlot slotPrefab;    // ê³µìš© ìŠ¬ë¡¯ í”„ë¦¬íŒ¹
+
+    private EditModeController _edit;
 
     public void OnEnable() => Rebuild();
 
@@ -14,29 +16,25 @@ public class HomeInventoryPanel : MonoBehaviour
     {
         if (!homeDB || !content || !slotPrefab) return;
 
-        // ±âÁ¸ ºñ¿ì±â
         for (int i = content.childCount - 1; i >= 0; i--)
             Destroy(content.GetChild(i).gameObject);
 
-        // ½½·Ô Ã¤¿ì±â
         foreach (var data in homeDB.homeList)
         {
             if (data == null) continue;
             var slot = Instantiate(slotPrefab, content);
 
-            // ¾ÆÀÌÄÜ ·Îµù (¸®¼Ò½º ·Î´õ ¹Ù·Î »ç¿ë)
             var icon = data.GetIcon(new ResourcesLoader());
             slot.SetIcon(icon);
             slot.SetCountVisible(false);
 
+            // âœ… ì§‘ì€ í”„ë¦¬ë·° êµì²´ë¡œ ë™ìž‘
             slot.SetOnClick(() =>
             {
-                // ¼ö·® ¼Òºñ ·ÎÁ÷ÀÌ ÇÊ¿äÇÏ¸é ³ªÁß¿¡ Ãß°¡ (Áö±ÝÀº ¹Ì¼Òºñ ½ºÆù)
-                var edit = FindFirstObjectByType<EditModeController>();
-                if (!edit) return;
-                edit.SpawnFromPlaceable(new HomePlaceable(data), PlaceableCategory.Home);
+                if (_edit == null) _edit = FindFirstObjectByType<EditModeController>();
+                if (_edit == null) return;
+                _edit.PreviewSwapHome(new HomePlaceable(data));
             });
-
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(content);
