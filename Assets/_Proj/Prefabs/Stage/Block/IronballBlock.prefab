@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3683261028050005787}
   - component: {fileID: 9170303572979979739}
   - component: {fileID: 8611777253475136124}
+  - component: {fileID: 180925807758137407}
   m_Layer: 8
   m_Name: IronballBlock
   m_TagString: Untagged
@@ -139,6 +140,27 @@ MonoBehaviour:
   occludeLayer:
     serializedVersion: 2
     m_Bits: 17296
+--- !u!114 &180925807758137407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468510749670645365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d0b782b5a8e524fb8665a592ae3a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0, z: 0}
+  origin:
+    blockType: 0
+    blockName: 
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    property:
+      isOn: 0
+      linkedPos: {x: 2147483647, y: 2147483647, z: 2147483647}
 --- !u!1 &3027567127821156346
 GameObject:
   m_ObjectHideFlags: 0

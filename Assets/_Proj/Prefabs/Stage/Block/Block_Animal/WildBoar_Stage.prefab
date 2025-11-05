@@ -866,6 +866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4326567856601192955}
   - component: {fileID: 7038002128938173689}
+  - component: {fileID: -1339977073582218449}
   m_Layer: 0
   m_Name: WildBoar_Stage
   m_TagString: Untagged
@@ -937,6 +938,27 @@ MonoBehaviour:
   rotateLerp: 25
   useGlobalTimeScale: 1
   hitstopSeconds: 0.06
+--- !u!114 &-1339977073582218449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8082147076722755159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e03d497178aeb34cbf918c932392721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0, z: 0}
+  origin:
+    blockType: 0
+    blockName: 
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    property:
+      isOn: 0
+      linkedPos: {x: 2147483647, y: 2147483647, z: 2147483647}
 --- !u!1 &8706297100289573946
 GameObject:
   m_ObjectHideFlags: 0

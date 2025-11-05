@@ -19,10 +19,16 @@ public abstract class Block : MonoBehaviour
     [Tooltip("가져온 블록세이브데이터의 원본")]
     public BlockSaveData origin;
 
+
+    
+
+    
     public void Init(BlockSaveData saveData)
     {
         this.origin = saveData;
     }
+
+
     protected virtual void OnEnable()
     {
         gridPosition = Vector3Int.RoundToInt(transform.position);

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerSlope : MonoBehaviour
+public class PlayerSlope : MonoBehaviour, IMoveStrategy
 {
     [Header("Slope Settings")]
     public float slopeLimitDeg = 45f;

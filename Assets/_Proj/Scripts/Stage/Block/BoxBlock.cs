@@ -1,9 +1,55 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class BoxBlock : Block
+public class BoxBlock : Block, IEdgeColliderHandler
 {
 
+    public List<Collider> transparentColliders;
+    public LayerMask groundLayer;
+    public List<Collider> TransparentColliders { get => transparentColliders; set => transparentColliders = value; }
 
+
+    private Vector3 EnumToDir(FourDir dir)
+    {
+        return dir == FourDir.Forward ? transform.forward :
+               dir == FourDir.Left ? -transform.right :
+               dir == FourDir.Backward ? -transform.forward :
+               transform.right;
+    }
+
+    void Awake()
+    {
+        //groundLayer = LayerMask.GetMask("Ground", "Slope", "Pushables", "Wall");
+    }
+    public void Inject()
+    {
+    }
+
+    public void Inspect()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Vector3 rayOrigin = transform.position - (Vector3.up * .49f);
+            Vector3 dir = EnumToDir((FourDir)i);
+            Ray ray = new Ray(rayOrigin, dir);
+
+            var results = Physics.RaycastAll(ray, 1.49f, groundLayer);
+
+            foreach (RaycastHit hit in results)
+            {
+                print(hit.collider.gameObject.layer);
+            }
+            if (results.Length < 1)
+            //그라운드레이어로 취급되는 오브젝트가 아무것도 검출되지 않았다는 뜻.
+            {
+                transparentColliders[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                transparentColliders[i].gameObject.SetActive(false);
+            }
+        }
+    }
     protected override void OnEnable()
     {
         base.OnEnable();

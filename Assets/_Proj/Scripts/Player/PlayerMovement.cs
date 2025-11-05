@@ -44,46 +44,49 @@ public class PlayerMovement : MonoBehaviour
         if (camTr == null) camTr = Camera.main?.transform;
 
         Vector2 input = new Vector2(joystick.InputDir.x, joystick.InputDir.z);
-        if (input.magnitude > 0)
-        {
-            Vector3 input45Below = new(joystick.InputDir.x, -1, joystick.InputDir.z);
 
-            Vector3 offsetRbPos = transform.position + (Vector3.up * .5f);
+        //if (input.magnitude > 0)
+        //{
+        //    Vector3 input45Below = new(joystick.InputDir.x, -1, joystick.InputDir.z);
 
-            Quaternion rotR = Quaternion.Euler(0, 45f, 0);
-            Quaternion rotL = Quaternion.Euler(0, -45f, 0);
-            Vector3 rotatedR = rotR * input45Below;
-            Vector3 rotatedL = rotL * input45Below;
+        //    Vector3 offsetRbPos = transform.position + (Vector3.up * .5f);
+
+        //    Quaternion rotR = Quaternion.Euler(0, 45f, 0);
+        //    Quaternion rotL = Quaternion.Euler(0, -45f, 0);
+        //    Vector3 rotatedR = rotR * input45Below;
+        //    Vector3 rotatedL = rotL * input45Below;
 
 
-            Ray mainRay = new(offsetRbPos, input45Below);
+        //    Ray mainRay = new(offsetRbPos, input45Below);
 
-            RaycastHit[] mainRayHits = Physics.RaycastAll(mainRay, .71f, LayerMask.GetMask("Ground", "Wall", "Slope"));
-            
-            for (int i = 0; i < mainRayHits.Length; i++)
-            {
-                print($"PlayerMovement: [{i}]: {mainRayHits[i].collider.name}");
-            }
+        //    RaycastHit[] mainRayHits = Physics.RaycastAll(mainRay, .71f, LayerMask.GetMask("Ground", "Wall", "Slope"));
+        //    bool isSlope = false;
 
-            if (mainRayHits. Length < 1)
-            {
-                input *= -.01f;
-               
-            }
-            else
-            {
-                Ray subRayL = new(offsetRbPos, rotatedL);
-                Ray subRayR = new(offsetRbPos, rotatedR);
-                if (!Physics.Raycast(subRayL, .71f, LayerMask.GetMask("Ground", "Wall", "Slope")) &&
-                !Physics.Raycast(subRayR, .71f, LayerMask.GetMask("Ground", "Wall", "Slope")))
-                {
-                    input *= -.01f;
-                }
-            }
-            
-        }
+        //    for (int i = 0; i < mainRayHits.Length; i++)
+        //    {
+        //        print($"PlayerMovement: [{i}]: {mainRayHits[i].collider.name}");
+        //        isSlope = mainRayHits[i].collider.gameObject.layer == slopeMask; 
+        //    }
+        //    if (mainRayHits. Length < 1)
+        //    {
+        //        input *= -.01f;
 
-        #region 주석
+        //    }
+        //    else
+        //    {
+        //        if (!isSlope)
+        //        {
+        //            Ray subRayL = new(offsetRbPos, rotatedL);
+        //            Ray subRayR = new(offsetRbPos, rotatedR);
+        //            if (!Physics.Raycast(subRayL, .71f, LayerMask.GetMask("Ground", "Wall", "Slope")) &&
+        //            !Physics.Raycast(subRayR, .71f, LayerMask.GetMask("Ground", "Wall", "Slope")))
+        //            {
+        //                input *= -.01f;
+        //            }
+        //        }
+        //    }
+
+        //}
         //Vector3 inputOffset = new(joystick.InputDir.x, 0, joystick.InputDir.z);
         //Ray ray = new(transform.position + (inputOffset * .3f), inputOffset);
         //RaycastHit[] results = new RaycastHit[10];
@@ -132,7 +135,6 @@ public class PlayerMovement : MonoBehaviour
         //        input = Vector2.zero;
         //    }
         //}
-        #endregion
 
 
 
@@ -186,28 +188,25 @@ public class PlayerMovement : MonoBehaviour
         // 위치 이동
         Vector3 nextPos = rb.position + finalDir * (moveSpeed * Time.fixedDeltaTime) + stepOffset;
 
-        // 같은 y층 오브젝트 감지
-        float halfTile = 0.5f;
-        Vector3 boxCenter = nextPos + Vector3.up * 0.5f; // 플레이어 중심
-        Vector3 halfExt = new Vector3(0.4f, 0.45f, 0.4f);
-        Collider[] sameYHits = Physics.OverlapBox(boxCenter, halfExt, Quaternion.identity, ~0, QueryTriggerInteraction.Collide);
+        //// 같은 y층 오브젝트 감지
+        //float halfTile = 0.5f;
+        //Vector3 boxCenter = nextPos + Vector3.up * 0.5f; // 플레이어 중심
+        //Vector3 halfExt = new Vector3(0.4f, 0.45f, 0.4f);
+        //Collider[] sameYHits = Physics.OverlapBox(boxCenter, halfExt, Quaternion.identity, ~0, QueryTriggerInteraction.Collide);
 
-        foreach (var col in sameYHits)
-        {
-            if (col.attachedRigidbody == rb) continue;
-            if (col.isTrigger) continue;
+        //foreach (var col in sameYHits)
+        //{
+        //    if (col.attachedRigidbody == rb) continue;
+        //    if (col.isTrigger) continue;
 
-            //if (col.CompareTag("Turtle")) continue;
-            //if (((1 << col.gameObject.layer) & LayerMask.GetMask("Ridable")) != 0) continue;
-
-            // 상대의 중심 y값이 같은 층에 있다면 이동 차단
-            float dy = Mathf.Abs(col.bounds.center.y - rb.position.y);
-            if (dy < halfTile && !Physics.Raycast(rb.position + Vector3.up * 0.1f, Vector3.down, 1.2f, slopeMask))
-            {
-                // 같은 높이 + 슬로프 아님 -> 이동 금지
-                return;
-            }
-        }
+        //    // 상대의 중심 y값이 같은 층에 있다면 이동 차단
+        //    float dy = Mathf.Abs(col.bounds.center.y - rb.position.y);
+        //    if (dy < halfTile && !Physics.Raycast(rb.position + Vector3.up * 0.1f, Vector3.down, 1.2f, slopeMask))
+        //    {
+        //        // 같은 높이 + 슬로프 아님 -> 이동 금지
+        //        return;
+        //    }
+        //}
         rb.MovePosition(nextPos);
 
         // 회전 처리

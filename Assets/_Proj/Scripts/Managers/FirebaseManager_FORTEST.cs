@@ -18,6 +18,8 @@ public class FirebaseManager_FORTEST : MonoBehaviour
 
     public bool IsInitialized { get; private set; }
     public MapData currentMapData;
+    public string selectStageID;
+
     async void Start()
     {
         DependencyStatus status = await FirebaseApp.CheckAndFixDependenciesAsync();
@@ -101,6 +103,7 @@ public class FirebaseManager_FORTEST : MonoBehaviour
             {
                 callback?.Invoke($"{mapName} data Found!");
                 MapData data = JsonUtility.FromJson<MapData>(snapshot.GetRawJsonValue());
+
                 return data;
             }
             else
@@ -127,5 +130,6 @@ public class FirebaseManager_FORTEST : MonoBehaviour
     public async Task Temp(string id)
     {
         currentMapData =  await LoadMapFromFirebase(id);
+        selectStageID = id;
     }
 }

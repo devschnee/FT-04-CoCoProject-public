@@ -579,6 +579,7 @@ GameObject:
   - component: {fileID: 5514353607414026615}
   - component: {fileID: 796244081849666406}
   - component: {fileID: 7930319231910958796}
+  - component: {fileID: -5410010934899105090}
   m_Layer: 9
   m_Name: Tortoise_Stage
   m_TagString: Turtle
@@ -661,6 +662,27 @@ MonoBehaviour:
   left: {fileID: 2165980803070882155}
   right: {fileID: 8584216845939550486}
   typeIcon: {fileID: 2426928545746734695}
+--- !u!114 &-5410010934899105090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894302304093336354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc037cfeed137b94a87d8fa8f1158cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0, z: 0}
+  origin:
+    blockType: 0
+    blockName: 
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    property:
+      isOn: 0
+      linkedPos: {x: 2147483647, y: 2147483647, z: 2147483647}
 --- !u!1 &7504927936764243087
 GameObject:
   m_ObjectHideFlags: 0
