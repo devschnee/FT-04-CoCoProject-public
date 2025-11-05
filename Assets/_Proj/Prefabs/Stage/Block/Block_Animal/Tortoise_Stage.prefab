@@ -647,7 +647,7 @@ MonoBehaviour:
   moveSpeed: 5
   blockLayer:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 896
   ridableLayer:
     serializedVersion: 2
     m_Bits: 264
