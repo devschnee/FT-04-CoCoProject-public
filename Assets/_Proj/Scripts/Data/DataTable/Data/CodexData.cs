@@ -11,7 +11,6 @@ public class CodexData
     public string codex_display;
 
     [NonSerialized] public Sprite codexDisplay;
-    [NonSerialized] public Sprite codexIcon;
 
     public Sprite GetCodexDisplay(IResourceLoader loader)
     {

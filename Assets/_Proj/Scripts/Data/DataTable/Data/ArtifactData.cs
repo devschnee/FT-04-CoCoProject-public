@@ -8,7 +8,6 @@ public class ArtifactData
     public string artifact_name;
     public string artifact_icon;
     public ArtifactType artifact_type;
-    public string artifact_desc;
 
     [NonSerialized] public Sprite icon;
 

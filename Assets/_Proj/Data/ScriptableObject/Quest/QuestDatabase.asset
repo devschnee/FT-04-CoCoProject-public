@@ -13,6 +13,27 @@ MonoBehaviour:
   m_Name: QuestDatabase
   m_EditorClassIdentifier: 
   questList:
+  - quest_id: 70001
+    quest_name: "\uC77C\uC77C \uBC29\uBB38"
+    quest_type: 0
+    quest_object: 0
+    quest_obj_desc: "\uC77C\uC77C \uC811\uC18D 1\uD68C"
+    quest_value: 1
+    quest_reward_cap: 200
+    quest_reward_item: 0
+    quest_reward_item_count: 0
+    quest_desc: "\uD558\uB8E8 1\uD68C \uC811\uC18D\uD574\uC57C \uD55C\uB2E4."
+  - quest_id: 70002
+    quest_name: "\uC990\uAC70\uC6B4 \uC0B0\uCC45"
+    quest_type: 0
+    quest_object: 2
+    quest_obj_desc: "\uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4 2\uD68C"
+    quest_value: 2
+    quest_reward_cap: 150
+    quest_reward_item: 0
+    quest_reward_item_count: 0
+    quest_desc: "\uC2A4\uD14C\uC774\uC9C0\uB97C 2\uD68C \uD074\uB9AC\uC5B4\uD574\uC57C
+      \uD55C\uB2E4."
   - quest_id: 70003
     quest_name: "\uC18C\uD1B5\uD558\uAE30"
     quest_type: 0

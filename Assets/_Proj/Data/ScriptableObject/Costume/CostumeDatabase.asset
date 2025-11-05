@@ -13,6 +13,23 @@ MonoBehaviour:
   m_Name: CostumeDatabase
   m_EditorClassIdentifier: 
   costumeList:
+  - costume_id: 20001
+    costume_name: "\uCE74\uC6B0\uBCF4\uC774 \uBAA8\uC790"
+    costume_prefab: Prefabs/Costume/CowboyHat
+    costume_icon: Icons/Costume/icon_cowboy_hat
+    cos_part: 0
+    cos_tag: 0
+    cos_acquire: 1
+    costume_desc: "\uCF54\uCF54\uB450\uAE30\uAC00 \uAC00\uC7A5 \uC544\uB07C\uB294
+      \uBCF4\uC548\uAD00 \uBAA8\uC790\uC785\uB2C8\uB2E4."
+  - costume_id: 20002
+    costume_name: "\uC655\uAD00"
+    costume_prefab: Prefabs/Costume/Crown
+    costume_icon: Icons/Costume/icon_crown_hat
+    cos_part: 0
+    cos_tag: 0
+    cos_acquire: 1
+    costume_desc: "\uBC15\uBB3C\uAD00\uC5D0\uC11C \uCC59\uACA8\uC628 \uC655\uAD00\uC785\uB2C8\uB2E4."
   - costume_id: 20003
     costume_name: "\uB9C8\uBC95\uC0AC \uBAA8\uC790"
     costume_prefab: Prefabs/Costume/MagicianHat

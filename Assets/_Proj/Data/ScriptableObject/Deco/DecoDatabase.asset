@@ -13,6 +13,24 @@ MonoBehaviour:
   m_Name: DecoDatabase
   m_EditorClassIdentifier: 
   decoList:
+  - deco_id: 10000
+    deco_name: "\uD070 \uB098\uBB34"
+    deco_prefab: Prefabs/Deco/SM_Env_Tree_Large_01
+    deco_icon: Icons/Deco/icon_deco_tree_large
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 2
+    deco_stack: 99
+    deco_desc: "\uD48D\uC131\uD55C \uC78E\uC774 \uB3CB\uC544\uB09C \uD070 \uB098\uBB34\uC785\uB2C8\uB2E4."
+  - deco_id: 10001
+    deco_name: "\uB77C\uC784 \uB098\uBB34"
+    deco_prefab: Prefabs/Deco/tree-lime
+    deco_icon: Icons/Deco/icon_deco_tree_lime
+    deco_type: 0
+    deco_tag: 0
+    deco_acquire: 0
+    deco_stack: 99
+    deco_desc: "\uC0C1\uD07C\uD55C \uD5A5\uC744 \uD48D\uAE30\uB294 \uB77C\uC784 \uB098\uBB34\uC785\uB2C8\uB2E4."
   - deco_id: 10002
     deco_name: "\uACE0\uBAA9 \uB098\uBB34"
     deco_prefab: Prefabs/Deco/SM_Env_Tree_Dead_04

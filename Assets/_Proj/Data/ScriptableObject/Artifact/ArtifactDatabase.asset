@@ -12,4 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f40c90514204f746ba75c049e3b461b, type: 3}
   m_Name: ArtifactDatabase
   m_EditorClassIdentifier: 
-  artifactList: []
+  artifactList:
+  - artifact_id: -1
+    artifact_name: "\uB3D9\uC804"
+    artifact_icon: Icons/Artifact/artifact_coin
+    artifact_type: 0
+  - artifact_id: -2
+    artifact_name: "\uBCD1\uB69C\uAED1"
+    artifact_icon: Icons/Artifact/artifact_cap
+    artifact_type: 0
+  - artifact_id: 50001
+    artifact_name: "\uC5EC\uD589 \uAC00\uBC29"
+    artifact_icon: Icons/Artifact/artifact_travelbag
+    artifact_type: 1
+  - artifact_id: 50002
+    artifact_name: "\uB098\uBB47\uC78E \uC655\uAD00"
+    artifact_icon: Icons/Artifact/artifact_leafcrown
+    artifact_type: 1
+  - artifact_id: 50003
+    artifact_name: "\uC791\uC740 \uAE08\uC18D \uC870\uAC01"
+    artifact_icon: Icons/Artifact/artifact_smallmetal
+    artifact_type: 1
+  - artifact_id: 50004
+    artifact_name: "\uB85C\uBD07 \uC7A5\uB09C\uAC10"
+    artifact_icon: Icons/Artifact/artifact_toyrobot
+    artifact_type: 1
+  - artifact_id: 50005
+    artifact_name: "\uB204\uAD70\uAC00\uC758 \uAC00\uC871\uC0AC\uC9C4"
+    artifact_icon: Icons/Artifact/artifact_familypic
+    artifact_type: 0
