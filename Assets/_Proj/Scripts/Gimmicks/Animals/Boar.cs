@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -77,12 +78,11 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
     // HACK : 카메라 세팅에 따라 카메라 정면을 조금 따라가도록 수정하는 것이 나은 방법일 수도 있음. 추후 joystick, camera 변경 후 다시 생각.
     private void LateUpdate()
     {
-        // NOTE, TODO : 최종 시점(카메라) 변경 후 UI를 시점에 맞게 rotation 설정해줘야 함. 현재는 0,0,0
         // 멧돼지(부모)의 회전에 상관없이 UI가 월드 축에 고정되게 유지
         if (btnGroup != null)
         {
-            // World Rotation을 Quaternion.identity(X=0, Y=0, Z=0)로 설정
-            btnGroup.transform.rotation = Quaternion.identity;
+            // TODO : UI 변경 시 회전 값 변경.
+            btnGroup.transform.rotation = Quaternion.Euler(90f, 0, 0);
         }
     }
 
@@ -165,7 +165,7 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         float rotElapsed = 0f;
         Quaternion startRot = transform.rotation;
 
-        while(rotElapsed < rotateTime)
+        while (rotElapsed < rotateTime)
         {
             rotElapsed += Time.deltaTime;
             transform.rotation = Quaternion.Slerp(startRot, initTargetRot, rotElapsed / rotateTime);
@@ -198,7 +198,7 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
 
             if (!anySolid)
             {
-                // == hits가 비었거나 트리거만 있었음 == 통과
+                // hits가 비었거나 트리거만 있었음 == 통과
                 if (!HasGround(nextPos)) { isMoving = false; yield break; }
                 yield return StartCoroutine(DashMoveTo(nextPos, moveDir));
                 boarNextPos = nextPos;
@@ -207,62 +207,60 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
 
 
             // Pushable이 하나라도 있나?
-            bool foundPushable = false;
-            PushableObjects pushHead = null;
-            foreach (var h in hits)
-            {
-                if (h == null || h.isTrigger) continue;
-                if (h.TryGetComponent(out PushableObjects p)) { pushHead = p; foundPushable = true;  break; }
-            }
+            List<PushableObjects> verticalStack = CollectVerticalStack(nextPos);
 
-            if (foundPushable)
+            if (verticalStack.Count > 0)
             {
-                // head 위치에서 연속 체인 수집
-                if (!CollectChain(pushHead.transform.position, dashDir, out var chain, out Vector3 tailNextWorld))
+                // head 위치에서 수직 체인 포함 연속적인 수평 체인 수집
+                if (!CollectChain(verticalStack[0].transform.position, dashDir, out var horizonChainStacks, out Vector3 tailNextWorld))
                 {
-                    // 체인 뒤가 막혀서 못 밈
-                    HitStop(pushHead.gameObject);
+                    // 뒤에 막혀서 못 밈
+                    HitStop(verticalStack[0].gameObject);
                     break;
                 }
-
-                // 연속적인 오브젝트의 꼬리 뒤 칸이 비어있고 바닥 OK인지 확인 (통과X/푸시블 없어야 함)
-                bool tailBlocked = Physics.CheckBox(
-                    tailNextWorld + Vector3.up * 0.5f,
-                    new Vector3(0.45f, 0.5f, 0.45f),
-                    Quaternion.identity,
-                    collisionMask, // block + pushables
-                    QueryTriggerInteraction.Ignore
-                );
 
                 bool tailHasGround = Physics.Raycast(
                     tailNextWorld + Vector3.up * 0.1f,
                     Vector3.down,
                     1.5f,
-                    groundMask, // PushableObjects에서 가져오게 됨
+                    groundMask,
                     QueryTriggerInteraction.Ignore
                 );
 
-                if (tailBlocked || !tailHasGround)
-                {
-                    // 뒤가 막혀 있으면 밀기 실패
-                    HitStop(pushHead.gameObject);
-                    break;
-                }
+                // 연속적인 오브젝트의 꼬리 뒤 칸이 비어있고 바닥 OK인지 확인 (통과X/푸시블 없어야 함)
+                //bool tailBlocked = Physics.CheckBox(
+                //    tailNextWorld + Vector3.up * 0.5f,
+                //    new Vector3(0.45f, 0.5f, 0.45f),
+                //    Quaternion.identity,
+                //    collisionMask, // block + pushables
+                //    QueryTriggerInteraction.Ignore
+                //);
 
-                // 연속된 모든 pushables를 동시에 1칸 이동
-                yield return StartCoroutine(ChainShiftOneCell(chain, dashDir));
+                //if (/*tailBlocked ||*/ !tailHasGround)
+                //{
+                //    // 뒤가 막혀 있으면 밀기 실패
+                //    HitStop(pushHead.gameObject);
+                //    break;
+                //}
 
-                
+                yield return StartCoroutine(ChainShiftOneCell(horizonChainStacks, dashDir));
+
                 // REVIEW, NOTE : 기획서 변경에 따라 밀고 난 후 한 칸 전진 한 다음에 보어 멈추게 하려면 아래 2개 라인을 주석 해제
                 //var posAfterPush = transform.position + new Vector3(dashDir.x, 0, dashDir.y);
                 //yield return StartCoroutine(DashMoveTo(posAfterPush, new Vector3(dashDir.x, 0, dashDir.y)));
 
-                // 멧돼지는 보어는 전진하지 않고 멈춤
-                HitStop(pushHead.gameObject);
+                foreach (var stack in horizonChainStacks)
+                {
+                    foreach (var p in stack)
+                    {
+                        p.StartCoroutine(p.CheckFall());
+                    }
+                }
+                // 멧돼지는 전진 안 하고 멈춤.
+                HitStop(verticalStack[0].gameObject);
                 break;
-            }
 
-            // pushables는 없고 다른 막는 물체(벽/고정O)만 있음
+            }
             HitStop(null);
             break;
         }
@@ -270,10 +268,56 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         yield return StartCoroutine(CheckFall());
     }
 
-    // 연속된 PushableObjects 체인 수집
-    bool CollectChain(Vector3 headWorldPos, Vector2Int dir, out System.Collections.Generic.List<PushableObjects> chain, out Vector3 tailNextWorld)
+    List<PushableObjects> CollectVerticalStack(Vector3 baseWorldPos)
     {
-        chain = new System.Collections.Generic.List<PushableObjects>();
+        List<PushableObjects> stack = new List<PushableObjects>();
+        Vector3 cursor = baseWorldPos; // Y축은 무시
+
+        // 최대 높이까지 탐색
+        for (int i = 0; i < 10; i++)
+        {
+            // Vector3.up * 0.5f는 박스 중심을 맞추기 위한 Offset
+            Vector3 checkPos = cursor + Vector3.up * (0.5f + i * tileSize);
+
+            // 해당 위치에서 PushableObjects만 찾기
+            var cols = Physics.OverlapBox(
+                checkPos,
+                new Vector3(0.45f, 0.5f, 0.45f), // Box Extents
+                Quaternion.identity,
+                pushableLayer, // Pushable Layer만 체크
+                QueryTriggerInteraction.Collide
+            );
+
+            PushableObjects push = null;
+            foreach (var c in cols)
+            {
+                if (c == null || c.isTrigger) continue;
+                if (c.TryGetComponent(out PushableObjects p))
+                {
+                    push = p;
+                    // 한 칸에는 하나의 Pushable만 있다고 가정하고 break
+                    break;
+                }
+            }
+
+            if (push != null)
+            {
+                stack.Add(push);
+            }
+            else
+            {
+                // 현재 칸에 Pushable이 없으면 더 이상 위에도 없을 것으로 가정하고 종료
+                break;
+            }
+        }
+        return stack;
+    }
+
+
+    // 연속된 PushableObjects 체인 수집
+    bool CollectChain(Vector3 headWorldPos, Vector2Int dir, out List<List<PushableObjects>> chainOfStacks, out Vector3 tailNextWorld)
+    {
+        chainOfStacks = new List<List<PushableObjects>>();
         tailNextWorld = Vector3.zero;
 
         Vector3 step = new Vector3(dir.x, 0, dir.y) * tileSize;
@@ -281,43 +325,15 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
 
         while (true)
         {
-            // cursor 위치에 있는 물체(첫 반복은 head 위치)
-            var cols = Physics.OverlapBox(
-                cursor + Vector3.up * 0.5f,
-                new Vector3(0.45f, 0.5f, 0.45f),
-                Quaternion.identity,
-                collisionMask, // block + pushable
-                QueryTriggerInteraction.Collide
-            );
+            // CollectVerticalStack을 사용하여 현재 칸의 수직 스택을 가져옴
+            List<PushableObjects> verticalStack = CollectVerticalStack(new Vector3(cursor.x, 0, cursor.z));
 
-            // 이 칸에 PushableObjects가 있어야 체인에 포함
-            PushableObjects push = null;
-            bool nonPushBlocking = false;
-
-            foreach (var c in cols)
+            if (verticalStack.Count == 0)
             {
-                if (c == null || c.isTrigger) continue;
-                // pushable 레이어가 지정돼 있으면 레이어 필터
-                if (c.TryGetComponent(out PushableObjects p))
+                // 현재 칸이 비었거나 Pushable이 없다면
+                if (chainOfStacks.Count == 0)
                 {
-                    push = p;
-                    // 같은 칸에 다른 충돌체가 더 있더라도, pushable이 1개라도 있으면 우선 push로 취급
-                    break;
-                }
-                if (pushableLayer.value != 0 && (pushableLayer.value & (1 << c.gameObject.layer)) == 0)
-                {
-                    // 푸시 대상 아님(다른 블록)
-                    nonPushBlocking = true;
-                    break;
-                }
-            }
-
-            if (push == null)
-            {
-                // 현재 칸이 비었거나(첫 반복 아닐 수도) pushable이 아니라면
-                if (chain.Count == 0)
-                {
-                    // headWorldPos에서부터 push를 못 찾으면 실패
+                    // headWorldPos에서부터 Pushable을 못 찾으면 실패
                     return false;
                 }
                 else
@@ -328,28 +344,59 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
                 }
             }
 
+            // Pushable이 아닌 충돌체를 검사
+            bool nonPushBlocking = false;
+            var cols = Physics.OverlapBox(
+                cursor + Vector3.up * 0.5f,
+                new Vector3(0.45f, 0.5f, 0.45f),
+                Quaternion.identity,
+                blockingMask, // blockingMask만 체크
+                QueryTriggerInteraction.Collide
+            );
+
+            foreach (var c in cols)
+            {
+                if (c == null || c.isTrigger) continue;
+                // blockingMask에 포함된 충돌체가 있으면 밀기 실패
+                if (((1 << c.gameObject.layer) & blockingMask.value) != 0)
+                {
+                    nonPushBlocking = true;
+                    break;
+                }
+            }
+
             if (nonPushBlocking)
             {
                 return false;
             }
 
-            // pushable 체인에 누적
-            chain.Add(push);
+            // pushable 체인에 수직 스택 누적
+            chainOfStacks.Add(verticalStack);
             // 다음 칸으로 이동
             cursor += step;
         }
     }
 
     // 연속된 pushables를 동시에 1칸 이동시키는 메서드
-    IEnumerator ChainShiftOneCell(System.Collections.Generic.List<PushableObjects> chain, Vector2Int dir)
+    IEnumerator ChainShiftOneCell(List<List<PushableObjects>> chainOfStacks, Vector2Int dir)
     {
-        int n = chain.Count;
-        if (n == 0) yield break;
+        int totalObjects = 0;
+        foreach (var stack in chainOfStacks)
+            totalObjects += stack.Count;
 
-        // 서로간 충돌 잠시 무시(체인 끼리만)
-        var collLists = new System.Collections.Generic.List<Collider[]>(n);
+        if (totalObjects == 0) yield break;
+
+        // 모든 PushableObject를 단일 리스트로 모으고, 충돌 무시를 설정
+        List<PushableObjects> allChainObjects = new List<PushableObjects>(totalObjects);
+        foreach (var stack in chainOfStacks)
+            allChainObjects.AddRange(stack);
+
+        int n = allChainObjects.Count;
+        var collLists = new List<Collider[]>(n);
         for (int i = 0; i < n; ++i)
-            collLists.Add(chain[i].GetComponentsInChildren<Collider>(true));
+            collLists.Add(allChainObjects[i].GetComponentsInChildren<Collider>(true));
+
+        // 체인 내 모든 오브젝트 간의 충돌 잠시 무시
         for (int i = 0; i < n; ++i)
             for (int j = i + 1; j < n; ++j)
                 foreach (var a in collLists[i])
@@ -362,23 +409,23 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         var targetPos = new Vector3[n];
         for (int i = 0; i < n; ++i)
         {
-            startPos[i] = chain[i].transform.position;
+            startPos[i] = allChainObjects[i].transform.position;
             targetPos[i] = startPos[i] + step;
         }
 
-        // 동시에 1칸
-        float dur = Mathf.Max(0.05f, dashSpeed); // 멧돼지의 dashSpeed와 비슷하게
+        // 동시에 1칸 이동
+        float dur = Mathf.Max(0.05f, dashSpeed);
         float t = 0f;
         while (t < dur)
         {
             t += Time.deltaTime;
             float k = Mathf.Clamp01(t / dur);
             for (int i = 0; i < n; ++i)
-                chain[i].transform.position = Vector3.Lerp(startPos[i], targetPos[i], k);
+                allChainObjects[i].transform.position = Vector3.Lerp(startPos[i], targetPos[i], k);
             yield return null;
         }
         for (int i = 0; i < n; ++i)
-            chain[i].transform.position = targetPos[i];
+            allChainObjects[i].transform.position = targetPos[i];
 
         // 충돌 원복
         for (int i = 0; i < n; ++i)
@@ -387,8 +434,10 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
                     foreach (var b in collLists[j])
                         if (a && b) Physics.IgnoreCollision(a, b, false);
 
-        // NOTE : 낙하/정착 처리는 PushableObjects 쪽 루틴(체크/코루틴)에서 자연히 수행될 것.
+        // NOTE: 낙하 검사는 DashCoroutine에서 한 번에 처리
     }
+
+
 
     void HitStop(GameObject hit = null)
     {
