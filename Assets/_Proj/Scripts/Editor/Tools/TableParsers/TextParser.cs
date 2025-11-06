@@ -69,6 +69,8 @@ public static class TextParser
                 //raw = raw.Replace(pattern, $"[{kvp.Value}]");
             }
         }
+        raw = raw.Replace("\\n", "\n");
+
         return raw; // 일반 문자열 그대로 반환
     }
 }

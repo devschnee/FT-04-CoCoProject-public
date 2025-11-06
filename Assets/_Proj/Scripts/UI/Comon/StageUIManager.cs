@@ -7,6 +7,7 @@ public class StageUIManager : MonoBehaviour
 {
     public static StageUIManager Instance {  get; private set; }
 
+    public StageManager stageManager;
 
     [Header("Button")]
     public Button OptionOpenButton;

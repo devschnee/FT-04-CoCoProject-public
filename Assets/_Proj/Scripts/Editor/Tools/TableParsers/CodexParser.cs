@@ -41,6 +41,9 @@ public static class CodexParser
 
             int.TryParse(v[2], out int item_id);
 
+            string rawLore = v[3];
+            string finalLore = TextParser.Resolve(rawLore, textDict);
+
             string rawName = v[6];
             string finalName = TextParser.Resolve(rawName, textDict);
 
@@ -49,7 +52,7 @@ public static class CodexParser
                 codex_id = id,
                 codex_type = category,
                 item_id = item_id,
-                codex_lore = v[3],
+                codex_lore = finalLore,
                 codex_display = v[4],
                 codex_icon = v[5],
                 codex_name = finalName,
