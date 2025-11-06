@@ -347,6 +347,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
     IEnumerator RidingCoroutine()
     {
         Debug.Log($"PushableObj: 라이딩코루틴 실행");
+        Transform originalParent = transform.parent; //null일 수도 있음. null이라면 부모 없도록 설정됨.
         List<IEdgeColliderHandler> myAdjHandlers = new();
         if (TryGetComponent<IEdgeColliderHandler>(out var myHandler))
         {
@@ -354,17 +355,24 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
                 myAdjHandlers = myHandler.DetectGrounds();
             while (isRiding)
             {
+                //탑승 상태인 동안에 매 프레임마다 원래의 위치 인근 사방의 블록들이 스스로를 검사하도록 함. 좋은 처리는 아님.
                 myAdjHandlers.ForEach((x) => x.DetectAndApplyFourEdge());
                 yield return null;
             }
-        }
-        else yield break;
         //이동이 다 끝났음.
-        yield return null;
-        myHandler.DetectAndApplyFourEdge();
+                yield return null;
+                myHandler.DetectAndApplyFourEdge();
 
         //이번엔 이동이 끝난 위치에서의 내 인근 핸들러.
-        myHandler.DetectGrounds().ForEach((x) => x.DetectAndApplyFourEdge());
+                myHandler.DetectGrounds().ForEach((x) => x.DetectAndApplyFourEdge());
+        }
+        //else yield break;하면 안 될거같다.
+        //왜냐? 이게 달린 오브젝트가 IEdgeColliderHandler를 구현하지 않을 가능성 있음(예: 철구)
+        //다만 그 경우엔 이 오브젝트 포함(애초에 머리 위에 투명콜라이더가 없음) 주변의 투명콜라이더를 재설정할 필요가 없음.
+        //아래 조건으로 yield return하면 위의 if문에 걸리든 아니든 !isRiding까지 기다림.
+        else yield return new WaitUntil(()=>!isRiding);
+
+        transform.SetParent(originalParent);
     }
 
     public void OnStopRiding()

@@ -233,5 +233,6 @@ public class PlayerMovement : MonoBehaviour, IRider
     public void OnStopRiding()
     {
         joystick.gameObject.SetActive(true);
+        transform.SetParent(null);
     }
 }

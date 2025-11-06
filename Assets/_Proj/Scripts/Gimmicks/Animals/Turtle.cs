@@ -180,13 +180,17 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
         List<Transform> ridableTrans = new List<Transform>();
         List<Vector3> ridableTargetPos = new List<Vector3>();
         List<Rigidbody> ridableRbs = new List<Rigidbody>();
-        List<PlayerMovement> playerMovement = new List<PlayerMovement>();
+        //거북이가 직접 플레이어무브먼트의 enabled상태 조작 금지(플레이어 단에서 조이스틱 해제만 함.)
+        //List<PlayerMovement> playerMovement = new List<PlayerMovement>();
         List<PushableObjects> pushableObjs = new List<PushableObjects>(); // NOTE : Box만 탑승 가능하다면 PushableBox로 바꾸면 될 듯. 이하 모든 PushableObjects 동일.
+
 
 
         foreach (var col in ridables)
         {
+            
             Debug.Log($"[Turtle] {col.name} 탑승 감지됨.");
+            
 
             if (col.transform == transform) continue;
 
@@ -209,11 +213,11 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
             }
 
             // PlayerMovement 처리
-            if (pm != null)
-            {
-                pm.enabled = false;
-                playerMovement.Add(pm);
-            }
+            //if (pm != null)
+            //{
+            //    pm.enabled = false;
+            //    playerMovement.Add(pm);
+            //}
 
             // PushableObjects 처리
             if (po != null)
@@ -221,7 +225,10 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
                 po.enabled = false;
                 pushableObjs.Add(po);
             }
-            // 거북이를 부모로 설정
+
+            //NOTE: 강욱 - 1107: 탑승 감지와 동시에 콜백 실행하는 게 좋아보입니다. (여기서 코루틴 실행->IRider가 스스로 원래 부모 기억.)
+            col.GetComponent<IRider>()?.OnStartRiding();
+            // 거북이를 부모로 설정 - 이건 여기서 할 일이 맞음.
             col.transform.SetParent(transform);
         }
 
@@ -236,9 +243,6 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
             float t = elapsed / duration;
 
 
-            //이동 시작 전...
-
-            ridableTrans.ForEach((x) => x.GetComponent<IRider>()?.OnStartRiding());
 
             // 터틀 이동 중
             transform.position = Vector3.Lerp(startPos, endPos, t);
@@ -251,8 +255,18 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
                 {
                     foreach(var trans in ridableTrans)
                     {
-                        //trans.position = transform.position;
-                        trans.rotation = transform.rotation;
+                        //NOTE: 이 코드 필요합니다. 다만, 적층된 물체의 포지션에 보정치를 추가합니다.(1단적 - 0, 2단적 - 1, 3단적 - 2 ...)
+                        //NOTE: 또, 플레이어의 경우 자식이 거북이 밑으로 변동되니 0.5f 공중으로 뜨는데, 플레이어무브먼트 검출로 판단시켜서 보정했지만
+                        //더 좋은 방법이 있을 겁니다...
+
+                        //여기서 처리하는 대신에, IRider의 탑승시작/끝 콜백 안에서의 RidingCoroutine 호출로 빼서 처리가 가능할 지도?
+                       
+                        trans.SetPositionAndRotation(
+                            trans.GetComponent<PlayerMovement>() == null?
+                            transform.position + (Vector3Int.up * ridableTrans.IndexOf(trans))
+                            : transform.position + (Vector3.up * (ridableTrans.IndexOf(trans) - .5f)),
+                            
+                            transform.rotation);
                     }
                 }
                 //0.5초 정도면 이미 첫 위치를 벗어났겠지
@@ -268,22 +282,27 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
         // 이동 완료 및 상태 정리
         transform.position = endPos;
 
+        //아래 
+        //ridableTrans.ForEach((x) => x.GetComponent<IRider>()?.OnStopRiding());
+
         for (int i = 0; i < ridableTrans.Count; i++)
         {
             if (ridableTrans[i] == null) continue;
 
             Vector3 finalPos = ridableTargetPos[i];
 
-            // 부모가 아직 이 거북이(this.transform)인지 확인 후 해제
-            if (ridableTrans[i].parent == transform)
-            {
-                //TODO: 부모 해제(아님, 부모를 원래의 부모로 설정해야 함.)
-                ridableTrans[i].SetParent(null);
+            //// 부모가 아직 이 거북이(this.transform)인지 확인 후 해제
+            //if (ridableTrans[i].parent == transform)
+            //{
+            //    //TODO: 부모 해제(아님, 부모를 원래의 부모로 설정해야 함.)
+            //    ridableTrans[i].SetParent(null);
 
                 // 하차 후 타깃 위치 설정
-                ridableTrans[i].position = finalPos;
-            }
-            else { }
+            ridableTrans[i].position = finalPos;
+            ridableTrans[i].GetComponent<IRider>()?.OnStopRiding();
+
+            //}
+            //else { }
         }
         yield return null;
 
@@ -296,14 +315,14 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
             }
         }
 
-        // PlayerMovement 재활성화
-        foreach (var pm in playerMovement)
-        {
-            if (pm != null)
-            {
-                pm.enabled = true;
-            }
-        }
+        //// PlayerMovement 재활성화
+        //foreach (var pm in playerMovement)
+        //{
+        //    if (pm != null)
+        //    {
+        //        pm.enabled = true;
+        //    }
+        //}
 
         // PushableObjects 재활성화 
         foreach (var po in pushableObjs)
@@ -318,7 +337,7 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
 
 
         yield return null;
-        ridableTrans.ForEach((x) => x.GetComponent<IRider>()?.OnStopRiding());
+        
         List<IEdgeColliderHandler> endCache = GetComponent<IEdgeColliderHandler>().DetectGrounds();
 
         GetComponent<IEdgeColliderHandler>().DetectAndApplyFourEdge();
