@@ -22,7 +22,7 @@ public static class Profile_iconParser
 
             if (string.IsNullOrWhiteSpace(line)) continue;
 
-            var v = line.Split(',');
+            var v = System.Text.RegularExpressions.Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
             if (v.Length < 5)
             {
@@ -36,7 +36,7 @@ public static class Profile_iconParser
                 continue;
             }
 
-            Enum.TryParse(v[4], true, out IconAcquire acquire);
+            Enum.TryParse(v[3], true, out IconAcquire acquire);
 
             string rawName = v[1];
             string finalName = TextParser.Resolve(rawName, textDict);

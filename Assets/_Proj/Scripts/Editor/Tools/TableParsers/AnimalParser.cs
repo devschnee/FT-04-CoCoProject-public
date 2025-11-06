@@ -22,7 +22,7 @@ public static class AnimalParser
 
             if (string.IsNullOrWhiteSpace(line)) continue;
 
-            var v = line.Split(',');
+            var v = System.Text.RegularExpressions.Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
             if (v.Length < 8)
             {
@@ -35,8 +35,6 @@ public static class AnimalParser
                 Debug.LogWarning($"[AnimalParser] ID 변환 실패 → {v[0]}");
                 continue;
             }
-
-            int.TryParse(v[7], out int stack);
 
             Enum.TryParse(v[4], true, out AnimalType category);
             Enum.TryParse(v[5], true, out AnimalTag tag);

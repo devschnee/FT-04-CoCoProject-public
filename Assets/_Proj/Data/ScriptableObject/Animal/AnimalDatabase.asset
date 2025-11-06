@@ -47,7 +47,8 @@ MonoBehaviour:
     animal_prefab: Prefabs/Animal/Donkey
     animal_icon: Icons/Animal/animal_donkey
     animal_acquire: 2
-    animal_desc: "\uBB34\uC2A8 \uC0DD\uAC01\uC744 \uD558\uB294\uC9C0"
+    animal_desc: "\"\uBB34\uC2A8 \uC0DD\uAC01\uC744 \uD558\uB294\uC9C0, \uC54C \uC218
+      \uC5C6\uB294 \uB2F9\uB098\uADC0 \uCE5C\uAD6C\uC785\uB2C8\uB2E4.\""
   - animal_id: 30005
     animal_name: "\uB2ED"
     animal_type: 0
@@ -55,5 +56,5 @@ MonoBehaviour:
     animal_prefab: Prefabs/Animal/Rooster
     animal_icon: Icons/Animal/animal_chick
     animal_acquire: 2
-    animal_desc: "\uB9DB\uC788\uC5B4 \uBCF4\uC774\uB294 \uCE58\uD0A4\u2026\uC774
-      \uC544\uB2CC"
+    animal_desc: "\"\uB9DB\uC788\uC5B4 \uBCF4\uC774\uB294 \uCE58\uD0A4\u2026\uC774
+      \uC544\uB2CC, \uB2ED \uCE5C\uAD6C \uC785\uB2C8\uB2E4.\""

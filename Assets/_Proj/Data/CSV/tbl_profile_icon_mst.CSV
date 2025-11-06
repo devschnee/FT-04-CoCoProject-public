@@ -1,12 +1,12 @@
-icon_id,icon_name,icon_image,icon_acquire,icon_desc
+﻿icon_id,icon_name,icon_image,icon_acquire,icon_desc
 120001,[icon_01],Icons/Profile/icon_01,quest,기본 지급 아이콘 입니다.
 120002,[icon_02],Icons/Profile/icon_02,quest,기본 지급 아이콘 입니다.
-120003,[icon_03],Icons/Profile/icon_03,quest,멧돼지 친구 처음 조우 시, 획득 가능한 아이콘입니다.
-120004,[icon_04],Icons/Profile/icon_04,quest,거북이 친구 처음 조우 시, 획득 가능한 아이콘입니다.
-120005,[icon_05],Icons/Profile/icon_05,quest,버팔로 친구 처음 조우 시, 획득 가능한 아이콘입니다.
-120006,[icon_06],Icons/Profile/icon_06,quest,프롤로그 완료 시, 지급되는 아이콘 입니다.
-120007,[icon_07],Icons/Profile/icon_07,quest,프롤로그 완료 시, 지급되는 아이콘 입니다.
-120008,[icon_08],Icons/Profile/icon_08,quest,프롤로그 완료 시, 지급되는 아이콘 입니다.
-120009,[icon_09],Icons/Profile/icon_09,quest,챕터 1 완료 시, 지급되는 아이콘 입니다.
-120010,[icon_10],Icons/Profile/icon_10,quest,챕터 2 완료 시, 지급되는 아이콘 입니다.
-120011,[icon_11],Icons/Profile/icon_11,quest,챕터 3 완료 시, 지급되는 아이콘 입니다.
+120003,[icon_03],Icons/Profile/icon_03,quest,"멧돼지 친구 처음 조우 시, 획득 가능한 아이콘입니다."
+120004,[icon_04],Icons/Profile/icon_04,quest,"거북이 친구 처음 조우 시, 획득 가능한 아이콘입니다."
+120005,[icon_05],Icons/Profile/icon_05,quest,"버팔로 친구 처음 조우 시, 획득 가능한 아이콘입니다."
+120006,[icon_06],Icons/Profile/icon_06,quest,"프롤로그 완료 시, 지급되는 아이콘 입니다."
+120007,[icon_07],Icons/Profile/icon_07,quest,"프롤로그 완료 시, 지급되는 아이콘 입니다."
+120008,[icon_08],Icons/Profile/icon_08,quest,"프롤로그 완료 시, 지급되는 아이콘 입니다."
+120009,[icon_09],Icons/Profile/icon_09,quest,"챕터 1 완료 시, 지급되는 아이콘 입니다."
+120010,[icon_10],Icons/Profile/icon_10,quest,"챕터 2 완료 시, 지급되는 아이콘 입니다."
+120011,[icon_11],Icons/Profile/icon_11,quest,"챕터 3 완료 시, 지급되는 아이콘 입니다."
