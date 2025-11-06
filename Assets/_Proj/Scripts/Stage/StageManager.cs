@@ -162,6 +162,11 @@ public class StageManager : MonoBehaviour
                 go.GetComponent<EndBlock>().Init(this);
             if (BlockType.Hog <= block.blockType && block.blockType <= BlockType.Buffalo)
                 finders.Add(go.GetComponent<IPlayerFinder>());
+            if(block.blockType == BlockType.Treasure)
+            {
+                var treasure = go.GetComponent<Treasure>();
+                OnQuitAction += treasure.OnQuitAction();
+            }
             //GetComponent<Block>().Init(block);
             EnlistBlock(go.GetComponent<Block>());
             if (loaded.blocks.Find(x => x.blockType == BlockType.Start) == null) //스타트 없는 스테이지다?
@@ -184,7 +189,7 @@ public class StageManager : MonoBehaviour
             if (block is IEdgeColliderHandler handlerBlock)
             {
                 handlerBlock.Inject();
-                handlerBlock.DetectAndApplyFourEdge();
+                handlerBlock.Inspect();
             }
         }
     }
@@ -215,5 +220,9 @@ public class StageManager : MonoBehaviour
             blockDictionary.Add(target.gridPosition, new() { target });
         else
             blockDictionary[target.gridPosition].Add(target);
+    }
+    void OnQuitAction(Action action)
+    {
+
     }
 }
