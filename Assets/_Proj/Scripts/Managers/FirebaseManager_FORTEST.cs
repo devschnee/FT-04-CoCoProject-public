@@ -1,6 +1,7 @@
 ﻿using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
+using Firebase.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -43,7 +44,8 @@ public class FirebaseManager_FORTEST : MonoBehaviour
             //초기화 성공
             Debug.Log($"파이어베이스 초기화 성공");
             App = FirebaseApp.DefaultInstance;
-            DB = FirebaseDatabase.DefaultInstance;
+            DB = FirebaseDatabase.GetInstance(App);
+            DB.SetPersistenceEnabled(false);
         }
         else
         {
@@ -65,38 +67,71 @@ public class FirebaseManager_FORTEST : MonoBehaviour
     }
 
 
+    //삭제: 맵에디터에서만 사용하는 코드.
+    //public async Task<List<string>> FetchMapNamesFromFirebase()
+    //{
 
-    public async Task<List<string>> FetchMapNamesFromFirebase()
-    {
+    //    List<string> allMaps = new();
+    //    try
+    //    {
+    //        var snapshot = await MapMetaRef.Child("maps").GetValueAsync();
+    //        if (snapshot.Exists)
+    //        {
+    //            foreach (var map in snapshot.Children)
+    //            {
+    //                allMaps.Add(map.Key);
+    //            }
 
-        List<string> allMaps = new();
-        try
-        {
-            var snapshot = await MapMetaRef.Child("maps").GetValueAsync();
-            if (snapshot.Exists)
-            {
-                foreach (var map in snapshot.Children)
-                {
-                    allMaps.Add(map.Key);
-                }
+    //        }
+    //        return allMaps;
+    //    }
+    //    catch (FirebaseException fe)
+    //    {
+    //        Debug.LogError(fe.Message);
+    //        return null;
+    //    }
 
-            }
-            return allMaps;
-        }
-        catch (FirebaseException fe)
-        {
-            Debug.LogError(fe.Message);
-            return null;
-        }
-
-    }
+    //}
 
     public async Task<MapData> LoadMapFromFirebase(string mapName, Action<string> callback = null)
     {
-        
+        //var task = new TaskCompletionSource<MapData>();
+        //callback?.Invoke($"Looking for mapdata from DB by {mapName}...");
+
+        //MapDataRef.Child(mapName).GetValueAsync().ContinueWithOnMainThread(task => {
+
+        //    if (task.IsFaulted)
+        //    {
+        //        var e = task.Exception?.Flatten().InnerException;
+        //        {
+
+        //            callback?.Invoke(e?.Message);
+        //            Debug.LogError(e?.Message);
+        //        }
+        //    }
+        //    else if (task.IsCompleted)
+        //    {
+
+        //        var snapshot = task.Result;
+        //        if (snapshot.Exists)
+        //        {
+        //            callback?.Invoke($"{mapName} data Found!");
+        //            MapData data = JsonUtility.FromJson<MapData>(snapshot.GetRawJsonValue());
+        //            return data;
+        //        }
+        //        else
+        //        {
+        //            throw new Exception("No such map data exists.");
+        //        }
+        //    }
+
+
+        //} );
+        //return task.Task;
+        #region 기존 방법.
         try
         {
-            
+
             callback?.Invoke($"Looking for mapdata from DB by {mapName}...");
             var snapshot = await MapDataRef.Child(mapName).GetValueAsync();
             if (snapshot.Exists)
@@ -125,6 +160,7 @@ public class FirebaseManager_FORTEST : MonoBehaviour
             Debug.LogError(ee.Message);
             return null;
         }
+        #endregion
     }
 
     public async Task Temp(string id)

@@ -20,9 +20,9 @@ public abstract class Block : MonoBehaviour
     public BlockSaveData origin;
 
 
-    
 
     
+
     public void Init(BlockSaveData saveData)
     {
         this.origin = saveData;

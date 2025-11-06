@@ -14,10 +14,12 @@ public class StageUIManager : MonoBehaviour
     public Button RetryButton;
     public Button QuitButton;
     public Button ExitButton;
+    public Button TreasureQuitButton;
 
-    [Header("OptionObject")]
+    [Header("Panel")]
     public GameObject OptionPanel;
     public GameObject ResultPanel;
+    public GameObject TreasurePanel;
     public GameObject Overlay;
 
     [Header("ResultPanel")]
@@ -26,6 +28,15 @@ public class StageUIManager : MonoBehaviour
     public Image stageImage;
     public TextMeshProUGUI stageText;
     public Image[] reward;
+
+    [Header("TreasurePanel")]
+    public Image TreasureImage;
+    public TextMeshProUGUI TreasureName;
+    public TextMeshProUGUI TreasureType;
+    public TextMeshProUGUI TreasureCount;
+    public TextMeshProUGUI TreasureDesc;
+    public Image CocoDoogyImage;
+    public TextMeshProUGUI CocoDoogyDesc;
 
     private string currentChapter;
 
@@ -44,6 +55,7 @@ public class StageUIManager : MonoBehaviour
         RetryButton.onClick.AddListener(Retry);
         QuitButton.onClick.AddListener(Quit);
         ExitButton.onClick.AddListener(Exit);
+        TreasureQuitButton.onClick.AddListener(Close);
 
         Overlay.SetActive(false);
         OptionOpenButton.gameObject.SetActive(true);
@@ -83,5 +95,11 @@ public class StageUIManager : MonoBehaviour
         //Todo : 챕터에 따라 스테이지 선택화면 분기
         //currentChapter
         SceneManager.LoadScene("Lobby");
+    }
+
+    void Close()
+    {
+        TreasurePanel.SetActive(false);
+        OptionOpenButton.gameObject.SetActive(true);
     }
 }

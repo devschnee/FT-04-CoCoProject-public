@@ -150,6 +150,8 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
     // HACK : 이 부분은 움직일 수 있는 물체가 Turtle에 안 막히게 하면 될 것 같기도 한데 어떤 부분이 효율적일지 고민해봐야 함. 둘 다 처리 하는 게 안전한 방법일 수도.
     IEnumerator MoveSlideCoroutine(Vector3 dir, Vector3 startPos, Vector3 endPos)
     {
+        List<IEdgeColliderHandler> startCache = GetComponent<IEdgeColliderHandler>().DetectGrounds();
+        
         float dist = Vector3.Distance(startPos, endPos);
         if (dist < tileSize * 0.5f)
         {
@@ -163,7 +165,7 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
         Vector3 offset = endPos - startPos;
 
         // 탑승 가능한 오브젝트 감지
-        Vector3 overlapOrigin = transform.position + Vector3.up * (tileSize / 2f);
+        Vector3 overlapOrigin = transform.position - Vector3.up * (tileSize / 2f);
         Vector3 halfExtents = new Vector3(tileSize * 0.45f, tileSize * 0.75f, tileSize * 0.45f);
 
         Collider[] ridables = Physics.OverlapBox(
@@ -227,13 +229,24 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
         {
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
+            //HACK: 1106 - 강욱: 터틀이 이동하는 동안, 머리 위에 타고 있는 객체의 위치를 동기화
 
             // 터틀 이동
             transform.position = Vector3.Lerp(startPos, endPos, t);
             if (dir.sqrMagnitude > 0.001f)
             {
+                //HACK: 1106 - 강욱: 터틀이 이동하는 동안, 머리 위에 타고 있는 객체의 위치를 동기화
                 Quaternion targetRot = Quaternion.LookRotation(dir, Vector3.up);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 30f);
+                if (ridableTrans != null && ridableTrans.Count > 0)
+                {
+                    foreach(var trans in ridableTrans)
+                    {
+                        trans.position = transform.position;
+                    }
+                }
+                GetComponent<IEdgeColliderHandler>().DetectAndApplyFourEdge();
+                startCache.ForEach((x) => x.DetectAndApplyFourEdge());
             }
             yield return null;
         }
@@ -287,6 +300,15 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
             }
         }
         isMoving = false;
+
+
+
+        yield return null;
+        List<IEdgeColliderHandler> endCache = GetComponent<IEdgeColliderHandler>().DetectGrounds();
+
+        GetComponent<IEdgeColliderHandler>().DetectAndApplyFourEdge();
+        foreach (var h in startCache) h.DetectAndApplyFourEdge();
+        foreach (var h in endCache) h.DetectAndApplyFourEdge();
     }
 
 #if UNITY_EDITOR

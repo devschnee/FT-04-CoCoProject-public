@@ -4,21 +4,12 @@ using UnityEngine;
 public class NormalBlock : Block, IEdgeColliderHandler
 {
     public LayerMask groundLayer;
-
-    public List<Collider> TransparentColliders { get => transparentColliders; set => transparentColliders = value; }
-    public Collider Left { get; set; }
-    public Collider Backward { get; set; }
-    public Collider Right { get; set; }
+    public float rayOffsetY;
+    public List<Collider> TransparentColliders { get => transparentColliders; }
+    public LayerMask GroundLayer { get => groundLayer; }
 
     public List<Collider> transparentColliders;
-    private Vector3 EnumToDir(FourDir dir)
-    {
-
-        return dir == FourDir.Forward ? transform.forward :
-               dir == FourDir.Left ? -transform.right :
-               dir == FourDir.Backward ? -transform.forward :
-               transform.right;
-    }
+    public float RayOffsetY { get => rayOffsetY; }
 
     void Awake()
     {
@@ -28,39 +19,7 @@ public class NormalBlock : Block, IEdgeColliderHandler
     {
     }
 
-    public void Inspect()
-    {
-        
-        for (int i = 0; i < 4; i++)
-        {
-            Vector3 rayOrigin = transform.position - (Vector3.up * .49f);
-            Vector3 dir = EnumToDir((FourDir)i);
-            Ray ray = new Ray(rayOrigin, dir);
-            
-            var results = Physics.RaycastAll(ray, 1.49f, groundLayer);
-
-            foreach (RaycastHit hit in results)
-            {
-                print(hit.collider.gameObject.layer);
-            }
-            
-                if (results.Length < 1)
-                //그라운드레이어로 취급되는 오브젝트가 아무것도 검출되지 않았다는 뜻.
-                {
-                    
-                    transparentColliders[i].gameObject.SetActive(true);
-                }
-                else
-                {
-                    
-                    transparentColliders[i].gameObject.SetActive(false);
-                    
-                }
-            
-
-            
-        }
-    }
+    
     protected override void OnEnable() 
     {
         base.OnEnable();

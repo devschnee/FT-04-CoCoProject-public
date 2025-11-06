@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &66622295342888554
 GameObject:
@@ -382,7 +382,8 @@ MonoBehaviour:
   - {fileID: 934634394025529345}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 896
+    m_Bits: 17280
+  rayOffsetY: 0.49
 --- !u!1001 &7516072457196715082
 PrefabInstance:
   m_ObjectHideFlags: 0

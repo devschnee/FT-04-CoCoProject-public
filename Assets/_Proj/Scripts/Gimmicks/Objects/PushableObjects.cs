@@ -184,7 +184,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         if (gameObject.TryGetComponent<IEdgeColliderHandler>(out var handler))
             //만약 내가 머리 위에 투명벽이 달린 객체라면??
         {
-            handler.Inspect();
+            handler.DetectAndApplyFourEdge();
         }
 
         //이동이 끝나고 나서 곧바로 내 주변 사방에 있는 타일에서 IEdgeColliderHandler 검출
@@ -198,7 +198,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
                 Debug.Log($"PushableObj: {name} moved. hitted {hit.collider.name}");
                 if (hit.collider.TryGetComponent<IEdgeColliderHandler>(out var targetHandler))
                 {
-                    targetHandler.Inspect();
+                    targetHandler.DetectAndApplyFourEdge();
                 }
             }
         }
@@ -206,7 +206,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         //이동이 끝나고 나서 캐싱해놨던 핸들러들도 Inspect(); 호출.
         foreach(var cached in cache)
         {
-            cached.Inspect();
+            cached.DetectAndApplyFourEdge();
         }
 
         //// 낙하 이벤트 위해 추가
