@@ -1,7 +1,7 @@
 treasure_id,treasure_type,reward_id,count,coco_coment
 treasure_1_1_1,coin,-1,50,[coco_get_coin]
 treasure_1_1_2,cap,-2,50,[coco_get_cap]
-treasure_1_1_3,deco,10001,1,가구를 먹었어!
-treasure_1_2_1,costume,20001,1,코스튬을 먹었어!
-treasure_1_2_2,artifact,50001,1,유물을 먹었어!
+treasure_1_1_3,deco,10001,1,"가구를 먹었어!"
+treasure_1_2_1,costume,20001,1,"코스튬을 먹었어!"
+treasure_1_2_2,artifact,50001,1,"유물을 먹었어!"
 treasure_1_2_3,cap,-2,50,[coco_get_cap]

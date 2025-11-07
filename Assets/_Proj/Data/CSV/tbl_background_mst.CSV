@@ -1,2 +1,4 @@
 bg_id,bg_name,bg_tag,bg_icon,bg_skybox,bg_desc
-60001,[background_basic],basic,Icons/Skybox/icon_basic,Skybox/background_basic,익숙하지만 정겨운 배경입니다
+60001,[background_basic],basic,Icons/Skybox/icon_basic,Skybox/background_basic,"익숙하지만 정겨운 배경입니다"
+60002,[background_winter],xmas,Icons/Skybox/icon_winter,Skybox/background_winter,"춥지만 가슴이 따뜻해지는, 아름다운 배경입니다"
+60003,[background_summer],thanksgiving_day,Icons/Skybox/icon_summer,Skybox/background_summer,"왠지 바다다~!를 외쳐야만 할 것 같습니다"

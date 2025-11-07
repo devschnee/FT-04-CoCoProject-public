@@ -30,6 +30,11 @@ public static class CodexParser
                 continue;
             }
 
+            for (int j = 0; j < v.Length; j++)
+            {
+                v[j] = v[j].Trim().Trim('"');
+            }
+
             string id = v[0].Trim('\uFEFF');
             if (string.IsNullOrEmpty(id))
             {

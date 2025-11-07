@@ -1046,8 +1046,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC635\uC158\uCF1C\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c2f6af51dc12cfe429c32702b38afadc, type: 2}
-  m_sharedMaterial: {fileID: 7707929057410682240, guid: c2f6af51dc12cfe429c32702b38afadc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1163,12 +1163,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe42a3e83b3da0c49becd69fb3e42307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageManager: {fileID: 0}
   OptionOpenButton: {fileID: 450938582}
   OptionCloseButton: {fileID: 992448782}
   RetryButton: {fileID: 1837709685}
   QuitButton: {fileID: 2018552853}
   ExitButton: {fileID: 1716271337}
-  TreasureQuitButton: {fileID: 1695468523}
+  TreasureConfirmButton: {fileID: 1695468523}
   OptionPanel: {fileID: 1918924225}
   ResultPanel: {fileID: 321378219}
   TreasurePanel: {fileID: 1780084018}

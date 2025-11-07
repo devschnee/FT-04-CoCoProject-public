@@ -18,4 +18,17 @@ MonoBehaviour:
     bg_tag: 0
     bg_icon: Icons/Skybox/icon_basic
     bg_skybox: Skybox/background_basic
-    bg_desc: "\uC775\uC219\uD558\uC9C0\uB9CC \uC815\uACA8\uC6B4 \uBC30\uACBD\uC785\uB2C8\uB2E4"
+    bg_desc: "\"\uC775\uC219\uD558\uC9C0\uB9CC \uC815\uACA8\uC6B4 \uBC30\uACBD\uC785\uB2C8\uB2E4\""
+  - bg_id: 60002
+    bg_name: "\uD06C\uB9AC\uC2A4\uB9C8\uC2A4 \uACA8\uC6B8 \uBC30\uACBD"
+    bg_tag: 1
+    bg_icon: Icons/Skybox/icon_winter
+    bg_skybox: Skybox/background_winter
+    bg_desc: "\"\uCDA5\uC9C0\uB9CC \uAC00\uC2B4\uC774 \uB530\uB73B\uD574\uC9C0\uB294"
+  - bg_id: 60003
+    bg_name: "\uC2DC\uC6D0\uD55C \uC5EC\uB984 \uBC30\uACBD"
+    bg_tag: 3
+    bg_icon: Icons/Skybox/icon_summer
+    bg_skybox: Skybox/background_summer
+    bg_desc: "\"\uC660\uC9C0 \uBC14\uB2E4\uB2E4~!\uB97C \uC678\uCCD0\uC57C\uB9CC
+      \uD560 \uAC83 \uAC19\uC2B5\uB2C8\uB2E4\""

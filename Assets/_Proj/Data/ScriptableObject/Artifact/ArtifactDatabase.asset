@@ -15,29 +15,49 @@ MonoBehaviour:
   artifactList:
   - artifact_id: -1
     artifact_name: "\uB3D9\uC804"
-    artifact_icon: Icons/Artifact/artifact_coin
+    artifact_icon: Icons/Artifact/icon_artifact_coin
     artifact_type: 0
   - artifact_id: -2
     artifact_name: "\uBCD1\uB69C\uAED1"
-    artifact_icon: Icons/Artifact/artifact_cap
+    artifact_icon: Icons/Artifact/icon_artifact_cap
     artifact_type: 0
   - artifact_id: 50001
     artifact_name: "\uC5EC\uD589 \uAC00\uBC29"
-    artifact_icon: Icons/Artifact/artifact_travelbag
+    artifact_icon: Icons/Artifact/icon_artifact_travelbag
     artifact_type: 1
   - artifact_id: 50002
     artifact_name: "\uB098\uBB47\uC78E \uC655\uAD00"
-    artifact_icon: Icons/Artifact/artifact_leafcrown
+    artifact_icon: Icons/Artifact/icon_artifact_leafcrown
     artifact_type: 1
   - artifact_id: 50003
     artifact_name: "\uC791\uC740 \uAE08\uC18D \uC870\uAC01"
-    artifact_icon: Icons/Artifact/artifact_smallmetal
+    artifact_icon: Icons/Artifact/icon_artifact_smallmetal
     artifact_type: 1
   - artifact_id: 50004
     artifact_name: "\uB85C\uBD07 \uC7A5\uB09C\uAC10"
-    artifact_icon: Icons/Artifact/artifact_toyrobot
+    artifact_icon: Icons/Artifact/icon_artifact_toyrobot
     artifact_type: 1
   - artifact_id: 50005
     artifact_name: "\uB204\uAD70\uAC00\uC758 \uAC00\uC871\uC0AC\uC9C4"
-    artifact_icon: Icons/Artifact/artifact_familypic
+    artifact_icon: Icons/Artifact/icon_artifact_familypic
     artifact_type: 0
+  - artifact_id: 50006
+    artifact_name: "\uCC22\uC5B4\uC9C4 \uB274\uC2A4"
+    artifact_icon: Icons/Artifact/icon_artifact_tornnewspaper
+    artifact_type: 0
+  - artifact_id: 50007
+    artifact_name: "\uD3EC\uC2A4\uD130 \uC870\uAC01"
+    artifact_icon: Icons/Artifact/icon_artifact_posterfragment
+    artifact_type: 0
+  - artifact_id: 50008
+    artifact_name: "\uC57C\uAD6C\uACF5"
+    artifact_icon: Icons/Artifact/icon_artifact_baseball
+    artifact_type: 1
+  - artifact_id: 50009
+    artifact_name: "\uD578\uB4E4"
+    artifact_icon: Icons/Artifact/icon_artifact_handle
+    artifact_type: 1
+  - artifact_id: 50010
+    artifact_name: "\uAF43\uB2E4\uBC1C"
+    artifact_icon: Icons/Artifact/icon_artifact_flowerbouquet
+    artifact_type: 1

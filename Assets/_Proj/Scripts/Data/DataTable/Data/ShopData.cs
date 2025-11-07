@@ -11,6 +11,8 @@ public class ShopData
     public int shop_item;
     public ShopType shop_type;
     public int shop_price;
+    public int shop_stack;
+    public ShopGroup shop_group;
 
     [NonSerialized] public Sprite icon;
 
@@ -24,4 +26,8 @@ public class ShopData
 public enum ShopType
 {
     cap, coin
+}
+public enum ShopGroup
+{
+    animal, deco, costume, home, background, money, package
 }

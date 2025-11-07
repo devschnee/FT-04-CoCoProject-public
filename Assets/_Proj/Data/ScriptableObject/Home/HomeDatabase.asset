@@ -16,8 +16,8 @@ MonoBehaviour:
   - home_id: 40001
     home_name: "\uB530\uB73B\uD55C \uC6B0\uB9AC\uC758 \uC9D1"
     home_prefab: Prefabs/Home/home_sweet_home
-    home_icon: Icons/Home/home_sweet_home
+    home_icon: Icons/Home/icon_home_sweet_home
     home_tag: 0
     home_acquire: 0
-    home_desc: "\uB450 \uC8FC\uC778\uC758 \uC190\uAE38\uACFC \uC628\uAE30\uAC00 \uB290\uAEF4\uC9C0\uB294
-      \uC9D1\uC785\uB2C8\uB2E4"
+    home_desc: "\"\uB450 \uC8FC\uC778\uC758 \uC190\uAE38\uACFC \uC628\uAE30\uAC00
+      \uB290\uAEF4\uC9C0\uB294 \uC9D1\uC785\uB2C8\uB2E4\""

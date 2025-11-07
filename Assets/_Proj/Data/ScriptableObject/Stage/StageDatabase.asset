@@ -29,7 +29,7 @@ MonoBehaviour:
   - stage_id: stage_1_2
     stage_name: "\uC2E0\uB098\uB294 \uBC15\uC2A4 \uB180\uC774!"
     stage_img: Img/Stage/stage_1_1_main
-    stage_desc: "\uBC15\uC2A4\uB97C \uAC00\uC9C0\uACE0 \uC2E0\uB098\uAC8C \uB180\uC544\uBCF4\uC790"
+    stage_desc: "\"\uBC15\uC2A4\uB97C \uAC00\uC9C0\uACE0 \uC2E0\uB098\uAC8C \uB180\uC544\uBCF4\uC790\""
     map_id: map_1_2
     start_cutscene: -1
     start_talk: -1

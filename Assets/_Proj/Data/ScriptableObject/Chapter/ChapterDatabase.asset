@@ -17,8 +17,8 @@ MonoBehaviour:
     chapter_name: "\uBD88\uC548"
     chapter_desc: "\"\uACE0\uC18D\uB3C4\uB85C\uC5D0\uC11C \uC8FC\uC778\uACFC \uC774\uBCC4\uD55C
       \uCF54\uCF54\uB450\uAE30, \uC0C8\uB85C\uC6B4 \uCE5C\uAD6C \uBA67\uB3FC\uC9C0\uC640
-      \uB9CC\uB09C\uB2E4. \"\"\uC9D1\uC5D0 \uAC00\uC9C0 \uC54A\uACE0, \uB098\uB791
-      \uACC4\uC18D \uB180\uC790!\"\" \""
+      \uB9CC\uB09C\uB2E4. '\uC9D1\uC5D0 \uAC00\uC9C0 \uC54A\uACE0, \uB098\uB791 \uACC4\uC18D
+      \uB180\uC790!'\""
     chapter_img: Img/Chapter/chapter_1_main
     chapter_staglist:
     - stage_1_1
@@ -28,8 +28,8 @@ MonoBehaviour:
     chapter_name: "\uD790\uB9C1"
     chapter_desc: "\"\uB2EC\uBE5B \uC544\uB798 \uCF54\uCF54\uB450\uAE30\uB294 \uAC15\uAC00\uC5D0\uC11C
       \uBE44\uCE58\uB294 \uC790\uC2E0\uC744 \uBC14\uB77C\uBCF4\uBA70 \uC0DD\uAC01\uC5D0
-      \uC7A0\uAE34\uB2E4. \"\"\uC8FC\uC778\uACFC \uACC4\uC18D \uD589\uBCF5\uD558\uACE0
-      \uC2F6\uC5B4..\"\"\""
+      \uC7A0\uAE34\uB2E4. '\uC8FC\uC778\uACFC \uACC4\uC18D \uD589\uBCF5\uD558\uACE0
+      \uC2F6\uC5B4..'\""
     chapter_img: Img/Chapter/chapter_2_main
     chapter_staglist:
     - 
@@ -38,7 +38,7 @@ MonoBehaviour:
     chapter_name: "\uC704\uB85C"
     chapter_desc: "\"\uAE08\uC18D \uC4F0\uB808\uAE30 \uC794\uD574 \uB354\uBBF8 \uC0AC\uC774,
       \uC790\uC2E0\uAC10 \uB118\uCE58\uB294 \uBC84\uD314\uB85C\uC640 \uB9CC\uB09C\uB2E4.
-      \"\"\uAC15\uD568\uC740 \uB298 \uC678\uB85C\uC6C0\uC744 \uB3D9\uBC18\uD558\uC9C0.\"\"\""
+      '\uAC15\uD568\uC740 \uB298 \uC678\uB85C\uC6C0\uC744 \uB3D9\uBC18\uD558\uC9C0.'\""
     chapter_img: Img/Chapter/chapter_3_main
     chapter_staglist:
     - 

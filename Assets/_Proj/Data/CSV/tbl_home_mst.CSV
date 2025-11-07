@@ -1,2 +1,2 @@
 home_id,home_name,home_prefab,home_icon,home_tag,home_acquire,home_desc
-40001,[home_sweet_home],Prefabs/Home/home_sweet_home,Icons/Home/home_sweet_home,basic,ingame,두 주인의 손길과 온기가 느껴지는 집입니다
+40001,[home_sweet_home],Prefabs/Home/home_sweet_home,Icons/Home/icon_home_sweet_home,basic,ingame,"두 주인의 손길과 온기가 느껴지는 집입니다"

@@ -27,17 +27,17 @@ MonoBehaviour:
     treasureType: 2
     reward_id: 10001
     count: 1
-    coco_coment: "\uAC00\uAD6C\uB97C \uBA39\uC5C8\uC5B4!"
+    coco_coment: "\"\uAC00\uAD6C\uB97C \uBA39\uC5C8\uC5B4!\""
   - treasure_id: treasure_1_2_1
     treasureType: 0
     reward_id: 20001
     count: 1
-    coco_coment: "\uCF54\uC2A4\uD2AC\uC744 \uBA39\uC5C8\uC5B4!"
+    coco_coment: "\"\uCF54\uC2A4\uD2AC\uC744 \uBA39\uC5C8\uC5B4!\""
   - treasure_id: treasure_1_2_2
     treasureType: 4
     reward_id: 50001
     count: 1
-    coco_coment: "\uC720\uBB3C\uC744 \uBA39\uC5C8\uC5B4!"
+    coco_coment: "\"\uC720\uBB3C\uC744 \uBA39\uC5C8\uC5B4!\""
   - treasure_id: treasure_1_2_3
     treasureType: 1
     reward_id: -2

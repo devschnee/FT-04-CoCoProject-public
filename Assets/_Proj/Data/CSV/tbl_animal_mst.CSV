@@ -1,9 +1,6 @@
-﻿animal_id,animal_name,animal_type,animal_tag,animal_prefab,animal_icon,animal_acquire,animal_desc
-30001,[animal_hog],pig,basic,Prefabs/Animal/Hog,Icons/Animal/animal_hog,ingame,산에서 만난 돌직구를 좋아하는 멧돼지 친구입니다.
-30002,[animal_tortoise],dog,basic,Prefabs/Animal/Tortoise,Icons/Animal/animal_tortoise,ingame,강에서 만난 연륜있는 거북이 친구입니다.
-30003,[animal_buffalo],pig,basic,Prefabs/Animal/Buffalo,Icons/Animal/animal_buffalo,ingame,쓰레기 산에서 만난 자신감 넘치는 버팔로 친구입니다.
-30004,[animal_donkey],pig,basic,Prefabs/Animal/Donkey,Icons/Animal/animal_donkey,shop,"무슨 생각을 하는지, 알 수 없는 당나귀 친구입니다."
-30005,[animal_chick],bird,basic,Prefabs/Animal/Rooster,Icons/Animal/animal_chick,shop,"맛있어 보이는 치키…이 아닌, 닭 친구 입니다."
-,,,,,,,
-,,,,,,,
-,,,,,,,
+animal_id,animal_name,animal_type,animal_tag,animal_prefab,animal_icon,animal_acquire,animal_desc
+30001,[animal_hog],pig,basic,Prefabs/Animal/Hog,Icons/Animal/icon_animal_hog,ingame,"산에서 만난 돌직구를 좋아하는 멧돼지 친구입니다."
+30002,[animal_tortoise],dog,basic,Prefabs/Animal/Tortoise,Icons/Animal/icon_animal_tortoise,ingame,"강에서 만난 연륜있는 거북이 친구입니다."
+30003,[animal_buffalo],pig,basic,Prefabs/Animal/Buffalo,Icons/Animal/icon_animal_buffalo,ingame,"쓰레기 산에서 만난 자신감 넘치는 버팔로 친구입니다."
+30004,[animal_donkey],pig,basic,Prefabs/Animal/Donkey,Icons/Animal/icon_animal_donkey,shop,"무슨 생각을 하는지, 알 수 없는 당나귀 친구입니다."
+30005,[animal_chick],bird,basic,Prefabs/Animal/Rooster,Icons/Animal/icon_animal_chick,shop,"맛있어 보이는 치키…이 아닌, 닭 친구 입니다."

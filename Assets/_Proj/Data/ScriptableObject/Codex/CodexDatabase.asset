@@ -16,136 +16,464 @@ MonoBehaviour:
   - codex_id: codex_deco_tree_large
     codex_type: 0
     item_id: 10000
-    codex_lore: "\uACFC\uAC70\uC5D0\uB294 \uC774 \uB098\uBB34\uAC00 \uB3C4\uC2DC
-      \uACF3\uACF3\uC744 \uCC28\uC9C0\uD588\uB2E4\uACE0\uD569\uB2C8\uB2E4. \n\uB048\uC9C8\uAE34
-      \uC0DD\uBA85\uB825\uC73C\uB85C \uB2E4\uC2DC \uD55C\uBC88 \uC138\uC0C1\uC744
-      \uC544\uB984\uB2F5\uAC8C \uAFB8\uBC00 \uC900\uBE44\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+    codex_lore: "\uC9D1\uC744 \uC6B0\uB450\uCEE4\uB2C8 \uC9C0\uD0A4\uB358 \uD070
+      \uB098\uBB34\uC785\uB2C8\uB2E4.\n\uC804\uC7C1 \uC804\uC5D0\uB294 \uADF8\uB298
+      \uC544\uB798\uC5D0\uC11C \uC544\uC774\uB4E4\uC774 \uB180\uACE0, \uAC00\uC871\uB4E4\uC774
+      \uC26C\uACE4 \uD588\uC2B5\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Deco/codex_display_tree_large
     codex_icon: Icons/Deco/icon_deco_tree_large
     codex_name: "\uD070 \uB098\uBB34"
   - codex_id: codex_deco_tree_lime
     codex_type: 0
     item_id: 10001
-    codex_lore: "\u3142"
+    codex_lore: "\uD55C\uB54C \uB3C4\uC2DC\uC758 \uAC00\uB85C\uC218\uC600\uB358 \uB77C\uC784\uB098\uBB34.\n\uC774
+      \uB098\uBB34\uB294 \uB204\uAC00 \uB3CC\uBCF4\uC9C0 \uC54A\uC544\uB3C4 \uC5F4\uB9E4\uB97C
+      \uB9FA\uC5C8\uC2B5\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Deco/codex_display_tree_lime
     codex_icon: Icons/Deco/icon_deco_tree_lime
     codex_name: "\uB77C\uC784 \uB098\uBB34"
   - codex_id: codex_deco_tree_dead
     codex_type: 0
     item_id: 10002
-    codex_lore: "\u3148"
+    codex_lore: "\uC804\uC7C1 \uC774\uC804, \uC0AC\uB78C\uB4E4\uC740 \uC774 \uB098\uBB34
+      \uC544\uB798\uC11C \uD53C\uC11C\uB97C \uC990\uAE30\uACE4 \uD588\uC2B5\uB2C8\uB2E4.\n\uD558\uC9C0\uB9CC
+      \uC9C0\uAE08\uC740 \uC7BF\uBE5B \uD558\uB298 \uC544\uB798, \uB9E4\uB9D0\uB77C
+      \uC788\uB294 \uCC44\uB85C \uADF8\uC800 \uBC14\uB78C\uC5D0 \uD754\uB4E4\uB9B4
+      \uBFD0\uC785\uB2C8\uB2E4. \uC0B4\uC544 \uC788\uB294 \uAC83\uCC98\uB7FC \uBCF4\uC774\uC9C0\uB9CC,
+      \uC774\uBBF8 \uC624\uB798\uC804\uC5D0 \uC8FD\uC740 \uB4EF\uD569\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Deco/codex_display_tree_dead
     codex_icon: Icons/Deco/icon_deco_tree_dead
     codex_name: "\uACE0\uBAA9 \uB098\uBB34"
   - codex_id: codex_deco_grass
     codex_type: 0
     item_id: 10003
-    codex_lore: "\u3137"
+    codex_lore: "\uD3D0\uD5C8 \uC18D\uC5D0\uC11C\uB3C4 \uC0B4\uC544\uB0A8\uC740 \uC7A1\uCD08\uC785\uB2C8\uB2E4.\n\uBB3C
+      \uD55C \uBC29\uC6B8 \uC5C6\uC5B4\uB3C4 \uAFCB\uAFCB\uD558\uAC8C \uBC84\uD301\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Deco/codex_display_grass
     codex_icon: Icons/Deco/icon_deco_grass
     codex_name: "\uC7A1\uCD08"
   - codex_id: codex_deco_fence
     codex_type: 0
     item_id: 10004
-    codex_lore: "\u3131"
+    codex_lore: "\uC774 \uB098\uBB34 \uC6B8\uD0C0\uB9AC\uB294 \uC758\uBBF8\uB97C
+      \uC783\uC740 \uC9C0 \uC624\uB798\uC785\uB2C8\uB2E4.\n\uC9C0\uD0AC \uAC83\uB3C4,
+      \uB9C9\uC744 \uAC83\uB3C4 \uC5C6\uC2B5\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Deco/codex_display_fence
     codex_icon: Icons/Deco/icon_deco_fence
     codex_name: "\uB098\uBB34 \uC6B8\uD0C0\uB9AC"
+  - codex_id: codex_deco_white_fence
+    codex_type: 0
+    item_id: 10005
+    codex_lore: "\uD770\uC0C9 \uC6B8\uD0C0\uB9AC\uB294 \uD55C\uB54C \uC815\uC6D0\uC744
+      \uB458\uB7EC\uC2F8\uB358 \uACBD\uACC4\uC600\uC2B5\uB2C8\uB2E4.\n\uC5EC\uC804\uD788
+      \uC9D1\uC758 \uC790\uB9AC\uB97C \uD45C\uC2DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_white_fence
+    codex_icon: Icons/Deco/icon_deco_white_fence
+    codex_name: "\uD770\uC0C9 \uC6B8\uD0C0\uB9AC"
+  - codex_id: codex_deco_well
+    codex_type: 0
+    item_id: 10006
+    codex_lore: "\uACFC\uAC70 \uC774 \uC6B0\uBB3C\uC740 \u2018\uC18C\uC6D0\uC744
+      \uC774\uB8E8\uC5B4\uC8FC\uB294 \uC6B0\uBB3C\u2019\uC774\uB77C \uBD88\uB838\uC2B5\uB2C8\uB2E4.\n\uC0AC\uB78C\uB4E4\uC740
+      \uC18C\uC911\uD55C \uBB3C\uAC74\uC744 \uB358\uC9C0\uBA70 \uAC04\uC808\uD788
+      \uAE30\uB3C4\uD588\uACE0, \uC6B0\uBB3C \uC18D\uC73C\uB85C \uC0AC\uB77C\uC9C4
+      \uBB3C\uAC74\uC774 \uB9CE\uC744\uC218\uB85D \uADF8 \uBBFF\uC74C\uC740 \uB354\uC6B1
+      \uAE4A\uC5B4\uC84C\uC2B5\uB2C8\uB2E4.\n\uADF8\uB7EC\uB098 \uB300\uC804\uC7C1
+      \uC774\uD6C4, \uC0AC\uB78C\uB4E4\uC740 \uC804\uC7C1\uC774 \uB05D\uB098\uAE38
+      \uBC14\uB77C\uBA70 \uC18C\uC6D0\uC744 \uBE4C\uC5C8\uC9C0\uB9CC \uC774\uBC88\uC5D4
+      \uC544\uBB34\uAC83\uB3C4 \uC0AC\uB77C\uC9C0\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.
+      \uC18C\uC6D0\uC758 \uC6B0\uBB3C\uC740 \uC65C \uADF8\uB4E4\uC758 \uBC14\uB78C\uC5D0
+      \uCE68\uBB35\uD588\uC744\uAE4C\uC694."
+    codex_display: Img/Codex_display/Deco/codex_display_well
+    codex_icon: Icons/Deco/icon_deco_well
+    codex_name: "\uC6B0\uBB3C"
+  - codex_id: codex_deco_ground_planks
+    codex_type: 0
+    item_id: 10007
+    codex_lore: "\uB204\uAD70\uAC00 \uBB34\uB108\uC9C4 \uD759 \uC704\uC5D0 \uB098\uBB34\uD310\uC744
+      \uB36E\uC5B4 \uAE38\uC744 \uB0C8\uC2B5\uB2C8\uB2E4.\n\uBC1C\uC744 \uB514\uB51C
+      \uB54C\uB9C8\uB2E4 \uC090\uAC71\uAC70\uB9AC\uB294 \uC18C\uB9AC\uAC00 \uC6B8\uB9BD\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_ground_planks
+    codex_icon: Icons/Deco/icon_deco_ground_planks
+    codex_name: "\uB098\uBB34 \uBC14\uB2E5\uD310"
+  - codex_id: codex_deco_helpground
+    codex_type: 0
+    item_id: 10008
+    codex_lore: "\uBC14\uB2E5\uC5D0 \uC801\uD78C \uAD6C\uC870 \uC2E0\uD638.\n\uC774\uAC78
+      \uBC14\uB2E5\uC5D0 \uC37C\uB358 \uC0AC\uB78C\uC740 \uB9C8\uC9C0\uB9C9 \uC21C\uAC04\uAE4C\uC9C0
+      \uB204\uAD70\uAC00\uAC00 \uC790\uC2E0\uC744 \uCC3E\uC544\uC8FC\uAE38 \uBC14\uB790\uC5C8\uC2B5\uB2C8\uB2E4.
+      \uB2E4 \uC61B\uB0A0 \uC598\uAE30\uC9C0\uB9CC\uC694."
+    codex_display: Img/Codex_display/Deco/codex_display_helpground
+    codex_icon: Icons/Deco/icon_deco_help_ground
+    codex_name: "\uAD6C\uC870 \uC2E0\uD638\uD310"
+  - codex_id: codex_deco_firepit
+    codex_type: 0
+    item_id: 10009
+    codex_lore: "\uBAA8\uB2E5\uBD88\uC740 \uACFC\uAC70 \uCEA0\uD551\uC7A5\uC5D0\uC11C
+      \uC0AC\uB78C\uB4E4\uC758 \uC6C3\uC74C\uACFC \uC774\uC57C\uAE30\uB85C \uD0C0\uC62C\uB790\uC2B5\uB2C8\uB2E4.\n\uC9C0\uAE08\uC740
+      \uADF8 \uC2DC\uC808\uC758 \uC0AC\uB78C\uC740 \uC5C6\uC9C0\uB9CC, \uBD88\uC528\uB294
+      \uC5EC\uC804\uD788 \uB0A8\uC544 \uC788\uC2B5\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_firepit
+    codex_icon: Icons/Deco/icon_deco_firepit
+    codex_name: "\uBAA8\uB2E5\uBD88"
+  - codex_id: codex_deco_fireplace
+    codex_type: 0
+    item_id: 10010
+    codex_lore: "\uBCBD\uB09C\uB85C\uB294 \uD55C\uB54C \uC9D1\uC758 \uC911\uC2EC\uC774\uC5C8\uC2B5\uB2C8\uB2E4.\n\uAC00\uC871\uB4E4\uC774
+      \uBAA8\uC5EC \uC774\uC57C\uAE30\uB97C \uB098\uB204\uACE0, \uCC28\uB97C \uB370\uC6B0\uBA70,
+      \uBC14\uAE65\uC758 \uCD94\uC704\uB97C \uC78A\uAC8C \uD574\uC8FC\uB358 \uC628\uAE30\uC600\uC2B5\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_fireplace
+    codex_icon: Icons/Deco/icon_deco_fireplace
+    codex_name: "\uBCBD\uB09C\uB85C"
+  - codex_id: codex_deco_carriage
+    codex_type: 0
+    item_id: 10011
+    codex_lore: "\uB0A1\uC740 \uD2B8\uB808\uC77C\uB7EC\uB294 \uD55C\uB54C \uB204\uAD70\uAC00\uC758
+      \uC9D0\uC744 \uC2E3\uACE0 \uBA3C \uC5EC\uC815\uC744 \uD568\uAED8\uD588\uB358
+      \uB3D9\uBC18\uC790\uC600\uC2B5\uB2C8\uB2E4.\n\uC548\uC5D0\uB294 \uC8FC\uC778\uC758
+      \uD754\uC801\uC774 \uB0A8\uC740 \uC9D0\uB4E4\uC774 \uC2E4\uB824 \uC788\uC2B5\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_carriage
+    codex_icon: Icons/Deco/icon_deco_carriage
+    codex_name: "\uD2B8\uB808\uC77C\uB7EC"
+  - codex_id: codex_deco_traffic_cone
+    codex_type: 0
+    item_id: 10012
+    codex_lore: "\uC8FC\uD669\uC0C9 \uAF2C\uAE54\uCF58\uC740 \uB3C4\uB85C\uC758 \uC9C8\uC11C\uB97C
+      \uC9C0\uD0A4\uB358 \uB9C8\uC9C0\uB9C9 \uACBD\uBE44\uBCD1\uCC98\uB7FC \uC11C
+      \uC788\uC2B5\uB2C8\uB2E4.\n\uC0AC\uB78C\uB3C4 \uCC28\uB7C9\uB3C4 \uC0AC\uB77C\uC84C\uC9C0\uB9CC,
+      \uC5EC\uC804\uD788 \uAE38 \uC704\uC5D0\uC11C \uC790\uB9AC\uB97C \uC9C0\uD0A4\uACE0
+      \uC788\uC2B5\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_traffic_cone
+    codex_icon: Icons/Deco/icon_deco_traffic_cone
+    codex_name: "\uAF2C\uAE54\uCF58"
+  - codex_id: codex_deco_tires
+    codex_type: 0
+    item_id: 10013
+    codex_lore: "\uC313\uC778 \uD0C0\uC774\uC5B4\uB4E4\uC740 \uC624\uB798\uC804 \uB3C4\uB85C\uB97C
+      \uB2EC\uB9AC\uB358 \uD754\uC801\uC785\uB2C8\uB2E4.\n\uB204\uAD70\uAC00\uB294
+      \uC774\uAC78 \uD53C\uB09C\uC6A9 \uBC29\uBCBD\uC73C\uB85C, \uB610 \uB204\uAD70\uAC00\uB294
+      \uC7A0\uC2DC \uC549\uC744 \uC758\uC790\uB85C \uC0AC\uC6A9\uD588\uC744\uC9C0\uB3C4
+      \uBAA8\uB985\uB2C8\uB2E4.\n\uC4F0\uC784\uC744 \uC783\uC740 \uBB3C\uAC74\uC774\uC9C0\uB9CC,
+      \uC5EC\uC804\uD788 \uC138\uC0C1\uC5D0 \uB0A8\uC544 \uBB34\uC5B8\uAC00\uC758
+      \uC790\uB9AC\uB97C \uCC44\uC6B0\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_tires
+    codex_icon: Icons/Deco/icon_deco_tires
+    codex_name: "\uD0C0\uC774\uC5B4"
+  - codex_id: codex_deco_generator
+    codex_type: 0
+    item_id: 10014
+    codex_lore: "\uAE30\uB984\uC73C\uB85C \uC804\uAE30\uB97C \uB9CC\uB4DC\uB294 \uBC1C\uC804\uAE30\uC785\uB2C8\uB2E4.\n\uC804\uAE30\uAC00
+      \uB04A\uAE34 \uC774 \uC2DC\uB300\uC5D0 \uC0AC\uB78C\uB4E4\uC740 \uC774 \uAE30\uACC4\uC5D0
+      \uC758\uC9C0\uD574 \uBD88\uC744 \uBC1D\uD788\uACE0, \uB3C4\uAD6C\uB97C \uB3CC\uB9AC\uACE0,
+      \uC0DD\uC874\uC744 \uC774\uC5B4\uAC11\uB2C8\uB2E4. \uC2DC\uB044\uB7FD\uACE0
+      \uB0A1\uC558\uC9C0\uB9CC, \uC774 \uC2DC\uB300\uC5D4 \uC5C6\uC5B4\uC11C\uB294
+      \uC548 \uB418\uB294 \uC0DD\uBA85\uC758 \uC2EC\uC7A5\uC785\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_generator
+    codex_icon: Icons/Deco/icon_deco_generator
+    codex_name: "\uBC1C\uC804\uAE30"
+  - codex_id: codex_deco_decorative_pot
+    codex_type: 0
+    item_id: 10015
+    codex_lore: "\uC0AC\uB78C\uB4E4\uC740 \uC5B8\uC81C\uB098 \uC8FC\uBCC0\uC744 \uC608\uC058\uAC8C
+      \uAFB8\uBBF8\uB824 \uD588\uC2B5\uB2C8\uB2E4.\n\uC2DC\uB300\uAC00 \uBCC0\uD574\uB3C4,
+      \uC0AC\uB78C\uB4E4\uC740 \uC5EC\uC804\uD788 \uC544\uB984\uB2E4\uC6C0\uC744
+      \uCC3E\uC544 \uD5E4\uB9F5\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_decorative_pot
+    codex_icon: Icons/Deco/icon_deco_decorative_pot
+    codex_name: "\uC7A5\uC2DD \uD654\uBD84"
+  - codex_id: codex_deco_weed_pot
+    codex_type: 0
+    item_id: 10016
+    codex_lore: "\uD654\uBD84 \uC18D\uC5D0 \uC7A1\uCD08\uAC00 \uC790\uB77C\uACE0
+      \uC788\uC2B5\uB2C8\uB2E4.\n\uC6D0\uB798\uB294 \uD654\uB824\uD55C \uAF43\uC744
+      \uB2F4\uAE30 \uC704\uD574 \uB9CC\uB4E4\uC5B4\uC84C\uACA0\uC9C0\uB9CC, \uC9C0\uAE08\uC740
+      \uC7A1\uCD08\uAC00 \uADF8 \uC790\uB9AC\uB97C \uB300\uC2E0\uD588\uC2B5\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_weed_pot
+    codex_icon: Icons/Deco/icon_deco_weed_pot
+    codex_name: "\uC7A1\uCD08 \uD654\uBD84"
+  - codex_id: codex_deco_mini_pot
+    codex_type: 0
+    item_id: 10017
+    codex_lore: "\uD06C\uAE30\uB9CC \uC791\uC744 \uBFD0,\n\uC548\uC5D0 \uC790\uB77C\uB294
+      \uC2DD\uBB3C\uC758 \uBFCC\uB9AC\uB294 \uAE4A\uC2B5\uB2C8\uB2E4. \uB204\uAD70\uAC00\uC758
+      \uC190\uB54C\uAC00 \uBB3B\uC740 \uC791\uC740 \uC138\uACC4\uC785\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_mini_pot
+    codex_icon: Icons/Deco/icon_deco_mini_pot
+    codex_name: "\uBBF8\uB2C8 \uD654\uBD84"
+  - codex_id: codex_deco_wood_chair
+    codex_type: 0
+    item_id: 10018
+    codex_lore: "\uB098\uBB34 \uC758\uC790\uB294 \uC7A5\uC778\uC758 \uC190\uC5D0\uC11C
+      \uD0DC\uC5B4\uB0AC\uC2B5\uB2C8\uB2E4.\n\uB9DD\uCE58 \uC790\uAD6D\uACFC \uCE7C\uC790\uAD6D\uC774
+      \uADF8\uB300\uB85C \uB0A8\uC544 \uC788\uC9C0\uB9CC, \uADF8 \uAC70\uCE5C \uD754\uC801\uC774
+      \uC624\uD788\uB824 \uB530\uB73B\uD568\uC744 \uC90D\uB2C8\uB2E4. \uC2DC\uAC04\uC774
+      \uC9C0\uB098\uBA70 \uD45C\uBA74\uC740 \uAC70\uCE60\uAC8C \uB9C8\uBAA8\uB418\uC5C8\uACE0,
+      \uC190\uB54C\uAC00 \uB2F3\uC740 \uD314\uAC78\uC774\uB294 \uC5EC\uC804\uD788
+      \uC0AC\uB78C\uC758 \uCCB4\uC628\uC744 \uD488\uACE0 \uC788\uC2B5\uB2C8\uB2E4.
+      \uB2E8\uC21C\uD55C \uAC00\uAD6C\uAC00 \uC544\uB2C8\uB77C, \uD55C \uC0AC\uB78C\uC758
+      \uC190\uB05D\uACFC \uC2DC\uAC04\uC774 \uB9CC\uB4E0 \uC791\uD488\uC785\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_wood_chair
+    codex_icon: Icons/Deco/icon_deco_wood_chair
+    codex_name: "\uBAA9\uC7AC \uC758\uC790"
+  - codex_id: codex_deco_orange_audio
+    codex_type: 0
+    item_id: 10019
+    codex_lore: "\uC804\uC7C1\uC758 \uD6C4\uC720\uC99D\uC73C\uB85C \uC138\uC0C1\uC5D0\uC11C
+      \uC74C\uC545\uC774 \uC0AC\uB77C\uC84C\uC2B5\uB2C8\uB2E4.\n\uC18C\uB9AC\uB97C
+      \uC7AC\uC0DD\uD558\uB358 \uAE30\uACC4\uB4E4\uC774 \uBAA8\uB450 \uC0AC\uB77C\uC84C\uAE30
+      \uB54C\uBB38\uC774\uC8E0. \uC74C\uC545\uC774 \uC5C6\uB294 \uC138\uC0C1\uC740
+      \uACFC\uC5F0 \uC990\uAC70\uC6B8 \uC218 \uC788\uC744\uAE4C\uC694? \uC6B0\uC5F0\uD788
+      \uBC1C\uACAC\uD55C \uC774 \uC624\uB514\uC624\uB294, \uC5B4\uCA4C\uBA74 \uC138\uC0C1\uC5D0
+      \uB0A8\uC740 \uB9C8\uC9C0\uB9C9 \uC74C\uC545\uC758 \uD754\uC801\uC77C\uC9C0\uB3C4
+      \uBAA8\uB985\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_orange_audio
+    codex_icon: Icons/Deco/icon_deco_orange_audio
+    codex_name: "\uC8FC\uD669\uC0C9 \uC624\uB514\uC624"
+  - codex_id: codex_deco_log_chair
+    codex_type: 0
+    item_id: 10020
+    codex_lore: "\uD1B5\uB098\uBB34\uB97C \uBC18\uC73C\uB85C \uC798\uB77C \uB9CC\uB4E0
+      \uC758\uC790\uC785\uB2C8\uB2E4.\n\uC790\uC5F0 \uC18D\uC5D0\uC11C\uB3C4, \uD3D0\uD5C8
+      \uC18D\uC5D0\uC11C\uB3C4 \uBB18\uD558\uAC8C \uC5B4\uC6B8\uB9BD\uB2C8\uB2E4.
+      \uAC70\uCE60\uACE0 \uBD88\uD3B8\uD558\uC9C0\uB9CC, \uB204\uAD70\uAC00\uC758
+      \uC774\uC57C\uAE30\uB97C \uC7A0\uC2DC \uBD99\uC7A1\uC544\uB458 \uC218 \uC788\uC744
+      \uB4EF\uD569\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_log_chair
+    codex_icon: Icons/Deco/icon_deco_log_chair
+    codex_name: "\uD1B5\uB098\uBB34 \uC758\uC790"
+  - codex_id: codex_deco_cloud_table
+    codex_type: 0
+    item_id: 10021
+    codex_lore: "\uAD6C\uB984 \uD0C1\uC790\uB294 \uC544\uC774\uB4E4\uC5D0\uAC8C \uAC00\uC7A5
+      \uC778\uAE30\uAC00 \uB9CE\uC558\uB358 \uBB3C\uAC74\uC774\uC5C8\uC2B5\uB2C8\uB2E4.\n\uD558\uC597\uACE0
+      \uB465\uADFC \uBAA8\uC591\uC774 \uB9C8\uCE58 \uC9C4\uC9DC \uAD6C\uB984 \uAC19\uC544\uC11C,
+      \uC544\uC774\uB4E4\uC740 \uADF8 \uC704\uC5D0 \uC62C\uB77C\uAC00 \uB180\uAC70\uB098
+      \uADF8\uB9BC\uC744 \uADF8\uB9AC\uACE4 \uD588\uC2B5\uB2C8\uB2E4."
+    codex_display: Img/Codex_display/Deco/codex_display_cloud_table
+    codex_icon: Icons/Deco/icon_deco_cloud_table
+    codex_name: "\uAD6C\uB984 \uD0C1\uC790"
   - codex_id: codex_costume_cowboy
     codex_type: 1
     item_id: 20001
-    codex_lore: "\u3145"
+    codex_lore: "1\uC138\uAE30\uB3C4 \uC804\uC5D0 \uC720\uD589\uD588\uB358 \uBAA8\uC790\uB77C\uACE0\uD569\uB2C8\uB2E4.\n\uC774
+      \uBAA8\uC790\uB97C \uC4F0\uBA74 \uC5B4\uB518\uAC00\uC5D0\uC11C \uD53C\uB9AC\uC18C\uB9AC\uAC00
+      \uB4E4\uB9AC\uB294 \uAC83 \uAC19\uB124\uC694"
     codex_display: Img/Codex_display/Costume/codex_display_cowboy
     codex_icon: Icons/Costume/icon_cowboy_hat
     codex_name: "\uCE74\uC6B0\uBCF4\uC774 \uBAA8\uC790"
   - codex_id: codex_costume_crown
     codex_type: 1
     item_id: 20002
-    codex_lore: "\u315B"
+    codex_lore: "\uBC15\uBB3C\uAD00\uC5D0\uC11C \uBCF4\uC774\uB358 \uC655\uAD00\uC785\uB2C8\uB2E4.\n\uC5B4\uB9B0\uC544\uC774\uB4E4\uC774
+      \uC774 \uBAA8\uC790\uB97C \uC4F0\uACE0 \uC7A5\uB09C\uCE58\uB294 \uC18C\uB9AC\uAC00
+      \uB4E4\uB9AC\uB294 \uB4EF \uD569\uB2C8\uB2E4 '\uC655\uC774 \uB204\uAD6C\uB0D0!?
+      \uB098\uB2E4!'"
     codex_display: Img/Codex_display/Costume/codex_display_crown
     codex_icon: Icons/Costume/icon_crown_hat
     codex_name: "\uC655\uAD00"
   - codex_id: codex_costume_magician
     codex_type: 1
     item_id: 20003
-    codex_lore: "\u3155"
+    codex_lore: "\uB9C8\uBC95\uC0AC\uB4E4\uC774 \uCC29\uC6A9\uD558\uB294 \uBAA8\uC790\uC785\uB2C8\uB2E4.\n\uB9C8\uBC95\uC774\uB77C\uACE0
+      \uB4E4\uC5B4\uBD24\uB098\uC694? 500\uB144\uC804\uC5D0\uB294 \uB9C8\uBC95\uC0AC\uB4E4\uC774
+      \uC2E4\uC81C\uB85C \uC788\uC5C8\uB2E4\uACE0 \uD558\uB124\uC694. \uBC18\uC9C0
+      \uC804\uC7C1\uC774\uB77C\uB294 \uC601\uD654\uAC00 \uADF8\uAC78 \uC99D\uBA85\uD569\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Costume/codex_display_magician
     codex_icon: Icons/Costume/icon_magician_hat
     codex_name: "\uB9C8\uBC95\uC0AC \uBAA8\uC790"
   - codex_id: codex_animal_hog
     codex_type: 2
     item_id: 30001
-    codex_lore: "\u3151"
+    codex_lore: "\uC544\uAE30 \uBA67\uB3FC\uC9C0\uB294 \uCCA0\uC774 \uC5C6\uACE0
+      \uACE0\uC9D1\uC774 \uC149\uB2C8\uB2E4. \uC0DD\uAC01\uB098\uBA74 \uBC14\uB85C
+      \uB2EC\uB824\uB4E4\uACE0, \uD558\uAE30 \uC2EB\uC73C\uBA74 \uB2E8 \uD55C \uBC1C\uC9DD\uB3C4
+      \uC6C0\uC9C1\uC774\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.\n\uC194\uC9C1\uD558\uACE0
+      \uC9C1\uC124\uC801\uC778 \uC131\uACA9\uC774\uB77C \uB54C\uB85C\uB294 \uC8FC\uBCC0\uC744
+      \uB2F9\uD669\uD558\uAC8C \uB9CC\uB4E4\uC9C0\uB9CC, \uC21C\uC9C4\uD558\uACE0
+      \uD574\uB9D1\uC740 \uC5BC\uAD74 \uB54C\uBB38\uC5D0 \uB05D\uB0B4 \uBBF8\uC6CC\uD560
+      \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uB2E8\uB2E8\uD55C \uBAB8\uC9D1 \uC18D\uC5D0
+      \uC544\uC774 \uAC19\uC740 \uCC9C\uC9C4\uD568\uC774 \uC228\uC5B4 \uC788\uC2B5\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Animal/codex_display_hog
-    codex_icon: Icons/Animal/animal_hog
+    codex_icon: Icons/Animal/icon_animal_hog
     codex_name: "\uBA67\uB3FC\uC9C0"
   - codex_id: codex_animal_tortoise
     codex_type: 2
     item_id: 30002
-    codex_lore: "\u3150"
+    codex_lore: "\uBA48\uCDB0 \uC788\uB294 \uB4EF\uD558\uC9C0\uB9CC \uC0AC\uC2E4
+      \uC790\uC2E0\uB9CC\uC758 \uC18D\uB3C4\uB85C \uAFB8\uC900\uD788 \uB098\uC544\uAC11\uB2C8\uB2E4.\n\uB2EC\uBE5B
+      \uC544\uB798\uC5D0\uC11C \uBB3C\uACB0\uC744 \uBC14\uB77C\uBCF4\uBA70 \uB290\uAE0B\uD558\uAC8C
+      \uCDA4\uCD94\uB294 \uAC78 \uC88B\uC544\uD558\uACE0, \uC544\uBB34\uB9AC \uC138\uC0C1\uC774
+      \uC2DC\uB044\uB7EC\uC6CC\uB3C4 \uD754\uB4E4\uB9AC\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.
+      \uB290\uB9AC\uC9C0\uB9CC \uC6B0\uC544\uD558\uAC8C \uC0AC\uB294 \uBC95\uC744
+      \uC544\uB294 \uD604\uBA85\uD55C \uCE5C\uAD6C\uC785\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Animal/codex_display_tortoise
-    codex_icon: Icons/Animal/animal_tortoise
+    codex_icon: Icons/Animal/icon_animal_tortoise
     codex_name: "\uAC70\uBD81\uC774"
   - codex_id: codex_animal_buffalo
     codex_type: 2
     item_id: 30003
-    codex_lore: "\u3154"
+    codex_lore: "\uAC89\uC73C\uB85C\uB294 \uBB34\uB69D\uB69D\uD574 \uBCF4\uC774\uC9C0\uB9CC
+      \uC18D\uC740 \uC758\uC678\uB85C \uC12C\uC138\uD558\uACE0 \uB2E4\uC815\uD569\uB2C8\uB2E4.
+      \uBC1C\uAC78\uC74C \uC18C\uB9AC\uC640 \uB369\uCE58\uAC00 \uCEE4\uC11C \uC0AC\uB78C\uB4E4\uC744
+      \uAC81\uBA39\uAC8C \uB9CC\uB4E4\uC9C0\uB9CC, \uC0AC\uC2E4\uC740 \uC678\uB85C\uC6C0\uC744
+      \uC798 \uD0D1\uB2C8\uB2E4.\n\uC704\uD5D8\uC774 \uB2E5\uCE58\uBA74 \uB204\uAD6C\uBCF4\uB2E4
+      \uBE60\uB974\uAC8C \uB2EC\uB824\uB4E4\uC9C0\uB9CC, \uC2F8\uC6C0\uC744 \uC88B\uC544\uD558\uC9C0\uB294
+      \uC54A\uC2B5\uB2C8\uB2E4. \uAC15\uD574 \uBCF4\uC774\uC9C0\uB9CC \uB9C8\uC74C\uC18D\uC5D4
+      \uB298 \uC870\uC6A9\uD55C \uB530\uB73B\uD568\uC774 \uC788\uC2B5\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Animal/codex_display_buffalo
-    codex_icon: Icons/Animal/animal_buffalo
+    codex_icon: Icons/Animal/icon_animal_buffalo
     codex_name: "\uBC84\uD314\uB85C"
   - codex_id: codex_animal_donkey
     codex_type: 2
     item_id: 30004
-    codex_lore: "\u3141"
+    codex_lore: "\uC5B8\uC81C\uB098 \uBA4D\uD55C \uD45C\uC815\uC73C\uB85C \uC138\uC0C1\uC744
+      \uBC14\uB77C\uBD05\uB2C8\uB2E4. \uAE09\uD55C \uC77C\uC5D0\uB3C4 \uB290\uB9BF\uD558\uAC8C
+      \uBC18\uC751\uD558\uACE0, \uC6EC\uB9CC\uD55C \uC77C\uC5D0\uB3C4 \uB180\uB77C\uC9C0
+      \uC54A\uACE0 \uBB35\uBB35\uD788 \uBC84\uD301\uB2C8\uB2E4.\n\uBA4D\uD558\uACE0
+      \uB454\uD574 \uBCF4\uC774\uC9C0\uB9CC, \uC758\uC678\uB85C \uC138\uC0C1\uC5D0\uC11C
+      \uAC00\uC7A5 \uD3B8\uD558\uAC8C \uC0AC\uB294 \uB3D9\uBB3C\uC785\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Animal/codex_display_donkey
-    codex_icon: Icons/Animal/animal_donkey
+    codex_icon: Icons/Animal/icon_animal_donkey
     codex_name: "\uB2F9\uB098\uADC0"
   - codex_id: codex_animal_chick
     codex_type: 2
     item_id: 30005
-    codex_lore: "\u3134"
+    codex_lore: "\uC5B8\uC81C\uB098 \uD65C\uAE30\uCC28\uACE0 \uC2DC\uB044\uB7FD\uC2B5\uB2C8\uB2E4.
+      \uC544\uCE68\uC774\uBA74 \uB204\uAD6C\uBCF4\uB2E4 \uBA3C\uC800 \uC77C\uC5B4\uB098
+      \uAF65\uAF65\uAC70\uB9AC\uBA70 \uD558\uB8E8\uB97C \uAE68\uC6C1\uB2C8\uB2E4.\n\uD638\uAE30\uC2EC\uC774
+      \uB9CE\uACE0, \uAC00\uB054\uC740 \uAD1C\uD788 \uC2F8\uC6C0\uC744 \uAC78\uAE30\uB3C4
+      \uD558\uC9C0\uB9CC \uAE08\uC138 \uAE4C\uBA39\uC2B5\uB2C8\uB2E4. \uC870\uC6A9\uD55C
+      \uC21C\uAC04\uC774 \uC5B4\uC0C9\uD55C \uB4EF \uB298 \uBD84\uC8FC\uD558\uAC8C
+      \uC6C0\uC9C1\uC774\uB294, \uB9C8\uC744\uC758 \uC0B4\uC544 \uC788\uB294 \uC54C\uB78C\uC785\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Animal/codex_display_chick
-    codex_icon: Icons/Animal/animal_chick
+    codex_icon: Icons/Animal/icon_animal_chick
     codex_name: "\uB2ED"
   - codex_id: codex_home_homesweathome
     codex_type: 3
     item_id: 40001
-    codex_lore: "\u3147"
+    codex_lore: "\uC8FC\uC778\uACFC \uC624\uB798 \uC0B4\uB358 \uC9D1\uC785\uB2C8\uB2E4"
     codex_display: Img/Codex_display/Home/codex_display_homesweathome
-    codex_icon: Icons/Home/home_sweet_home
+    codex_icon: Icons/Home/icon_home_sweet_home
     codex_name: "\uB530\uB73B\uD55C \uC6B0\uB9AC\uC758 \uC9D1"
   - codex_id: codex_artifact_travelbag
     codex_type: 4
     item_id: 50001
-    codex_lore: "\u3139"
+    codex_lore: "\uACE0\uC18D\uB3C4\uB85C\uC5D0\uC11C \uC5BB\uC740 \uC5EC\uD589 \uAC00\uBC29.\n\uB204\uAD70\uAC00
+      \uB3C4\uB9DD\uAC00\uAE30 \uC704\uD574 \uAE09\uD558\uAC8C \uC9D0\uC744 \uC30C\uB358
+      \uBAA8\uC591\uC774\uB2E4."
     codex_display: Img/Codex_display/Artifact/codex_display_travelbag
-    codex_icon: Icons/Artifact/artifact_travelbag
+    codex_icon: Icons/Artifact/icon_artifact_travelbag
     codex_name: "\uC5EC\uD589 \uAC00\uBC29"
   - codex_id: codex_artifact_leafcrown
     codex_type: 4
     item_id: 50002
-    codex_lore: "\u314E"
+    codex_lore: "\uC0B0\uB9BC\uC5D0\uC11C \uC5BB\uC740 \uB098\uBB47\uC78E \uC655\uAD00\n\uB098\uBB47\uC78E\uC744
+      \uC5EE\uC5B4 \uB9CC\uB4E0 \uC11C\uD230 \uC655\uAD00\uC774\uB2E4.\n\uCF54\uCF54\uB450\uAE30\uAC00
+      \uC5B4\uC124\uD504\uAC8C \uB098\uBB47\uC78E\uC744 \uC5EE\uC5B4 \uB9CC\uB4E0
+      \uC655\uAD00\uC744 \uBA67\uB3FC\uC9C0 \uBA38\uB9AC\uC758 \uC50C\uC6CC\uC8FC\uC790,
+      \uBA67\uB3FC\uC9C0\uB294 \uC5B4\uB9B0 \uC544\uC774\uCC98\uB7FC \uC6C3\uC5C8\uB2E4."
     codex_display: Img/Codex_display/Artifact/codex_display_leafcrown
-    codex_icon: Icons/Artifact/artifact_leafcrown
+    codex_icon: Icons/Artifact/icon_artifact_leafcrown
     codex_name: "\uB098\uBB47\uC78E \uC655\uAD00"
   - codex_id: codex_artifact_smallmetal
     codex_type: 4
     item_id: 50003
-    codex_lore: "\u3157"
+    codex_lore: "\uACE0\uC18D\uB3C4\uB85C\uC5D0\uC11C \uC5BB\uC740 \uC791\uC740 \uAE08\uC18D
+      \uC870\uAC01.\n\uBCD1\uAE30 \uC548\uB4DC\uB85C\uC774\uB4DC \uC8FC\uC778\uC758
+      \uBAB8\uC5D0\uC11C \uB5A8\uC5B4\uC838 \uB098\uC628, \uC544\uC8FC \uC791\uC740
+      \uAE08\uC18D \uBD80\uD488\uC774\uB2E4. \uB179\uC774 \uC2AC\uACE0 \uAE01\uD78C
+      \uC790\uAD6D\uC774 \uB0A8\uC544 \uC788\uC9C0\uB9CC, \uD45C\uBA74\uC5D4 \uCF54\uCF54\uB450\uAE30\uC758
+      \uD138\uC790\uAD6D\uC774 \uBB3B\uC5B4 \uC788\uB2E4."
     codex_display: Img/Codex_display/Artifact/codex_display_smallmetal
-    codex_icon: Icons/Artifact/artifact_smallmetal
+    codex_icon: Icons/Artifact/icon_artifact_smallmetal
     codex_name: "\uC791\uC740 \uAE08\uC18D \uC870\uAC01"
   - codex_id: codex_artifact_toyrobot
     codex_type: 4
     item_id: 50004
-    codex_lore: "\u3153"
+    codex_lore: "\uACE0\uC18D\uB3C4\uB85C\uC5D0\uC11C \uC5BB\uC740 \uB85C\uBD07 \uC7A5\uB09C\uAC10.
+      \uBA48\uCDB0 \uC120 \uC790\uB3D9\uCC28 \uADFC\uCC98\uC5D0 \uB5A8\uC5B4\uC838
+      \uC788\uB2E4. \uC5B4\uB518\uAC00\uB85C \uD5A5\uD558\uB358 \uAC00\uC871\uC758
+      \uC544\uC774\uAC00 \uB450\uACE0 \uAC04 \uBB3C\uAC74\uC774\uB2E4.\n\uC77C\uBC18
+      \uC548\uB4DC\uB85C\uC774\uB4DC \uBAA8\uB378\uC758 \uC7A5\uB09C\uAC10\uC73C\uB85C,
+      \uC804\uC7C1\uC758 \uC5F4\uAE30\uC5D0 \uBC18\uCBE4 \uB179\uC544 \uD615\uD0DC\uAC00
+      \uC77C\uADF8\uB7EC\uC838 \uC788\uB2E4.\n\uD55C\uB54C\uB294 \uC544\uC774\uC758
+      \uAC00\uC7A5 \uCE5C\uD55C \uCE5C\uAD6C\uC600\uC744 \uAC83\uC774\uB2E4."
     codex_display: Img/Codex_display/Artifact/codex_display_toyrobot
-    codex_icon: Icons/Artifact/artifact_toyrobot
+    codex_icon: Icons/Artifact/icon_artifact_toyrobot
     codex_name: "\uB85C\uBD07 \uC7A5\uB09C\uAC10"
   - codex_id: codex_artifact_familypic
     codex_type: 4
     item_id: 50005
-    codex_lore: "\u314F"
+    codex_lore: "\uACE0\uC18D\uB3C4\uB85C\uC5D0\uC11C \uC5BB\uC740 \uB204\uAD70\uAC00\uC758
+      \uAC00\uC871\uC0AC\uC9C4.\n\uD55C \uAC00\uC871\uC774 \uD568\uAED8 \uC6C3\uACE0
+      \uC788\uB294 \uB0A1\uC740 \uC0AC\uC9C4. \uC0AC\uC9C4\uC758 \uAC00\uC7A5\uC790\uB9AC\uC5D0
+      \uBD88\uC5D0 \uD0C4 \uD754\uC801\uC774 \uC788\uB2E4.\n\uBD88\uC5D0 \uD0C4 \uAC00\uC7A5\uC790\uB9AC\uC5D0\uB294
+      \u2018\uC774\uB300\uB85C \uC601\uC6D0\uD788\u2019 \uBA54\uBAA8\uAC00 \uB0A8\uC544\uC788\uB2E4."
     codex_display: Img/Codex_display/Artifact/codex_display_familypic
-    codex_icon: Icons/Artifact/artifact_familypic
+    codex_icon: Icons/Artifact/icon_artifact_familypic
     codex_name: "\uB204\uAD70\uAC00\uC758 \uAC00\uC871\uC0AC\uC9C4"
+  - codex_id: codex_artifact_tornnewspaper
+    codex_type: 4
+    item_id: 50006
+    codex_lore: "\uACE0\uC18D\uB3C4\uB85C\uC5D0\uC11C \uC5BB\uC740 \uC2E0\uBB38\uC9C0.
+      \uCC28 \uC548\uC5D0\uC11C \uB204\uAD70\uAC00 \uBCF8 \uB4EF\uD558\uB2E4.\n\uCC22\uACA8\uC838\uC11C
+      \uB274\uC2A4 \uC81C\uBAA9\uB9CC \uBCF4\uC778\uB2E4.\n\u201C2\uB144\uC9F8 \uC774\uC5B4\uC9C4
+      \uB300\uC804\uC7C1\u2026 \uB300\uCCB4 \uC5B8\uC81C\uAE4C\uC9C0?\u201D"
+    codex_display: Img/Codex_display/Artifact/codex_display_tornnewspaper
+    codex_icon: Icons/Artifact/icon_artifact_tornnewspaper
+    codex_name: "\uCC22\uC5B4\uC9C4 \uB274\uC2A4"
+  - codex_id: codex_artifact_posterfragment
+    codex_type: 4
+    item_id: 50007
+    codex_lore: "\uACE0\uC18D\uB3C4\uB85C\uC5D0\uC11C \uC5BB\uC740 \uD3EC\uC2A4\uD130
+      \uC870\uAC01. \uBC14\uB78C\uC5D0 \uD769\uB0A0\uB824 \uC774\uACF3\uAE4C\uC9C0
+      \uB0A0\uC544\uC628 \uB4EF\uD558\uB2E4.\n\uBCD1\uAE30\uC6A9 \uC548\uB4DC\uB85C\uC774\uB4DC\uAC00
+      \uC190\uC744 \uB4E4\uACE0 \uC788\uB294 \uBAA8\uC2B5\uACFC \u201C\uC778\uB958\uB97C
+      \uC9C0\uD0A4\uB294 \uAC15\uCCA0\uC758 \uC6A9\uC0AC, \uBCD1\uAE30 \uC548\uB4DC\uB85C\uC774\uB4DC!\u201D
+      \uBB38\uAD6C\uAC00 \uC801\uD600\uC788\uB2E4. \uADF8 \uBB38\uAD6C \uC704\uC5D0
+      \u201C\uC9C0\uD0A8 \uAC8C \uC544\uB2C8\uB77C, \uBE7C\uC5C8\uC5B4!\u201D \uBD89\uC740
+      \uAE00\uC528\uB85C \uB099\uC11C \uB418\uC5B4\uC788\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_posterfragment
+    codex_icon: Icons/Artifact/icon_artifact_posterfragment
+    codex_name: "\uD3EC\uC2A4\uD130 \uC870\uAC01"
+  - codex_id: codex_artifact_baseball
+    codex_type: 4
+    item_id: 50008
+    codex_lore: "\uC0B0\uC18D\uC5D0\uC11C \uBC1C\uACAC\uD55C \uC57C\uAD6C\uACF5.
+      \uC5B4\uB5A4 \uD559\uC0DD\uC774 \uB358\uC84C\uB358 \uACF5\uC774 \uBA40\uB9AC
+      \uB0A0\uC544\uC640 \uC774\uACF3\uAE4C\uC9C0 \uAD74\uB7EC\uC628 \uB4EF\uD558\uB2E4.\n\uD45C\uBA74\uC5D4
+      \uD759\uACFC \uD568\uAED8 \uBC1C\uC790\uAD6D \uBB34\uB2AC\uAC00 \uB0A8\uC544
+      \uC788\uACE0, \uD55C\uCABD\uC5D4 \uCF54\uCF54\uB450\uAE30\uC758 \uBC1C\uC790\uAD6D,
+      \uB2E4\uB978 \uCABD\uC5D4 \uBA67\uB3FC\uC9C0\uC758 \uBC1C\uC790\uAD6D\uC774
+      \uCC0D\uD600 \uC788\uB2E4.\n\uB458\uC740 \uACF5\uC744 \uAD74\uB9AC\uBA70 \uC11C\uB85C
+      \uCC28\uC9C0\uD558\uB824 \uB2EC\uB9AC\uAE30 \uC2DC\uD569\uC744 \uBC8C\uC774\uB2E4\uAC00,
+      \uACF5\uC744 \uBC1F\uACE0 \uB098\uB780\uD788 \uBBF8\uB044\uB7EC\uC84C\uB2E4.\n\uC7A0\uC2DC
+      \uBA4D\uD558\uB2C8 \uC11C\uB85C\uB97C \uBC14\uB77C\uBCF4\uB358 \uB458\uC740,
+      \uC774\uB0B4 \uB3D9\uC2DC\uC5D0 \uC6C3\uC74C\uC744 \uD130\uB728\uB838\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_baseball
+    codex_icon: Icons/Artifact/icon_artifact_baseball
+    codex_name: "\uC57C\uAD6C\uACF5"
+  - codex_id: codex_artifact_handle
+    codex_type: 4
+    item_id: 50009
+    codex_lore: "\uACE0\uC18D\uB3C4\uB85C\uC5D0\uC11C \uC5BB\uC740 \uC6B4\uC804\uB300.
+      \uBD80\uC11C\uC9C4 \uCC28\uB7C9\uC5D0\uC11C \uB5A8\uC5B4\uC84C\uB2E4.\n\uAC00\uC8FD\uC740
+      \uBC97\uACA8\uC9C0\uACE0 \uAE08\uC18D\uC740 \uB179\uC2AC\uC5C8\uC9C0\uB9CC,
+      \uC190\uC790\uAD6D \uC790\uAD6D\uC774 \uADF8\uB300\uB85C \uB0A8\uC544 \uC788\uB2E4.\n\uD55C\uB54C
+      \uB204\uAD70\uAC00 \uC774 \uD578\uB4E4\uC744 \uAF2D \uC950\uACE0, \uC5B4\uB518\uAC00\uB85C
+      \uD5A5\uD588\uB358 \uD754\uC801\uC774 \uBB3B\uC5B4 \uC788\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_handle
+    codex_icon: Icons/Artifact/icon_artifact_handle
+    codex_name: "\uD578\uB4E4"
+  - codex_id: codex_artifact_flowerbouquet
+    codex_type: 4
+    item_id: 50010
+    codex_lore: "\uACE0\uC18D\uB3C4\uB85C \uC778\uADFC \uB3C4\uB85C\uBCC0\uC5D0\uC11C
+      \uBC1C\uACAC\uD55C \uC2DC\uB4E0 \uAF43\uB2E4\uBC1C.\n\uAF43\uB2E4\uBC1C \uB9AC\uBCF8\uC5D4
+      \u2018\uC0AC\uB791\uD558\uB294 \uC774\uB97C \uC704\uD558\uC5EC\u2019\uB77C\uB294
+      \uBB38\uAD6C\uAC00 \uC801\uD600 \uC788\uB2E4. \uBA3C\uC9C0\uC640 \uBC14\uB78C
+      \uC18D\uC5D0\uC11C\uB3C4 \uD5A5\uAE30\uAC00 \uD76C\uBBF8\uD558\uAC8C \uB0A8\uC544
+      \uC788\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_flowerbouquet
+    codex_icon: Icons/Artifact/icon_artifact_flowerbouquet
+    codex_name: "\uAF43\uB2E4\uBC1C"

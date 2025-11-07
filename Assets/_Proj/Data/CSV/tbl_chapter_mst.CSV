@@ -1,4 +1,4 @@
-﻿chapter_id,chapter_name,chapter_desc,chapter_img,chapter_stagelist,chapter_bg
-chapter_1,[chapter_1_name],"고속도로에서 주인과 이별한 코코두기, 새로운 친구 멧돼지와 만난다. ""집에 가지 않고, 나랑 계속 놀자!"" ",Img/Chapter/chapter_1_main,"stage_1_1,stage_1_2,",Img/Chapter/chapter_1bg
-chapter_2,[chapter_2_name],"달빛 아래 코코두기는 강가에서 비치는 자신을 바라보며 생각에 잠긴다. ""주인과 계속 행복하고 싶어..""",Img/Chapter/chapter_2_main,,Img/Chapter/chapter_2bg
-chapter_3,[chapter_3_name],"금속 쓰레기 잔해 더미 사이, 자신감 넘치는 버팔로와 만난다. ""강함은 늘 외로움을 동반하지.""",Img/Chapter/chapter_3_main,,Img/Chapter/chapter_3bg
+chapter_id,chapter_name,chapter_desc,chapter_img,chapter_stagelist,chapter_bg
+chapter_1,[chapter_1_name],"고속도로에서 주인과 이별한 코코두기, 새로운 친구 멧돼지와 만난다. '집에 가지 않고, 나랑 계속 놀자!'",Img/Chapter/chapter_1_main,"stage_1_1,stage_1_2,",Img/Chapter/chapter_1bg
+chapter_2,[chapter_2_name],"달빛 아래 코코두기는 강가에서 비치는 자신을 바라보며 생각에 잠긴다. '주인과 계속 행복하고 싶어..'",Img/Chapter/chapter_2_main,,Img/Chapter/chapter_2bg
+chapter_3,[chapter_3_name],"금속 쓰레기 잔해 더미 사이, 자신감 넘치는 버팔로와 만난다. '강함은 늘 외로움을 동반하지.'",Img/Chapter/chapter_3_main,,Img/Chapter/chapter_3bg

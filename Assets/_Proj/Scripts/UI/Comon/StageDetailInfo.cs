@@ -12,6 +12,10 @@ public class StageDetailInfo : MonoBehaviour
     public Button enterButton;
     private string currentStageId;
 
+    public Image[] treasureIcons; // 스테이지별 보물 아이콘들 (3개)
+    public Sprite collectedSprite;
+    public Sprite notCollectedSprite;
+
     void Awake()
     {
         enterButton.onClick.AddListener(EnterStage);
@@ -29,8 +33,8 @@ public class StageDetailInfo : MonoBehaviour
         if (stageName != null) stageName.text = data.stage_name;
         if (stageDesc != null) stageDesc.text = data.stage_desc;
 
-        // TODO: 보상 표시 (treasure_01_id ~ 03_id)
-        // rewardGroup 아래 동적 생성 가능
+        // 보물 아이콘 상태 반영
+        UpdateTreasureDisplay(data);
     }
 
     async void EnterStage()
@@ -51,5 +55,25 @@ public class StageDetailInfo : MonoBehaviour
     {
         currentStageId = null;
         gameObject.SetActive(false);
+    }
+
+    void UpdateTreasureDisplay(StageData data)
+    {
+        // StageManager.Instance가 실행 중인 스테이지에서만 접근 가능
+        // 로비 씬에서는 Firebase 데이터 기반으로도 가능
+
+        if (StageUIManager.Instance.stageManager != null)
+        {
+            treasureIcons[0].sprite = StageUIManager.Instance.stageManager.IsTreasureCollected(data.treasure_01_id) ? collectedSprite : notCollectedSprite;
+            treasureIcons[1].sprite = StageUIManager.Instance.stageManager.IsTreasureCollected(data.treasure_02_id) ? collectedSprite : notCollectedSprite;
+            treasureIcons[2].sprite = StageUIManager.Instance.stageManager.IsTreasureCollected(data.treasure_03_id) ? collectedSprite : notCollectedSprite;
+        }
+        else
+        {
+            // 추후 저장된 데이터에서 불러오는 로직 추가 가능 (ex: Firebase / PlayerPrefs)
+            treasureIcons[0].sprite = notCollectedSprite;
+            treasureIcons[1].sprite = notCollectedSprite;
+            treasureIcons[2].sprite = notCollectedSprite;
+        }
     }
 }
