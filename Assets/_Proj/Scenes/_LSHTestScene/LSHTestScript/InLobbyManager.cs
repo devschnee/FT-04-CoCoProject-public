@@ -63,10 +63,10 @@ public class InLobbyManager : MonoBehaviour
     {
         planeSurface.BuildNavMesh();
 
-        // GameObject gObj = Instantiate(DataManager.Instance.mainChar.GetPrefab(99999), cocoWaypoints[0].position, Quaternion.identity);
-        // gObj.tag = "CocoDoogy";
-        // gObj.layer = LayerMask.NameToLayer("InLobbyObject");
-        // gObj.AddComponent<CocoDoogyBehaviour>();
+        GameObject gObj = Instantiate(DataManager.Instance.mainChar.GetPrefab(99999), cocoWaypoints[0].position, Quaternion.identity);
+        gObj.tag = "CocoDoogy";
+        gObj.layer = LayerMask.NameToLayer("InLobbyObject");
+        gObj.AddComponent<CocoDoogyBehaviour>();
         //coco = gObj.GetComponent<CocoDoogyBehaviour>();
         //coco.gameObject.SetActive(false);
 
