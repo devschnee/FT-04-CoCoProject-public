@@ -25,8 +25,8 @@ public class CodexSource : MonoBehaviour, ICodexSource
             //Codex에 Icon 삭제되서 오류떠서 임시로 변경
             //향후 체크하시고 수정필요하면 수정해주세요
             Sprite icon = data.GetCodexIcon(_loader);
-            // 설명은 codex_lore, 이름은 codex_display 를 쓰도록
-            string name = string.IsNullOrEmpty(data.codex_display) ? data.codex_id : data.codex_display;
+
+            string name = data.codex_name;
             string desc = data.codex_lore;
 
             list.Add(new CodexEntry(
