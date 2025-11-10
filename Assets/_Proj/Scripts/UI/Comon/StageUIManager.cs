@@ -89,6 +89,8 @@ public class StageUIManager : MonoBehaviour
 
     void Retry()
     {
+        if (stageManager.isTest) { SceneManager.LoadScene("Chapter1_StageScene_TESTONLY"); return; }
+
         //Todo : 챕터에 따라 분기
         SceneManager.LoadScene("Chapter1_StageScene");
     }
