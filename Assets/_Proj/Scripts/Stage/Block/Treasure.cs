@@ -28,6 +28,7 @@ public class Treasure : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (isCollected) return;
+        if (StageUIManager.Instance.stageManager.isTest) return;
 
         if (other.CompareTag("Player"))
         {

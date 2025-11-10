@@ -36,7 +36,7 @@ public class PlayerPush : MonoBehaviour, IMoveStrategy
 
 
         // 앞 1칸 두께 있게 훑기 (레이어 제한 없이 -> IPushHandler로 필터)
-        Vector3 halfExtents = new(.2f, .7f, .2f);
+        Vector3 halfExtents = new(.2f, .2f, .2f);
         float maxDist = tileSize * 1.1f;
         float front = Mathf.Max(0.1f, frontOffset);
 
