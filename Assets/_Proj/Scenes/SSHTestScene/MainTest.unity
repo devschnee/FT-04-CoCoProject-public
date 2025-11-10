@@ -36816,7 +36816,7 @@ GameObject:
   - component: {fileID: 4877877172593463670}
   - component: {fileID: 2164716761888083805}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37830,7 +37830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codexServiceBehaviour: {fileID: 1266467484}
-  detailIcon: {fileID: 2164716761888083805}
+  detailDisplay: {fileID: 2164716761888083805}
   detailName: {fileID: 32677239087102877}
   detailDesc: {fileID: 7841853532411402836}
   detailScroll: {fileID: 2199687227577038299}
@@ -37847,6 +37847,7 @@ MonoBehaviour:
   - {fileID: 8624807131663203427}
   - {fileID: 1898091784860658560}
   pageSize: 8
+  defaultType: 2
   animalSlotText: "\uB3D9\uBB3C\uCE5C\uAD6C"
   decoSlotText: "\uC870\uACBD\uD488"
   costumeSlotText: "\uCE58\uC7A5\uD488"
