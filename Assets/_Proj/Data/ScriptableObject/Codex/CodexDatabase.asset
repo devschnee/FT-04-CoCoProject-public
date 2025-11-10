@@ -357,7 +357,7 @@ MonoBehaviour:
       \uB9C8\uC74C\uC774 \uD3B8\uC548\uD574\uC9C0\uB294 \uCCAB \uBCF4\uAE08\uC790\uB9AC\uC785\uB2C8\uB2E4."
     codex_display: Img/Codex_display/Home/codex_display_small_home
     codex_icon: Icons/Home/icon_home_small_home
-    codex_name: '[home_small_home]'
+    codex_name: "\uB530\uB73B\uD55C \uC6B0\uB9AC\uC758 \uC9D1"
   - codex_id: codex_home_camping_car
     codex_type: 3
     item_id: 40002

@@ -154,6 +154,8 @@ MonoBehaviour:
   StageDetailPrefab: {fileID: 3138075058950913620, guid: f6e1f98467c7c4d468072aa73dade4f4, type: 3}
   stageParent: {fileID: 4712763813369554519}
   detailParent: {fileID: 6331436479115976340}
+  collectedSprite: {fileID: 21300000, guid: 072e279b9e7d849d4b14c61cc96cd90d, type: 3}
+  notCollectedSprite: {fileID: 21300000, guid: 741065579880b4e1c929ab49bd185620, type: 3}
 --- !u!1 &3827601895803154656
 GameObject:
   m_ObjectHideFlags: 0

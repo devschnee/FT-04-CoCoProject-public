@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27d8744c21501145a0711a8519655ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treasureIndex: 1
 --- !u!1 &5751522445069742341
 GameObject:
   m_ObjectHideFlags: 0

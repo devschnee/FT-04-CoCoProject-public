@@ -30,6 +30,14 @@
       "type": "SO"
     },
     {
+      "name": "tbl_dialogue_mst",
+      "type": "SO"
+    },
+    {
+      "name": "tbl_dialogue_speakers_dtl",
+      "type": "SO"
+    },
+    {
       "name": "tbl_goods_mst",
       "type": "SO"
     },

@@ -78,6 +78,12 @@ public class CsvImportManager : EditorWindow
                 case "tbl_deco_mst":
                     DecoParser.Import(csvPath);
                     break;
+                case "tbl_dialogue_mst":
+                    DialogueParser.Import(csvPath);
+                    break;
+                case "tbl_dialogue_speakers_dtl":
+                    SpeakerParser.Import(csvPath);
+                    break;
                 case "tbl_goods_mst":
                     GoodsParser.Import(csvPath);
                     break;

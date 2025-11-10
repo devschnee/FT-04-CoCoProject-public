@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using static SpeakerData;
 
-public class SpeakerProvider : IDataProvider<string, SpeakerData>
+public class SpeakerProvider : IDataProvider<SpeakerId, SpeakerData>
 {
     private SpeakerDatabase database;
     private IResourceLoader loader;
@@ -11,14 +12,14 @@ public class SpeakerProvider : IDataProvider<string, SpeakerData>
         loader = resLoader;
     }
 
-    public SpeakerData GetData(string id)
+    public SpeakerData GetData(SpeakerId id)
     {
         return database.speakerList.Find(s => s.speaker_id == id);
     }
 
-    public Sprite GetPortrait(string id, EmotionType emotion)
+    public Sprite GetPortrait(SpeakerId id)
     {
         var data = GetData(id);
-        return data?.GetPortrait(emotion, loader);
+        return data?.GetPortrait(loader);
     }
 }

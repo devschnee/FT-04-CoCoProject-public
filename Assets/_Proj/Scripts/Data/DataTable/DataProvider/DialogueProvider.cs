@@ -8,8 +8,8 @@ public class DialogueProvider : IDataProvider<string, List<DialogueData>>
 
     public DialogueProvider(DialogueDatabase db, IResourceLoader resLoader)
     {
-        this.database = db;
-        this.loader = resLoader;
+        database = db;
+        loader = resLoader;
     }
 
     public List<DialogueData> GetData(string id)

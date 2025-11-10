@@ -1,0 +1,11 @@
+speaker_id,display_name,portrait_set_prefix
+coco,코코두기,coco_Neutral
+coco,코코두기,coco_Happy
+coco,코코두기,coco_Sad
+coco,코코두기,coco_Angry
+coco,코코두기,coco_Surprised
+buffalo,버팔로,buffalo_Neutral
+buffalo,버팔로,buffalo_Happy
+buffalo,버팔로,buffalo_Sad
+buffalo,버팔로,buffalo_Angry
+buffalo,버팔로,buffalo_Surprised
