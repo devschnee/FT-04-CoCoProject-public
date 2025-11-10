@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a054c62ed151a2438e3cd0124e74813, type: 3}
+  m_Name: DialogueDatabase
+  m_EditorClassIdentifier: 
+  dialogueList:
+  - dialogue_id: dialogue_1_1_1
+    seq: 0
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 0
+    text: "\"\uC548\uC120\uC0DD\uB2D8\u2026!!!\""
+    char_delay: 0.04
+    sound_type: 0
+    sound_key: coco_default
+  - dialogue_id: dialogue_1_1_1
+    seq: 1
+    speaker_position: 1
+    speaker_id: 0
+    emotion: 3
+    text: '"!!!!!!"'
+    char_delay: 0.04
+    sound_type: 0
+    sound_key: buffalo_pop
+  - dialogue_id: dialogue_1_1_1
+    seq: 2
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 2
+    text: "\"\uB18D\uAD6C\uAC00 \uD558\uACE0 \uC2F6\uC5B4\uC694\u2026\""
+    char_delay: 0.04
+    sound_type: 0
+    sound_key: coco_default
+  - dialogue_id: dialogue_1_1_2
+    seq: 0
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 0
+    text: "\"\uC601\uAC10\uB2D8\uC758 \uC601\uAD11\uC758 \uC2DC\uC808\uC740 \uC5B8\uC81C\uC600\uC8E0\u2026.?
+      \uAD6D\uAC00\uB300\uD45C \uC2DC\uC808?\""
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_1_1_2
+    seq: 1
+    speaker_position: 1
+    speaker_id: 0
+    emotion: 3
+    text: "\"\uBB50\uB77C..?!\""
+    char_delay: 0.04
+    sound_type: 0
+    sound_key: buffalo_pop
+  - dialogue_id: dialogue_1_1_2
+    seq: 2
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 2
+    text: "\"\uB098\uB294\u2026. \uB09C \uC9C0\uAE08\uC785\uB2C8\uB2E4\u2026\u2026.\""
+    char_delay: 0.04
+    sound_type: 0
+    sound_key: coco_default

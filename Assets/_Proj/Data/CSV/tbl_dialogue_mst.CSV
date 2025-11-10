@@ -1,0 +1,7 @@
+dialogue_id,seq,speaker_position,speaker_id,emotion,text,char_delay,sound_type,sound_key
+dialogue_1_1_1,0,left,coco,Neutral,"안선생님…!!!",0.04,sfx,coco_default
+dialogue_1_1_1,1,right,buffalo,Angry,"!!!!!!",0.04,sfx,buffalo_pop
+dialogue_1_1_1,2,left,coco,Sad,"농구가 하고 싶어요…",0.04,sfx,coco_default
+dialogue_1_1_2,0,left,coco,Neutral,"영감님의 영광의 시절은 언제였죠….? 국가대표 시절?",0.04,sfx_none,null
+dialogue_1_1_2,1,right,buffalo,Angry,"뭐라..?!",0.04,sfx,buffalo_pop
+dialogue_1_1_2,2,left,coco,Sad,"나는…. 난 지금입니다…….",0.04,sfx,coco_default

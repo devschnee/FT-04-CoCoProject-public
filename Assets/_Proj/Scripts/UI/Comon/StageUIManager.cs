@@ -90,33 +90,20 @@ public class StageUIManager : MonoBehaviour
     void Retry()
     {
         //Todo : 챕터에 따라 분기
-        SceneManager.LoadScene("Chapter1_StageScene_TESTONLY");
+        SceneManager.LoadScene("Chapter1_StageScene");
     }
 
     void Quit()
     {
         //Todo : 챕터에 따라 스테이지 선택화면 분기
         //currentChapter
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("Main");
     }
 
     void Exit()
     {
         //Todo : 챕터에 따라 스테이지 선택화면 분기
         //currentChapter
-        SceneManager.LoadScene("Lobby");
-    }
-
-    public void UpdateTreasureIcons(bool t1, bool t2, bool t3)
-    {
-        if (reward == null || reward.Length < 3) return;
-
-        star[0].sprite = t1 ? collectedSprite : notCollectedSprite;
-        star[1].sprite = t2 ? collectedSprite : notCollectedSprite;
-        star[2].sprite = t3 ? collectedSprite : notCollectedSprite;
-
-        //reward[0].sprite = t1 ? : notCollectedSprite;
-        //reward[0].sprite = t2 ? : notCollectedSprite;
-        //reward[0].sprite = t3 ? : notCollectedSprite;
+        SceneManager.LoadScene("Main");
     }
 }

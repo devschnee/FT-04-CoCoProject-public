@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   homeList:
   - home_id: 40001
-    home_name: '[home_small_home]'
+    home_name: "\uB530\uB73B\uD55C \uC6B0\uB9AC\uC758 \uC9D1"
     home_prefab: Prefabs/Home/house-medieval-small
     home_icon: Icons/Home/icon_home_small_home
     home_tag: 0

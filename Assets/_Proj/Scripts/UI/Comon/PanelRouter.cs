@@ -71,6 +71,7 @@ public class PanelRouter : MonoBehaviour
             // StageInfo에 chapterId 전달
             var stageInfo = stagePanel.GetComponentInChildren<StageInfo>();
             stageInfo.ShowStages(chapterId);
+            Debug.Log($"[PanelRouter] ToggleStage 호출됨 — chapterId:{chapterId}");
         }
     }
     public void CloseAll()
@@ -82,6 +83,7 @@ public class PanelRouter : MonoBehaviour
         if (friendsPanel) friendsPanel.SetActive(false);
         if (settingPanel) settingPanel.SetActive(false);
         if (chapterPanel) chapterPanel.SetActive(false);
+        if (stagePanel) stagePanel.SetActive(false);
         current = null;
         SyncDim();
     }

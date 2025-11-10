@@ -6404,14 +6404,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1751294651}
     m_Modifications:
-    - target: {fileID: 1160078591799191199, guid: 59e1957c10626b141858e774172ff1de, type: 3}
-      propertyPath: collectedSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 072e279b9e7d849d4b14c61cc96cd90d, type: 3}
-    - target: {fileID: 1160078591799191199, guid: 59e1957c10626b141858e774172ff1de, type: 3}
-      propertyPath: notCollectedSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 741065579880b4e1c929ab49bd185620, type: 3}
     - target: {fileID: 3176525929407184350, guid: 59e1957c10626b141858e774172ff1de, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6496,10 +6488,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1751294653}
-    - target: {fileID: 3526702013755504802, guid: 59e1957c10626b141858e774172ff1de, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseCurrent
-      objectReference: {fileID: 0}
     - target: {fileID: 8218053155325166766, guid: 59e1957c10626b141858e774172ff1de, type: 3}
       propertyPath: m_Name
       value: StagePanel

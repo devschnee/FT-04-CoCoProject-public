@@ -30,10 +30,12 @@ public class StageDetailInfo : MonoBehaviour
         stageName.text = data.stage_name;
         stageDesc.text = data.stage_desc;
 
+        // 총 몇 개 먹었는지 카운트
+        int collectedCount = progress.GetCollectedCount();
+
         for (int i = 0; i < 3; i++)
         {
-            bool collected = progress.treasureCollected[i];
-            treasureIcons[i].sprite = collected ? collectedSprite : notCollectedSprite;
+            treasureIcons[i].sprite = i < collectedCount ? collectedSprite : notCollectedSprite;
         }
     }
 
