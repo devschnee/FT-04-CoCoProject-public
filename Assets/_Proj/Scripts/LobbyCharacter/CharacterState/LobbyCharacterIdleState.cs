@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,9 +8,7 @@ using UnityEngine.AI;
 /// </summary>
 public class LCocoDoogyIdleState : LobbyCharacterBaseState
 {
-    private Transform[] waypoints;
-    private NavMeshAgent agent;
-    private int currentIndex;
+    private readonly NavMeshAgent agent;
 
     public LCocoDoogyIdleState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
     {
@@ -19,25 +18,23 @@ public class LCocoDoogyIdleState : LobbyCharacterBaseState
     public override void OnStateEnter()
     {
         if (!agent.enabled) agent.enabled = true;
-        var trans = owner.GetComponent<Transform>();
-        agent.Warp(trans.position);
+        agent.Warp(owner.transform.position);
         Debug.Log("코코두기 Idle 진입");
         owner.StartCoroutine(WaitThenMove());
     }
+
+    public override void OnStateUpdate() { }
 
     public override void OnStateExit()
     {
         owner.StopAllCoroutines();
     }
-
-    public override void OnStateUpdate() { }
     
     private IEnumerator WaitThenMove()
     {
-        yield return new WaitForSeconds(Random.Range(2f, 4f));
-        //fsm.ChangeState(new LCocoDoogyMoveState(owner, fsm, waypoints, currentIndex));
+        yield return new WaitForSeconds(Random.Range(1.5f, 3f));
         fsm.ChangeState(owner.MoveState);
-        //yield break;
+        yield break;
     }
 }
 
@@ -46,24 +43,33 @@ public class LCocoDoogyIdleState : LobbyCharacterBaseState
 /// </summary>
 public class LMasterIdleState : LobbyCharacterBaseState
 {
+    private readonly NavMeshAgent agent;
 
     public LMasterIdleState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
     {
+        agent = owner.GetComponent<NavMeshAgent>();
     }
 
     public override void OnStateEnter()
     {
-        throw new System.NotImplementedException();
+        if (!agent.enabled) agent.enabled = true;
+        agent.Warp(owner.transform.position);
+        Debug.Log("마스터 Idle 진입");
+        owner.StartCoroutine(WaitThenMove());
     }
+
+    public override void OnStateUpdate() { }
 
     public override void OnStateExit()
     {
-        throw new System.NotImplementedException();
+        owner.StopAllCoroutines();
     }
-
-    public override void OnStateUpdate()
+    
+    private IEnumerator WaitThenMove()
     {
-        
+        yield return new WaitForSeconds(Random.Range(1.5f, 3f));
+        fsm.ChangeState(owner.MoveState);
+        yield break;
     }
 }
 
@@ -72,23 +78,32 @@ public class LMasterIdleState : LobbyCharacterBaseState
 /// </summary>
 public class LAnimalIdleState : LobbyCharacterBaseState
 {
+    private readonly NavMeshAgent agent;
 
     public LAnimalIdleState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
     {
+        agent = owner.GetComponent<NavMeshAgent>();
     }
 
     public override void OnStateEnter()
     {
-        throw new System.NotImplementedException();
+        if (!agent.enabled) agent.enabled = true;
+        agent.Warp(owner.transform.position);
+        Debug.Log($"{owner.gameObject.name} Idle 진입");
+        owner.StartCoroutine(WaitThenMove());
     }
+
+    public override void OnStateUpdate() { }
 
     public override void OnStateExit()
     {
-        throw new System.NotImplementedException();
+        owner.StopAllCoroutines();
     }
-
-    public override void OnStateUpdate()
+    
+    private IEnumerator WaitThenMove()
     {
-        
+        yield return new WaitForSeconds(Random.Range(1.5f, 3f));
+        fsm.ChangeState(owner.MoveState);
+        yield break;
     }
 }

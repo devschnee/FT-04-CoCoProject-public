@@ -3,64 +3,38 @@ using UnityEngine;
 
 public class AnimalBehaviour : BaseLobbyCharacterBehaviour
 {
-    [SerializeField] float decoDetectRadius = 20f; // 데코 오브젝트 탐색 범위
-    private Transform targetDeco;
-
+    public WaitUntil WaitU { get; private set; }
+    public Transform TargetDeco { get; set; }
+    
     protected override void InitStates()
     {
-        throw new System.NotImplementedException();
+        IdleState = new LAnimalIdleState(this, fsm);
+        MoveState = new LAnimalMoveState(this, fsm, charAgent);
+        InteractState = new LAnimalInteractState(this, fsm);
+        ClickSate = new LAnimalClickState(this, fsm, charAnim);
+        DragState = new LAnimalDragState(this, fsm);
+        EditState = new LAnimalEditState(this, fsm);
+        StuckState = new LAnimalStuckState(this, fsm);
     }
 
-    
     protected override void Awake()
     {
+        gameObject.tag = "Animal";
+        gameObject.layer = LayerMask.NameToLayer("InLobbyObject");
         base.Awake();
-        agent.avoidancePriority = 50;
     }
-
     protected override void OnEnable()
     {
         base.OnEnable();
-        targetDeco = null;
+        TargetDeco = null;
     }
-
-    // private IEnumerator Move()
-    // {
-    //     isMoving = true;
-    //     while (isMoving)
-    //     {
-    //         FindNearestDeco();
-    //         if (targetDeco != null)
-    //         {
-    //             charAgent.MoveToRandomTransPoint(targetDeco);
-    //         }
-    //         else
-    //         {
-    //             charAgent.MoveToRandomTransPoint(transform);
-    //         }
-
-    //         if (!agent.hasPath) charAgent.MoveToRandomTransPoint(transform);
-    //         yield return waitU;
-    //     }
-    // }
-
-    private void FindNearestDeco()
+    protected override void Start()
     {
-        // 나중에 로비 안에 활성화 된 데코 리스트가 있으면 대체
-        GameObject[] decos = GameObject.FindGameObjectsWithTag("Decoration");
-        float nearestDist = float.MaxValue;
-        Transform nearest = null;
-
-        foreach (GameObject deco in decos)
-        {
-            float dist = Vector3.Distance(transform.position, deco.transform.position);
-            if (dist < decoDetectRadius && dist < nearestDist)
-            {
-                nearestDist = dist;
-                nearest = deco.transform;
-            }
-        }
-        targetDeco = nearest;
+        base.Start();
+    }
+    protected override void Update()
+    {
+        base.Update();
     }
 
     // 인터페이스 영역
@@ -69,12 +43,15 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour
         if (!agent.isStopped) agent.isStopped = true;
 
     }
-
-    public override void OnCocoMasterEmotion()
+    public override void OnCocoMasterEmotion() { }
+    public override void OnLobbyBeginDrag(Vector3 position)
     {
-        
+        base.OnLobbyBeginDrag(position);
     }
-
+    public override void OnLobbyDrag(Vector3 position)
+    {
+        base.OnLobbyDrag(position);
+    }
     public override void OnLobbyEndDrag(Vector3 position)
     {
         base.OnLobbyEndDrag(position);
@@ -82,18 +59,35 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour
     public override void OnLobbyClick()
     {
         base.OnLobbyClick();
-        charAnim.InteractionAnim();
-        AudioEvents.Raise(SFXKey.CocodoogyFootstep, pooled: true, pos: transform.position); // 각 동물 소리로
+    }
+    public override void OnLobbyPress()
+    {
+        base.OnLobbyPress();
     }
     public override void InNormal()
     {
         base.InNormal();
     }
-
-    
-
-    // public override void ExitScene()
-    // {
-
-    // }
+    public override void InEdit()
+    {
+        base.InEdit();
+    }
+    public override void Register()
+    {
+        base.Register();
+    }
+    public override void Unregister()
+    {
+        base.Unregister();
+    }
+    public override void Init()
+    {
+        base.Init();
+        agent.avoidancePriority = Random.Range(30, 50);
+        WaitU = new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= 0.5f);
+    }
+    public override void PostInit()
+    {
+        base.PostInit();
+    }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
+// 저장되어있는 동물 오브젝트, 데코 오브젝트, 집 오브젝트를 어떻게 분리할까
+
+
 public class InLobbyManager : MonoBehaviour
 {
     [SerializeField] GameObject plane;
@@ -56,6 +59,11 @@ public class InLobbyManager : MonoBehaviour
         GameObject gObj = Instantiate(DataManager.Instance.mainChar.GetPrefab(99999), cocoWaypoints[0].position, Quaternion.identity);
         gObj.transform.localScale = new Vector3(4, 4, 4);
         gObj.AddComponent<CocoDoogyBehaviour>();
+
+        GameObject gObj2 = Instantiate(DataManager.Instance.Animal.GetPrefab(30001), cocoWaypoints[1].position, Quaternion.identity);
+        gObj2.transform.localScale = new Vector3(4, 4, 4);
+        gObj2.AddComponent<AnimalBehaviour>();
+
         foreach (var lC in lobbyCharacter)
         {
             lC.Init();

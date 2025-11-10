@@ -29,13 +29,14 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     protected Transform[] waypoints;
 
     // Stuck
-    protected float stuckTimeA;
-    protected float stuckTimeB = 2;
+    public float StuckTimeA { get; set; }
+    public float StuckTimeB { get; set; }
 
-    public bool IsCMRoutineComplete { get; protected set; }
-    public bool IsCARoutineComplete { get; protected set; }
-    public bool IsCMInteractComplete { get; protected set; }
-    public bool IsCAInteractComplete { get; protected set; }
+    public bool IsEditMode { get; set; }
+    public bool IsCMRoutineComplete { get; set; }
+    public bool IsCARoutineComplete { get; set; }
+    public bool IsCMInteractComplete { get; set; }
+    public bool IsCAInteractComplete { get; set; }
 
     /// <summary>
     /// FSM 초기 상태를 각 자식들이 정의
@@ -48,16 +49,26 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     public LobbyCharacterBaseState ClickSate { get; protected set; }
     public LobbyCharacterBaseState DragState { get; protected set; }
     public LobbyCharacterBaseState EditState { get; protected set; }
+    public LobbyCharacterBaseState StuckState { get; protected set; }
 
     protected virtual void Awake()
     {
+        if (InLobbyManager.Instance.isEditMode)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Editable");
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("InLobbyObject");
+        }
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius, trans);
         charAnim = new LobbyCharacterAnim(anim);
         MainCam = Camera.main;
         fsm = new LobbyCharacterFSM(null);
-        
+        Register();
+        InitStates();
     }
 
     protected virtual void OnEnable() {}
@@ -95,6 +106,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
             default: throw new Exception("누구세요?");
         }
     }
+
     protected void StopMoving()
     {
         fsm.ChangeState(IdleState);
@@ -271,10 +283,11 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     /// </summary>
     public virtual void Init()
     {
-        Register();
-        InitStates();
         agent.height = 1f;
         YValue = transform.position.y;
+        Debug.Log($"{gameObject.name} yValue : {YValue}, agent height : {agent.height}");
+        IsEditMode = false;
+        StuckTimeB = 2f;
     }
 
     /// <summary>

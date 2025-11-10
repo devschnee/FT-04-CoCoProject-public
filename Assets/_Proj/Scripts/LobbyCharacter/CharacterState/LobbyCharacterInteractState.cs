@@ -1,10 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class LCocoDoogyInteractState : LobbyCharacterBaseState
 {
-    private NavMeshAgent agent;
+    private readonly NavMeshAgent agent;
 
     public LCocoDoogyInteractState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
     {
@@ -18,7 +19,10 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
         Debug.Log("코코두기 Interact 진입");
         owner.StartCoroutine(WaitAndFinish());
     }
-    public override void OnStateUpdate() { }
+    public override void OnStateUpdate()
+    {
+        if (owner.IsDestroyed()) owner.StopAllCoroutines();
+    }
     public override void OnStateExit()
     {
         owner.StopAllCoroutines();
@@ -36,72 +40,70 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
 
 public class LMasterInteractState : LobbyCharacterBaseState
 {
-    // 0 이면 일반 클릭시 상호작용
-    // 1 이면 코코두기와 마스터 상호작용
-    // 2 이면 코코두기와 동물들 상호작용
-    private Transform[] waypoints;
-    private LobbyCharacterAnim anim;
-    private int type;
+    private readonly NavMeshAgent agent;
 
-    public LMasterInteractState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm, LobbyCharacterAnim anim, Transform[] waypoints, int type = 1) : base(owner, fsm)
+    public LMasterInteractState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
     {
-        this.waypoints = waypoints;
-        this.type = type;
-        this.anim = anim;
+        agent = owner.GetComponent<NavMeshAgent>();
     }
 
     public override void OnStateEnter()
     {
-        switch (type)
-        {
-            case 0:
-                anim.InteractionAnim();
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-        }
+        if (!agent.enabled) agent.enabled = true;
+        if (agent.enabled && !agent.isStopped) agent.isStopped = true;
+        Debug.Log("마스터 Interact 진입");
+        owner.StartCoroutine(WaitAndFinish());
+    }
+    public override void OnStateUpdate()
+    {
+        if (owner.IsDestroyed()) owner.StopAllCoroutines();
+    }
+    public override void OnStateExit()
+    {
+        owner.StopAllCoroutines();
+        agent.isStopped = false;
     }
 
-    public override void OnStateExit() { }
-
-    public override void OnStateUpdate() { }
-
+    private IEnumerator WaitAndFinish()
+    {
+        yield return new WaitForSeconds(3f);
+        owner.EndInteract(0);
+        fsm.ChangeState(owner.IdleState);
+        yield break;
+    }
 }
 
 public class LAnimalInteractState : LobbyCharacterBaseState
 {
-    // 0 이면 일반 클릭시 상호작용
-    // 1 이면 코코두기와 마스터 상호작용
-    // 2 이면 코코두기와 동물들 상호작용
-    private Transform[] waypoints;
-    private LobbyCharacterAnim anim;
-    private int type;
+    private readonly NavMeshAgent agent;
 
-    public LAnimalInteractState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm, LobbyCharacterAnim anim, Transform[] waypoints, int type = 1) : base(owner, fsm)
+    public LAnimalInteractState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
     {
-        this.waypoints = waypoints;
-        this.type = type;
-        this.anim = anim;
+        agent = owner.GetComponent<NavMeshAgent>();
     }
 
     public override void OnStateEnter()
     {
-        switch (type)
-        {
-            case 0:
-                anim.InteractionAnim();
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-        }
+        if (!agent.enabled) agent.enabled = true;
+        if (agent.enabled && !agent.isStopped) agent.isStopped = true;
+        Debug.Log($"{owner.gameObject.name} Interact 진입");
+        owner.StartCoroutine(WaitAndFinish());
+    }
+    public override void OnStateUpdate()
+    {
+        if (owner.IsDestroyed()) owner.StopAllCoroutines();
+    }
+    public override void OnStateExit()
+    {
+        owner.StopAllCoroutines();
+        agent.isStopped = false;
     }
 
-    public override void OnStateExit() { }
-
-    public override void OnStateUpdate() { }
-
+    private IEnumerator WaitAndFinish()
+    {
+        yield return new WaitForSeconds(3f);
+        owner.EndInteract(0);
+        fsm.ChangeState(owner.IdleState);
+        yield break;
+    }
 }

@@ -1,8 +1,7 @@
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class LCocoDoogyDragState : LobbyCharacterBaseState, IDragState
+public class LAnimalDragState : LobbyCharacterBaseState, IDragState
 {
     private Vector3 movePos;
     private Vector3 originalPos;
@@ -14,14 +13,14 @@ public class LCocoDoogyDragState : LobbyCharacterBaseState, IDragState
     private float yValue;
     private bool isDragging;
 
-    public LCocoDoogyDragState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
+    public LAnimalDragState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
     {
-        agent = (owner as CocoDoogyBehaviour).GetComponent<NavMeshAgent>();
-        anim = (owner as CocoDoogyBehaviour).GetComponent<Animator>();
-        trans = (owner as CocoDoogyBehaviour).GetComponent<Transform>();
-        mainCam = (owner as CocoDoogyBehaviour).MainCam;
+        agent = (owner as AnimalBehaviour).GetComponent<NavMeshAgent>();
+        anim = (owner as AnimalBehaviour).GetComponent<Animator>();
+        trans = (owner as AnimalBehaviour).GetComponent<Transform>();
+        mainCam = (owner as AnimalBehaviour).MainCam;
         mainPlaneMask = LayerMask.GetMask("MainPlane");
-        yValue = (owner as CocoDoogyBehaviour).YValue;
+        yValue = (owner as AnimalBehaviour).YValue;
     }
     public override void OnStateEnter()
     {
@@ -29,16 +28,13 @@ public class LCocoDoogyDragState : LobbyCharacterBaseState, IDragState
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         if (agent.enabled) agent.enabled = false;
     }
+    public override void OnStateUpdate() { }
     public override void OnStateExit()
     {
         isDragging = false;
         agent.enabled = true;
         agent.isStopped = false;
         agent.Warp(trans.position);
-    }
-    public override void OnStateUpdate()
-    {
-        
     }
 
     public void OnBeginDrag(Vector3 pos)
@@ -83,7 +79,6 @@ public class LCocoDoogyDragState : LobbyCharacterBaseState, IDragState
             trans.position = navHit.position;
             Debug.Log($"{owner.gameObject.name} : NavMesh 있음 해당 포지션으로");
         }
-        fsm.ChangeState((owner as CocoDoogyBehaviour).IdleState);
+        fsm.ChangeState((owner as AnimalBehaviour).IdleState);
     }
 }
-

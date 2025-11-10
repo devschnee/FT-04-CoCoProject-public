@@ -3,64 +3,85 @@ using UnityEngine.AI;
 
 public class LCocoDoogyEditState : LobbyCharacterBaseState
 {
-    
-    public LCocoDoogyEditState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm) { }
+    private readonly NavMeshAgent agent;
+    private readonly Animator anim;
+
+    public LCocoDoogyEditState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
+    {
+        agent = owner.GetComponent<NavMeshAgent>();
+        anim = owner.GetComponent<Animator>();
+    }
 
     public override void OnStateEnter()
     {
-        Debug.Log("Edit 진입");
-        var agent = owner.GetComponent<NavMeshAgent>();
-        var anim = owner.GetComponent<Animator>();
+        Debug.Log($"코코두기 Edit 진입");
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         if (agent.enabled) agent.enabled = false;
         anim.Play("Idle_A");
     }
 
-    public override void OnStateExit() { }
-
     public override void OnStateUpdate() { }
+
+    public override void OnStateExit()
+    {
+        agent.enabled = true;
+        agent.isStopped = false;
+    }
+
 }
 
 public class LMasterEditState : LobbyCharacterBaseState
 {
+    private readonly NavMeshAgent agent;
+    private readonly Animator anim;
+
     public LMasterEditState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
     {
+        agent = owner.GetComponent<NavMeshAgent>();
+        anim = owner.GetComponent<Animator>();
     }
 
     public override void OnStateEnter()
     {
-        throw new System.NotImplementedException();
+        Debug.Log($"마스터 Edit 진입");
+        if (agent.enabled && !agent.isStopped) agent.isStopped = true;
+        if (agent.enabled) agent.enabled = false;
+        anim.Play("Idle_A");
     }
+
+    public override void OnStateUpdate() { }
 
     public override void OnStateExit()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnStateUpdate()
-    {
-        throw new System.NotImplementedException();
+        agent.enabled = true;
+        agent.isStopped = false;
     }
 }
 
 public class LAnimalEditState : LobbyCharacterBaseState
 {
+    private readonly NavMeshAgent agent;
+    private readonly Animator anim;
+
     public LAnimalEditState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
     {
+        agent = owner.GetComponent<NavMeshAgent>();
+        anim = owner.GetComponent<Animator>();
     }
 
     public override void OnStateEnter()
     {
-        throw new System.NotImplementedException();
+        Debug.Log($"{owner.gameObject.name} Edit 진입");
+        if (agent.enabled && !agent.isStopped) agent.isStopped = true;
+        if (agent.enabled) agent.enabled = false;
+        anim.Play("Idle_A");
     }
+
+    public override void OnStateUpdate() { }
 
     public override void OnStateExit()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnStateUpdate()
-    {
-        throw new System.NotImplementedException();
+        agent.enabled = true;
+        agent.isStopped = false;
     }
 }

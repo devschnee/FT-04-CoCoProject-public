@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Assertions.Must;
 
 /// <summary>
 /// 편집모드 on/off, 저장/복원, 인벤에서 가져오기
@@ -533,6 +535,22 @@ public partial class EditModeController
 
         // 그리드 스냅 옵션
         if (snapToGrid) go.transform.position = SnapToGrid(go.transform.position);
+
+        //LSH 추가
+        switch (cat)
+        {
+            case PlaceableCategory.Home:
+                go.AddComponent<NavMeshObstacle>();
+                var nO = go.GetComponent<NavMeshObstacle>();
+                nO.carving = true;
+                break;
+            case PlaceableCategory.Animal:
+                go.AddComponent<AnimalBehaviour>();
+                break;
+            case PlaceableCategory.Deco:
+                go.tag = "Decoration";
+                break;
+        }
 
         // 최초 유효성 마킹
         bool valid = IsOverGround(go.transform.position) && !OverlapsOthers(go.transform);

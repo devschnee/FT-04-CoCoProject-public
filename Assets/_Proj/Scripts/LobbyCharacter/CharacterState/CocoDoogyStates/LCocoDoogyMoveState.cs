@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class LCocoDoogyMoveState : LobbyCharacterBaseState
 {
-    private NavMeshAgent agent;
+    private readonly NavMeshAgent agent;
     //private NavMeshAgentControl AgentControl;
     private Transform[] waypoints;
     private int currentIndex = 0;
@@ -37,13 +37,6 @@ public class LCocoDoogyMoveState : LobbyCharacterBaseState
         //owner.EndRoutine();
     }
 
-    public override void OnStateExit()
-    {
-        //savedIndex = currentIndex; // 1
-        //owner.StopAllCoroutines();
-        
-    }
-
     public override void OnStateUpdate()
     {
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
@@ -51,8 +44,30 @@ public class LCocoDoogyMoveState : LobbyCharacterBaseState
             //fsm.ChangeState(new LCocoDoogyInteractState(owner, fsm, waypoints));
             //fsm.ChangeState();
         }
-        var trans = owner.GetComponent<Transform>();
-        Vector3 randomDir = trans.position + Random.insideUnitSphere * 1f;
-        agent.SetDestination(trans.position + randomDir);
+        // 이동 중 멈춤 감지
+        if (!agent.isStopped && agent.velocity.sqrMagnitude < 0.01f)
+        {
+            owner.StuckTimeA += Time.deltaTime;
+            if (owner.StuckTimeA > owner.StuckTimeB)
+            {
+                fsm.ChangeState(owner.StuckState);
+            }
+        }
+        else
+        {
+            owner.StuckTimeA = 0f;
+        }
+
+        Vector3 randomDir = owner.transform.position + Random.insideUnitSphere * 1f;
+        randomDir.y = owner.YValue;
+        agent.SetDestination(owner.transform.position + randomDir);
     }
+
+    public override void OnStateExit()
+    {
+        //savedIndex = currentIndex; // 1
+        //owner.StopAllCoroutines();
+        
+    }
+
 }

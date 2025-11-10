@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// 예시 파일
+
 public class LCharIdleState : LobbyCharacterBaseState
 {
     public LCharIdleState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)

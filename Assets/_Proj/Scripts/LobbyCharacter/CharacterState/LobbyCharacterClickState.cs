@@ -15,60 +15,74 @@ public class LCocoDoogyClickState : LobbyCharacterBaseState
     {
         Debug.Log("Click 진입");
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
-        var trans = owner.GetComponent<Transform>();
+        // 애니메이션 이벤트 쪽에서 ChangeState해줌
         charAnim.InteractionAnim();
-        
-        AudioEvents.Raise(SFXKey.CocodoogyFootstep, pooled: true, pos: trans.position);
+
+        AudioEvents.Raise(SFXKey.CocodoogyFootstep, pooled: true, pos: owner.transform.position);
     }
+    
+    public override void OnStateUpdate() { }
 
     public override void OnStateExit()
     {
         if (agent.enabled && agent.isStopped) agent.isStopped = false;
     }
-
-    public override void OnStateUpdate() { }
 }
 
 public class LMasterClickState : LobbyCharacterBaseState
 {
-    public LMasterClickState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
+    private readonly NavMeshAgent agent;
+    private readonly LobbyCharacterAnim charAnim;
+    public LMasterClickState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm, LobbyCharacterAnim charAnim) : base(owner, fsm)
     {
+        agent = owner.GetComponent<NavMeshAgent>();
+        this.charAnim = charAnim;
     }
 
     public override void OnStateEnter()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Click 진입");
+        if (agent.enabled && !agent.isStopped) agent.isStopped = true;
+        // 애니메이션 이벤트 쪽에서 ChangeState해줌
+        charAnim.InteractionAnim();
+
+        // 소리 수정하슈
+        AudioEvents.Raise(SFXKey.CocodoogyFootstep, pooled: true, pos: owner.transform.position);
     }
+    
+    public override void OnStateUpdate() { }
 
     public override void OnStateExit()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnStateUpdate()
-    {
-        throw new System.NotImplementedException();
+        if (agent.enabled && agent.isStopped) agent.isStopped = false;
     }
 }
 
 public class LAnimalClickState : LobbyCharacterBaseState
 {
-    public LAnimalClickState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm) : base(owner, fsm)
+    private readonly NavMeshAgent agent;
+    private readonly LobbyCharacterAnim charAnim;
+    public LAnimalClickState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm, LobbyCharacterAnim charAnim) : base(owner, fsm)
     {
+        agent = owner.GetComponent<NavMeshAgent>();
+        this.charAnim = charAnim;
     }
 
     public override void OnStateEnter()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Click 진입");
+        if (agent.enabled && !agent.isStopped) agent.isStopped = true;
+        // 애니메이션 이벤트 쪽에서 ChangeState해줌
+        charAnim.InteractionAnim();
+
+        // 소리 수정하슈
+        AudioEvents.Raise(SFXKey.CocodoogyFootstep, pooled: true, pos: owner.transform.position);
     }
+    
+    public override void OnStateUpdate() { }
 
     public override void OnStateExit()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnStateUpdate()
-    {
-        throw new System.NotImplementedException();
+        if (agent.enabled && agent.isStopped) agent.isStopped = false;
     }
 }
