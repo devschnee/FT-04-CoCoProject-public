@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class FirebaseManager_FORTEST : MonoBehaviour
+public class FirebaseManager : MonoBehaviour
 {
-    public static FirebaseManager_FORTEST Instance { get; private set; }
+    public static FirebaseManager Instance { get; private set; }
     private FirebaseApp App { get; set; }
     private FirebaseDatabase DB { get; set; }
     private DatabaseReference MapDataRef => DB.RootReference.Child($"mapData");

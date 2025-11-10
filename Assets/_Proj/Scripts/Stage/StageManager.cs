@@ -54,8 +54,8 @@ public class StageManager : MonoBehaviour
     {
         if (!isTest)
         {
-            currentMapData = FirebaseManager_FORTEST.Instance.currentMapData;
-            currentStageId = FirebaseManager_FORTEST.Instance.selectStageID;
+            currentMapData = FirebaseManager.Instance.currentMapData;
+            currentStageId = FirebaseManager.Instance.selectStageID;
         }
     }
     async void Start()
@@ -65,7 +65,7 @@ public class StageManager : MonoBehaviour
         if (isTest)
         {
             await Task.Delay(200); //이거 왜 하냐면 파이어베이스매니저가 아직 초기화가 안된 상황일 가능성이 높기 때문임
-            currentMapData = await FirebaseManager_FORTEST.Instance.LoadMapFromFirebase(mapNameToLoad);
+            currentMapData = await FirebaseManager.Instance.LoadMapFromFirebase(mapNameToLoad);
             currentStageId = mapNameToLoad;
         }
 
@@ -144,7 +144,7 @@ public class StageManager : MonoBehaviour
 
     void LoadStage(MapData loaded)
     {
-        currentStageId = FirebaseManager_FORTEST.Instance.selectStageID;
+        currentStageId = FirebaseManager.Instance.selectStageID;
 
         var data = DataManager.Instance.Stage.GetMapNameData(currentStageId);
 
