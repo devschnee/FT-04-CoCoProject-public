@@ -26,7 +26,7 @@ public class DoorBlock : Block, ISignalReceiver
     {
         if (!initialized) return;
 
-        if (isPermanentlyOpen)
+        if (isPermanentlyOpen) // KHJ - Tower가 수정되면서 아마 더이상 호출되지 않을 것임
         {
             // KHJ - Tower는 한 번 열면 닫지 않음.
             Debug.Log($"[Door] 문은 영구적으로 열려 있는 상태임.");
@@ -61,7 +61,7 @@ public class DoorBlock : Block, ISignalReceiver
         rightClosedPos = right.localPosition;
 
         // 열릴 때 이동할 방향 (로컬 기준)
-        float offset = 0.75f;
+        float offset = 0.95f;
         leftOpenPos = leftClosedPos + Vector3.right * offset;
         rightOpenPos = rightClosedPos + Vector3.left * offset;
     }
@@ -83,12 +83,13 @@ public class DoorBlock : Block, ISignalReceiver
     // (스테이지 별로 문을 열게 해주는 기믹이 다르고 동작 방식과 기본 세팅이 다르기 때문에)
     void DetectConnectedGimmick()
     {
-        float searchRadius = 30f;
+        float searchRadius = 60f;
         Collider[] cols = Physics.OverlapSphere(transform.position, searchRadius, ~0);
 
         foreach (var c in cols)
         {
             var sender = c.GetComponentInParent<ISignalSender>();
+
             if (sender == null) continue;
             //if (sender.Receiver != this) continue;
             if ((DoorBlock)sender.Receiver != this) continue;
@@ -97,7 +98,7 @@ public class DoorBlock : Block, ISignalReceiver
                 connectedType = GimmickType.Switch;
             else if (sender is ShockDetectionTower)
                 connectedType = GimmickType.Tower;
-            else if (sender is Turret)
+            else if (sender is Turret || sender is TurretBlock)
                 connectedType = GimmickType.Turret;
 
             Debug.Log($"[Door] 연결된 기믹 감지됨: {connectedType} ({sender})");
@@ -173,5 +174,12 @@ public class DoorBlock : Block, ISignalReceiver
     protected override void OnEnable()
     {
         base.OnEnable();
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        float searchRadius = 60f; // DetectConnectedGimmick에서 사용되는 searchRadius와 동일하게 설정
+        Gizmos.DrawWireSphere(transform.position, searchRadius);
     }
 }

@@ -130,8 +130,17 @@ public class ShockDetectionTower : MonoBehaviour, ISignalSender, ISignalReceiver
     {
         if (Receiver != null)
         {
-            Receiver.ReceiveSignal();
-            Debug.Log($"[Tower] {name}: 문에 신호 전송 완료");
+            if (Receiver is DoorBlock door)
+            {
+                door.OpenPermanently();
+                Debug.Log($"[Tower] {name}: 문에 신호 전송(영구 열림) 완료");
+            }
+            else
+            {
+                // 일반적인 신호 전송
+                Receiver.ReceiveSignal();
+                Debug.Log($"[Tower] {name}: 수신기({Receiver.GetType().Name})에 신호 전송 완료");
+            }
         }
         else
         {

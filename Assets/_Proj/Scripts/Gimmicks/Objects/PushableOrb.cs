@@ -16,18 +16,18 @@ public class PushableOrb : PushableObjects
     [Tooltip("Orb 자신이 충격파 발생시킬 수 있는 쿨타임")]
     public float orbCoolTime = 6f;
     private float lastShockwaveTime = -float.MaxValue;
-    private static Dictionary<int, float> floorCooldowns = new();
+    //private static Dictionary<int, float> floorCooldowns = new();
 
     [Header("Orb Fall Detection")]
     public float probeUp = 0.1f;
-    public float probeDown = 1.5f;
+    [Min(0.6f)] public float probeDown = 0.6f;
     private bool wasGrounded;
 
 
     protected override void Awake()
     {
         base.Awake();
-        allowSlope = true;
+        allowSlope = false;
         shockwave = GetComponent<Shockwave>();
         shockPing = GetComponent<ShockPing>();
         wasGrounded = true;
@@ -35,12 +35,13 @@ public class PushableOrb : PushableObjects
 
     void FixedUpdate()
     {
-        if (isMoving || isFalling)
-        {
-            // 이동/낙하 중일 때 wasGrounded를 false로 유지 (공중 상태로 간주)
-            wasGrounded = false;
-            return;
-        }
+        //if (isMoving || isFalling)
+        //{
+        //    // 이동/낙하 중일 때 wasGrounded를 false로 유지 (공중 상태로 간주)
+        //    Debug.LogWarning($"{name}: 밀기 불가 - isMoving={isMoving}, isFalling={isFalling}");
+        //    wasGrounded = false;
+        //    return;
+        //}
 
         // Raycast를 사용하여 현재 땅에 닿아있는지 확인
         // tileSize를 곱하여 월드 단위 길이로 변환
@@ -68,11 +69,24 @@ public class PushableOrb : PushableObjects
 
     protected override void OnLanded()
     {
-        if(Time.time - lastShockwaveTime > orbCoolTime)
-        {
-            Debug.Log($"[Orb] 착지 감지 : {name}");
-            TryFireShockwave();
-        }
+        isMoving = false;
+        isFalling = false;
+
+        if (Time.time - lastShockwaveTime < orbCoolTime)
+            return;
+
+        bool grounded = Physics.Raycast(
+            transform.position + Vector3.up * probeUp * tileSize,
+            Vector3.down,
+            probeDown * tileSize,
+            groundMask,
+            QueryTriggerInteraction.Ignore
+        );
+
+        if (!grounded || isMoving || isFalling)
+            return;
+
+        TryFireShockwave();
     }
 
     void TryFireShockwave()
@@ -91,7 +105,7 @@ public class PushableOrb : PushableObjects
 
         //Debug.Log($"[Orb] {yFloor}층 충격파 발생", this);
         Debug.Log($"[Orb] {name} 충격파 발생", this);
-        WaveLift(shockwave.riseSec, shockwave.hangSec, shockwave.fallSec);
+        //WaveLift(shockwave.riseSec, shockwave.hangSec, shockwave.fallSec);
 
         shockwave.Fire(
             origin: transform.position,

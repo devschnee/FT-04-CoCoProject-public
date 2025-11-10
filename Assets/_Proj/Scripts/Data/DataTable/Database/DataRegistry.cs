@@ -20,6 +20,6 @@ public class DataRegistry : ScriptableObject
     public StageDatabase stageDB;
     public TreasureDatabase treasureDB;
     public MainCharacterDatabase mainCharDB;
-    //public DialogueDatabase dialogueDB;
-    //public SpeakerDatabase speakerDB;
+    public DialogueDatabase dialogueDB;
+    public SpeakerDatabase speakerDB;
 }

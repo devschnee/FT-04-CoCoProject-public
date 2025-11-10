@@ -1,8 +1,7 @@
-﻿using System.Security.Cryptography;
-using UnityEngine;
+﻿using UnityEngine;
 
 [DisallowMultipleComponent]
-public class Turret : MonoBehaviour, ISignalSender
+public class Turret : MonoBehaviour
 {
     [Header("Detection Settings")]
     public float detectRadius = 4f;
@@ -10,9 +9,6 @@ public class Turret : MonoBehaviour, ISignalSender
     public LayerMask targetMask;
     public LayerMask occluderMask;
     public bool useOcclusion = true;
-
-    [Header("Signal Settings")]
-    public ISignalReceiver Receiver { get; set; }
 
     [Header("Visual Range")]
     [SerializeField] private RingRange ring;
@@ -23,17 +19,19 @@ public class Turret : MonoBehaviour, ISignalSender
 
     private bool targetInside; // 현재 감지 중인지
     private float myYLevel; // 자기 층 높이
-    private const float heightTolerance = 0.4f; // 층 오차 허용
+    private const float heightTolerance = 0.3f; // 층 오차 허용
     private bool doorShouldBeClosed; // 현재 문이 닫혀 있어야 하는지
 
     void Start()
     {
-        myYLevel = Mathf.Round(transform.position.y / 1f); // tileHeight 1기준
-        AutoConnectReceiver();
+        myYLevel = transform.position.y - 0.5f; // tileHeight 1기준
         if (ring)
         {
+            // 터렛이 움직이지 않는 고정 상태기 때문에 Start에서 한 번만 처리
+            ring.transform.SetParent(transform, false);
+            ring.transform.localPosition = Vector3.zero;
+            ring.transform.localRotation = Quaternion.identity;
             ring.visibleAngle = fov;
-            ring.forwardDir = transform.forward;
             ring.SetRadius(detectRadius);
             ring.fillColor = idleColor;
             ring.lineColor = idleColor;
@@ -41,27 +39,46 @@ public class Turret : MonoBehaviour, ISignalSender
             ring.lr.material.color = idleColor;
         }
     }
-    void AutoConnectReceiver()
-    {
-        float searchRadius = 30f;
-        Collider[] cols = Physics.OverlapSphere(transform.position, searchRadius, ~0);
 
-        foreach (var c in cols)
-        {
-            var recv = c.GetComponentInParent<ISignalReceiver>();
-            if (recv == null) continue;
+    //void ConnectReceiver()
+    //{
+    //    Vector3Int linkedPos = GetComponent<TurretBlock>().origin.property.linkedPos;
+    //    Collider[] cols = Physics.OverlapBox(linkedPos, new(.2f, .2f, .2f));
+    //    foreach (var c in cols)
+    //    {
+    //        if (c.transform.parent.name != "Stage") continue; //최상위 오브젝트만 감지
+    //        var receiver = c.GetComponent<ISignalReceiver>();
+    //        ConnectReceiver(receiver);
+    //        print($"[{this.GetType()}]:[{this.name}] - [{receiver.GetType()}]:[{c.name}]");
+    //        //if (receiver is DoorBlock door)
+    //        //{
+    //        //    Receiver = receiver;
+    //        //    Debug.Log($"[Turret] {name} → {door.name} 자동 연결 완료 (거리 {Vector3.Distance(transform.position, door.transform.position):F1})");
+    //        //    return;
+    //        //}
+    //    }
+    //}
+    //void AutoConnectReceiver()
+    //{
+    //    float searchRadius = 30f;
+    //    Collider[] cols = Physics.OverlapSphere(transform.position, searchRadius, ~0);
 
-            // DoorBlock만 연결 대상으로 필터링
-            if (recv is DoorBlock door)
-            {
-                Receiver = recv;
-                Debug.Log($"[Turret] {name} → {door.name} 자동 연결 완료 (거리 {Vector3.Distance(transform.position, door.transform.position):F1})");
-                return;
-            }
-        }
+    //    foreach (var c in cols)
+    //    {
+    //        var recv = c.GetComponentInParent<ISignalReceiver>();
+    //        if (recv == null) continue;
 
-        Debug.LogWarning($"[Turret] {name}: {searchRadius}m 안에 연결 가능한 Door를 찾지 못함");
-    }
+    //        // DoorBlock만 연결 대상으로 필터링
+    //        if (recv is DoorBlock door)
+    //        {
+    //            Receiver = recv;
+    //            Debug.Log($"[Turret] {name} → {door.name} 자동 연결 완료 (거리 {Vector3.Distance(transform.position, door.transform.position):F1})");
+    //            return;
+    //        }
+    //    }
+
+    //    Debug.LogWarning($"[Turret] {name}: {searchRadius}m 안에 연결 가능한 Door를 찾지 못함");
+    //}
     void Update()
     {
         bool nowDetected = DetectTarget();
@@ -74,7 +91,7 @@ public class Turret : MonoBehaviour, ISignalSender
             {
                 doorShouldBeClosed = true;
                 Debug.Log("[Turret] Target detected -> Send CLOSE signal");
-                SendSignal(); // Door 토글 -> 닫힘
+                GetComponent<ISignalSender>().SendSignal(); // Door 토글 -> 닫힘
             }
             UpdateRingColour(true);
         }
@@ -86,7 +103,7 @@ public class Turret : MonoBehaviour, ISignalSender
             {
                 doorShouldBeClosed = false;
                 Debug.Log("[Turret] Target lost -> Send OPEN signal");
-                SendSignal(); // Door 토글 -> 열림
+                GetComponent<ISignalSender>().SendSignal(); // Door 토글 -> 열림
             }
             UpdateRingColour(false);
         }
@@ -100,16 +117,6 @@ public class Turret : MonoBehaviour, ISignalSender
         ring.RebuildAll();
     }
 
-    public void ConnectReceiver(ISignalReceiver receiver)
-    {
-        Receiver = receiver;
-    }
-
-    public void SendSignal()
-    {
-        if (Receiver != null)
-            Receiver.ReceiveSignal();
-    }
 
     bool DetectTarget()
     {
@@ -119,7 +126,7 @@ public class Turret : MonoBehaviour, ISignalSender
         foreach (var c in cols)
         {
             // 같은 층인지 확인
-            float targetY = Mathf.Round(c.transform.position.y / 1f);
+            float targetY = c.transform.position.y;
             if (Mathf.Abs(targetY - myYLevel) > heightTolerance) continue;
 
             // 부채꼴(FOV) 각도 체크
@@ -148,5 +155,61 @@ public class Turret : MonoBehaviour, ISignalSender
                 return true;
         }
         return false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        // 터렛의 위치 및 방향
+        Vector3 pos = transform.position;
+        Vector3 fwd = transform.forward;
+        float halfFov = fov * 0.5f;
+
+        // 전체 탐지 구체 범위
+        Gizmos.color = new Color(1f, 0f, 0f, 0.2f);
+        Gizmos.DrawWireSphere(pos, detectRadius);
+
+        // 층 감지 높이 표시
+        Gizmos.color = new Color(0f, 0.6f, 1f, 0.25f);
+        Vector3 lower = pos - Vector3.up * heightTolerance;
+        Vector3 upper = pos + Vector3.up * heightTolerance;
+        Gizmos.DrawWireCube(pos, new Vector3(detectRadius * 2f, heightTolerance * 2f, detectRadius * 2f));
+        Gizmos.DrawLine(lower, upper);
+
+        // 실제 감지 시야(FOV) 표시
+        int segments = 32;
+        Gizmos.color = Color.green;
+
+        // FOV 경계면을 원호로 그림
+        for (int i = 0; i < segments; i++)
+        {
+            float angleA = -halfFov + (fov / segments) * i;
+            float angleB = -halfFov + (fov / segments) * (i + 1);
+
+            Vector3 dirA = Quaternion.Euler(0f, angleA, 0f) * fwd;
+            Vector3 dirB = Quaternion.Euler(0f, angleB, 0f) * fwd;
+
+            Vector3 p1 = pos + dirA * detectRadius;
+            Vector3 p2 = pos + dirB * detectRadius;
+
+            // 원호
+            Gizmos.DrawLine(p1, p2);
+            // 중심선
+            Gizmos.DrawLine(pos, p1);
+        }
+
+        // 실제 감지 부피(시야 원뿔) 표현
+        // 반투명 MeshCone 효과 시각화
+        UnityEditor.Handles.color = new Color(0f, 1f, 0f, 0.1f);
+        UnityEditor.Handles.DrawSolidArc(
+            pos,
+            Vector3.up,
+            Quaternion.Euler(0f, -halfFov, 0f) * fwd,
+            fov,
+            detectRadius
+        );
+
+        // 현재 감지 구체 기준
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(pos - new Vector3(0, 0.5f, 0), detectRadius);
     }
 }

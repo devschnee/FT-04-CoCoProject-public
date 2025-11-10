@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class Treasure : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Treasure : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (isCollected) return;
+        if (StageUIManager.Instance.stageManager.isTest) return;
 
         if (other.CompareTag("Player"))
         {
@@ -39,31 +41,18 @@ public class Treasure : MonoBehaviour
             switch(data.treasureType)
             {
                 case TreasureType.deco:
-                    var deco = DataManager.Instance.Deco.GetData(data.reward_id);
-                    StageUIManager.Instance.TreasureImage.sprite = DataManager.Instance.Deco.GetIcon(data.reward_id);
-                    StageUIManager.Instance.TreasureName.text = deco.deco_name;
-                    StageUIManager.Instance.TreasureDesc.text = deco.deco_desc;
                     TreasureUI(data);
                     break;
                 case TreasureType.costume:
-                    var costume = DataManager.Instance.Costume.GetData(data.reward_id);
-                    StageUIManager.Instance.TreasureImage.sprite = DataManager.Instance.Costume.GetIcon(data.reward_id);
-                    StageUIManager.Instance.TreasureName.text = costume.costume_name;
-                    StageUIManager.Instance.TreasureDesc.text = costume.costume_desc;
                     TreasureUI(data);
                     break;
                 case TreasureType.artifact:
-                    var artifact = DataManager.Instance.Artifact.GetData(data.reward_id);
-                    StageUIManager.Instance.TreasureImage.sprite = DataManager.Instance.Artifact.GetIcon(data.reward_id);
-                    StageUIManager.Instance.TreasureName.text = artifact.artifact_name;
-                    StageUIManager.Instance.TreasureDesc.text = artifact.artifact_name;
                     TreasureUI(data);
                     break;
                 case TreasureType.coin:
+                    TreasureUI(data);
+                    break;
                 case TreasureType.cap:
-                    StageUIManager.Instance.TreasureImage.sprite = DataManager.Instance.Codex.GetCodexIcon(data.view_codex_id); ;
-                    StageUIManager.Instance.TreasureName.text = "보물이지롱";
-                    StageUIManager.Instance.TreasureDesc.text = "사실아니지롱";
                     TreasureUI(data);
                     break;
             }
@@ -85,6 +74,10 @@ public class Treasure : MonoBehaviour
 
     private static void TreasureUI(TreasureData data)
     {
+        var transData = DataManager.Instance.Codex.GetData(data.view_codex_id);
+        StageUIManager.Instance.TreasureName.text = transData.codex_name;
+        StageUIManager.Instance.TreasureDesc.text = transData.codex_lore;
+        StageUIManager.Instance.TreasureImage.sprite = DataManager.Instance.Codex.GetCodexIcon(data.view_codex_id);
         StageUIManager.Instance.TreasureType.text = data.treasureType.ToString();
         StageUIManager.Instance.TreasureCount.text = data.count.ToString();
         StageUIManager.Instance.CocoDoogyDesc.text = data.coco_coment;

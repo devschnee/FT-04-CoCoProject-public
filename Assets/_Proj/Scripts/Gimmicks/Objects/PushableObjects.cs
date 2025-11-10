@@ -21,7 +21,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
     protected bool isHoling = false;
     protected bool isFalling = false;
     protected bool isRiding = false;
-    public float requiredHoldtime = 0.9f;
+    public float requiredHoldtime = 0.6f;
     protected float currHold = 0f;
     protected Vector2Int holdDir;
 
@@ -33,10 +33,18 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
     public bool IsMoving => isMoving;
     public bool IsFalling => isFalling;
 
-
     private static Dictionary<int, float> gloablShockImmunity = new();
     [Tooltip("충격파 맞은 오브젝트가 다시 반응하기까지 쿨타임")]
     public float immuneTime = 5f;
+
+    [Header("Shockwave Lift Override [오브젝트 별로 조정하고 싶다면 이 옵션을 활성화]")]
+    public bool overrideLiftTiming = false;
+    [Tooltip("재정의 시 사용되는 상승 시간")]
+    public float overrideRiseSec = 0.5f;
+    [Tooltip("재정의 시 사용되는 홀딩 시간")]
+    public float overrideHangSec = 0.2f;
+    [Tooltip("재정의 시 사용되는 하강 시간")]
+    public float overrideFallSec = 0.5f;
 
     #endregion
 
@@ -256,11 +264,6 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
             cached.DetectAndApplyFourEdge();
         }
 
-        //// 낙하 이벤트 위해 추가
-        //if (allowFall)
-        //{
-        //    yield return StartCoroutine(CheckFall());
-        //}
         yield break;
     }
 
@@ -277,11 +280,13 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
     public IEnumerator CheckFall()
     {
+        if (isFalling) yield break; // .
+
         isFalling = true;
         Vector3 currPos = transform.position;
+        bool fell = false; //.
 
         // Pushable도 땅으로 인식
-
         while (!Physics.BoxCast(
             currPos + Vector3.up * 0.3f,
             new Vector3(0.4f, 0.05f, 0.4f),
@@ -294,10 +299,12 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
             Vector3 fallTarget = currPos + Vector3.down * tileSize;
             yield return StartCoroutine(MoveTo(fallTarget));
             currPos = transform.position;
+            fell = true; //.
         }
 
         isFalling = false;
-        OnLanded();
+        if (fell) //.
+            OnLanded();
     }
 
 
@@ -383,7 +390,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
     // ========== 공중 띄우기용 ==========
     // 충격파 맞았을 때 y+1 duration 동안 띄우기
-    public void WaveLift(float rise, float hold, float fall)
+    public void WaveLift(float shockRise, float shockHold, float shockFall)
     {
         int id = GetInstanceID();
         float now = Time.time;
@@ -395,6 +402,10 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
             }
         }
         gloablShockImmunity[id] = now;
+        // box의 경우 충격파를 발생시키는 주체가 아니기 때문에 rise, hold, fall을 직접적으로 조정할 수 있도록 override변수를 추가
+        float rise = overrideLiftTiming ? overrideRiseSec : shockRise;
+        float hold = overrideLiftTiming ? overrideHangSec : shockHold;
+        float fall = overrideLiftTiming ? overrideFallSec : shockFall;
 
         if (isMoving || isFalling || IsImmuneToWaveLift()) return;
         StartCoroutine(WaveLiftCoroutine(rise, hold, fall));
@@ -403,6 +414,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
     // 복귀
     IEnumerator WaveLiftCoroutine(float rise, float holdSec, float fall)
     {
+        isFalling = true; //.
         isMoving = true;
 
         Vector3 start = transform.position;
@@ -434,9 +446,21 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         transform.position = start;
 
         isMoving = false;
+        isFalling = false; //.
         Debug.Log($"{name} 충격파 영향 받음");
-        yield break;
+        //yield break;
         // NOTE : 혹시나 뭔가 다른 작업을 하다 여기에서 CheckFall()을 할 일이 생긴다면 차라리 다른 스크립트를 작성하는 것을 권장. 원위치 복귀 후 다시 낙하 검사하는 실수 생기면 안 됨.
         // pushables가 충격파 받은 이후로 적층된 물체들이 원위치 후 다시 낙하 검사를 하게 되면 한 번 더 낙하해서 원위치에서 -y로 더 내려가게 됨
+        StartCoroutine(CallFallCheck()); //.
+    }
+
+    //. 직접적인 대기 연결 고리 끊기 위해 WaveLiftCoroutine에서 분리
+    IEnumerator CallFallCheck()
+    {
+        yield return null;
+        if (allowFall)
+        {
+            yield return StartCoroutine(CheckFall());
+        }
     }
 }

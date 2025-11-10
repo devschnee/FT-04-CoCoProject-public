@@ -45,7 +45,7 @@ public class StageDetailInfo : MonoBehaviour
 
         string mapId = data.map_id;
         
-        await FirebaseManager_FORTEST.Instance.Temp(mapId);
+        await FirebaseManager.Instance.FindMapDataByID(mapId);
 
         //Todo : 챕터에 따라 분기
         //씬 이름 수정해야함

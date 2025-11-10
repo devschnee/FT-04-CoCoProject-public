@@ -63,16 +63,20 @@ MonoBehaviour:
     m_Bits: 16384
   throughLayer:
     serializedVersion: 2
-    m_Bits: 16
-  requiredHoldtime: 0.9
+    m_Bits: 2064
+  requiredHoldtime: 0.4
   allowFall: 1
   allowSlope: 0
   immuneTime: 5
+  overrideLiftTiming: 1
+  overrideRiseSec: 0.5
+  overrideHangSec: 0.2
+  overrideFallSec: 0.5
   shockwave: {fileID: 3683261028050005787}
   shockPing: {fileID: 8611777253475136124}
   orbCoolTime: 6
   probeUp: 0.1
-  probeDown: 1.5
+  probeDown: 0.6
 --- !u!65 &5937561180784654500
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,9 +119,9 @@ MonoBehaviour:
   occluderMask:
     serializedVersion: 2
     m_Bits: 55176
-  riseSec: 1
+  riseSec: 0.5
   hangSec: 0.4
-  fallSec: 1
+  fallSec: 5
   affectSameFloorOnly: 0
   alsoAffectStackedAbove: 0
 --- !u!114 &8611777253475136124
@@ -171,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 858025281195470718}
   - component: {fileID: 6274687427371344808}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: BoxCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

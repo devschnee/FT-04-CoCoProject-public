@@ -36,7 +36,7 @@ public class PlayerPush : MonoBehaviour, IMoveStrategy
 
 
         // 앞 1칸 두께 있게 훑기 (레이어 제한 없이 -> IPushHandler로 필터)
-        Vector3 halfExtents = new(.2f, .4f, .2f);
+        Vector3 halfExtents = new(.2f, .2f, .2f);
         float maxDist = tileSize * 1.1f;
         float front = Mathf.Max(0.1f, frontOffset);
 
@@ -71,7 +71,6 @@ public class PlayerPush : MonoBehaviour, IMoveStrategy
                 //처음 handler를 만나면 handler로 대입해 줌.
                 //하지만 다음 반복에서 또다른 handler가 검출되면 null;이 대입되고 break;함
                 //중복으로 검출된 경우에 대한 처리입니다.
-                //아래 코드에서 버그 발생하는 이유...(검출된게 3개 이상일 때)
                 if (next != null) { next = null; break; }
                 next = (next == null && Mathf.Approximately(h.distance,0f)) ? handler : null;
 

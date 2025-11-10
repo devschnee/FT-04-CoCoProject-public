@@ -107,7 +107,7 @@ MonoBehaviour:
   useOcclusion: 1
   occluderMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 54144
   riseSec: 0.4
   hangSec: 0.6
   fallSec: 0.2

@@ -28,3 +28,5 @@ MonoBehaviour:
   stageDB: {fileID: 11400000, guid: 80767bd9d05d4ab418d26dd991928cbf, type: 2}
   treasureDB: {fileID: 11400000, guid: cbea4e14512afdf4583b29f048e412aa, type: 2}
   mainCharDB: {fileID: 11400000, guid: 4f2f25e7d204b5c4a9bc03bf4f2343e2, type: 2}
+  dialogueDB: {fileID: 11400000, guid: 50489c72dcc2b184ab77f478f04ceb05, type: 2}
+  speakerDB: {fileID: 11400000, guid: 836e2c808f0371642bd26095b98b3552, type: 2}
