@@ -26,14 +26,19 @@ public class Turret : MonoBehaviour, ISignalSender
     private const float heightTolerance = 0.4f; // 층 오차 허용
     private bool doorShouldBeClosed; // 현재 문이 닫혀 있어야 하는지
 
+    private const float ConnectionSearchRadius = 60f;
+
     void Start()
     {
         myYLevel = Mathf.Round(transform.position.y / 1f); // tileHeight 1기준
         AutoConnectReceiver();
         if (ring)
         {
+            // 터렛이 움직이지 않는 고정 상태기 때문에 Start에서 한 번만 처리
+            ring.transform.SetParent(transform, false);
+            ring.transform.localPosition = Vector3.zero;
+            ring.transform.localRotation = Quaternion.identity;
             ring.visibleAngle = fov;
-            ring.forwardDir = transform.forward;
             ring.SetRadius(detectRadius);
             ring.fillColor = idleColor;
             ring.lineColor = idleColor;
@@ -41,9 +46,11 @@ public class Turret : MonoBehaviour, ISignalSender
             ring.lr.material.color = idleColor;
         }
     }
+
     void AutoConnectReceiver()
     {
-        float searchRadius = 30f;
+
+        float searchRadius = ConnectionSearchRadius;
         Collider[] cols = Physics.OverlapSphere(transform.position, searchRadius, ~0);
 
         foreach (var c in cols)
@@ -148,5 +155,33 @@ public class Turret : MonoBehaviour, ISignalSender
                 return true;
         }
         return false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 position = transform.position;
+        Vector3 forward = transform.forward;
+        float halfFov = fov * 0.5f;
+
+        // 결 자동 검색 범위 시각화 (DoorBlock을 찾을 때 사용)
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(position, ConnectionSearchRadius);
+
+        // 주요 감지 구체 범위 시각화
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(position, detectRadius);
+
+        // 시야각 왼쪽 경계 Ray
+        Quaternion leftRayRotation = Quaternion.AngleAxis(-halfFov, Vector3.up);
+        Vector3 leftRayDirection = leftRayRotation * forward;
+        Gizmos.DrawRay(position, leftRayDirection * detectRadius);
+
+        // 시야각 오른쪽 경계 Ray
+        Quaternion rightRayRotation = Quaternion.AngleAxis(halfFov, Vector3.up);
+        Vector3 rightRayDirection = rightRayRotation * forward;
+        Gizmos.DrawRay(position, rightRayDirection * detectRadius);
+
+        // 시야각 중앙 Ray (감지 방향)
+        Gizmos.DrawRay(position, forward * detectRadius);
     }
 }

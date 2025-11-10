@@ -83,7 +83,7 @@ public class DoorBlock : Block, ISignalReceiver
     // (스테이지 별로 문을 열게 해주는 기믹이 다르고 동작 방식과 기본 세팅이 다르기 때문에)
     void DetectConnectedGimmick()
     {
-        float searchRadius = 30f;
+        float searchRadius = 60f;
         Collider[] cols = Physics.OverlapSphere(transform.position, searchRadius, ~0);
 
         foreach (var c in cols)
@@ -173,5 +173,12 @@ public class DoorBlock : Block, ISignalReceiver
     protected override void OnEnable()
     {
         base.OnEnable();
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        float searchRadius = 60f; // DetectConnectedGimmick에서 사용되는 searchRadius와 동일하게 설정
+        Gizmos.DrawWireSphere(transform.position, searchRadius);
     }
 }
