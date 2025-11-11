@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// ¾À¿¡ ¹èÄ¡µÈ Placeable µé(Áý/µ¿¹°/°¡±¸)ÀÇ ÀúÀå¡¤º¹¿ø ´ã´ç
-/// - PlayerPrefs¿¡ JSONÀ¸·Î ÀúÀå/º¹¿ø
-/// - ±âº» Áý(defaultHomeId) ÀÚµ¿ ½ºÆù º¸Àå
-/// - ÁýÀÌ ´ÙÁß »ý¼ºµÇ¸é 1Ã¤¸¸ ³²±â°í Á¤¸®
+/// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ Placeable ï¿½ï¿½(ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½å¡¤ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+/// - PlayerPrefsï¿½ï¿½ JSONï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½
+/// - ï¿½âº» ï¿½ï¿½(defaultHomeId) ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+/// - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ 1Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 /// </summary>
 public class PlaceableStore : MonoBehaviour
 {
@@ -21,7 +23,7 @@ public class PlaceableStore : MonoBehaviour
     [SerializeField] private DecoDatabase decoDB;
 
     [Header("Defaults")]
-    [Tooltip("ÀúÀå µ¥ÀÌÅÍ¿¡ ÁýÀÌ ¾øÀ» ¶§ ÀÚµ¿À¸·Î ½ºÆùÇÒ ±âº» Áý ID")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ ID")]
     [SerializeField] private int defaultHomeId = 1;
 
     #endregion
@@ -69,14 +71,14 @@ public class PlaceableStore : MonoBehaviour
 
         _loader = new ResourcesLoader();
         BuildDbCaches();
-        LoadAndSpawnAll(); // ¾À ÁøÀÔ ½Ã ÀÚµ¿ º¹¿ø(+±âº» Áý º¸Àå)
+        LoadAndSpawnAll(); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½(+ï¿½âº» ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
     }
 
     #endregion
 
     #region === Public API ===
 
-    /// <summary>¾À ³» PlaceableTagµéÀ» ½ºÄµÇØ ¸ðµÎ ÀúÀå</summary>
+    /// <summary>ï¿½ï¿½ ï¿½ï¿½ PlaceableTagï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Äµï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</summary>
     public void SaveAllFromScene()
     {
 #if UNITY_2022_2_OR_NEWER
@@ -91,7 +93,7 @@ public class PlaceableStore : MonoBehaviour
             var tag = tags[i];
             if (!tag || !tag.gameObject.activeInHierarchy) continue;
 
-            // ÀÓ½Ã ¹èÄ¡´Â ÀúÀå Á¦¿Ü (InventoryTempMarker Á¸Àç ½Ã)
+            // ï¿½Ó½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (InventoryTempMarker ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)
             if (tag.GetComponent<InventoryTempMarker>()) continue;
 
             list.Add(new Placed
@@ -110,17 +112,22 @@ public class PlaceableStore : MonoBehaviour
         Debug.Log($"[PlaceableStore] Saved {list.Count} placed objects. (sceneKey={PrefKeyForCurrentScene})");
     }
 
-    /// <summary>ÀúÀåµÈ ³»¿ëÀ» ÀÐ¾î ÇÁ¸®ÆÕÀ» ¸ðµÎ ½ºÆù + ±âº» Áý º¸Àå + Áßº¹ Áý Á¤¸®</summary>
+    /// <summary>ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ + ï¿½âº» ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ + ï¿½ßºï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</summary>
     public void LoadAndSpawnAll()
     {
         string key = PrefKeyForCurrentScene;
 
         if (!PlayerPrefs.HasKey(key))
         {
-            // ÀúÀåµÈ °Ô ¾Æ¿¹ ¾øÀ¸¸é ±âº» ÁýÀ» ¹Ù·Î º¸Àå
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½
             EnsureSingleHomeExists();
             return;
         }
+
+        //LSHì¶”ê°€
+        GameObject gObj = GameObject.Find("IsLandPlane");
+        NavMeshSurface nMS = gObj.GetComponent<NavMeshSurface>();
+        nMS.BuildNavMesh();
 
         string json = PlayerPrefs.GetString(key, "");
         if (!string.IsNullOrEmpty(json))
@@ -142,6 +149,29 @@ public class PlaceableStore : MonoBehaviour
                         tag.id = p.id;
 
                         if (!go.GetComponent<Draggable>()) go.AddComponent<Draggable>();
+
+                        //LSH ì¶”ê°€
+                        switch (p.cat)
+                        {
+                            case PlaceableCategory.Home:
+                                go.AddComponent<NavMeshObstacle>();
+                                var hO = go.GetComponent<NavMeshObstacle>();
+                                hO.carving = true;
+                                break;
+                            case PlaceableCategory.Animal:
+                                if (go.GetComponent<AnimalBehaviour>() == null) go.AddComponent<AnimalBehaviour>();
+                                go.tag = "Animal";
+                                break;
+                            case PlaceableCategory.Deco:
+                                if (go.GetComponent<AnimalBehaviour>() == null) go.AddComponent<NavMeshObstacle>();
+                                var dO = go.GetComponent<NavMeshObstacle>();
+                                dO.carving = true;
+                                go.tag = "Decoration";
+                                break;
+                            default:
+                                break;
+                        }
+                        
                         ok++;
                     }
                     else
@@ -154,14 +184,14 @@ public class PlaceableStore : MonoBehaviour
             }
         }
 
-        // ÀúÀå º¹¿ø ÈÄ¿¡µµ ÁýÀÌ ¾øÀ¸¸é ±âº» Áý º¸Àå
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         EnsureSingleHomeExists();
 
-        // È¤½Ã ÁýÀÌ ¿©·¯ Ã¤¸é 1Ã¤¸¸ ³²±â±â
+        // È¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ 1Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         CullExtraHomes();
     }
 
-    /// <summary>ÇöÀç ¾À¿¡ ÀúÀåµÈ ÇÃ·¹ÀÌ½º¸ÕÆ® µ¥ÀÌÅÍ »èÁ¦</summary>
+    /// <summary>ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</summary>
     public void ClearSaved()
     {
         string key = PrefKeyForCurrentScene;
@@ -177,7 +207,7 @@ public class PlaceableStore : MonoBehaviour
 
     #region === Internals: Default Home & Dedup ===
 
-    /// <summary>¾À¿¡ ÁýÀÌ ÇÏ³ªµµ ¾øÀ¸¸é defaultHomeId·Î 1Ã¤¸¦ ½ºÆù</summary>
+    /// <summary>ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ defaultHomeIdï¿½ï¿½ 1Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</summary>
     private void EnsureSingleHomeExists()
     {
 #if UNITY_2022_2_OR_NEWER
@@ -189,10 +219,10 @@ public class PlaceableStore : MonoBehaviour
         {
             var t = tags[i];
             if (t && t.category == PlaceableCategory.Home)
-                return; // ÀÌ¹Ì Áý ÀÖÀ½ ¡æ Á¾·á
+                return; // ï¿½Ì¹ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
 
-        // ÁýÀÌ ¾øÀ¸¸é ±âº» Áý ½ºÆù
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (_homeById != null && _homeById.TryGetValue(defaultHomeId, out var hd) && hd != null)
         {
             var prefab = hd.GetPrefab(_loader);
@@ -220,7 +250,7 @@ public class PlaceableStore : MonoBehaviour
         }
     }
 
-    /// <summary>ÁýÀÌ 2Ã¤ ÀÌ»óÀÏ °æ¿ì 1Ã¤¸¸ ³²±â°í Á¦°Å</summary>
+    /// <summary>ï¿½ï¿½ï¿½ï¿½ 2Ã¤ ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 1Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</summary>
     private void CullExtraHomes()
     {
 #if UNITY_2022_2_OR_NEWER
@@ -241,7 +271,7 @@ public class PlaceableStore : MonoBehaviour
                 continue;
             }
 
-            // Ã¹ Áý ¿Ü ³ª¸ÓÁö´Â Á¦°Å
+            // Ã¹ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Destroy(t.gameObject);
             Debug.Log("[PlaceableStore] Removed extra Home instance.");
         }

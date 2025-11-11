@@ -4,6 +4,7 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.AI;
 
 // 저장되어있는 동물 오브젝트, 데코 오브젝트, 집 오브젝트를 어떻게 분리할까
 
@@ -12,7 +13,8 @@ public class InLobbyManager : MonoBehaviour
 {
     [SerializeField] GameObject plane;
     [SerializeField] EditModeController editController;
-    [SerializeField] float interactDistance = 2f;
+    // 나중에 생각할 것
+    //[SerializeField] float interactDistance = 2f;
     [SerializeField] float routineDelay = 3f;
 
     private CocoDoogyBehaviour coco;
@@ -28,6 +30,8 @@ public class InLobbyManager : MonoBehaviour
 
 
     public static InLobbyManager Instance { get; private set; }
+    // 나중에 생각할 것
+    //public static event Action<BaseLobbyCharacterBehaviour> OnRequestDeactive;
     private List<ILobbyState> lobbyCharacter = new(); // 맵에 활성화 된 캐릭터들 모음
 
     private void Awake()
@@ -64,10 +68,20 @@ public class InLobbyManager : MonoBehaviour
         gObj2.transform.localScale = new Vector3(3, 3, 3);
         gObj2.AddComponent<MasterBehaviour>();
 
+        int priority = 50;
         foreach (var lC in lobbyCharacter)
         {
             lC.Init();
             lC.PostInit();
+            lC.LoadInit();
+            var mono = lC as BaseLobbyCharacterBehaviour;
+            if (mono.tag == "Animal")
+            {
+                var agent = mono.GetComponent<NavMeshAgent>();
+                agent.avoidancePriority = priority;
+            }
+            lC.FinalInit();
+            priority++;
         }
         //coco = gObj.GetComponent<CocoDoogyBehaviour>();
         //coco.gameObject.SetActive(false);

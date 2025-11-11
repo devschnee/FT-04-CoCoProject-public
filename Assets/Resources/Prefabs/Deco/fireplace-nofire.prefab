@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2569663474394218295}
   m_Layer: 6
   m_Name: fireplace-nofire
-  m_TagString: Decoration
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

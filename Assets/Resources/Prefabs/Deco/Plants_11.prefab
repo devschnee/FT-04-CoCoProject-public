@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 653774189993498577}
   m_Layer: 6
   m_Name: Plants_11
-  m_TagString: Decoration
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

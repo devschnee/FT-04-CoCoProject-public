@@ -31,7 +31,7 @@ public class LMasterUniqueState : LobbyCharacterBaseState
         if (isComplete && !oneShot)
         {
             // 로비매니저에게 자신을 SetActive false 해달라고 이벤트 쏘기
-
+        
             // 이벤트 쏘면 oneShot true로 일회성이기 때문 업데이트여서 여러번 이벤트가 되려나?
             oneShot = true;
         }

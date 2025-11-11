@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 23000013545074986}
   - component: {fileID: 64000011111228676}
   - component: {fileID: 8414759753078626358}
-  - component: {fileID: -750696171221659703}
   m_Layer: 6
   m_Name: house-medieval-small
   m_TagString: Untagged
@@ -132,19 +131,3 @@ MonoBehaviour:
   useMaterialPropertyBlock: 1
   colorPropName: 
   useFullTransformPathForKey: 0
---- !u!208 &-750696171221659703
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012625864402}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 2.723, y: 2.5530002, z: 3.5370002}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.018000001, y: 2.549, z: -0.28800002}
-  m_TimeToStationary: 0.5

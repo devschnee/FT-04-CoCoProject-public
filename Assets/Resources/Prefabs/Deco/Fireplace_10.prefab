@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2514291882370031981}
   m_Layer: 6
   m_Name: Fireplace_10
-  m_TagString: Decoration
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

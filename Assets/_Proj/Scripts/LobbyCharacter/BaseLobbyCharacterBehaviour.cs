@@ -14,7 +14,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     [SerializeField] protected float angularSpeed = 120f;
     [SerializeField] protected float acceleration = 8f;
     [Header("Move")]
-    [SerializeField] protected float moveRadius = 10f; // Random.insideUnitSphere 범위
+    [SerializeField] protected float moveRadius = 3f; // Random.insideUnitSphere 범위
 
     protected NavMeshAgent agent;
     protected Animator anim;
@@ -73,21 +73,21 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
 
     protected virtual void OnEnable()
     {
-        if (fsm.CurrentState == EditState) fsm.ChangeState(IdleState);
+        if (fsm != null &&fsm.CurrentState == EditState) fsm.ChangeState(IdleState);
     }
 
     protected virtual void Start() {}
 
     protected virtual void Update()
     {
-        charAnim.MoveAnim(charAgent.ValueOfMagnitude());
+        if (charAnim != null) charAnim.MoveAnim(charAgent.ValueOfMagnitude());
         if (!agent.hasPath) Debug.Log($"{gameObject.name} No path");
         else if (agent.pathStatus == NavMeshPathStatus.PathInvalid) Debug.Log($"{gameObject.name} Invalid path");
         else if (agent.isStopped) Debug.Log($"{gameObject.name} Agent is stopped");
         else if (agent.enabled == false) Debug.Log($"{gameObject.name} Agent doesn't enable");
         
         // 뉴 fsm
-        fsm.UpdateState();
+        if (fsm != null) fsm.UpdateState();
         //charAgent.MoveValueChanged();
     }
 
@@ -292,12 +292,25 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         IsEditMode = false;
         StuckTimeB = 2f;
     }
-
     /// <summary>
-    /// Init() 후 초기화 어찌보면 Start와 비슷?
+    /// Init() 후 초기화
     /// </summary>
     public virtual void PostInit()
     {
         fsm.ChangeState(IdleState);
+    }
+    /// <summary>
+    /// PostInit() 후 초기화
+    /// </summary>
+    public void LoadInit()
+    {
+        
+    }
+    /// <summary>
+    /// LoadInit 후 초기화
+    /// </summary>
+    public void FinalInit()
+    {
+        
     }
 }

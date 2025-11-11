@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7885154929665329307}
   m_Layer: 6
   m_Name: traffic-cone
-  m_TagString: Decoration
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -69,9 +69,12 @@ public class LAnimalMoveState : LobbyCharacterBaseState
             {
                 charAgent.MoveToRandomTransPoint(owner.transform);
             }
-
             if (!agent.hasPath) charAgent.MoveToRandomTransPoint(owner.transform);
-            yield return (owner as AnimalBehaviour).WaitU;
+            
+            while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
+            {
+                yield return null;
+            }
         }
     }
     private void FindNearestDeco()

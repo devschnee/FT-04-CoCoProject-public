@@ -158,18 +158,6 @@ public class Draggable : MonoBehaviour
             transform.eulerAngles = euler;
         }
 
-        //LSH 추가
-        switch (gameObject.tag)
-        {
-            case "Decoration":
-                break;
-            case "Animal":
-                if (gameObject.GetComponent<AnimalBehaviour>() == null) gameObject.AddComponent<AnimalBehaviour>();
-                break;
-            default:
-                break;
-        }
-
         Physics.SyncTransforms();
     }
 

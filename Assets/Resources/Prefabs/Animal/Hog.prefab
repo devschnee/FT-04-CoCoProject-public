@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 2405922195156987521}
   m_Layer: 6
   m_Name: Hog
-  m_TagString: Animal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

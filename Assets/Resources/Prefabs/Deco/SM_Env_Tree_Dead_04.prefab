@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 1457080696638976898}
   m_Layer: 6
   m_Name: SM_Env_Tree_Dead_04
-  m_TagString: Decoration
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

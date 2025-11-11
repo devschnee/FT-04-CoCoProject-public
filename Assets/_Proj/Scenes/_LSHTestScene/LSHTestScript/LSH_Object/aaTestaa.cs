@@ -394,4 +394,14 @@ public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDragga
     {
         throw new NotImplementedException();
     }
+
+    public void LoadInit()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void FinalInit()
+    {
+        throw new NotImplementedException();
+    }
 }

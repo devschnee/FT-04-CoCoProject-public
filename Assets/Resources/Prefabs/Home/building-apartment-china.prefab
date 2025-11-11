@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6675958921623293120}
   - component: {fileID: -5526562977235976127}
   - component: {fileID: 8583970996783107805}
-  - component: {fileID: -3121645521615650963}
   m_Layer: 0
   m_Name: building-apartment-china
   m_TagString: Untagged
@@ -155,19 +154,3 @@ MonoBehaviour:
   useMaterialPropertyBlock: 1
   colorPropName: 
   useFullTransformPathForKey: 0
---- !u!208 &-3121645521615650963
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6675958921623325283}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 5.3500004, y: 8.55, z: 5.7520003}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 8.55, z: 0.54800004}
-  m_TimeToStationary: 0.5

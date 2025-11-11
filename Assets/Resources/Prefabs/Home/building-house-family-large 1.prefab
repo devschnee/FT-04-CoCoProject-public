@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4903941222706419686}
   - component: {fileID: -4226597438482568503}
   - component: {fileID: -6516028762496798496}
-  - component: {fileID: 6395883233225044128}
   m_Layer: 0
   m_Name: building-house-family-large 1
   m_TagString: Untagged
@@ -147,19 +146,3 @@ MonoBehaviour:
   useMaterialPropertyBlock: 1
   colorPropName: 
   useFullTransformPathForKey: 0
---- !u!208 &6395883233225044128
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4903941222706319683}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 7.8410006, y: 5.6010003, z: 6.8}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 5.5990005, z: 1.2}
-  m_TimeToStationary: 0.5

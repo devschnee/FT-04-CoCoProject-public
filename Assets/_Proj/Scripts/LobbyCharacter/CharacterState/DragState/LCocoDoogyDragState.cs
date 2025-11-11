@@ -70,7 +70,7 @@ public class LCocoDoogyDragState : LobbyCharacterBaseState, IDragState
         isDragging = false;
         Debug.Log($"EndDrag, IsDragging : {isDragging}");
         NavMeshHit navHit;
-        bool onNavMesh = NavMesh.SamplePosition(trans.position, out navHit, 0.01f, NavMesh.AllAreas);
+        bool onNavMesh = NavMesh.SamplePosition(trans.position, out navHit, 0.5f, NavMesh.AllAreas);
         if (!onNavMesh)
         {
             trans.position = originalPos;

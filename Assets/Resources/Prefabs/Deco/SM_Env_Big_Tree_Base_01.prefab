@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 568094296264321647}
   m_Layer: 6
   m_Name: SM_Env_Big_Tree_Base_01
-  m_TagString: Decoration
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
