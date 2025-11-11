@@ -14,6 +14,15 @@ public partial class EditModeController
     // ─────────────────────────────────────────────────────────────
     // Selection
     // ─────────────────────────────────────────────────────────────
+    private Camera camCache;
+    private Camera WorldCam
+    {
+        get
+        {
+            if (!camCache) camCache = Camera.main;
+            return camCache;
+        }
+    }
     public void SelectTarget(Transform t)
     {
         bool targetChanged = (CurrentTarget != t);
@@ -181,13 +190,13 @@ public partial class EditModeController
     {
         actionToolbar.Show(
             target: target,
-            worldCamera: cam,
+            worldCamera: WorldCam,
             onInfo: onInfo,
             onRotate: onRotate,
             onInventory: onInventory,
             onOk: onOk,
             onCancel: onCancel
-        );
+);
     }
 
     private bool TryGetPlaceableTag(Transform t, out PlaceableTag tag)

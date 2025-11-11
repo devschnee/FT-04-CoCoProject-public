@@ -5,40 +5,39 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using TouchES = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-/// <summary>
-/// 입력 & 포인터 라이프사이클
-/// - Pointer Down → 대상 선택
-/// - Drag 중일 때 오브젝트 이동
-/// - Pointer Up → 드래그 종료
-/// - 롱프레스 → 편집모드 진입
-/// </summary>
 public partial class EditModeController
 {
+    // ===== EnhancedTouch 안전 헬퍼 =====
+    private static bool IsETEnabled() => EnhancedTouchSupport.enabled;
+    private static int ActiveTouchCount() => IsETEnabled() ? TouchES.activeTouches.Count : 0;
+
+    private static Vector2 FirstTouchPos()
+    {
+        // EnhancedTouch가 켜져 있고 터치가 있을 때만 접근
+        return (IsETEnabled() && TouchES.activeTouches.Count > 0)
+            ? TouchES.activeTouches[0].screenPosition
+            : Vector2.zero;
+    }
+
     #region ===== Pointer Lifecycle (Tick) =====
 
-    /// <summary>한 프레임 안에서 포인터의 전체 흐름 처리</summary>
     private void HandlePointerLifecycle()
     {
-        // Down
         if (IsPointerDownThisFrame() && !IsPointerOverUI())
             OnPointerDown();
 
         if (!pointerDown) return;
 
-        // Hold / Drag
         OnPointerHeldOrDragged();
 
-        // Up
         if (IsPointerUpThisFrame())
             OnPointerUp();
     }
 
     #endregion
 
-
     #region ===== Pointer Down / Held / Up =====
 
-    /// <summary>포인터가 눌렸을 때 초기화</summary>
     private void OnPointerDown()
     {
         pointerDown = true;
@@ -50,15 +49,13 @@ public partial class EditModeController
             return;
         }
 
-        // 눌린 지점에서 드래그 가능한 오브젝트가 있는지
         pressedHitTarget = RaycastDraggable(pressScreenPos);
         movePlaneReady = false;
 
-        // 이미 편집모드라면 눌린 걸 선택
         if (IsEditMode && pressedHitTarget)
             SelectTarget(pressedHitTarget);
 
-        // 롱프레스 준비 (편집모드가 아니고, 특정 대상 위에서 눌렸을 때만)
+        // 롱프레스 준비
         longPressArmed = false;
         longPressTimer = 0f;
         if (!IsEditMode && longPressTarget)
@@ -78,23 +75,18 @@ public partial class EditModeController
         currentPlacementValid = true;
     }
 
-    /// <summary>포인터를 누른 상태에서 움직이는 동안</summary>
     private void OnPointerHeldOrDragged()
     {
-        // 편집모드 + 드래그 가능한 곳에서 시작 + 실제로 움직임
         if (IsEditMode && startedOnDraggable && CurrentTarget && IsPointerMoving())
         {
-            // 🔒 집은 이동 금지 (0,0,0 고정 정책)
             if (IsHome(CurrentTarget))
                 return;
 
-            // 드래그 시작 진입
             if (!isDragging)
             {
                 isDragging = true;
-                BlockOrbit = true; // 카메라 회전 막기
+                BlockOrbit = true;
 
-                // 드래그 시작 시점 스냅 (Undo용)
                 var snap = new Snap { pos = CurrentTarget.position, rot = CurrentTarget.rotation };
                 lastBeforeDrag = snap;
 
@@ -105,21 +97,17 @@ public partial class EditModeController
             var sp = GetPointerScreenPos();
             if (!ScreenPosValid(sp)) return;
 
-            // 실제 이동은 Drag 파셜에서
             DragMove(sp);
         }
     }
 
-    /// <summary>포인터를 뗐을 때</summary>
     private void OnPointerUp()
     {
         pointerDown = false;
 
-        // 롱프레스 해제
         longPressArmed = false;
         longPressTimer = 0f;
 
-        // 드래그가 끝났다면 마무리
         if (isDragging)
         {
             isDragging = false;
@@ -130,17 +118,14 @@ public partial class EditModeController
         movedDuringDrag = false;
         startedOnDraggable = false;
 
-        // 다시 툴바 위치 갱신
         if (IsEditMode && CurrentTarget)
             UpdateToolbar();
     }
 
     #endregion
 
-
     #region ===== Long Press to Enter Edit Mode =====
 
-    /// <summary>길게 눌러서 편집모드로 들어가는 처리</summary>
     private void HandleLongPress()
     {
         if (!longPressArmed || IsEditMode || !pointerDown) return;
@@ -152,7 +137,6 @@ public partial class EditModeController
             return;
         }
 
-        // 롱프레스 중 흔들림이 너무 크면 취소
         if ((cur - longPressStartPos).sqrMagnitude > longPressSlopPixels * longPressSlopPixels)
         {
             longPressArmed = false;
@@ -162,7 +146,6 @@ public partial class EditModeController
         longPressTimer += Time.unscaledDeltaTime;
         if (longPressTimer >= longPressSeconds)
         {
-            // 편집모드 진입
             longPressArmed = false;
             SetEditMode(true, keepTarget: true);
 
@@ -173,10 +156,8 @@ public partial class EditModeController
 
     #endregion
 
-
     #region ===== Orbit Block Maintenance =====
 
-    /// <summary>드래그가 끝나면 자동으로 오비트 차단 해제</summary>
     private void MaintainOrbitBlockFlag()
     {
         if (!isDragging && BlockOrbit)
@@ -185,20 +166,21 @@ public partial class EditModeController
 
     #endregion
 
-
     #region ===== Static Input Helpers =====
 
     private static Vector2 GetPointerScreenPos()
     {
-        if (TouchES.activeTouches.Count > 0)
-            return TouchES.activeTouches[0].screenPosition;
+        // 터치 우선, 없으면 마우스
+        if (ActiveTouchCount() > 0)
+            return FirstTouchPos();
 
         return Mouse.current != null ? Mouse.current.position.ReadValue() : Vector2.zero;
     }
 
     private static bool IsPointerDownThisFrame()
     {
-        for (int i = 0; i < TouchES.activeTouches.Count; i++)
+        // 터치 Began 체크 (EnhancedTouch가 꺼져 있으면 0회전)
+        for (int i = 0, c = ActiveTouchCount(); i < c; i++)
             if (TouchES.activeTouches[i].phase == UnityEngine.InputSystem.TouchPhase.Began)
                 return true;
 
@@ -207,7 +189,7 @@ public partial class EditModeController
 
     private static bool IsPointerUpThisFrame()
     {
-        for (int i = 0; i < TouchES.activeTouches.Count; i++)
+        for (int i = 0, c = ActiveTouchCount(); i < c; i++)
         {
             var ph = TouchES.activeTouches[i].phase;
             if (ph == UnityEngine.InputSystem.TouchPhase.Ended ||
@@ -219,7 +201,7 @@ public partial class EditModeController
 
     private static bool IsPointerMoving()
     {
-        for (int i = 0; i < TouchES.activeTouches.Count; i++)
+        for (int i = 0, c = ActiveTouchCount(); i < c; i++)
             if (TouchES.activeTouches[i].phase == UnityEngine.InputSystem.TouchPhase.Moved)
                 return true;
 
@@ -247,7 +229,6 @@ public partial class EditModeController
     }
 
     #endregion
-
 
     #region ===== Raycast Helpers =====
 

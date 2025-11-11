@@ -67,7 +67,8 @@ public class ObjectActionToolbar : MonoBehaviour
     private RectTransform rect;      // 이 툴바의 RectTransform
     private Vector2 currentAnchored; // 현재 화면 위치(스무딩용)
     private bool visibleByCamera = true;
-
+    private RectTransform canvasRect;   // 캔버스 RectTransform 캐시
+    private Camera lastWorldCam;        // 비-Overlay에서 변환에 쓸 카메라 캐시
     #endregion
 
 
@@ -75,6 +76,7 @@ public class ObjectActionToolbar : MonoBehaviour
 
     private void Awake()
     {
+        EnsureRefs();                      // ★ 추가
         rect = transform as RectTransform;
         if (!canvas)
             canvas = GetComponentInParent<Canvas>();
@@ -83,8 +85,18 @@ public class ObjectActionToolbar : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void EnsureRefs()
+    {
+        if (!rect) rect = transform as RectTransform;
+        if (!canvas) canvas = GetComponentInParent<Canvas>(includeInactive: true);
+        if (!canvasRect && canvas) canvasRect = canvas.transform as RectTransform;
+        if (!cam) cam = Camera.main;
+        if (!lastWorldCam) lastWorldCam = cam;
+    }
+
     private void LateUpdate()
     {
+        EnsureRefs();
         if (!CanUpdatePosition()) return;
 
         // 카메라 뒤면 숨김
@@ -116,22 +128,34 @@ public class ObjectActionToolbar : MonoBehaviour
     /// null 로 주면 그 버튼은 숨겨진다.
     /// </summary>
     public void Show(
-        Transform target,
-        Camera worldCamera,
-        Action onInfo = null,
-        Action onRotate = null,
-        Action onInventory = null,
-        Action onOk = null,
-        Action onCancel = null)
+    Transform target,
+    Camera worldCamera,
+    Action onInfo = null,
+    Action onRotate = null,
+    Action onInventory = null,
+    Action onOk = null,
+    Action onCancel = null)
     {
+        EnsureRefs();                                 // ★ 추가
+
         this.target = target;
         cam = worldCamera ? worldCamera : Camera.main;
+        if (!cam) cam = Camera.main;                  // 폴백
+        lastWorldCam = cam ? cam : lastWorldCam;      // ★ 캐시
 
         Wire(btnInfo, onInfo);
         Wire(btnRotate, onRotate);
         Wire(btnInventory, onInventory);
         Wire(btnOk, onOk);
         Wire(btnCancel, onCancel);
+
+        // 비-Overlay면 변환에 쓸 카메라가 꼭 있어야 함
+        if (canvas && canvas.renderMode != RenderMode.ScreenSpaceOverlay && !cam)
+        {
+            Debug.LogWarning("[ObjectActionToolbar] Non-Overlay canvas requires worldCamera.");
+            gameObject.SetActive(false);
+            return;
+        }
 
         // 카메라 뒤인지 먼저 판단
         visibleByCamera = IsTargetInFrontOfCamera();
@@ -141,6 +165,7 @@ public class ObjectActionToolbar : MonoBehaviour
         Vector2 pos = CalcScreenPos();
         SetAnchoredPositionImmediate(pos);
     }
+
 
     /// <summary>툴바 숨기기 (버튼 콜백도 제거)</summary>
     public void Hide()
@@ -199,18 +224,14 @@ public class ObjectActionToolbar : MonoBehaviour
         }
         else
         {
-            var canvasRect = canvas ? canvas.transform as RectTransform : null;
-            if (canvasRect &&
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                    canvasRect,
-                    screen,
-                    canvas ? canvas.worldCamera : cam,
-                    out var local))
-            {
-                return local;
-            }
+            // ★ 카메라 & 캔버스 Rect 보장
+            var cr = canvasRect ? canvasRect : (canvas ? canvas.transform as RectTransform : null);
+            var camForCanvas = (canvas && canvas.worldCamera) ? canvas.worldCamera : (cam ? cam : lastWorldCam);
 
-            // 실패하면 이전 값
+            if (cr && RectTransformUtility.ScreenPointToLocalPointInRectangle(cr, screen, camForCanvas, out var local))
+                return local;
+
+            // 실패 시 이전 값 유지
             return currentAnchored;
         }
     }
@@ -235,12 +256,18 @@ public class ObjectActionToolbar : MonoBehaviour
 
     private void SetAnchoredPositionImmediate(Vector2 p)
     {
+        EnsureRefs();                         // ★ 추가
+        if (!rect) return;                    // ★ 가드
+
         currentAnchored = p;
         rect.anchoredPosition = p;
     }
 
     private void SetAnchoredPosition(Vector2 p)
     {
+        EnsureRefs();                         // ★ 추가
+        if (!rect) return;                    // ★ 가드
+
         if (followLerp <= 0f)
         {
             SetAnchoredPositionImmediate(p);
@@ -286,15 +313,23 @@ public class ObjectActionToolbar : MonoBehaviour
 
     private bool CanUpdatePosition()
     {
-        return rect && canvas && target && cam;
+        EnsureRefs(); // ★ 추가
+
+        if (!rect || !canvas || !target) return false;
+        if (canvas.renderMode == RenderMode.ScreenSpaceOverlay) return true;
+        return cam != null; // Camera/WorldSpace는 cam 필수
     }
 
     private bool IsTargetInFrontOfCamera()
     {
-        if (!target || !cam) return true;
+        if (!target) return true;
+        if (!cam) cam = Camera.main;        // ★ 폴백 시도
+        if (!cam) return true;              // 카메라를 아직 못 잡았으면 가리진 않은 걸로 간주
+
         var vp = cam.WorldToViewportPoint(target.position);
         return vp.z > 0f;
     }
+
 
     /// <summary>트리 전체의 Renderer/Collider bounds 를 합쳐서 반환.</summary>
     private static bool TryGetWorldBounds(Transform t, out Bounds bounds)
