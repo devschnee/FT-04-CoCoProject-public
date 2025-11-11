@@ -15,7 +15,7 @@ MonoBehaviour:
   speakerList:
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: Talk_portrait/coco_Neutral
+    portrait_set_prefix: coco_Neutral
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
     portrait_set_prefix: coco_Happy

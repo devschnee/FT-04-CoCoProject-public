@@ -11544,7 +11544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00cf211c4be977347a59fdb98f49127f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  database: {fileID: 11400000, guid: 5410dd22bd0bdc34faa6c298c0d0e778, type: 2}
+  database: {fileID: 0}
   startItems:
   - decoId: 10001
     count: 40
@@ -15000,7 +15000,7 @@ MonoBehaviour:
   editController: {fileID: 444961667}
   interactDistance: 2
   routineDelay: 3
-  cocoWaypoints: []
+  waypoints: []
 --- !u!4 &1479412857
 Transform:
   m_ObjectHideFlags: 0
@@ -18363,9 +18363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ce373c2498a5e4cb5f3e45d51358e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeDB: {fileID: 11400000, guid: 9408dfcbcac6d0345a2f26fceb060264, type: 2}
-  animalDB: {fileID: 11400000, guid: cf238dff9788eed47831c21b58e8c07e, type: 2}
-  decoDB: {fileID: 11400000, guid: 5410dd22bd0bdc34faa6c298c0d0e778, type: 2}
+  homeDB: {fileID: 0}
+  animalDB: {fileID: 0}
+  decoDB: {fileID: 0}
   defaultHomeId: 40001
 --- !u!1001 &1848506397
 PrefabInstance:
@@ -27967,7 +27967,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4096515207447203654}
   m_HandleRect: {fileID: 6089225661854818718}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -35862,11 +35862,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a828053d38201344bdff90e2ecbe257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalDatabase: {fileID: 11400000, guid: cf238dff9788eed47831c21b58e8c07e, type: 2}
-  decoDatabase: {fileID: 11400000, guid: 5410dd22bd0bdc34faa6c298c0d0e778, type: 2}
-  costumeDatabase: {fileID: 11400000, guid: 03068cb0a80eace408fa4bf98760f6c5, type: 2}
-  artifactDatabase: {fileID: 11400000, guid: a54830c91f91a76448d894ea23cc2244, type: 2}
-  profileIconDatabase: {fileID: 11400000, guid: 6c1d6365b9e5cda48819182dea8a9350, type: 2}
+  animalDatabase: {fileID: 0}
+  decoDatabase: {fileID: 0}
+  costumeDatabase: {fileID: 0}
+  artifactDatabase: {fileID: 0}
+  profileIconDatabase: {fileID: 0}
 --- !u!114 &3858973009595439421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37830,7 +37830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   codexServiceBehaviour: {fileID: 1266467484}
-  detailIcon: {fileID: 2164716761888083805}
+  detailDisplay: {fileID: 0}
   detailName: {fileID: 32677239087102877}
   detailDesc: {fileID: 7841853532411402836}
   detailScroll: {fileID: 2199687227577038299}
@@ -44695,8 +44695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 231245d22cfb503489305530d5e546a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questDatabase: {fileID: 11400000, guid: 3f4ad7d5eaba5db448cb78c661265ce2, type: 2}
-  treasureDatabase: {fileID: 11400000, guid: cbea4e14512afdf4583b29f048e412aa, type: 2}
+  questDatabase: {fileID: 0}
+  treasureDatabase: {fileID: 0}
   coinSprite: {fileID: 21300000, guid: 0eb8b2a60eb6c8d43a1afb9e3e62c19c, type: 3}
   capSprite: {fileID: 21300000, guid: 968a39b90aa79e44393dcfb1eb140e2a, type: 3}
   dailyTabButton: {fileID: 6074170215659214757}
