@@ -14,6 +14,11 @@ public class DialogueProvider : IDataProvider<string, DialogueData>
         return database.dialogueList.Find(s => s.dialogue_id == id);
     }
 
+    public DialogueData GetSeqData(int id)
+    {
+        return database.dialogueList.Find(a => a.seq == id);
+    }
+
     //public List<DialogueData> GetData(string id)
     //{
     //    List<DialogueData> sequences = database.dialogueList

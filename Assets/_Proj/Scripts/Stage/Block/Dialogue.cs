@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using TMPro;
-using System.Collections;
-using UnityEngine.EventSystems;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Dialogue : MonoBehaviour
 {
@@ -14,6 +14,8 @@ public class Dialogue : MonoBehaviour
     private bool isDialogueActive = false;
 
     private int currentSeq = 0; // dialogue 내 순번
+
+    private PlayerMovement playerMovement;
 
     public void Init(string id)
     {
@@ -38,17 +40,21 @@ public class Dialogue : MonoBehaviour
         StageUIManager.Instance.DialoguePanel.SetActive(true);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
 
-        currentSeq = 1;
+        currentSeq = 0;
         ShowDialogue(dialogueId, currentSeq);
         isDialogueActive = true;
+
+        playerMovement = other.GetComponent<PlayerMovement>();
+        playerMovement.enabled = false;
     }
     void Update()
     {
         if (!isDialogueActive) return;
-        //if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
-        //{
-        //    OnUserTap();
-        //}
+        var touch = Touchscreen.current.touches[0];
+        if (touch.press.isPressed) //Todo : 너무 순식간에 지나감 이것도 수정해야함
+        {
+            OnUserTap();
+        }
     }
 
     // 유저 터치 처리
@@ -73,7 +79,7 @@ public class Dialogue : MonoBehaviour
     // 대사 출력
     private void ShowDialogue(string id, int seq)
     {
-        currentData = DataManager.Instance.Dialogue.GetData(dialogueId);
+        currentData = DataManager.Instance.Dialogue.GetSeqData(seq);
         if (currentData == null)
         {
             Debug.Log($"[Dialogue] {id} seq {seq} 데이터 없음 → 종료 처리");
@@ -97,7 +103,7 @@ public class Dialogue : MonoBehaviour
         }
 
         // 표정 변경
-        UpdateEmotion(currentData.speaker_id, currentData.emotion);
+        UpdateEmotion(currentData.speaker_id, speakData.portrait_set_prefix);
 
         // 이름, 텍스트 초기화
         StageUIManager.Instance.DialogueNameText.text = speakData.display_name;
@@ -112,13 +118,14 @@ public class Dialogue : MonoBehaviour
     private void TryNextDialogue()
     {
         int nextSeq = currentData.seq + 1;
-        var nextData = DataManager.Instance.Dialogue.GetData($"{dialogueId}_{nextSeq}");
-        if (nextData == null)
+        var nextData = DataManager.Instance.Dialogue.GetSeqData(nextSeq);
+
+        if (nextData == null)//Todo : 조건 변경해야 할듯 이대로는 이상함
         {
             // 마지막 대사
             EndDialogue();
         }
-        else
+        else if(nextData.seq == currentData.seq + 1)
         {
             currentSeq = nextSeq;
             ShowDialogue(dialogueId, currentSeq);
@@ -126,10 +133,13 @@ public class Dialogue : MonoBehaviour
     }
 
     // 감정 표현 업데이트
-    private void UpdateEmotion(SpeakerData.SpeakerId id, EmotionType emotion)
+    private Sprite UpdateEmotion(SpeakerData.SpeakerId id, string emotion)
     {
         // TODO: emotion값에 따라 sprite나 animator 변경
+        var newSprite = DataManager.Instance.Speaker.GetPortrait(id, emotion);
+
         Debug.Log($"[Emotion] {id} → {emotion}");
+        return newSprite;
     }
 
     // TextMeshPro 타이핑 효과 함수
@@ -152,6 +162,7 @@ public class Dialogue : MonoBehaviour
         StageUIManager.Instance.DialoguePanel.SetActive(false);
         StageUIManager.Instance.Overlay.SetActive(false);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(true);
+        playerMovement.enabled = true;
         Debug.Log("[Dialogue] 대화 종료");
     }
 }

@@ -18,28 +18,28 @@ MonoBehaviour:
     portrait_set_prefix: Talk_portrait/coco_Neutral
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: coco_Happy
+    portrait_set_prefix: Talk_portrait/coco_Happy
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: coco_Sad
+    portrait_set_prefix: Talk_portrait/coco_Sad
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: coco_Angry
+    portrait_set_prefix: Talk_portrait/coco_Angry
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: coco_Surprised
+    portrait_set_prefix: Talk_portrait/coco_Surprised
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Neutral
+    portrait_set_prefix: Talk_portrait/buffalo_Neutral
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Happy
+    portrait_set_prefix: Talk_portrait/buffalo_Happy
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Sad
+    portrait_set_prefix: Talk_portrait/buffalo_Sad
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Angry
+    portrait_set_prefix: Talk_portrait/buffalo_Angry
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Surprised
+    portrait_set_prefix: Talk_portrait/buffalo_Surprised
