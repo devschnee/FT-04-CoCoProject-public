@@ -6,10 +6,10 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// ���� ��ġ�� Placeable ��(��/����/����)�� ���塤���� ���
-/// - PlayerPrefs�� JSON���� ����/����
-/// - �⺻ ��(defaultHomeId) �ڵ� ���� ����
-/// - ���� ���� �����Ǹ� 1ä�� ����� ����
+/// 배치물 Placeable(집/동물/조경) 저장·복원 매니저
+/// - PlayerPrefs에 JSON으로 저장/로드
+/// - 세이브 데이터가 없으면 기본 집(defaultHomeId) 자동 생성
+/// - 집이 여러 채면 1채만 남기고 정리
 /// </summary>
 public class PlaceableStore : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class PlaceableStore : MonoBehaviour
     [SerializeField] private DecoDatabase decoDB;
 
     [Header("Defaults")]
-    [Tooltip("���� �����Ϳ� ���� ���� �� �ڵ����� ������ �⺻ �� ID")]
+    [Tooltip("세이브 데이터가 없을 때 자동으로 생성할 기본 집 ID")]
     [SerializeField] private int defaultHomeId = 1;
 
     #endregion
@@ -71,14 +71,14 @@ public class PlaceableStore : MonoBehaviour
 
         _loader = new ResourcesLoader();
         BuildDbCaches();
-        LoadAndSpawnAll(); // �� ���� �� �ڵ� ����(+�⺻ �� ����)
+        LoadAndSpawnAll(); // 저장 복원 + 기본 집 보장
     }
 
     #endregion
 
     #region === Public API ===
 
-    /// <summary>�� �� PlaceableTag���� ��ĵ�� ��� ����</summary>
+    /// <summary>현재 씬의 PlaceableTag를 모두 스캔해 위치/회전을 저장</summary>
     public void SaveAllFromScene()
     {
 #if UNITY_2022_2_OR_NEWER
@@ -93,7 +93,7 @@ public class PlaceableStore : MonoBehaviour
             var tag = tags[i];
             if (!tag || !tag.gameObject.activeInHierarchy) continue;
 
-            // �ӽ� ��ġ�� ���� ���� (InventoryTempMarker ���� ��)
+            // 임시 배치는 저장 제외 (InventoryTempMarker가 붙어 있으면 스킵)
             if (tag.GetComponent<InventoryTempMarker>()) continue;
 
             list.Add(new Placed
@@ -112,19 +112,19 @@ public class PlaceableStore : MonoBehaviour
         Debug.Log($"[PlaceableStore] Saved {list.Count} placed objects. (sceneKey={PrefKeyForCurrentScene})");
     }
 
-    /// <summary>����� ������ �о� �������� ��� ���� + �⺻ �� ���� + �ߺ� �� ����</summary>
+    /// <summary>저장 데이터를 읽어 모두 스폰 + 기본 집 보장 + 중복 집 정리</summary>
     public void LoadAndSpawnAll()
     {
         string key = PrefKeyForCurrentScene;
 
         if (!PlayerPrefs.HasKey(key))
         {
-            // ����� �� �ƿ� ������ �⺻ ���� �ٷ� ����
+            // 저장이 없으면 기본 집을 바로 생성
             EnsureSingleHomeExists();
             return;
         }
 
-        //LSH추가
+        // LSH 추가: NavMesh 재빌드
         GameObject gObj = GameObject.Find("IsLandPlane");
         NavMeshSurface nMS = gObj.GetComponent<NavMeshSurface>();
         nMS.BuildNavMesh();
@@ -150,7 +150,7 @@ public class PlaceableStore : MonoBehaviour
 
                         if (!go.GetComponent<Draggable>()) go.AddComponent<Draggable>();
 
-                        //LSH 추가
+                        // LSH 추가: 카테고리별 컴포넌트 세팅
                         switch (p.cat)
                         {
                             case PlaceableCategory.Home:
@@ -171,7 +171,7 @@ public class PlaceableStore : MonoBehaviour
                             default:
                                 break;
                         }
-                        
+
                         ok++;
                     }
                     else
@@ -184,14 +184,14 @@ public class PlaceableStore : MonoBehaviour
             }
         }
 
-        // ���� ���� �Ŀ��� ���� ������ �⺻ �� ����
+        // 복원 이후에도 최소 1채의 집을 보장
         EnsureSingleHomeExists();
 
-        // Ȥ�� ���� ���� ä�� 1ä�� �����
+        // 혹시 중복된 집이 있으면 1채만 남김
         CullExtraHomes();
     }
 
-    /// <summary>���� ���� ����� �÷��̽���Ʈ ������ ����</summary>
+    /// <summary>현재 씬 키의 저장 데이터를 삭제</summary>
     public void ClearSaved()
     {
         string key = PrefKeyForCurrentScene;
@@ -207,7 +207,7 @@ public class PlaceableStore : MonoBehaviour
 
     #region === Internals: Default Home & Dedup ===
 
-    /// <summary>���� ���� �ϳ��� ������ defaultHomeId�� 1ä�� ����</summary>
+    /// <summary>집이 하나도 없으면 defaultHomeId를 이용해 기본 집을 1채 생성</summary>
     private void EnsureSingleHomeExists()
     {
 #if UNITY_2022_2_OR_NEWER
@@ -219,10 +219,10 @@ public class PlaceableStore : MonoBehaviour
         {
             var t = tags[i];
             if (t && t.category == PlaceableCategory.Home)
-                return; // �̹� �� ���� �� ����
+                return; // 이미 집이 있음
         }
 
-        // ���� ������ �⺻ �� ����
+        // 집이 하나도 없으면 기본 집 생성
         if (_homeById != null && _homeById.TryGetValue(defaultHomeId, out var hd) && hd != null)
         {
             var prefab = hd.GetPrefab(_loader);
@@ -250,7 +250,7 @@ public class PlaceableStore : MonoBehaviour
         }
     }
 
-    /// <summary>���� 2ä �̻��� ��� 1ä�� ����� ����</summary>
+    /// <summary>집이 2채 이상이면 1채만 남기고 나머지는 제거</summary>
     private void CullExtraHomes()
     {
 #if UNITY_2022_2_OR_NEWER
@@ -271,7 +271,7 @@ public class PlaceableStore : MonoBehaviour
                 continue;
             }
 
-            // ù �� �� �������� ����
+            // 첫 번째를 제외하고 제거
             Destroy(t.gameObject);
             Debug.Log("[PlaceableStore] Removed extra Home instance.");
         }

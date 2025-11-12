@@ -41,10 +41,10 @@ public class InventoryTabsController : MonoBehaviour
 
     // === 실제 인벤토리 패널들 ===
     [Header("Inventory Panels (Assign)")]
-    [SerializeField] private GameObject homePanel;        // HomeInventoryPanel 붙어있음
-    [SerializeField] private GameObject backgroundPanel;  // BackgroundInventoryPanel 붙어있음
-    [SerializeField] private GameObject animalPanel;      // AnimalInventoryPanel 붙어있음
-    [SerializeField] private GameObject decoPanel;        // DecoInventoryPanel 붙어있음
+    [SerializeField] private GameObject homePanel;        // IInventoryPanel 구현 스크립트가 같은 오브젝트나 자식에 붙어있어야 함
+    [SerializeField] private GameObject backgroundPanel;
+    [SerializeField] private GameObject animalPanel;
+    [SerializeField] private GameObject decoPanel;
     [SerializeField] private GameObject appearancePlaceholderPanel; // 외형(보류)용 안내/빈패널
 
     private enum TopTab { BaseCamp, Appearance, Placement }
@@ -130,6 +130,18 @@ public class InventoryTabsController : MonoBehaviour
         if (go && go.activeSelf != on) go.SetActive(on);
     }
 
+    // 공통: 활성화된 패널에서 IInventoryPanel 구현을 찾아 Rebuild 호출
+    private static void RebuildPanel(GameObject panelGO)
+    {
+        if (!panelGO) return;
+
+        // 같은 오브젝트에서 먼저 찾고, 없으면 자식에서 찾는다.
+        if (!panelGO.TryGetComponent<IInventoryPanel>(out var p))
+            p = panelGO.GetComponentInChildren<IInventoryPanel>(includeInactive: true);
+
+        p?.Rebuild();
+    }
+
     // ─────────────────────────────────────────────
     // 하위: 거점( Home / Background )
     // ─────────────────────────────────────────────
@@ -140,13 +152,12 @@ public class InventoryTabsController : MonoBehaviour
         if (home)
         {
             SetActive(homePanel, true);
-            // 즉시 Rebuild
-            homePanel?.GetComponent<HomeInventoryPanel>()?.Rebuild();
+            RebuildPanel(homePanel);
         }
         else
         {
             SetActive(backgroundPanel, true);
-            backgroundPanel?.GetComponent<BackgroundInventoryPanel>()?.Rebuild();
+            RebuildPanel(backgroundPanel);
         }
     }
 
@@ -157,6 +168,7 @@ public class InventoryTabsController : MonoBehaviour
     {
         SetAllContentOff();
         SetActive(appearancePlaceholderPanel, true);
+        // 외형 보류: 별도 Rebuild 없음
     }
 
     // ─────────────────────────────────────────────
@@ -168,12 +180,12 @@ public class InventoryTabsController : MonoBehaviour
         if (animal)
         {
             SetActive(animalPanel, true);
-            animalPanel?.GetComponent<AnimalInventoryPanel>()?.Rebuild();
+            RebuildPanel(animalPanel);
         }
         else
         {
             SetActive(decoPanel, true);
-            decoPanel?.GetComponent<DecoInventoryPanel>()?.Rebuild();
+            RebuildPanel(decoPanel);
         }
     }
 }
