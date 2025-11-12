@@ -104,10 +104,19 @@ public class Dialogue : MonoBehaviour
         {
             StageUIManager.Instance.DialogueSpeakerLeft.color = new Color(1, 1, 1, 1);
             StageUIManager.Instance.DialogueSpeakerLeft.sprite = emotionSprite;
-            StageUIManager.Instance.DialogueSpeakerRight.color = new Color(1, 1, 1, 0.2f);
+            if (currentData.seq == 0)
+            {
+                StageUIManager.Instance.DialogueSpeakerRight.gameObject.SetActive(false);
+            }
+            else
+            {
+                StageUIManager.Instance.DialogueSpeakerRight.gameObject.SetActive(true);
+                StageUIManager.Instance.DialogueSpeakerRight.color = new Color(1, 1, 1, 0.2f);
+            }
         }
         else
         {
+            StageUIManager.Instance.DialogueSpeakerRight.gameObject.SetActive(true);
             StageUIManager.Instance.DialogueSpeakerRight.color = new Color(1, 1, 1, 1);
             StageUIManager.Instance.DialogueSpeakerRight.sprite = emotionSprite;
             StageUIManager.Instance.DialogueSpeakerLeft.color = new Color(1, 1, 1, 0.2f);
