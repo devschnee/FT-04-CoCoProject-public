@@ -26,7 +26,7 @@ public class Dialogue : MonoBehaviour
     {
         if(StageUIManager.Instance.stageManager.isTest)
         {
-            dialogueId = "dialogue_1_1_1";
+            dialogueId = "dialogue_1_4_1";
         }
     }
 
@@ -95,12 +95,12 @@ public class Dialogue : MonoBehaviour
         }
 
         var speakData = DataManager.Instance.Speaker.GetData(currentData.speaker_id);
-        var basePrefix = speakData.portrait_set_prefix;
-
+        var basePrefix = $"Talk_portrait/{currentData.speaker_id}_{currentData.emotion}_{currentData.speaker_position}";
+        print($"{basePrefix}");
         var emotionSprite = GetEmotionSprite(currentData.speaker_id, basePrefix);
 
         // 화자 이미지 갱신
-        if (currentData.speaker_position == SpeakerPosition.left)
+        if (currentData.speaker_position == SpeakerPosition.Left)
         {
             StageUIManager.Instance.DialogueSpeakerLeft.color = new Color(1, 1, 1, 1);
             StageUIManager.Instance.DialogueSpeakerLeft.sprite = emotionSprite;
@@ -111,15 +111,24 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StageUIManager.Instance.DialogueSpeakerRight.gameObject.SetActive(true);
+                StageUIManager.Instance.DialogueSpeakerLeft.gameObject.SetActive(true);
                 StageUIManager.Instance.DialogueSpeakerRight.color = new Color(1, 1, 1, 0.2f);
             }
         }
         else
         {
-            StageUIManager.Instance.DialogueSpeakerRight.gameObject.SetActive(true);
             StageUIManager.Instance.DialogueSpeakerRight.color = new Color(1, 1, 1, 1);
             StageUIManager.Instance.DialogueSpeakerRight.sprite = emotionSprite;
-            StageUIManager.Instance.DialogueSpeakerLeft.color = new Color(1, 1, 1, 0.2f);
+            if (currentData.seq == 0)
+            {
+                StageUIManager.Instance.DialogueSpeakerLeft.gameObject.SetActive(false);
+            }
+            else
+            {
+                StageUIManager.Instance.DialogueSpeakerRight.gameObject.SetActive(true);
+                StageUIManager.Instance.DialogueSpeakerLeft.gameObject.SetActive(true);
+                StageUIManager.Instance.DialogueSpeakerLeft.color = new Color(1, 1, 1, 0.2f);
+            }
         }
 
         // 이름, 텍스트 초기화
