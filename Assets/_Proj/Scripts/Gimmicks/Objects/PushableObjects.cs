@@ -177,7 +177,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
     #region Movement
     // 단순 이동(1칸 Lerp 이동)
-    protected IEnumerator MoveTo(Vector3 target)
+    public IEnumerator MoveTo(Vector3 target)
     {
         //이동 시작 순간 내 머리 위에 있는 콜라이더, 주변 콜라이더 전부 켜주기
 

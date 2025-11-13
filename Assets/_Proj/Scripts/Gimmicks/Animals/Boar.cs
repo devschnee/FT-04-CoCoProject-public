@@ -20,8 +20,10 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
     [Header("Player Detection")]
     public float detectRadius = 3f; // 플레이어 감지 범위
     private Transform playerTrans; // 감지된 플레이어의 Transform
+    private IRider playerRider;
+    private bool isPlayerRiding = false;
 
-    [Header("Boar Dash Settings")]
+    [Header("Boar Dash Settings")]
     public LayerMask pushableLayer;
     [Tooltip("돌진 속도를 조정하려면 여기를 수정")]
     public float dashSpeed = 0.08f; // 돌진 속도
@@ -53,7 +55,11 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         // 플레이어 transform 찾기
         // NOTE : 플레이어 Tag를 Player로 설정
         var playerGO = GameObject.FindGameObjectWithTag("Player");
-        if (playerGO) playerTrans = playerGO.transform;
+        if (playerGO)
+        {
+            playerTrans = playerGO.transform; 
+            playerRider = playerGO.GetComponent<IRider>();
+        }
     }
 
     // Boar가 FlowWater위에 들어간 PushableObjects를 Flow Interval 시간보다 먼저 밀어서 오류 사항을 만들어내지 않기 위해 requiredTime을 조정하기 위함
@@ -151,6 +157,14 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
     // ==== 한 칸 이동을 반복되게 처리, 충돌 및 밀기 처리 ====
     private IEnumerator DashCoroutine(Vector3 moveDir, Vector2Int dashDir)
     {
+        if (isPlayerRiding && playerTrans != null && playerRider != null)
+        {
+            playerTrans.SetParent(null);
+            playerRider.OnStopRiding();
+            playerTrans.position += Vector3.up * 0.2f;
+
+            isRiding = false;
+        }
         isMoving = true;
         btnGroup.SetActive(false);
 
@@ -166,17 +180,13 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
             transform.rotation = Quaternion.Slerp(startRot, initTargetRot, rotElapsed / rotateTime);
             yield return null;
         }
-        yield return null;
 
         // 멧돼지가 위치한 층 계산(PushableObjects 수집 기준)
         float baseY = Mathf.Floor(transform.position.y / tileSize + 1e-4f);
-        int stepGuard = 0;
 
         // === 돌진 ===
         while (true)
         {
-            stepGuard++;
-
             Vector3 currentPos = transform.position;
             Vector3 nextPos = currentPos + moveDir * tileSize;
             Vector3 boxCenter = nextPos + Vector3.up * 0.5f;
@@ -208,91 +218,128 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
             // pushables 감지
             RaycastHit hit;
             bool hasPushable = Physics.BoxCast(
-              currentPos + Vector3.up * 0.5f, // 시작 위치
-                      halfExt * 0.9f, // 충돌체 크기
-                      moveDir, // 이동 방향
-                      out hit, // 충돌 정보
-                      Quaternion.identity,
-              tileSize * 1.1f, // 검사 거리
-                      pushableLayer
+                currentPos + Vector3.up * 0.5f, // 시작 위치
+                halfExt * 0.9f, // 충돌체 크기
+                moveDir, // 이동 방향
+                out hit, // 충돌 정보
+                Quaternion.identity,
+                tileSize * 1.1f, // 검사 거리
+                pushableLayer
             );
 
-            if (hasPushable)
+            if (!hasPushable)
             {
-                Debug.Log($"[Boar.DashCoroutine] Pushable 오브젝트 감지. 충돌 대상: {hit.collider.name}. 체인 밀기 로직 시작.");
-                // Pushable 오브젝트 감지되면 밀기 실행
-                PushableObjects headPush = hit.collider?.GetComponent<PushableObjects>();
+                if (!HasGround(nextPos)) break;
+                yield return StartCoroutine(DashMoveTo(nextPos, moveDir));
+                continue;
+            }
 
-                // 같은 층 기준 스택 수집
-                List<PushableObjects> vstack = CollectVerticalStack(headPush.transform.position, baseY);
-                Debug.Log($"[Boar.DashCoroutine] 충돌 지점의 수직 스택 수: {vstack.Count}");
+            PushableObjects head = hit.collider.GetComponent<PushableObjects>();
+            if (head == null)
+            {
+                isMoving = false;
+                yield break;
+            }
 
-                // 연속된 Pushable 체인 전체 수집. 체인 뒤에 blocking 없는지 확인
-                if (!CollectChain(headPush.transform.position, dashDir, baseY, out var chainStacks, out Vector3 tailNextWorld))
-                {
-                    // 막히면 정지
-                    Debug.Log("[Boar.DashCoroutine] 체인 밀기 실패 (체인 중간 Blocking 또는 Pushable 체인 아님). 돌진 정지.");
-                    HitStop(vstack[0].gameObject);
-                    isMoving = false;
-                    break;
-                }
+            Debug.Log($"[Boar.DashCoroutine] Pushable 오브젝트 감지. 충돌 대상: {hit.collider.name}. 체인 밀기 로직 시작.");
+            // Pushable 오브젝트 감지되면 밀기 실행
+            PushableObjects headPush = hit.collider?.GetComponent<PushableObjects>();
 
-                Debug.Log($"[Boar.DashCoroutine] 체인 수집 성공. 체인 길이: {chainStacks.Count}개 스택.");
+            // 같은 층 기준 스택 수집
+            List<PushableObjects> vstack = CollectVerticalStack(headPush.transform.position, baseY);
+            Debug.Log($"[Boar.DashCoroutine] 충돌 지점의 수직 스택 수: {vstack.Count}");
 
-                Vector3 checkTailPos = tailNextWorld;
-                float tailY = Mathf.Floor(tailNextWorld.y / tileSize + 1e-4f) * tileSize;
-                checkTailPos.y = tailY;
-
-                // 꼬리 다음칸(이동할 위치에) blocking 있는지 검사
-                bool tailBlocked = Physics.CheckBox(
-                checkTailPos + Vector3.up * 0.5f,
-                halfExt,
-                Quaternion.identity,
-                 blockingMask
-                );
-
-                if (tailBlocked)
-                {
-                    // 막히면 정지
-                    Debug.Log($"[Boar.DashCoroutine] 체인 꼬리 다음 칸({tailNextWorld}) Blocking 감지. 돌진 정지.");
-                    HitStop(vstack[0].gameObject);
-                    isMoving = false;
-                    break;
-                }
-
-                Debug.Log("[Boar.DashCoroutine] 체인 밀기(ChainShiftOneCell) 시작.");
-                // 밀기
-
-                yield return StartCoroutine(ChainShiftOneCell(chainStacks, dashDir));
-
-
-                // 돼지 전진(밀고 나서 자신도 한 칸 전진)
-                var posAfterPush = transform.position + new Vector3(dashDir.x, 0, dashDir.y);
-                yield return StartCoroutine(DashMoveTo(posAfterPush, new Vector3(dashDir.x, 0, dashDir.y)));
-
+            if (!CollectChain(head.transform.position, dashDir, baseY, out var chainStacks, out Vector3 tailNextWorld))
+            {
                 HitStop(vstack[0].gameObject);
+                isMoving = false;
+                yield break;
+            }
 
-                // 낙하 처리 (꼬리부터)
-                for (int i = chainStacks.Count - 1; i >= 0; i--)
-                {
-                    foreach (var p in chainStacks[i])
-                        yield return StartCoroutine(p.CheckFall());
-                }
-                chainStacks.Clear();
+            Debug.Log($"[Boar.DashCoroutine] 체인 수집 성공. 체인 길이: {chainStacks.Count}개 스택.");
+
+            Vector3 checkTailPos = tailNextWorld;
+            float tailY = Mathf.Floor(tailNextWorld.y / tileSize + 1e-4f) * tileSize;
+            checkTailPos.y = tailY;
+
+            // 꼬리 다음칸(이동할 위치에) blocking 있는지 검사
+            bool tailBlocked = Physics.CheckBox(
+            checkTailPos + Vector3.up * 0.5f,
+            halfExt,
+            Quaternion.identity,
+             blockingMask
+            );
+
+            if (tailBlocked)
+            {
+                // 막히면 정지
+                Debug.Log($"[Boar.DashCoroutine] 체인 꼬리 다음 칸({tailNextWorld}) Blocking 감지. 돌진 정지.");
+                HitStop(vstack[0].gameObject);
+                isMoving = false;
                 break;
             }
 
-            if (!HasGround(nextPos))
+            Debug.Log("[Boar.DashCoroutine] 체인 밀기(ChainShiftOneCell) 시작.");
+            // 밀기
+
+            yield return StartCoroutine(ChainShiftOneCell(chainStacks, dashDir));
+
+
+            // 돼지 전진(밀고 나서 자신도 한 칸 전진)
+            var posAfterPush = transform.position + new Vector3(dashDir.x, 0, dashDir.y);
+            yield return StartCoroutine(DashMoveTo(posAfterPush, new Vector3(dashDir.x, 0, dashDir.y)));
+
+            HitStop(vstack[0].gameObject);
+            
+            // 낙하 처리 (꼬리부터)
+            for (int i = chainStacks.Count - 1; i >= 0; i--)
             {
-                Debug.Log($"[Boar.DashCoroutine] 다음 칸({nextPos}) 바닥 없음 감지. 돌진 정지 및 낙하 검사 시작.");
-                // 다음 칸 바닥 검사
-                isMoving = false;
-                yield break;
+                foreach (var p in chainStacks[i])
+                    yield return StartCoroutine(p.CheckFall());
             }
-            yield return StartCoroutine(DashMoveTo(nextPos, moveDir));
+            chainStacks.Clear();
+            
+            // Dash가 끝난 후 플레이어가 다시 Boar 위에 있는지 감지 및 탑승 처리
+            if (playerTrans != null && !isRiding && playerRider != null)
+            {
+                Vector3 playerPos = playerTrans.position;
+                Vector3 boarPos = transform.position;
+
+                // XZ 평면에서 Boar와 플레이어의 거리가 타일 크기 이내이고, Y좌표가 Boar보다 약간 위에 있어야 탑승이 가능
+                float distXZ = Vector2.Distance(
+                    new Vector2(playerPos.x, playerPos.z),
+                    new Vector2(boarPos.x, boarPos.z)
+                );
+
+                // playerPos.y > boarPos.y는 플레이어가 보어보다 위에 있는지 확인
+                if (distXZ < 0.2f && playerPos.y > boarPos.y)
+                {
+                    playerRider.OnStartRiding();
+                    playerTrans.SetParent(this.transform); // 보어를 부모로 설정
+                    isRiding = true;
+                }
+            }
+
+            break;
         }
         isMoving = false;
     }
+    private float CalculateBoarCooldown(List<List<PushableObjects>> chainStacks)
+{
+    if (flowWater == null) return requiredHoldtime;
+
+    // 꼬리 스택 = chainStacks 마지막 요소
+    var tailStack = chainStacks[chainStacks.Count - 1];
+
+    int verticalCount = tailStack.Count; // 수직 스택 수
+    if (verticalCount <= 0) verticalCount = 1;
+
+    // 쿨다운 = flowInterval × verticalCount
+    float cooldown = flowWater.flowInterval * verticalCount;
+
+    return cooldown;
+}
+
     #endregion
 
     #region Stack Chain
@@ -357,7 +404,7 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         while (true)
         {
             // CollectVerticalStack을 사용하여 현재 칸의 수직 스택을 가져옴
-            List<PushableObjects> verticalStack = CollectVerticalStack(new Vector3(cursor.x, 0, cursor.z), yFloor);
+            List<PushableObjects> verticalStack = CollectVerticalStack(cursor, yFloor);
 
             if (verticalStack.Count == 0)
             {
@@ -418,7 +465,7 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         foreach (var stack in chainOfStacks)
             totalObjects += stack.Count;
 
-        if (totalObjects == 0)
+        if(totalObjects == 0)
         {
             yield break;
         }
@@ -455,28 +502,22 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
 
         // 타깃 좌표 계산
         Vector3 step = new Vector3(dir.x, 0, dir.y) * tileSize;
-        var startPos = new Vector3[n];
-        var targetPos = new Vector3[n];
-        for (int i = 0; i < n; ++i)
+        Dictionary<PushableObjects, Vector3> targetPos = new Dictionary<PushableObjects, Vector3>();
+        foreach(var po in allChainObjects)
         {
-            startPos[i] = allChainObjects[i].transform.position;
-            targetPos[i] = startPos[i] + step;
+            targetPos[po] = po.transform.position + step;
         }
 
-        // 동시에 1칸 이동
-        float dur = Mathf.Max(0.05f, dashSpeed);
-        float t = 0f;
-
-        while (t < dur)
+        // MoveTo로 한칸 이동
+        List<Coroutine> routines = new List<Coroutine>(n);
+        foreach(var po in allChainObjects)
         {
-            t += Time.deltaTime;
-            float k = Mathf.Clamp01(t / dur);
-            for (int i = 0; i < n; ++i)
-                allChainObjects[i].transform.position = Vector3.Lerp(startPos[i], targetPos[i], k);
-            yield return null;
+            Vector3 target = targetPos[po];
+            routines.Add(StartCoroutine(po.MoveTo(target)));
         }
-        for (int i = 0; i < n; ++i)
-            allChainObjects[i].transform.position = targetPos[i];
+
+        foreach (var r in routines)
+            yield return r;
 
         // 충돌 원복
         for (int i = 0; i < n; ++i)

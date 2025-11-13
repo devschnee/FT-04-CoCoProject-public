@@ -926,7 +926,7 @@ MonoBehaviour:
   overrideRiseSec: 0.5
   overrideHangSec: 0.2
   overrideFallSec: 0.5
-  flow: {fileID: 0}
+  flow: {fileID: 5130774834560676477, guid: b4cd3f06419b67046b7fced9fed33f79, type: 3}
   btnGroup: {fileID: 8979641072379291642}
   up: {fileID: 398772977987207836}
   down: {fileID: 7969498382675003730}
