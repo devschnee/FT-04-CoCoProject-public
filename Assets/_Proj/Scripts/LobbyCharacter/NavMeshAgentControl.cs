@@ -7,26 +7,21 @@ public class NavMeshAgentControl
 {
     // 필요한 기본 이동 로직들을 만들고 각 스크립트에 조립하는 형식이 좋겠지? 코루틴을 사용하는게 더 좋으니
     private readonly NavMeshAgent agent;
-    private float moveSpeed; // �̵� �ӵ�
-    private float angularSpeed; // �� �ӵ�
-    private float acceleration; // ���ӵ�
+    private float moveSpeed; // agent 스피드
+    private float angularSpeed; // agent 회전 스피드
+    private float acceleration; // agent 가속
+    private float moveRadius; // Random.insideUnitSphere 범위 설정
 
-    // �� ��
-    private float moveRadius; // �̵� ����
-    private float timer;
-    private Transform transform;
-
-    public NavMeshAgentControl(NavMeshAgent agent, float moveSpeed, float angularSpeed, float acceleration, float moveRadius, Transform transform)
+    public NavMeshAgentControl(NavMeshAgent agent, float moveSpeed, float angularSpeed, float acceleration, float moveRadius)
     {
         this.agent = agent;
         this.moveSpeed = moveSpeed;
         this.angularSpeed = angularSpeed;
         this.acceleration = acceleration;
         this.moveRadius = moveRadius;
-        this.transform = transform;
     }
 
-    // 캐릭터 움직일 때 걷거나 뛰는 애니메이션 속도 값 리턴
+    // 캐릭터 움직일 때 걷거나 뛰는 애니메이션 속도 값 리턴 // 이젠사용안할듯?
     public float ValueOfMagnitude()
     {
         return agent.velocity.magnitude;
@@ -41,21 +36,6 @@ public class NavMeshAgentControl
 
     }
 
-    // WaitUntil이나 WaitFS를 사용할 것이니 필요 없을 듯
-    // public void WaitAndMove(Transform point, ref float waitTime)
-    // {
-    //     if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
-    //     {
-
-    //         timer += Time.deltaTime;
-    //         if (timer >= waitTime)
-    //         {
-    //             MoveToTransPoint(point);
-    //             timer = 0;
-    //         }
-    //     }
-    // }
-
     /// <summary>
     /// Trans일 시 위치 이동
     /// </summary>
@@ -64,7 +44,7 @@ public class NavMeshAgentControl
     {
         if (agent.isStopped) agent.isStopped = false;
         Vector3 pos = point.position;
-        float speed = Random.Range(2f, 4f);
+        float speed = Random.Range(2.4f, 6f);
         agent.SetDestination(pos);
         agent.speed = speed;
         agent.acceleration = Random.Range(speed, 10f);
@@ -77,7 +57,7 @@ public class NavMeshAgentControl
     public void MoveToVectorPoint(Vector3 point)
     {
         if (agent.isStopped) agent.isStopped = false;
-        float speed = Random.Range(2f, 5f);
+        float speed = Random.Range(2.4f, 6f);
         agent.SetDestination(point);
         agent.speed = speed;
         agent.acceleration = Random.Range(speed, 10f);
@@ -106,7 +86,7 @@ public class NavMeshAgentControl
         Vector3 randomDir = point.position + Random.insideUnitSphere * moveRadius;
         randomDir.y = point.position.y;
         //randomDir += transform.position;
-        if (NavMesh.SamplePosition(randomDir, out NavMeshHit hit, 0.3f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomDir, out NavMeshHit hit, 0.1f, NavMesh.AllAreas))
         {
             //randomDir = hit.position;
             //agent.SetDestination(hit.position);
@@ -121,7 +101,7 @@ public class NavMeshAgentControl
         Vector3 randomDir = point.position + Random.insideUnitSphere * 1f;
         randomDir.y = point.position.y;
         //randomDir += transform.position;
-        if (NavMesh.SamplePosition(randomDir, out NavMeshHit hit, 1f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomDir, out NavMeshHit hit, 0.1f, NavMesh.AllAreas))
         {
             //randomDir = hit.position;
             MoveToVectorPoint(hit.position);
@@ -133,17 +113,4 @@ public class NavMeshAgentControl
         if (agent.enabled == false) agent.enabled = true;
         if (agent.isStopped) agent.isStopped = false;
     }
-
-    // 이 부분은 각 Behaviour 쪽 agent를 사용해서 관리하기로 함
-    // public void AgentIsStop(bool which)
-    // {
-    //     if (which == true) agent.isStopped = true;
-    //     else agent.isStopped = false;
-    // }
-    // public void EnableAgent(bool which)
-    // {
-    //     if (which == true) agent.enabled = true;
-    //     else agent.enabled = false;
-    // }
-
 }

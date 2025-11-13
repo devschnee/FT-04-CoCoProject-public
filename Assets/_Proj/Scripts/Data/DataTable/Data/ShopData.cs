@@ -13,6 +13,7 @@ public class ShopData
     public int shop_price;
     public int shop_stack;
     public ShopGroup shop_group;
+    public ShopCategory shop_item_category;
 
     [NonSerialized] public Sprite icon;
 
@@ -29,5 +30,9 @@ public enum ShopType
 }
 public enum ShopGroup
 {
-    animal, deco, costume, home, background, money, package
+    animal, deco, costume, home, background, goods, package
+}
+public enum ShopCategory
+{
+    all, plant, structure, furniture, prop, dog, pig, bird, rat, head, body, foot, tail, cap, coin, energy
 }

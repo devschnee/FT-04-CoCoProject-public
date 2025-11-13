@@ -34,6 +34,8 @@ public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPoin
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (isPressing) return;
+        // QuaterView.cs 카메라 움직임 블락 활성화
+        QuarterView.PushUIOrbitBlock();
         draggable?.OnLobbyBeginDrag(eventData.position);
         isDragging = true;
     }
@@ -52,6 +54,8 @@ public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPoin
         //transform.position = setPos;
         draggable?.OnLobbyEndDrag(eventData.position);
         isDragging = false;
+        // QuaterView.cs 카메라 움직임 블락 해체
+        QuarterView.PopUIOrbitBlock();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -76,7 +80,7 @@ public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPoin
     {
         while (isPressing)
         {
-            if (Time.time - pressTime >= 0.1f)
+            if (Time.time - pressTime >= 0.07f)
             {
                 longPressable?.OnLobbyPress();
                 isPressing = false;

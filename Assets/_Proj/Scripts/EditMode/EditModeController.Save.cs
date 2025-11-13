@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
+using Game.Inventory;
 using UnityEngine.Assertions.Must;
 
 /// <summary>
@@ -129,7 +131,6 @@ public partial class EditModeController
             RemoveNewlyCreatedSinceBaseline();
             RestoreBaseline();
             SaveAllDraggablePositions();
-            DecoInventoryRuntime.I?.SaveAll();
         }
 
         SetEditMode(false, keepTarget: false);
@@ -171,9 +172,6 @@ public partial class EditModeController
         // 2) 씬 Placeable 저장
         PlaceableStore.I?.SaveAllFromScene();
 
-        // 3) 인벤 수량 저장
-        DecoInventoryRuntime.I?.SaveAll();
-
         // 4) 상태 정리
         hasUnsavedChanges = false;
         CaptureBaseline();
@@ -213,7 +211,7 @@ public partial class EditModeController
             switch (tag.category)
             {
                 case PlaceableCategory.Deco:
-                    DecoInventoryRuntime.I?.Add(tag.id, 1); // 수량 환원
+                    InventoryService.I?.Add(PlaceableCategory.Deco, tag.id, 1); // 수량 환원
                     break;
 
                 case PlaceableCategory.Animal:
@@ -253,8 +251,8 @@ public partial class EditModeController
 
             Object.Destroy(tr.gameObject);
 
-            if (decoId != 0 && DecoInventoryRuntime.I != null)
-                DecoInventoryRuntime.I.Add(decoId, 1);
+            if (decoId != 0 && InventoryService.I != null)
+                InventoryService.I.Add(PlaceableCategory.Deco, decoId, 1);
         }
     }
 
@@ -437,14 +435,12 @@ public partial class EditModeController
             if (tr) baselineIds.Add(tr.GetInstanceID());
         }
 
-        // 3) 인벤토리 스냅샷
-        if (DecoInventoryRuntime.I != null)
+        // 3) 인벤토리 스냅샷 (InventoryService 기반)
+        invBaseline.Clear();
+        var all = GetAllDecoCountsFromService();
+        for (int i = 0; i < all.Count; i++)
         {
-            var all = DecoInventoryRuntime.I.GetAllCounts();
-            foreach (var pair in all)
-            {
-                invBaseline.Add(new InventorySnapshot { id = pair.id, count = pair.count });
-            }
+            invBaseline.Add(new InventorySnapshot { id = all[i].id, count = all[i].count });
         }
     }
 
@@ -489,13 +485,40 @@ public partial class EditModeController
 
         Physics.SyncTransforms();
 
-        // 2) 인벤토리 복구
-        if (DecoInventoryRuntime.I != null)
+        // 2) 인벤토리 복구 (InventoryService 기반)
+        RestoreDecoCountsFromSnapshot(invBaseline);
+    }
+    private List<(int id, int count)> GetAllDecoCountsFromService()
+    {
+        var result = new List<(int, int)>();
+
+        if (decoDB?.decoList == null)
+            return result;
+
+        foreach (var d in decoDB.decoList)
         {
-            DecoInventoryRuntime.I.RestoreFromSnapshot(invBaseline);
+            if (d == null) continue;
+
+            int count = 0;
+            if (InventoryService.I != null)
+                count = InventoryService.I.GetCount(PlaceableCategory.Deco, d.deco_id);
+
+            result.Add((d.deco_id, count));
         }
+
+        return result;
     }
 
+    private void RestoreDecoCountsFromSnapshot(List<InventorySnapshot> snap)
+    {
+        if (InventoryService.I == null || snap == null)
+            return;
+
+        foreach (var s in snap)
+        {
+            InventoryService.I.Set(PlaceableCategory.Deco, s.id, s.count);
+        }
+    }
     #endregion
 
 
@@ -540,14 +563,19 @@ public partial class EditModeController
         switch (cat)
         {
             case PlaceableCategory.Home:
-                go.AddComponent<NavMeshObstacle>();
-                var nO = go.GetComponent<NavMeshObstacle>();
-                nO.carving = true;
+                if (go.GetComponent<NavMeshModifier>() == null) go.AddComponent<NavMeshModifier>();
+                var nMM = go.AddComponent<NavMeshModifier>();
+                nMM.overrideArea = true;
+                nMM.area = 1; 
                 break;
             case PlaceableCategory.Animal:
-                go.AddComponent<AnimalBehaviour>();
+                if(go.GetComponent<AnimalBehaviour>() == null) go.AddComponent<AnimalBehaviour>();
                 break;
             case PlaceableCategory.Deco:
+                if (go.GetComponent<NavMeshModifier>() == null) go.AddComponent<NavMeshModifier>();
+                var nMM1 = go.AddComponent<NavMeshModifier>();
+                nMM1.overrideArea = true;
+                nMM1.area = 1; 
                 go.tag = "Decoration";
                 break;
         }

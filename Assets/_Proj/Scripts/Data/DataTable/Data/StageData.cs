@@ -16,6 +16,11 @@ public class StageData
     public string treasure_01_id;
     public string treasure_02_id;
     public string treasure_03_id;
+    public string dialogue_box_1;
+    public string dialogue_box_2;
+    public string dialogue_box_3;
+    public string dialogue_box_4;
+    public string dialogue_box_5;
 
     [NonSerialized] public Sprite icon;
 

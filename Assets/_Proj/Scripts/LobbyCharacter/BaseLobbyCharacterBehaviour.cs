@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,25 +15,25 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     [SerializeField] protected float angularSpeed = 120f;
     [SerializeField] protected float acceleration = 8f;
     [Header("Move")]
-    [SerializeField] protected float moveRadius = 8f; // 웨이포인트에서 범위
+    [SerializeField] protected float moveRadius = 8.5f; // Random.insideUnitSphere 범위
 
     protected NavMeshAgent agent;
     protected Animator anim;
     protected LobbyCharacterFSM fsm;
     protected NavMeshAgentControl charAgent; // Agent 파츠
     protected LobbyCharacterAnim charAnim; // 애니 파츠
-    protected Transform trans;
     public Camera MainCam { get; protected set; }
     public float YValue { get; protected set; } // 생성 시 y축 얻고 드래그 시 해당 값 고정
+    public bool isInitComplete = false;
 
 
-    protected Transform[] waypoints;
+    public List<LobbyWaypoint> Waypoints { get; set; }
 
     // Stuck
     public float StuckTimeA { get; set; }
     public float StuckTimeB { get; set; }
 
-    public bool IsEditMode { get; set; }
+    public bool IsLobbyEditMode { get; set; }
     public bool IsCMRoutineComplete { get; set; }
     public bool IsCARoutineComplete { get; set; }
     public bool IsCMInteractComplete { get; set; }
@@ -53,7 +54,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
 
     protected virtual void Awake()
     {
-        if (InLobbyManager.Instance.isEditMode)
+        if (LobbyCharacterManager.Instance.IsEditMode)
         {
             gameObject.layer = LayerMask.NameToLayer("Editable");
         }
@@ -63,7 +64,8 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         }
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius, trans);
+        Waypoints = LobbyCharacterManager.Instance.Waypoints;
+        charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius);
         charAnim = new LobbyCharacterAnim(anim);
         MainCam = Camera.main;
         fsm = new LobbyCharacterFSM(null);
@@ -71,26 +73,30 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         InitStates();
     }
 
-    protected virtual void OnEnable() {}
+    protected virtual void OnEnable()
+    {
+        if (fsm != null &&fsm.CurrentState == EditState) fsm.ChangeState(IdleState);
+    }
 
-    protected virtual void Start() {}
+    protected virtual void Start()
+    {
+        
+    }
 
     protected virtual void Update()
     {
-        charAnim.MoveAnim(charAgent.ValueOfMagnitude());
-        if (!agent.hasPath) Debug.Log($"{gameObject.name} No path");
+        if (charAnim != null) charAnim.MoveAnim(charAgent.ValueOfMagnitude());
+        if (!agent.hasPath) Debug.Log($"{gameObject.name} No path, State : {fsm.CurrentState}");
         else if (agent.pathStatus == NavMeshPathStatus.PathInvalid) Debug.Log($"{gameObject.name} Invalid path");
         else if (agent.isStopped) Debug.Log($"{gameObject.name} Agent is stopped");
         else if (agent.enabled == false) Debug.Log($"{gameObject.name} Agent doesn't enable");
         
-        // 뉴 fsm
-        fsm.UpdateState();
+        if (fsm != null) fsm.UpdateState();
         //charAgent.MoveValueChanged();
     }
 
-    protected void OnDisable() // 코코두기와 마스터는 리스트에서 지우면 안됩니다. 이 부분은 로비 틀이 제대로 만들어 지면 해결 예정
+    protected void OnDisable()
     {
-        // 씬전환 시에는 return 시키고 그것이 아니라면 초기화 해야함 // 구버전
         switch (gameObject.tag)
         {
             case "CocoDoogy":
@@ -100,16 +106,15 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
                 StopMoving();
                 break;
             case "Animal":
-                Unregister();
+                //Unregister();
                 StopMoving();
                 break;
             default: throw new Exception("누구세요?");
         }
     }
-
     protected void StopMoving()
     {
-        fsm.ChangeState(IdleState);
+        //fsm.ChangeState(IdleState);
         StopAllCoroutines();
         if (agent != null && agent.isActiveAndEnabled) agent.ResetPath();
     }
@@ -228,7 +233,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     }
     IEnumerator Pressing()
     {
-        yield return new WaitForSeconds(0.12f);
+        yield return new WaitForSeconds(0.06f);
         fsm.ChangeState(DragState);
         yield break;
     }
@@ -254,12 +259,12 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     /// </summary>
     public virtual void Register()
     {
-        if (InLobbyManager.Instance == null)
+        if (LobbyCharacterManager.Instance == null)
         {
             Debug.LogWarning("로비인터페이스 못 찾음");
             return;
         }
-        InLobbyManager.Instance.RegisterLobbyChar(this);
+        LobbyCharacterManager.Instance.RegisterLobbyChar(this);
         Debug.Log($"{this} 등록");
     }
 
@@ -268,13 +273,13 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     /// </summary>
     public virtual void Unregister()
     {
-        if (InLobbyManager.Instance == null)
+        if (LobbyCharacterManager.Instance == null)
         {
             Debug.LogWarning("로비인터페이스 못 찾음");
             return;
         }
         if (gameObject.CompareTag("CocoDoogy") || gameObject.CompareTag("Master")) return;
-        InLobbyManager.Instance.UnregisterLobbyChar(this);
+        LobbyCharacterManager.Instance.UnregisterLobbyChar(this);
         Debug.Log($"{this} 삭제");
     }
 
@@ -284,17 +289,32 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     public virtual void Init()
     {
         agent.height = 1f;
+        agent.angularSpeed = 160f;
         YValue = transform.position.y;
         Debug.Log($"{gameObject.name} yValue : {YValue}, agent height : {agent.height}");
-        IsEditMode = false;
+        IsLobbyEditMode = false;
         StuckTimeB = 2f;
     }
-
     /// <summary>
-    /// Init() 후 초기화 어찌보면 Start와 비슷?
+    /// Init() 후 초기화
     /// </summary>
     public virtual void PostInit()
     {
         fsm.ChangeState(IdleState);
+        isInitComplete = true;
+    }
+    /// <summary>
+    /// PostInit() 후 초기화
+    /// </summary>
+    public void LoadInit()
+    {
+        
+    }
+    /// <summary>
+    /// LoadInit 후 초기화
+    /// </summary>
+    public void FinalInit()
+    {
+        
     }
 }

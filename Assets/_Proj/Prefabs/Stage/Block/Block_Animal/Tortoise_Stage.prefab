@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 1800589233925095811}
   - component: {fileID: 238271625028018644}
   - component: {fileID: 3317076753629671520}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 9112481946114125978}
   - component: {fileID: 8087386869545261690}
   - component: {fileID: 2165980803070882155}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 5784885057463412553}
   - component: {fileID: 634382307215720689}
   - component: {fileID: 8784471049257827771}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 2985853400785558308}
   - component: {fileID: 8853897910640565337}
   - component: {fileID: 4033704092433210208}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 1456739548702183761}
   - component: {fileID: 6277212773593364339}
   - component: {fileID: 4759419111944780286}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 7930319231910958796}
   - component: {fileID: -5410010934899105090}
   - component: {fileID: 5029050073780208364}
-  m_Layer: 9
+  m_Layer: 17
   m_Name: Tortoise_Stage
   m_TagString: Turtle
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &7930319231910958796
 MonoBehaviour:
@@ -789,7 +789,7 @@ MonoBehaviour:
   moveSpeed: 5
   blockLayer:
     serializedVersion: 2
-    m_Bits: 896
+    m_Bits: 131968
   ridableLayer:
     serializedVersion: 2
     m_Bits: 264
@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 3154521044076373515}
   - component: {fileID: 4806236767791053485}
   - component: {fileID: 2426928545746734695}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: SkillIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +993,7 @@ GameObject:
   - component: {fileID: 8921058541802946902}
   - component: {fileID: 2748772140575961516}
   - component: {fileID: 3163628113709529242}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 1232452986670400858}
   - component: {fileID: 465565878676949428}
   - component: {fileID: 8584216845939550486}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1194,7 @@ GameObject:
   - component: {fileID: 7937106607484919917}
   - component: {fileID: 567559050674738549}
   - component: {fileID: 5215052411770965991}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1315,7 +1315,7 @@ GameObject:
   - component: {fileID: 1785492980276651421}
   - component: {fileID: 586655877372091444}
   - component: {fileID: 3030616020677855975}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,7 +1433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3040744795987380857}
-  m_Layer: 5
+  m_Layer: 17
   m_Name: BtnGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1518,55 +1518,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606228269694984071, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6606228269740665293, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6606228270965319747, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6606228271103034953, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6606228271158012760, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7460405599332622057, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7460405599332622065, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7460405599332622069, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7460405599332622071, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7460405599332622073, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7460405599332622075, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7460405599332622077, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7460405599332622079, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

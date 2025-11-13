@@ -8,7 +8,9 @@ public class SpeakerData
     public SpeakerId speaker_id;
     public string display_name;
     public string portrait_set_prefix;
-    [NonSerialized] public Sprite icon;
+
+    [NonSerialized] private Dictionary<string, Sprite> portraitCache = new();
+
 
     public enum SpeakerId
     {
@@ -16,10 +18,24 @@ public class SpeakerData
     }
 
 
-    public Sprite GetPortrait(IResourceLoader loader)
+     public Sprite GetPortrait(IResourceLoader loader, string portraitPath)
     {
-        if (icon == null && !string.IsNullOrEmpty(portrait_set_prefix))
-            icon = loader.LoadSprite(portrait_set_prefix);
-        return icon;
+        if (string.IsNullOrEmpty(portraitPath))
+            return null;
+
+        // 이미 로드된 캐시 있으면 바로 반환
+        if (portraitCache.TryGetValue(portraitPath, out var cached))
+            return cached;
+
+        // 없으면 Resources에서 새로 로드
+        var sprite = loader.LoadSprite(portraitPath);
+        if (sprite != null)
+        {
+            portraitCache[portraitPath] = sprite;
+            return sprite;
+        }
+
+        Debug.LogWarning($"[SpeakerData] Sprite not found: {portraitPath}");
+        return null;
     }
 }

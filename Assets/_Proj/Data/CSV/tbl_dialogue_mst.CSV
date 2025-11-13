@@ -1,7 +1,34 @@
 dialogue_id,seq,speaker_position,speaker_id,emotion,text,char_delay,sound_type,sound_key
-dialogue_1_1_1,0,left,coco,Neutral,"안선생님…!!!",0.04,sfx,coco_default
-dialogue_1_1_1,1,right,buffalo,Angry,"!!!!!!",0.04,sfx,buffalo_pop
-dialogue_1_1_1,2,left,coco,Sad,"농구가 하고 싶어요…",0.04,sfx,coco_default
-dialogue_1_1_2,0,left,coco,Neutral,"영감님의 영광의 시절은 언제였죠….? 국가대표 시절?",0.04,sfx_none,null
-dialogue_1_1_2,1,right,buffalo,Angry,"뭐라..?!",0.04,sfx,buffalo_pop
-dialogue_1_1_2,2,left,coco,Sad,"나는…. 난 지금입니다…….",0.04,sfx,coco_default
+dialogue_1_4_1,0,right,hog,Neutral,"야! 너 지금 어디가고 있어?",0.04,sfx,null
+dialogue_1_4_1,1,left,coco,Happy,"아, 작은 물소구나! 반가워! 나 지금 집으로 가는 길이야.",0.04,sfx,null
+dialogue_1_4_1,2,right,hog,Angry,"뭐? 내가 물소라고?! 너 멍청이야? 난 멧돼지야, 멧돼지!",0.04,sfx,null
+dialogue_1_4_1,3,left,coco,Surprised,"멧돼지…? 처음 들어보는 이름이야.",0.04,sfx_none,null
+dialogue_1_4_1,4,right,hog,Surprised,"하… 뭐 이런 애가 다 있냐~? 물소는 이미 멸종했을 텐데?",0.04,sfx,null
+dialogue_1_4_1,5,right,hog,Neutral,"그래서, 집으로 돌아가는 중이라고?",0.04,sfx,null
+dialogue_1_4_1,6,left,coco,Neutral,"주인이 먼저 집으로 돌아갔거든! 나도 빨리 가야 해!",0.04,sfx,null
+dialogue_1_4_1,7,right,hog,Neutral,"그래? 나랑 놀면 재밌을 텐데!",0.04,sfx,null
+dialogue_1_4_2,0,right,hog,Happy,"우하하! 봤지? 나 멋있지?!",0.04,sfx,null
+dialogue_1_4_2,1,left,coco,Happy,"응! 너 짱 멋있다!",0.04,sfx_none,null
+dialogue_1_4_2,2,right,hog,Happy,"너 되게 마음에 드네",0.04,sfx,null
+dialogue_1_5_1,0,right,hog,Neutral,"야 너 집에 안 가면 안돼? 나랑 계속 놀자!",0.04,sfx,null
+dialogue_1_5_1,1,left,coco,Neutral,"하지만 난 꼭 집으로 돌아가야 해!",0.04,sfx,null
+dialogue_1_5_1,2,right,hog,Surprised,"왜? 거기 뭐 대단한 거라도 있어?",0.04,sfx,null
+dialogue_1_5_1,3,left,coco,Happy,"응! 보물 같은 존재가 있거든. 날 기다리고 있어!",0.04,sfx_none,null
+dialogue_1_5_1,4,right,hog,Neutral,"아, 주인이라는 거 말이지? 요즘 개 친구들은 이제 주인 안 찾던데?",0.04,sfx,null
+dialogue_1_5_1,5,left,coco,Surprised,"응? 왜?",0.04,sfx,null
+dialogue_1_5_1,6,right,hog,Neutral,"그야… 주인이 자기들을 버렸다고 했어. 아니면 서로 잊었다나 뭐라나!",0.04,sfx,null
+dialogue_1_5_1,7,right,hog,Happy,"그래서 지금은 나랑 노는 게 더 즐겁대. 너도 나랑 같이 놀러 다니자.",0.04,sfx,null
+dialogue_1_5_1,8,left,coco,Surprised,"뭐? 아냐! 그건 네 친구들이 오해하는 거야. 걔네 주인이 버릴리 없어.",0.04,sfx,null
+dialogue_1_7_1,0,left,coco,Surprised,"어? 방금 자판기 불이 켜졌어!",0.04,sfx_none,null
+dialogue_1_7_1,1,right,hog,Neutral,"뭐? 잘못 본거야, 바보야!",0.04,sfx,null
+dialogue_1_7_1,2,left,coco,Surprised,"아냐, 분명히 봤어! 자판기 안에 아직 작은 불빛이 남아있어!",0.04,sfx,null
+dialogue_1_7_1,3,right,hog,Neutral,"야, 이 세상에 더 이상 불빛 같은 건 없어.",0.04,sfx,null
+dialogue_1_7_1,4,left,coco,Happy,"...내 생각에는 너가 더 바보야!",0.04,sfx,null
+dialogue_1_8_1,0,left,coco,Neutral,"멧돼지야! 나랑 놀고 싶어?",0.04,sfx_none,null
+dialogue_1_8_1,1,right,hog,Happy,"당연하지!",0.04,sfx,null
+dialogue_1_8_2,2,left,coco,Sad,"너한텐 친구가… 보물 같은 존재인가 봐. 하지만 나는 꼭 돌아가야 해.",0.04,sfx,null
+dialogue_1_8_2,3,right,hog,Neutral,"그 주인이라는 게, 너한텐 내 친구들만큼 소중한 거였어?",0.04,sfx,null
+dialogue_1_8_2,4,left,coco,Happy,"응! 세상에서 제일 소중해.",0.04,sfx,null
+dialogue_1_8_2,5,right,hog,Sad,"그럼 얼른 가야겠네. 소중한 걸 기다리게 해서는 안 되니까.",0.04,sfx,null
+dialogue_1_8_2,6,right,hog,Happy,"대신 종종 나랑도 놀아줘야 해. 너도 이제 내 친구니까!",0.04,sfx_none,null
+dialogue_1_8_1,7,left,coco,Happy,"응! 다음에 또 놀자! 그때 내가 간식도 가져올게!",0.04,sfx,null

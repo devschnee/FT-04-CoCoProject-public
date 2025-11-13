@@ -1,19 +1,34 @@
-shop_id,shop_name,shop_icon,shop_desc,shop_item,shop_type,shop_price,shop_stack,shop_group
-80001,당나귀 친구,Icons/Shop/icon_donkey,"무슨 생각을 하는지, 알 수 없는 당나귀 친구입니다.",90001,cap,1000,1,animal
-80002,닭 친구,Icons/Shop/icon_chick,"맛있어 보이는 치키…이 아닌, 닭 친구 입니다.",90002,cap,1000,1,animal
-80003,구조 신호판,Icons/Shop/icon_help_ground,"지워지지 않은 씁쓸한 흔적의 구조 신호판입니다.",90003,cap,2000,5,deco
-80004,모닥불,Icons/Shop/icon_firepit,"은은하게 타오르는 모닥불입니다.",90004,cap,2000,5,deco
-80005,카우보이 모자,Icons/Shop/icon_cowboy_hat,"코코두기가 가장 아끼는 보안관 모자입니다.",90005,cap,4000,1,costume
-80006,왕관,Icons/Shop/icon_crown_hat,"박물관에서 챙겨온 왕관입니다.",90006,cap,10000,1,costume
-80007,마법사 모자,Icons/Shop/icon_magician_hat,"착용하면 빗자루를 탈 수 있을 것 같은 마법사의 모자입니다.",90007,cap,15000,1,costume
-80008,행동력,Icons/Shop/icon_energy,"스테이지 진입시 소모되는 행동력입니다.",90008,coin,1000,10,goods
-80009,병뚜껑,Icons/Shop/icon_cap,"상점에서 사용 가능한 무료 재화입니다.",90009,coin,1000,10,goods
-80010,유료 코인,Icons/Shop/icon_coin,"상점에서 사용 가능한 유료 재화입니다.",90010,cash,15000,10,goods
-80011,기본 배경,Icons/Shop/icon_basic,"익숙하지만 정겨운 배경입니다.",90011,cap,1000,1,background
-80012,크리스마스 겨울 배경,Icons/Shop/icon_winter,"춥지만 가슴이 따뜻해지는, 아름다운 배경입니다.",90012,coin,2000,1,background
-80013,시원한 여름 배경,Icons/Shop/icon_summer,"왠지 바다다~!를 외쳐야만 할 것 같습니다.",90013,coin,2000,1,background
-80014,나무 패키지,Icons/Shop/icon_tree_package,"멋진 나무들을 한번에 구매할 수 있는 패키지입니다.",90014,cap,20000,3,package
-80015,식물 패키지,Icons/Shop/icon_plant_package,"아름다운 식물들을 한번에 구매할 수 있는 패키지입니다.",90015,cap,20000,3,package
-80016,캠핑카,Icons/Shop/icon_camping_car,"여행자나 탐험가의 아늑한 임시 거처입니다.",90016,cap,5000,1,home
-80017,초록지붕집,Icons/Shop/icon_green_roof_home,"대가족이 살았던 초록 지붕이 매력적인 집입니다.",90017,coin,2000,1,home
-80018,붉은 외벽집,Icons/Shop/icon_red_home,"상점을 개조한 붉은색 외관의 집입니다.",90018,coin,2000,1,home
+shop_id,shop_name,shop_icon,shop_desc,shop_item,shop_type,shop_price,shop_stack,shop_group,shop_item_category
+80001,당나귀 친구,Icons/Shop/icon_donkey,"무슨 생각을 하는지, 알 수 없는 당나귀 친구입니다.",90001,cap,1000,1,animal,pig
+80002,닭 친구,Icons/Shop/icon_chick,"맛있어 보이는 치키…이 아닌, 닭 친구 입니다.",90002,cap,1000,1,animal,bird
+80003,구조 신호판,Icons/Shop/icon_help_ground,"지워지지 않은 씁쓸한 흔적의 구조 신호판입니다.",90003,cap,2000,5,deco,structure
+80004,모닥불,Icons/Shop/icon_firepit,"은은하게 타오르는 모닥불입니다.",90004,cap,2000,5,deco,prop
+80005,카우보이 모자,Icons/Shop/icon_cowboy_hat,"코코두기가 가장 아끼는 보안관 모자입니다.",90005,cap,4000,1,costume,head
+80006,왕관,Icons/Shop/icon_crown_hat,"박물관에서 챙겨온 왕관입니다.",90006,cap,10022,1,costume,head
+80007,마법사 모자,Icons/Shop/icon_magician_hat,"착용하면 빗자루를 탈 수 있을 것 같은 마법사의 모자입니다.",90007,cap,15000,1,costume,head
+80008,행동력,Icons/Shop/icon_energy,"스테이지 진입시 소모되는 행동력입니다.",90008,coin,1000,10,goods,energy
+80009,병뚜껑,Icons/Shop/icon_cap,"상점에서 사용 가능한 무료 재화입니다.",90009,coin,1000,10,goods,cap
+80010,유료 코인,Icons/Shop/icon_coin,"상점에서 사용 가능한 유료 재화입니다.",90010,cash,15000,10,goods,coin
+80011,기본 배경,Icons/Shop/icon_basic,"익숙하지만 정겨운 배경입니다.",90011,cap,1000,1,background,all
+80012,크리스마스 겨울 배경,Icons/Shop/icon_winter,"춥지만 가슴이 따뜻해지는, 아름다운 배경입니다.",90012,coin,2000,1,background,all
+80013,시원한 여름 배경,Icons/Shop/icon_summer,"왠지 바다다~!를 외쳐야만 할 것 같습니다.",90013,coin,2000,1,background,all
+80014,나무 패키지,Icons/Shop/icon_tree_package,"멋진 나무들을 한번에 구매할 수 있는 패키지입니다.",90014,cap,20000,3,package,all
+80015,식물 패키지,Icons/Shop/icon_plant_package,"아름다운 식물들을 한번에 구매할 수 있는 패키지입니다.",90015,cap,20000,3,package,all
+80016,캠핑카,Icons/Shop/icon_camping_car,"여행자나 탐험가의 아늑한 임시 거처입니다.",90016,cap,5000,1,home,all
+80017,초록지붕집,Icons/Shop/icon_green_roof_home,"대가족이 살았던 초록 지붕이 매력적인 집입니다.",90017,coin,2000,1,home,all
+80018,붉은 외벽집,Icons/Shop/icon_red_home,"상점을 개조한 붉은색 외관의 집입니다.",90018,coin,2000,1,home,all
+80019,동물 테스트 1,Icons/Shop/icon_donkey,"코스튬 테스트 1",90001,cap,1000,1,animal,bird
+80020,데코 테스트 1,Icons/Shop/icon_help_ground,"데코 테스트1",90003,cap,2000,5,deco,furniture
+80021,코스튬 테스트 1,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 1",90005,cap,4000,1,costume,body
+80022,동물 테스트 2,Icons/Shop/icon_donkey,"코스튬 테스트 2",90001,cap,1000,1,animal,rat
+80023,데코 테스트 2,Icons/Shop/icon_help_ground,"데코 테스트2",90003,cap,2000,5,deco,prop
+80024,코스튬 테스트 2,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 2",90005,cap,4000,1,costume,body
+80025,동물 테스트 3,Icons/Shop/icon_donkey,"코스튬 테스트 3",90001,cap,1000,1,animal,pig
+80026,데코 테스트 3,Icons/Shop/icon_help_ground,"데코 테스트3",90003,cap,2000,5,deco,plant
+80027,코스튬 테스트 3,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 3",90005,cap,4000,1,costume,tail
+80028,동물 테스트 4,Icons/Shop/icon_donkey,"코스튬 테스트 4",90001,cap,1000,1,animal,pig
+80029,데코 테스트 4,Icons/Shop/icon_help_ground,"데코 테스트4",90003,cap,2000,5,deco,structure
+80030,코스튬 테스트 4,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 4",90005,cap,4000,1,costume,head
+80031,동물 테스트 5,Icons/Shop/icon_donkey,"코스튬 테스트 5",90001,cap,1000,1,animal,pig
+80032,데코 테스트 5,Icons/Shop/icon_help_ground,"데코 테스트5",90003,cap,2000,5,deco,structure
+80033,코스튬 테스트 5,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 5",90005,cap,4000,1,costume,head

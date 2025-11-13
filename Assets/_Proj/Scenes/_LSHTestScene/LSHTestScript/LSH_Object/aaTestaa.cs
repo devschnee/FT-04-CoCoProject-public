@@ -23,7 +23,6 @@ public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDragga
     protected LobbyCharacterFSM fsm;
     protected NavMeshAgentControl charAgent; // Agent 파츠
     protected LobbyCharacterAnim charAnim; // 애니 파츠
-    protected Transform trans;
     protected Camera mainCam;
     protected Vector3 originalPos; // 드래그 시 시작 포지션 저장
     protected bool isDragging = false;
@@ -62,7 +61,7 @@ public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDragga
         anim = GetComponent<Animator>();
         agent.height = 1f;
         // agent
-        charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius, trans);
+        charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius);
         // charAnim
         charAnim = new LobbyCharacterAnim(anim);
         mainCam = Camera.main;
@@ -361,12 +360,12 @@ public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDragga
     /// </summary>
     public void Register()
     {
-        if (InLobbyManager.Instance == null)
+        if (LobbyCharacterManager.Instance == null)
         {
             Debug.LogWarning("로비인터페이스 못 찾음");
             return;
         }
-        InLobbyManager.Instance.RegisterLobbyChar(this);
+        LobbyCharacterManager.Instance.RegisterLobbyChar(this);
         Debug.Log($"{this} 등록");
     }
     
@@ -375,13 +374,13 @@ public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDragga
     /// </summary>
     public void Unregister()
     {
-        if (InLobbyManager.Instance == null)
+        if (LobbyCharacterManager.Instance == null)
         {
             Debug.LogWarning("로비인터페이스 못 찾음");
             return;
         }
         if (gameObject.CompareTag("CocoDoogy") || gameObject.CompareTag("Master")) return;
-        InLobbyManager.Instance.UnregisterLobbyChar(this);
+        LobbyCharacterManager.Instance.UnregisterLobbyChar(this);
         Debug.Log($"{this} 삭제");
     }
 
@@ -391,6 +390,16 @@ public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDragga
     }
 
     public void PostInit()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void LoadInit()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void FinalInit()
     {
         throw new NotImplementedException();
     }

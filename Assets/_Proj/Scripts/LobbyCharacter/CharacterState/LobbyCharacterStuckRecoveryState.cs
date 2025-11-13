@@ -39,7 +39,10 @@ public class LCocoDoogyStuckState : LobbyCharacterBaseState
         agent.SetDestination(owner.transform.position + randomDir);
         
         owner.StuckTimeA = 0f;
-
+        if (agent.hasPath)
+        {
+            yield return null;
+        }
         fsm.ChangeState(owner.MoveState);
         yield break;
     }

@@ -324,7 +324,7 @@ MonoBehaviour:
     m_Bits: 66440
   groundMask:
     serializedVersion: 2
-    m_Bits: 896
+    m_Bits: 131968
   slopeMask:
     serializedVersion: 2
     m_Bits: 16384
@@ -334,7 +334,7 @@ MonoBehaviour:
   requiredHoldtime: 0.4
   allowFall: 1
   allowSlope: 1
-  immuneTime: 1
+  immuneTime: 3
   overrideLiftTiming: 1
   overrideRiseSec: 0.5
   overrideHangSec: 0.4
@@ -386,7 +386,7 @@ MonoBehaviour:
   - {fileID: 934634394025529345}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 17280
+    m_Bits: 148352
   rayOffsetY: 0.49
 --- !u!1001 &7516072457196715082
 PrefabInstance:

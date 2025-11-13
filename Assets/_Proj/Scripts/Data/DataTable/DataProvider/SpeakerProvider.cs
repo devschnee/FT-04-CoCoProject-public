@@ -17,9 +17,9 @@ public class SpeakerProvider : IDataProvider<SpeakerId, SpeakerData>
         return database.speakerList.Find(s => s.speaker_id == id);
     }
 
-    public Sprite GetPortrait(SpeakerId id)
+    public Sprite GetPortrait(SpeakerId id, string portrait_set_prefix)
     {
         var data = GetData(id);
-        return data?.GetPortrait(loader);
+        return data?.GetPortrait(loader, portrait_set_prefix);
     }
 }

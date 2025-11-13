@@ -581,7 +581,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6005184877276733892}
   m_LocalRotation: {x: 0.49999917, y: -0, z: -0, w: 0.8660259}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -908,18 +908,18 @@ MonoBehaviour:
   tileSize: 1
   blockingMask:
     serializedVersion: 2
-    m_Bits: 17040
+    m_Bits: 17024
   groundMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 131840
   slopeMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   throughLayer:
     serializedVersion: 2
-    m_Bits: 0
-  requiredHoldtime: 0.9
-  allowFall: 0
+    m_Bits: 2048
+  requiredHoldtime: 0.6
+  allowFall: 1
   allowSlope: 0
   immuneTime: 5
   overrideLiftTiming: 0

@@ -53,7 +53,7 @@ MonoBehaviour:
     shop_item_Package_id: 60003
     shop_item_count: 1
   - shop_item_id: 90014
-    shop_item_Package_id: 10000
+    shop_item_Package_id: 10022
     shop_item_count: 1
   - shop_item_id: 90014
     shop_item_Package_id: 10001

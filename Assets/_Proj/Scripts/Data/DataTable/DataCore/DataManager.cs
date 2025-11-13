@@ -71,8 +71,8 @@ public class DataManager : MonoBehaviour
 
         mainChar = new MainCharacterProvider(dataRegistry.mainCharDB, loader);
 
-        //Dialogue = new DialogueProvider(dataRegistry.dialogueDB, loader);
+        Dialogue = new DialogueProvider(dataRegistry.dialogueDB, loader);
 
-        //Speaker = new SpeakerProvider(dataRegistry.speakerDB, loader);
+        Speaker = new SpeakerProvider(dataRegistry.speakerDB, loader);
     }
 }

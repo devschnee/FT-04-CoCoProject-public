@@ -24,7 +24,7 @@ public static class StageParser
 
             var v = System.Text.RegularExpressions.Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
-            if (v.Length < 12)
+            if (v.Length < 17)
             {
                 Debug.LogWarning($"[StageParser] {i}행 데이터 부족 → 스킵");
                 continue;
@@ -55,6 +55,11 @@ public static class StageParser
                 treasure_01_id = v[9],
                 treasure_02_id = v[10],
                 treasure_03_id = v[11],
+                dialogue_box_1 = v[12],
+                dialogue_box_2 = v[13],
+                dialogue_box_3 = v[14],
+                dialogue_box_4 = v[15],
+                dialogue_box_5 = v[16],
             });
         }
 

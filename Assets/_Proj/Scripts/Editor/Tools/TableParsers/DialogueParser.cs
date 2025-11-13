@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using static SpeakerData;
 
 public class DialogueParser
 {
@@ -44,7 +45,7 @@ public class DialogueParser
             float.TryParse(v[6], out float delay);
 
             Enum.TryParse(v[2], true, out SpeakerPosition speakerPosition);
-            Enum.TryParse(v[3], true, out SpeakerType speakerType);
+            Enum.TryParse(v[3], true, out SpeakerId speakerId);
             Enum.TryParse(v[4], true, out EmotionType emotion);
             Enum.TryParse(v[7], true, out SoundType soundType);
 
@@ -56,7 +57,7 @@ public class DialogueParser
                 dialogue_id = id,
                 seq = seq,
                 speaker_position = speakerPosition,
-                speaker_id = speakerType,
+                speaker_id = speakerId,
                 emotion = emotion,
                 text = finalText,
                 char_delay = delay,

@@ -11,6 +11,8 @@ public class Profile_iconProvider : IDataProvider<int, Profile_iconData>
         loader = resLoader;
     }
 
+    public Profile_iconDatabase Value { get; internal set; }
+
     public Profile_iconData GetData(int id)
     {
         return database.profileList.Find(a => a.icon_id == id);

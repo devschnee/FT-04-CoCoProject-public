@@ -250,7 +250,7 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
             {
                 //HACK: 1106 - 강욱: 터틀이 이동하는 동안, 머리 위에 타고 있는 객체의 위치를 동기화
                 Quaternion targetRot = Quaternion.LookRotation(dir, Vector3.up);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 30f);
+                transform.rotation = targetRot;
                 if (ridableTrans != null && ridableTrans.Count > 0)
                 {
                     foreach(var trans in ridableTrans)
@@ -285,24 +285,42 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
         //아래 
         //ridableTrans.ForEach((x) => x.GetComponent<IRider>()?.OnStopRiding());
 
-        for (int i = 0; i < ridableTrans.Count; i++)
+        //for (int i = 0; i < ridableTrans.Count; i++)
+        //{
+        //    if (ridableTrans[i] == null) continue;
+
+        //    Vector3 finalPos = ridableTargetPos[i];
+
+        //    //// 부모가 아직 이 거북이(this.transform)인지 확인 후 해제
+        //    //if (ridableTrans[i].parent == transform)
+        //    //{
+        //    //    //TODO: 부모 해제(아님, 부모를 원래의 부모로 설정해야 함.)
+        //    //    ridableTrans[i].SetParent(null);
+
+        //        // 하차 후 타깃 위치 설정
+        //    ridableTrans[i].position = finalPos;
+        //    ridableTrans[i].GetComponent<IRider>()?.OnStopRiding();
+
+        //    //}
+        //    //else { }
+        //}
+        transform.position = endPos;
+
+        // KHJ - IRider를 갖고 있는 박스가 적층됐을 때(부모가 Turtle이 아님) 처리를 위해 변경
+        // Rider 해제 처리 (1층만 하차)
+        foreach (var trans in ridableTrans)
         {
-            if (ridableTrans[i] == null) continue;
+            if (trans == null) continue;
+            var rider = trans.GetComponent<IRider>();
+            if (rider == null) continue;
 
-            Vector3 finalPos = ridableTargetPos[i];
-
-            //// 부모가 아직 이 거북이(this.transform)인지 확인 후 해제
-            //if (ridableTrans[i].parent == transform)
-            //{
-            //    //TODO: 부모 해제(아님, 부모를 원래의 부모로 설정해야 함.)
-            //    ridableTrans[i].SetParent(null);
-
-                // 하차 후 타깃 위치 설정
-            ridableTrans[i].position = finalPos;
-            ridableTrans[i].GetComponent<IRider>()?.OnStopRiding();
-
-            //}
-            //else { }
+            // 부모가 터틀 자신일 때만 하차 처리
+            if (trans.parent == transform)
+            {
+                trans.GetComponent<IRider>()?.OnStopRiding();
+                trans.SetParent(null);
+            }
+            // 이미 다른 Pushable(즉, 2층 이상)의 자식이면 그대로 둠
         }
         yield return null;
 

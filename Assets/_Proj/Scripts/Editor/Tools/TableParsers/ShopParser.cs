@@ -22,9 +22,9 @@ public static class ShopParser
 
             if (string.IsNullOrWhiteSpace(line)) continue;
 
-            var v = line.Split(',');
+            var v = System.Text.RegularExpressions.Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
-            if (v.Length < 9)
+            if (v.Length < 10)
             {
                 Debug.LogWarning($"[ShopParser] {i}행 데이터 부족 → 스킵");
                 continue;
@@ -42,21 +42,26 @@ public static class ShopParser
 
             Enum.TryParse(v[5], true, out ShopType type);
             Enum.TryParse(v[8], true, out ShopGroup group);
+            Enum.TryParse(v[9], true, out ShopCategory category);
 
             string rawName = v[1];
             string finalName = TextParser.Resolve(rawName, textDict);
 
+            string rawDesc = v[3];
+            string finalDesc = TextParser.Resolve(rawDesc, textDict);
+
             db.shopDataList.Add(new ShopData
             {
                 shop_id = id,
-                shop_name = v[1],
+                shop_name = finalName,
                 shop_icon = v[2],
-                shop_desc = v[3],
+                shop_desc = finalDesc,
                 shop_item = item,
                 shop_type = type,
                 shop_price = price,
                 shop_stack = stack,
-                shop_group = group
+                shop_group = group,
+                shop_item_category = category
             });
         }
 

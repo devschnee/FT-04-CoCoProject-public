@@ -10,7 +10,6 @@ public class QuestData
     public QuestObject quest_object;
     public string quest_obj_desc;
     public int quest_value;
-    public int quest_reward_cap;
     public int quest_reward_item;
     public int quest_reward_item_count;
     public string quest_desc;

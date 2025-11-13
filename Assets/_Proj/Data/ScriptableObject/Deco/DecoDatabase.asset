@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DecoDatabase
   m_EditorClassIdentifier: 
   decoList:
-  - deco_id: 10000
+  - deco_id: 10022
     deco_name: "\uD070 \uB098\uBB34"
     deco_prefab: Prefabs/Deco/SM_Env_Tree_Large_01
     deco_icon: Icons/Deco/icon_deco_tree_large

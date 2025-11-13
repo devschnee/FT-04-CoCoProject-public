@@ -185,7 +185,7 @@ MonoBehaviour:
       linkedPos: {x: 2147483647, y: 2147483647, z: 2147483647}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 17280
+    m_Bits: 148352
   rayOffsetY: 0.49
   transparentColliders:
   - {fileID: 2573204931450063222}

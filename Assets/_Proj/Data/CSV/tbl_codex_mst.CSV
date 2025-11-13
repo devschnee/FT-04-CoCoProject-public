@@ -1,5 +1,5 @@
 codex_id,codex_type,item_id,codex_lore,codex_display,codex_icon,codex_name
-codex_deco_tree_large,deco,10000,"집을 우두커니 지키던 큰 나무입니다.\n전쟁 전에는 그늘 아래에서 아이들이 놀고, 가족들이 쉬곤 했습니다." ,Img/Codex_display/Deco/codex_display_tree_large,Icons/Deco/icon_deco_tree_large,[deco_tree_large]
+codex_deco_tree_large,deco,10022,"집을 우두커니 지키던 큰 나무입니다.\n전쟁 전에는 그늘 아래에서 아이들이 놀고, 가족들이 쉬곤 했습니다." ,Img/Codex_display/Deco/codex_display_tree_large,Icons/Deco/icon_deco_tree_large,[deco_tree_large]
 codex_deco_tree_lime,deco,10001,"한때 도시의 가로수였던 라임나무.\n이 나무는 누가 돌보지 않아도 열매를 맺었습니다.",Img/Codex_display/Deco/codex_display_tree_lime,Icons/Deco/icon_deco_tree_lime,[deco_tree_lime]
 codex_deco_tree_dead,deco,10002,"전쟁 이전, 사람들은 이 나무 아래서 피서를 즐기곤 했습니다.\n하지만 지금은 잿빛 하늘 아래, 매말라 있는 채로 그저 바람에 흔들릴 뿐입니다. 살아 있는 것처럼 보이지만, 이미 오래전에 죽은 듯합니다.",Img/Codex_display/Deco/codex_display_tree_dead,Icons/Deco/icon_deco_tree_dead,[deco_tree_dead]
 codex_deco_grass,deco,10003,"폐허 속에서도 살아남은 잡초입니다.\n물 한 방울 없어도 꿋꿋하게 버팁니다.",Img/Codex_display/Deco/codex_display_grass,Icons/Deco/icon_deco_grass,[deco_grass]

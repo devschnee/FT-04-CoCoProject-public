@@ -6,7 +6,8 @@ namespace Water
     {
         private Material waterMat;
         //[SerializeField] float flowTime = 10f;
-        [SerializeField] float flowInterval = 0.5f; // 오브젝트 밀어내는 간격
+        public float flowInterval; // 오브젝트 밀어내는 간격
+        // Boar에서 참조해서 flow water 속도보다 돌진 재사용 대기시간이 좀 더 있도록 조정해야 함.
 
         private IFlowStrategy flowStrategy = new FlowWaterStrategy();
 

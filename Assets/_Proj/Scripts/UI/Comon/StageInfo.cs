@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -66,10 +67,36 @@ public class StageInfo : MonoBehaviour
         var data = DataManager.Instance.Stage.GetData(id);
         var progress = PlayerProgressManager.Instance.GetStageProgress(id);
 
-        Debug.Log($"[StageInfo] {id} 보물 진행도: " +
-                  $"{progress.treasureCollected[0]}, {progress.treasureCollected[1]}, {progress.treasureCollected[2]}");
+        // 이전 스테이지 조건 확인 추가
+        var chapter = DataManager.Instance.Chapter.GetData(currentChapterId);
+        bool canEnter = true;
 
-        // 텍스트
+        if (chapter != null && chapter.chapter_staglist != null)
+        {
+            // 현재 스테이지의 인덱스 찾기
+            int stageIndex = Array.IndexOf(chapter.chapter_staglist, id);
+
+            if (stageIndex > 0) // 첫 번째 스테이지가 아니면 이전 스테이지 조건 검사
+            {
+                string prevStageId = chapter.chapter_staglist[stageIndex - 1];
+                var prevProgress = PlayerProgressManager.Instance.GetStageProgress(prevStageId);
+
+                // 이전 스테이지에서 보물 하나 이상 먹었는지 확인
+                canEnter = prevProgress.GetCollectedCount() > 0;
+            }
+            else if (stageIndex == 0)
+            {
+                // 첫 스테이지는 항상 입장 가능
+                canEnter = true;
+            }
+            else
+            {
+                // 못 찾았을 경우 잠금 처리
+                canEnter = false;
+            }
+        }
+
+        // UI 반영
         var text = stageObj.GetComponentInChildren<TextMeshProUGUI>();
         if (text) text.text = data.stage_name;
 
@@ -87,7 +114,8 @@ public class StageInfo : MonoBehaviour
         }
 
         // 클릭 이벤트
-        Button btn = stageObj.GetComponentInChildren<Button>();
+        var btn = stageObj.GetComponentInChildren<Button>();
+        btn.interactable = canEnter;
         btn.onClick.AddListener(() => ShowStageDetail(data.stage_id));
     }
 

@@ -55,15 +55,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: StopAgent
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 1
-        functionName: StartAgent
+        functionName: FromAToB
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0

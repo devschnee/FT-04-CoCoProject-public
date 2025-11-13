@@ -75,6 +75,7 @@ public partial class EditModeController : MonoBehaviour
     private float groundProbeDown = 6f;
     [SerializeField, Tooltip("무조건 Ground 위에서만 배치")]
     private bool requireGround = true;
+    [SerializeField] private DecoDatabase decoDB;
 
     private Transform homeCandidate;
     public static System.Action<bool> HomePreviewActiveChanged;

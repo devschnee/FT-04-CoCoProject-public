@@ -24,7 +24,7 @@ public static class QuestParser
 
             var v = line.Split(',');
 
-            if (v.Length < 10)
+            if (v.Length < 9)
             {
                 Debug.LogWarning($"[QuestParser] {i}행 데이터 부족 → 스킵");
                 continue;
@@ -37,9 +37,8 @@ public static class QuestParser
             }
 
             int.TryParse(v[5], out int value);
-            int.TryParse(v[6], out int reward_cap);
-            int.TryParse(v[7], out int reward_item);
-            int.TryParse(v[8], out int reward_count);
+            int.TryParse(v[6], out int reward_item);
+            int.TryParse(v[7], out int reward_count);
 
             Enum.TryParse(v[2], true, out QuestType category);
             Enum.TryParse(v[3], true, out QuestObject obj);
@@ -55,10 +54,9 @@ public static class QuestParser
                 quest_object = obj,
                 quest_obj_desc = v[4],
                 quest_value = value,
-                quest_reward_cap = reward_cap,
                 quest_reward_item = reward_item,
                 quest_reward_item_count = reward_count,
-                quest_desc = v[9]
+                quest_desc = v[8]
             });
         }
 

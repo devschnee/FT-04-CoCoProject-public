@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     protected override void InitStates()
     {
         IdleState = new LCocoDoogyIdleState(this, fsm);
-        MoveState = new LCocoDoogyMoveState(this, fsm, ref waypoints, ref currentWaypointIndex);
+        MoveState = new LCocoDoogyMoveState(this, fsm, charAgent, Waypoints);
         InteractState = new LCocoDoogyInteractState(this, fsm);
         ClickSate = new LCocoDoogyClickState(this, fsm, charAnim);
         DragState = new LCocoDoogyDragState(this, fsm);
@@ -137,9 +138,9 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
         float minDistance = float.MaxValue;
         int closestIndex = 0;
 
-        for (int i = 0; i < InLobbyManager.Instance.cocoWaypoints.Length; i++)
+        for (int i = 0; i < Waypoints.Count; i++)
         {
-            float distance = Vector3.Distance(transform.position, InLobbyManager.Instance.cocoWaypoints[i].position);
+            float distance = Vector3.Distance(transform.position, Waypoints[i].transform.position);
             if (distance < minDistance)
             {
                 minDistance = distance;
@@ -201,7 +202,7 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     public override void Init()
     {
         base.Init();
-        agent.avoidancePriority = 60;
+        agent.avoidancePriority = 99;
     }
     public override void PostInit()
     {

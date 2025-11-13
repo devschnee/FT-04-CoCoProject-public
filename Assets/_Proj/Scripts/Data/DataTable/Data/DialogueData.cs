@@ -1,4 +1,5 @@
 ﻿using System;
+using static SpeakerData;
 
 [Serializable]
 public class DialogueData
@@ -6,7 +7,7 @@ public class DialogueData
     public string dialogue_id;
     public int seq;
     public SpeakerPosition speaker_position;
-    public SpeakerType speaker_id;
+    public SpeakerId speaker_id;
     public EmotionType emotion;
     public string text;
     public float char_delay;
@@ -16,12 +17,7 @@ public class DialogueData
 
 public enum SpeakerPosition
 {
-    left, right
-}
-
-public enum SpeakerType
-{
-    coco, hog, tortoise, buffale, android_owner
+    Left, Right
 }
 
 public enum EmotionType

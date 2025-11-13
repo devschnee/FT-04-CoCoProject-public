@@ -1,5 +1,5 @@
 deco_id,deco_name,deco_prefab,deco_icon,deco_type,deco_tag,deco_acquire,deco_stack,deco_desc
-10000,[deco_tree_large],Prefabs/Deco/SM_Env_Tree_Large_01,Icons/Deco/icon_deco_tree_large,plant,tree,shop,99,"풍성한 잎이 돋아난 [deco_tree_large]입니다."
+10022,[deco_tree_large],Prefabs/Deco/SM_Env_Tree_Large_01,Icons/Deco/icon_deco_tree_large,plant,tree,shop,99,"풍성한 잎이 돋아난 [deco_tree_large]입니다."
 10001,[deco_tree_lime],Prefabs/Deco/tree-lime,Icons/Deco/icon_deco_tree_lime,plant,tree,quest,99,"상큼한 향을 풍기는 [deco_tree_lime]입니다."
 10002,[deco_tree_dead],Prefabs/Deco/SM_Env_Tree_Dead_04,Icons/Deco/icon_deco_tree_dead,plant,tree,quest,99,"메말라버린 [deco_tree_dead]입니다"
 10003,[deco_grass],Prefabs/Deco/SM_Env_Fern_01,Icons/Deco/icon_deco_grass,plant,tree,shop,99,"바람에 흔들리는 [deco_grass]입니다."

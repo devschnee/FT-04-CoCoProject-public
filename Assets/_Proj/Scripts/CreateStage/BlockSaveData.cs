@@ -5,7 +5,7 @@ using UnityEngine;
 public enum BlockType
 {
     // 일반블록, 나무상자, 철구, 흐르는물, 안흐르는물, 스위치, 기계식문, 충격감지탑, 멧돼지, 거북이, 버팔로, (경사로), 감시터렛, 시작점, 골인지점, 보물(보물의 경우 1,2,3으로 id 지정)
-    Normal, Slope, Water, FlowWater, Box, Switch, Turret, Tower, Door, Ironball, Hog, Tortoise, Buffalo, Start, End, Treasure
+    Normal, Slope, Water, FlowWater, Box, Switch, Turret, Tower, Door, Ironball, Hog, Tortoise, Buffalo, Start, End, Treasure, Dialogue
 }
 
 [Serializable]

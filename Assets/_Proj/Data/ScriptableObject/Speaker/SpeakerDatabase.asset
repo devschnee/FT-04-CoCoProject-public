@@ -15,31 +15,121 @@ MonoBehaviour:
   speakerList:
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: coco_Neutral
+    portrait_set_prefix: Talk_portrait/coco_Neutral_Left
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: coco_Happy
+    portrait_set_prefix: Talk_portrait/coco_Neutral_Right
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: coco_Sad
+    portrait_set_prefix: Talk_portrait/coco_Happy_Left
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: coco_Angry
+    portrait_set_prefix: Talk_portrait/coco_Happy_Right
   - speaker_id: 0
     display_name: "\uCF54\uCF54\uB450\uAE30"
-    portrait_set_prefix: coco_Surprised
+    portrait_set_prefix: Talk_portrait/coco_Sad_Left
+  - speaker_id: 0
+    display_name: "\uCF54\uCF54\uB450\uAE30"
+    portrait_set_prefix: Talk_portrait/coco_Sad_Right
+  - speaker_id: 0
+    display_name: "\uCF54\uCF54\uB450\uAE30"
+    portrait_set_prefix: Talk_portrait/coco_Angry_Left
+  - speaker_id: 0
+    display_name: "\uCF54\uCF54\uB450\uAE30"
+    portrait_set_prefix: Talk_portrait/coco_Angry_Right
+  - speaker_id: 0
+    display_name: "\uCF54\uCF54\uB450\uAE30"
+    portrait_set_prefix: Talk_portrait/coco_Surprised_Left
+  - speaker_id: 0
+    display_name: "\uCF54\uCF54\uB450\uAE30"
+    portrait_set_prefix: Talk_portrait/coco_Surprised_Right
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Neutral_Left
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Neutral_Right
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Happy_Left
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Happy_Right
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Sad_Left
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Sad_Right
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Angry_Left
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Angry_Right
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Surprised_Left
+  - speaker_id: 1
+    display_name: "\uBA67\uB3FC\uC9C0"
+    portrait_set_prefix: Talk_portrait/hog_Surprised_Right
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Neutral_Left
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Neutral_Right
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Happy_Left
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Happy_Right
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Sad_Left
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Sad_Right
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Angry_Left
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Angry_Right
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Surprised_Left
+  - speaker_id: 2
+    display_name: "\uAC70\uBD81\uC774"
+    portrait_set_prefix: Talk_portrait/tortoise_Surprised_Right
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Neutral
+    portrait_set_prefix: Talk_portrait/buffalo_Neutral_Left
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Happy
+    portrait_set_prefix: Talk_portrait/buffalo_Neutral_Right
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Sad
+    portrait_set_prefix: Talk_portrait/buffalo_Happy_Left
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Angry
+    portrait_set_prefix: Talk_portrait/buffalo_Happy_Right
   - speaker_id: 3
     display_name: "\uBC84\uD314\uB85C"
-    portrait_set_prefix: buffalo_Surprised
+    portrait_set_prefix: Talk_portrait/buffalo_Sad_Left
+  - speaker_id: 3
+    display_name: "\uBC84\uD314\uB85C"
+    portrait_set_prefix: Talk_portrait/buffalo_Sad_Right
+  - speaker_id: 3
+    display_name: "\uBC84\uD314\uB85C"
+    portrait_set_prefix: Talk_portrait/buffalo_Angry_Left
+  - speaker_id: 3
+    display_name: "\uBC84\uD314\uB85C"
+    portrait_set_prefix: Talk_portrait/buffalo_Angry_Right
+  - speaker_id: 3
+    display_name: "\uBC84\uD314\uB85C"
+    portrait_set_prefix: Talk_portrait/buffalo_Surprised_Left
+  - speaker_id: 3
+    display_name: "\uBC84\uD314\uB85C"
+    portrait_set_prefix: Talk_portrait/buffalo_Surprised_Right

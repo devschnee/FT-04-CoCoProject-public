@@ -11,6 +11,8 @@ public class ArtifactProvider : IDataProvider<int, ArtifactData>
         loader = resloader;
     }
 
+    public ArtifactDatabase Value { get; internal set; }
+
     public ArtifactData GetData(int id)
     {
         return database.artifactList.Find(a => a.artifact_id == id);

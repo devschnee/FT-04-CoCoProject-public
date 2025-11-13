@@ -27,6 +27,7 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour
     {
         base.OnEnable();
         TargetDeco = null;
+        agent.avoidancePriority = Random.Range(70, 90);
     }
     protected override void Start()
     {
@@ -83,7 +84,6 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour
     public override void Init()
     {
         base.Init();
-        agent.avoidancePriority = Random.Range(30, 50);
         WaitU = new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= 0.5f);
     }
     public override void PostInit()

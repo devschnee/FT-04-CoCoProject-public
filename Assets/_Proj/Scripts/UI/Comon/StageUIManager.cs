@@ -22,6 +22,7 @@ public class StageUIManager : MonoBehaviour
     public GameObject OptionPanel;
     public GameObject ResultPanel;
     public GameObject TreasurePanel;
+    public GameObject DialoguePanel;
     public GameObject Overlay;
 
     [Header("ResultPanel")]
@@ -40,6 +41,13 @@ public class StageUIManager : MonoBehaviour
     public Image CocoDoogyImage;
     public TextMeshProUGUI CocoDoogyDesc;
 
+    [Header("DialoguePanel")]
+    public Image DialogueSpeakerLeft;
+    public Image DialogueSpeakerRight;
+    public TextMeshProUGUI DialogueNameText;
+    public TextMeshProUGUI DialogueText;
+
+    [Header("TreasureCollectedSprite")]
     public Sprite collectedSprite; // 획득된 보물 아이콘
     public Sprite notCollectedSprite; // 미획득 상태 아이콘
     public Action OnTreasureConfirm;

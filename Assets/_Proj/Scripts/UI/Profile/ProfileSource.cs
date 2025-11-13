@@ -1,79 +1,119 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ProfileSource", menuName = "GameData/Profile Source")]
 public class ProfileSource : MonoBehaviour, IProfileSource
 {
-    [Header("Database")]
-    public AnimalDatabase animalDatabase;
-    public DecoDatabase decoDatabase;
-    public CostumeDatabase costumeDatabase;
-    public ArtifactDatabase artifactDatabase;
-    public Profile_iconDatabase profileIconDatabase;
+    private AnimalDatabase AnimalDB => DataManager.Instance.Animal.Value;
+    private DecoDatabase DecoDB => DataManager.Instance.Deco.Value;
+    private CostumeDatabase CostumeDB => DataManager.Instance.Costume.Value;
+    private ArtifactDatabase ArtifactDB => DataManager.Instance.Artifact.Value;
+    private Profile_iconDatabase IconDB => DataManager.Instance.Profile.Value;
 
-    private readonly IResourceLoader loader = new ResourcesLoader();
+    private readonly IResourceLoader _loader = new ResourcesLoader();
 
     public IReadOnlyList<ProfileEntry> GetAll()
     {
         var list = new List<ProfileEntry>();
-        AppendEntries(list, "동물친구", animalDatabase?.animalList);
-        AppendEntries(list, "조경품", decoDatabase?.decoList);
-        AppendEntries(list, "치장품", costumeDatabase?.costumeList);
-        AppendEntries(list, "유물", artifactDatabase?.artifactList);
-        AppendEntries(list, "프로필 선택", profileIconDatabase?.profileList);
+        list.AddRange(GetByType(ProfileType.animal));
+        list.AddRange(GetByType(ProfileType.deco));
+        list.AddRange(GetByType(ProfileType.costume));
+        list.AddRange(GetByType(ProfileType.artifact));
+        list.AddRange(GetByType(ProfileType.icon));
         return list;
     }
 
-    public IReadOnlyList<ProfileEntry> GetByCategory(string category)
+    public IReadOnlyList<ProfileEntry> GetByType(ProfileType type)
     {
-        var list = new List<ProfileEntry>();
+        var result = new List<ProfileEntry>();
 
-        switch (category)
+        switch (type)
         {
-            case "동물친구":
-                AppendEntries(list, "동물친구", animalDatabase?.animalList);
+            case ProfileType.animal:
+                if (AnimalDB != null)
+                {
+                    foreach (var d in AnimalDB)
+                    {
+                        result.Add(new ProfileEntry
+                        {
+                            Id = d.animal_id,
+                            Name = d.animal_name,
+                            Icon = d.GetIcon(_loader),
+                            Type = ProfileType.animal,
+                            IsUnlocked = true
+                        });
+                    }
+                }
                 break;
-            case "조경품":
-                AppendEntries(list, "조경품", decoDatabase?.decoList);
+
+            case ProfileType.deco:
+                if (DecoDB != null)
+                {
+                    foreach (var d in DecoDB)
+                    {
+                        result.Add(new ProfileEntry
+                        {
+                            Id = d.deco_id,
+                            Name = d.deco_name,
+                            Icon = d.GetIcon(_loader),
+                            Type = ProfileType.deco,
+                            IsUnlocked = true
+                        });
+                    }
+                }
                 break;
-            case "치장품":
-                AppendEntries(list, "치장품", costumeDatabase?.costumeList);
+
+            case ProfileType.costume:
+                if (CostumeDB != null)
+                {
+                    foreach (var d in CostumeDB)
+                    {
+                        result.Add(new ProfileEntry
+                        {
+                            Id = d.costume_id,
+                            Name = d.costume_name,
+                            Icon = d.GetIcon(_loader),
+                            Type = ProfileType.costume,
+                            IsUnlocked = true
+                        });
+                    }
+                }
                 break;
-            case "유물":
-                AppendEntries(list, "유물", artifactDatabase?.artifactList);
+
+            case ProfileType.artifact:
+                if (ArtifactDB != null)
+                {
+                    foreach (var d in ArtifactDB)
+                    {
+                        result.Add(new ProfileEntry
+                        {
+                            Id = d.artifact_id,
+                            Name = d.artifact_name,
+                            Icon = d.GetIcon(_loader),
+                            Type = ProfileType.artifact,
+                            IsUnlocked = true
+                        });
+                    }
+                }
                 break;
-            case "프로필 선택":
-                AppendEntries(list, "프로필 선택", profileIconDatabase?.profileList);
+
+            case ProfileType.icon:
+                if (IconDB != null)
+                {
+                    foreach (var d in IconDB)
+                    {
+                        result.Add(new ProfileEntry
+                        {
+                            Id = d.icon_id,
+                            Name = d.icon_name,
+                            Icon = d.GetIcon(_loader),
+                            Type = ProfileType.icon,
+                            IsUnlocked = true
+                        });
+                    }
+                }
                 break;
         }
 
-        return list;
-    }
-
-    private void AppendEntries<T>(List<ProfileEntry> list, string category, List<T> dataList)
-    {
-        if (dataList == null) return;
-
-        foreach (var item in dataList)
-        {
-            switch (item)
-            {
-                case AnimalData animal:
-                    list.Add(new ProfileEntry(animal.animal_id, animal.GetIcon(loader), category));
-                    break;
-                case DecoData deco:
-                    list.Add(new ProfileEntry(deco.deco_id, deco.GetIcon(loader), category));
-                    break;
-                case CostumeData costume:
-                    list.Add(new ProfileEntry(costume.costume_id, costume.GetIcon(loader), category));
-                    break;
-                case ArtifactData artifact:
-                    list.Add(new ProfileEntry(artifact.artifact_id, artifact.GetIcon(loader), category));
-                    break;
-                case Profile_iconData profile:
-                    list.Add(new ProfileEntry(profile.icon_id, profile.GetIcon(loader), category));
-                    break;
-            }
-        }
+        return result;
     }
 }
