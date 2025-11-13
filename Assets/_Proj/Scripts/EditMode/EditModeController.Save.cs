@@ -172,6 +172,9 @@ public partial class EditModeController
         // 2) 씬 Placeable 저장
         PlaceableStore.I?.SaveAllFromScene();
 
+        // 3) 로비 배치 Firebase로도 동기화 (나중에 구현)
+        TrySaveLobbyToFirebase();
+
         // 4) 상태 정리
         hasUnsavedChanges = false;
         CaptureBaseline();
@@ -598,4 +601,40 @@ public partial class EditModeController
     }
 
     #endregion
+
+    #region ===== Firebase Sync (Lobby Layout) =====
+
+    /// <summary>
+    /// 편집모드에서 저장 버튼 눌렀을 때
+    /// - 현재 씬 배치 → UserData.Local.lobby 로 반영
+    /// - lobby.Save() 로 Firebase 업로드 (실제 구현은 나중에)
+    /// </summary>
+    private void TrySaveLobbyToFirebase()
+    {
+        if (PlaceableStore.I == null)
+        {
+            Debug.LogWarning("[EditModeController] PlaceableStore 없음 → Firebase 저장 스킵");
+            return;
+        }
+        if (UserData.Local == null || UserData.Local.lobby == null)
+        {
+            Debug.LogWarning("[EditModeController] UserData.Local 또는 lobby 없음 → Firebase 저장 스킵");
+            return;
+        }
+
+        // 1) 씬에서 Placed 리스트 뽑기
+        var placed = PlaceableStore.I.CollectPlacedFromScene();
+
+        // 2) Lobby.props에 반영
+        UserData.Local.lobby.PlacedListToUserDataLobby(placed);
+
+        // 3) Firebase 업로드
+        UserData.Local.lobby.Save();   // ← 확장 메서드 (FirebaseManager.Instance.UpdateLocalUserDataCategory 호출)
+
+        Debug.Log($"[EditModeController] Firebase Lobby 저장 시도. placed={placed.Count}");
+    }
+
+
+    #endregion
+
 }

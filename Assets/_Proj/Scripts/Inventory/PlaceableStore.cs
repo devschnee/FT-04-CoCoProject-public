@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 /// - PlayerPrefs에 JSON으로 저장/로드
 /// - 세이브 데이터가 없으면 기본 집(defaultHomeId) 자동 생성
 /// - 집이 여러 채면 1채만 남기고 정리
+/// - (확장) UserData.Lobby(Firebase) 데이터가 있으면 그걸 우선 사용
 /// </summary>
 public class PlaceableStore : MonoBehaviour
 {
@@ -76,10 +77,13 @@ public class PlaceableStore : MonoBehaviour
 
     #endregion
 
-    #region === Public API ===
+    #region === Public API : 저장 ===
 
-    /// <summary>현재 씬의 PlaceableTag를 모두 스캔해 위치/회전을 저장</summary>
-    public void SaveAllFromScene()
+    /// <summary>
+    /// 현재 씬에 배치된 PlaceableTag를 읽어서 Placed 리스트로 반환.
+    /// - SaveAllFromScene(), Firebase 저장 둘 다 여기 공용 사용.
+    /// </summary>
+    public List<Placed> CollectPlacedFromScene()
     {
 #if UNITY_2022_2_OR_NEWER
         var tags = FindObjectsByType<PlaceableTag>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -93,7 +97,7 @@ public class PlaceableStore : MonoBehaviour
             var tag = tags[i];
             if (!tag || !tag.gameObject.activeInHierarchy) continue;
 
-            // 임시 배치는 저장 제외 (InventoryTempMarker가 붙어 있으면 스킵)
+            // 인벤에서 꺼냈지만 아직 확정 안 된 임시물은 저장하지 않음
             if (tag.GetComponent<InventoryTempMarker>()) continue;
 
             list.Add(new Placed
@@ -105,92 +109,21 @@ public class PlaceableStore : MonoBehaviour
             });
         }
 
+        return list;
+    }
+
+    /// <summary>
+    /// 현재 씬의 PlaceableTag를 모두 스캔해 위치/회전을 저장 (PlayerPrefs용)
+    /// </summary>
+    public void SaveAllFromScene()
+    {
+        var list = CollectPlacedFromScene();
+
         string json = JsonUtility.ToJson(new Wrapper { items = list }, false);
         PlayerPrefs.SetString(PrefKeyForCurrentScene, json);
         PlayerPrefs.Save();
 
         Debug.Log($"[PlaceableStore] Saved {list.Count} placed objects. (sceneKey={PrefKeyForCurrentScene})");
-    }
-
-    /// <summary>저장 데이터를 읽어 모두 스폰 + 기본 집 보장 + 중복 집 정리</summary>
-    public void LoadAndSpawnAll()
-    {
-        string key = PrefKeyForCurrentScene;
-
-        if (!PlayerPrefs.HasKey(key))
-        {
-            // 저장이 없으면 기본 집을 바로 생성
-            EnsureSingleHomeExists();
-            return;
-        }
-
-        // LSH 추가: NavMesh 재빌드
-        GameObject gObj = GameObject.Find("IsLandPlane");
-        NavMeshSurface nMS = gObj.GetComponent<NavMeshSurface>();
-        nMS.BuildNavMesh();
-
-        string json = PlayerPrefs.GetString(key, "");
-        if (!string.IsNullOrEmpty(json))
-        {
-            var w = JsonUtility.FromJson<Wrapper>(json);
-            if (w?.items != null && w.items.Count > 0)
-            {
-                int ok = 0, fail = 0;
-
-                foreach (var p in w.items)
-                {
-                    if (TryGetPrefabAndName(p.cat, p.id, out var prefab, out var name))
-                    {
-                        var go = Instantiate(prefab, p.pos, p.rot);
-                        go.name = name;
-
-                        var tag = go.GetComponent<PlaceableTag>() ?? go.AddComponent<PlaceableTag>();
-                        tag.category = p.cat;
-                        tag.id = p.id;
-
-                        if (!go.GetComponent<Draggable>()) go.AddComponent<Draggable>();
-
-                        // LSH 추가: 카테고리별 컴포넌트 세팅
-                        switch (p.cat)
-                        {
-                            case PlaceableCategory.Home:
-                                if (go.GetComponent<NavMeshModifier>() == null) go.AddComponent<NavMeshModifier>();
-                                var nMM = go.GetComponent<NavMeshModifier>();
-                                nMM.overrideArea = true;
-                                nMM.area = 1; 
-                                break;
-                            case PlaceableCategory.Animal:
-                                if (go.GetComponent<AnimalBehaviour>() == null) go.AddComponent<AnimalBehaviour>();
-                                go.tag = "Animal";
-                                break;
-                            case PlaceableCategory.Deco:
-                                if (go.GetComponent<NavMeshModifier>() == null) go.AddComponent<NavMeshModifier>();
-                                var nMM1 = go.GetComponent<NavMeshModifier>();
-                                nMM1.overrideArea = true;
-                                nMM1.area = 1; 
-                                go.tag = "Decoration";
-                                break;
-                            default:
-                                break;
-                        }
-
-                        ok++;
-                    }
-                    else
-                    {
-                        fail++;
-                    }
-                }
-
-                Debug.Log($"[PlaceableStore] Restored {ok} objects (failed {fail}). (sceneKey={key})");
-            }
-        }
-
-        // 복원 이후에도 최소 1채의 집을 보장
-        EnsureSingleHomeExists();
-
-        // 혹시 중복된 집이 있으면 1채만 남김
-        CullExtraHomes();
     }
 
     /// <summary>현재 씬 키의 저장 데이터를 삭제</summary>
@@ -203,6 +136,173 @@ public class PlaceableStore : MonoBehaviour
             PlayerPrefs.Save();
             Debug.Log($"[PlaceableStore] Cleared saved data. (sceneKey={key})");
         }
+    }
+
+    #endregion
+
+    #region === Public API : 복원 진입점 ===
+
+    /// <summary>
+    /// 저장 데이터를 읽어 모두 스폰 + 기본 집 보장 + 중복 집 정리
+    /// - 1순위: UserData.Local.lobby (Firebase) 데이터가 있으면 그걸 사용
+    /// - 2순위: 없으면 기존 PlayerPrefs JSON 사용
+    /// </summary>
+    public void LoadAndSpawnAll()
+    {
+        // 0) Firebase Lobby 데이터가 있으면 그것부터 시도
+        if (TryLoadFromFirebaseLobby())
+        {
+            Debug.Log("[PlaceableStore] Firebase Lobby 데이터로 복원 완료");
+            return;
+        }
+
+        // 1) 없으면 기존 PlayerPrefs 경로 사용
+        string key = PrefKeyForCurrentScene;
+
+        if (!PlayerPrefs.HasKey(key))
+        {
+            // 저장이 없으면 기본 집을 바로 생성
+            EnsureSingleHomeExists();
+            return;
+        }
+
+        // NavMesh 재빌드
+        RebuildNavMeshIfExists();
+
+        string json = PlayerPrefs.GetString(key, "");
+        if (!string.IsNullOrEmpty(json))
+        {
+            var w = JsonUtility.FromJson<Wrapper>(json);
+            if (w?.items != null && w.items.Count > 0)
+            {
+                SpawnFromPlacedList(w.items);
+            }
+        }
+
+        // 복원 이후에도 최소 1채의 집을 보장
+        EnsureSingleHomeExists();
+
+        // 혹시 중복된 집이 있으면 1채만 남김
+        CullExtraHomes();
+    }
+
+    #endregion
+
+    #region === Internals: Firebase Lobby 경로 ===
+
+    /// <summary>
+    /// UserData.Local.lobby(props) 기반으로 로비 배치 복원 시도.
+    /// 성공하면 true, Firebase 데이터가 없거나 비어 있으면 false.
+    /// </summary>
+    private bool TryLoadFromFirebaseLobby()
+    {
+        if (UserData.Local == null || UserData.Local.lobby == null)
+            return false;
+
+        var lobby = UserData.Local.lobby;
+
+        // props 자체가 없거나 비어 있으면 Firebase 쪽에 배치 데이터 없는 것으로 간주
+        if (lobby.props == null || lobby.props.Count == 0)
+            return false;
+
+        // Lobby.props → Placed 리스트로 변환
+        var placedFromServer = lobby.ToPlacedList();
+        if (placedFromServer == null || placedFromServer.Count == 0)
+        {
+            // props는 있었지만 실제 배치가 0개인 경우: 집만 기본 생성
+            EnsureSingleHomeExists();
+            CullExtraHomes();
+            return true;
+        }
+
+        // NavMesh 재빌드
+        RebuildNavMeshIfExists();
+
+        // 리스트 기반으로 스폰
+        SpawnFromPlacedList(placedFromServer);
+
+        // 집 1채 보장 + 중복 제거
+        EnsureSingleHomeExists();
+        CullExtraHomes();
+
+        Debug.Log($"[PlaceableStore] Firebase Lobby 데이터로 {placedFromServer.Count}개 복원");
+        return true;
+    }
+
+    /// <summary>
+    /// NavMeshSurface가 있으면 한 번 빌드해줌 ("IsLandPlane" 기준)
+    /// </summary>
+    private void RebuildNavMeshIfExists()
+    {
+        GameObject gObj = GameObject.Find("IsLandPlane");
+        if (!gObj) return;
+
+        var nMS = gObj.GetComponent<NavMeshSurface>();
+        if (!nMS) return;
+
+        nMS.BuildNavMesh();
+    }
+
+    #endregion
+
+    #region === Internals: Placed 리스트 → 실제 오브젝트 스폰 ===
+
+    /// <summary>
+    /// Placed 리스트를 받아 실제 게임오브젝트들을 Instantiate 한다.
+    /// - TryGetPrefabAndName()으로 Prefab 결정
+    /// - PlaceableTag, Draggable, NavMeshObstacle/AnimalBehaviour/tag 등 셋업
+    /// </summary>
+    public void SpawnFromPlacedList(List<Placed> items)
+    {
+        if (items == null) return;
+
+        int ok = 0, fail = 0;
+
+        foreach (var p in items)
+        {
+            if (!TryGetPrefabAndName(p.cat, p.id, out var prefab, out var name))
+            {
+                fail++;
+                continue;
+            }
+
+            var go = Instantiate(prefab, p.pos, p.rot);
+            go.name = name;
+
+            var tag = go.GetComponent<PlaceableTag>() ?? go.AddComponent<PlaceableTag>();
+            tag.category = p.cat;
+            tag.id = p.id;
+
+            if (!go.GetComponent<Draggable>()) go.AddComponent<Draggable>();
+
+            // LSH 추가: 카테고리별 컴포넌트 세팅 (기존 LoadAndSpawnAll 로직 재사용)
+            switch (p.cat)
+            {
+                case PlaceableCategory.Home:
+                    go.AddComponent<NavMeshObstacle>();
+                    var hO = go.GetComponent<NavMeshObstacle>();
+                    hO.carving = true;
+                    break;
+
+                case PlaceableCategory.Animal:
+                    if (go.GetComponent<AnimalBehaviour>() == null)
+                        go.AddComponent<AnimalBehaviour>();
+                    go.tag = "Animal";
+                    break;
+
+                case PlaceableCategory.Deco:
+                    if (go.GetComponent<AnimalBehaviour>() == null)
+                        go.AddComponent<NavMeshObstacle>();
+                    var dO = go.GetComponent<NavMeshObstacle>();
+                    dO.carving = true;
+                    go.tag = "Decoration";
+                    break;
+            }
+
+            ok++;
+        }
+
+        Debug.Log($"[PlaceableStore] SpawnFromPlacedList: {ok}개 복원, 실패 {fail}개");
     }
 
     #endregion
