@@ -37,8 +37,7 @@ public class LCocoDoogyStuckState : LobbyCharacterBaseState
         Vector3 randomDir = Random.insideUnitSphere * 0.3f;
         randomDir.y = owner.YValue;
         agent.SetDestination(owner.transform.position + randomDir);
-        
-        owner.StuckTimeA = 0f;
+
         if (agent.hasPath)
         {
             yield return null;
@@ -82,8 +81,6 @@ public class LMasterStuckState : LobbyCharacterBaseState
         Vector3 randomDir = Random.insideUnitSphere * 0.3f;
         randomDir.y = owner.YValue;
         agent.SetDestination(owner.transform.position + randomDir);
-        
-        owner.StuckTimeA = 0f;
 
         fsm.ChangeState(owner.MoveState);
         yield break;
@@ -124,8 +121,6 @@ public class LAnimalStuckState : LobbyCharacterBaseState
         Vector3 randomDir = Random.insideUnitSphere * 0.3f;
         randomDir.y = owner.YValue;
         agent.SetDestination(owner.transform.position + randomDir);
-        
-        owner.StuckTimeA = 0f;
 
         fsm.ChangeState(owner.MoveState);
         yield break;

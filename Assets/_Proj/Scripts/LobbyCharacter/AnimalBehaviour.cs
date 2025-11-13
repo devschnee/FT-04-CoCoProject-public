@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class AnimalBehaviour : BaseLobbyCharacterBehaviour
 {
-    public WaitUntil WaitU { get; private set; }
     public Transform TargetDeco { get; set; }
     
     protected override void InitStates()
@@ -84,7 +83,6 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour
     public override void Init()
     {
         base.Init();
-        WaitU = new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= 0.5f);
     }
     public override void PostInit()
     {

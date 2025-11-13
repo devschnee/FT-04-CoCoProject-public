@@ -11,7 +11,7 @@ public class UIGroup : MonoBehaviour, IAudioController
     {
         mixer = AudioManager.AudioGroupProvider.GetMixer();
         group = AudioManager.AudioGroupProvider.GetGroup(AudioType.UI);
-        Debug.Log($"UIGroup.cs : {group}, SFX�׷��̸� OK");
+        Debug.Log($"UIGroup.cs : {group}, SFX 그룹이면 OK");
         player = new UIPlayer(mixer, transform);
     }
 

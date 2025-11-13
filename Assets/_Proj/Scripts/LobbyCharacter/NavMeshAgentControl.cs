@@ -33,7 +33,6 @@ public class NavMeshAgentControl
         if (agent.speed != moveSpeed) agent.speed = moveSpeed;
         if (agent.angularSpeed != angularSpeed) agent.angularSpeed = angularSpeed;
         if (agent.acceleration != acceleration) agent.acceleration = acceleration;
-
     }
 
     /// <summary>
@@ -71,10 +70,11 @@ public class NavMeshAgentControl
     {
         if (agent.isStopped) agent.isStopped = false;
         Vector3 lastPos = point.position;
-        agent.SetDestination(lastPos);
         agent.speed = 2f;
         agent.acceleration = 8f;
+        agent.autoBraking = true;
         agent.stoppingDistance = 0f;
+        agent.SetDestination(lastPos);
     }
     /// <summary>
     /// 해당 포인트를 기준으로 랜덤 범위 이동
@@ -85,29 +85,35 @@ public class NavMeshAgentControl
         if (agent.isStopped) agent.isStopped = false;
         Vector3 randomDir = point.position + Random.insideUnitSphere * moveRadius;
         randomDir.y = point.position.y;
-        //randomDir += transform.position;
         if (NavMesh.SamplePosition(randomDir, out NavMeshHit hit, 0.1f, NavMesh.AllAreas))
         {
-            //randomDir = hit.position;
-            //agent.SetDestination(hit.position);
             MoveToVectorPoint(hit.position);
-            //MoveToVectorPoint(randomDir);
         }
     }
 
-    public void CocoMoveToRandomTransPoint(Transform point)
+    public void CocoMoveToRandomTransPoint(BaseLobbyCharacterBehaviour owner, Transform point)
     {
         if (agent.isStopped) agent.isStopped = false;
-        Vector3 randomDir = point.position + Random.insideUnitSphere * 1f;
-        randomDir.y = point.position.y;
-        //randomDir += transform.position;
-        if (NavMesh.SamplePosition(randomDir, out NavMeshHit hit, 0.1f, NavMesh.AllAreas))
+        Vector3 pos = point.position + Random.onUnitSphere * Random.Range(12f, 20f);
+        Vector3 ownerPos = owner.transform.position;
+        pos.y = ownerPos.y;
+        if (NavMesh.SamplePosition(pos, out NavMeshHit hit, 6f, NavMesh.AllAreas))
         {
-            //randomDir = hit.position;
-            MoveToVectorPoint(hit.position);
-            //MoveToVectorPoint(randomDir);
+            CocoMove(hit.position);
         }
     }
+    public void CocoMove(Vector3 point)
+    {
+        if (agent.isStopped) agent.isStopped = false;
+        float speed = 7f;
+        agent.speed = speed;
+        agent.acceleration = Random.Range(speed * 1.5f, speed * 3f);
+        agent.angularSpeed = Random.Range(190, 300);
+        agent.autoBraking = false;
+        agent.stoppingDistance = Random.Range(0f, 1f);
+        agent.SetDestination(point);
+    }
+
     public void RestAgent()
     {
         if (agent.enabled == false) agent.enabled = true;

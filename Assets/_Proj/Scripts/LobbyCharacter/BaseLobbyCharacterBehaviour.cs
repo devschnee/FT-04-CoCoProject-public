@@ -27,11 +27,10 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     public bool isInitComplete = false;
 
 
-    public List<LobbyWaypoint> Waypoints { get; set; }
+    public List<LobbyWaypoint> Waypoints { get; protected set; }
 
     // Stuck
-    public float StuckTimeA { get; set; }
-    public float StuckTimeB { get; set; }
+    public float StuckTime { get; protected set; }
 
     public bool IsLobbyEditMode { get; set; }
     public bool IsCMRoutineComplete { get; set; }
@@ -75,7 +74,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
 
     protected virtual void OnEnable()
     {
-        if (fsm != null &&fsm.CurrentState == EditState) fsm.ChangeState(IdleState);
+        if (fsm != null && fsm.CurrentState == EditState) fsm.ChangeState(IdleState);
     }
 
     protected virtual void Start()
@@ -112,6 +111,15 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
             default: throw new Exception("누구세요?");
         }
     }
+
+    protected void OnDestroy()
+    {
+        if (gameObject.CompareTag("Animal"))
+        {
+            Unregister();
+        }
+    }
+    
     protected void StopMoving()
     {
         //fsm.ChangeState(IdleState);
@@ -293,7 +301,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         YValue = transform.position.y;
         Debug.Log($"{gameObject.name} yValue : {YValue}, agent height : {agent.height}");
         IsLobbyEditMode = false;
-        StuckTimeB = 2f;
+        StuckTime = 2.5f;
     }
     /// <summary>
     /// Init() 후 초기화

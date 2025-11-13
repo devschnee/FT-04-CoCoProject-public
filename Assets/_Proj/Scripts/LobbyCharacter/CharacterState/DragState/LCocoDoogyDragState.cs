@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class LCocoDoogyDragState : LobbyCharacterBaseState, IDragState
 {
-    private Vector3 movePos;
     private Vector3 originalPos;
     private NavMeshAgent agent;
     private Animator anim;
@@ -53,7 +52,6 @@ public class LCocoDoogyDragState : LobbyCharacterBaseState, IDragState
     {
         if (!isDragging) return;
         Debug.Log($"isDragging 상태 : {isDragging}");
-        movePos = pos;
         Ray ray = mainCam.ScreenPointToRay(pos);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, mainPlaneMask))
         {
@@ -79,6 +77,8 @@ public class LCocoDoogyDragState : LobbyCharacterBaseState, IDragState
         else
         {
             trans.position = navHit.position;
+            (owner as CocoDoogyBehaviour).SetLastDragEndPos(navHit.position);
+            (owner as CocoDoogyBehaviour).SetIsDragged(true);
             Debug.Log($"{owner.gameObject.name} : NavMesh 있음 해당 포지션으로");
         }
         fsm.ChangeState((owner as CocoDoogyBehaviour).IdleState);
