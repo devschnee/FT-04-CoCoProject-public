@@ -34,5 +34,5 @@ public enum ShopGroup
 }
 public enum ShopCategory
 {
-    none, plant, structure, furniture, prop, dog, pig, bird, rat, head, body, foot, tail, cap, coin, energy
+    all, plant, structure, furniture, prop, dog, pig, bird, rat, head, body, foot, tail, cap, coin, energy
 }
