@@ -199,6 +199,7 @@ public class Turret : MonoBehaviour
 
         // 실제 감지 부피(시야 원뿔) 표현
         // 반투명 MeshCone 효과 시각화
+#if UNITY_EDITOR
         UnityEditor.Handles.color = new Color(0f, 1f, 0f, 0.1f);
         UnityEditor.Handles.DrawSolidArc(
             pos,
@@ -207,7 +208,7 @@ public class Turret : MonoBehaviour
             fov,
             detectRadius
         );
-
+#endif
         // 현재 감지 구체 기준
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(pos - new Vector3(0, 0.5f, 0), detectRadius);
