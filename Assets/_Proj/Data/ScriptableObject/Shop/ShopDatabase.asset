@@ -73,7 +73,7 @@ MonoBehaviour:
     shop_desc: "\"\uBC15\uBB3C\uAD00\uC5D0\uC11C \uCC59\uACA8\uC628 \uC655\uAD00\uC785\uB2C8\uB2E4.\""
     shop_item: 90006
     shop_type: 0
-    shop_price: 10000
+    shop_price: 10022
     shop_stack: 1
     shop_group: 2
     shop_item_category: 9
@@ -208,3 +208,153 @@ MonoBehaviour:
     shop_stack: 1
     shop_group: 3
     shop_item_category: 0
+  - shop_id: 80019
+    shop_name: "\uB3D9\uBB3C \uD14C\uC2A4\uD2B8 1"
+    shop_icon: Icons/Shop/icon_donkey
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 1\""
+    shop_item: 90001
+    shop_type: 0
+    shop_price: 1000
+    shop_stack: 1
+    shop_group: 0
+    shop_item_category: 7
+  - shop_id: 80020
+    shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 1"
+    shop_icon: Icons/Shop/icon_help_ground
+    shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B81\""
+    shop_item: 90003
+    shop_type: 0
+    shop_price: 2000
+    shop_stack: 5
+    shop_group: 1
+    shop_item_category: 3
+  - shop_id: 80021
+    shop_name: "\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 1"
+    shop_icon: Icons/Shop/icon_cowboy_hat
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 1\""
+    shop_item: 90005
+    shop_type: 0
+    shop_price: 4000
+    shop_stack: 1
+    shop_group: 2
+    shop_item_category: 10
+  - shop_id: 80022
+    shop_name: "\uB3D9\uBB3C \uD14C\uC2A4\uD2B8 2"
+    shop_icon: Icons/Shop/icon_donkey
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 2\""
+    shop_item: 90001
+    shop_type: 0
+    shop_price: 1000
+    shop_stack: 1
+    shop_group: 0
+    shop_item_category: 8
+  - shop_id: 80023
+    shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 2"
+    shop_icon: Icons/Shop/icon_help_ground
+    shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B82\""
+    shop_item: 90003
+    shop_type: 0
+    shop_price: 2000
+    shop_stack: 5
+    shop_group: 1
+    shop_item_category: 4
+  - shop_id: 80024
+    shop_name: "\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 2"
+    shop_icon: Icons/Shop/icon_cowboy_hat
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 2\""
+    shop_item: 90005
+    shop_type: 0
+    shop_price: 4000
+    shop_stack: 1
+    shop_group: 2
+    shop_item_category: 10
+  - shop_id: 80025
+    shop_name: "\uB3D9\uBB3C \uD14C\uC2A4\uD2B8 3"
+    shop_icon: Icons/Shop/icon_donkey
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 3\""
+    shop_item: 90001
+    shop_type: 0
+    shop_price: 1000
+    shop_stack: 1
+    shop_group: 0
+    shop_item_category: 6
+  - shop_id: 80026
+    shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 3"
+    shop_icon: Icons/Shop/icon_help_ground
+    shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B83\""
+    shop_item: 90003
+    shop_type: 0
+    shop_price: 2000
+    shop_stack: 5
+    shop_group: 1
+    shop_item_category: 1
+  - shop_id: 80027
+    shop_name: "\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 3"
+    shop_icon: Icons/Shop/icon_cowboy_hat
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 3\""
+    shop_item: 90005
+    shop_type: 0
+    shop_price: 4000
+    shop_stack: 1
+    shop_group: 2
+    shop_item_category: 12
+  - shop_id: 80028
+    shop_name: "\uB3D9\uBB3C \uD14C\uC2A4\uD2B8 4"
+    shop_icon: Icons/Shop/icon_donkey
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 4\""
+    shop_item: 90001
+    shop_type: 0
+    shop_price: 1000
+    shop_stack: 1
+    shop_group: 0
+    shop_item_category: 6
+  - shop_id: 80029
+    shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 4"
+    shop_icon: Icons/Shop/icon_help_ground
+    shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B84\""
+    shop_item: 90003
+    shop_type: 0
+    shop_price: 2000
+    shop_stack: 5
+    shop_group: 1
+    shop_item_category: 2
+  - shop_id: 80030
+    shop_name: "\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 4"
+    shop_icon: Icons/Shop/icon_cowboy_hat
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 4\""
+    shop_item: 90005
+    shop_type: 0
+    shop_price: 4000
+    shop_stack: 1
+    shop_group: 2
+    shop_item_category: 9
+  - shop_id: 80031
+    shop_name: "\uB3D9\uBB3C \uD14C\uC2A4\uD2B8 5"
+    shop_icon: Icons/Shop/icon_donkey
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 5\""
+    shop_item: 90001
+    shop_type: 0
+    shop_price: 1000
+    shop_stack: 1
+    shop_group: 0
+    shop_item_category: 6
+  - shop_id: 80032
+    shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 5"
+    shop_icon: Icons/Shop/icon_help_ground
+    shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B85\""
+    shop_item: 90003
+    shop_type: 0
+    shop_price: 2000
+    shop_stack: 5
+    shop_group: 1
+    shop_item_category: 2
+  - shop_id: 80033
+    shop_name: "\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 5"
+    shop_icon: Icons/Shop/icon_cowboy_hat
+    shop_desc: "\"\uCF54\uC2A4\uD2AC \uD14C\uC2A4\uD2B8 5\""
+    shop_item: 90005
+    shop_type: 0
+    shop_price: 4000
+    shop_stack: 1
+    shop_group: 2
+    shop_item_category: 9

@@ -24,9 +24,9 @@ public class Dialogue : MonoBehaviour
     }
     void Start()
     {
-        if(StageUIManager.Instance.stageManager.isTest)
+        if (StageUIManager.Instance.stageManager.isTest)
         {
-            dialogueId = "dialogue_1_1_1";
+            dialogueId = "dialogue_1_5_1";
         }
     }
 
@@ -79,14 +79,14 @@ public class Dialogue : MonoBehaviour
         else
         {
             // 이미 다 출력됐다면 다음 대사로
-            TryNextDialogue();
+            TryNextDialogue(dialogueId);
         }
     }
 
     // 대사 출력
     private void ShowDialogue(string id, int seq)
     {
-        currentData = DataManager.Instance.Dialogue.GetSeqData(seq);
+        currentData = DataManager.Instance.Dialogue.GetSeqData(id, seq);
         if (currentData == null)
         {
             Debug.Log($"[Dialogue] {id} seq {seq} 데이터 없음 → 종료 처리");
@@ -95,12 +95,11 @@ public class Dialogue : MonoBehaviour
         }
 
         var speakData = DataManager.Instance.Speaker.GetData(currentData.speaker_id);
-        var basePrefix = speakData.portrait_set_prefix;
-
+        var basePrefix = $"Talk_portrait/{currentData.speaker_id}_{currentData.emotion}_{currentData.speaker_position}";
         var emotionSprite = GetEmotionSprite(currentData.speaker_id, basePrefix);
 
         // 화자 이미지 갱신
-        if (currentData.speaker_position == SpeakerPosition.left)
+        if (currentData.speaker_position == SpeakerPosition.Left)
         {
             StageUIManager.Instance.DialogueSpeakerLeft.color = new Color(1, 1, 1, 1);
             StageUIManager.Instance.DialogueSpeakerLeft.sprite = emotionSprite;
@@ -111,15 +110,24 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StageUIManager.Instance.DialogueSpeakerRight.gameObject.SetActive(true);
+                StageUIManager.Instance.DialogueSpeakerLeft.gameObject.SetActive(true);
                 StageUIManager.Instance.DialogueSpeakerRight.color = new Color(1, 1, 1, 0.2f);
             }
         }
         else
         {
-            StageUIManager.Instance.DialogueSpeakerRight.gameObject.SetActive(true);
             StageUIManager.Instance.DialogueSpeakerRight.color = new Color(1, 1, 1, 1);
             StageUIManager.Instance.DialogueSpeakerRight.sprite = emotionSprite;
-            StageUIManager.Instance.DialogueSpeakerLeft.color = new Color(1, 1, 1, 0.2f);
+            if (currentData.seq == 0)
+            {
+                StageUIManager.Instance.DialogueSpeakerLeft.gameObject.SetActive(false);
+            }
+            else
+            {
+                StageUIManager.Instance.DialogueSpeakerRight.gameObject.SetActive(true);
+                StageUIManager.Instance.DialogueSpeakerLeft.gameObject.SetActive(true);
+                StageUIManager.Instance.DialogueSpeakerLeft.color = new Color(1, 1, 1, 0.2f);
+            }
         }
 
         // 이름, 텍스트 초기화
@@ -132,20 +140,19 @@ public class Dialogue : MonoBehaviour
     }
 
     //다음 대사 시도
-    private void TryNextDialogue()
+    private void TryNextDialogue(string id)
     {
         int nextSeq = currentData.seq + 1;
-        var nextData = DataManager.Instance.Dialogue.GetSeqData(nextSeq);
+        var nextData = DataManager.Instance.Dialogue.GetSeqData(id, nextSeq);
 
-        if (nextData == null)//Todo : 조건 변경해야 할듯 이대로는 이상함
+        if (nextData == null)
         {
             // 마지막 대사
             EndDialogue();
         }
         else if(nextData.seq == currentData.seq + 1)
         {
-            currentSeq = nextSeq;
-            ShowDialogue(dialogueId, currentSeq);
+            ShowDialogue(id, nextSeq);
         }
     }
 
@@ -161,7 +168,6 @@ public class Dialogue : MonoBehaviour
             sprite = DataManager.Instance.Speaker.GetPortrait(id, basePrefix);
         }
 
-        Debug.Log($"[Emotion] {id} → ({emotionKey})");
         return sprite;
     }
 

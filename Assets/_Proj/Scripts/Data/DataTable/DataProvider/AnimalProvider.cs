@@ -6,6 +6,8 @@ public class AnimalProvider : IDataProvider<int, AnimalData>
     private AnimalDatabase database;
     private IResourceLoader loader;
 
+    public AnimalDatabase Value { get; internal set; }
+
     public AnimalProvider(AnimalDatabase db, IResourceLoader resLoader)
     {
         database = db;

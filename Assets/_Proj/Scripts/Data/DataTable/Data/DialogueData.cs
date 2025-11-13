@@ -17,7 +17,7 @@ public class DialogueData
 
 public enum SpeakerPosition
 {
-    left, right
+    Left, Right
 }
 
 public enum EmotionType

@@ -5,6 +5,8 @@ public class DecoProvider : IDataProvider<int, DecoData>
     private DecoDatabase database;
     private IResourceLoader loader;
 
+    public DecoDatabase Value { get; internal set; }
+
     public DecoProvider(DecoDatabase db, IResourceLoader resLoader)
     {
         database = db;
