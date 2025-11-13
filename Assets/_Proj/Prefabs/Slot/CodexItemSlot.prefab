@@ -185,7 +185,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 95, y: 95}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6921887498646980360
 CanvasRenderer:
@@ -264,7 +264,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 130, y: 130}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3192819050530189671
 MonoBehaviour:
@@ -279,11 +279,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconImage: {fileID: 1944014009917166101}
-  nameText: {fileID: 0}
   lockedOverlay: {fileID: 2044104599712438340}
   lockIcon: {fileID: 1194841356172409058}
   slotFrame: {fileID: 7573520661541158773}
-  button: {fileID: 6065497604077686214}
 --- !u!114 &6065497604077686214
 MonoBehaviour:
   m_ObjectHideFlags: 0
