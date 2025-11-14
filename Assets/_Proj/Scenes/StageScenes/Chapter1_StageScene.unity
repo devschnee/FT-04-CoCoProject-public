@@ -290,8 +290,8 @@ MonoBehaviour:
   CocoDoogyDesc: {fileID: 795084732}
   DialogueSpeakerLeft: {fileID: 289955921}
   DialogueSpeakerRight: {fileID: 289955920}
-  DialogueNameText: {fileID: 289955919}
-  DialogueText: {fileID: 289955918}
+  DialogueNameText: {fileID: 289955918}
+  DialogueText: {fileID: 289955919}
   collectedSprite: {fileID: 21300000, guid: 6cd2e4f7622ab468686a5d750551e633, type: 3}
   notCollectedSprite: {fileID: 21300000, guid: 1d3a6f2d5f11b4eb5a16c632c2e98799, type: 3}
   CoCoDoogySprite: {fileID: 21300000, guid: 02d37ee2302b9784892e72a044eab399, type: 3}
