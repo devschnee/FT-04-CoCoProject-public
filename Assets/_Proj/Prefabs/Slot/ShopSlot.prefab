@@ -1068,7 +1068,7 @@ MonoBehaviour:
   descText: {fileID: 4466741079701800490}
   priceText: {fileID: 7156496856981174804}
   currencyIcon: {fileID: 6510833915464877295}
-  quantityText: {fileID: 8189703844797584888}
+  stackCount: {fileID: 8189703844797584888}
   backgroundImage: {fileID: 4914850106890540459}
   normalColor: {r: 1, g: 1, b: 1, a: 0}
   soldOutColor: {r: 0, g: 0, b: 0, a: 0.7058824}

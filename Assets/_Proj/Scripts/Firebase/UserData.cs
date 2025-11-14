@@ -122,7 +122,17 @@ public class UserData : IUserData
 
         ////에너지 (행동력)
         //public int energy;
-        
+
+        public int this[int goodsId]
+        {
+            get => goodsId == 110001 ? values["energy"] : goodsId == 110002 ? values["cap"] : values["coin"];
+            set
+            {
+                var targetKey = goodsId == 110001 ? "energy" : goodsId == 110002 ? "cap" : "coin";
+                values[targetKey] = value;
+            }
+        }
+
         public Goods()
         {
             values = new();

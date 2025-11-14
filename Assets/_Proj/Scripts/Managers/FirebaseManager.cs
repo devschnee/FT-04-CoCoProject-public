@@ -331,7 +331,7 @@ public class FirebaseManager : MonoBehaviour
         if (Auth.CurrentUser == null || !Auth.CurrentUser.IsValid()) return;
         string categoryName = category is UserData.Master ? "master" :
                               category is UserData.Inventory ? "inventory" :
-                              category is UserData.Goods ? "wallet" :
+                              category is UserData.Goods ? "goods" :
                               category is UserData.Lobby ? "lobby" :
                               category is UserData.EventArchive ? "eventArchive" :
                               category is UserData.Friends ? "friends" :
