@@ -67,8 +67,8 @@ public class StageManager : MonoBehaviour
         if (isTest)
         {
             await Task.Delay(200); //이거 왜 하냐면 파이어베이스매니저가 아직 초기화가 안된 상황일 가능성이 높기 때문임
-            currentMapData = await FirebaseManager.Instance.LoadMapFromFirebase(mapNameToLoad);
-            currentStageId = mapNameToLoad;
+            currentMapData = await FirebaseManager.Instance.LoadMapFromFirebaseByMapID(mapNameToLoad);
+            currentStageId = DataManager.Instance.Stage.GetMapNameData(mapNameToLoad).stage_id;
         }
 
 
@@ -113,10 +113,13 @@ public class StageManager : MonoBehaviour
         StageUIManager.Instance.ResultPanel.SetActive(true);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
 
-        var data = DataManager.Instance.Stage.GetMapNameData(currentStageId);
+        var data = DataManager.Instance.Stage.GetData(currentStageId);
 
         StageUIManager.Instance.stageName.text = data.stage_name;
 
+
+        //TODO: 도감의 해금 처리는 반드시 이곳에 작성.
+        
         int collectedCount = collectedTreasures.Count(x => x);
 
         var prev = PlayerProgressManager.Instance.GetStageProgress(data.stage_id);
@@ -161,7 +164,7 @@ public class StageManager : MonoBehaviour
     {
         currentStageId = FirebaseManager.Instance.selectStageID;
 
-        var data = DataManager.Instance.Stage.GetMapNameData(currentStageId);
+        var data = DataManager.Instance.Stage.GetData(currentStageId);
 
         foreach (var block in loaded.blocks)
         {
@@ -299,7 +302,7 @@ public class StageManager : MonoBehaviour
             return;
 
         // 스테이지 데이터 불러오기
-        var data = DataManager.Instance.Stage.GetMapNameData(currentStageId);
+        var data = DataManager.Instance.Stage.GetData(currentStageId);
         var treasure1 = DataManager.Instance.Treasure.GetData(data.treasure_01_id);
         var treasure2 = DataManager.Instance.Treasure.GetData(data.treasure_02_id);
         var treasure3 = DataManager.Instance.Treasure.GetData(data.treasure_03_id);

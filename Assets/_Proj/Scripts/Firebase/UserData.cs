@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -410,6 +411,70 @@ public class UserData : IUserData
         }
     }
 
+    //스테이지 진행상황 자료형 추가.
+    //TODO: 문서화주석 만들기
+    [Serializable]
+    public class Progress : IUserDataCategory
+    {
+        [SerializeField]
+        public Dictionary<string,Score> scores;
+
+        [Serializable]
+            public class Score
+        {
+            public bool star_1;
+            public bool star_2;
+            public bool star_3;
+            
+        }
+
+
+        public Progress()
+        {
+            scores = new Dictionary<string,Score>();
+        }
+
+        public Dictionary<string,StageProgressData> ToStageProgressDataDictionary()
+        {
+            Dictionary<string,StageProgressData> dataDict = new();
+            foreach (var kvp in scores)
+            {
+                bool[] collected = new bool[3] {kvp.Value.star_1, kvp.Value.star_2, kvp.Value.star_3};
+                int bestTreasureCount = 0;
+                if (kvp.Value.star_1) bestTreasureCount++;
+                if (kvp.Value.star_2) bestTreasureCount++;
+                if (kvp.Value.star_3) bestTreasureCount++;
+                if (!dataDict.ContainsKey(kvp.Key))
+                    dataDict.Add(kvp.Key, new() { stageId = kvp.Key, treasureCollected = collected, bestTreasureCount = bestTreasureCount });
+            }
+            return dataDict;
+        }
+
+        [Obsolete("수정중")]
+        public string ToStageProgressDataWrapperJson()
+        {
+            var list = new List<StageProgressData>();
+            foreach (var p in scores)
+            {
+                string stageId = p.Key;
+
+                foreach (var s in scores.Values)
+                {
+                    bool[] stars = new bool[3];
+                    
+                        stars[0] = s.star_1;
+                        stars[1] = s.star_2;
+                        stars[2] = s.star_3;
+                        list.Add(new() { stageId = stageId, treasureCollected = stars });
+                    
+                }
+            }
+            return JsonConvert.SerializeObject(list);
+
+        }
+    }
+
+
     #endregion
 
 
@@ -424,7 +489,7 @@ public class UserData : IUserData
     public EventArchive eventArchive;
     public Friends friends;
     public Codex codex;
-    
+    public Progress progress;
     
     public UserData()
     {
@@ -434,6 +499,7 @@ public class UserData : IUserData
         lobby = new Lobby();
         eventArchive = new EventArchive();
         friends = new Friends();
+        progress = new Progress();
         flag = 0;
     }
 

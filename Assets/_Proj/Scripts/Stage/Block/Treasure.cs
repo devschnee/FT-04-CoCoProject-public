@@ -16,7 +16,7 @@ public class Treasure : MonoBehaviour
         {
             // 시각적 표시
             //GetComponent<Renderer>().material.color = Color.gray;
-            isCollected = true; // 다시 못먹게
+            //isCollected = true; // 다시 못먹게
         }
     }
     public void Init(string id)

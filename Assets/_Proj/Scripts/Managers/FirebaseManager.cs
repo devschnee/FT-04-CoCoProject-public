@@ -114,7 +114,7 @@ public class FirebaseManager : MonoBehaviour
 
     //}
 
-    public async Task<MapData> LoadMapFromFirebase(string mapName, Action<string> callback = null)
+    public async Task<MapData> LoadMapFromFirebaseByMapID(string mapName, Action<string> callback = null)
     {
         #region 기존 방법.
         try
@@ -151,10 +151,16 @@ public class FirebaseManager : MonoBehaviour
         #endregion
     }
 
-    public async Task FindMapDataByID(string id)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id">스테이지 ID가 들어오게 해야 함.</param>
+    /// <returns></returns>
+    public async Task FindMapDataByStageID(string id)
     {
-        currentMapData = await LoadMapFromFirebase(id);
+        string mapName = DataManager.Instance.Stage.GetData(id).map_id;
         selectStageID = id;
+        currentMapData = await LoadMapFromFirebaseByMapID(mapName);
     }
 
     #region Firebase Auth Functions
@@ -329,6 +335,7 @@ public class FirebaseManager : MonoBehaviour
                               category is UserData.Lobby ? "lobby" :
                               category is UserData.EventArchive ? "eventArchive" :
                               category is UserData.Friends ? "friends" :
+                              category is UserData.Progress ? "progress" :
                               category is UserData ? "invalidNode" :
                               "invalidNode";
 

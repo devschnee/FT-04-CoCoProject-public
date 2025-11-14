@@ -41,11 +41,7 @@ public class StageDetailInfo : MonoBehaviour
 
     async void EnterStage()
     {
-        var data = DataManager.Instance.Stage.GetData(currentStageId);
-
-        string mapId = data.map_id;
-        
-        await FirebaseManager.Instance.FindMapDataByID(mapId);
+        await FirebaseManager.Instance.FindMapDataByStageID(currentStageId);
 
         //Todo : 챕터에 따라 분기
         //씬 이름 수정해야함
