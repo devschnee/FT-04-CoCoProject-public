@@ -68,7 +68,7 @@ public class StageManager : MonoBehaviour
         {
             await Task.Delay(200); //이거 왜 하냐면 파이어베이스매니저가 아직 초기화가 안된 상황일 가능성이 높기 때문임
             currentMapData = await FirebaseManager.Instance.LoadMapFromFirebaseByMapID(mapNameToLoad);
-            currentStageId = DataManager.Instance.Stage.GetMapNameData(mapNameToLoad).stage_id;
+            currentStageId = DataManager.Instance.Stage.GetMapNameData(mapNameToLoad) != null ? DataManager.Instance.Stage.GetMapNameData(mapNameToLoad).stage_id : "Testonly Stage";
         }
 
 
