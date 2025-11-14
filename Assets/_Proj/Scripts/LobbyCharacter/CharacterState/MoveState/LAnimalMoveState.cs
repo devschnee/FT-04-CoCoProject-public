@@ -7,8 +7,9 @@ public class LAnimalMoveState : LobbyCharacterBaseState
 {
     private readonly NavMeshAgent agent;
     private readonly NavMeshAgentControl charAgent;
-    private float decoDetectRadius = 20f;
     private Transform targetDeco;
+    private float decoDetectRadius = 20f;
+    private float timeToStuck = 0f;
 
     public LAnimalMoveState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm, NavMeshAgentControl charAgent) : base(owner, fsm)
     {
@@ -40,19 +41,20 @@ public class LAnimalMoveState : LobbyCharacterBaseState
         // 이동 중 멈춤 감지
         if (!agent.isStopped && agent.velocity.sqrMagnitude < 0.01f)
         {
-            owner.StuckTimeA += Time.deltaTime;
-            if (owner.StuckTimeA > owner.StuckTimeB)
+            timeToStuck += Time.deltaTime;
+            if (timeToStuck > owner.StuckTime)
             {
                 fsm.ChangeState(owner.StuckState);
             }
         }
         else
         {
-            owner.StuckTimeA = 0f;
+            timeToStuck = 0f;
         }
     }
     public override void OnStateExit()
     {
+        timeToStuck = 0f;
         owner.StopAllCoroutines();
         agent.ResetPath();
     }

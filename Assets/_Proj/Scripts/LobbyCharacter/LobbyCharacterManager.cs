@@ -17,11 +17,13 @@ public class LobbyCharacterManager : MonoBehaviour
     //[SerializeField] float interactDistance = 2f;
     [SerializeField] float routineDelay = 3f;
 
-    private LMCharacterInit lmChar; // 씬 시작시 초기화
+    private LMCharacterInit lobbyChracterInit; // 씬 시작시 초기화
+    private LMWaypoints getWaypoints; // 웨이포인트 얻기
+    private LMCharacterRoutineControl routineControl;
+    private NavMeshSurface planeSurface; // Bake 용
     private CocoDoogyBehaviour coco; // 코코두기 제어 용
     private MasterBehaviour master; // 안드로이드 제어 용
-    private LMWaypoints lmWaypoints; // 웨이포인트 얻기
-    private NavMeshSurface planeSurface; // Bake 용
+
     public bool IsEditMode { get; private set; } // 에딧컨트롤러에서 받아오기
     private int originalLayer; // 평상 시 레이어
     private int editableLayer; // 편집모드 시 레이어
@@ -29,10 +31,10 @@ public class LobbyCharacterManager : MonoBehaviour
 
     public List<LobbyWaypoint> Waypoints { get; private set; }
     private List<ILobbyState> lobbyCharacter = new(); // 맵에 활성화 된 캐릭터들 모음
+
+    private static event Action<BaseLobbyCharacterBehaviour> HeyManager;
     
     public static LobbyCharacterManager Instance { get; private set; }
-    // 나중에 생각할 것
-    //public static event Action<BaseLobbyCharacterBehaviour> OnRequestDeactive;
 
     private void Awake()
     {
@@ -43,8 +45,8 @@ public class LobbyCharacterManager : MonoBehaviour
         }
         Instance = this;
 
-        lmWaypoints = new LMWaypoints();
-        lmChar = new LMCharacterInit(this, lobbyCharacter);
+        getWaypoints = new LMWaypoints();
+        lobbyChracterInit = new LMCharacterInit(this, lobbyCharacter);
 
         if (planeSurface == null)
         {
@@ -59,13 +61,19 @@ public class LobbyCharacterManager : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        HeyManager += DeactivateChar;
+    }
+
     private void Start() // 깨끗한 프리팹에 붙여주는 방법이 인게임 아웃게임 전환에서 좋지 않을 깝숑
     {
-        Waypoints = lmWaypoints.GetWaypoints();
+        Waypoints = getWaypoints.GetWaypoints();
         planeSurface.BuildNavMesh();
-        lmChar.Init();
-        coco = lmChar.CocoInit();
-        master = lmChar.MasterInit();
+        lobbyChracterInit.Init();
+        coco = lobbyChracterInit.CocoInit();
+        master = lobbyChracterInit.MasterInit();
+        routineControl = new LMCharacterRoutineControl(coco, master);
         //coco = gObj.GetComponent<CocoDoogyBehaviour>();
         //coco.gameObject.SetActive(false);
 
@@ -119,6 +127,11 @@ public class LobbyCharacterManager : MonoBehaviour
         //         master.OnCocoMasterEmotion();
         //     }
         // }
+    }
+
+    private void OnDisable()
+    {
+        HeyManager -= DeactivateChar;
     }
 
     private void OnDestroy()
@@ -187,6 +200,15 @@ public class LobbyCharacterManager : MonoBehaviour
         }
     }
 
+    // 코코두기 안드로이드 전용 이벤트
+    public static void RaiseCharacterEvent(BaseLobbyCharacterBehaviour who)
+    {
+        HeyManager?.Invoke(who);
+    }
+    private void DeactivateChar(BaseLobbyCharacterBehaviour who)
+    {
+        who.gameObject.SetActive(false);
+    }
 
     // 등록 및 삭제
     public void RegisterLobbyChar(ILobbyState gObj)

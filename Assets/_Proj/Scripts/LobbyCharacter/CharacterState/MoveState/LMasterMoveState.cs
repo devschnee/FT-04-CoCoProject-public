@@ -10,6 +10,8 @@ public class LMasterMoveState : LobbyCharacterBaseState
     private readonly NavMeshAgentControl charAgent;
     private LMasterRouteManager route;
     private Transform startPoint; // 지금은 마스터의 포지션으로 되어있는데 로비매니저 정리되면 스타트 포인트로
+    private WaitForSeconds wait = new(1f);
+    private float timeToStuck = 0;
 
     public LMasterMoveState(BaseLobbyCharacterBehaviour owner, LobbyCharacterFSM fsm, NavMeshAgentControl charAgent) : base(owner, fsm)
     {
@@ -45,19 +47,20 @@ public class LMasterMoveState : LobbyCharacterBaseState
         // 이동 중 멈춤 감지
         if (!agent.isStopped && agent.velocity.sqrMagnitude < 0.01f)
         {
-            owner.StuckTimeA += Time.deltaTime;
-            if (owner.StuckTimeA > owner.StuckTimeB)
+            timeToStuck += Time.deltaTime;
+            if (timeToStuck > owner.StuckTime)
             {
                 fsm.ChangeState(owner.StuckState);
             }
         }
         else
         {
-            owner.StuckTimeA = 0f;
+            timeToStuck = 0f;
         }
     }
     public override void OnStateExit()
     {
+        timeToStuck = 0f;
         owner.StopAllCoroutines();
         agent.ResetPath();
     }
@@ -77,8 +80,9 @@ public class LMasterMoveState : LobbyCharacterBaseState
                     yield return null;
                 }
 
-                fsm.ChangeState(owner.EditState);
+                yield return wait;
                 // 로비 매니저에게 나 끝났어요 호출 하면 로비매니저가 SetActive false 처리
+                LobbyCharacterManager.RaiseCharacterEvent(owner);
 
                 yield break;
             }
@@ -106,6 +110,4 @@ public class LMasterMoveState : LobbyCharacterBaseState
             }
         }
     }
-    // 로비매니저에 있는 데코리스트들을 받아서 자신에게 가까운 순으로 정렬한 뒤 움직이기
-    // 본인이 가지고 있는 리스트(decoList)와 로비매니저에서 리스트를 비교한 다음 본인이 가지고 있는 리스트에 로비매니저에서 새로운 이름이 들어가 있다면 추가하고 다시 정렬한 다음 전에 이동 했었던 오브젝트에게는 안가고 새로 추가된 녀석에게만 감. 만약, 본인이 가지고 있는 리스트에 오브젝트 이름 중 로비매니저가 가지고 있는 리스트에 없다면 그 오브젝트는 리스트에서 빠짐. 나중에 추가 된다면 해당 오브젝트로 가야함. 즉 로비매니저가 가지고 있는 리스트에 추가된 녀석이면 => 정렬하고 이동, 본인에게만 가지고 있는 리스트 오브젝트라면 삭제.
 }

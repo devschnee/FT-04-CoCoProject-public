@@ -27,6 +27,7 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
     protected override void OnEnable()
     {
         base.OnEnable();
+        if (fsm != null && fsm.CurrentState == MoveState) fsm.ChangeState(IdleState);
     }
     protected override void Start()
     {
@@ -38,6 +39,7 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
         base.Update();
     }
 
+    // 드래그 엔드 성공 시
     public void PlayStun()
     {
         anim.Play("Stunned");

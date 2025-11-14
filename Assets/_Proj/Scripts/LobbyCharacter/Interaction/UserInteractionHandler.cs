@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,7 +18,6 @@ public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPoin
     private bool isPressing = false;
     private bool isDragging = false;
     private float pressTime = 0f;
-    private Vector3 startPos;
 
 
     private void Start()
@@ -75,6 +75,7 @@ public class UserInteractionHandler : MonoBehaviour, IPointerClickHandler, IPoin
     {
         isPressing = false;
     }
+
 
     private IEnumerator CheckLongPress()
     {

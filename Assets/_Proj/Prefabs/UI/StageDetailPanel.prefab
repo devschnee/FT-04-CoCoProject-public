@@ -525,8 +525,8 @@ MonoBehaviour:
   - {fileID: 8717406764379467160}
   - {fileID: 5532177928432657403}
   - {fileID: 2328932647912346344}
-  collectedSprite: {fileID: 21300000, guid: 072e279b9e7d849d4b14c61cc96cd90d, type: 3}
-  notCollectedSprite: {fileID: 21300000, guid: 741065579880b4e1c929ab49bd185620, type: 3}
+  collectedSprite: {fileID: 21300000, guid: 6cd2e4f7622ab468686a5d750551e633, type: 3}
+  notCollectedSprite: {fileID: 21300000, guid: 70a854518a76845a0a61a99a9f8d378d, type: 3}
 --- !u!1 &4131257640129259912
 GameObject:
   m_ObjectHideFlags: 0

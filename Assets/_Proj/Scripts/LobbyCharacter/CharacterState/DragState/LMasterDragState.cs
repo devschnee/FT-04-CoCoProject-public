@@ -43,6 +43,7 @@ public class LMasterDragState : LobbyCharacterBaseState, IDragState
     public void OnBeginDrag(Vector3 pos)
     {
         originalPos = trans.position;
+        anim.Play("Idle_A");
         Debug.Log($"originalPos : {originalPos}, transPos : {trans.position}");
         isDragging = true;
         
