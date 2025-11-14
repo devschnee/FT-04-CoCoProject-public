@@ -128,8 +128,8 @@ MonoBehaviour:
   StageDetailPrefab: {fileID: 3138075058950913620, guid: f6e1f98467c7c4d468072aa73dade4f4, type: 3}
   stageParent: {fileID: 6110520329950287153}
   detailParent: {fileID: 4789071929520696818}
-  collectedSprite: {fileID: 21300000, guid: 1d3a6f2d5f11b4eb5a16c632c2e98799, type: 3}
-  notCollectedSprite: {fileID: 21300000, guid: 4ba32932c5e95473085578d10429742c, type: 3}
+  collectedSprite: {fileID: 21300000, guid: 6cd2e4f7622ab468686a5d750551e633, type: 3}
+  notCollectedSprite: {fileID: 21300000, guid: 1d3a6f2d5f11b4eb5a16c632c2e98799, type: 3}
 --- !u!114 &4992222191127586779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4160971900461878968
 RectTransform:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7469105258202347464}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
