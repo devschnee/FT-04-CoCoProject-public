@@ -242,11 +242,8 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
         while (elapsed < moveTime)
         {
-
-
             transform.position = Vector3.Lerp(start, target, elapsed / moveTime);
             elapsed += Time.deltaTime;
-
 
             if (playerTransform)
             {

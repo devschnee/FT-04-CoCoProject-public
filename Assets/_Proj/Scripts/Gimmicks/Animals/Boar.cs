@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Water;
 
 // 10/29 TODO : 카메라 세팅 후 팝업 UI 조정 76라인
 // NOTE : 추후 필요 시 -> Boar가 Turtle을 탑승할 수 있게 된다면, IRider를 구현해줘야 함.
@@ -37,10 +36,9 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
     Transform IPlayerFinder.Player { get => playerTrans; set => playerTrans = value; }
 
     //public ParticleSystem hitFx;
-    Flow flowWater;
 
-
-    protected override void Awake()
+    private bool isCooldown = false;
+    protected override void Awake()
     {
         base.Awake();
 
@@ -50,7 +48,7 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         left.onClick.AddListener(() => { GetDirection(new Vector2Int(-1, 0)); btnGroup.SetActive(false); });
         right.onClick.AddListener(() => { GetDirection(new Vector2Int(1, 0)); btnGroup.SetActive(false); });
 
-        btnGroup.SetActive(false);
+        //btnGroup.SetActive(false);
 
         // 플레이어 transform 찾기
         // NOTE : 플레이어 Tag를 Player로 설정
@@ -62,28 +60,8 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         }
     }
 
-    // Boar가 FlowWater위에 들어간 PushableObjects를 Flow Interval 시간보다 먼저 밀어서 오류 사항을 만들어내지 않기 위해 requiredTime을 조정하기 위함
-    void Start()
-    {
-        if (flowWater == null)
-        {
-            flowWater = FindAnyObjectByType<Flow>(FindObjectsInactive.Include);
-        }
-    }
-
     void Update()
     {
-        if ((isHoling || !isMoving) && flowWater != null)
-        {
-            currHold += Time.deltaTime;
-            float holdThreshold = Mathf.Max(requiredHoldtime, flowWater.flowInterval + 1f);
-            if (currHold >= holdThreshold)
-            {
-                TryPush(holdDir);
-                currHold = 0f;
-                isHoling = false;
-            }
-        }
         DetectPlayer();
     }
 
@@ -119,6 +97,37 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
             btnGroup.SetActive(shouldBeActive);
         }
     }
+    private IEnumerator DashCooldownRoutine()
+    {
+        isCooldown = true;
+
+        //btnGroup.SetActive(false);
+        up.enabled = false;
+        down.enabled = false;
+        left.enabled = false;
+        right.enabled = false;
+
+        float t = 0f;
+
+        while (t < requiredHoldtime)
+        {
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        // 쿨타임 종료
+        isCooldown = false;
+
+        // 다시 플레이어가 가까우면 버튼 활성화
+        if (!isMoving)
+        {
+            up.enabled = true;
+            down.enabled = true;
+            left.enabled = true;
+            right.enabled = true;
+            //btnGroup.SetActive(true);
+        }
+    }
 
     public void GetDirection(Vector2Int dashDir)
     {
@@ -126,7 +135,7 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
 
         Vector3 moveDir = new Vector3(dashDir.x, 0, dashDir.y);
         StartCoroutine(DashCoroutine(moveDir, dashDir));
-
+        StartCoroutine(DashCooldownRoutine());
     }
 
     #region Dash
@@ -324,21 +333,6 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         }
         isMoving = false;
     }
-    private float CalculateBoarCooldown(List<List<PushableObjects>> chainStacks)
-{
-    if (flowWater == null) return requiredHoldtime;
-
-    // 꼬리 스택 = chainStacks 마지막 요소
-    var tailStack = chainStacks[chainStacks.Count - 1];
-
-    int verticalCount = tailStack.Count; // 수직 스택 수
-    if (verticalCount <= 0) verticalCount = 1;
-
-    // 쿨다운 = flowInterval × verticalCount
-    float cooldown = flowWater.flowInterval * verticalCount;
-
-    return cooldown;
-}
 
     #endregion
 
