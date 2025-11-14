@@ -38,13 +38,29 @@ kr_text_id,kr_text
 [icon_11],챕터 3 아이콘
 [coin],동전
 [cap],병뚜껑
-[coco_get_coin],반짝이는 동전이야!
-[coco_get_cap],병뚜껑 재밌겠다!
+[coco_get_coin],반짝이는 동전이야! 주인님께 가져다드리자!
+[coco_get_cap],병뚜껑 재밌겠다! 이걸로 뭘 할수 있을까?
 [chapter_1_name],불안
 [chapter_2_name],힐링
 [chapter_3_name],위로
-[stage_1_1_name],숲에서 하룻밤!
-[stage_1_2_name],신나는 박스 놀이!
+[stage_1_1_name],스테이지 1이름 테스트 얍얍
+[stage_1_2_name],스테이지 2이름 테스트 얍얍
+[stage_1_3_name],스테이지 3이름 테스트 얍얍
+[stage_1_4_name],스테이지 4이름 테스트 얍얍
+[stage_1_5_name],스테이지 5이름 테스트 얍얍
+[stage_1_6_name],스테이지 6이름 테스트 얍얍
+[stage_1_7_name],스테이지 7이름 테스트 얍얍
+[stage_1_8_name],스테이지 8이름 테스트 얍얍
+[stage_1_9_name],스테이지 9이름 테스트 얍얍
+[stage_1_10_name],스테이지 10이름 테스트 얍얍
+[stage_2_1_name],스테이지 1이름 테스트 얍얍
+[stage_2_2_name],스테이지 2이름 테스트 얍얍
+[stage_2_3_name],스테이지 3이름 테스트 얍얍
+[stage_2_4_name],스테이지 4이름 테스트 얍얍
+[stage_2_5_name],스테이지 5이름 테스트 얍얍
+[stage_2_6_name],스테이지 6이름 테스트 얍얍
+[stage_2_7_name],스테이지 7이름 테스트 얍얍
+[stage_2_8_name],스테이지 8이름 테스트 얍얍
 [costume_cowboy],카우보이 모자
 [costume_crown],왕관
 [costume_magician],마법사 모자

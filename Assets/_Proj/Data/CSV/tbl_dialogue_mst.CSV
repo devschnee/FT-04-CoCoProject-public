@@ -1,4 +1,6 @@
 dialogue_id,seq,speaker_position,speaker_id,emotion,text,char_delay,sound_type,sound_key
+dialogue_1_1_1,0,left,coco,Happy,"어라? 저기 반짝이는게 뭘까?",0.04,sfx_none,null
+dialogue_1_1_1,1,left,coco,Happy,"보물인가봐! 한번 가보자!",0.04,sfx_none,null
 dialogue_1_4_1,0,right,hog,Neutral,"야! 너 지금 어디가고 있어?",0.04,sfx,null
 dialogue_1_4_1,1,left,coco,Happy,"아, 작은 물소구나! 반가워! 나 지금 집으로 가는 길이야.",0.04,sfx,null
 dialogue_1_4_1,2,right,hog,Angry,"뭐? 내가 물소라고?! 너 멍청이야? 난 멧돼지야, 멧돼지!",0.04,sfx,null

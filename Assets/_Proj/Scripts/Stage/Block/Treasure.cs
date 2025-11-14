@@ -16,7 +16,7 @@ public class Treasure : MonoBehaviour
         {
             // 시각적 표시
             //GetComponent<Renderer>().material.color = Color.gray;
-            isCollected = true; // 다시 못먹게
+            //isCollected = true; // 다시 못먹게
         }
     }
     public void Init(string id)
@@ -35,6 +35,7 @@ public class Treasure : MonoBehaviour
             isCollected = true;
             StageUIManager.Instance.TreasurePanel.SetActive(true);
             StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
+            StageUIManager.Instance.CocoDoogyImage.sprite = StageUIManager.Instance.CoCoDoogySprite;
 
             var data = DataManager.Instance.Treasure.GetData(treasureId);
 

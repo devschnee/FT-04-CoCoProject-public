@@ -14,38 +14,326 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treasureList:
   - treasure_id: treasure_1_1_1
-    treasureType: 0
-    reward_id: 110003
-    count: 100
-    view_codex_id: codex_artifact_coin
-    coco_coment: '[coco_get_coin]'
-  - treasure_id: treasure_1_1_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: '[coco_get_cap]'
-  - treasure_id: treasure_1_1_3
     treasureType: 2
     reward_id: 10001
     count: 1
     view_codex_id: codex_deco_tree_lime
     coco_coment: "\"\uAC00\uAD6C\uB97C \uBA39\uC5C8\uC5B4!\""
-  - treasure_id: treasure_1_2_1
+  - treasure_id: treasure_1_1_2
     treasureType: 3
     reward_id: 20001
     count: 1
     view_codex_id: codex_costume_cowboy
     coco_coment: "\"\uCF54\uC2A4\uD2AC\uC744 \uBA39\uC5C8\uC5B4!\""
-  - treasure_id: treasure_1_2_2
+  - treasure_id: treasure_1_1_3
     treasureType: 4
     reward_id: 50001
     count: 1
     view_codex_id: codex_artifact_travelbag
     coco_coment: "\"\uC720\uBB3C\uC744 \uBA39\uC5C8\uC5B4!\""
+  - treasure_id: treasure_1_2_1
+    treasureType: 0
+    reward_id: 110003
+    count: 500
+    view_codex_id: codex_artifact_coin
+    coco_coment: '[coco_get_coin]'
+  - treasure_id: treasure_1_2_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
   - treasure_id: treasure_1_2_3
     treasureType: 1
     reward_id: 110002
     count: 500
-    view_codex_id: codex_artifact_coin
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_3_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_3_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_3_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_4_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_4_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_4_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_5_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_5_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_5_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_6_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_6_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_6_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_7_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_7_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_7_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_8_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_8_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_8_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_9_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_9_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_9_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_10_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_10_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_1_10_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_1_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_1_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_1_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_2_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_2_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_2_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_3_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_3_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_3_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_4_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_4_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_4_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_5_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_5_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_5_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_6_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_6_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_6_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_7_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_7_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_7_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_8_1
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_8_2
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
+    coco_coment: '[coco_get_cap]'
+  - treasure_id: treasure_2_8_3
+    treasureType: 1
+    reward_id: 110002
+    count: 500
+    view_codex_id: codex_artifact_cap
     coco_coment: '[coco_get_cap]'

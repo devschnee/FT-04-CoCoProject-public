@@ -50,6 +50,8 @@ public class StageUIManager : MonoBehaviour
     [Header("TreasureCollectedSprite")]
     public Sprite collectedSprite; // 획득된 보물 아이콘
     public Sprite notCollectedSprite; // 미획득 상태 아이콘
+    public Sprite CoCoDoogySprite;
+    public Sprite[] ResultCoCoDoogySprite;
     public Action OnTreasureConfirm;
 
     private string currentChapter;

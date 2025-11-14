@@ -23,6 +23,14 @@ MonoBehaviour:
     chapter_staglist:
     - stage_1_1
     - stage_1_2
+    - stage_1_3
+    - stage_1_4
+    - stage_1_5
+    - stage_1_6
+    - stage_1_7
+    - stage_1_8
+    - stage_1_9
+    - stage_1_10
     chapter_bg: Img/Chapter/chapter_1bg
   - chapter_id: chapter_2
     chapter_name: "\uD790\uB9C1"
@@ -32,7 +40,14 @@ MonoBehaviour:
       \uC2F6\uC5B4..-\""
     chapter_img: Img/Chapter/chapter_2_main
     chapter_staglist:
-    - 
+    - stage_2_1
+    - stage_2_2
+    - stage_2_3
+    - stage_2_4
+    - stage_2_5
+    - stage_2_6
+    - stage_2_7
+    - stage_2_8
     chapter_bg: Img/Chapter/chapter_2bg
   - chapter_id: chapter_3
     chapter_name: "\uC704\uB85C"

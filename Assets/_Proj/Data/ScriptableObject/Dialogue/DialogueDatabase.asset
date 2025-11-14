@@ -13,6 +13,24 @@ MonoBehaviour:
   m_Name: DialogueDatabase
   m_EditorClassIdentifier: 
   dialogueList:
+  - dialogue_id: dialogue_1_1_1
+    seq: 0
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 1
+    text: "\"\uC5B4\uB77C? \uC800\uAE30 \uBC18\uC9DD\uC774\uB294\uAC8C \uBB58\uAE4C?\""
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_1_1_1
+    seq: 1
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 1
+    text: "\"\uBCF4\uBB3C\uC778\uAC00\uBD10! \uD55C\uBC88 \uAC00\uBCF4\uC790!\""
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
   - dialogue_id: dialogue_1_4_1
     seq: 0
     speaker_position: 1

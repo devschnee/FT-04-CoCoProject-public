@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageDataList:
   - stage_id: stage_1_1
-    stage_name: "\uC232\uC5D0\uC11C \uD558\uB8FB\uBC24!"
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 1\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
     stage_img: Img/Stage/stage_1_1_main
-    stage_desc: "\"\uC8FC\uC778\uB2D8\uC774 \uB0A0 \uB450\uACE0 \uBA3C\uC800 \uAC14\uC5B4,
-      \uC0C8\uB85C\uC6B4 \uB180\uC774 \uC2DC\uAC04\uC774\uC57C\""
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 1\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
     map_id: map_1_1
     start_cutscene: /movie/Stage/stage_1_1_start.mp4
     start_talk: dialogue_1_1_0
@@ -27,14 +26,14 @@ MonoBehaviour:
     treasure_02_id: treasure_1_1_2
     treasure_03_id: treasure_1_1_3
     dialogue_box_1: dialogue_1_1_1
-    dialogue_box_2: dialogue_1_1_2
+    dialogue_box_2: -1
     dialogue_box_3: -1
     dialogue_box_4: -1
     dialogue_box_5: -1
   - stage_id: stage_1_2
-    stage_name: "\uC2E0\uB098\uB294 \uBC15\uC2A4 \uB180\uC774!"
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 2\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
     stage_img: Img/Stage/stage_1_1_main
-    stage_desc: "\"\uBC15\uC2A4\uB97C \uAC00\uC9C0\uACE0 \uC2E0\uB098\uAC8C \uB180\uC544\uBCF4\uC790\""
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 2\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
     map_id: map_1_2
     start_cutscene: -1
     start_talk: -1
@@ -43,6 +42,278 @@ MonoBehaviour:
     treasure_01_id: treasure_1_2_1
     treasure_02_id: treasure_1_2_2
     treasure_03_id: treasure_1_2_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_1_3
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 3\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_1_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 3\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_1_3
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_1_3_1
+    treasure_02_id: treasure_1_3_2
+    treasure_03_id: treasure_1_3_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_1_4
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 4\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_1_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 4\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_1_4
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_1_4_1
+    treasure_02_id: treasure_1_4_2
+    treasure_03_id: treasure_1_4_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_1_5
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 5\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_1_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 5\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_1_5
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_1_5_1
+    treasure_02_id: treasure_1_5_2
+    treasure_03_id: treasure_1_5_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_1_6
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 6\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_1_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 6\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_1_6
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_1_6_1
+    treasure_02_id: treasure_1_6_2
+    treasure_03_id: treasure_1_6_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_1_7
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 7\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_1_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 7\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_1_7
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_1_7_1
+    treasure_02_id: treasure_1_7_2
+    treasure_03_id: treasure_1_7_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_1_8
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 8\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_1_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 8\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_1_8
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_1_8_1
+    treasure_02_id: treasure_1_8_2
+    treasure_03_id: treasure_1_8_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_1_9
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 9\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_1_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 9\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_1_9
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_1_9_1
+    treasure_02_id: treasure_1_9_2
+    treasure_03_id: treasure_1_9_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_1_10
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 10\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_1_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 10\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_1_10
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_1_10_1
+    treasure_02_id: treasure_1_10_2
+    treasure_03_id: treasure_1_10_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_2_1
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 1\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_2_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 1\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_2_1
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_2_1_1
+    treasure_02_id: treasure_2_1_2
+    treasure_03_id: treasure_2_1_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_2_2
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 2\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_2_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 2\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_2_2
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_2_2_1
+    treasure_02_id: treasure_2_2_2
+    treasure_03_id: treasure_2_2_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_2_3
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 3\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_2_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 3\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_2_3
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_2_3_1
+    treasure_02_id: treasure_2_3_2
+    treasure_03_id: treasure_2_3_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_2_4
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 4\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_2_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 4\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_2_4
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_2_4_1
+    treasure_02_id: treasure_2_4_2
+    treasure_03_id: treasure_2_4_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_2_5
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 5\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_2_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 5\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_2_5
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_2_5_1
+    treasure_02_id: treasure_2_5_2
+    treasure_03_id: treasure_2_5_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_2_6
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 6\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_2_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 6\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_2_6
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_2_6_1
+    treasure_02_id: treasure_2_6_2
+    treasure_03_id: treasure_2_6_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_2_7
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 7\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_2_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 7\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_2_7
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_2_7_1
+    treasure_02_id: treasure_2_7_2
+    treasure_03_id: treasure_2_7_3
+    dialogue_box_1: -1
+    dialogue_box_2: -1
+    dialogue_box_3: -1
+    dialogue_box_4: -1
+    dialogue_box_5: -1
+  - stage_id: stage_2_8
+    stage_name: "\uC2A4\uD14C\uC774\uC9C0 8\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
+    stage_img: Img/Stage/stage_2_1_main
+    stage_desc: "\"\uC2A4\uD14C\uC774\uC9C0 8\uC124\uBA85\uD14C\uC2A4\uD2B8 \uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\uD7A3\u314E\uD7A3\uD7A3\u314E\uD7A3\""
+    map_id: map_2_8
+    start_cutscene: -1
+    start_talk: -1
+    end_talk: -1
+    end_cutscene: -1
+    treasure_01_id: treasure_2_8_1
+    treasure_02_id: treasure_2_8_2
+    treasure_03_id: treasure_2_8_3
     dialogue_box_1: -1
     dialogue_box_2: -1
     dialogue_box_3: -1

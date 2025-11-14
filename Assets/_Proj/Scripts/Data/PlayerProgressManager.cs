@@ -57,8 +57,8 @@ public class PlayerProgressManager : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                if (newlyCollected[i])
-                    progress.treasureCollected[i] = true;
+                
+                    progress.treasureCollected[i] = newlyCollected[i];
             }
 
             SaveProgress();
@@ -74,52 +74,63 @@ public class PlayerProgressManager : MonoBehaviour
     void SaveProgress()
     {
         //Todo : Firebase 연동시 변경해야 할 부분
+        UserData.Progress progress = new();
+        Dictionary<string, UserData.Progress.Score> scores = new();
+        foreach (var kvp in stageProgressDict)
+        {
+            UserData.Progress.Score score = new();
+            score.star_1 = kvp.Value.treasureCollected[0];
+            score.star_2 = kvp.Value.treasureCollected[1];
+            score.star_3 = kvp.Value.treasureCollected[2];
 
-        var wrapper = new Wrapper(stageProgressDict);
-        string json = JsonUtility.ToJson(wrapper, true);
-        PlayerPrefs.SetString("StageProgress", json);
-        PlayerPrefs.Save(); // 반드시 저장
-        Debug.Log($"[SaveProgress] 저장됨:\n{json}");
+            scores.Add(kvp.Key, score);
+            
+        }
+        UserData.Local.progress.scores = scores;
+        UserData.Local.progress.Save();
+        
+       
     }
 
+
+    //1114 확인완료
     public void LoadProgress()
     {
         //Todo : Firebase 연동시 변경해야 할 부분
-        if (PlayerPrefs.HasKey("StageProgress"))
-        {
-            string json = PlayerPrefs.GetString("StageProgress");
-            Debug.Log($"[LoadProgress] 로드된 JSON:\n{json}");
 
-            var wrapper = JsonUtility.FromJson<Wrapper>(json);
-            if (wrapper != null && wrapper.list != null)
-                stageProgressDict = wrapper.ToDictionary();
-            else
-                stageProgressDict = new Dictionary<string, StageProgressData>();
-        }
-        else
-        {
-            stageProgressDict = new Dictionary<string, StageProgressData>();
-        }
+        stageProgressDict = UserData.Local.progress.ToStageProgressDataDictionary();
+        //    Debug.Log($"[LoadProgress] 로드된 JSON:\n{json}");
+
+        //    var wrapper = JsonUtility.FromJson<Wrapper>(json);
+        //    if (wrapper != null && wrapper.list != null)
+        //        stageProgressDict = wrapper.ToDictionary();
+        //    else
+        //        stageProgressDict = new Dictionary<string, StageProgressData>();
+        
+        //else
+        //{
+        //    stageProgressDict = new Dictionary<string, StageProgressData>();
+        //}
     }
 
-    [Serializable]
-    private class Wrapper
-    {
-        public List<StageProgressData> list = new();
+    //[Serializable]
+    //private class Wrapper
+    //{
+    //    public List<StageProgressData> list = new();
 
-        public Wrapper() { }
+    //    public Wrapper() { }
 
-        public Wrapper(Dictionary<string, StageProgressData> dict)
-        {
-            list = new List<StageProgressData>(dict.Values);
-        }
+    //    public Wrapper(Dictionary<string, StageProgressData> dict)
+    //    {
+    //        list = new List<StageProgressData>(dict.Values);
+    //    }
 
-        public Dictionary<string, StageProgressData> ToDictionary()
-        {
-            var d = new Dictionary<string, StageProgressData>();
-            foreach (var e in list)
-                d[e.stageId] = e;
-            return d;
-        }
-    }
+    //    public Dictionary<string, StageProgressData> ToDictionary()
+    //    {
+    //        var d = new Dictionary<string, StageProgressData>();
+    //        foreach (var e in list)
+    //            d[e.stageId] = e;
+    //        return d;
+    //    }
+    //}
 }
