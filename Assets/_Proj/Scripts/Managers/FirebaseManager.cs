@@ -58,7 +58,7 @@ public class FirebaseManager : MonoBehaviour
             Auth = FirebaseAuth.GetAuth(App);
             IsInitialized = true;
 
-            if (Auth.CurrentUser == null) await SignInAnonymouslyTest((x)=>Debug.Log("익명로그인"));
+            if (Auth.CurrentUser == null) await SignInAnonymouslyTest((x)=>Debug.Log("자동으로 익명로그인"));
             if (Auth.CurrentUser != null && Auth.CurrentUser.IsAnonymous)
             {
                 await SignInAnonymouslyTest();

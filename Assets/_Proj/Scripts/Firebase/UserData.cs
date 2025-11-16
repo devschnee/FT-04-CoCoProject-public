@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using UnityEngine;
 
 
@@ -496,7 +497,9 @@ public class UserData : IUserData
     //로컬의 UserData. Firebase DB에서 받아오게 될 것임.
     public static UserData Local { get; private set; }
 
-    //친구추가 오면 이 더티플래그를 더럽게 만들어줌.
+
+    public int passedTutorials;
+    //예) 친구추가 오면 이 더티플래그를 더럽게 만들어줌.
     public UserDataDirtyFlag flag;
 
     public Master master;
@@ -508,6 +511,7 @@ public class UserData : IUserData
     public Codex codex;
     public Progress progress;
     
+
     public UserData()
     {
         master = new Master();
@@ -518,6 +522,7 @@ public class UserData : IUserData
         friends = new Friends();
         progress = new Progress();
         flag = 0;
+        passedTutorials = 0;
     }
 
     //로비 배치 정보
