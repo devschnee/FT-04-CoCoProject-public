@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using Game.Inventory;
+using System.Collections.Generic;
 public class ShopPurchaseService
 {
     private readonly GoodsService _goods;
@@ -43,6 +44,26 @@ public class ShopPurchaseService
         }
         else
         {
+            List<(int, int)> result = ResolvePackage(data);
+            
+            if (data.shop_group == ShopGroup.home)
+            {
+                foreach (var item in result)
+                InventoryService.I.Add(PlaceableCategory.Home, item.Item1, item.Item2 * qty);
+
+            }
+            if (data.shop_group == ShopGroup.deco)
+            {
+                foreach (var item in result)
+                InventoryService.I.Add(PlaceableCategory.Deco, item.Item1, item.Item2 * qty);
+
+            }
+            if (data.shop_group == ShopGroup.animal)
+                {
+
+                foreach (var item in result)
+                InventoryService.I.Add(PlaceableCategory.Animal, item.Item1, item.Item2 * qty);
+                }
             // TODO: 코스튬/패키지 등 다른 그룹 지급 로직 필요 시 확장
         }
 
@@ -110,5 +131,21 @@ public class ShopPurchaseService
         }
         catch { }
         return fallback;
+    }
+
+    private List<(int, int)> ResolvePackage(ShopData shopData)
+    {
+        List<(int, int)> packageContents = new();
+        //탐색 과정: 특정한 shopData가 넘어오면...
+        //샵 데이터베이스에 접근할 필요 없음. 왜냐면 이미 필요한 데이터는 넘어온 상태.
+        //구매서비스는 이미 샵DB와 샵_아이템DB를 알고 있음.
+
+        //넘어온 데이터에서 shop_item만을 가지고 shop_itemDatabase로 이동.
+        //shop_itemDatabase에서 해당 shop_item과 일치하는 shop_item_id를 가진 데이터를 모두 찾아 임시 보관.
+        List<Shop_itemData> dataList = _shopItemDB.shopItemList.FindAll(x => x.shop_item_id == shopData.shop_item);
+        dataList.ForEach(x => Debug.Log($"찾아온 아이템의 패키지id:{x.shop_item_Package_id},아이템id:{x.shop_item_id},단위수량:{x.shop_item_count}"));
+        //패키지 안에 포함된 아이템(id, 갯수)
+        dataList.ForEach(x => packageContents.Add(new(x.shop_item_Package_id, x.shop_item_count)));
+        return packageContents;
     }
 }
