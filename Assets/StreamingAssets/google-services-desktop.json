@@ -13,7 +13,12 @@
           "package_name": "com.DoogyOnAndOn.CoCoDoogy"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "236130748269-ulqjqtfe33lt6mp346qc3ggm20tk3ocp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAKwjmQHYA4VR6_P0tbZ3AzPWzkIZfgoOw"
@@ -21,7 +26,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236130748269-ulqjqtfe33lt6mp346qc3ggm20tk3ocp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -32,7 +42,20 @@
           "package_name": "com.DoogyOnAndOn.CocoDoogy"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "236130748269-bplp0i3f847is3n43uit47ohtk7rgjfj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.DoogyOnAndOn.CocoDoogy",
+            "certificate_hash": "ea524ee990ce9aa1b7a33eb198e36485ca1c1962"
+          }
+        },
+        {
+          "client_id": "236130748269-ulqjqtfe33lt6mp346qc3ggm20tk3ocp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAKwjmQHYA4VR6_P0tbZ3AzPWzkIZfgoOw"
@@ -40,7 +63,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236130748269-ulqjqtfe33lt6mp346qc3ggm20tk3ocp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

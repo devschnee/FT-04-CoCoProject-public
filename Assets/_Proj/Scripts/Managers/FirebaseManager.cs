@@ -1,14 +1,12 @@
 ﻿using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
-using Firebase.Extensions;
+using Google;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Threading.Tasks;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
+
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -16,12 +14,18 @@ public class FirebaseManager : MonoBehaviour
     private FirebaseApp App { get; set; }
     private FirebaseDatabase DB { get; set; }
 
+    private GoogleSignInConfiguration configuration;
+
+    private string GoogleAPI = "236130748269-ulqjqtfe33lt6mp346qc3ggm20tk3ocp.apps.googleusercontent.com";
+    private bool isGoogleReady;
     private FirebaseAuth Auth { get; set; }
+    
     private DatabaseReference MapDataRef => DB.RootReference.Child($"mapData");
     private DatabaseReference MapMetaRef => DB.RootReference.Child($"mapMeta");
     private DatabaseReference UserDataRef => DB.RootReference.Child($"userData");
     private DatabaseReference CurrentUserDataRef => UserDataRef.Child(Auth.CurrentUser.UserId);
 
+    
     public StageManager stageManager;
 
     public bool IsInitialized { get; private set; }
@@ -58,10 +62,10 @@ public class FirebaseManager : MonoBehaviour
             Auth = FirebaseAuth.GetAuth(App);
             IsInitialized = true;
 
-            if (Auth.CurrentUser == null) await SignInAnonymouslyTest((x)=>Debug.Log("자동으로 익명로그인"));
+            if (Auth.CurrentUser == null) await SignInAnonymously((x)=>Debug.Log("자동으로 익명로그인"));
             if (Auth.CurrentUser != null && Auth.CurrentUser.IsAnonymous)
             {
-                await SignInAnonymouslyTest();
+                await SignInAnonymously();
             }
             
             Debug.Log($"[파이어베이스 인증]로컬에 남아있는 유저 아이디 : {Auth.CurrentUser.UserId}");
@@ -168,14 +172,35 @@ public class FirebaseManager : MonoBehaviour
     //Firebase Auth 관련 기능.
 
     /// <summary>
-    /// 익명 로그인 기능 테스트용 함수.
+    /// 익명 로그인 기능 함수(public).
     /// </summary>
     /// <param name="onSuccess"></param>
     /// <param name="onFailure"></param>
     /// <returns></returns>
-    public async Task SignInAnonymouslyTest(Action<FirebaseUser> onSuccess = null, Action<FirebaseException> onFailure = null) => await SignInAnonymously(onSuccess, onFailure);
+    public async Task SignInAnonymously(Action<FirebaseUser> onSuccess = null, Action<FirebaseException> onFailure = null) => await SignInAnonymouslyInternal(onSuccess, onFailure);
 
+    //public void aa()
+    //{
+    //    Firebase.Auth.Credential credential =
+    //    Firebase.Auth.GoogleAuthProvider.GetCredential(GoogleAPI, null);
+    //    Auth.SignInAndRetrieveDataWithCredentialAsync(credential).ContinueWith(task =>
+    //    {
+    //        if (task.IsCanceled)
+    //        {
+    //            Debug.LogError("SignInAndRetrieveDataWithCredentialAsync was canceled.");
+    //            return;
+    //        }
+    //        if (task.IsFaulted)
+    //        {
+    //            Debug.LogError("SignInAndRetrieveDataWithCredentialAsync encountered an error: " + task.Exception);
+    //            return;
+    //        }
 
+    //        Firebase.Auth.AuthResult result = task.Result;
+    //        Debug.LogFormat("User signed in successfully: {0} ({1})",
+    //            result.User.DisplayName, result.User.UserId);
+    //    });
+    //}
 
     /// <summary>
     /// 익명 로그인 기능.
@@ -183,7 +208,7 @@ public class FirebaseManager : MonoBehaviour
     /// <param name="onSuccess">성공 시의 FirebaseUser를 매개변수로 삼아 호출할 콜백 함수</param>
     /// <param name="onFailure">실패 발생되는 FirebaseException을 매개변수로 삼아 호출할 콜백 함수</param>
     /// <returns></returns>
-    private async Task SignInAnonymously(Action<FirebaseUser> onSuccess, Action<FirebaseException> onFailure)
+    private async Task SignInAnonymouslyInternal(Action<FirebaseUser> onSuccess, Action<FirebaseException> onFailure)
     {
         try
         {
@@ -203,27 +228,98 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    [Obsolete("유저데이터 클래스 정의를 먼저 하고 사용해야 함. 정의 및 연결 끝나면 이 Obsolete는 지우고 정식으로 사용 예정.", false)]
-    /// <summary>
-    /// 유저 데이터 저장 기능.
-    /// </summary>
-    /// <param name="user">데이터를 저장할 FirebaseUser</param>
-    private void SaveUserData(FirebaseUser user)
+    public void GoogleLogin()
     {
-        if (user == null) return;
-
-        var userRef = DB.GetReference("users").Child(user.UserId);
-        var userData = new
+        if (!isGoogleReady)
         {
-            uid = user.UserId,
-            email = user.Email,
-            isAnonymous = user.IsAnonymous,
-            displayName = user.DisplayName,
-            lastLogin = DateTime.UtcNow.ToString("o")
-        };
+            GoogleSignIn.Configuration = new GoogleSignInConfiguration
+            {
+                RequestIdToken = true,
+                WebClientId = GoogleAPI,
+                RequestEmail = true
+            };
 
-        userRef.SetRawJsonValueAsync(JsonConvert.SerializeObject(userData));
+            isGoogleReady = true;
+        }
+        GoogleSignIn.Configuration = new GoogleSignInConfiguration
+        {
+            RequestIdToken = true,
+            WebClientId = GoogleAPI
+        };
+        GoogleSignIn.Configuration.RequestEmail = true;
+
+        Task<GoogleSignInUser> signIn = GoogleSignIn.DefaultInstance.SignIn();
+
+        TaskCompletionSource<FirebaseUser> signInCompleted = new TaskCompletionSource<FirebaseUser>();
+        signIn.ContinueWith(task =>
+        {
+            if (task.IsCanceled)
+            {
+                signInCompleted.SetCanceled();
+                Debug.Log("Cancelled");
+            }
+            else if (task.IsFaulted)
+            {
+                signInCompleted.SetException(task.Exception);
+
+                Debug.Log("Faulted " + task.Exception);
+            }
+            else
+            {
+                Credential credential = Firebase.Auth.GoogleAuthProvider.GetCredential(((Task<GoogleSignInUser>)task).Result.IdToken, null);
+                Auth.SignInWithCredentialAsync(credential).ContinueWith(authTask =>
+                {
+                    if (authTask.IsCanceled)
+                    {
+                        signInCompleted.SetCanceled();
+                    }
+                    else if (authTask.IsFaulted)
+                    {
+                        signInCompleted.SetException(authTask.Exception);
+                        Debug.Log("Faulted In Auth " + task.Exception);
+                    }
+                    else
+                    {
+                        signInCompleted.SetResult(((Task<FirebaseUser>)authTask).Result);
+                        Debug.Log("Success");
+                        //user = Auth.CurrentUser;
+                        //Username.text = user.DisplayName;
+                        //UserEmail.text = user.Email;
+
+                        //StartCoroutine(LoadImage(CheckImageUrl(user.PhotoUrl.ToString())));
+                    }
+                });
+            }
+        });
     }
+    //public async Task fdasf()
+    //{
+    //    try
+    //    {
+
+    //        Firebase.Auth.Credential credential =
+    //        Firebase.Auth.GoogleAuthProvider.GetCredential(GoogleAuthProvider.ProviderId, googleAccessToken);
+    //        await Auth.SignInAndRetrieveDataWithCredentialAsync(credential).ContinueWith(task => {
+    //            if (task.IsCanceled)
+    //            {
+    //                Debug.LogError("SignInAndRetrieveDataWithCredentialAsync was canceled.");
+    //                return;
+    //            }
+    //            if (task.IsFaulted)
+    //            {
+    //                Debug.LogError("SignInAndRetrieveDataWithCredentialAsync encountered an error: " + task.Exception);
+    //                return;
+    //            }
+
+    //            Firebase.Auth.AuthResult result = task.Result;
+    //            Debug.Log($"User signed in successfully: {result.User.DisplayName} ({result.User.UserId})");
+    //        });
+    //    } 
+    //    catch (FirebaseException fe)
+    //    {
+    //        Debug.Log(fe.Message);
+    //    }
+    //}
 
     /// <summary>
     /// 로그인된 익명 유저의 인증 정보를 구글 계정과 연결하는 함수.
@@ -373,12 +469,11 @@ public class FirebaseManager : MonoBehaviour
             {
                 UserDataDirtyFlag flag = (UserDataDirtyFlag)(int)(long)snapshot.Value;
                 Debug.Log($"{Auth.CurrentUser.UserId}: DB에 하트비트 기록하며 확인한 더티플래그: {flag}");
+                
+                //TODO: flag의 getter, setter 설정으로 플래그를 설정하는 시점에 필요한 처리가 자동으로 일어날 수 있도록 구성하자.
                 UserData.Local.flag = flag;
             }
-            else
-            {
-                await CurrentUserDataRef.Child("flag").SetValueAsync(UserData.Local.flag);
-            }
+            
         }
         catch (FirebaseException fe)
         {
