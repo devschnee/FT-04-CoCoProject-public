@@ -9,7 +9,6 @@ public class GameInfoPopup : MonoBehaviour
     [SerializeField] private TextMeshProUGUI manualName; // 소제목
     [SerializeField] private Image contentImage; // 이미지
     [SerializeField] private TextMeshProUGUI manualDesc; // 설명
-    //[SerializeField] private TextMeshProUGUI tabName; // 탭 이름
 
     [Header("Tabs")]
     [SerializeField] private Transform tabGroup;
@@ -50,7 +49,9 @@ public class GameInfoPopup : MonoBehaviour
             Button tab = Instantiate(tabButtonPrefab, tabGroup);
             createdTabs.Add(tab);
 
-            tab.GetComponentInChildren<TextMeshProUGUI>().text = manual.manual_name;
+            // 탭에 들어갈 때는 따옴표 제거
+            string tabName = manual.manual_name.Trim('"');
+            tab.GetComponentInChildren<TextMeshProUGUI>().text = tabName;
             int id = manual.manual_id;
 
             tab.onClick.AddListener(() =>
