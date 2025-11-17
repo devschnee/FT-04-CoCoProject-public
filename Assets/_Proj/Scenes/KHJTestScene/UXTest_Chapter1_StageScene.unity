@@ -15971,17 +15971,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602437277}
   m_CullTransparentMesh: 1
---- !u!114 &602575069 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5890873671805233280, guid: 70a6022e78cbaad4a897f0996d0faafd, type: 3}
-  m_PrefabInstance: {fileID: 5321249768533676563}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &615812322
 GameObject:
   m_ObjectHideFlags: 0
@@ -27837,7 +27826,7 @@ MonoBehaviour:
   questPanel: {fileID: 658262639}
   shopPanel: {fileID: 960139650}
   friendsPanel: {fileID: 615812322}
-  settingPanel: {fileID: 1415366831}
+  optionPanel: {fileID: 0}
   chapterPanel: {fileID: 1558425961}
   stagePanel: {fileID: 404809671}
   startClosed: 1
@@ -35582,7 +35571,7 @@ MonoBehaviour:
   - {fileID: 2030566086}
   - {fileID: 2124449480}
   stageImage: {fileID: 393091561}
-  stageText: {fileID: 2043650779}
+  stageText: {fileID: 0}
   reward:
   - {fileID: 352668039}
   - {fileID: 522195851}
@@ -35597,9 +35586,11 @@ MonoBehaviour:
   DialogueSpeakerLeft: {fileID: 920582482}
   DialogueSpeakerRight: {fileID: 845484089}
   DialogueNameText: {fileID: 560227150}
-  DialogueText: {fileID: 602575069}
+  DialogueText: {fileID: 0}
   collectedSprite: {fileID: 21300000, guid: 072e279b9e7d849d4b14c61cc96cd90d, type: 3}
   notCollectedSprite: {fileID: 21300000, guid: 741065579880b4e1c929ab49bd185620, type: 3}
+  CoCoDoogySprite: {fileID: 0}
+  ResultCoCoDoogySprite: []
 --- !u!4 &1272991174
 Transform:
   m_ObjectHideFlags: 0
@@ -45594,7 +45585,6 @@ MonoBehaviour:
   coinId: 110003
   capId: 110002
   energyId: 110001
-  overrideUserId: 
   shopPanel: {fileID: 118123685}
 --- !u!4 &1613036343
 Transform:
@@ -56083,17 +56073,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041490169}
   m_CullTransparentMesh: 1
---- !u!114 &2043650779 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8563110518559724622, guid: 67afe8ff9856ab84f8833f684f189198, type: 3}
-  m_PrefabInstance: {fileID: 7114225888340625046}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2044039447
 GameObject:
   m_ObjectHideFlags: 0
@@ -59101,27 +59080,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8300094883705127183, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8300094883705127183, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8300094883705127183, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8300094883705127183, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8300094883705127183, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1600
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8300094883705127183, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -200
+      value: 880
       objectReference: {fileID: 0}
     - target: {fileID: 8300094883705127183, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59157,7 +59136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8300094883705127183, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 8300094883705127183, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
