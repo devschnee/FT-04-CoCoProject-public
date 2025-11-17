@@ -21,8 +21,10 @@ public class StageData
     public string dialogue_box_3;
     public string dialogue_box_4;
     public string dialogue_box_5;
+    public string stage_bgm;
 
     [NonSerialized] public Sprite icon;
+    [NonSerialized] public AudioClip audio;
 
     public Sprite GetIcon(IResourceLoader loader)
     {
@@ -45,5 +47,11 @@ public class StageData
             return null;
 
         return end_cutscene;
+    }
+    public AudioClip GetAudio(IResourceLoader loader)
+    {
+        if (audio == null && !string.IsNullOrEmpty(stage_bgm))
+            audio = loader.LoadAudio(stage_bgm);
+        return audio;
     }
 }

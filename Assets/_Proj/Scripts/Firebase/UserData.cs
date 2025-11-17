@@ -150,9 +150,25 @@ public class UserData : IUserData
     [Serializable]
     public class Inventory : IUserDataCategory
     {
+        //전체 목록에서, 어떤 아이템(string으로 저장된 id)인지, 몇 개나(value)있는지?
         [SerializeField]
         public Dictionary<string, int> items = new();
 
+
+        public int this[PlaceableCategory cat, int id] {
+            get => items.TryGetValue(id.ToString(), out int value) ? value : 0;
+            set
+            {
+                if (items.TryGetValue(id.ToString(), out int v))
+                {
+                    v = value;
+                }
+                else
+                {
+                    items.Add(id.ToString(), value);
+                }
+
+            } }
         public Inventory()
         {
             
@@ -490,6 +506,23 @@ public class UserData : IUserData
         }
     }
 
+    [Serializable]
+        public class Preferences : IUserDataCategory
+    {
+
+        public Preferences()
+        {
+            skipDialogues = false;
+        }
+
+        public bool skipDialogues;
+        public void ApplyAll()
+        {
+            //각각의 옵션 값을 필요로 하는 객체(매니저라던가...)에게 전달.
+
+        }
+    }
+
 
     #endregion
 
@@ -510,7 +543,9 @@ public class UserData : IUserData
     public Friends friends;
     public Codex codex;
     public Progress progress;
-    
+    public Preferences preferences;
+
+
 
     public UserData()
     {
@@ -521,8 +556,10 @@ public class UserData : IUserData
         eventArchive = new EventArchive();
         friends = new Friends();
         progress = new Progress();
+        preferences = new Preferences();
         flag = 0;
         passedTutorials = 0;
+        
     }
 
     //로비 배치 정보
@@ -542,7 +579,9 @@ public class UserData : IUserData
     //                     public int bestTreasureCount = 0;              // 지금까지 달성한 최대 별 개수
 
 
-    public static void SetLocal(UserData data) => Local = data;
+    public static void SetLocal(UserData data) { Local = data;
+        data.preferences.ApplyAll();
+    }
 
 
     public static async void OnLocalUserDataUpdate()

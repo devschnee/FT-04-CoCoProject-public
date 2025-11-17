@@ -43,4 +43,10 @@ public class StageProvider : IDataProvider<string, StageData>
         var relativePath = data.GetEndCutscenePath();
         return CutscenePathBuilder.BuildUrl(relativePath);
     }
+
+    public AudioClip GetAudioClip(string id)
+    {
+        var data = GetData(id);
+        return data?.GetAudio(loader);
+    }
 }

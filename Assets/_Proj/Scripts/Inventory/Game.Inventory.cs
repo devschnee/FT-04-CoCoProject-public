@@ -1,15 +1,15 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Inventory
 {
     /// <summary>
-    /// Ä«Å×°í¸® °øÅë ÀÎº¥Åä¸® ¼ö·® ¼­ºñ½º.
-    /// - Å°: (PlaceableCategory, id)
-    /// - µ¥ÄÚ: ¼ö·® ¿î¿µ (±âÁ¸ DecoInventoryRuntime ´ëÃ¼)
-    /// - µ¿¹°/Áı/¹è°æ: ±âº» 0(°ü¸® ¾È ÇÔ). ÇÊ¿äÇØÁö¸é µ¿ÀÏ API·Î È®Àå °¡´É.
-    /// - ±¸Å° ¸¶ÀÌ±×·¹ÀÌ¼Ç: "DecoInv_{id}" ¡æ "Inv::{cat}::{id}"
+    /// ì¹´í…Œê³ ë¦¬ ê³µí†µ ì¸ë²¤í† ë¦¬ ìˆ˜ëŸ‰ ì„œë¹„ìŠ¤.
+    /// - í‚¤: (PlaceableCategory, id)
+    /// - ë°ì½”: ìˆ˜ëŸ‰ ìš´ì˜ (ê¸°ì¡´ DecoInventoryRuntime ëŒ€ì²´)
+    /// - ë™ë¬¼/ì§‘/ë°°ê²½: ê¸°ë³¸ 0(ê´€ë¦¬ ì•ˆ í•¨). í•„ìš”í•´ì§€ë©´ ë™ì¼ APIë¡œ í™•ì¥ ê°€ëŠ¥.
+    /// - êµ¬í‚¤ ë§ˆì´ê·¸ë ˆì´ì…˜: "DecoInv_{id}" â†’ "Inv::{cat}::{id}"
     /// </summary>
     [DefaultExecutionOrder(-1000)]
     public class InventoryService : MonoBehaviour
@@ -19,9 +19,9 @@ namespace Game.Inventory
         /// <summary>(cat,id,newCount)</summary>
         public event Action<PlaceableCategory, int, int> OnChanged;
 
-        private readonly Dictionary<(PlaceableCategory cat, int id), int> _counts = new();
-
-        private const string NEW_PREFIX = "Inv::";     // ÃÖÁ¾: Inv::{cat}::{id}
+        //private readonly Dictionary<(PlaceableCategory cat, int id), int> _counts = new();
+        private UserData.Inventory inventory => UserData.Local.inventory;
+        private const string NEW_PREFIX = "Inv::";     // ìµœì¢…: Inv::{cat}::{id}
         private const string OLD_DECO_PREFIX = "DecoInv_";
 
         private void Awake()
@@ -29,17 +29,19 @@ namespace Game.Inventory
             if (I && I != this) { Destroy(gameObject); return; }
             I = this;
 
-            _counts.Clear();
-            LoadAllNew();
-            MigrateOldDecoIfAny();
+            
+            //_counts.Clear();
+            //LoadAllNew();
+            //MigrateOldDecoIfAny();
         }
 
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         // Public API
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public int GetCount(PlaceableCategory cat, int id)
         {
-            return _counts.TryGetValue((cat, id), out var c) ? c : 0;
+            return inventory[cat, id];
+            //return _counts.TryGetValue((cat, id), out var c) ? c : 0;
         }
 
         public void Add(PlaceableCategory cat, int id, int n = 1)
@@ -47,9 +49,13 @@ namespace Game.Inventory
             if (id <= 0 || n <= 0) return;
             int cur = GetCount(cat, id);
             int next = cur + n;
-            _counts[(cat, id)] = next;
+            inventory[cat, id] = next;
+            
+            //_counts[(cat, id)] = next;
             OnChanged?.Invoke(cat, id, next);
-            SaveOne(cat, id, next);
+            inventory.Save();
+            
+            //SaveOne(cat, id, next);
         }
 
         public bool TryConsume(PlaceableCategory cat, int id, int n = 1)
@@ -60,23 +66,31 @@ namespace Game.Inventory
             if (cur < n) return false;
 
             int next = cur - n;
-            _counts[(cat, id)] = next;
+            inventory[cat, id] = next;
+            
+            //_counts[(cat, id)] = next;
             OnChanged?.Invoke(cat, id, next);
-            SaveOne(cat, id, next);
+            inventory.Save();
+
+            //SaveOne(cat, id, next);
             return true;
         }
 
         public void Set(PlaceableCategory cat, int id, int count)
         {
             if (id <= 0 || count < 0) return;
-            _counts[(cat, id)] = count;
+            inventory[cat, id] = count;
+
+            //_counts[(cat, id)] = count;
             OnChanged?.Invoke(cat, id, count);
-            SaveOne(cat, id, count);
+            inventory.Save();
+            
+            //SaveOne(cat, id, count);
         }
 
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         // Storage (PlayerPrefs)
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         private static string Key(PlaceableCategory cat, int id) => $"{NEW_PREFIX}{cat}::{id}";
 
         private void SaveOne(PlaceableCategory cat, int id, int count)
@@ -85,31 +99,31 @@ namespace Game.Inventory
             PlayerPrefs.Save();
         }
 
-        private void LoadAllNew()
-        {
-            // PlayerPrefs´Â ÀüÃ¼ ¿­¶÷ÀÌ ºÒ°¡ ¡æ ÁÖ·Î ·±Å¸ÀÓ¿¡¼­ SetÇÑ °Í¸¸ ¸Ş¸ğ¸®¿¡ À¯Áö.
-            // »õ ÀåÄ¡/Ã³À½ ½ÇÇàÀÌ¸é ºó »óÅÂ¿¡¼­ ½ÃÀÛ(µ¥ÄÚ´Â º¸»ó ½Ã Add·Î µé¾î¿È).
-            // ÇÊ¿äÇÏ¸é DB ¸ñ·ÏÀ» ¼øÈ¸ÇÏ¿© Á¸ÀçÇÏ´Â Å°¸¦ Á¶È¸ÇÏ´Â ¹æ½ÄÀ» °¢ ÆĞ³Î¿¡¼­ È£ÃâÇØµµ OK.
-        }
+        //private void LoadAllNew()
+        //{
+        //    // PlayerPrefsëŠ” ì „ì²´ ì—´ëŒì´ ë¶ˆê°€ â†’ ì£¼ë¡œ ëŸ°íƒ€ì„ì—ì„œ Setí•œ ê²ƒë§Œ ë©”ëª¨ë¦¬ì— ìœ ì§€.
+        //    // ìƒˆ ì¥ì¹˜/ì²˜ìŒ ì‹¤í–‰ì´ë©´ ë¹ˆ ìƒíƒœì—ì„œ ì‹œì‘(ë°ì½”ëŠ” ë³´ìƒ ì‹œ Addë¡œ ë“¤ì–´ì˜´).
+        //    // í•„ìš”í•˜ë©´ DB ëª©ë¡ì„ ìˆœíšŒí•˜ì—¬ ì¡´ì¬í•˜ëŠ” í‚¤ë¥¼ ì¡°íšŒí•˜ëŠ” ë°©ì‹ì„ ê° íŒ¨ë„ì—ì„œ í˜¸ì¶œí•´ë„ OK.
+        //}
 
-        /// <summary>±âÁ¸ "DecoInv_{id}" Å°¸¦ »õ Å°·Î ÀÌ°ü.</summary>
-        private void MigrateOldDecoIfAny()
-        {
-            // ¾ÈÀü: DB°¡ ¾ø¾îµµ Å°¸¸ ÀÖÀ¸¸é ÀÌ°ü
-            // Çö½ÇÀûÀ¸·Î´Â ºÒ·¯¿Ã id ¹üÀ§¸¦ ¸ğ¸§ ¡æ ´ëÇ¥ÀûÀ¸·Î 1~10000 Á¤µµ Á¡°Ë?
-            // ³Ê¹« Å©¸é ºñÈ¿À²ÀÌ¶ó, ½ÇÁ¦ ÇÁ·ÎÁ§Æ®¿¡¼± DB¸¦ ¼øÈ¸ ±ÇÀå.
-            // ¿©±â¼± ¼Ò±Ô¸ğ °¡Á¤À¸·Î 1~4096 ¹üÀ§¸¸ ÇÑ ¹ø ÈÈ´Â´Ù.
-            for (int id = 1; id <= 4096; id++)
-            {
-                string oldKey = OLD_DECO_PREFIX + id;
-                if (!PlayerPrefs.HasKey(oldKey)) continue;
+        /// <summary>ê¸°ì¡´ "DecoInv_{id}" í‚¤ë¥¼ ìƒˆ í‚¤ë¡œ ì´ê´€.</summary>
+        //private void MigrateOldDecoIfAny()
+        //{
+        //    // ì•ˆì „: DBê°€ ì—†ì–´ë„ í‚¤ë§Œ ìˆìœ¼ë©´ ì´ê´€
+        //    // í˜„ì‹¤ì ìœ¼ë¡œëŠ” ë¶ˆëŸ¬ì˜¬ id ë²”ìœ„ë¥¼ ëª¨ë¦„ â†’ ëŒ€í‘œì ìœ¼ë¡œ 1~10000 ì •ë„ ì ê²€?
+        //    // ë„ˆë¬´ í¬ë©´ ë¹„íš¨ìœ¨ì´ë¼, ì‹¤ì œ í”„ë¡œì íŠ¸ì—ì„  DBë¥¼ ìˆœíšŒ ê¶Œì¥.
+        //    // ì—¬ê¸°ì„  ì†Œê·œëª¨ ê°€ì •ìœ¼ë¡œ 1~4096 ë²”ìœ„ë§Œ í•œ ë²ˆ í›‘ëŠ”ë‹¤.
+        //    for (int id = 1; id <= 4096; id++)
+        //    {
+        //        string oldKey = OLD_DECO_PREFIX + id;
+        //        if (!PlayerPrefs.HasKey(oldKey)) continue;
 
-                int count = PlayerPrefs.GetInt(oldKey, 0);
-                _counts[(PlaceableCategory.Deco, id)] = count;
-                PlayerPrefs.SetInt(Key(PlaceableCategory.Deco, id), count);
-                PlayerPrefs.DeleteKey(oldKey);
-            }
-            PlayerPrefs.Save();
-        }
+        //        int count = PlayerPrefs.GetInt(oldKey, 0);
+        //        _counts[(PlaceableCategory.Deco, id)] = count;
+        //        PlayerPrefs.SetInt(Key(PlaceableCategory.Deco, id), count);
+        //        PlayerPrefs.DeleteKey(oldKey);
+        //    }
+        //    PlayerPrefs.Save();
+        //}
     }
 }

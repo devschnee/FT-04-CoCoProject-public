@@ -51,13 +51,20 @@ public class TitleSceneManager : MonoBehaviour
     IEnumerator SceneTransitCoroutine()
     {
         var touch = Touchscreen.current;
+        yield return new WaitWhile(() => UserData.Local == null);
         while (true)
         {
             if (touch.press.isPressed)
             {
-                //if (UserData.Local.isTutorialPlayed)
-                SceneManager.LoadScene("Main");
-                yield break;
+                //TODO: 튜토리얼 씬 구성 후, UserData.Local.passedTutorials를 제대로 대입해주어야 함.
+                //모든 튜토리얼을 끝냈을 때만 메인을 직접 로드.
+                //if (UserData.Local.passedTutorials >= 2)
+                    SceneManager.LoadScene("Main");
+                //모든 튜토리얼을 끝내지 못했다면 튜토리얼로 로드.
+                //else if (UserData.Local.passedTutorials < 2)
+                    
+                    //SceneManager.LoadScene("Tutorial");
+                    yield break;
             }
             yield return null;
         }
@@ -66,6 +73,7 @@ public class TitleSceneManager : MonoBehaviour
     {
         float alphaMod = 0;
         bool isDescend = false;
+        yield return new WaitWhile(() => UserData.Local == null);
         while (true)
         {
             
