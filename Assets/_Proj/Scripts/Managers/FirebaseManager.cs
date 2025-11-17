@@ -4,6 +4,7 @@ using Firebase.Database;
 using Google;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -19,13 +20,14 @@ public class FirebaseManager : MonoBehaviour
     private string GoogleAPI = "236130748269-ulqjqtfe33lt6mp346qc3ggm20tk3ocp.apps.googleusercontent.com";
     private bool isGoogleReady;
     private FirebaseAuth Auth { get; set; }
+    public bool IsSignedIn => Auth.CurrentUser != null;
     
     private DatabaseReference MapDataRef => DB.RootReference.Child($"mapData");
     private DatabaseReference MapMetaRef => DB.RootReference.Child($"mapMeta");
     private DatabaseReference UserDataRef => DB.RootReference.Child($"userData");
     private DatabaseReference CurrentUserDataRef => UserDataRef.Child(Auth.CurrentUser.UserId);
 
-    
+    public Action<string> onLog;
     public StageManager stageManager;
 
     public bool IsInitialized { get; private set; }
@@ -62,14 +64,21 @@ public class FirebaseManager : MonoBehaviour
             Auth = FirebaseAuth.GetAuth(App);
             IsInitialized = true;
 
-            if (Auth.CurrentUser == null) await SignInAnonymously((x)=>Debug.Log("자동으로 익명로그인"));
-            if (Auth.CurrentUser != null && Auth.CurrentUser.IsAnonymous)
+            //if (Auth.CurrentUser == null) await SignInAnonymously((x)=>Debug.Log("자동으로 익명로그인"));
+            if (Auth.CurrentUser != null )
             {
-                await SignInAnonymously();
+                //if (Auth.CurrentUser.IsAnonymous)
+                //await SignInAnonymously();
+                //else GoogleLogin();
+
+                //확인 결과 Auth.CurrentUser는 마지막 로그인 방법 그대로 남아있고, 추가로 로그인해줄 필요가 없었음.
+                await FetchCurrentUserData();
+                await SendHeartbeatAsync();
             }
+
             
             Debug.Log($"[파이어베이스 인증]로컬에 남아있는 유저 아이디 : {Auth.CurrentUser.UserId}");
-
+            //StartCoroutine(TestLog());
 
         }
         else
@@ -78,7 +87,14 @@ public class FirebaseManager : MonoBehaviour
             Debug.LogWarning($"파이어베이스 초기화 실패, 파이어베이스 앱 상태: {status}");
         }
     }
-
+    //IEnumerator TestLog()
+    //{
+    //    while (true)
+    //    {
+    //        yield return null;
+    //        onLog?.Invoke(Auth.CurrentUser.ProviderId);
+    //    }
+    //}
 
     void Awake()
     {
@@ -228,7 +244,7 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    public void GoogleLogin()
+    public async void GoogleLogin()
     {
         if (!isGoogleReady)
         {
@@ -251,7 +267,7 @@ public class FirebaseManager : MonoBehaviour
         Task<GoogleSignInUser> signIn = GoogleSignIn.DefaultInstance.SignIn();
 
         TaskCompletionSource<FirebaseUser> signInCompleted = new TaskCompletionSource<FirebaseUser>();
-        signIn.ContinueWith(task =>
+        await signIn.ContinueWith(task =>
         {
             if (task.IsCanceled)
             {
@@ -282,13 +298,15 @@ public class FirebaseManager : MonoBehaviour
                     {
                         signInCompleted.SetResult(((Task<FirebaseUser>)authTask).Result);
                         Debug.Log("Success");
+
+                        
                         //user = Auth.CurrentUser;
                         //Username.text = user.DisplayName;
                         //UserEmail.text = user.Email;
 
                         //StartCoroutine(LoadImage(CheckImageUrl(user.PhotoUrl.ToString())));
                     }
-                });
+                }).ContinueWith(async (x)=> { await FetchCurrentUserData(); });
             }
         });
     }
@@ -357,6 +375,7 @@ public class FirebaseManager : MonoBehaviour
         if (Auth.CurrentUser == null /*|| !Auth.CurrentUser.IsValid()*/) return;
         try
         {
+            
             DataSnapshot snapshot = await CurrentUserDataRef.GetValueAsync();
             if (snapshot.Exists)
             {
