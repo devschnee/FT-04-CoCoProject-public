@@ -41,7 +41,7 @@ public class VideoPlayerController : MonoBehaviour
 
         StartCoroutine(PlayRoutine(url, true, () =>
         {
-            tcs.SetResult(true);
+            tcs.TrySetResult(true);
         }));
 
         await tcs.Task;
@@ -54,6 +54,16 @@ public class VideoPlayerController : MonoBehaviour
     {
         Debug.Log("[Cutscene] Load: " + url);
 
+        // 중복 재생 처리: 현재 재생 중이면 강제로 멈춤
+        if (isPlaying)
+        {
+            Debug.Log("[Cutscene] Warning: Already playing. Stopping previous.");
+            player.Stop();
+            isPlaying = false;
+            // 약간의 대기(옵션)
+            yield return null;
+        }
+
         isPlaying = true;
 
         AudioManager.Instance.StopAllAudioGroup();
@@ -64,15 +74,25 @@ public class VideoPlayerController : MonoBehaviour
         player.Prepare();
 
         float timeout = 5f;
+        bool prepareFailed = false;
         while (!player.isPrepared)
         {
             timeout -= Time.deltaTime;
             if (timeout < 0)
             {
                 Debug.LogError("[Cutscene] Prepare Timeout!");
-                yield break;
+                prepareFailed = true;
+                break;
             }
             yield return null;
+        }
+
+        if (prepareFailed)
+        {
+            // 준비 실패 시 상태 정리 및 콜백 호출
+            isPlaying = false;
+            onFinish?.Invoke(); // 호출자(PlayAsync의 tcs 등)에게 끝났음을 알림
+            yield break;
         }
 
         Debug.Log("[Cutscene] Playing: " + url);
@@ -80,6 +100,7 @@ public class VideoPlayerController : MonoBehaviour
 
         if (waitUntilFinish)
         {
+            // isPlaying은 OnFinished / OnError에서 false로 설정됨
             while (isPlaying)
                 yield return null;
         }
