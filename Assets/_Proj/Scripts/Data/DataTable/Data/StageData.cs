@@ -31,6 +31,19 @@ public class StageData
         return icon;
     }
 
-    //TODO : cutscene 관련 변수 및 Get함수 추가필요
-    //cutscene은 어떻게 실행시킬지 확인필요
+    public string GetStartCutscenePath()
+    {
+        if (string.IsNullOrEmpty(start_cutscene))
+            return null;
+
+        return System.IO.Path.Combine("Movie/Stage", start_cutscene);
+    }
+
+    public string GetEndCutscenePath()
+    {
+        if (string.IsNullOrEmpty(end_cutscene))
+            return null;
+
+        return System.IO.Path.Combine("Movie/Stage", end_cutscene);
+    }
 }

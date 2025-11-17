@@ -25,4 +25,22 @@ public class StageProvider : IDataProvider<string, StageData>
         var data = GetData(id);
         return data?.GetIcon(loader);
     }
+
+    public string GetStartCutsceneUrl(string stageId)
+    {
+        var data = GetData(stageId);
+        if (data == null) return null;
+
+        var relativePath = data.GetStartCutscenePath();
+        return CutscenePathBuilder.BuildUrl(relativePath);
+    }
+
+    public string GetEndCutsceneUrl(string stageId)
+    {
+        var data = GetData(stageId);
+        if (data == null) return null;
+
+        var relativePath = data.GetEndCutscenePath();
+        return CutscenePathBuilder.BuildUrl(relativePath);
+    }
 }
