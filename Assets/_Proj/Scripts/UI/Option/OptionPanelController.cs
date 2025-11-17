@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+// TODO : 구글 로그인 기능 여기에 추가
 public class OptionPanelController : MonoBehaviour
 {
+    public OptionPanelController Instance;
+
     [Header("Popups")]
     [SerializeField] private AccountLinkAskPopup accountLinkAskPopup;
     [SerializeField] private LogoutPopup logoutPopup;
@@ -53,5 +56,22 @@ public class OptionPanelController : MonoBehaviour
     public void GameQuitOpen()
     {
         gameQuitPopup.Open();
+    }
+
+    public void TryGoogleLogin()
+    {
+        Debug.Log("구글 로그인 시도!");
+        // TODO : 구글 로그인
+    }
+
+    // 로그인 성공/실패 콜백
+    public void OnGoogleLoginSuccess()
+    {
+        accountLinkSuccessPopup.SetActive(true);
+    }
+
+    public void OnGoogleLoginFail()
+    {
+        accountLinkFailPopup.SetActive(true);
     }
 }
