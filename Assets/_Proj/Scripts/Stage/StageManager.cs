@@ -224,7 +224,7 @@ public class StageManager : MonoBehaviour
                 startPoint = Vector3Int.up * 5;
             }
         }
-
+        
         blockPositions = blockDictionary.Keys.ToList();
 
         foreach (var kv in blockDictionary)
@@ -354,6 +354,7 @@ public class StageManager : MonoBehaviour
 
     IEnumerator PlayStartCutscene()
     {
+        if (UserData.Local.preferences.skipDialogues == true) yield break;
         var data = DataManager.Instance.Stage.GetData(currentStageId);
         if (data == null || string.IsNullOrEmpty(data.start_cutscene) || data.start_cutscene == "-1")
         {
@@ -371,6 +372,7 @@ public class StageManager : MonoBehaviour
 
     public async Task PlayEndCutsceneAsync()
     {
+        if (UserData.Local.preferences.skipDialogues == true) return;
         var data = DataManager.Instance.Stage.GetData(currentStageId);
         if (data == null)
         {
