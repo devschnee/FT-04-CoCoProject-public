@@ -147,10 +147,30 @@ public partial class EditModeController
 
     private void OnSaveClicked()
     {
-        // 0) OK 안 된 임시물 제거/반환
+        // 🔹 (0) 집 프리뷰가 있지만 OK(확정)를 안 한 상태라면 → 원래 집으로 되돌리기
+        if (homePreview != null && !homePreviewConfirmed)
+        {
+            // 프리뷰 오브젝트 제거
+            if (homePreview)
+                Destroy(homePreview.gameObject);
+
+            homePreview = null;
+            homePreviewConfirmed = false;
+
+            // 원래 집 다시 활성화
+            if (homePrev)
+            {
+                homePrev.gameObject.SetActive(true);
+                SetLongPressTarget(homePrev);   // 롱프레스 타깃도 원래 집으로
+            }
+
+            HomePreviewActiveChanged?.Invoke(false);
+        }
+
+        // (1) OK 안 된 임시물(동물/데코 등) 정리
         CleanupInventoryTemps();
 
-        // ✅ Home 확정 처리: 저장 시에만 기존 집 제거 → candidate 승격
+        // (2) Home 확정 처리: 저장 시에만 기존 집 제거 → candidate 승격
         if (homePreview != null && homePreviewConfirmed)
         {
             // 이전 확정집 제거
@@ -166,24 +186,24 @@ public partial class EditModeController
             homePreviewConfirmed = false;
         }
 
-        // 1) 씬 Draggable 저장
+        // (3) 씬 Draggable 저장
         SaveAllDraggablePositions();
 
-        // 2) 씬 Placeable 저장
+        // (4) Placeable 저장
         PlaceableStore.I?.SaveAllFromScene();
 
-        // 3) 로비 배치 Firebase로도 동기화 (나중에 구현)
+        // (5) Firebase 동기화
         TrySaveLobbyToFirebase();
 
-        // 4) 상태 정리
+        // (6) 상태 정리
         hasUnsavedChanges = false;
         CaptureBaseline();
 
-        // 선택 해제
+        // 선택 해제 + 저장 완료 패널
         SelectTarget(null);
-
         if (savedInfoPanel) savedInfoPanel.SetActive(true);
     }
+
 
 
     #endregion

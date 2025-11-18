@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum PlaceableCategory { Home, Animal, Deco }
+public enum PlaceableCategory { Home, Animal, Deco, MainCharacter }
 
 public interface IPlaceableData
 {

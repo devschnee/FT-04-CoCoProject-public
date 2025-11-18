@@ -77,6 +77,9 @@ public partial class EditModeController : MonoBehaviour
     private bool requireGround = true;
     [SerializeField] private DecoDatabase decoDB;
 
+    [Header("Main Character DB")]
+    [SerializeField] private MainCharacterDatabase mainCharDB;
+
     private Transform homeCandidate;
     public static System.Action<bool> HomePreviewActiveChanged;
     public bool IsHomePreviewActive => homePreview != null;
@@ -346,8 +349,30 @@ public partial class EditModeController : MonoBehaviour
                 return;
             }
 
-            // 6) 프리뷰 생성 (0,0,0), 기존 집 회전 유지
-            Quaternion rot = homePrev ? homePrev.rotation : Quaternion.identity;
+            int homeId = data.Id;
+            Quaternion rot;
+
+            // 🔥 ID별 회전 규칙
+            switch (homeId)
+            {
+                case 40001:   // 기본 집(인벤에서 꺼낼 때는 기존 회전 유지)
+                    rot = homePrev ? homePrev.rotation : Quaternion.identity;
+                    break;
+
+                case 40002:   // 90도
+                    rot = Quaternion.Euler(0f, 90f, 0f);
+                    break;
+
+                case 40003:   // 0도
+                case 40004:   // 0도
+                    rot = Quaternion.Euler(0f, 180f, 0f);
+                    break;
+
+                default:
+                    rot = homePrev ? homePrev.rotation : Quaternion.identity;
+                    break;
+            }
+
             var preview = Instantiate(prefab, Vector3.zero, rot);
             preview.name = data.DisplayName;
 
