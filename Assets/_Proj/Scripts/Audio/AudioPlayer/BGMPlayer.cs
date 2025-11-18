@@ -39,8 +39,29 @@ public class BGMPlayer : AudioPlayerControl
         });
     }
 
+    public override void PlayAll()
+    {
+        base.PlayAll();
+    }
+    public override void PauseAll()
+    {
+        base.PauseAll();
+    }
+    public override void ResumeAll()
+    {
+        base.ResumeAll();
+    }
+    public override void StopAll()
+    {
+        base.StopAll();
+    }
+    public override void ResetAll()
+    {
+        base.ResetAll();
+    }
 
 
-    // °¢ ¿Àµð¿ÀPlayer´Â Àç»ý ´ã´çÀÎµ¥ »óÅÂÀüÈ¯ÀÌ ¿©±â¿¡ ºÙ´Â°Ô ¸ÂÀ»±î? ¿Àµð¿À ÆÀÀåÀÎ Group¿¡¼­ ÇØ¾ßÇÏ´Â°Å ¾Æ´Ñ°¡? ¿¡À× ¸¸µé°í ¸í·ÉÀº Group¿¡¼­ ÇÏÀÚ
+
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Playerï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½Ù´Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Groupï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Ï´Â°ï¿½ ï¿½Æ´Ñ°ï¿½? ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Groupï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 }
 

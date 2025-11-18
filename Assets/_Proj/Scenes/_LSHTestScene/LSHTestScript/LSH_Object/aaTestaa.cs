@@ -403,4 +403,9 @@ public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDragga
     {
         throw new NotImplementedException();
     }
+
+    public void InitWaypoint()
+    {
+        throw new NotImplementedException();
+    }
 }

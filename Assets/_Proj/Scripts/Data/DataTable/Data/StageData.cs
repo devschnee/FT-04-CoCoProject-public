@@ -21,6 +21,10 @@ public class StageData
     public string dialogue_box_3;
     public string dialogue_box_4;
     public string dialogue_box_5;
+    public string dialogue_box_6;
+    public string dialogue_box_7;
+    public string dialogue_box_8;
+    public string dialogue_box_9;
     public string stage_bgm;
 
     [NonSerialized] public Sprite icon;

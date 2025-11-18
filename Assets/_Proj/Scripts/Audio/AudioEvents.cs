@@ -5,11 +5,18 @@ using UnityEngine;
 
 public static class AudioEvents
 {
-    // Enum(BGMKey, SFXKey µîµî), int(ÇØ´ç Å°ÀÇ Å¬¸³ ÀÎµ¦½º, -1ÀÌ¸é ·£´ıÀç»ı), float(fadeIn : BGM, Cutscene Àü¿ë), float(fadeOut : BGM, Cutscene Àü¿ë), bool(loop ¼Ò¸® ¹İº¹ À¯¹«), bool(¿ÀºêÁ§Æ®Ç®¸µ : SFX, Ambient Àü¿ë), Vector3?(À§Ä¡ : SFX, Ambient Àü¿ë °ªÀÌ ÀÖÀ¸¸é ÇØ´ç À§Ä¡¿¡¼­ Àç»ı(3d) ¾øÀ¸¸é ±×³É 2dÀç»ı)
+    // Enum(BGMKey, SFXKey ï¿½ï¿½ï¿½), int(ï¿½Ø´ï¿½ Å°ï¿½ï¿½ Å¬ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½, -1ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½), float(fadeIn : BGM, Cutscene ï¿½ï¿½ï¿½ï¿½), float(fadeOut : BGM, Cutscene ï¿½ï¿½ï¿½ï¿½), bool(loop ï¿½Ò¸ï¿½ ï¿½İºï¿½ ï¿½ï¿½ï¿½ï¿½), bool(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®Ç®ï¿½ï¿½ : SFX, Ambient ï¿½ï¿½ï¿½ï¿½), Vector3?(ï¿½ï¿½Ä¡ : SFX, Ambient ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½(3d) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×³ï¿½ 2dï¿½ï¿½ï¿½)
     public static event Action<Enum, int, float, float, bool, bool, Vector3?> OnPlayAudio;
+    public static event Action<AudioType, string> OnPlayDialogue;
 
     public static void Raise(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
     {
         OnPlayAudio?.Invoke(key, index, fadeIn, fadeOut, loop, pooled, pos);
+    }
+    
+    // ì¼ë‹¨ ì„ì‹œë¡œ ë§Œë“¦
+    public static void RaiseDialogueSound(AudioType type, string audioFileName)
+    {
+        OnPlayDialogue?.Invoke(type, audioFileName);
     }
 }

@@ -6,20 +6,26 @@ public class LMWaypoints
     private List<LobbyWaypoint> waypoints = new();
     public List<LobbyWaypoint> GetWaypoints()
     {
+        waypoints.Clear();
         LobbyWaypoint[] foundWaypoints = Object.FindObjectsByType<LobbyWaypoint>(FindObjectsSortMode.None);
+        HashSet<Vector3> usedPositions = new HashSet<Vector3>();
         List<LobbyWaypoint> startWaypoints = new List<LobbyWaypoint>();
         List<LobbyWaypoint> normalWaypoints = new List<LobbyWaypoint>();
 
         foreach (LobbyWaypoint lw in foundWaypoints)
         {
-            if (lw.Type == WaypointType.Start)
+            if (usedPositions.Add(lw.transform.position))
             {
-                startWaypoints.Add(lw);
+                if (lw.Type == WaypointType.Start)
+                {
+                    startWaypoints.Add(lw);
+                }
+                else if (lw.Type == WaypointType.Normal)
+                {
+                    normalWaypoints.Add(lw);
+                }
             }
-            else if (lw.Type == WaypointType.Normal)
-            {
-                normalWaypoints.Add(lw);
-            }
+            
         }
 
         waypoints.AddRange(startWaypoints);

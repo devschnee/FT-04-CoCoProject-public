@@ -94,6 +94,12 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
     {
         base.InEdit();
     }
+    public override void InitWaypoint()
+    {
+        base.InitWaypoint();
+        MoveState = null;
+        MoveState = new LMasterMoveState(this, fsm, charAgent);
+    }
     public override void Register()
     {
         base.Register();

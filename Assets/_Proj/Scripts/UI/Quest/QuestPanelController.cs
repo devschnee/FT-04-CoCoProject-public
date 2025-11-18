@@ -10,8 +10,8 @@ public class QuestPanelController : MonoBehaviour
     [SerializeField] private TreasureDatabase treasureDatabase;
 
     [Header("Reward Icons")]
-    [SerializeField] private Sprite coinSprite;
     [SerializeField] private Sprite capSprite;
+    [SerializeField] private Sprite coinSprite;
 
     [Header("Tab Buttons")]
     [SerializeField] private Button dailyTabButton;
@@ -38,11 +38,12 @@ public class QuestPanelController : MonoBehaviour
     [SerializeField] private QuestRewardPopup rewardPopup;
 
     [Header("Goods Ids")]
-    [SerializeField] private int coinItemId = 110003;
+    [SerializeField] private int energyItemId = 110001;
     [SerializeField] private int capItemId = 110002;
+    [SerializeField] private int coinItemId = 110003;
 
-    [Header("Firebase")]
-    [SerializeField] private string overrideUserId = "";
+    [Header("Goods")]
+    [SerializeField] private GoodsManager goodsManager;
 
     [SerializeField] private Button closeButton;
 
@@ -59,11 +60,30 @@ public class QuestPanelController : MonoBehaviour
         if (achievementTabButton) achievementTabButton.onClick.AddListener(() => ChangeTab(QuestType.achievements));
         if (closeButton) closeButton.onClick.AddListener(() => gameObject.SetActive(false));
 
-        // Firebase 전용 구조
-        
-        var goodsSvc = new GoodsService(UserData.Local.goods);
-        rewardService = new QuestRewardService_WithGoods(goodsSvc, coinItemId, capItemId);
-        progressStore = new FirebaseQuestProgressStore(overrideUserId);
+        // GoodsService 설정
+        GoodsService goodsService = null;
+
+        // HUD에 있는 GoodsManager에서 GoodsService를 받아서 공유
+        if (goodsManager != null)
+        {
+            goodsService = goodsManager.GetGoodsService();
+        }
+
+        if (goodsService == null)
+        {
+            var goodsStore = new UserDataGoodsStore(energyItemId, capItemId, coinItemId);
+            goodsService = new GoodsService(goodsStore);
+        }
+
+        // 퀘스트 보상은 공통 GoodsService를 사용
+        rewardService = new QuestRewardServiceWithGoods(goodsService, coinItemId, capItemId);
+
+        // 진행도 저장소 설정
+        // 기존 코드에서는 FirebaseQuestProgressStore를 사용했음
+        // 지금은 UserData 설계에 맞춘 QuestProgressUserDataStore를 사용함
+        // QuestProgressUserDataStore 내부의 UserData 관련 코드는 주석 처리되어 있고
+        // 실제 저장은 아직 하지 않는 더미 구현
+        progressStore = new QuestProgressUserDataStore();
     }
 
     private void OnEnable()

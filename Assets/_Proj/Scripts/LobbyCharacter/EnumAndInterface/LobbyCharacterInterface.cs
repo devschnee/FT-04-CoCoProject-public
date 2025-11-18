@@ -34,6 +34,7 @@ public interface ILobbyState
     void Unregister(); // 로비에 삭제되면 로비매니저에게 삭제 요청
     void InNormal();
     void InEdit();
+    void InitWaypoint();
     //void StartScene();
     //void ExitScene();
 }

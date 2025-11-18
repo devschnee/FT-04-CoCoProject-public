@@ -71,7 +71,7 @@ public class PlayerProgressManager : MonoBehaviour
         }
     }
 
-    void SaveProgress()
+    public void SaveProgress()
     {
         //Todo : Firebase 연동시 변경해야 할 부분
         UserData.Progress progress = new();

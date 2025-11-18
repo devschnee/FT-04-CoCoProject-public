@@ -41,7 +41,7 @@ public class LCocoDoogyIdleState : LobbyCharacterBaseState
     
     private IEnumerator WaitThenMove()
     {
-        yield return new WaitForSeconds(Random.Range(1.5f, 3f));
+        yield return new WaitForSeconds(Random.Range(2f, 3f));
         fsm.ChangeState(owner.MoveState);
         yield break;
     }
@@ -85,7 +85,7 @@ public class LMasterIdleState : LobbyCharacterBaseState
     
     private IEnumerator WaitThenMove()
     {
-        yield return new WaitForSeconds(Random.Range(1.5f, 3f));
+        yield return new WaitForSeconds(Random.Range(2f, 3f));
         fsm.ChangeState(owner.MoveState);
         yield break;
     }
@@ -129,7 +129,7 @@ public class LAnimalIdleState : LobbyCharacterBaseState
     
     private IEnumerator WaitThenMove()
     {
-        yield return new WaitForSeconds(Random.Range(1.5f, 3f));
+        yield return new WaitForSeconds(Random.Range(2f, 3f));
         fsm.ChangeState(owner.MoveState);
         yield break;
     }

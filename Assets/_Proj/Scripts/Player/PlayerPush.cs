@@ -10,6 +10,9 @@ public class PlayerPush : MonoBehaviour, IMoveStrategy
     // 현재 밀고 있는 대상 추적을 위한
     private IPushHandler currPushHandler = null;
 
+    //LSH추가
+    public bool isPushing => currPushHandler != null;
+
     public (Vector3, Vector3) Execute(Vector3 moveDir, Rigidbody rb, PlayerMovement player)
     {
         // 입력 없으면 즉시 리셋

@@ -88,6 +88,10 @@ public class StageManager : MonoBehaviour
         //TODO: 3. 가져온 맵 정보로 모든 블록이 생성되고 연결까지 끝나면 가리고 있던 부분을 치워줌.
         yield return PlayStartCutscene();
 
+        //Todo : 컷씬 지난후 대화가 있다면 여기서 실행
+        var data = DataManager.Instance.Stage.GetData(currentStageId);
+        if(data.start_talk != "-1")
+            DialogueManager.Instance.NewDialogueMethod(data.start_talk);
         //TODO: 4. 시작점에 코코두기를 생성해줌.
         SpawnPlayer();
         //yield return null;
@@ -111,12 +115,16 @@ public class StageManager : MonoBehaviour
 
         await PlayEndCutsceneAsync();
 
-        //Todo : 클리어 UI 나오게 변경
+        //Todo : 엔드대화가 있는지 체크 후 있다면 출력
+        var data = DataManager.Instance.Stage.GetData(currentStageId);
+
+        if (data.start_talk != "-1")
+            DialogueManager.Instance.NewDialogueMethod(data.end_talk);
+
         StageUIManager.Instance.Overlay.SetActive(true);
         StageUIManager.Instance.ResultPanel.SetActive(true);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
 
-        var data = DataManager.Instance.Stage.GetData(currentStageId);
 
         StageUIManager.Instance.stageName.text = data.stage_name;
 
@@ -144,6 +152,17 @@ public class StageManager : MonoBehaviour
              collectedCount >= 2,
              collectedCount >= 3
         );
+
+        if (prev.bestTreasureCount < 0)   // 처음 클리어한 경우
+        {
+            prev.bestTreasureCount = collectedCount;  // 0~3
+        }
+        else
+        {
+            prev.bestTreasureCount = Mathf.Max(prev.bestTreasureCount, collectedCount);
+        }
+
+        PlayerProgressManager.Instance.SaveProgress();
     }
 
     void SpawnPlayer()
@@ -214,6 +233,20 @@ public class StageManager : MonoBehaviour
                         dialogue.Init(data.dialogue_box_1);
                     else if (block.blockName.Contains("2"))
                         dialogue.Init(data.dialogue_box_2);
+                    else if (block.blockName.Contains("3"))
+                        dialogue.Init(data.dialogue_box_3);
+                    else if (block.blockName.Contains("4"))
+                        dialogue.Init(data.dialogue_box_4);
+                    else if (block.blockName.Contains("5"))
+                        dialogue.Init(data.dialogue_box_5);
+                    else if (block.blockName.Contains("6"))
+                        dialogue.Init(data.dialogue_box_6);
+                    else if (block.blockName.Contains("7"))
+                        dialogue.Init(data.dialogue_box_7);
+                    else if (block.blockName.Contains("8"))
+                        dialogue.Init(data.dialogue_box_8);
+                    else if (block.blockName.Contains("9"))
+                        dialogue.Init(data.dialogue_box_9);
                 }
             }
             //GetComponent<Block>().Init(block);

@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 5232338356568892665}
   - component: {fileID: 8189703844797584888}
   m_Layer: 5
-  m_Name: Stack
+  m_Name: Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1067,8 +1067,8 @@ MonoBehaviour:
   itemNameText: {fileID: 359377837011401394}
   descText: {fileID: 4466741079701800490}
   priceText: {fileID: 7156496856981174804}
-  currencyIcon: {fileID: 6510833915464877295}
-  stackCount: {fileID: 8189703844797584888}
+  goodsIcon: {fileID: 6510833915464877295}
+  stockText: {fileID: 8189703844797584888}
   backgroundImage: {fileID: 4914850106890540459}
   normalColor: {r: 1, g: 1, b: 1, a: 0}
   soldOutColor: {r: 0, g: 0, b: 0, a: 0.7058824}

@@ -315,7 +315,7 @@ public class PlaceableStore : MonoBehaviour
 #if UNITY_2022_2_OR_NEWER
         var tags = FindObjectsByType<PlaceableTag>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
 #else
-        var tags = FindObjectsOfType<PlaceableTag>();
+    var tags = FindObjectsOfType<PlaceableTag>();
 #endif
         for (int i = 0; i < tags.Length; i++)
         {
@@ -330,7 +330,15 @@ public class PlaceableStore : MonoBehaviour
             var prefab = hd.GetPrefab(_loader);
             if (prefab)
             {
-                var go = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+                // ✅ 회전 규칙: 기본 집 40001은 180도
+                Quaternion rot = Quaternion.identity;
+
+                if (hd.home_id == 40001)
+                    rot = Quaternion.Euler(0f, 180f, 0f);
+                else if (hd.home_id == 40003)
+                    rot = Quaternion.Euler(0f, 270f, 0f);  // 혹시 defaultHomeId를 40003으로 바꾸는 경우 대비
+
+                var go = Instantiate(prefab, Vector3.zero, rot);
                 go.name = string.IsNullOrEmpty(hd.home_name) ? $"Home {hd.home_id}" : hd.home_name;
 
                 var tag = go.GetComponent<PlaceableTag>() ?? go.AddComponent<PlaceableTag>();
@@ -339,7 +347,7 @@ public class PlaceableStore : MonoBehaviour
 
                 if (!go.GetComponent<Draggable>()) go.AddComponent<Draggable>();
 
-                Debug.Log($"[PlaceableStore] Spawned default Home (id={hd.home_id}).");
+                Debug.Log($"[PlaceableStore] Spawned default Home (id={hd.home_id}, rotY={rot.eulerAngles.y}).");
             }
             else
             {
@@ -351,6 +359,7 @@ public class PlaceableStore : MonoBehaviour
             Debug.LogWarning($"[PlaceableStore] Default Home id={defaultHomeId} not found in DB.");
         }
     }
+
 
     /// <summary>집이 2채 이상이면 1채만 남기고 나머지는 제거</summary>
     private void CullExtraHomes()

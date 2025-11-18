@@ -1,5 +1,5 @@
-// Ű ���Դϴ�.
 
+// 사실 오버코딩을 한 부분이 많지만 나중을 위해서.
 public enum AudioType
 {
     BGM = 0,
@@ -9,7 +9,8 @@ public enum AudioType
     Voice,
     UI,
     Master,
-    Dialogue
+    DialogueBGM,
+    DialogueSFX
 }
 
 public enum BGMKey

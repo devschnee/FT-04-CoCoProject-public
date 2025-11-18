@@ -194,7 +194,70 @@ public partial class EditModeController
 
         return false;
     }
+    private bool OverlapsWithLayerMask(Transform t, LayerMask mask)
+    {
+        if (!t) return false;
 
+        var myCols = t.GetComponentsInChildren<Collider>();
+        if (myCols == null || myCols.Length == 0) return false;
+        if (!TryGetCombinedBoundsFromColliders(myCols, out Bounds myBounds)) return false;
+
+        var center = myBounds.center;
+        var half = myBounds.extents;
+
+        int count = Physics.OverlapBoxNonAlloc(
+            center,
+            half,
+            _ovlBuf,
+            Quaternion.identity,
+            mask,
+            QueryTriggerInteraction.Ignore
+        );
+
+        if (count == _ovlBuf.Length)
+        {
+            _ovlBuf = new Collider[_ovlBuf.Length * 2];
+            count = Physics.OverlapBoxNonAlloc(
+                center, half, _ovlBuf, Quaternion.identity, mask, QueryTriggerInteraction.Ignore);
+        }
+
+        if (count <= 0) return false;
+
+        for (int i = 0; i < count; i++)
+        {
+            var other = _ovlBuf[i];
+            if (!other || !other.enabled) continue;
+            if (IsSameRootOrChild(t, other.transform)) continue;
+            if (other.isTrigger) continue;
+
+            for (int m = 0; m < myCols.Length; m++)
+            {
+                var my = myCols[m];
+                if (!my || !my.enabled || my.isTrigger) continue;
+
+                if (Physics.ComputePenetration(
+                        my, my.transform.position, my.transform.rotation,
+                        other, other.transform.position, other.transform.rotation,
+                        out _, out float dist))
+                {
+                    if (dist > overlapEpsilon)
+                        return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    // 🔥 새로 추가: 집 설치 시 막는 레이어(Editable, InLobbyObject) 전용
+    private bool OverlapsHomeBlockers(Transform t)
+    {
+        // Layer 이름으로 마스크 구성 (프로젝트에서 레이어 이름 정확히 "Editable", "InLobbyObject"인지 확인)
+        int mask = LayerMask.GetMask("Editable", "InLobbyObject");
+        if (mask == 0) return false; // 레이어 없으면 그냥 통과
+
+        return OverlapsWithLayerMask(t, mask);
+    }
     private static bool IsSameRootOrChild(Transform root, Transform other)
         => other == root || (other && other.IsChildOf(root));
 
