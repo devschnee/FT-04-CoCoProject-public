@@ -1,8 +1,8 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using static UserData;
 
-// UserData.Local.wallet¿ª ªÁøÎ«œ¥¬ IGoodsStore ±∏«ˆ√º
-// ø°≥ ¡ˆ/ƒ∏/ƒ⁄¿Œ¿ª UserData ±‚¡ÿ¿∏∑Œ ∞¸∏Æ
+// UserData.Local.walletÏùÑ ÏÇ¨Ïö©ÌïòÎäî IGoodsStore Íµ¨ÌòÑÏ≤¥
+// ÏóêÎÑàÏßÄ/Ï∫°/ÏΩîÏù∏ÏùÑ UserData Í∏∞Ï§ÄÏúºÎ°ú Í¥ÄÎ¶¨
 public class UserDataGoodsStore : IGoodsStore
 {
     private readonly int _energyId;
@@ -16,53 +16,37 @@ public class UserDataGoodsStore : IGoodsStore
         _coinId = coinId;
     }
 
-    private Wallet GetWallet()
+    private UserData.Goods GetGoods()
     {
         if (UserData.Local == null)
         {
-            Debug.LogWarning("[UserDataGoodsStore] UserData.Local ¿Ã null ");
+            Debug.LogWarning("[UserDataGoodsStore] UserData.Local Ïù¥ null ");
             return null;
         }
 
-        if (UserData.Local.wallet == null)
-            UserData.Local.wallet = new Wallet();
+        if (UserData.Local.goods == null)
+            UserData.Local.goods = new Goods();
 
-        return UserData.Local.wallet;
+        return UserData.Local.goods;
     }
 
     public int GetAmount(int goodsId)
     {
-        var wallet = GetWallet();
-        if (wallet == null) return 0;
+        var goods = GetGoods();
+        if (goods == null) return 0;
 
-        if (goodsId == _energyId) return wallet.energy;
-        if (goodsId == _capId) return wallet.cap;
-        if (goodsId == _coinId) return wallet.coin;
-
-        Debug.LogWarning($"[UserDataGoodsStore] æÀ ºˆ æ¯¥¬ goodsId: {goodsId}");
-        return 0;
+        return goods[goodsId];
     }
 
     public void SetAmount(int goodsId, int amount)
     {
-        var wallet = GetWallet();
-        if (wallet == null) return;
+        var goods = GetGoods();
+        if (goods == null) return;
 
-        int v = Mathf.Max(0, amount);
+        int newValue = Mathf.Max(0, amount);
 
-        if (goodsId == _energyId)
-            wallet.energy = v;
-        else if (goodsId == _capId)
-            wallet.cap = v;
-        else if (goodsId == _coinId)
-            wallet.coin = v;
-        else
-        {
-            Debug.LogWarning($"Unknown goodsId {goodsId}");
-            return;
-        }
-
+        goods[goodsId] = newValue;
         UserData.Local.flag |= UserDataDirtyFlag.Wallet;
-        wallet.Save();
+        goods.Save();
     }
 }

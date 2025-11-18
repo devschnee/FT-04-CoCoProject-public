@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public static class ShopStockHelper
 {
@@ -16,13 +16,13 @@ public static class ShopStockHelper
         return Mathf.Max(0, count);
     }
 
-    // shop_stack ¡æ shop_stockÀ¸·Î º¯°æ ÇÊ¿ä
+    // shop_stack â†’ shop_stockìœ¼ë¡œ ë³€ê²½ í•„ìš”
     public static int GetMaxStock(ShopData data)
     {
         if (data == null) return int.MaxValue;
-        if (data.shop_stack <= 0) return int.MaxValue;   // ¹«Á¦ÇÑ
+        if (data.shop_stock <= 0) return int.MaxValue;   // ë¬´ì œí•œ
 
-        return data.shop_stack;
+        return data.shop_stock;
     }
 
     public static int GetCurrentStock(ShopData data)
@@ -31,7 +31,7 @@ public static class ShopStockHelper
         if (max == int.MaxValue) return int.MaxValue;
 
         int have = GetOwnedCount(data);
-        int remain = max - have; // remain = ³²Àº Àç°í
+        int remain = max - have; // remain = ë‚¨ì€ ìž¬ê³ 
 
         return Mathf.Max(0, remain);
     }

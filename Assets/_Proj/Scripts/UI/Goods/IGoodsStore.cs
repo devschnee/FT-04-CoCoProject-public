@@ -1,7 +1,5 @@
-﻿//using UnityEngine;
-
-//public interface IGoodsStore
-//{
-//    int GetAmount(int goodsId);
-//    void SetAmount(int goodsId, int amount);
-//}
+﻿public interface IGoodsStore
+{
+    int GetAmount(int goodsId);
+    void SetAmount(int goodsId, int amount);
+}
