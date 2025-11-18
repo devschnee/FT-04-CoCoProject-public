@@ -5,8 +5,6 @@ public class VolumeSlider : MonoBehaviour
 {
     [SerializeField] Slider slider;
     [SerializeField] AudioType audioType;
-    [SerializeField] Toggle toggle;
-
     private AudioManager audioManager;
 
     private void Start()

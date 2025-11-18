@@ -90,6 +90,9 @@ public class CsvImportManager : EditorWindow
                 case "tbl_home_mst":
                     HomeParser.Import(csvPath);
                     break;
+                case "tbl_manual_mst":
+                    ManualParser.Import(csvPath);
+                    break;
                 case "tbl_profile_icon_mst":
                     Profile_iconParser.Import(csvPath);
                     break;

@@ -14,7 +14,7 @@ public class LCocoDoogyStuckState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
-        Debug.Log($"코코두기 Stuck&Recovery 진입");
+        base.OnStateEnter();
         owner.StartCoroutine(RecoverAndMove());
     }
 
@@ -58,7 +58,7 @@ public class LMasterStuckState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
-        Debug.Log($"마스터 Stuck&Recovery 진입");
+        base.OnStateEnter();
         owner.StartCoroutine(RecoverAndMove());
     }
 
@@ -98,7 +98,7 @@ public class LAnimalStuckState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
-        Debug.Log($"{owner.gameObject.name} Stuck&Recovery 진입");
+        base.OnStateEnter();
         owner.StartCoroutine(RecoverAndMove());
     }
 

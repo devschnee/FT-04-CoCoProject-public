@@ -16,6 +16,7 @@ public class DataManager : MonoBehaviour
     public DecoProvider Deco { get; private set; }
     public GoodsProvider Goods { get; private set; }
     public HomeProvider Home { get; private set; }
+    public ManualProvider Manual { get; private set; }
     public Profile_iconProvider Profile { get; private set; }
     public QuestProvider Quest { get; private set; }
     public ShopProvider Shop { get; private set; }
@@ -56,6 +57,8 @@ public class DataManager : MonoBehaviour
         Goods = new GoodsProvider(dataRegistry.goodsDB, loader);
 
         Home = new HomeProvider(dataRegistry.homeDB, loader);
+
+        Manual = new ManualProvider(dataRegistry.manualDB, loader);
 
         Profile = new Profile_iconProvider(dataRegistry.profile_iconDB, loader);
 

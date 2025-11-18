@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d5818dc2b24fe4ab2ea267a689f9ff, type: 3}
+  m_Name: ManualDatabase
+  m_EditorClassIdentifier: 
+  manualList:
+  - manual_id: 130001
+    manual_name: "\"\uAE30\uBCF8 \uC870\uC791\""
+    manual_img: Img/Manual/basemovement
+    manual_desc: "\"\uC544\uBB34\uACF3\uC774\uB098 \uD130\uCE58&\uB4DC\uB798\uADF8\uB97C
+      \uD574\uC11C \uCF54\uCF54\uB450\uAE30\uB97C \uC6C0\uC9C1\uC5EC \uBCF4\uC138\uC694.\n\uACBD\uC0AC\uB85C\uAC00
+      \uC5C6\uC73C\uBA74 \uC5B8\uB355\uC73C\uB85C \uC62C\uB77C\uAC08 \uC21C \uC5C6\uC5B4\uC694!\""
+  - manual_id: 130002
+    manual_name: "\"\uB3D9\uBB3C \uCE5C\uAD6C\""
+    manual_img: Img/Manual/animal
+    manual_desc: "\"\uAC00\uAE4C\uC774\uC5D0 \uAC00\uBA74 \uD31D\uC5C5 \uBC84\uD2BC\uC774
+      \uB5A0\uC694!\n\uBC84\uD2BC\uC744 \uB20C\uB7EC \uB3D9\uBB3C\uCE5C\uAD6C\uB97C
+      \uD65C\uC6A9\uD574\uBCF4\uC138\uC694!\""
+  - manual_id: 130003
+    manual_name: "\"\uB85C\uBE44 \uAFB8\uBBF8\uAE30\""
+    manual_img: Img/Manual/robbydeco
+    manual_desc: "\"\uB85C\uBE44 \uC911\uC559\uC758 \uC9D1\uC744 \uAFB8\uC6B1~ \uD130\uCE58\uD574\uBCF4\uC138\uC694.\n\uAFB8\uBBF8\uAE30
+      \uBAA8\uB4DC\uB85C \uB4E4\uC5B4\uAC00 \uB85C\uBE44\uB97C \uAFB8\uBA70\uBCF4\uC138\uC694!\""
+  - manual_id: 130004
+    manual_name: "\"\uB85C\uBE44 \uBC30\uCE58\""
+    manual_img: Img/Manual/robbyplace
+    manual_desc: "\"\uC778\uBCA4\uD1A0\uB9AC\uC758 \uC544\uC774\uD15C\uC744 \uB20C\uB7EC
+      \uB85C\uBE44\uC5D0 \uBC30\uCE58\uD574\uBCF4\uC138\uC694.\n\uC774\uB3D9, \uD68C\uC804,
+      \uC815\uBCF4\uBCF4\uAE30 \uB4F1 \uC5EC\uB7EC\uAC00\uC9C0 \uBC84\uD2BC\uC744
+      \uD655\uC778\uD574\uBCF4\uC138\uC694!\""
+  - manual_id: 130005
+    manual_name: "\"\uB85C\uBE44 \uC0C1\uD638\uC791\uC6A9\""
+    manual_img: Img/Manual/robbytouch
+    manual_desc: "\"\uB85C\uBE44\uC758 \uCF54\uCF54\uB450\uAE30\uC640 \uB3D9\uBB3C\uCE5C\uAD6C\uB4E4\uC744
+      \uD130\uCE58\uD574\uBCF4\uC138\uC694!\n\uC7AC\uB871\uC744 \uBD80\uB9B4\uC904
+      \uC544\uB294 \uCE5C\uAD6C\uB4E4\uC774\uB78D\uB2C8\uB2E4!\""

@@ -9,7 +9,7 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour
     {
         IdleState = new LAnimalIdleState(this, fsm);
         MoveState = new LAnimalMoveState(this, fsm, charAgent);
-        InteractState = new LAnimalInteractState(this, fsm);
+        InteractState = new LAnimalInteractState(this, fsm, charAnim);
         ClickSate = new LAnimalClickState(this, fsm, charAnim);
         DragState = new LAnimalDragState(this, fsm);
         EditState = new LAnimalEditState(this, fsm);
@@ -38,10 +38,14 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour
     // 인터페이스 영역
     public override void OnCocoAnimalEmotion()
     {
+        base.OnCocoAnimalEmotion();
         if (!agent.isStopped) agent.isStopped = true;
 
     }
-    public override void OnCocoMasterEmotion() { }
+    public override void OnCocoMasterEmotion()
+    {
+        base.OnCocoMasterEmotion();
+    }
     public override void OnLobbyBeginDrag(Vector3 position)
     {
         base.OnLobbyBeginDrag(position);

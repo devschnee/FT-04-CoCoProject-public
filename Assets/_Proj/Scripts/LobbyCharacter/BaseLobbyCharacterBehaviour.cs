@@ -124,12 +124,18 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     /// <summary>
     /// 코코두기와 동물들 상호작용
     /// </summary>
-    public virtual void OnCocoAnimalEmotion() { }
+    public virtual void OnCocoAnimalEmotion()
+    {
+        if(!(fsm.CurrentState == MoveState)) return;
+    }
 
     /// <summary>
     /// 코코두기와 마스터 상호작용
     /// </summary>
-    public virtual void OnCocoMasterEmotion() { }
+    public virtual void OnCocoMasterEmotion()
+    {
+        if(!(fsm.CurrentState == MoveState)) return;
+    }
 
     /// <summary>
     /// ILobbyDraggable, 드래그 시작
@@ -179,7 +185,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     }
     IEnumerator Pressing()
     {
-        yield return new WaitForSeconds(0.06f);
+        yield return new WaitForSeconds(0.1f);
         fsm.ChangeState(DragState);
         yield break;
     }

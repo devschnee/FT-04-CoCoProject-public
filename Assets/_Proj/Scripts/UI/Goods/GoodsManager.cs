@@ -5,23 +5,20 @@ using TMPro;
 public class GoodsManager : MonoBehaviour
 {
     [Header("UI")]
-    [SerializeField] private TMP_Text coinText;
-    [SerializeField] private TMP_Text capText;
     [SerializeField] private TMP_Text energyText;
-    [SerializeField] private Image coinIcon;
-    [SerializeField] private Image capIcon;
+    [SerializeField] private TMP_Text capText;
+    [SerializeField] private TMP_Text coinText;
     [SerializeField] private Image energyIcon;
-    [SerializeField] private Button coinShopButton;
-    [SerializeField] private Button capShopButton;
+    [SerializeField] private Image capIcon;
+    [SerializeField] private Image coinIcon;
     [SerializeField] private Button energyShopButton;
+    [SerializeField] private Button capShopButton;
+    [SerializeField] private Button coinShopButton;
 
     [Header("Goods Ids")]
-    [SerializeField] private int coinId = 110003;
-    [SerializeField] private int capId = 110002;
     [SerializeField] private int energyId = 110001;
-
-    //[Header("Firebase")]
-    //[SerializeField] private string overrideUserId = "";
+    [SerializeField] private int capId = 110002;
+    [SerializeField] private int coinId = 110003;
 
     [Header("Shop Panel")]
     [SerializeField] private ShopPanelController shopPanel;
@@ -30,13 +27,15 @@ public class GoodsManager : MonoBehaviour
 
     private void Awake()
     {
-        
-        goodsService = new GoodsService(UserData.Local.goods);
+        // UserData(Local).wallet을 이용하는 GoodsStore
+        goodsService = new GoodsService(
+    new UserDataGoodsStore(energyId, capId, coinId)
+);
 
-        if (coinShopButton)
-            coinShopButton.onClick.AddListener(() =>
+        if (energyShopButton)
+            energyShopButton.onClick.AddListener(() =>
             {
-                if (shopPanel) shopPanel.OpenGoodsCoin();
+                if (shopPanel) shopPanel.OpenGoodsEnergy();
             });
 
         if (capShopButton)
@@ -45,10 +44,10 @@ public class GoodsManager : MonoBehaviour
                 if (shopPanel) shopPanel.OpenGoodsCap();
             });
 
-        if (energyShopButton)
-            energyShopButton.onClick.AddListener(() =>
+        if (coinShopButton)
+            coinShopButton.onClick.AddListener(() =>
             {
-                if (shopPanel) shopPanel.OpenGoodsEnergy();
+                if (shopPanel) shopPanel.OpenGoodsCoin();
             });
     }
 
@@ -59,13 +58,13 @@ public class GoodsManager : MonoBehaviour
 
     public void RefreshGoodsUI()
     {
-        int coin = goodsService.Get(coinId);
-        int cap = goodsService.Get(capId);
         int energy = goodsService.Get(energyId);
+        int cap = goodsService.Get(capId);
+        int coin = goodsService.Get(coinId);
 
-        if (coinText) coinText.text = coin.ToString();
-        if (capText) capText.text = cap.ToString();
         if (energyText) energyText.text = energy.ToString(); 
+        if (capText) capText.text = cap.ToString();
+        if (coinText) coinText.text = coin.ToString();
     }
 
     public GoodsService GetGoodsService() => goodsService;

@@ -11,7 +11,10 @@ public abstract class LobbyCharacterBaseState
         this.fsm = fsm;
     }
 
-    public abstract void OnStateEnter();
+    public virtual void OnStateEnter()
+    {
+        Debug.Log($"{owner.gameObject.name} : {fsm.CurrentState} 진입");
+    }
     public abstract void OnStateUpdate();
     public abstract void OnStateExit();
 }

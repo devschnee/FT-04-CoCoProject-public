@@ -1,9 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public interface IResourceLoader
 {
-    //Resource ·Îµù ÀÎÅÍÆäÀÌ½º·Î Ãß»óÈ­, Resource¿¡¼­ Load ÇÒ Ç×¸ñÀÌ »ı±ä´Ù¸é ÀÌ°÷¿¡ ¸ÕÀú Ãß°¡
+    //Resource ë¡œë”© ì¸í„°í˜ì´ìŠ¤ë¡œ ì¶”ìƒí™”, Resourceì—ì„œ Load í•  í•­ëª©ì´ ìƒê¸´ë‹¤ë©´ ì´ê³³ì— ë¨¼ì € ì¶”ê°€
     GameObject LoadPrefab(string path);
     Sprite LoadSprite(string path);
     Material LoadMaterial(string path);
+    AudioClip LoadAudio(string path);
 }

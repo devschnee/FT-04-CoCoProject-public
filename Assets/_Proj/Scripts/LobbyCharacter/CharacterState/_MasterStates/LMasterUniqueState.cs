@@ -19,6 +19,7 @@ public class LMasterUniqueState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
+        base.OnStateEnter();
         if (!agent.enabled) agent.enabled = true;
         if (agent.enabled && agent.isStopped) agent.isStopped = false;
         isComplete = false;

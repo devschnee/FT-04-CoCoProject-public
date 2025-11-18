@@ -23,10 +23,9 @@ public class LMasterMoveState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
+        base.OnStateEnter();
         if (!agent.enabled) agent.enabled = true;
         if (agent.enabled && agent.isStopped) agent.isStopped = false;
-
-        Debug.Log($"{owner.gameObject.name} Move 진입");
 
         // 루틴 초기화
         route.RefreshDecoList();

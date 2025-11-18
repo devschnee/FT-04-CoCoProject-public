@@ -10,7 +10,7 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
     {
         IdleState = new LMasterIdleState(this, fsm);
         MoveState = new LMasterMoveState(this, fsm, charAgent);
-        InteractState = new LMasterInteractState(this, fsm);
+        InteractState = new LMasterInteractState(this, fsm, charAnim);
         ClickSate = new LMasterClickState(this, fsm, charAnim);
         DragState = new LMasterDragState(this, fsm);
         EditState = new LMasterEditState(this, fsm);
@@ -46,14 +46,25 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
         fsm.ChangeState(UniqueState);
     }
 
+    //코코두기 상호작용
+    public void OnMasterInteractionEnd()
+    {
+        LobbyCharacterManager.Instance.GetCoco()?.EndMasterInteraction();
+        fsm.ChangeState(IdleState);
+    }
+
     // 인터페이스 영역
     public override void OnCocoAnimalEmotion()
     {
-        
+        base.OnCocoAnimalEmotion();
     }
     public override void OnCocoMasterEmotion()
     {
-
+        if (fsm.CurrentState == MoveState)
+        {
+            fsm.ChangeState(InteractState);
+        }
+        else return;
     }
     public override void OnLobbyBeginDrag(Vector3 position)
     {

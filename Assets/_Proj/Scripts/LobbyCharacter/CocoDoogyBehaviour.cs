@@ -11,15 +11,15 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
 {
     public Vector3 LastDragEndPos { get; private set; }
     public bool IsDragged { get; private set; }
-    public bool IsCMInteract { get; private set; }
-    public bool IsCAInteract { get; private set; }
-    public bool IsRoutineComplete { get; private set; }
+    public bool IsCMInteracted { get; private set; } = false;
+    public bool IsCAInteracted { get; private set; } = false;
+    public bool IsInteracting { get; private set; } = false;
 
     protected override void InitStates()
     {
         IdleState = new LCocoDoogyIdleState(this, fsm);
         MoveState = new LCocoDoogyMoveState(this, fsm, charAgent, Waypoints);
-        InteractState = new LCocoDoogyInteractState(this, fsm);
+        InteractState = new LCocoDoogyInteractState(this, fsm, charAnim);
         ClickSate = new LCocoDoogyClickState(this, fsm, charAnim);
         DragState = new LCocoDoogyDragState(this, fsm);
         EditState = new LCocoDoogyEditState(this, fsm);
@@ -46,17 +46,30 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
         base.Update();
     }
 
-    // 코코두기 루틴
-    public void SetIsRoutineComplete(bool trueorfalse)
+    // 코코두기 상호작용 부분
+    public void SetIsInteracting(bool trueorfalse)
     {
         if (trueorfalse)
         {
-            IsRoutineComplete = true;
+            IsInteracting = true;
         }
         else
         {
-            IsRoutineComplete = false;
+            IsInteracting = false;
         }
+    }
+    public void EndMasterInteraction()
+    {
+        SetTrueCharInteract(0);
+        fsm.ChangeState(IdleState);
+        SetIsInteracting(false);
+        Debug.Log($"{name} : IsCMInteracted : {IsCMInteracted}, IsInteracting : {IsInteracting}");
+    }
+    public void EndAnimalInteraction()
+    {
+        SetTrueCharInteract(1);
+        fsm.ChangeState(IdleState);
+        SetIsInteracting(false);
     }
     /// <summary>
     /// 코코두기의 상호작용. 0 = 마스터, 1 = 동물들
@@ -66,18 +79,17 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     {
         if (i == 0)
         {
-            IsCMInteract = true;
+            IsCMInteracted = true;
         }
         else if (i == 1)
         {
-            IsCAInteract = true;  
+            IsCAInteracted = true;  
         }
     }
-    public void ResetRoutineComplete()
+    public void ResetInteractCount()
     {
-        IsRoutineComplete = false;
-        IsCMInteract = false;
-        IsCAInteract = false;
+        IsCMInteracted = false;
+        IsCAInteracted = false;
     }
 
     public void SetLastDragEndPos(Vector3 pos)
@@ -92,11 +104,20 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     // 인터페이스 영역
     public override void OnCocoAnimalEmotion()
     {
-        
+        base.OnCocoAnimalEmotion();
+        (InteractState as LCocoDoogyInteractState).SetCAM(0, false);
+        (InteractState as LCocoDoogyInteractState).SetCAM(1, true);
+        fsm.ChangeState(InteractState);
     }
     public override void OnCocoMasterEmotion()
     {
-
+        if (fsm.CurrentState == MoveState)
+        {
+            (InteractState as LCocoDoogyInteractState).SetCAM(0, true);
+            (InteractState as LCocoDoogyInteractState).SetCAM(1, false);
+            fsm.ChangeState(InteractState);
+        }
+        else return;
     }
     public override void OnLobbyBeginDrag(Vector3 position)
     {
@@ -145,8 +166,8 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     public override void LoadInit()
     {
         base.LoadInit();
-        IsCMInteract = false;
-        IsCAInteract = false;
+        IsCMInteracted = false;
+        IsCAInteracted = false;
         agent.avoidancePriority = 20;
     }
     public override void FinalInit()

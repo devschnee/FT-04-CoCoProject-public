@@ -21,6 +21,7 @@ MonoBehaviour:
   decoDB: {fileID: 11400000, guid: 5410dd22bd0bdc34faa6c298c0d0e778, type: 2}
   goodsDB: {fileID: 11400000, guid: 5c4cccaf89f5bea4f81abc522b5e7688, type: 2}
   homeDB: {fileID: 11400000, guid: 9408dfcbcac6d0345a2f26fceb060264, type: 2}
+  manualDB: {fileID: 11400000, guid: 5d7b1cc9d30f7d840bbc5aa0cc0d24c5, type: 2}
   profile_iconDB: {fileID: 11400000, guid: 6c1d6365b9e5cda48819182dea8a9350, type: 2}
   questDB: {fileID: 11400000, guid: 3f4ad7d5eaba5db448cb78c661265ce2, type: 2}
   shopDB: {fileID: 11400000, guid: df119fb18576cd846883e6ea8b70a9bc, type: 2}

@@ -11,7 +11,7 @@ public class AudioVolumeData
     public float Ambient = 1f; // 합칠 시 삭제
     public float Cutscene = 1f; // 합칠 시 삭제
     public float Voice = 1f;
-    public bool MuteMaster = false;
+    //public bool MuteMaster = false;
     
 }
 
@@ -32,8 +32,9 @@ public class AudioVolumeHandler
     
     public void ApplyVolumes(AudioVolumeData data)
     {
-        if (data.MuteMaster) mixer.SetFloat(MasterParam, -80f);
-        else SetVolume(AudioType.Master, data.Master);
+        //if (data.MuteMaster) mixer.SetFloat(MasterParam, -80f);
+        //else 
+        SetVolume(AudioType.Master, data.Master);
         SetVolume(AudioType.BGM, data.BGM);
         SetVolume(AudioType.SFX, data.SFX);
         SetVolume(AudioType.Ambient, data.Ambient);

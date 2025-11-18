@@ -1,9 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class ResourcesLoader : IResourceLoader
 {
-    //ÀÎÅÍÆäÀÌ½º¸¦ ±¸ÇöÇÏ´Â Å¬·¡½º, ÀÌ°÷¿¡¼­ Resource.Load¸¦ ´ã´ç
+    //ì¸í„°íŽ˜ì´ìŠ¤ë¥¼ êµ¬í˜„í•˜ëŠ” í´ëž˜ìŠ¤, ì´ê³³ì—ì„œ Resource.Loadë¥¼ ë‹´ë‹¹
     public GameObject LoadPrefab(string path) => Resources.Load<GameObject>(path);
     public Sprite LoadSprite(string path) => Resources.Load<Sprite>(path);
     public Material LoadMaterial(string path) => Resources.Load<Material>(path);
+    public AudioClip LoadAudio(string path) => Resources.Load<AudioClip>(path);
 }

@@ -13,8 +13,6 @@ public class LobbyCharacterManager : MonoBehaviour
 {
     [SerializeField] GameObject plane;
     [SerializeField] EditModeController editController;
-    // 나중에 생각할 것
-    //[SerializeField] float interactDistance = 2f;
 
     private LMCharacterInit lobbyChracterInit; // 씬 시작시 초기화
     private LMWaypoints getWaypoints; // 웨이포인트 얻기
@@ -27,7 +25,6 @@ public class LobbyCharacterManager : MonoBehaviour
     public bool IsInitMode = true;
     private int originalLayer; // 평상 시 레이어
     private int editableLayer; // 편집모드 시 레이어
-    //private bool oneForInit = false;
 
     public List<LobbyWaypoint> Waypoints { get; private set; }
     private List<ILobbyState> lobbyCharacter = new(); // 맵에 활성화 된 캐릭터들 모음
@@ -156,6 +153,15 @@ public class LobbyCharacterManager : MonoBehaviour
         StartCoroutine(routineControl.MainCharRoutineLoop());
     }
 
+    public CocoDoogyBehaviour GetCoco()
+    {
+        return coco;
+    }
+    public MasterBehaviour GetMaster()
+    {
+        return master;
+    }
+
     // 코코두기 안드로이드 전용 이벤트
     public static void RaiseCharacterEvent(BaseLobbyCharacterBehaviour who)
     {
@@ -166,7 +172,6 @@ public class LobbyCharacterManager : MonoBehaviour
         who.gameObject.SetActive(false);
         who.CocoMasterSetIsActive(false); // 루틴 컨트롤 위함
     }
-    
 
     // 로비 캐릭터들 등록 및 삭제
     public void RegisterLobbyChar(ILobbyState gObj)

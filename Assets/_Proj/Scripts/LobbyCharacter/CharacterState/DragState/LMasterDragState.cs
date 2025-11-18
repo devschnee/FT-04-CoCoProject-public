@@ -25,7 +25,7 @@ public class LMasterDragState : LobbyCharacterBaseState, IDragState
     }
     public override void OnStateEnter()
     {
-        Debug.Log("Drag 진입");
+        base.OnStateEnter();
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         if (agent.enabled) agent.enabled = false;
         anim.Play("Idle_A");
@@ -54,7 +54,7 @@ public class LMasterDragState : LobbyCharacterBaseState, IDragState
     public void OnDrag(Vector3 pos)
     {
         if (!isDragging) return;
-        Debug.Log($"isDragging 상태 : {isDragging}");
+        //Debug.Log($"isDragging 상태 : {isDragging}");
         movePos = pos;
         Ray ray = mainCam.ScreenPointToRay(pos);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, mainPlaneMask))
@@ -62,7 +62,7 @@ public class LMasterDragState : LobbyCharacterBaseState, IDragState
             //if (!hit.collider.CompareTag("MainPlane")) return;
             Vector3 hitPos = hit.point;
             hitPos.y = yValue;
-            Debug.Log($"현재 hitPos : {hitPos}");
+            //Debug.Log($"현재 hitPos : {hitPos}");
             trans.position = hitPos;
         }
     }
@@ -70,7 +70,7 @@ public class LMasterDragState : LobbyCharacterBaseState, IDragState
     public void OnEndDrag(Vector3 pos)
     {
         isDragging = false;
-        Debug.Log($"EndDrag, IsDragging : {isDragging}");
+        //Debug.Log($"EndDrag, IsDragging : {isDragging}");
         NavMeshHit navHit;
         bool onNavMesh = NavMesh.SamplePosition(trans.position, out navHit, 0.5f, NavMesh.AllAreas);
         if (!onNavMesh)

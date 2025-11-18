@@ -1,34 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using UnityEngine;
 
 public class GoodsService
 {
-    private readonly UserData.Goods goods;
-    //private Dictionary<int, string> goodsIdDict = new() { { 110001, "energy" }, { 110002, "cap" }, { 110003, "coin" } };
-    public GoodsService(UserData.Goods goods)
+    private readonly IGoodsStore store;
+
+    public GoodsService(IGoodsStore store)
     {
-        this.goods = goods;
-        //goodsIdDict = new() { { 110001, "energy" }, { 110002, "cap" }, { 110003, "coin" } };
+        this.store = store;
     }
 
     public int Get(int goodsId)
     {
-        return goods[goodsId];
+        return store.GetAmount(goodsId);
     }
 
     public void Add(int goodsId, int amount)
     {
-        goods[goodsId] += amount;
-        goods.Save();
+        int cur = store.GetAmount(goodsId);
+        store.SetAmount(goodsId, cur + amount);
     }
 
     public bool TrySpend(int goodsId, int amount)
     {
-        int cur = goods[goodsId];
+        int cur = store.GetAmount(goodsId);
         if (cur < amount)
             return false;
 
-        goods[goodsId] = cur - amount;
-        goods.Save();
+        store.SetAmount(goodsId, cur - amount);
         return true;
     }
 }

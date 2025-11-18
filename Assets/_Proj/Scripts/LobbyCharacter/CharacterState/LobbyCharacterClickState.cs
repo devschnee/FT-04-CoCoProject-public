@@ -13,10 +13,10 @@ public class LCocoDoogyClickState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
-        //Debug.Log("Click 진입");
+        base.OnStateEnter();
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         // 애니메이션 이벤트 쪽에서 ChangeState해줌
-        charAnim.InteractionAnim();
+        charAnim.ClickAnimals();
 
         AudioEvents.Raise(SFXKey.CocodoogyFootstep, pooled: true, pos: owner.transform.position);
     }
@@ -42,7 +42,7 @@ public class LMasterClickState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
-        //Debug.Log("Click 진입");
+        base.OnStateEnter();
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         // 애니메이션 이벤트 쪽에서 ChangeState해줌
         charAnim.ClickMaster();
@@ -73,10 +73,10 @@ public class LAnimalClickState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
-        //Debug.Log("Click 진입");
+        base.OnStateEnter();
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         // 애니메이션 이벤트 쪽에서 ChangeState해줌
-        charAnim.InteractionAnim();
+        charAnim.ClickAnimals();
 
         // 소리 수정하슈
         AudioEvents.Raise(SFXKey.CocodoogyFootstep, pooled: true, pos: owner.transform.position);

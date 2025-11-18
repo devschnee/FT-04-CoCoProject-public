@@ -1,14 +1,15 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GameQuitPopup : MonoBehaviour
 {
     [SerializeField] private Button yesBtn;
     [SerializeField] private Button noBtn;
+    [SerializeField] private GameObject dim;
 
     public void Open()
     {
+        dim.SetActive(true);
         gameObject.SetActive(true);
     }
 
@@ -23,5 +24,6 @@ public class GameQuitPopup : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
+        dim.SetActive(false);
     }
 }

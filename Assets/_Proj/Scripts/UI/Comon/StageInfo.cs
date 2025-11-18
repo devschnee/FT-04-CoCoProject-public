@@ -105,7 +105,7 @@ public class StageInfo : MonoBehaviour
                 var prevProgress = PlayerProgressManager.Instance.GetStageProgress(prevStageId);
 
                 // 이전 스테이지에서 보물 하나 이상 먹었는지 확인
-                canEnter = prevProgress.GetCollectedCount() > 0;
+                canEnter = prevProgress.bestTreasureCount >= 0;
             }
             else if (stageIndex == 0)
             {

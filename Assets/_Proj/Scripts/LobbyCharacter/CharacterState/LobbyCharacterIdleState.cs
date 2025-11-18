@@ -17,15 +17,21 @@ public class LCocoDoogyIdleState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
+        base.OnStateEnter();
         if (!agent.enabled) agent.enabled = true;
         agent.Warp(owner.transform.position);
-        Debug.Log("코코두기 Idle 진입");
+
         owner.StartCoroutine(WaitThenMove());
     }
 
     public override void OnStateUpdate()
     {
         if (owner.IsDestroyed() || !owner.isActiveAndEnabled) owner.StopAllCoroutines();
+        if (LobbyCharacterManager.Instance.IsEditMode && fsm.CurrentState != owner.EditState)
+        {
+            owner.StopAllCoroutines();
+            fsm.ChangeState(owner.EditState);
+        }
     }
 
     public override void OnStateExit()
@@ -55,15 +61,21 @@ public class LMasterIdleState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
+        base.OnStateEnter();
         if (!agent.enabled) agent.enabled = true;
         agent.Warp(owner.transform.position);
-        Debug.Log("마스터 Idle 진입");
+
         owner.StartCoroutine(WaitThenMove());
     }
 
     public override void OnStateUpdate()
     {
         if (owner.IsDestroyed() || !owner.isActiveAndEnabled) owner.StopAllCoroutines();
+        if (LobbyCharacterManager.Instance.IsEditMode && fsm.CurrentState != owner.EditState)
+        {
+            owner.StopAllCoroutines();
+            fsm.ChangeState(owner.EditState);
+        }
     }
 
     public override void OnStateExit()
@@ -93,15 +105,21 @@ public class LAnimalIdleState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
+        base.OnStateEnter();
         if (!agent.enabled) agent.enabled = true;
         agent.Warp(owner.transform.position);
-        Debug.Log($"{owner.gameObject.name} Idle 진입");
+        
         owner.StartCoroutine(WaitThenMove());
     }
 
     public override void OnStateUpdate()
     {
         if (owner.IsDestroyed() || !owner.isActiveAndEnabled) owner.StopAllCoroutines();
+        if (LobbyCharacterManager.Instance.IsEditMode && fsm.CurrentState != owner.EditState)
+        {
+            owner.StopAllCoroutines();
+            fsm.ChangeState(owner.EditState);
+        }
     }
 
     public override void OnStateExit()

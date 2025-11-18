@@ -21,8 +21,10 @@ public class StageData
     public string dialogue_box_3;
     public string dialogue_box_4;
     public string dialogue_box_5;
+    public string stage_bgm;
 
     [NonSerialized] public Sprite icon;
+    [NonSerialized] public AudioClip audio;
 
     public Sprite GetIcon(IResourceLoader loader)
     {
@@ -31,6 +33,25 @@ public class StageData
         return icon;
     }
 
-    //TODO : cutscene 관련 변수 및 Get함수 추가필요
-    //cutscene은 어떻게 실행시킬지 확인필요
+    public string GetStartCutscenePath()
+    {
+        if (string.IsNullOrEmpty(start_cutscene))
+            return null;
+
+        return start_cutscene;
+    }
+
+    public string GetEndCutscenePath()
+    {
+        if (string.IsNullOrEmpty(end_cutscene))
+            return null;
+
+        return end_cutscene;
+    }
+    public AudioClip GetAudio(IResourceLoader loader)
+    {
+        if (audio == null && !string.IsNullOrEmpty(stage_bgm))
+            audio = loader.LoadAudio(stage_bgm);
+        return audio;
+    }
 }

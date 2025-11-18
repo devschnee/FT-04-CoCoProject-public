@@ -46,6 +46,10 @@
       "type": "SO"
     },
     {
+      "name": "tbl_manual_mst",
+      "type": "SO"
+    },
+    {
       "name": "tbl_profile_icon_mst",
       "type": "SO"
     },

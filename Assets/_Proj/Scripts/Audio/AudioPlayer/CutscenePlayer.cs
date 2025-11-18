@@ -8,21 +8,26 @@ public class CutscenePlayer : AudioPlayerControl
     private readonly Transform myTrans;
     private AudioSource currentSource;
 
-    public CutscenePlayer(AudioMixer mixer, Transform myTrans)
+    public CutscenePlayer(AudioMixer mixer, Transform myTrans, AudioMixerGroup group)
     {
         this.mixer = mixer;
         this.myTrans = myTrans;
+        GameObject gObj = new GameObject($"CutscenePlayer");
+        gObj.transform.parent = myTrans;
+        currentSource = gObj.AddComponent<AudioSource>();
+        activeSources.Add(currentSource);
+        currentSource.outputAudioMixerGroup = group;
     }
 
     public void PlayAudio(AudioClip clip, AudioMixerGroup group, float fadeIn, float fadeOut, bool loop)
     {
         if (currentSource == null)
         {
-            GameObject gObj = new GameObject($"CutscenePlayer");
-            gObj.transform.parent = myTrans;
-            currentSource = gObj.AddComponent<AudioSource>();
-            activeSources.Add(currentSource);
-            currentSource.outputAudioMixerGroup = group;
+            // GameObject gObj = new GameObject($"CutscenePlayer");
+            // gObj.transform.parent = myTrans;
+            // currentSource = gObj.AddComponent<AudioSource>();
+            // activeSources.Add(currentSource);
+            // currentSource.outputAudioMixerGroup = group;
             //Object.DontDestroyOnLoad(gObj);
         }
 
@@ -37,5 +42,10 @@ public class CutscenePlayer : AudioPlayerControl
             currentSource.Play();
             currentSource.DOFade(1f, fadeIn);
         });
+    }
+
+    public AudioSource GetCutsceneAS()
+    {
+        return currentSource;
     }
 }

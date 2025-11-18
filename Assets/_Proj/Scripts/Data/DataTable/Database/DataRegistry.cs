@@ -13,6 +13,7 @@ public class DataRegistry : ScriptableObject
     public DecoDatabase decoDB;
     public GoodsDatabase goodsDB;
     public HomeDatabase homeDB;
+    public ManualDatabase manualDB;
     public Profile_iconDatabase profile_iconDB;
     public QuestDatabase questDB;
     public ShopDatabase shopDB;

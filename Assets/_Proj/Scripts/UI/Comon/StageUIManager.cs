@@ -54,6 +54,7 @@ public class StageUIManager : MonoBehaviour
     public Sprite[] ResultCoCoDoogySprite;
     public Action OnTreasureConfirm;
 
+    public GameObject videoImage;
     private string currentChapter;
 
     void Awake()

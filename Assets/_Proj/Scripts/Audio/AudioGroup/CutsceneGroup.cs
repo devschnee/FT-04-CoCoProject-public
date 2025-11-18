@@ -7,12 +7,16 @@ public class CutsceneGroup : MonoBehaviour, IAudioController
     private AudioMixerGroup group;
     private CutscenePlayer player;
 
+    public AudioSource GetCutsceneSource()
+    {
+        return player.GetCutsceneAS();
+    }
     public void Init()
     {
         mixer = AudioManager.AudioGroupProvider.GetMixer();
         group = AudioManager.AudioGroupProvider.GetGroup(AudioType.Cutscene);
         Debug.Log($"CutsceneGroup : {group}");
-        player = new CutscenePlayer(mixer, transform);
+        player = new CutscenePlayer(mixer, transform, group);
     }
 
     public void PostInit() { }

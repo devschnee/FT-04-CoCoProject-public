@@ -9,7 +9,7 @@ public class LobbyCharacterAnim
     private readonly Animator anim;
     private AnimationClip animClip;
 
-    private String[] lobbyInteractionAnimalAnimsName = { "Bounce", "Roll", "Spin", "Jump" };
+    private String[] lobbyInteractionAnimalAnimsName = { "Bounce", "Roll", "Jump" };
     private String[] masterClick = { "Click0", "Click1" };
     
     public LobbyCharacterAnim(Animator anim)
@@ -17,9 +17,16 @@ public class LobbyCharacterAnim
         this.anim = anim;
     }
 
-    public void PlaySpinAmin()
+    public void PlayCocoInterationWithMaster(Vector3 pos)
     {
+        anim.SetLookAtPosition(pos);
         anim.Play("Spin");
+    }
+
+    public void PlayMasterInterationWithCoco(Vector3 pos)
+    {
+        anim.SetLookAtPosition(pos);
+        anim.Play("InteractCoco0");
     }
 
     public void MoveAnim(float speed)
@@ -27,7 +34,7 @@ public class LobbyCharacterAnim
         anim.SetFloat("Speed", speed);
     }
 
-    public void InteractionAnim()
+    public void ClickAnimals()
     {
         int number = UnityEngine.Random.Range(0, lobbyInteractionAnimalAnimsName.Length);
 

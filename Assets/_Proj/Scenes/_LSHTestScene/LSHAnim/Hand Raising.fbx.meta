@@ -56,9 +56,16 @@ ModelImporter:
       curves: []
       events:
       - time: 1
-        functionName: FromAToB
+        functionName: OnMasterInteractionEnd
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e9ad2bb572d2f134c91a40d0a1f11547, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: NewEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 05bf2c9ddbbd10b4c81be270844a91f7, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

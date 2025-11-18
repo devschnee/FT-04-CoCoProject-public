@@ -25,11 +25,11 @@ public class LCocoDoogyMoveState : LobbyCharacterBaseState
     }
     public override void OnStateEnter()
     {
+        base.OnStateEnter();
         if (!agent.enabled) agent.enabled = true;
         if (agent.enabled && agent.isStopped) agent.isStopped = false;
         if (agent == null) Debug.Log($"agent null");
 
-        Debug.Log("코코두기 Move 진입");
         isDragged = (owner as CocoDoogyBehaviour).IsDragged;
         // 드래그 엔드하면 Enter에서 두갈래로 가야하겠지?
         if (isDragged)
@@ -141,12 +141,12 @@ public class LCocoDoogyMoveState : LobbyCharacterBaseState
     private IEnumerator RepeatMove(Transform point)
     {
         int maxTime = Random.Range(3, 6);
-        Debug.Log($"maxTime : {maxTime}");
+        //Debug.Log($"maxTime : {maxTime}");
         while (true)
         {
             if (repeatTime < maxTime)
             {
-                Debug.Log($"repeatTime : {repeatTime}");
+                //Debug.Log($"repeatTime : {repeatTime}");
                 charAgent.CocoMoveToRandomTransPoint(owner, point);
                 while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
                 {

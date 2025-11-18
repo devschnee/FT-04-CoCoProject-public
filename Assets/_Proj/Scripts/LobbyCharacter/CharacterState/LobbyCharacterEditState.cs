@@ -14,7 +14,7 @@ public class LCocoDoogyEditState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
-        Debug.Log($"코코두기 Edit 진입");
+        base.OnStateEnter();
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         if (agent.enabled) agent.enabled = false;
         anim.Play("Idle_A");
@@ -43,7 +43,7 @@ public class LMasterEditState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
-        Debug.Log($"마스터 Edit 진입");
+        base.OnStateEnter();
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         if (agent.enabled) agent.enabled = false;
         anim.Play("Idle_A");
@@ -71,7 +71,7 @@ public class LAnimalEditState : LobbyCharacterBaseState
 
     public override void OnStateEnter()
     {
-        Debug.Log($"{owner.gameObject.name} Edit 진입");
+        base.OnStateEnter();
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         if (agent.enabled) agent.enabled = false;
         anim.Play("Idle_A");

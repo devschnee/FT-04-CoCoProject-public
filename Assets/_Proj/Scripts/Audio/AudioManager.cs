@@ -121,6 +121,11 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         return groupMap[type];
     }
 
+    public AudioSource GetAudioSourceForVideoPlayer()
+    {
+        return cutsceneGroup.GetCutsceneSource();
+    }
+
     // 재생
     public void PlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
     {
@@ -206,17 +211,32 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     // ����� ��Ʈ��
     public void ResetAllAudioGroup()
     {
-        foreach (var r in audioGroups)
+        foreach (var aG in audioGroups)
         {
-            r.ResetPlayer();
+            aG.ResetPlayer();
         }
     }
 
     public void StopAllAudioGroup()
     {
-        foreach (var r in audioGroups)
+        foreach (var aG in audioGroups)
         {
-            r.StopPlayer();
+            aG.StopPlayer();
+        }
+    }
+
+    public void EnterCutscene()
+    {
+        foreach (var aG in audioGroups)
+        {
+            if (aG is CutsceneGroup == false) aG.PausePlayer();
+        }
+    }
+    public void ExitCutscene()
+    {
+        foreach (var aG in audioGroups)
+        {
+            //if (object.ReferenceEquals(aG, cutsceneGroup)) 
         }
     }
 
