@@ -27,14 +27,10 @@ public class VideoPlayerController : MonoBehaviour
         player.errorReceived += OnError;
 
         //LSH 1117 추가
-        GameObject gObj = new GameObject("VideoPlayerWTF");
-        gObj.transform.parent = gameObject.transform;
-        gObj.AddComponent<AudioSource>();
-        cutsceneSource = gObj.GetComponent<AudioSource>();
+        cutsceneSource = AudioManager.Instance.GetAudioSourceForVideoPlayer();
         cutsceneSource.playOnAwake = false;
-        cutsceneSource.spatialBlend = 0f;
         cutsceneSource.loop = false;
-        cutsceneSource.outputAudioMixerGroup = AudioManager.AudioGroupProvider.GetGroup(AudioType.Cutscene);
+        cutsceneSource.spatialBlend = 0f;
     }
     //LSH 1117 추가
     void Start()

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2528864419816389767}
   - component: {fileID: 2751089994372822744}
   - component: {fileID: 5221105871534121589}
+  - component: {fileID: 5884658244774026227}
   m_Layer: 3
   m_Name: Player_Test
   m_TagString: Player
@@ -156,6 +157,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.05, z: 0.4}
   m_Center: {x: 0, y: 0.05, z: 0}
+--- !u!114 &5884658244774026227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291992017778968749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3879cd93924ea1946a396a1dcab21a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 3246944614622325143}
+  move: {fileID: 3732109163880771165}
+  push: {fileID: 7504067854222757437}
 --- !u!1001 &4219542376031653613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,5 +356,10 @@ PrefabInstance:
 --- !u!4 &3246944614622325129 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1693816920450361188, guid: 8d863aa0b58a54345a3b739c9e0954cf, type: 3}
+  m_PrefabInstance: {fileID: 4219542376031653613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3246944614622325143 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1693816920450361210, guid: 8d863aa0b58a54345a3b739c9e0954cf, type: 3}
   m_PrefabInstance: {fileID: 4219542376031653613}
   m_PrefabAsset: {fileID: 0}

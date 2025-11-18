@@ -40,12 +40,15 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     private CutsceneGroup cutsceneGroup;
     private VoiceGroup voiceGroup;
     private UIGroup uiGroup;
+    private DialogueGroup diaGroup; // 제어만 합시다
 
     private Dictionary<AudioType, AudioMixerGroup> groupMap;
     private AudioLibraryProvider libraryProvider;
     private AudioVolumeHandler volumeHandler;
     private IAudioController[] audioGroups;
     private SceneAudio sAudio;
+
+    public AudioClip BGMClip { get; private set;}
 
     private void Awake()
     {
@@ -75,8 +78,9 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         cutsceneGroup = GetComponentInChildren<CutsceneGroup>();
         voiceGroup = GetComponentInChildren<VoiceGroup>();
         uiGroup = GetComponentInChildren<UIGroup>();
+        diaGroup = GetComponentInChildren<DialogueGroup>();
 
-        audioGroups = new IAudioController[6] { bgmGroup, sfxGroup, ambientGroup, cutsceneGroup, voiceGroup, uiGroup };
+        audioGroups = new IAudioController[7] { bgmGroup, sfxGroup, ambientGroup, cutsceneGroup, voiceGroup, uiGroup, diaGroup };
 
         // 볼륨 불러오기
         // if (SettingManager.Instance == null)
@@ -153,6 +157,11 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         }
     }
 
+    public void PlayDialogueAudio(AudioType type, string audioFileName)
+    {
+        diaGroup.PlayDialogue(type, audioFileName);
+    }
+
     // 각 씬에 있는 메인 BGM을 이벤트로 재생
     private void OnSceneLoaded(Scene scne, LoadSceneMode mode)
     {
@@ -168,6 +177,7 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     {
         var clip = libraryProvider.GetClip(AudioType.BGM, key, index);
         if (clip == null) return;
+        BGMClip = clip;
         // ����
         bgmGroup.PlayBGM(clip, fadeIn, fadeOut, loop);
     }
@@ -208,7 +218,12 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     }
     #endregion
 
-    // ����� ��Ʈ��
+    public AudioClip GetBGMClip()
+    {
+        return BGMClip;
+    }
+
+    // 오디오 그룹 제어
     public void ResetAllAudioGroup()
     {
         foreach (var aG in audioGroups)

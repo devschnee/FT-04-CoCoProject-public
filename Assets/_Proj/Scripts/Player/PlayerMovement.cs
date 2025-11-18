@@ -23,6 +23,17 @@ public class PlayerMovement : MonoBehaviour, IRider
                                 // 살짝 겹치는 내용 있을 수 있어서 전체적으로 리팩터링 하면 좋긴 함.
 
     private Vector3 lastValidPos;
+
+    //LSH 추가
+    public bool isRunning
+    {
+        get
+        {
+            Vector2 input = new Vector2(joystick.InputDir.x, joystick.InputDir.z);
+            return input.sqrMagnitude > 0.01f;
+        }
+    }
+    
     #endregion
 
     void Awake()

@@ -13,6 +13,7 @@ public class LobbyCharacterManager : MonoBehaviour
 {
     [SerializeField] GameObject plane;
     [SerializeField] EditModeController editController;
+    //[SerializeField] WaypointsControl waypointsControl; // 보류
 
     private LMCharacterInit lobbyChracterInit; // 씬 시작시 초기화
     private LMWaypoints getWaypoints; // 웨이포인트 얻기
@@ -26,7 +27,7 @@ public class LobbyCharacterManager : MonoBehaviour
     private int originalLayer; // 평상 시 레이어
     private int editableLayer; // 편집모드 시 레이어
 
-    public List<LobbyWaypoint> Waypoints { get; private set; }
+    public List<LobbyWaypoint> Waypoints { get; private set; } = new();
     private List<ILobbyState> lobbyCharacter = new(); // 맵에 활성화 된 캐릭터들 모음
 
     private static event Action<BaseLobbyCharacterBehaviour> HeyManager;
@@ -64,8 +65,9 @@ public class LobbyCharacterManager : MonoBehaviour
 
     private void Start()
     {
-        Waypoints = getWaypoints.GetWaypoints();
         planeSurface.BuildNavMesh();
+        //Waypoints = waypointsControl.Waypoints;
+        Waypoints = getWaypoints.GetWaypoints();
         StartCoroutine(StartGame());
     }
 
@@ -141,6 +143,22 @@ public class LobbyCharacterManager : MonoBehaviour
         //         Debug.Log($"{lC} ExitScene 호출");
         //     }
         // }
+    }
+
+    public void InitWayPoint()
+    {
+        Waypoints.Clear();
+        Waypoints = getWaypoints.GetWaypoints();
+
+        foreach (var c in lobbyCharacter)
+        {
+            c.InitWaypoint();
+        }
+    }
+
+    public List<LobbyWaypoint> GetWaypointsForChar()
+    {
+        return Waypoints;
     }
 
     private IEnumerator StartGame()

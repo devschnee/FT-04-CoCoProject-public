@@ -3,35 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// AudioEvents.cs¿¡¼­ ±¸µ¶ µè°í AudioManager¿¡°Ô ½ÇÇà ºÎÅ¹.
-// key(À½¾Ç ¹¹ÇÒÁö), pooled(¿ÀºêÁ§Æ® Ç®¸µÀÎÁö), position(2d ¼Ò¸®ÇÒÁö 3d ¼Ò¸®ÇÒÁö)
+// AudioEvents.csï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ AudioManagerï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¹.
+// key(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½), pooled(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® Ç®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½), position(2d ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½ 3d ï¿½Ò¸ï¿½ï¿½ï¿½ï¿½ï¿½)
 public class AudioEventListener : MonoBehaviour
 {
     public static AudioEventListener Instance { get; private set; }
-    // DDOLÇÏ³ª ¶§¹®¿¡ ÀÏ´Ü ½Ì±ÛÅæÀ¸·Î ¸¸µé¾úÀ½, ½Ì±ÛÅæÀ¸·Î Á¢±ÙÀº ¾ÈÇÏ°í ÀÌº¥Æ® ¼ö½Å¸¸
-    // ±Ùµ¥ AudioManager¿¡ ºÙÀÎ´Ù¸é ±»ÀÌ ½Ì±ÛÅæ ÇÊ¿äÇØ?
+    // DDOLï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ì±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½Å¸ï¿½
+    // ï¿½Ùµï¿½ AudioManagerï¿½ï¿½ ï¿½ï¿½ï¿½Î´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½?
 
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Debug.LogWarning("Áßº¹ °¨Áö Á¦°ÅµÊ");
+            Debug.LogWarning("ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Åµï¿½");
             Destroy(gameObject);
             return;
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        Debug.Log("AudioEventListener »ı¼º");
+        Debug.Log("AudioEventListener ï¿½ï¿½ï¿½ï¿½");
     }
 
     private void OnEnable()
     {
         AudioEvents.OnPlayAudio += HandlePlayAudio;
+        AudioEvents.OnPlayDialogue += HandlePlayDialogueSound;
     }
 
     private void OnDisable()
     {
         AudioEvents.OnPlayAudio -= HandlePlayAudio;
+        AudioEvents.OnPlayDialogue -= HandlePlayDialogueSound;
     }
 
     private void HandlePlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
@@ -42,6 +44,13 @@ public class AudioEventListener : MonoBehaviour
     public void PlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
     {
         AudioManager.Instance.PlayAudio(key, index, fadeIn, fadeOut, loop, pooled, pos);
+    }
+
+    // ì¼ë‹¨ ì„ì‹œë¡œ ë§Œë“¦
+    private void HandlePlayDialogueSound(AudioType type, string audioFileName)
+    {
+        AudioManager.Instance.PlayDialogueAudio(type, audioFileName);
+        //DataManager.Instance.Stage.GetAudioClip(,);
     }
 }
 

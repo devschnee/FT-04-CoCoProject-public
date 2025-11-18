@@ -69,12 +69,16 @@ public class NavMeshAgentControl
     public void MoveToLastPoint(Transform point)
     {
         if (agent.isStopped) agent.isStopped = false;
-        Vector3 lastPos = point.position;
         agent.speed = 2f;
         agent.acceleration = 8f;
         agent.autoBraking = true;
         agent.stoppingDistance = 0f;
-        agent.SetDestination(lastPos);
+        Vector3 randomDir = point.position + Random.insideUnitSphere * 0.3f;
+        randomDir.y = point.position.y;
+        if (NavMesh.SamplePosition(randomDir, out NavMeshHit hit, 0.1f, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+        }
     }
     /// <summary>
     /// 해당 포인트를 기준으로 랜덤 범위 이동

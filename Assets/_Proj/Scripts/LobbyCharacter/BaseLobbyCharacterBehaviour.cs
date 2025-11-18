@@ -195,6 +195,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     /// </summary>
     public virtual void InNormal()
     {
+        // 추가. MoveState로 각 포인트 지점으로 가는 행동을 하는데 MoveState도 초기화를 해야하나?
         fsm.ChangeState(IdleState);
     }
 
@@ -206,6 +207,10 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         fsm.ChangeState(EditState);
     }
 
+    public virtual void InitWaypoint()
+    {
+        Waypoints = LobbyCharacterManager.Instance.GetWaypointsForChar(); // 다시 웨이포인트 얻기
+    }
     /// <summary>
     /// ILobbyState, 오브젝트 생성 시 등록
     /// </summary>

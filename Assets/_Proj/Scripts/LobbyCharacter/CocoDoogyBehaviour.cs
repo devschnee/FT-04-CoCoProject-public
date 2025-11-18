@@ -147,6 +147,12 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     {
         base.InEdit();
     }
+    public override void InitWaypoint()
+    {
+        base.InitWaypoint();
+        MoveState = null;
+        MoveState = new LCocoDoogyMoveState(this, fsm, charAgent, Waypoints);
+    }
     public override void Register()
     {
         base.Register();

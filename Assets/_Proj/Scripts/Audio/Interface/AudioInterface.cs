@@ -28,8 +28,10 @@ public interface IAudioState
 
 public interface IAudioGroupSetting
 {
-    AudioMixer GetMixer();
-    AudioMixerGroup GetGroup(AudioType type);
+    AudioMixer GetMixer(); // 믹서 얻어가슈
+    
+    // AudioManager 인스펙터에 Group Mappings 부분 타입 별 지정한 오디오믹서 그룹 얻기
+    AudioMixerGroup GetGroup(AudioType type); 
 }
 
 public interface IAudioController
