@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +14,7 @@ public class ToggleSwitch : MonoBehaviour
     [Header("Colours")]
     public Color onColour = new Color(0.5f, 0.4f, 0.9f);
     public Color offColour = new Color(1f, 1f, 1f);
+    private Color inactivateColor = new Color(0.4f, 0.38f, 0.35f);
 
     [Header("Target Position")]
     public float handleMoveX = 60f;
@@ -25,23 +25,27 @@ public class ToggleSwitch : MonoBehaviour
 
     private Vector2 defaultPos;
 
-
     void Start()
     {
         defaultPos = handle.anchoredPosition;
-        UpdateVisual(UserData.Local.preferences.skipDialogues);
+        isSkipOn = UserData.Local.preferences.skipDialogues;
+        //UpdateVisual(UserData.Local.preferences.skipDialogues);
+        UpdateVisual(true); // 토글 상태 애니메이션 없이 즉시 반영
     }
 
     public void Toggle() // 토글 버튼 이벤트에 추가
     {
-        isSkipOn = !isSkipOn;
-        UserData.Local.preferences.skipDialogues = isSkipOn;
+        //isSkipOn = !isSkipOn;
+        //UserData.Local.preferences.skipDialogues = isSkipOn;
+        UserData.Local.preferences.skipDialogues = !UserData.Local.preferences.skipDialogues;
+        isSkipOn = UserData.Local.preferences.skipDialogues;
         UserData.Local.preferences.Save();
         UpdateVisual();
     }
 
     private void UpdateVisual(bool instant = false)
     {
+        bool isOn = UserData.Local.preferences.skipDialogues;
         float targetX = UserData.Local.preferences.skipDialogues ? handleMoveX : 0f;
 
         if (instant)
@@ -54,11 +58,11 @@ public class ToggleSwitch : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(AnimateHandle(targetX));
             }
-
-            labelOn.color = UserData.Local.preferences.skipDialogues ? onColour : new Color(0.2f, 0.2f, 0.2f);
-            labelOff.color = UserData.Local.preferences.skipDialogues ? new Color(0.2f, 0.2f, 0.2f) : offColour;
         }
+        labelOn.color = isSkipOn ? onColour : inactivateColor;
+        labelOff.color = isSkipOn ? inactivateColor : offColour;
     }
+
     IEnumerator AnimateHandle(float targetX)
     {
         Vector2 start = handle.anchoredPosition;

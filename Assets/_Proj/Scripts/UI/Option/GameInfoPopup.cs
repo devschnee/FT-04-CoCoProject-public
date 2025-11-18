@@ -15,6 +15,8 @@ public class GameInfoPopup : MonoBehaviour
     [Tooltip("TabGroup 자식으로 생기게 될 Tab 프리팹")]
     [SerializeField] private Button tabButtonPrefab;
 
+    [SerializeField] GameObject dim;
+
     private readonly List<Button> createdTabs = new(); // 생성된 버튼 저장
     // 현재 선택된 탭 수동 저장
     private int currManualId = -1;
@@ -33,6 +35,7 @@ public class GameInfoPopup : MonoBehaviour
             // 기본 탭으로 초기화
             LoadManual(130001);
         }
+        dim.gameObject.SetActive(true);
     }
 
     void BuildTabsFromCSV()
@@ -64,6 +67,7 @@ public class GameInfoPopup : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive(false);
+        dim.gameObject.SetActive(false);
     }
 
     private void LoadManual(int manualId)
