@@ -282,6 +282,7 @@ MonoBehaviour:
   lockedOverlay: {fileID: 2044104599712438340}
   lockIcon: {fileID: 1194841356172409058}
   slotFrame: {fileID: 7573520661541158773}
+  button: {fileID: 6065497604077686214}
 --- !u!114 &6065497604077686214
 MonoBehaviour:
   m_ObjectHideFlags: 0
