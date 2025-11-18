@@ -25,8 +25,14 @@ public class Dialogue : MonoBehaviour
         playerMovement.enabled = false;
 
         DialogueManager.Instance.NewDialogueMethod(dialogueId);
-           
-        playerMovement.enabled = true;
+
+        DialogueManager.Instance.playerMovement = playerMovement;
+        DialogueManager.Instance.OnDialogueEnd += () =>
+        {
+            if (playerMovement != null)
+                playerMovement.enabled = true;
+        };
+
         isread = true;
     }
 }

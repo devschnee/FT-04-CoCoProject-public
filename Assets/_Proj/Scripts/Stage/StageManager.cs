@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -42,12 +41,16 @@ public class StageManager : MonoBehaviour
 
     public string currentStageId;
 
+    public string cutsceneUrl; // 컷씬이 있으면 세팅
+    public bool hasCutscene = false;
+
     //맵의 이름으로 찾아온 현재 맵 데이터 객체 (초기상태로의 복귀를 위해 필요)
     private MapData currentMapData; //맵데이터는 늘 기억되고 있을 것임.
 
     private List<IPlayerFinder> finders = new();
 
     private bool[] collectedTreasures = new bool[3];
+
 
     [SerializeField] BlockFactory factory;
 
@@ -85,11 +88,15 @@ public class StageManager : MonoBehaviour
         //TODO: 2-2. 블록팩토리가 맵의 오브젝트들 중 서로 연결된 객체를 연결해 줌.
         LinkSignals();
 
+        var data = DataManager.Instance.Stage.GetData(currentStageId);
+        var data_start_cutscene = DataManager.Instance.Stage.GetStartCutsceneUrl(currentStageId);
+        if (!string.IsNullOrEmpty(data_start_cutscene) && data.start_cutscene != "-1")
+        {
+            yield return PlayCutscene(data_start_cutscene);
+        }
         //TODO: 3. 가져온 맵 정보로 모든 블록이 생성되고 연결까지 끝나면 가리고 있던 부분을 치워줌.
-        yield return PlayStartCutscene();
 
         //Todo : 컷씬 지난후 대화가 있다면 여기서 실행
-        var data = DataManager.Instance.Stage.GetData(currentStageId);
         if(data.start_talk != "-1")
             DialogueManager.Instance.NewDialogueMethod(data.start_talk);
         //TODO: 4. 시작점에 코코두기를 생성해줌.
@@ -108,29 +115,57 @@ public class StageManager : MonoBehaviour
     //스테이지 클리어를 감지할 객체가 필요함.
     //초기에 그 객체의 StageManager 필드에 이 객체를 기억시킴.
     //감지되면, 이 객체가 가진 ClearStage()를 호출함.
-
-    public async void ClearStage()
+    public void ClearStage()
     {
-        Debug.Log("스테이지 클리어 확인용 로그.");
+        StartCoroutine(ClearStageRoutine());
+    }
 
-        await PlayEndCutsceneAsync();
+    IEnumerator ClearStageRoutine()
+    {
+        Debug.Log("[Stage] Clear → 결과 UI 오픈");
 
-        //Todo : 엔드대화가 있는지 체크 후 있다면 출력
         var data = DataManager.Instance.Stage.GetData(currentStageId);
 
-        if (data.start_talk != "-1")
+        if(data.end_talk != "-1")
+    {
             DialogueManager.Instance.NewDialogueMethod(data.end_talk);
+            while (DialogueManager.Instance.isDialogueActive)
+                yield return null;
+        }
 
+        // 결과 UI 세팅 (기존 로직)
+        ShowResultUI();
+
+        // 확인 버튼 누를 때까지 대기
+        bool waitConfirm = true;
+        StageUIManager.Instance.ExitButton.onClick.AddListener(() =>
+        {
+            waitConfirm = false;
+        });
+        while (waitConfirm)
+            yield return null;
+
+        var data_end_cutscene = DataManager.Instance.Stage.GetEndCutsceneUrl(currentStageId);
+        if (!string.IsNullOrEmpty(data_end_cutscene) && data.end_cutscene != "-1")
+        {
+            yield return PlayCutscene(data_end_cutscene);
+        }
+
+        // 메인씬으로 이동
+        SceneManager.LoadScene("Main");
+    }
+
+    private void ShowResultUI()
+    {
+        // 기존 UI 열기
         StageUIManager.Instance.Overlay.SetActive(true);
         StageUIManager.Instance.ResultPanel.SetActive(true);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
 
+        var data = DataManager.Instance.Stage.GetData(currentStageId);
 
         StageUIManager.Instance.stageName.text = data.stage_name;
 
-
-        //TODO: 도감의 해금 처리는 반드시 이곳에 작성.
-        
         int collectedCount = collectedTreasures.Count(x => x);
 
         var prev = PlayerProgressManager.Instance.GetStageProgress(data.stage_id);
@@ -148,14 +183,15 @@ public class StageManager : MonoBehaviour
         }
 
         UpdateTreasureIcons(
-             collectedCount >= 1,
-             collectedCount >= 2,
-             collectedCount >= 3
+            collectedCount >= 1,
+            collectedCount >= 2,
+            collectedCount >= 3
         );
 
-        if (prev.bestTreasureCount < 0)   // 처음 클리어한 경우
+        // bestTreasureCount 업데이트
+        if (prev.bestTreasureCount < 0)
         {
-            prev.bestTreasureCount = collectedCount;  // 0~3
+            prev.bestTreasureCount = collectedCount;
         }
         else
         {
@@ -164,7 +200,6 @@ public class StageManager : MonoBehaviour
 
         PlayerProgressManager.Instance.SaveProgress();
     }
-
     void SpawnPlayer()
     {
         playerObject = Instantiate(playerPrefab, startPoint, Quaternion.identity);
@@ -385,48 +420,19 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    IEnumerator PlayStartCutscene()
+    IEnumerator PlayCutscene(string cutscendId)
     {
         if (UserData.Local.preferences.skipDialogues == true) yield break;
-        var data = DataManager.Instance.Stage.GetData(currentStageId);
-        if (data == null || string.IsNullOrEmpty(data.start_cutscene) || data.start_cutscene == "-1")
+        if (string.IsNullOrEmpty(cutscendId) || cutscendId == "-1")
         {
             Debug.Log("[StageManager] 컷신 없음 또는 StageData 없음, 재생 스킵");
             yield break;
         }
        StageUIManager.Instance.videoImage.SetActive(true);
-        string url = DataManager.Instance.Stage.GetStartCutsceneUrl(currentStageId);
+
         if (VideoPlayerController.Instance != null)
-            yield return VideoPlayerController.Instance.PlayCutscene(url, true);
+            yield return VideoPlayerController.Instance.PlayCutscene(cutscendId);
         else
             Debug.LogError("[StageManager] VideoPlayerController.Instance가 씬에 없습니다.");
-
-    }
-
-    public async Task PlayEndCutsceneAsync()
-    {
-        if (UserData.Local.preferences.skipDialogues == true) return;
-        var data = DataManager.Instance.Stage.GetData(currentStageId);
-        if (data == null)
-        {
-            Debug.LogError($"[StageManager] StageData is null for id {currentStageId}. End cutscene skipped.");
-            return;
-        }
-
-        if (string.IsNullOrEmpty(data.end_cutscene) || data.end_cutscene == "-1")
-        {
-            Debug.Log("[StageManager] End cutscene 없음, 재생 스킵");
-            return;
-        }
-
-        if (VideoPlayerController.Instance == null)
-        {
-            Debug.LogError("[StageManager] VideoPlayerController.Instance is null. End cutscene 재생 불가");
-            return;
-        }
-
-        StageUIManager.Instance.videoImage.SetActive(true);
-        string url = DataManager.Instance.Stage.GetEndCutsceneUrl(currentStageId);
-        await VideoPlayerController.Instance.PlayAsync(url);
     }
 }

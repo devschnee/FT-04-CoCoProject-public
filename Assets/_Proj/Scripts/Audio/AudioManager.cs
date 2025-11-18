@@ -80,7 +80,7 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         uiGroup = GetComponentInChildren<UIGroup>();
         diaGroup = GetComponentInChildren<DialogueGroup>();
 
-        audioGroups = new IAudioController[7] { bgmGroup, sfxGroup, ambientGroup, cutsceneGroup, voiceGroup, uiGroup, diaGroup };
+        //audioGroups = new IAudioController[7] { bgmGroup, sfxGroup, ambientGroup, cutsceneGroup, voiceGroup, uiGroup, diaGroup };
 
         // 볼륨 불러오기
         // if (SettingManager.Instance == null)

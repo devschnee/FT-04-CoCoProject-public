@@ -71,7 +71,6 @@ public class StageUIManager : MonoBehaviour
         OptionCloseButton.onClick.AddListener(OptionClose);
         RetryButton.onClick.AddListener(Retry);
         QuitButton.onClick.AddListener(Quit);
-        ExitButton.onClick.AddListener(Exit);
         TreasureConfirmButton.onClick.AddListener(() =>
         {
             OnTreasureConfirm?.Invoke();
@@ -113,10 +112,10 @@ public class StageUIManager : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    void Exit()
-    {
-        //Todo : 챕터에 따라 스테이지 선택화면 분기
-        //currentChapter
-        SceneManager.LoadScene("Main");
-    }
+    //void Exit()
+    //{
+    //    //Todo : 챕터에 따라 스테이지 선택화면 분기
+    //    //currentChapter
+    //    SceneManager.LoadScene("Main");
+    //}
 }

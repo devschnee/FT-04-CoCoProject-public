@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
+    public System.Action OnDialogueEnd;
+    public bool isDialogueActive = false;
+    public PlayerMovement playerMovement;
 
     private string dialogueId;
     private bool isRead = false;
@@ -13,13 +16,10 @@ public class DialogueManager : MonoBehaviour
     private DialogueData currentData;
     private Coroutine typingCoroutine;
     private bool isTyping = false;
-    private bool isDialogueActive = false;
     private bool hasLeftSpeaker = false;
     private bool hasRightSpeaker = false;
 
     private int currentSeq = 0; // dialogue 내 순번
-
-    private PlayerMovement playerMovement;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -262,6 +262,11 @@ public class DialogueManager : MonoBehaviour
         StageUIManager.Instance.Overlay.SetActive(false);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(true);
         Debug.Log("[Dialogue] 대화 종료");
+
+        if(playerMovement != null)
+            playerMovement.enabled = true;
+
+        OnDialogueEnd?.Invoke();
     }
 
     private void AnalyzeDialogueSideUsage(string id)
