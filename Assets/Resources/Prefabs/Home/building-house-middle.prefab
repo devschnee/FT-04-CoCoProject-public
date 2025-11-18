@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4567599744626680}
   - component: {fileID: 33049545042127366}
   - component: {fileID: 23723226150904882}
-  - component: {fileID: 64212008112802744}
   - component: {fileID: 222944012964923560}
   - component: {fileID: 8124603784450827779}
   - component: {fileID: 7108655215971859291}
+  - component: {fileID: 1897002766842009610}
   m_Layer: 6
   m_Name: building-house-middle
   m_TagString: Untagged
@@ -91,28 +91,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64212008112802744
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1950039113869430}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 506803d328a33493783f3ab67d42cbf1, type: 3}
 --- !u!114 &222944012964923560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +146,27 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!65 &1897002766842009610
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950039113869430}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.724238, y: 9.875572, z: 7.922308}
+  m_Center: {x: 0, y: 4.937785, z: -0.00000011920929}
 --- !u!1001 &4565882097210850181
 PrefabInstance:
   m_ObjectHideFlags: 0

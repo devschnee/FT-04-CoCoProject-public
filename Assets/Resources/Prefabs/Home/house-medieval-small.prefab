@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4000011493586018}
   - component: {fileID: 33000013117924472}
   - component: {fileID: 23000013545074986}
-  - component: {fileID: 64000011111228676}
   - component: {fileID: 8414759753078626358}
   - component: {fileID: -773257547849622608}
   - component: {fileID: 8460922354885624508}
+  - component: {fileID: 2090565103523445700}
   m_Layer: 6
   m_Name: house-medieval-small
   m_TagString: Untagged
@@ -91,28 +91,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000011111228676
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000012625864402}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -307064411054131421, guid: 4c20a41df522e4132976e175436e08b5, type: 3}
 --- !u!114 &8414759753078626358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +146,27 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!65 &2090565103523445700
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000012625864402}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.4450493, y: 5.1057625, z: 7.0741014}
+  m_Center: {x: -0.018080354, y: 2.549461, z: -0.28803062}
 --- !u!1001 &6757209367287993288
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3777715406928647154}
   - component: {fileID: 7140675017135247379}
   - component: {fileID: 93198596566685561}
-  - component: {fileID: 2044984262384795405}
   - component: {fileID: 5474750872866302256}
   - component: {fileID: 1812444080123326218}
   - component: {fileID: 3591181348836329112}
+  - component: {fileID: -1352980619597857433}
   m_Layer: 6
   m_Name: car-caravan-small-standing-b
   m_TagString: Untagged
@@ -91,28 +91,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2044984262384795405
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4083917684407082767}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3396131179485111018, guid: 92bfcbae84329674ea2e728d4d2874da, type: 3}
 --- !u!114 &5474750872866302256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +146,27 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!65 &-1352980619597857433
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4083917684407082767}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.0000067, y: 2.795929, z: 5.138389}
+  m_Center: {x: -0.90795726, y: 1.3640685, z: -2.441491}
 --- !u!1001 &8797668156827175104
 PrefabInstance:
   m_ObjectHideFlags: 0
