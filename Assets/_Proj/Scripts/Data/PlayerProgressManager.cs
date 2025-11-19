@@ -23,9 +23,11 @@ public class PlayerProgressManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 씬이 로드될 때마다 진행도 알림 재발행
-        LoadProgress();
-        OnProgressUpdated?.Invoke();
+        if (UserData.Local != null)
+        { // 씬이 로드될 때마다 진행도 알림 재발행
+            LoadProgress();
+            OnProgressUpdated?.Invoke();
+        }
     }
     void Awake()
     {
