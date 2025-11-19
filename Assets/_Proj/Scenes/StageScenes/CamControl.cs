@@ -8,7 +8,7 @@ public class CamControl : MonoBehaviour
     public GameObject playerObj;
     public GameObject stage;
 
-    [HideInInspector]public Transform[] wayPoint;
+    public Transform[] wayPoint;
 
     private Vector3 startPosition;
     private Vector3 endPosition;
