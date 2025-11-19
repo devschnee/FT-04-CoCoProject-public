@@ -6,10 +6,10 @@ public class AudioPlayTest : MonoBehaviour
     {
         AudioEvents.Raise(BGMKey.Main, -1, 1f, 1f, true);
     }
-    public void CutsPlay()
-    {
-        AudioEvents.Raise(CutsceneKey.CutsceneId01, -1, 1f, 1f, true);
-    }
+    // public void CutsPlay()
+    // {
+    //     AudioEvents.Raise(CutsceneKey.CutsceneId01, -1, 1f, 1f, true);
+    // }
     public void SFXPlay()
     {
         AudioEvents.Raise(SFXKey.CocodoogyFootstep, -1, loop : false, pooled : false, pos : transform.position);
@@ -26,10 +26,10 @@ public class AudioPlayTest : MonoBehaviour
     {
         AudioEvents.Raise(AmbientKey.Birdsong, -1, loop: false, pooled: true, pos: transform.position);
     }
-    public void VoicePlay()
-    {
-        AudioEvents.Raise(VoiceKey.Cocodoogy, -1);
-    }
+    // public void VoicePlay()
+    // {
+    //     AudioEvents.Raise(VoiceKey.Cocodoogy, -1);
+    // }
     public void UIPlay()
     {
         AudioEvents.Raise(UIKey.UIClick, -1);

@@ -37,24 +37,24 @@ public class SFXPlayer : AudioPlayerControl
         currentSource.clip = clip;
         currentSource.loop = loop;
 
-        // À§Ä¡°¡ ÀÖ´Ù¸é 3D »ç¿îµå·Î
+        //  3D ì˜µì…˜
         if (pos.HasValue)
         {
             currentSource.transform.position = pos.Value;
             currentSource.spatialBlend = 1f;
 
-            #region Ä¿½ºÅÒ
+            #region ì‚¬ìš©ìì§€ì •ë²„ì „
             //src.rolloffMode = AudioRolloffMode.Custom;
             //AnimationCurve curve = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(0.9f, 0.5f), new Keyframe(0.3f, 0.3f), new Keyframe(1f, 0f));
             //src.SetCustomCurve(AudioSourceCurveType.CustomRolloff, curve);
-            //src.minDistance = 0.3f;  // float °ª ÀÌ³»´Â Ç×»ó ÃÖ´ë º¼·ı
-            //src.maxDistance = 5f; // float °ª ÀÌ»óÀº ¾È µé¸²
+            //src.minDistance = 0.3f;  // float ï¿½ï¿½ ï¿½Ì³ï¿½ï¿½ï¿½ ï¿½×»ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
+            //src.maxDistance = 5f; // float ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½é¸²
             #endregion
 
-            #region ³ë¸»
-            currentSource.rolloffMode = AudioRolloffMode.Logarithmic; // ÀÚ¿¬½º·´°Ô °¨¼Ò
-            currentSource.minDistance = 1f;  // float °ª ÀÌ³»´Â Ç×»ó ÃÖ´ë º¼·ı
-            currentSource.maxDistance = 50f; // float °ª ÀÌ»óÀº ¾È µé¸²
+            #region ì¼ë°˜ë²„ì „
+            currentSource.rolloffMode = AudioRolloffMode.Logarithmic; // ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            currentSource.minDistance = 1f;  // float ï¿½ï¿½ ï¿½Ì³ï¿½ï¿½ï¿½ ï¿½×»ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
+            currentSource.maxDistance = 50f; // float ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½é¸²
             #endregion
         }
         else currentSource.spatialBlend = 0f;
@@ -62,7 +62,7 @@ public class SFXPlayer : AudioPlayerControl
         currentSource.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
         currentSource.volume = UnityEngine.Random.Range(0.95f, 1f);
 
-        // Àç»ı ¹× »èÁ¦
+        // í’€ë§ì´ë¼ë©´
         if (pooled)
         {
             currentSource.Play();
@@ -72,7 +72,7 @@ public class SFXPlayer : AudioPlayerControl
         {
             //play
             currentSource.Play();
-            // loopÀÏ¶§ Á¤Áö ¹× »©´Â°Å Ãß°¡ ÇØ¾ßÇÔ
+            // loopï¿½Ï¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Â°ï¿½ ï¿½ß°ï¿½ ï¿½Ø¾ï¿½ï¿½ï¿½
             if (loop) { }
             else NewDestroy(currentSource.gameObject, clip.length);
         }
@@ -83,29 +83,33 @@ public class SFXPlayer : AudioPlayerControl
         base.PlayAll();
         audioPool.PlayPool();
     }
-
     public override void PauseAll()
     {
         base.PauseAll();
         audioPool.PausePool();
     }
-
     public override void ResumeAll()
     {
         base.ResumeAll();
         audioPool.ResumePool();
     }
-
     public override void ResetAll()
     {
         base.ResetAll();
         audioPool.ResetPool();
     }
-
     public override void StopAll()
     {
         base.StopAll();
         audioPool.StopPool();
+    }
+    public override void SetVolumeHalf()
+    {
+        base.SetVolumeHalf();
+    }
+    public override void SetVolumeNormal()
+    {
+        base.SetVolumeNormal();
     }
 
     private void NewDestroy(GameObject gObj, float length)
@@ -118,9 +122,9 @@ public class SFXPlayer : AudioPlayerControl
         }
     }
     // PlayOneShot()
-    // Àå : (´Ü¹ß¼º È¿°úÀ½¿¡ ¸Å¿ì Æí¸®) (º°µµÀÇ AudioSource¸¦ ¿©·¯ °³ ¸¸µé ÇÊ¿ä ¾øÀ½) (Ç®¸µ °ü¸® °£¼ÒÈ­ °¡´É)
-    // ´Ü : (¸Ş¸ğ¸®¿Í ¿Àµğ¿À Ã¤³ÎÀ» ´õ ¸¹ÀÌ »ç¿ë) (loop ºÒ°¡) (Stop()À¸·Î Áß´Ü ºÒ°¡´É : ³¡±îÁö Àç»ı)
-    // ÀÌÁ¦ ´Ù »èÁ¦µÇ´Â ±¸Á¶ ¸¸µé¾ú°í.
-    // ÃÊ±âÈ­ ¹× »óÅÂÀüÈ¯À» ¸¸µé¾î¾ßÁö
+    // ï¿½ï¿½ : (ï¿½Ü¹ß¼ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¿ï¿½ ï¿½ï¿½ï¿½ï¿½) (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ AudioSourceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½) (Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½)
+    // ï¿½ï¿½ : (ï¿½Ş¸ğ¸®¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½) (loop ï¿½Ò°ï¿½) (Stop()ï¿½ï¿½ï¿½ï¿½ ï¿½ß´ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+    // ï¿½Ê±ï¿½È­ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 }

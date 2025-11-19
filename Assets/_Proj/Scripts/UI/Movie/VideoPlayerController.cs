@@ -26,17 +26,17 @@ public class VideoPlayerController : MonoBehaviour
         player.errorReceived += OnError;
 
         //LSH 1117 추가
-        //cutsceneSource = AudioManager.Instance.GetAudioSourceForVideoPlayer();
-        //cutsceneSource.playOnAwake = false;
-        //cutsceneSource.loop = false;
-        //cutsceneSource.spatialBlend = 0f;
+        cutsceneSource = AudioManager.Instance.GetAudioSourceForVideoPlayer();
+        cutsceneSource.playOnAwake = false;
+        cutsceneSource.loop = false;
+        cutsceneSource.spatialBlend = 0f;
     }
     //LSH 1117 추가
     void Start()
     {
-        //player.audioOutputMode = VideoAudioOutputMode.AudioSource;
-        //player.EnableAudioTrack(0, true);
-        //player.SetTargetAudioSource(0, cutsceneSource);
+        player.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        player.EnableAudioTrack(0, true);
+        player.SetTargetAudioSource(0, cutsceneSource);
     }
 
     //-------------------------------------------
@@ -65,7 +65,7 @@ public class VideoPlayerController : MonoBehaviour
 
         isPlaying = true;
 
-        //AudioManager.Instance.EnterCutscene();
+        AudioManager.Instance.EnterCutscene();
 
         player.Stop();
         player.source = VideoSource.Url;
@@ -105,7 +105,7 @@ public class VideoPlayerController : MonoBehaviour
         isPlaying = false;
 
         StageUIManager.Instance.videoImage.SetActive(false);
-        //AudioManager.Instance.ResetAllAudioGroup();
+        AudioManager.Instance.ExitCutscene();
     }
 
     void OnError(VideoPlayer vp, string msg)

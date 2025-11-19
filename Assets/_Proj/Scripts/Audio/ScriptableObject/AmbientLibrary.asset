@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioEntries:
   - key: 0
-    clips:
-    - {fileID: 8300000, guid: c5088d0b0f3b3df41baa00af79b33c86, type: 3}
+    clips: []

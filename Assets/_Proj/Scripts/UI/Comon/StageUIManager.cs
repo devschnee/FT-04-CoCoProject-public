@@ -24,6 +24,7 @@ public class StageUIManager : MonoBehaviour
     public GameObject TreasurePanel;
     public GameObject DialoguePanel;
     public GameObject Overlay;
+    public GameObject FadePanel;
 
     [Header("ResultPanel")]
     public TextMeshProUGUI stageName;

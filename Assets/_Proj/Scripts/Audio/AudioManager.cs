@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections.Generic;
 using System;
@@ -7,7 +7,14 @@ using UnityEngine.SceneManagement;
 /// BGM, Cutscene 합칠 것,
 /// SFX, Ambient 합칠 것
 /// 하지만 재생은 나눌 생각
+/// SFX와 Ambient에서는 클립이 없더라도(또는 !isPlaying) 소스 볼륨을 조절해야함.
+/// SFX, Ambient 랜덤 volume, 
 /// 
+/// 1119.
+/// 1. 축소 전 기존 오디오 시스템들 백업.
+/// 2. 오디오 시스템 칼질 => 모든 Voice영역 삭제 - DialogueGroup에 DialogueSFX로 대체
+/// 3. Cutscene은 영상 재생이니 해당 영역 오디오소스 만 만들고 나머지 다 삭제.
+/// 4. 오디오믹서 그룹도 3개로 축소 => Master, BGM, SFX 근데 일단 다른 것들 삭제는 안함
 /// </summary>
 [Serializable]
 public struct AudioGroupMapping
@@ -29,8 +36,6 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     [SerializeField] private BGMLibrary bgmLibrary;
     [SerializeField] private SFXLibrary sfxLibrary;
     [SerializeField] private AmbientLibrary ambientLibrary;
-    [SerializeField] private CutsceneLibrary cutsceneLibrary;
-    [SerializeField] private VoiceLibrary voiceLibrary;
     [SerializeField] private UILibrary uiLibrary;
 
     [Header("AudioGroupChildren")]
@@ -38,9 +43,8 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     private SFXGroup sfxGroup;
     private AmbientGroup ambientGroup;
     private CutsceneGroup cutsceneGroup;
-    private VoiceGroup voiceGroup;
     private UIGroup uiGroup;
-    private DialogueGroup diaGroup; // 제어만 합시다
+    private DialogueGroup diaGroup;
 
     private Dictionary<AudioType, AudioMixerGroup> groupMap;
     private AudioLibraryProvider libraryProvider;
@@ -59,7 +63,8 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
+        
+        // 인스펙터에서 설정한 타입별 오디오믹서 그룹을 실질적으로 해당 그룹에 연결.
         groupMap = new Dictionary<AudioType, AudioMixerGroup>();
         foreach (var map in groupMappings)
         {
@@ -68,7 +73,7 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
 
         AudioGroupProvider = this;
 
-        libraryProvider = new AudioLibraryProvider(bgmLibrary, sfxLibrary, ambientLibrary, cutsceneLibrary, voiceLibrary, uiLibrary);
+        libraryProvider = new AudioLibraryProvider(bgmLibrary, sfxLibrary, ambientLibrary, uiLibrary);
         volumeHandler = new AudioVolumeHandler(mixer);
 
         // AudioGroupMapping
@@ -76,21 +81,11 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         sfxGroup = GetComponentInChildren<SFXGroup>();
         ambientGroup = GetComponentInChildren<AmbientGroup>();
         cutsceneGroup = GetComponentInChildren<CutsceneGroup>();
-        voiceGroup = GetComponentInChildren<VoiceGroup>();
         uiGroup = GetComponentInChildren<UIGroup>();
         diaGroup = GetComponentInChildren<DialogueGroup>();
 
-        //audioGroups = new IAudioController[7] { bgmGroup, sfxGroup, ambientGroup, cutsceneGroup, voiceGroup, uiGroup, diaGroup };
-
-        // 볼륨 불러오기
-        // if (SettingManager.Instance == null)
-        // {
-        //     var settingGO = new GameObject("SettingManager");
-        //     settingGO.AddComponent<SettingManager>();
-        // }
-        // var volumeData = SettingManager.Instance.settingData;
-        // volumeHandler.ApplyVolumes(volumeData.audio);
-        //
+        audioGroups = new IAudioController[6] { bgmGroup, sfxGroup, ambientGroup, cutsceneGroup, uiGroup, diaGroup };
+        // 각 오디오 그룹 초기화 작업
         foreach (var aG in audioGroups)
         {
             aG.Init();
@@ -115,16 +110,17 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    // 믹서 가져오기
     public AudioMixer GetMixer()
     {
         return mixer;
     }
-
+    // 맵핑한 그룹 가져오기
     public AudioMixerGroup GetGroup(AudioType type)
     {
         return groupMap[type];
     }
-
+    // VideoPlayer에서 CutsceneGroup 영역 오디오 소스 가져오기
     public AudioSource GetAudioSourceForVideoPlayer()
     {
         return cutsceneGroup.GetCutsceneSource();
@@ -144,12 +140,6 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
             case AmbientKey ak:
                 PlayAudio(ak, index, loop, pooled, pos);
                 break;
-            case CutsceneKey ck:
-                PlayAudio(ck, index, fadeIn, fadeOut, loop);
-                break;
-            case VoiceKey vk:
-                PlayAudio(vk, index);
-                break;
             case UIKey uk:
                 PlayAudio(uk, index);
                 break;
@@ -160,6 +150,11 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     public void PlayDialogueAudio(AudioType type, string audioFileName)
     {
         diaGroup.PlayDialogue(type, audioFileName);
+    }
+
+    public void PlayBGMForResources(AudioClip clip, float fadeIn, float fadeOut, bool loop)
+    {
+        bgmGroup.PlayBGMForResources(clip, fadeIn, fadeOut, loop);
     }
 
     // 각 씬에 있는 메인 BGM을 이벤트로 재생
@@ -195,20 +190,6 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         // ����
         ambientGroup.PlayAmbient(clip, loop, pooled, pos);
     }
-    private void PlayAudio(CutsceneKey key, int index = -1, float fadeIn = 1f, float fadeOut = 1f, bool loop = true)
-    {
-        var clip = libraryProvider.GetClip(AudioType.Cutscene, key, index);
-        if (clip == null) return;
-        // ����
-        cutsceneGroup.PlayCutscene(clip, fadeIn, fadeOut, loop);
-    }
-    private void PlayAudio(VoiceKey key, int index = -1)
-    {
-        var clip = libraryProvider.GetClip(AudioType.Voice, key, index);
-        if (clip == null) return;
-        // ����
-        voiceGroup.PlayVoice(clip);
-    }
     private void PlayAudio(UIKey key, int index = -1)
     {
         var clip = libraryProvider.GetClip(AudioType.UI, key, index);
@@ -224,14 +205,27 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     }
 
     // 오디오 그룹 제어
-    public void ResetAllAudioGroup()
+    public void PlayAllAudioGroup()
     {
         foreach (var aG in audioGroups)
         {
-            aG.ResetPlayer();
+            aG.PlayPlayer();
         }
     }
-
+    public void PauseAllAudioGroup()
+    {
+        foreach (var aG in audioGroups)
+        {
+            aG.PausePlayer();
+        }
+    }
+    public void ResumeAllAudioGroup()
+    {
+        foreach (var aG in audioGroups)
+        {
+            aG.ResumePlayer();
+        }
+    }
     public void StopAllAudioGroup()
     {
         foreach (var aG in audioGroups)
@@ -239,7 +233,29 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
             aG.StopPlayer();
         }
     }
-
+    public void ResetAllAudioGroup()
+    {
+        foreach (var aG in audioGroups)
+        {
+            aG.ResetPlayer();
+        }
+    }
+    public void EnterDialogue()
+    {
+        foreach (var aG in audioGroups)
+        {
+            if (aG is DialogueGroup == false) aG.SetVolumeHalf();
+            else aG.ResetPlayer();
+        }
+    }
+    public void ExitDialogue()
+    {
+        foreach (var aG in audioGroups)
+        {
+            if (aG is DialogueGroup == false) aG.SetVolumeNormal();
+            else aG.ResetPlayer();
+        }
+    }
     public void EnterCutscene()
     {
         foreach (var aG in audioGroups)
@@ -251,7 +267,15 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     {
         foreach (var aG in audioGroups)
         {
-            //if (object.ReferenceEquals(aG, cutsceneGroup)) 
+            if (aG is CutsceneGroup == true)
+            {
+                aG.PausePlayer();
+                aG.ResetPlayer();
+            }
+            else
+            {
+                aG.ResumePlayer();
+            }
         }
     }
 

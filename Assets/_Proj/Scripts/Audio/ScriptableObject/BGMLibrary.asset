@@ -15,6 +15,9 @@ MonoBehaviour:
   audioEntries:
   - key: 0
     clips:
-    - {fileID: 8300000, guid: 456c33df134e1ca49bf172f8dc98e1c3, type: 3}
-    - {fileID: 8300000, guid: f6b2933ab6c92634aad3b010888ab20a, type: 3}
-    - {fileID: 8300000, guid: 27992c75729e2274ab6399c09b33be8b, type: 3}
+    - {fileID: 8300000, guid: dcd3fc9b92b155542bbc0a898f939292, type: 3}
+    - {fileID: 8300000, guid: 439dde1474ca2264e86ee76ba13c8b26, type: 3}
+    - {fileID: 8300000, guid: 5d27ba612c38b9246a26f3d4128af001, type: 3}
+  - key: 1
+    clips:
+    - {fileID: 8300000, guid: 9b44e22b64ef93649ac014ff51ea9481, type: 3}

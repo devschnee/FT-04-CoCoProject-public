@@ -81,7 +81,8 @@ public class StageManager : MonoBehaviour, IStageManager
     IEnumerator StageStart()
     {
         //가림막쳐주기
-
+        var fp = StageUIManager.Instance.FadePanel;
+        fp.SetActive(true);
         //stageRoot.name = mapNameToLoad;
         //2. 가져온 맵 정보로 이 씬의 블록팩토리가 맵을 생성하도록 함.
         //2-1. 블록팩토리가 맵을 생성
@@ -92,7 +93,7 @@ public class StageManager : MonoBehaviour, IStageManager
         LinkSignals();
 
         //가림막치워주기
-
+        fp.GetComponent<FadeController>().FadeOut();
         //if (isTest)
         //{
         //    var dataTest = DataManager.Instance.Stage.GetMapNameData(mapNameToLoad);

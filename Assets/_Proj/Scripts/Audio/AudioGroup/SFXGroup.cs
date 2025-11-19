@@ -11,6 +11,12 @@ public class SFXGroup : MonoBehaviour, IAudioController
     private SFXPlayer player;
     private AudioPool audioPool;
 
+    public void PlaySFX(AudioClip clip, bool loop, bool pooled, Vector3? pos = null)
+    {
+        player.PlayAudio(clip, group, loop, pooled, pos);
+    }
+
+    // IAudioController 영역
     public void Init()
     {
         mixer = AudioManager.AudioGroupProvider.GetMixer();
@@ -19,16 +25,7 @@ public class SFXGroup : MonoBehaviour, IAudioController
         audioPool = new AudioPool(transform, group, poolSize);
         player = new SFXPlayer(mixer, transform, audioPool);
     }
-
     public void PostInit() { }
-
-    // ����� ����
-    public void PlaySFX(AudioClip clip, bool loop, bool pooled, Vector3? pos = null)
-    {
-        player.PlayAudio(clip, group, loop, pooled, pos);
-    }
-
-    // ����� ����
     public void PlayPlayer()
     {
         player.PlayAll();
@@ -52,5 +49,15 @@ public class SFXGroup : MonoBehaviour, IAudioController
     public void ResetPlayer()
     {
         player.ResetAll();
+    }
+
+    public void SetVolumeHalf()
+    {
+        
+    }
+
+    public void SetVolumeNormal()
+    {
+        
     }
 }

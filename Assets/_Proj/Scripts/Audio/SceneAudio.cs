@@ -4,10 +4,14 @@ using UnityEngine;
 public enum BGMType
 {
     Main = 0,
-    Other
+    Other,
+    Stage
 }
 public class SceneAudio : MonoBehaviour
-{
+{   
+    [Header("SceneType")]
+    [SerializeField] BGMType bgmType;
+
     [Header("BGM")]
     [SerializeField] BGMKey key;
     [SerializeField] int bgmClipIndex;
@@ -20,7 +24,8 @@ public class SceneAudio : MonoBehaviour
     [SerializeField] float introDuration;
     [SerializeField] bool useIntro;
 
-    [SerializeField] BGMType bGMType;
+
+    private string currentStageId;
 
     // [Header("SceneMainCamera")]
     // [SerializeField] private Camera cam;
@@ -29,11 +34,11 @@ public class SceneAudio : MonoBehaviour
     {
        if (AudioManager.Instance != null)
        {
-            if (bGMType == BGMType.Main)
+            if (bgmType == BGMType.Main)
             {
                 StartCoroutine(PlayMainSceneBGM());
             }
-            else
+            else if (bgmType == BGMType.Other)
             {
                 if (useIntro)
                 {
@@ -43,6 +48,20 @@ public class SceneAudio : MonoBehaviour
                 {
                     AudioManager.Instance.PlayAudio(key, bgmClipIndex, fadeInTime, fadeOutTime, loop);
                 }
+            }
+            else if (bgmType == BGMType.Stage)
+            {
+                currentStageId = FirebaseManager.Instance.selectStageID;
+                Debug.Log($"1.currentStageId : {currentStageId}");
+                // var data = DataManager.Instance.Stage.GetData(currentStageId);
+                // Debug.Log($"2.data : {data}");
+                // string bgmId = data.stage_bgm;
+                // Debug.Log($"3.bgmId : {bgmId}");
+                // AudioManager.Instance.PlayBGMForResources(bgmId, 0.5f, 0.5f, true);
+
+                AudioClip clip = DataManager.Instance.Stage.GetAudioClip(currentStageId);
+                Debug.Log($"clip name : {clip.name}, {clip}");
+                AudioManager.Instance.PlayBGMForResources(clip, fadeInTime, fadeOutTime, true);
             }
        }
     }

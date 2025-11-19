@@ -17,35 +17,89 @@ public class CutscenePlayer : AudioPlayerControl
         currentSource = gObj.AddComponent<AudioSource>();
         activeSources.Add(currentSource);
         currentSource.outputAudioMixerGroup = group;
-    }
-
-    public void PlayAudio(AudioClip clip, AudioMixerGroup group, float fadeIn, float fadeOut, bool loop)
-    {
-        if (currentSource == null)
-        {
-            // GameObject gObj = new GameObject($"CutscenePlayer");
-            // gObj.transform.parent = myTrans;
-            // currentSource = gObj.AddComponent<AudioSource>();
-            // activeSources.Add(currentSource);
-            // currentSource.outputAudioMixerGroup = group;
-            //Object.DontDestroyOnLoad(gObj);
-        }
-
-        if (currentSource.isPlaying && currentSource.clip == clip) return;
-
-        currentSource.DOKill();
-        currentSource.DOFade(0f, fadeOut).OnComplete(() =>
-        {
-            currentSource.clip = clip;
-            currentSource.loop = loop;
-            currentSource.volume = 0f;
-            currentSource.Play();
-            currentSource.DOFade(1f, fadeIn);
-        });
+        currentSource.volume = 1;
     }
 
     public AudioSource GetCutsceneAS()
     {
         return currentSource;
+    }
+
+    public override void PlayAll()
+    {
+        foreach (var src in activeSources)
+        {
+            if (src != null)
+            {
+                src.DOKill();
+                if (src.volume != 1)
+                {
+                    src.DOFade(1, 0.5f);
+                }
+                else { }
+            }
+        }
+    }
+    public override void PauseAll()
+    {
+        foreach (var src in activeSources)
+        {
+            if (src != null)
+            {
+                src.DOKill();
+                src.DOFade(0, 0.5f);
+            }
+        }
+    }
+    public override void ResumeAll()
+    {
+        foreach (var src in activeSources)
+        {
+            if (src != null)
+            {
+                src.DOKill();
+                src.DOFade(1, 0.5f);
+            }
+        }
+    }
+    public override void StopAll()
+    {
+        foreach (var src in activeSources)
+        {
+            if (src != null) 
+            {
+                src.DOKill();
+                src.DOFade(0, 0.5f);
+            } 
+        }
+    }
+    public override void ResetAll()
+    {
+        foreach (var src in activeSources)
+        {
+            if (src != null)
+            {
+                src.loop = false;
+                src.volume = 1f;
+                src.pitch = 1f;
+                src.clip = null;
+            }
+        }
+    }
+    public override void SetVolumeHalf()
+    {
+        foreach (var src in activeSources)
+        {
+            src.DOKill();
+            src.DOFade(0.5f, 0.5f);
+        }
+    }
+    public override void SetVolumeNormal()
+    {
+        foreach (var src in activeSources)
+        {
+            src.DOKill();
+            src.DOFade(1, 0.5f);
+        }
     }
 }

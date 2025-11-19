@@ -1,17 +1,18 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 /// <summary>
-/// UI´Â ±ïµÎ±â Á¦¾î X
+/// UIï¿½ï¿½ ï¿½ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ X
 /// 
-/// BGM, Cutscene, Voice´Â ¿Àµð¿À¼Ò½º 1°³¸¸ ÀÖÀ¸´Ï
-/// ÀÌ°Í¸¸ Á¦¾îÇÏ¸é µÊ(Å¬¸³±³Ã¼ÇÏ´Â ±¸Á¶´Ï »èÁ¦ X)
+/// BGM, Cutscene, Voiceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+/// ï¿½Ì°Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½(Å¬ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ X)
 /// 
-/// SFX, Ambient´Â PoolÀÌ ÀÖ´Âµ¥ ÅÂ±×·Î »õ·Î »ý¼º Ç® ½Äº° °¡´É. ±×·¡¼­ »õ·Î »ý¼º Ç®Àº ÃÊ±âÈ­½Ã »èÁ¦ÇÏ´Â ±¸Á¶
+/// SFX, Ambientï¿½ï¿½ Poolï¿½ï¿½ ï¿½Ö´Âµï¿½ ï¿½Â±×·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ç® ï¿½Äºï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
 /// 
-/// ÃÊ±âÈ­ ½Ã ¸ðµç ¿Àµð¿À¼Ò½ºÀÇ Å¬¸³À» »­. ¼Ò½ºÀÇ º¼·ý°ú ÇÇÄ¡¸¦ ´Ù½Ã ÃÊ±âÈ­,
-/// ±âÈ¹ ÂÊ¿¡¼­ ÀÏ¹Ý ´ëÈ­ ½Ã Ä³¸¯ÅÍ ¼Ò¸® »©°í´Â ¸ðµç ¼Ò¸®¸¦ ÁÙÀÌ±æ ¿øÇÔ, Àý¹ÝÁ¤µµ. ±Ùµ¥ ÀÏ´Ü ¾ÈÇÒ²ô
+/// ï¿½Ê±ï¿½È­ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½. ï¿½Ò½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Ê±ï¿½È­,
+/// ï¿½ï¿½È¹ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½Ï¹ï¿½ ï¿½ï¿½È­ ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½Ùµï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ò²ï¿½
 /// </summary>
 public abstract class AudioPlayerControl
 {
@@ -21,7 +22,19 @@ public abstract class AudioPlayerControl
     {
         foreach (var src in activeSources)
         {
-            if (src != null && !src.isPlaying) src.Play();
+            if (src != null && !src.isPlaying)
+            {
+                src.DOKill();
+                if (src.volume != 1)
+                {
+                    src.Play();
+                    src.DOFade(1, 0.5f);
+                }
+                else
+                {
+                    src.Play();
+                }
+            }
         }
     }
 
@@ -29,7 +42,11 @@ public abstract class AudioPlayerControl
     {
         foreach (var src in activeSources)
         {
-            if (src != null && src.isPlaying) src.Pause();
+            if (src != null && src.isPlaying)
+            {
+                src.DOKill();
+                src.DOFade(0, 0.5f).OnComplete(() => src.Pause());
+            }
         }
     }
 
@@ -37,7 +54,12 @@ public abstract class AudioPlayerControl
     {
         foreach (var src in activeSources)
         {
-            if (src != null && !src.isPlaying) src.UnPause();
+            if (src != null && !src.isPlaying)
+            {
+                src.DOKill();
+                src.UnPause();
+                src.DOFade(1, 0.5f);
+            }
         }
     }
     public virtual void StopAll()
@@ -46,8 +68,8 @@ public abstract class AudioPlayerControl
         {
             if (src != null && src.isPlaying) 
             {
-                src.DOFade(0, 1f);
-                src.Stop();
+                src.DOKill();
+                src.DOFade(0, 0.5f).OnComplete(() => src.Stop());
             } 
         }
     }
@@ -64,6 +86,24 @@ public abstract class AudioPlayerControl
                 src.pitch = 1f;
                 src.clip = null;
             }
+        }
+    }
+
+    public virtual void SetVolumeHalf()
+    {
+        foreach (var src in activeSources)
+        {
+            src.DOKill();
+            src.DOFade(0.3f, 0.2f);
+        }
+    }
+
+    public virtual void SetVolumeNormal()
+    {
+        foreach (var src in activeSources)
+        {
+            src.DOKill();
+            src.DOFade(1, 0.5f);
         }
     }
 
