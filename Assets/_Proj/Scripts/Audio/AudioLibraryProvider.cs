@@ -11,8 +11,6 @@ public class AudioLibraryProvider : IAudioLibraryProvider
         BGMLibrary bgm,
         SFXLibrary sfx,
         AmbientLibrary ambient,
-        CutsceneLibrary cutscene,
-        VoiceLibrary voice,
         UILibrary ui)
     {
         libraryMap = new Dictionary<AudioType, IAudioLibrary>()
@@ -20,8 +18,6 @@ public class AudioLibraryProvider : IAudioLibraryProvider
             { AudioType.BGM, bgm },
             { AudioType.SFX, sfx },
             { AudioType.Ambient, ambient },
-            { AudioType.Cutscene, cutscene },
-            { AudioType.Voice, voice },
             { AudioType.UI, ui }
         };
     }
@@ -33,7 +29,7 @@ public class AudioLibraryProvider : IAudioLibraryProvider
             return lib.GetClipByEnum(key, index);
         }
 
-        Debug.LogWarning($"{type} ¾ø¾î");
+        Debug.LogWarning($"{type} ï¿½ï¿½ï¿½ï¿½");
         return null;
     }
 }

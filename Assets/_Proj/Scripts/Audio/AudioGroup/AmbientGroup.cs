@@ -54,4 +54,13 @@ public class AmbientGroup : MonoBehaviour, IAudioController
         player.ResetAll();
     }
 
+    public void SetVolumeHalf()
+    {
+        
+    }
+
+    public void SetVolumeNormal()
+    {
+        
+    }
 }

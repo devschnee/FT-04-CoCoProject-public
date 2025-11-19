@@ -16,6 +16,7 @@ public enum AudioType
 public enum BGMKey
 {
     Main = 0,
+    Title,
     Intro,
     Chapter01,
     Chapter02,
@@ -36,20 +37,20 @@ public enum AmbientKey
     Birdsong = 0
 }
 
-public enum CutsceneKey
-{
-    CutsceneId01 = 0
-}
+// public enum CutsceneKey
+// {
+//     CutsceneId01 = 0
+// }
 
-public enum VoiceKey
-{
-    Cocodoogy = 0,
-    Master,
-    Android,
-    Pig,
-    Bird
+// public enum VoiceKey
+// {
+//     Cocodoogy = 0,
+//     Master,
+//     Android,
+//     Pig,
+//     Bird
 
-}
+// }
 
 public enum UIKey
 {

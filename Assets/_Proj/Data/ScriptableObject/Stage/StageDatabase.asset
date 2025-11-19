@@ -78,7 +78,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_2
     stage_name: "\uC2A4\uD14C\uC774\uC9C0 2\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
     stage_img: Img/Stage/stage_1_1_main
@@ -298,7 +298,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual2
+    stage_bgm: Sound/Bgm/Casual2
   - stage_id: stage_2_2
     stage_name: "\uC2A4\uD14C\uC774\uC9C0 2\uC774\uB984 \uD14C\uC2A4\uD2B8 \uC58D\uC58D"
     stage_img: Img/Stage/stage_2_1_main

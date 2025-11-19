@@ -44,6 +44,7 @@ public interface IAudioController
     void ResumePlayer();
     void StopPlayer();
     void ResetPlayer();
-
+    void SetVolumeHalf();
+    void SetVolumeNormal();
 }
 

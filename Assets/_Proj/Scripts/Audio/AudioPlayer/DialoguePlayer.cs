@@ -8,8 +8,8 @@ public class DialoguePlayer : AudioPlayerControl
     public AudioSource diaBGM;
     public AudioSource diaSFX;
 
-    private const string BGMFolderPath = "Sound/DialogueBGM";
-    private const string SFXFolderPath = "Sound/DialogueSFX";
+    private const string BGMFolderPath = "Sound/DialogueBGM/";
+    private const string SFXFolderPath = "Sound/DialogueSFX/";
 
     public DialoguePlayer(AudioMixer mixer, Transform myTrans, AudioMixerGroup bgm, AudioMixerGroup sfx)
     {
@@ -21,12 +21,14 @@ public class DialoguePlayer : AudioPlayerControl
         diaBGM = gObj.AddComponent<AudioSource>();
         activeSources.Add(diaBGM);
         diaBGM.outputAudioMixerGroup = bgm;
+        diaBGM.volume = 1;
 
         GameObject gObj2 = new GameObject("DialogueSFX");
         gObj2.transform.parent = myTrans;
         diaSFX = gObj2.AddComponent<AudioSource>();
         activeSources.Add(diaSFX);
         diaSFX.outputAudioMixerGroup = sfx;
+        diaSFX.volume = 1;
     }
 
     public void PlayDialogueAudio(AudioType type, string audioFileName)
@@ -37,20 +39,21 @@ public class DialoguePlayer : AudioPlayerControl
             {
                 case AudioType.DialogueBGM :
                 AudioClip bgmClip = Resources.Load<AudioClip>(BGMFolderPath + audioFileName);
-                if (bgmClip != null)
-                {
-                    diaBGM.clip = bgmClip;
-                    diaBGM.loop = true;
-                    diaBGM.Play();
-                }
+                    if (diaBGM.clip == bgmClip && diaBGM.isPlaying) return;
+                    if (bgmClip != null)
+                    {
+                        diaBGM.clip = bgmClip;
+                        diaBGM.loop = true;
+                        diaBGM.Play();
+                    }
                 break;
                 case AudioType.DialogueSFX :
                 AudioClip sfxClip = Resources.Load<AudioClip>(SFXFolderPath + audioFileName);
-                if (sfxClip != null)
-                {
-                    //diaSFX.clip = sfxClip; // OneShot 형식이 아니라면
-                    diaSFX.PlayOneShot(sfxClip);
-                }
+                    if (sfxClip != null)
+                    {
+                        //diaSFX.clip = sfxClip; // OneShot 형식이 아니라면
+                        diaSFX.PlayOneShot(sfxClip);
+                    }
                 break;
             }
         }
@@ -76,5 +79,13 @@ public class DialoguePlayer : AudioPlayerControl
     public override void ResetAll()
     {
         base.ResetAll();
+    }
+    public override void SetVolumeHalf()
+    {
+        // ?필요없음
+    }
+    public override void SetVolumeNormal()
+    {
+        // ?필요없음
     }
 }
