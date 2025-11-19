@@ -108,7 +108,15 @@ public class StageUIManager : MonoBehaviour
     void Quit()
     {
         //Todo : 챕터에 따라 스테이지 선택화면 분기
+
+        
         //currentChapter
+
+        //StageManager.currentStageId를 보면 됨.
+        //currentStageId.Contains("0_1") => 튜토리얼 1번씬
+        //currentStageId.Contains("0_2") => 튜토리얼 2번씬
+        //위의 두 케이스 모두 타이틀씬을 불러오도록 하기.
+
         SceneManager.LoadScene("Main");
     }
 

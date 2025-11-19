@@ -508,12 +508,12 @@ public class FirebaseManager : MonoBehaviour
 
     public void SignOut() 
     {
-            Auth.SignOut();
         if (!IsGuest)
             GoogleSignIn.DefaultInstance.SignOut();
+            Auth.SignOut();
 
-        
-            UserData.Clear();
+
+        UserData.Clear();
     }
     
 }

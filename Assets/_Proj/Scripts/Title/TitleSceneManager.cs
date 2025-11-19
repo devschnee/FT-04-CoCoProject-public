@@ -15,11 +15,13 @@ public class TitleSceneManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI proceedText;
     [SerializeField] private TextMeshProUGUI logMessage;
     [SerializeField] private CanvasGroup loginMethods;
+    
 
     public float logoFadeTime = 2f;
     public float logoWaitTime = 1f;
     public float logoMoveDuration = 3f;
     public float loginMethodsFadeTime = 1f;
+    public Vector2 logoTargetPos = new(0, 200);
 
     void Start()
     {
@@ -42,7 +44,6 @@ public class TitleSceneManager : MonoBehaviour
 
         float progress = 0;
         Vector2 logoStartPos = titleLogo.anchoredPosition;
-        Vector2 logoTargetPos = new(0, 350);
         while (progress <= 1)
         {
             Color logoColor = new(1, 1, 1, progress);
