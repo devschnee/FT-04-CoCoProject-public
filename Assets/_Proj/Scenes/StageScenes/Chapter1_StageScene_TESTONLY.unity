@@ -324,7 +324,7 @@ MonoBehaviour:
   joystickRoot: {fileID: 484405798}
   playerObject: {fileID: 0}
   camControl: {fileID: 1722618159}
-  mapNameToLoad: WaterTest_4_2
+  mapNameToLoad: SampleStage1
   blockPositions: []
   blocks: []
   factory: {fileID: 1415150933}
@@ -3501,6 +3501,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470828202}
   m_CullTransparentMesh: 1
+--- !u!1 &1475449186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475449188}
+  - component: {fileID: 1475449187}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1475449187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475449186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a413518c256558a47b1b5fe206e1e110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDialogueActive: 0
+  playerMovement: {fileID: 0}
+--- !u!4 &1475449188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475449186}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.18872, y: -0.5, z: 12.49195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1477821227 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4299389359643487108, guid: 675d10cc836f01f4aa4629eb9530edfe, type: 3}
@@ -5234,3 +5280,4 @@ SceneRoots:
   - {fileID: 483818918}
   - {fileID: 734338973}
   - {fileID: 832386954}
+  - {fileID: 1475449188}
