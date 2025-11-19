@@ -140,6 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111397211}
   - component: {fileID: 111397212}
+  - component: {fileID: 111397213}
   m_Layer: 0
   m_Name: StageManager
   m_TagString: Untagged
@@ -169,7 +170,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111397210}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d585c2bf3e68834a940bb86e3fbb016, type: 3}
   m_Name: 
@@ -179,10 +180,38 @@ MonoBehaviour:
   playerPrefab: {fileID: 5291992017778968749, guid: c4c522c376ad1b745b54524b0a7cded8, type: 3}
   joystickPrefab: {fileID: 8076522967414642225, guid: e70ee23931c899d429b2f8a615b74827, type: 3}
   joystickRoot: {fileID: 484405798}
+  playerObject: {fileID: 0}
+  camControl: {fileID: 0}
   mapNameToLoad: SampleStage1
   blockPositions: []
   blocks: []
   currentStageId: 
+  cutsceneUrl: 
+  hasCutscene: 0
+  factory: {fileID: 1415150933}
+--- !u!114 &111397213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111397210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505f10a1e06df82449c40045465be607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageRoot: {fileID: 2035390002}
+  playerPrefab: {fileID: 5291992017778968749, guid: c4c522c376ad1b745b54524b0a7cded8, type: 3}
+  joystickPrefab: {fileID: 8076522967414642225, guid: e70ee23931c899d429b2f8a615b74827, type: 3}
+  joystickRoot: {fileID: 484405798}
+  playerObject: {fileID: 0}
+  camControl: {fileID: 1722618159}
+  blockPositions: []
+  blocks: []
+  currentStageId: 
+  cutsceneUrl: 
+  hasCutscene: 0
   factory: {fileID: 1415150933}
 --- !u!1 &205651515
 GameObject:
@@ -258,6 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a413518c256558a47b1b5fe206e1e110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDialogueActive: 0
+  playerMovement: {fileID: 0}
 --- !u!4 &244329559
 Transform:
   m_ObjectHideFlags: 0
@@ -925,7 +956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &603882864
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1990,6 +2021,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da8ce819fcf49ac40bcd6ededa13d342, type: 2}
   - {fileID: 11400000, guid: 695767b0c49016240be248159dd38724, type: 2}
   - {fileID: 11400000, guid: a1c6d05e3bc446c45819a5676c1cd62f, type: 2}
+  - {fileID: 11400000, guid: 81b18c51fcd312e42881098e9fc2f2cf, type: 2}
   - {fileID: 11400000, guid: afda1e32a7f3db84785d2bbc1bf76732, type: 2}
   - {fileID: 11400000, guid: 0430b553c82111a4b93e4ba61ddb3b75, type: 2}
   - {fileID: 11400000, guid: e08eac3b9548b1c47969937bd53ffefb, type: 2}
@@ -2182,10 +2214,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1722618154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1273c01ffa268614da2386c4e973bfc1, type: 3}
+  m_Script: {fileID: 11500000, guid: 349a6fba3b220bc4cb98f1523e078c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1722618156}
   playerObj: {fileID: 0}
+  stage: {fileID: 2035390001}
+  wayPoint: []
 --- !u!1 &1952791719
 GameObject:
   m_ObjectHideFlags: 0

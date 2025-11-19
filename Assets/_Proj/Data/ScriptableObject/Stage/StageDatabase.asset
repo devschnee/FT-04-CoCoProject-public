@@ -40,10 +40,10 @@ MonoBehaviour:
     stage_img: Img/Stage/stage_1_1_main
     stage_desc: "\"\uD504\uB864\uB85C\uADF82\""
     map_id: map_0_2
-    start_cutscene: /Movie/Stage/stage_0_2_start.mp4
+    start_cutscene: Movie/Stage/stage_0_2_start.mp4
     start_talk: dialogue_0_2_0
     end_talk: dialogue_0_2_10
-    end_cutscene: /Movie/Stage/stage_0_2_end.mp4
+    end_cutscene: Movie/Stage/stage_0_2_end.mp4
     treasure_01_id: -1
     treasure_02_id: -1
     treasure_03_id: -1

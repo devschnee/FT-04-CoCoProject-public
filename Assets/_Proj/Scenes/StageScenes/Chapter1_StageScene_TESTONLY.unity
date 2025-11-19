@@ -324,7 +324,7 @@ MonoBehaviour:
   joystickRoot: {fileID: 484405798}
   playerObject: {fileID: 0}
   camControl: {fileID: 1722618159}
-  mapNameToLoad: SampleStage1
+  mapNameToLoad: map_2_1
   blockPositions: []
   blocks: []
   factory: {fileID: 1415150933}
@@ -4821,12 +4821,20 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1374158261219367731, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3500261074333338270, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: cda9ae0ee2f7ee5489c39597f9a8a279, type: 2}
     - target: {fileID: 3500261074333338270, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037599534596399432, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5108920150409765423, guid: e14d935333d07bf48b89c2a9d74f7168, type: 3}

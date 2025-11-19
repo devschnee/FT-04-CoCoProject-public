@@ -101,7 +101,11 @@ public class TitleSceneManager : MonoBehaviour
         //TODO: 튜토리얼 씬 구성 후, UserData.Local.passedTutorials를 제대로 대입해주어야 함.
         //모든 튜토리얼을 끝냈을 때만 메인을 직접 로드.
         //if (UserData.Local.passedTutorials >= 2)
-        SceneManager.LoadScene("Main");
+
+        if (UserData.Local.passedTutorials > 2)
+            SceneManager.LoadScene("Main");
+        else
+            SceneManager.LoadScene("Chapter0_StageScene");
                 //모든 튜토리얼을 끝내지 못했다면 튜토리얼로 로드.
                 //else if (UserData.Local.passedTutorials < 2)
 

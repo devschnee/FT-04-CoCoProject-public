@@ -12,6 +12,7 @@ public static class UserDataExtensions
     public static string ToJson(this IUserData data) => JsonConvert.SerializeObject(data);
     public static T FromJson<T>(this string json) where T : IUserData => JsonConvert.DeserializeObject<T>(json);
     public async static void Save(this IUserDataCategory category) => await FirebaseManager.Instance.UpdateLocalUserDataCategory(category);
+    public async static void Save(this UserData data) => await FirebaseManager.Instance.UpdateLocalUserData();
 
 
 }
