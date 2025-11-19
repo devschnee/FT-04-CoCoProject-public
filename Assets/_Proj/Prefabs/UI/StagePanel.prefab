@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StagePrefab: {fileID: 2827245967596191562, guid: 0d81ace413aa0cb4ea49f8c91ac9cb89, type: 3}
   StageDetailPrefab: {fileID: 3138075058950913620, guid: f6e1f98467c7c4d468072aa73dade4f4, type: 3}
+  SelectStageDimOverlay: {fileID: 0}
   stageParent: {fileID: 6110520329950287153}
   detailParent: {fileID: 4789071929520696818}
   collectedSprite: {fileID: 21300000, guid: 6cd2e4f7622ab468686a5d750551e633, type: 3}
@@ -220,8 +221,8 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6110520329950287153}
-  - {fileID: 4789071929520696818}
   - {fileID: 3003011273029832025}
+  - {fileID: 4789071929520696818}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
