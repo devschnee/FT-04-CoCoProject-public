@@ -179,10 +179,14 @@ MonoBehaviour:
   playerPrefab: {fileID: 5291992017778968749, guid: c4c522c376ad1b745b54524b0a7cded8, type: 3}
   joystickPrefab: {fileID: 8076522967414642225, guid: e70ee23931c899d429b2f8a615b74827, type: 3}
   joystickRoot: {fileID: 484405798}
+  playerObject: {fileID: 0}
+  camControl: {fileID: 1722618159}
   mapNameToLoad: SampleStage1
   blockPositions: []
   blocks: []
   currentStageId: 
+  cutsceneUrl: 
+  hasCutscene: 0
   factory: {fileID: 1415150933}
 --- !u!1 &205651515
 GameObject:
@@ -258,6 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a413518c256558a47b1b5fe206e1e110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDialogueActive: 0
+  playerMovement: {fileID: 0}
 --- !u!4 &244329559
 Transform:
   m_ObjectHideFlags: 0
@@ -2182,10 +2188,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1722618154}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1273c01ffa268614da2386c4e973bfc1, type: 3}
+  m_Script: {fileID: 11500000, guid: 349a6fba3b220bc4cb98f1523e078c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1722618156}
   playerObj: {fileID: 0}
+  stage: {fileID: 2035390001}
+  wayPoint:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1952791719
 GameObject:
   m_ObjectHideFlags: 0

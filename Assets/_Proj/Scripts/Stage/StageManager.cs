@@ -26,7 +26,8 @@ public class StageManager : MonoBehaviour
     [SerializeField] GameObject playerPrefab;
     [SerializeField] Joystick joystickPrefab;
     [SerializeField] Transform joystickRoot;
-    GameObject playerObject;
+    public GameObject playerObject;
+    public CamControl camControl;
     //불러올 맵의 이름
     [Header("PLEASE USE ONLY WHEN TEST MODE")]
     public string mapNameToLoad;
@@ -88,6 +89,20 @@ public class StageManager : MonoBehaviour
         //TODO: 2-2. 블록팩토리가 맵의 오브젝트들 중 서로 연결된 객체를 연결해 줌.
         LinkSignals();
 
+        //가림막치워주기
+
+        if (isTest)
+        {
+            var dataTest = DataManager.Instance.Stage.GetMapNameData(mapNameToLoad);
+
+            if (dataTest.start_talk != "-1")
+                DialogueManager.Instance.NewDialogueMethod(dataTest.start_talk);
+
+            SpawnPlayer();
+
+            yield return null;
+        }
+
         var data = DataManager.Instance.Stage.GetData(currentStageId);
         var data_start_cutscene = DataManager.Instance.Stage.GetStartCutsceneUrl(currentStageId);
         if (!string.IsNullOrEmpty(data_start_cutscene) && data.start_cutscene != "-1")
@@ -96,8 +111,11 @@ public class StageManager : MonoBehaviour
         }
         //TODO: 3. 가져온 맵 정보로 모든 블록이 생성되고 연결까지 끝나면 가리고 있던 부분을 치워줌.
 
+        camControl.FindWayPoint();
+        yield return camControl.StartCoroutine(camControl.CameraWalking(5f));
+
         //Todo : 컷씬 지난후 대화가 있다면 여기서 실행
-        if(data.start_talk != "-1")
+        if (data.start_talk != "-1")
             DialogueManager.Instance.NewDialogueMethod(data.start_talk);
         //TODO: 4. 시작점에 코코두기를 생성해줌.
         SpawnPlayer();
@@ -209,7 +227,7 @@ public class StageManager : MonoBehaviour
 
 
         //TODO: 나중에 꼭 지울 것.
-        Camera.main.GetComponent<CamControl_Temp>().playerObj = playerObject;
+        camControl.playerObj = playerObject;
         foreach (var finder in finders)
         {
             finder.SetPlayerTransform(playerObject);

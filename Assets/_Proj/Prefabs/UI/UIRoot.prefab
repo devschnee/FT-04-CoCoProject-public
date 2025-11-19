@@ -2043,19 +2043,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa2493818f2e3244a2eaba394f23dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinText: {fileID: 8919684451044074537}
-  capText: {fileID: 248397725083037737}
   energyText: {fileID: 5978210633347355704}
-  coinIcon: {fileID: 8005607028903482404}
-  capIcon: {fileID: 1776877096486076236}
+  capText: {fileID: 248397725083037737}
+  coinText: {fileID: 8919684451044074537}
   energyIcon: {fileID: 8266537475357480836}
-  coinShopButton: {fileID: 1714683943664523735}
-  capShopButton: {fileID: 8896063250248046591}
+  capIcon: {fileID: 1776877096486076236}
+  coinIcon: {fileID: 8005607028903482404}
   energyShopButton: {fileID: 2958028792063591060}
-  coinId: 110003
-  capId: 110002
+  capShopButton: {fileID: 8896063250248046591}
+  coinShopButton: {fileID: 1714683943664523735}
   energyId: 110001
-  overrideUserId: 
+  capId: 110002
+  coinId: 110003
   shopPanel: {fileID: 4191277096443716493}
 --- !u!1 &380620297889323441
 GameObject:
@@ -7913,8 +7912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da7ef86aa1f7204190cc7b34ebb6ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceBehaviour: {fileID: 885860853139276153}
-  progressStoreBehaviour: {fileID: 5706030786276060130}
+  store: {fileID: 0}
+  source: {fileID: 0}
 --- !u!1 &1744247160009100898
 GameObject:
   m_ObjectHideFlags: 0
@@ -9822,70 +9821,49 @@ MonoBehaviour:
   contentParent: {fileID: 155461083744005862}
   scrollRect: {fileID: 8954285231003864426}
   closeButton: {fileID: 7764778297222122835}
-  searchInput: {fileID: 6007327508133615099}
-  searchConfirmButton: {fileID: 5363991963928906344}
+  searchField: {fileID: 0}
+  searchClearButton: {fileID: 0}
   animalTabButton: {fileID: 1299063976168874963}
   decoTabButton: {fileID: 5989051216802691149}
   costumeTabButton: {fileID: 2446477243128658218}
   homeTabButton: {fileID: 4950171709351052529}
   backgroundTabButton: {fileID: 4551014408748654955}
-  packageTabButton: {fileID: 2610347925100764220}
   goodsTabButton: {fileID: 8813346397282368877}
+  packageTabButton: {fileID: 2610347925100764220}
   animalSubRoot: {fileID: 4580949780571884655}
   animalAllButton: {fileID: 5165599384672753376}
   animalDogButton: {fileID: 3205009278239232528}
   animalPigButton: {fileID: 5325553198199169198}
   animalBirdButton: {fileID: 520390007657115755}
   animalRatButton: {fileID: 6674547883216207888}
-  animalAllText: {fileID: 7920605255879033915}
-  animalDogText: {fileID: 8605951743857407169}
-  animalPigText: {fileID: 3754229829117166489}
-  animalBirdText: {fileID: 5381811757115413285}
-  animalRatText: {fileID: 4358471046747484433}
   decoSubRoot: {fileID: 4098564045970702806}
   decoAllButton: {fileID: 6091744798304691755}
   decoPlantButton: {fileID: 48392044107070766}
   decoStructureButton: {fileID: 1059539450533803078}
   decoFurnitureButton: {fileID: 4171711964409739760}
   decoPropButton: {fileID: 8444339022000845459}
-  decoAllText: {fileID: 8626078797613055656}
-  decoPlantText: {fileID: 3861999743509533921}
-  decoStructureText: {fileID: 2689435085241434553}
-  decoFurnitureText: {fileID: 3717886630534758838}
-  decoPropText: {fileID: 398202030010284770}
   costumeSubRoot: {fileID: 7446025738047846855}
   costumeAllButton: {fileID: 7344704820008303610}
   costumeHeadButton: {fileID: 363791231619335716}
   costumeBodyButton: {fileID: 2335131020953516071}
   costumeFootButton: {fileID: 1918044591664900916}
   costumeTailButton: {fileID: 442824956122911501}
-  costumeAllText: {fileID: 4637543589709643767}
-  costumeHeadText: {fileID: 8362520358056678499}
-  costumeBodyText: {fileID: 7149005145814393657}
-  costumeFootText: {fileID: 8089178446683788189}
-  costumeTailText: {fileID: 8685895182912013876}
   goodsSubRoot: {fileID: 5507820037483615199}
-  goodsAllButton: {fileID: 3437191387651360885}
-  goodsEnergyButton: {fileID: 4251178543511785112}
-  goodsCoinButton: {fileID: 6544526362315291441}
   goodsCapButton: {fileID: 2370696220581656823}
-  goodsAllText: {fileID: 814702756766424093}
-  goodsEnergyText: {fileID: 1401224785632306279}
-  goodsCoinText: {fileID: 2739377398589536728}
-  goodsCapText: {fileID: 7599062769998493577}
+  goodsCoinButton: {fileID: 6544526362315291441}
+  goodsEnergyButton: {fileID: 4251178543511785112}
   subNormalColor: {r: 0.5566038, g: 0.47576636, b: 0.385947, a: 1}
   subSelectedColor: {r: 1, g: 0.69333386, b: 0.2028302, a: 1}
-  coinIcon: {fileID: 21300000, guid: e37111d692167e14e9fea69647212dbe, type: 3}
-  capIcon: {fileID: 21300000, guid: 90eab590d5ce49342b0bfc814874e7dd, type: 3}
-  energyIcon: {fileID: 21300000, guid: ff0d746e61acb7f48be0713332c83b2a, type: 3}
+  coinGoodsIcon: {fileID: 0}
+  capGoodsIcon: {fileID: 0}
   energyId: 110001
   capId: 110002
   coinId: 110003
-  overrideUserId: 
-  goodsManager: {fileID: 5657105607826957571}
   purchasePopup: {fileID: 127520357962277477}
-  insufficientPopup: {fileID: 4660224633752007033}
   resultPopup: {fileID: 4956891236178834543}
+  insufficientPopup: {fileID: 4660224633752007033}
+  uiBlocker: {fileID: 0}
+  goodsManager: {fileID: 5657105607826957571}
 --- !u!1 &2079605601680479198
 GameObject:
   m_ObjectHideFlags: 0
@@ -12599,6 +12577,7 @@ MonoBehaviour:
   stagePanel: {fileID: 2690527497820324702}
   startClosed: 1
   dimOverlay: {fileID: 188384748731332330}
+  selectStageDimOverlay: {fileID: 0}
   chapterSelectSprite: {fileID: 21300000, guid: 38b194f10ab95434f880d1f27389bb51, type: 3}
 --- !u!1 &2559990697073930026
 GameObject:
@@ -13200,8 +13179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questDatabase: {fileID: 11400000, guid: 3f4ad7d5eaba5db448cb78c661265ce2, type: 2}
   treasureDatabase: {fileID: 11400000, guid: cbea4e14512afdf4583b29f048e412aa, type: 2}
-  coinSprite: {fileID: 21300000, guid: 0eb8b2a60eb6c8d43a1afb9e3e62c19c, type: 3}
   capSprite: {fileID: 21300000, guid: 968a39b90aa79e44393dcfb1eb140e2a, type: 3}
+  coinSprite: {fileID: 21300000, guid: 0eb8b2a60eb6c8d43a1afb9e3e62c19c, type: 3}
   dailyTabButton: {fileID: 3477618064818074243}
   weeklyTabButton: {fileID: 3250255498171187998}
   achievementTabButton: {fileID: 3415515665344467524}
@@ -13214,9 +13193,10 @@ MonoBehaviour:
   achievementScrollRect: {fileID: 8339662453277893012}
   stackRewardUI: {fileID: 7445632782002352193}
   rewardPopup: {fileID: 3163360212814857131}
-  coinItemId: 110003
+  energyItemId: 110001
   capItemId: 110002
-  overrideUserId: 
+  coinItemId: 110003
+  goodsManager: {fileID: 0}
   closeButton: {fileID: 813741968393695946}
 --- !u!1 &2776677964000205319
 GameObject:
@@ -14713,51 +14693,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &3243957008844918501
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1110090350269914262}
-  - component: {fileID: 5706030786276060130}
-  m_Layer: 0
-  m_Name: FirebaseCodexProgressStore
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1110090350269914262
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3243957008844918501}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1194.2172, y: -537.82715, z: 0.00947}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1224366779428260850}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5706030786276060130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3243957008844918501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 740cb468efa0c8a44bb7e7a49bf74752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  userId: test-user
 --- !u!1 &3248008544702337327
 GameObject:
   m_ObjectHideFlags: 0
@@ -15096,6 +15031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45b13d905cf6bd047873a8f2859014b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  titleText: {fileID: 0}
   messageText: {fileID: 5046329068385453871}
   okButton: {fileID: 2726074518508368918}
 --- !u!1 &3422297163583557530
@@ -18398,7 +18334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af78791c6d7a5846a6a4ee112a9d099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codexDatabase: {fileID: 11400000, guid: e4ee84fcac1475c45a34ccec400ae50f, type: 2}
+  codexDB: {fileID: 0}
 --- !u!1 &4267965251060730610
 GameObject:
   m_ObjectHideFlags: 0
@@ -24189,7 +24125,6 @@ RectTransform:
   - {fileID: 1284815835549502273}
   - {fileID: 8083527432829572276}
   - {fileID: 3963378234289311253}
-  - {fileID: 1110090350269914262}
   m_Father: {fileID: 1769518195324262362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -24247,7 +24182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54dfa3d62287fc47b76cd930b0a013c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codexServiceBehaviour: {fileID: 4273334326231001525}
+  service: {fileID: 0}
   detailDisplay: {fileID: 363706875453700186}
   detailName: {fileID: 4665415778868935696}
   detailDesc: {fileID: 8419575668431937919}
