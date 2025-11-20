@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// 11/20 TODO : 차폐범위 검토. 수정 필요 시 수정.
 // 충격파 발생
 [DisallowMultipleComponent]
 public class Shockwave : MonoBehaviour
@@ -215,7 +218,7 @@ public class Shockwave : MonoBehaviour
         return false;
     }
 
-    static object ConvertArg(System.Reflection.ParameterInfo pi, float value)
+    static object ConvertArg(ParameterInfo pi, float value)
     {
         if (pi.ParameterType == typeof(int)) return Mathf.RoundToInt(value);
         if (pi.ParameterType == typeof(float)) return value;
@@ -236,7 +239,7 @@ public class Shockwave : MonoBehaviour
         return Mathf.Max(0.0001f, fallback);
     }
 
-    static System.Collections.IEnumerator LiftTransCoroutine(Transform tr, float tile, float rise, float hang, float fall)
+    static IEnumerator LiftTransCoroutine(Transform tr, float tile, float rise, float hang, float fall)
     {
         Vector3 start = tr.position;
         Vector3 upPos = start + Vector3.up * tile;

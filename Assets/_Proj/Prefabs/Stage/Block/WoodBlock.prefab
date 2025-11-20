@@ -321,10 +321,10 @@ MonoBehaviour:
   tileSize: 1
   blockingMask:
     serializedVersion: 2
-    m_Bits: 66440
+    m_Bits: 103304
   groundMask:
     serializedVersion: 2
-    m_Bits: 131968
+    m_Bits: 131976
   slopeMask:
     serializedVersion: 2
     m_Bits: 16384
@@ -337,7 +337,7 @@ MonoBehaviour:
   immuneTime: 3
   overrideLiftTiming: 1
   overrideRiseSec: 0.5
-  overrideHangSec: 0.4
+  overrideHangSec: 3
   overrideFallSec: 0.2
   flow: {fileID: 5130774834560676477, guid: b4cd3f06419b67046b7fced9fed33f79, type: 3}
 --- !u!114 &-6961232074567143049
