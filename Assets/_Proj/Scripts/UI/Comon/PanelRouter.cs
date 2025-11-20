@@ -97,6 +97,23 @@ public class PanelRouter : MonoBehaviour
         SyncDim();
     }
 
+    public void CloseStage()
+    {
+        if (!stagePanel) return;
+        stagePanel.SetActive(false);
+
+        if (chapterPanel)
+        { 
+            chapterPanel.SetActive(true);
+            var img = dimOverlay.GetComponent<Image>();
+            img.color = Color.white;
+            img.sprite = chapterSelectSprite;
+        }
+
+        current = chapterPanel;
+    }
+
+
     void Toggle(GameObject target)
     {
         if (!target) return;
