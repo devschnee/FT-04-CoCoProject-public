@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class Buffalo : MonoBehaviour, IPlayerFinder
 {
     [Header("Timer & Jump")]
-    [Tooltip("버튼 누른 뒤 실행까지 대기 시간")]
+    [Tooltip("버튼 누른 뒤 버팔로 충격파 실행까지 대기 시간")]
     public float interactionSeconds = 0.1f;
-    [Tooltip("충격 전 점프 연출에 걸리는 시간")]
+    [Tooltip("충격 전 점프 연출에 걸리는 시간(Interaction 이후 시간초 시작")]
     public float jumpDuration = 0.35f;
     [Tooltip("점프 높이 곡선 0~1 비율")]
     public AnimationCurve jumpY = AnimationCurve.EaseInOut(0, 0, 1, 0.5f);
