@@ -155,8 +155,44 @@ public class UserData : IUserData
         [SerializeField]
         public Dictionary<string, int> items = new();
 
+       
 
-        public int this[PlaceableCategory cat, int id] {
+
+        public void Add(int id)
+        {
+            if (items.ContainsKey(id.ToString())) items[id.ToString()]++;
+            else items.Add(id.ToString(), 1);
+            this.Save();
+        }
+
+        
+
+        public bool Get(int id, out object resultItem)
+        {
+            resultItem = null;
+            if (items.ContainsKey(id.ToString()))
+            {
+                if (10000 < id && id < 20000)
+                    resultItem = DataManager.Instance.Deco.GetData(id);
+                if (30000 < id && id < 40000)
+                    resultItem = DataManager.Instance.Animal.GetData(id);
+
+
+
+                return true;
+            }
+            else
+            {
+
+                return false;
+
+            }
+
+
+        }
+        public int this[PlaceableCategory cat, int id]
+        {
+
             get => items.TryGetValue(id.ToString(), out int value) ? value : 0;
             set
             {
@@ -169,10 +205,15 @@ public class UserData : IUserData
                     items.Add(id.ToString(), value);
                 }
 
-            } }
+            }
+        }
         public Inventory()
         {
-            
+            items.Add("10001", 1);
+            items.Add("10002", 2);
+            items.Add("10003", 3);
+            items.Add("10004", 4);
+            items.Add("10005", 5);
         }
     }
 

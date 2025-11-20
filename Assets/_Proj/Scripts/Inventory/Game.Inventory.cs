@@ -21,8 +21,8 @@ namespace Game.Inventory
 
         //private readonly Dictionary<(PlaceableCategory cat, int id), int> _counts = new();
         private UserData.Inventory inventory => UserData.Local.inventory;
-        private const string NEW_PREFIX = "Inv::";     // 최종: Inv::{cat}::{id}
-        private const string OLD_DECO_PREFIX = "DecoInv_";
+        //private const string NEW_PREFIX = "Inv::";     // 최종: Inv::{cat}::{id}
+        //private const string OLD_DECO_PREFIX = "DecoInv_";
 
         private void Awake()
         {
@@ -47,22 +47,33 @@ namespace Game.Inventory
         public void Add(PlaceableCategory cat, int id, int n = 1)
         {
             if (id <= 0 || n <= 0) return;
-            int cur = GetCount(cat, id);
+            int cur = inventory[cat, id];
+
             int next = cur + n;
-            inventory[cat, id] = next;
+            Set(cat, id, next);
             
-            //_counts[(cat, id)] = next;
-            OnChanged?.Invoke(cat, id, next);
-            inventory.Save();
+            
+            ////_counts[(cat, id)] = next;
+            //OnChanged?.Invoke(cat, id, next);
+            
             
             //SaveOne(cat, id, next);
         }
 
+        /// <summary>
+        /// 인벤토리에서 아이템을 '사용'하는 처리를 시도하는 메서드
+        /// </summary>
+        /// <param name="cat"></param>
+        /// <param name="id"></param>
+        /// <param name="n"></param>
+        /// <returns>true: 인벤토리에서 아이템을 사용하는 데 성공함. false: 인벤토리에서 아이템을 사용하는 데 실패함.</returns>
         public bool TryConsume(PlaceableCategory cat, int id, int n = 1)
         {
+            //유효성 검증
             if (id <= 0 || n <= 0) return false;
 
-            int cur = GetCount(cat, id);
+
+            int cur = inventory[cat, id];
             if (cur < n) return false;
 
             int next = cur - n;
@@ -79,6 +90,7 @@ namespace Game.Inventory
         public void Set(PlaceableCategory cat, int id, int count)
         {
             if (id <= 0 || count < 0) return;
+
             inventory[cat, id] = count;
 
             //_counts[(cat, id)] = count;
@@ -91,13 +103,6 @@ namespace Game.Inventory
         // ───────────────────────────────────────
         // Storage (PlayerPrefs)
         // ───────────────────────────────────────
-        private static string Key(PlaceableCategory cat, int id) => $"{NEW_PREFIX}{cat}::{id}";
-
-        private void SaveOne(PlaceableCategory cat, int id, int count)
-        {
-            PlayerPrefs.SetInt(Key(cat, id), count);
-            PlayerPrefs.Save();
-        }
 
         //private void LoadAllNew()
         //{

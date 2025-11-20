@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Game.Inventory;
@@ -9,11 +9,11 @@ namespace Game.UI.Inventory
     public enum InventoryCategory { Home, Background, Animal, Deco }
 
     /// <summary>
-    /// ÅëÇÕ ÀÎº¥Åä¸® ÆĞ³Î.
-    /// - category ¿¡ µû¶ó Home/Background/Animal/Deco¸¦ ÇÑ ÄÄÆ÷³ÍÆ®¿¡¼­ ±×¸°´Ù.
-    /// - ½½·ÔÀº UnifiedInvSlot »ç¿ë(¾ÆÀÌÄÜ/¼ö·®/Å¬¸¯ Äİ¹é¸¸ ´ã´ç)
-    /// - µ¥ÄÚ ¼ö·® º¯È­´Â InventoryService ÀÌº¥Æ®·Î Áï½Ã °»½Å
-    /// - µ¿¹°Àº ¾À ½ºÄµÇÏ¿© È­¸é¿¡ ÀÖ´Â id´Â ½½·Ô ¼û±è
+    /// í†µí•© ì¸ë²¤í† ë¦¬ íŒ¨ë„.
+    /// - category ì— ë”°ë¼ Home/Background/Animal/Decoë¥¼ í•œ ì»´í¬ë„ŒíŠ¸ì—ì„œ ê·¸ë¦°ë‹¤.
+    /// - ìŠ¬ë¡¯ì€ UnifiedInvSlot ì‚¬ìš©(ì•„ì´ì½˜/ìˆ˜ëŸ‰/í´ë¦­ ì½œë°±ë§Œ ë‹´ë‹¹)
+    /// - ë°ì½” ìˆ˜ëŸ‰ ë³€í™”ëŠ” InventoryService ì´ë²¤íŠ¸ë¡œ ì¦‰ì‹œ ê°±ì‹ 
+    /// - ë™ë¬¼ì€ ì”¬ ìŠ¤ìº”í•˜ì—¬ í™”ë©´ì— ìˆëŠ” idëŠ” ìŠ¬ë¡¯ ìˆ¨ê¹€
     /// </summary>
     public class UnifiedInventoryPanel : MonoBehaviour
     {
@@ -59,9 +59,9 @@ namespace Game.UI.Inventory
                 InventoryService.I.OnChanged -= OnInvChanged;
         }
 
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         // Public
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         public void SetCategory(InventoryCategory cat)
         {
             if (category == cat) return;
@@ -99,9 +99,9 @@ namespace Game.UI.Inventory
             LayoutRebuilder.ForceRebuildLayoutImmediate(content);
         }
 
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
-        // InventoryService ÀÌº¥Æ® ¡æ µ¥ÄÚ ¼ö·® ¶óº§ °»½Å
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // InventoryService ì´ë²¤íŠ¸ â†’ ë°ì½” ìˆ˜ëŸ‰ ë¼ë²¨ ê°±ì‹ 
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         private void OnInvChanged(PlaceableCategory cat, int id, int newCount)
         {
             if (category != InventoryCategory.Deco) return;
@@ -113,13 +113,13 @@ namespace Game.UI.Inventory
             }
         }
 
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         // Builders
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         private void BuildHome()
         {
             if (!homeDB) return;
-
+            
             foreach (var data in homeDB.homeList)
             {
                 if (data == null) continue;
@@ -128,7 +128,7 @@ namespace Game.UI.Inventory
                 slot.SetIcon(data.GetIcon(_loader));
                 slot.SetName(string.IsNullOrEmpty(data.home_name) ? $"Home {data.home_id}" : data.home_name);
 
-                // Áı: ¼ö·® ÇÊ¿ä ¾øÀ½
+                // ì§‘: ìˆ˜ëŸ‰ í•„ìš” ì—†ìŒ
                 slot.SetCount(null);
 
                 var localData = data;
@@ -136,7 +136,7 @@ namespace Game.UI.Inventory
                 {
                     if (!_edit) _edit = FindFirstObjectByType<EditModeController>();
                     if (!_edit) return;
-                    if (_edit.IsHomePreviewActive) return; // ±âÁ¸ ·ÎÁ÷ À¯Áö
+                    if (_edit.IsHomePreviewActive) return; // ê¸°ì¡´ ë¡œì§ ìœ ì§€
                     _edit.PreviewSwapHome(new HomePlaceable(localData));
                 });
             }
@@ -152,13 +152,13 @@ namespace Game.UI.Inventory
 
                 var slot = GetSlot();
                 slot.SetIcon(data.GetIcon(_loader));
-                slot.SetCount(null); // ¼ö·® ¾øÀ½
+                slot.SetCount(null); // ìˆ˜ëŸ‰ ì—†ìŒ
 
                 var localData = data;
                 slot.SetOnClick(() =>
                 {
-                    // TODO: ½ÇÁ¦ ¹è°æ Àû¿ë ·ÎÁ÷ (¸ÓÆ¼¸®¾ó/½ºÄ«ÀÌ¹Ú½º µî)
-                    Debug.Log($"[BackgroundInventory] Å¬¸¯: {localData.bg_name} ({localData.bg_id})");
+                    // TODO: ì‹¤ì œ ë°°ê²½ ì ìš© ë¡œì§ (ë¨¸í‹°ë¦¬ì–¼/ìŠ¤ì¹´ì´ë°•ìŠ¤ ë“±)
+                    Debug.Log($"[BackgroundInventory] í´ë¦­: {localData.bg_name} ({localData.bg_id})");
                 });
             }
         }
@@ -180,7 +180,7 @@ namespace Game.UI.Inventory
                 slot.SetIcon(data.GetIcon(_loader));
                 slot.SetName(string.IsNullOrEmpty(data.animal_name) ? $"Animal {id}" : data.animal_name);
 
-                // µ¿¹°: ¼ö·® ÇÊ¿ä ¾øÀ½
+                // ë™ë¬¼: ìˆ˜ëŸ‰ í•„ìš” ì—†ìŒ
                 slot.SetCount(null);
 
                 var localData = data;
@@ -190,7 +190,7 @@ namespace Game.UI.Inventory
                     if (!_edit) return;
                     _edit.SpawnFromPlaceable(new AnimalPlaceable(localData), PlaceableCategory.Animal);
 
-                    // ÇÑ ¸¶¸® ¾À¿¡ ÀÖÀ¸¸é ½½·Ô ¼û±è(±âÁ¸ µ¿ÀÛ À¯Áö)
+                    // í•œ ë§ˆë¦¬ ì”¬ì— ìˆìœ¼ë©´ ìŠ¬ë¡¯ ìˆ¨ê¹€(ê¸°ì¡´ ë™ì‘ ìœ ì§€)
                     _hiddenAnimalIds.Add(id);
                     if (_slotById.TryGetValue(id, out var s) && s) s.gameObject.SetActive(false);
                 });
@@ -215,20 +215,20 @@ namespace Game.UI.Inventory
                 slot.SetIcon(data.GetIcon(_loader));
                 slot.SetName(string.IsNullOrEmpty(data.deco_name) ? $"Deco {id}" : data.deco_name);
 
-                // ¡Ú ¼ö·®: DBÀÇ deco_stack À» ±×´ë·Î Ç¥½Ã
+                // â˜… ìˆ˜ëŸ‰: DBì˜ deco_stack ì„ ê·¸ëŒ€ë¡œ í‘œì‹œ
                 int c = Mathf.Max(0, data.deco_stack);
                 slot.SetCount(c > 1 ? $"x{c}" : (c == 1 ? "" : "0"));
 
                 var localData = data;
                 slot.SetOnClick(() =>
                 {
-                    // Å¬¸¯ µ¿ÀÛÀº ±âÁ¸´ë·Î(½ºÆù). ¼ö·® °»½ÅÀ» DB·Î Áï½Ã ¹İ¿µÇÏ°í ½Í´Ù¸é ¾Æ·¡ ÁÖ¼® Âü°í.
+                    // í´ë¦­ ë™ì‘ì€ ê¸°ì¡´ëŒ€ë¡œ(ìŠ¤í°). ìˆ˜ëŸ‰ ê°±ì‹ ì„ DBë¡œ ì¦‰ì‹œ ë°˜ì˜í•˜ê³  ì‹¶ë‹¤ë©´ ì•„ë˜ ì£¼ì„ ì°¸ê³ .
                     if (!_edit) _edit = FindFirstObjectByType<EditModeController>();
                     if (_edit != null)
                     {
                         _edit.SpawnFromDecoData(localData);
 
-                        // (¼±ÅÃ) DB ¼ö·®µµ Áï½Ã °¨¼ÒÇÏ¿© ¶óº§ ¹İ¿µÇÏ°í ½ÍÀ¸¸é:
+                        // (ì„ íƒ) DB ìˆ˜ëŸ‰ë„ ì¦‰ì‹œ ê°ì†Œí•˜ì—¬ ë¼ë²¨ ë°˜ì˜í•˜ê³  ì‹¶ìœ¼ë©´:
                         // if (localData.deco_stack > 0) localData.deco_stack--;
                         // slot.SetCount(localData.deco_stack > 1 ? $"x{localData.deco_stack}" :
                         //               (localData.deco_stack == 1 ? "" : "0"));
@@ -239,9 +239,9 @@ namespace Game.UI.Inventory
             }
         }
 
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         // Helpers
-        // ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         private void OnAnimalReturned(int id)
         {
             _hiddenAnimalIds.Remove(id);

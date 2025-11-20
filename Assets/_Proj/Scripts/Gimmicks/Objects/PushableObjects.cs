@@ -6,6 +6,9 @@ using Water;
 public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 {
     #region Variables
+
+    GameObject IPushHandler.gameObject => gameObject;
+
     public float moveTime = 0.12f;
     public float tileSize = 1f;
     [Tooltip("이동 막는 물체")]
