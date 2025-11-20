@@ -36,6 +36,9 @@ public class FirebaseManager : MonoBehaviour
     public MapData currentMapData;
     public string selectStageID;
 
+    [Range(1f,10f)]
+    public float heartbeatInterval = 5f;
+
     async void Start()
     {
         DependencyStatus status = await FirebaseApp.CheckAndFixDependenciesAsync();
@@ -100,6 +103,8 @@ public class FirebaseManager : MonoBehaviour
     //        onLog?.Invoke(Auth.CurrentUser.ProviderId);
     //    }
     //}
+
+    
 
     void Awake()
     {
@@ -403,6 +408,7 @@ public class FirebaseManager : MonoBehaviour
                 Debug.Log($"{Auth.CurrentUser.UserId}: 파이어베이스 DB에 유저데이터 저장함.");
                 Debug.Log($"UserData.Local로 저장 성공.");
             }
+                StartCoroutine(HeartbeatCoroutine());
         }
         catch (FirebaseException fe)
         {
@@ -473,6 +479,25 @@ public class FirebaseManager : MonoBehaviour
         }
     }
     #endregion
+
+    /// <summary>
+    /// 일정 시간마다 서버로 하트비트를 날립니다. 로그아웃시 자동으로 멈추며, 로그인할 때 시작됩니다.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator HeartbeatCoroutine()
+    {
+        WaitUntil localUserDataExists = new WaitUntil(() => UserData.Local != null);
+        while (true)
+        {
+            yield return localUserDataExists;
+            SendHeartbeatAsync();
+
+            yield return new WaitForSeconds(heartbeatInterval);
+            if (UserData.Local == null)
+                yield break;
+
+        }
+    }
 
     private async Task SendHeartbeatAsync(bool isLogin = false)
     {
