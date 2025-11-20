@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: OxygenBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Oxygen
+  blockName: OxygenProp
   icon: {fileID: 21300000, guid: dd805151215f4ee46844728a114848e8, type: 3}
-  prefab: {fileID: 6385452863468151104, guid: 218d5830101912c40aabc37e54d2f444, type: 3}
+  prefab: {fileID: 5274301449955682117, guid: 218d5830101912c40aabc37e54d2f444, type: 3}

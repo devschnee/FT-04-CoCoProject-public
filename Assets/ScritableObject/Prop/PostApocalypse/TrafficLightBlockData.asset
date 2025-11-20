@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TrafficLightBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: TrafficLight
+  blockName: TrafficLightProp
   icon: {fileID: 21300000, guid: 9ee74c9dbe92a684f8443f0955ab3761, type: 3}
-  prefab: {fileID: 7362645891987573381, guid: 2ebdb720a7a6e23488de51db45263430, type: 3}
+  prefab: {fileID: 5508677998836993676, guid: 2ebdb720a7a6e23488de51db45263430, type: 3}

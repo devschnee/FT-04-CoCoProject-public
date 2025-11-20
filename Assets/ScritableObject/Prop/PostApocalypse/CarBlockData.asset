@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CarBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Car
+  blockName: CarProp
   icon: {fileID: 21300000, guid: fa2e2417114bbe94983918072447bc09, type: 3}
-  prefab: {fileID: 996856387913199855, guid: 2f9bbc44f4a3c6248a7fbd713cd968eb, type: 3}
+  prefab: {fileID: 8889155745629599877, guid: 5cf01e5df48817c4b9a418daa7ee508d, type: 3}

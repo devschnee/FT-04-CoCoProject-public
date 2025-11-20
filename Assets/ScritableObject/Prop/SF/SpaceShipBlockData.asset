@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SpaceShipBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: SpaceShip
+  blockName: SpaceShipProp
   icon: {fileID: 21300000, guid: 16c2c9970c8ae2c40a038b0ce4818a60, type: 3}
-  prefab: {fileID: 2018471783065945229, guid: 3f8261a1001087548a2f75f79163bcaa, type: 3}
+  prefab: {fileID: 9120197804447347134, guid: 3f8261a1001087548a2f75f79163bcaa, type: 3}

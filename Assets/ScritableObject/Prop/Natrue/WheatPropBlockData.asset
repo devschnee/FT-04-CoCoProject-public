@@ -15,4 +15,4 @@ MonoBehaviour:
   blockType: 17
   blockName: WheatProp
   icon: {fileID: 21300000, guid: 9ea805ef46a236743a9a4edee9a6617c, type: 3}
-  prefab: {fileID: 3361402490259909584, guid: 5ffdcf48a77a64a48af89d34438c937b, type: 3}
+  prefab: {fileID: 4584580501262799540, guid: 5ffdcf48a77a64a48af89d34438c937b, type: 3}

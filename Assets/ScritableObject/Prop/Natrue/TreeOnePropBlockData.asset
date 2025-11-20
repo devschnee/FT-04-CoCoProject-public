@@ -15,4 +15,4 @@ MonoBehaviour:
   blockType: 17
   blockName: TreeOneProp
   icon: {fileID: 21300000, guid: b9ba6b35dbd922148b4d1695aa6a43f9, type: 3}
-  prefab: {fileID: 132534, guid: b972fc0891e319f409436beb5e29fa20, type: 3}
+  prefab: {fileID: 1486540013513243703, guid: b972fc0891e319f409436beb5e29fa20, type: 3}

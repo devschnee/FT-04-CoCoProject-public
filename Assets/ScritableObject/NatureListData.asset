@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6dfc3e6eba0931439c057868a977b6f, type: 3}
   m_Name: NatureListData
   m_EditorClassIdentifier: 
-  categoryName: F9
+  categoryName: F8
   icon: {fileID: 21300000, guid: 68a4c440e498c054385077e1cb5874d9, type: 3}
   blocks:
   - {fileID: 11400000, guid: 7250cbc5b44599b4fb4490335d94365a, type: 2}

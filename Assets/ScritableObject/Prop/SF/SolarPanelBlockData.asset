@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SolarPanelBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: SolarPanel
+  blockName: SolarPanelProp
   icon: {fileID: 21300000, guid: 2ed43ae5c37ca64419d1c4e169f748b7, type: 3}
-  prefab: {fileID: 5993074249272177477, guid: 452456834ac1e104da98d2ea8b2c929e, type: 3}
+  prefab: {fileID: 2211179209959115702, guid: 452456834ac1e104da98d2ea8b2c929e, type: 3}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SFFlowerBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: SFFlower
+  blockName: SFFlowerProp
   icon: {fileID: 21300000, guid: 43fc3d0b06fa5c445a549d688466dfea, type: 3}
-  prefab: {fileID: 2503282680906016710, guid: d6e01fd8d4fc5c04a885f1cc87dba538, type: 3}
+  prefab: {fileID: 7126989816192195596, guid: d6e01fd8d4fc5c04a885f1cc87dba538, type: 3}

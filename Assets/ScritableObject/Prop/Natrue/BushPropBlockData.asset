@@ -15,4 +15,4 @@ MonoBehaviour:
   blockType: 17
   blockName: BushProp
   icon: {fileID: 21300000, guid: 884794f6d6f4f9d4dbd8159d7ee0f572, type: 3}
-  prefab: {fileID: 9201586057462061879, guid: 1ef3efe5887a1b745be1f71df2ce98ca, type: 3}
+  prefab: {fileID: 660889961976151989, guid: 1ef3efe5887a1b745be1f71df2ce98ca, type: 3}

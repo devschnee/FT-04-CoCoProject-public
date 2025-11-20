@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BrokenTurretBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: BrokenTurret
+  blockName: BrokenTurretProp
   icon: {fileID: 21300000, guid: 6769c930ee600ea4c9d3cd5b25b292a5, type: 3}
-  prefab: {fileID: 7666050933031987437, guid: 736b8a1a837f2b84bbc142bb4557e0f9, type: 3}
+  prefab: {fileID: 8913267159983035934, guid: 736b8a1a837f2b84bbc142bb4557e0f9, type: 3}

@@ -15,4 +15,4 @@ MonoBehaviour:
   blockType: 17
   blockName: RedFlowerProp
   icon: {fileID: 21300000, guid: 64832409f362f4e4088060ed077f6179, type: 3}
-  prefab: {fileID: 1919480519852938, guid: bb81ac756d4e11b45bd2b51fa9a2642f, type: 3}
+  prefab: {fileID: 6130197242348585467, guid: bb81ac756d4e11b45bd2b51fa9a2642f, type: 3}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TrainTwoBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: TrainTwo
+  blockName: TrainTwoProp
   icon: {fileID: 21300000, guid: 635935ef568db084d9ca7d464260ed2d, type: 3}
-  prefab: {fileID: 2927201413891580359, guid: 48c565d807629814a9c20794166717f2, type: 3}
+  prefab: {fileID: 6958239863010861336, guid: 48c565d807629814a9c20794166717f2, type: 3}

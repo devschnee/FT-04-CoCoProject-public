@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HelicopterBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Helicopter
+  blockName: HelicopterProp
   icon: {fileID: 21300000, guid: d9446bae40f88324ba6e7cfc356601d3, type: 3}
-  prefab: {fileID: 5784228440635638161, guid: 5e9946e4387af0c449b7c8e1568aa039, type: 3}
+  prefab: {fileID: 7774830329962312099, guid: 5e9946e4387af0c449b7c8e1568aa039, type: 3}

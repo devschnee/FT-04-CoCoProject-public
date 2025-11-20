@@ -15,4 +15,4 @@ MonoBehaviour:
   blockType: 17
   blockName: YellowProp
   icon: {fileID: 21300000, guid: 9ab89a9d1f302d24a9b760ef196bbf7f, type: 3}
-  prefab: {fileID: 1647842071743752, guid: 84350a7f8b807d142955e3c008ed655b, type: 3}
+  prefab: {fileID: 1738587038890802501, guid: 84350a7f8b807d142955e3c008ed655b, type: 3}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: VendingBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Vending
+  blockName: VendingProp
   icon: {fileID: 21300000, guid: b93e832aaa4fb2e47a603a8c19a90000, type: 3}
-  prefab: {fileID: 628289918091150741, guid: 04d41e0a33990934db33c688c1ae8bca, type: 3}
+  prefab: {fileID: 8889921870803411323, guid: 04d41e0a33990934db33c688c1ae8bca, type: 3}

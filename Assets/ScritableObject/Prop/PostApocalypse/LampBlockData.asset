@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LampBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Lamp
+  blockName: LampProp
   icon: {fileID: 21300000, guid: 60df96e02bc563b4f9e0610f7f59d4f3, type: 3}
-  prefab: {fileID: 367439563046376443, guid: c294b8974f84b094d89f25cc822bb9e5, type: 3}
+  prefab: {fileID: 5602644849558012993, guid: c294b8974f84b094d89f25cc822bb9e5, type: 3}
