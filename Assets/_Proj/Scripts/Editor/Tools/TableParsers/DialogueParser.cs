@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using static SpeakerData;
@@ -25,13 +26,17 @@ public class DialogueParser
             if (string.IsNullOrWhiteSpace(line)) continue;
 
             //CSV 포맷 그대로 두고, 정규식으로 필드 파싱
-            var v = System.Text.RegularExpressions.Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+            var v = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+            for (int j = 0; j < v.Length; j++)
+                v[j] = v[j].Trim().Trim('"').Trim('\uFEFF');
 
             if (v.Length < 9)
             {
-                Debug.LogWarning($"[DialogueParser] {i}행 데이터 부족 → 스킵");
+                Debug.LogWarning($"[DialogueParser] {i}행 데이터 부족 → SplitCount={v.Length} → {line}");
                 continue;
             }
+
 
             // 첫 번째 값이 비어있을 경우 스킵
             string id = v[0].Trim('\uFEFF');
@@ -49,9 +54,6 @@ public class DialogueParser
             Enum.TryParse(v[4], true, out EmotionType emotion);
             Enum.TryParse(v[7], true, out SoundType soundType);
 
-            string rawText = v[5];
-            string finalText = TextParser.Resolve(rawText, textDict);
-
             db.dialogueList.Add(new DialogueData
             {
                 dialogue_id = id,
@@ -59,7 +61,7 @@ public class DialogueParser
                 speaker_position = speakerPosition,
                 speaker_id = speakerId,
                 emotion = emotion,
-                text = finalText,
+                text = v[5],
                 char_delay = delay,
                 sound_type = soundType,
                 sound_key = v[8]
