@@ -1,13 +1,13 @@
 dialogue_id,seq,speaker_position,speaker_id,emotion,text,char_delay,sound_type,sound_key
 dialogue_0_1_0,0,left,coco,Neutral,"오랜만에 옛날 꿈을 꾼 것 같아.",0.04,sfx_none,null
-dialogue_0_1_0,1,left,coco,Neutral,"그런데 주인님은 어디 갔지?",0.04,sfx_none,null
-dialogue_0_1_0,2,left,coco,Neutral,"킁킁… 주인님의 냄새가 조금은 남은것 같은데.., ",0.04,sfx_none,null
+dialogue_0_1_0,1,left,coco,Neutral,"그런데 주인은 어디 갔지?",0.04,sfx_none,null
+dialogue_0_1_0,2,left,coco,Neutral,"킁킁… 주인의 냄새가 조금은 남은것 같은데... ",0.04,sfx_none,null
 dialogue_0_1_0,3,left,coco,Happy,"아하! 주인은 날 믿고 먼저 간거야! 내가 혼자서도 집을 찾아갈 수 있다고",0.04,sfx_none,null
 dialogue_0_1_0,4,left,coco,Neutral,"어서 집으로 돌아가자!",0.04,sfx_none,null
 dialogue_0_1_1,0,left,coco,Neutral,"언덕이 있네. 주변을 둘러 보자!",0.04,sfx_none,null
 dialogue_0_1_1,1,left,coco,Neutral,"올라갈 경사로가 있을 지 몰라",0.04,sfx_none,null
-dialogue_0_1_2,0,left,coco,Happy,"주인님과 함게 하는 산책은 언제나 즐거워!",0.04,sfx_none,null
-dialogue_0_1_2,1,left,coco,Neutral,"주인님도 산길을 즐겼겠지?",0.04,sfx_none,null
+dialogue_0_1_2,0,left,coco,Happy,"주인과 함게 하는 산책은 언제나 즐거워!",0.04,sfx_none,null
+dialogue_0_1_2,1,left,coco,Neutral,"주인도 산길을 즐겼겠지?",0.04,sfx_none,null
 dialogue_0_1_10,0,left,coco,Sad,"산길을 겨우 내려왔어. 집까지 얼마나 남았을까?",0.04,sfx_none,null
 dialogue_0_1_10,1,left,coco,Neutral,"조금 지친 것 같아, 저 나무 아래서 잠시 쉬다가야지.",0.04,sfx_none,null
 dialogue_0_2_0,0,left,coco,Neutral,"으음… 얼마나 쉬었지?",0.04,sfx_none,null
@@ -16,21 +16,22 @@ dialogue_0_2_0,2,left,coco,Neutral,"얼른 집으로 돌아가자.",0.04,sfx_non
 dialogue_0_2_1,0,left,coco,Neutral,"상자가 길을 막고 있네, 움직여서 쭈욱 밀어볼 수 있을 것 같아!",0.04,sfx_none,null
 dialogue_0_2_2,0,left,coco,Neutral,"경사로쪽으로 밀기 힘들것 같은데… 옆으로 밀어볼까?",0.04,sfx_none,null
 dialogue_0_2_3,0,left,coco,Neutral,"길이 끊어져있네? 상자로 어떻게 매울수 있지 않을까?",0.04,sfx_none,null
-dialogue_0_2_10,0,left,coco,Neutral,"쮸인님~ 밥줘~ 벅벅(대사 바꿔줘요)",0.04,sfx_none,null
-dialogue_1_1_0,0,left,coco,Neutral,"혼자 동떨어진 코코두기가 긍정회로를 돌리며 집으로 돌아갈 다짐을 함"(대사 작성 필요),0.04,sfx_none,null
+dialogue_0_2_10,0,left,coco,Happy,"드디어 도착…! 나 혼자 힘으로 여기까지 왔어! \n주인이 분명 칭찬하겠지!",0.04,sfx_none,null
+dialogue_1_1_0,0,left,coco,Neutral,"주인이 날 두고 또 먼저 갔어… 아! 혹시 술래잡기 놀이인가? \n주인이 먼저 집으로 가고, 내가 술래가 돼서 주인을 찾아야 하는 놀이!",0.04,sfx_none,null
+dialogue_1_1_0,1,left,coco,Neutral,"좋아… 당장 주인을 찾으러 가야지!",0.04,sfx_none,null
 dialogue_1_1_1,0,left,coco,Happy,"우와, 하늘에서 떨어진 별 조각인가? 꼭 나한테 인사하는 것 같아.",0.04,sfx_none,null
 dialogue_1_1_1,1,left,coco,Happy,"한번 가까이 가보자!",0.04,sfx_none,null
-dialogue_1_1_10,0,left,coco,Neutral,"보물들을 모아가면 주인님이 좋아하겠지? 보물들을 모아가보자!",0.04,sfx_none,null
-dialogue_1_2_0,0,left,coco,Neutral,"산 산책도 좋지만 가끔 이런 길 도 좋은 것 같아.",0.04,sfx_none,null
+dialogue_1_1_10,0,left,coco,Neutral,"보물들을 모아가면 주인이 좋아하겠지? 보물들을 모아가보자!",0.04,sfx_none,null
+dialogue_1_2_0,0,left,coco,Neutral,"산 산책도 좋지만 가끔 이런 길도 좋은 것 같아.",0.04,sfx_none,null
 dialogue_1_2_0,1,left,coco,Happy,"계속해서 가보자!",0.04,sfx_none,null
 dialogue_1_2_1,0,left,coco,Neutral,"저기 보물에 가고 싶은데 길이 끊어져 있어.",0.04,sfx_none,null
 dialogue_1_2_1,1,left,coco,Neutral,"어떻게 해야 건너갈 수 있을까?",0.04,sfx_none,null
 dialogue_1_3_1,0,left,coco,Surprised,"길이 길게 끊어졌잖아?!",0.04,sfx_none,null
 dialogue_1_3_1,1,left,coco,Neutral,"상자가 두개는 필요할 것 같아.",0.04,sfx_none,null
-dialogue_1_3_10,0,left,coco,Sad,"오늘 안에 집으로 돌아갈 수 있을까? 주인님이 보고 싶어...",0.04,sfx_none,null
+dialogue_1_3_10,0,left,coco,Sad,"오늘 안에 집으로 돌아갈 수 있을까? 주인이 보고 싶어...",0.04,sfx_none,null
 dialogue_1_3_10,1,left,coco,Neutral,"힘내서 계속 가보자!",0.04,sfx_none,null
 dialogue_1_5_1,0,left,coco,Neutral,"나무상자가 어디에 있지?",0.04,sfx_none,null
-dialogue_1_5_1,1,left,coco,Neutral,"저 높이 있구나? 한번 떨어트려 볼까? 재밌겠다!",0.04,sfx_none,null
+dialogue_1_5_1,1,left,coco,Neutral,"저 높이 있네? 저걸 내가 툭 치면 떨어지려나?",0.04,sfx_none,null
 dialogue_1_6_10,0,left,coco,Neutral,"다시 도로로 나왔어! 이제 조금만 더 가면...",0.04,sfx_none,null
 dialogue_1_6_10,1,left,coco,Neutral,"킁킁… 어라? 누구있어?",0.04,sfx_none,null
 dialogue_1_7_0,0,right,hog,Neutral,"야! 너 지금 어디가고 있어?",0.04,sfx_none,null
@@ -41,15 +42,15 @@ dialogue_1_7_0,4,right,hog,Surprised,"하… 뭐 이런 애가 다 있냐~?",0.0
 dialogue_1_7_0,5,right,hog,Neutral,"그래서, 집으로 돌아가는 중이라고?",0.04,sfx_none,null
 dialogue_1_7_0,6,left,coco,Neutral,"주인이 먼저 집으로 돌아갔거든! 나도 빨리 가야 해!",0.04,sfx_none,null
 dialogue_1_7_0,7,right,hog,Happy,"그래? 나랑 놀면 재밌을 텐데! 나 힘 엄청 세거든!",0.04,sfx_none,null
-dialogue_1_7_0,8,right,hog,Neutral,"마침 저기 박스가 있네! 내가 보여줄게! 신호만 줘!",0.04,sfx_none,null
+dialogue_1_7_0,8,right,hog,Neutral,"마침 저기 박스가 있네! 너가 날 보면 바로 밀어볼 테니까, 내가 얼마나 센지 잘 봐둬!",0.04,sfx_none,null
 dialogue_1_7_1,0,right,hog,Happy,"우하하! 봤지? 나 멋있지?!",0.04,sfx_none,null
-dialogue_1_7_1,1,left,coco,Happy,"응! 너 짱 멋있다!",0.04,sfx_none,null
-dialogue_1_7_1,2,right,hog,Happy,"너 되게 마음에 드네.",0.04,sfx_none,null
-dialogue_1_7_2,0,right,hog,Angry,"어어? 너 혼자 가는거야?",0.04,sfx_none,null
-dialogue_1_7_2,1,left,coco,Surprised,"응? 왜그래? 경사로를 못오르는 거야?",0.04,sfx_none,null
-dialogue_1_7_2,2,right,hog,Sad,"아니, 그… 절대 무서운건 아니고, 방금 박치기로 조금 다쳤나봐.",0.04,sfx_none,null
+dialogue_1_7_1,1,left,coco,Happy,"와! 너 짱 멋있다!",0.04,sfx_none,null
+dialogue_1_7_1,2,right,hog,Happy,"너 되게 마음에 드네!",0.04,sfx_none,null
+dialogue_1_7_2,0,right,hog,Angry,"어어? 너 거길 올라가는 거야?",0.04,sfx_none,null
+dialogue_1_7_2,1,left,coco,Surprised,"응! 여기가 길인 것 같아! 어서 너도 올라와!\n아, 혹시 높은 곳을 무서워 해?",0.04,sfx_none,null
+dialogue_1_7_2,2,right,hog,Sad,"뭐?! 절대 아니야! 무섭다니…! 그… 절대 무서운 건 아니고, 방금 박치기로 조금 다친 것 같아서. 응...",0.04,sfx_none,null
 dialogue_1_7_2,3,right,hog,Neutral,"지나갈 수 있게 길을 만들어줄래?",0.04,sfx_none,null
-dialogue_1_8_10,0,right,hog,Neutral,"야 너 집에 안 가면 안돼? 나랑 계속 놀자!",0.04,sfx_none,null
+dialogue_1_8_10,0,right,hog,Neutral,"야 너 집에 안 가면 안 돼? 나랑 계속 놀자!",0.04,sfx_none,null
 dialogue_1_8_10,1,left,coco,Neutral,"하지만 난 꼭 집으로 돌아가야 해!",0.04,sfx_none,null
 dialogue_1_8_10,2,right,hog,Surprised,"왜? 거기 뭐 대단한 거라도 있어?",0.04,sfx_none,null
 dialogue_1_8_10,3,left,coco,Happy,"응! 보물 같은 존재가 있거든. 날 기다리고 있어!",0.04,sfx_none,null
@@ -67,9 +68,9 @@ dialogue_1_10_1,0,left,coco,Neutral,"저 문은 뭐지? 지나 갈 수가 없잖
 dialogue_1_10_1,1,right,hog,Neutral,"아! 이건 버튼찾기 놀이야. 버튼을 찾아서 누르면 문이 짠! 하고 열려.",0.04,sfx_none,null
 dialogue_1_10_1,2,right,hog,Neutral,"주위에 버튼이 있을거야, 찾아보자!",0.04,sfx_none,null
 dialogue_1_10_2,0,left,coco,Neutral,"저기 버튼이 있어! 어떻게 해야하지?",0.04,sfx_none,null
-dialogue_1_10_2,1,right,hog,Neutral,"발판에 올라서거나 상자를 올리면 되. 근데 지금 상자가 안보이니까...",0.04,sfx_none,null
-dialogue_1_10_2,2,right,hog,Neutral,"내가 올라가서 열고 있어줄게! 나 잊지 말아야 해!",0.04,sfx_none,null
-dialogue_1_10_3,0,left,coco,Neutral,"어라? 난 왜 버튼이 안눌러지지?",0.04,sfx_none,null
+dialogue_1_10_2,1,right,hog,Neutral,"발판에 올라서거나 상자를 올리면 돼. 근데 지금 상자가 안보이니까...",0.04,sfx_none,null
+dialogue_1_10_2,2,right,hog,Neutral,"너보다 더 잘 아는 내가 올라가서 열고 있어줄게!\n야, 근데 나 놓고 그냥 가버리면 진짜 혼난다?!",0.04,sfx_none,null
+dialogue_1_10_3,0,left,coco,Neutral,"어라? 난 왜 버튼이 안 눌러지지?",0.04,sfx_none,null
 dialogue_1_10_3,1,right,hog,Neutral,"넌 너무 가볍나봐. 하하! 더 무거운 내 승리!",0.04,sfx_none,null
 dialogue_1_10_10,0,left,coco,Neutral,"멧돼지야! 나랑 놀고 싶어?",0.04,sfx_none,null
 dialogue_1_10_10,1,right,hog,Happy,"당연하지!",0.04,sfx_none,null
@@ -78,4 +79,5 @@ dialogue_1_10_10,3,right,hog,Neutral,"그 주인이라는 게, 너한텐 내 친
 dialogue_1_10_10,4,left,coco,Happy,"응! 세상에서 제일 소중해.",0.04,sfx_none,null
 dialogue_1_10_10,5,right,hog,Sad,"그럼 얼른 가야겠네. 소중한 걸 기다리게 해서는 안 되니까.",0.04,sfx_none,null
 dialogue_1_10_10,6,right,hog,Happy,"대신 종종 나랑도 놀아줘야 해. 너도 이제 내 친구니까!",0.04,sfx_none,null
-dialogue_1_10_10,7,left,coco,Happy,"응! 다음에 또 놀자! 그때 내가 간식도 가져올게!",0.04,sfx_none,null
+dialogue_1_10_10,7,left,coco,Happy,"응! 당연하지, 친구! 다음에 또 놀자!",0.04,sfx_none,null
+dialogue_1_10_11,8,right,hog,Happy,"다음에는 내가 너의 보금자리로 놀러가주마!",0.04,sfx_none,null

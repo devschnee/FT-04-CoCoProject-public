@@ -18,7 +18,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC624\uB79C\uB9CC\uC5D0 \uC61B\uB0A0 \uAFC8\uC744 \uAFBC \uAC83 \uAC19\uC544.\""
+    text: "\uC624\uB79C\uB9CC\uC5D0 \uC61B\uB0A0 \uAFC8\uC744 \uAFBC \uAC83 \uAC19\uC544."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -27,7 +27,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uADF8\uB7F0\uB370 \uC8FC\uC778\uB2D8\uC740 \uC5B4\uB514 \uAC14\uC9C0?\""
+    text: "\uADF8\uB7F0\uB370 \uC8FC\uC778\uC740 \uC5B4\uB514 \uAC14\uC9C0?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -36,8 +36,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uD081\uD081\u2026 \uC8FC\uC778\uB2D8\uC758 \uB0C4\uC0C8\uAC00 \uC870\uAE08\uC740
-      \uB0A8\uC740\uAC83 \uAC19\uC740\uB370.., \""
+    text: "\uD081\uD081\u2026 \uC8FC\uC778\uC758 \uB0C4\uC0C8\uAC00 \uC870\uAE08\uC740
+      \uB0A8\uC740\uAC83 \uAC19\uC740\uB370... "
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -46,9 +46,9 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uC544\uD558! \uC8FC\uC778\uC740 \uB0A0 \uBBFF\uACE0 \uBA3C\uC800 \uAC04\uAC70\uC57C!
+    text: "\uC544\uD558! \uC8FC\uC778\uC740 \uB0A0 \uBBFF\uACE0 \uBA3C\uC800 \uAC04\uAC70\uC57C!
       \uB0B4\uAC00 \uD63C\uC790\uC11C\uB3C4 \uC9D1\uC744 \uCC3E\uC544\uAC08 \uC218
-      \uC788\uB2E4\uACE0\""
+      \uC788\uB2E4\uACE0"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -57,7 +57,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC5B4\uC11C \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC00\uC790!\""
+    text: "\uC5B4\uC11C \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC00\uC790!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -66,7 +66,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC5B8\uB355\uC774 \uC788\uB124. \uC8FC\uBCC0\uC744 \uB458\uB7EC \uBCF4\uC790!\""
+    text: "\uC5B8\uB355\uC774 \uC788\uB124. \uC8FC\uBCC0\uC744 \uB458\uB7EC \uBCF4\uC790!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -75,7 +75,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC62C\uB77C\uAC08 \uACBD\uC0AC\uB85C\uAC00 \uC788\uC744 \uC9C0 \uBAB0\uB77C\""
+    text: "\uC62C\uB77C\uAC08 \uACBD\uC0AC\uB85C\uAC00 \uC788\uC744 \uC9C0 \uBAB0\uB77C"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -84,8 +84,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uC8FC\uC778\uB2D8\uACFC \uD568\uAC8C \uD558\uB294 \uC0B0\uCC45\uC740
-      \uC5B8\uC81C\uB098 \uC990\uAC70\uC6CC!\""
+    text: "\uC8FC\uC778\uACFC \uD568\uAC8C \uD558\uB294 \uC0B0\uCC45\uC740 \uC5B8\uC81C\uB098
+      \uC990\uAC70\uC6CC!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -94,7 +94,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC8FC\uC778\uB2D8\uB3C4 \uC0B0\uAE38\uC744 \uC990\uACBC\uACA0\uC9C0?\""
+    text: "\uC8FC\uC778\uB3C4 \uC0B0\uAE38\uC744 \uC990\uACBC\uACA0\uC9C0?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -103,8 +103,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 2
-    text: "\"\uC0B0\uAE38\uC744 \uACA8\uC6B0 \uB0B4\uB824\uC654\uC5B4. \uC9D1\uAE4C\uC9C0
-      \uC5BC\uB9C8\uB098 \uB0A8\uC558\uC744\uAE4C?\""
+    text: "\uC0B0\uAE38\uC744 \uACA8\uC6B0 \uB0B4\uB824\uC654\uC5B4. \uC9D1\uAE4C\uC9C0
+      \uC5BC\uB9C8\uB098 \uB0A8\uC558\uC744\uAE4C?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -113,8 +113,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC870\uAE08 \uC9C0\uCE5C \uAC83 \uAC19\uC544, \uC800 \uB098\uBB34 \uC544\uB798\uC11C
-      \uC7A0\uC2DC \uC26C\uB2E4\uAC00\uC57C\uC9C0.\""
+    text: "\uC870\uAE08 \uC9C0\uCE5C \uAC83 \uAC19\uC544, \uC800 \uB098\uBB34 \uC544\uB798\uC11C
+      \uC7A0\uC2DC \uC26C\uB2E4\uAC00\uC57C\uC9C0."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -123,7 +123,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC73C\uC74C\u2026 \uC5BC\uB9C8\uB098 \uC26C\uC5C8\uC9C0?\""
+    text: "\uC73C\uC74C\u2026 \uC5BC\uB9C8\uB098 \uC26C\uC5C8\uC9C0?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -132,7 +132,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 4
-    text: "\"\uD5C9, \uBC8C\uC368 \uD574\uAC00 \uC9C0\uC796\uC544!\""
+    text: "\uD5C9, \uBC8C\uC368 \uD574\uAC00 \uC9C0\uC796\uC544!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -141,7 +141,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC5BC\uB978 \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC00\uC790.\""
+    text: "\uC5BC\uB978 \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC00\uC790."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -150,8 +150,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC0C1\uC790\uAC00 \uAE38\uC744 \uB9C9\uACE0 \uC788\uB124, \uC6C0\uC9C1\uC5EC\uC11C
-      \uCB48\uC6B1 \uBC00\uC5B4\uBCFC \uC218 \uC788\uC744 \uAC83 \uAC19\uC544!\""
+    text: "\uC0C1\uC790\uAC00 \uAE38\uC744 \uB9C9\uACE0 \uC788\uB124, \uC6C0\uC9C1\uC5EC\uC11C
+      \uCB48\uC6B1 \uBC00\uC5B4\uBCFC \uC218 \uC788\uC744 \uAC83 \uAC19\uC544!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -160,8 +160,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uACBD\uC0AC\uB85C\uCABD\uC73C\uB85C \uBC00\uAE30 \uD798\uB4E4\uAC83
-      \uAC19\uC740\uB370\u2026 \uC606\uC73C\uB85C \uBC00\uC5B4\uBCFC\uAE4C?\""
+    text: "\uACBD\uC0AC\uB85C\uCABD\uC73C\uB85C \uBC00\uAE30 \uD798\uB4E4\uAC83 \uAC19\uC740\uB370\u2026
+      \uC606\uC73C\uB85C \uBC00\uC5B4\uBCFC\uAE4C?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -170,8 +170,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uAE38\uC774 \uB04A\uC5B4\uC838\uC788\uB124? \uC0C1\uC790\uB85C \uC5B4\uB5BB\uAC8C
-      \uB9E4\uC6B8\uC218 \uC788\uC9C0 \uC54A\uC744\uAE4C?\""
+    text: "\uAE38\uC774 \uB04A\uC5B4\uC838\uC788\uB124? \uC0C1\uC790\uB85C \uC5B4\uB5BB\uAC8C
+      \uB9E4\uC6B8\uC218 \uC788\uC9C0 \uC54A\uC744\uAE4C?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -179,8 +179,9 @@ MonoBehaviour:
     seq: 0
     speaker_position: 0
     speaker_id: 0
-    emotion: 0
-    text: "\"\uCBB8\uC778\uB2D8~ \uBC25\uC918~ \uBC85\uBC85(\uB300\uC0AC \uBC14\uAFD4\uC918\uC694)\""
+    emotion: 1
+    text: "\uB4DC\uB514\uC5B4 \uB3C4\uCC29\u2026! \uB098 \uD63C\uC790 \uD798\uC73C\uB85C
+      \uC5EC\uAE30\uAE4C\uC9C0 \uC654\uC5B4! \\n\uC8FC\uC778\uC774 \uBD84\uBA85 \uCE6D\uCC2C\uD558\uACA0\uC9C0!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -189,9 +190,20 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uD63C\uC790 \uB3D9\uB5A8\uC5B4\uC9C4 \uCF54\uCF54\uB450\uAE30\uAC00
-      \uAE0D\uC815\uD68C\uB85C\uB97C \uB3CC\uB9AC\uBA70 \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC08
-      \uB2E4\uC9D0\uC744 \uD568\"(\uB300\uC0AC \uC791\uC131 \uD544\uC694)"
+    text: "\uC8FC\uC778\uC774 \uB0A0 \uB450\uACE0 \uB610 \uBA3C\uC800 \uAC14\uC5B4\u2026
+      \uC544! \uD639\uC2DC \uC220\uB798\uC7A1\uAE30 \uB180\uC774\uC778\uAC00? \\n\uC8FC\uC778\uC774
+      \uBA3C\uC800 \uC9D1\uC73C\uB85C \uAC00\uACE0, \uB0B4\uAC00 \uC220\uB798\uAC00
+      \uB3FC\uC11C \uC8FC\uC778\uC744 \uCC3E\uC544\uC57C \uD558\uB294 \uB180\uC774!"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_1_1_0
+    seq: 1
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 0
+    text: "\uC88B\uC544\u2026 \uB2F9\uC7A5 \uC8FC\uC778\uC744 \uCC3E\uC73C\uB7EC
+      \uAC00\uC57C\uC9C0!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -200,8 +212,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uC6B0\uC640, \uD558\uB298\uC5D0\uC11C \uB5A8\uC5B4\uC9C4 \uBCC4 \uC870\uAC01\uC778\uAC00?
-      \uAF2D \uB098\uD55C\uD14C \uC778\uC0AC\uD558\uB294 \uAC83 \uAC19\uC544.\""
+    text: "\uC6B0\uC640, \uD558\uB298\uC5D0\uC11C \uB5A8\uC5B4\uC9C4 \uBCC4 \uC870\uAC01\uC778\uAC00?
+      \uAF2D \uB098\uD55C\uD14C \uC778\uC0AC\uD558\uB294 \uAC83 \uAC19\uC544."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -210,7 +222,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uD55C\uBC88 \uAC00\uAE4C\uC774 \uAC00\uBCF4\uC790!\""
+    text: "\uD55C\uBC88 \uAC00\uAE4C\uC774 \uAC00\uBCF4\uC790!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -219,8 +231,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uBCF4\uBB3C\uB4E4\uC744 \uBAA8\uC544\uAC00\uBA74 \uC8FC\uC778\uB2D8\uC774
-      \uC88B\uC544\uD558\uACA0\uC9C0? \uBCF4\uBB3C\uB4E4\uC744 \uBAA8\uC544\uAC00\uBCF4\uC790!\""
+    text: "\uBCF4\uBB3C\uB4E4\uC744 \uBAA8\uC544\uAC00\uBA74 \uC8FC\uC778\uC774 \uC88B\uC544\uD558\uACA0\uC9C0?
+      \uBCF4\uBB3C\uB4E4\uC744 \uBAA8\uC544\uAC00\uBCF4\uC790!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -229,8 +241,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC0B0 \uC0B0\uCC45\uB3C4 \uC88B\uC9C0\uB9CC \uAC00\uB054 \uC774\uB7F0
-      \uAE38 \uB3C4 \uC88B\uC740 \uAC83 \uAC19\uC544.\""
+    text: "\uC0B0 \uC0B0\uCC45\uB3C4 \uC88B\uC9C0\uB9CC \uAC00\uB054 \uC774\uB7F0
+      \uAE38\uB3C4 \uC88B\uC740 \uAC83 \uAC19\uC544."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -239,7 +251,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uACC4\uC18D\uD574\uC11C \uAC00\uBCF4\uC790!\""
+    text: "\uACC4\uC18D\uD574\uC11C \uAC00\uBCF4\uC790!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -248,8 +260,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC800\uAE30 \uBCF4\uBB3C\uC5D0 \uAC00\uACE0 \uC2F6\uC740\uB370 \uAE38\uC774
-      \uB04A\uC5B4\uC838 \uC788\uC5B4.\""
+    text: "\uC800\uAE30 \uBCF4\uBB3C\uC5D0 \uAC00\uACE0 \uC2F6\uC740\uB370 \uAE38\uC774
+      \uB04A\uC5B4\uC838 \uC788\uC5B4."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -258,7 +270,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC5B4\uB5BB\uAC8C \uD574\uC57C \uAC74\uB108\uAC08 \uC218 \uC788\uC744\uAE4C?\""
+    text: "\uC5B4\uB5BB\uAC8C \uD574\uC57C \uAC74\uB108\uAC08 \uC218 \uC788\uC744\uAE4C?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -267,7 +279,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 4
-    text: "\"\uAE38\uC774 \uAE38\uAC8C \uB04A\uC5B4\uC84C\uC796\uC544?!\""
+    text: "\uAE38\uC774 \uAE38\uAC8C \uB04A\uC5B4\uC84C\uC796\uC544?!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -276,7 +288,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC0C1\uC790\uAC00 \uB450\uAC1C\uB294 \uD544\uC694\uD560 \uAC83 \uAC19\uC544.\""
+    text: "\uC0C1\uC790\uAC00 \uB450\uAC1C\uB294 \uD544\uC694\uD560 \uAC83 \uAC19\uC544."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -285,8 +297,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 2
-    text: "\"\uC624\uB298 \uC548\uC5D0 \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC08 \uC218
-      \uC788\uC744\uAE4C? \uC8FC\uC778\uB2D8\uC774 \uBCF4\uACE0 \uC2F6\uC5B4...\""
+    text: "\uC624\uB298 \uC548\uC5D0 \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC08 \uC218
+      \uC788\uC744\uAE4C? \uC8FC\uC778\uC774 \uBCF4\uACE0 \uC2F6\uC5B4..."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -295,7 +307,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uD798\uB0B4\uC11C \uACC4\uC18D \uAC00\uBCF4\uC790!\""
+    text: "\uD798\uB0B4\uC11C \uACC4\uC18D \uAC00\uBCF4\uC790!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -304,7 +316,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uB098\uBB34\uC0C1\uC790\uAC00 \uC5B4\uB514\uC5D0 \uC788\uC9C0?\""
+    text: "\uB098\uBB34\uC0C1\uC790\uAC00 \uC5B4\uB514\uC5D0 \uC788\uC9C0?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -313,8 +325,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC800 \uB192\uC774 \uC788\uAD6C\uB098? \uD55C\uBC88 \uB5A8\uC5B4\uD2B8\uB824
-      \uBCFC\uAE4C? \uC7AC\uBC0C\uACA0\uB2E4!\""
+    text: "\uC800 \uB192\uC774 \uC788\uB124? \uC800\uAC78 \uB0B4\uAC00 \uD22D \uCE58\uBA74
+      \uB5A8\uC5B4\uC9C0\uB824\uB098?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -323,8 +335,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uB2E4\uC2DC \uB3C4\uB85C\uB85C \uB098\uC654\uC5B4! \uC774\uC81C \uC870\uAE08\uB9CC
-      \uB354 \uAC00\uBA74...\""
+    text: "\uB2E4\uC2DC \uB3C4\uB85C\uB85C \uB098\uC654\uC5B4! \uC774\uC81C \uC870\uAE08\uB9CC
+      \uB354 \uAC00\uBA74..."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -333,7 +345,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uD081\uD081\u2026 \uC5B4\uB77C? \uB204\uAD6C\uC788\uC5B4?\""
+    text: "\uD081\uD081\u2026 \uC5B4\uB77C? \uB204\uAD6C\uC788\uC5B4?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -342,7 +354,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uC57C! \uB108 \uC9C0\uAE08 \uC5B4\uB514\uAC00\uACE0 \uC788\uC5B4?\""
+    text: "\uC57C! \uB108 \uC9C0\uAE08 \uC5B4\uB514\uAC00\uACE0 \uC788\uC5B4?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -351,8 +363,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uC544, \uC791\uC740 \uBB3C\uC18C\uAD6C\uB098! \uBC18\uAC00\uC6CC! \uB098
-      \uC9C0\uAE08 \uC9D1\uC73C\uB85C \uAC00\uB294 \uAE38\uC774\uC57C.\""
+    text: "\uC544, \uC791\uC740 \uBB3C\uC18C\uAD6C\uB098! \uBC18\uAC00\uC6CC! \uB098
+      \uC9C0\uAE08 \uC9D1\uC73C\uB85C \uAC00\uB294 \uAE38\uC774\uC57C."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -361,8 +373,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 3
-    text: "\"\uBB50? \uB0B4\uAC00 \uBB3C\uC18C\uB77C\uACE0?! \uB108 \uBA4D\uCCAD\uC774\uC57C?
-      \uB09C \uBA67\uB3FC\uC9C0\uC57C, \uBA67\uB3FC\uC9C0!\""
+    text: "\uBB50? \uB0B4\uAC00 \uBB3C\uC18C\uB77C\uACE0?! \uB108 \uBA4D\uCCAD\uC774\uC57C?
+      \uB09C \uBA67\uB3FC\uC9C0\uC57C, \uBA67\uB3FC\uC9C0!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -371,7 +383,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 4
-    text: "\"\uBA67\uB3FC\uC9C0\u2026? \uCC98\uC74C \uB4E4\uC5B4\uBCF4\uB294 \uC774\uB984\uC774\uC57C.\""
+    text: "\uBA67\uB3FC\uC9C0\u2026? \uCC98\uC74C \uB4E4\uC5B4\uBCF4\uB294 \uC774\uB984\uC774\uC57C."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -380,7 +392,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 4
-    text: "\"\uD558\u2026 \uBB50 \uC774\uB7F0 \uC560\uAC00 \uB2E4 \uC788\uB0D0~?\""
+    text: "\uD558\u2026 \uBB50 \uC774\uB7F0 \uC560\uAC00 \uB2E4 \uC788\uB0D0~?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -389,7 +401,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uADF8\uB798\uC11C, \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC00\uB294 \uC911\uC774\uB77C\uACE0?\""
+    text: "\uADF8\uB798\uC11C, \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC00\uB294 \uC911\uC774\uB77C\uACE0?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -398,8 +410,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC8FC\uC778\uC774 \uBA3C\uC800 \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC14\uAC70\uB4E0!
-      \uB098\uB3C4 \uBE68\uB9AC \uAC00\uC57C \uD574!\""
+    text: "\uC8FC\uC778\uC774 \uBA3C\uC800 \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC14\uAC70\uB4E0!
+      \uB098\uB3C4 \uBE68\uB9AC \uAC00\uC57C \uD574!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -408,8 +420,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 1
-    text: "\"\uADF8\uB798? \uB098\uB791 \uB180\uBA74 \uC7AC\uBC0C\uC744 \uD150\uB370!
-      \uB098 \uD798 \uC5C4\uCCAD \uC138\uAC70\uB4E0!\""
+    text: "\uADF8\uB798? \uB098\uB791 \uB180\uBA74 \uC7AC\uBC0C\uC744 \uD150\uB370!
+      \uB098 \uD798 \uC5C4\uCCAD \uC138\uAC70\uB4E0!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -418,8 +430,9 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uB9C8\uCE68 \uC800\uAE30 \uBC15\uC2A4\uAC00 \uC788\uB124! \uB0B4\uAC00
-      \uBCF4\uC5EC\uC904\uAC8C! \uC2E0\uD638\uB9CC \uC918!\""
+    text: "\uB9C8\uCE68 \uC800\uAE30 \uBC15\uC2A4\uAC00 \uC788\uB124! \uB108\uAC00
+      \uB0A0 \uBCF4\uBA74 \uBC14\uB85C \uBC00\uC5B4\uBCFC \uD14C\uB2C8\uAE4C, \uB0B4\uAC00
+      \uC5BC\uB9C8\uB098 \uC13C\uC9C0 \uC798 \uBD10\uB46C!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -428,7 +441,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 1
-    text: "\"\uC6B0\uD558\uD558! \uBD24\uC9C0? \uB098 \uBA4B\uC788\uC9C0?!\""
+    text: "\uC6B0\uD558\uD558! \uBD24\uC9C0? \uB098 \uBA4B\uC788\uC9C0?!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -437,7 +450,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uC751! \uB108 \uC9F1 \uBA4B\uC788\uB2E4!\""
+    text: "\uC640! \uB108 \uC9F1 \uBA4B\uC788\uB2E4!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -446,7 +459,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 1
-    text: "\"\uB108 \uB418\uAC8C \uB9C8\uC74C\uC5D0 \uB4DC\uB124.\""
+    text: "\uB108 \uB418\uAC8C \uB9C8\uC74C\uC5D0 \uB4DC\uB124!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -455,7 +468,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 3
-    text: "\"\uC5B4\uC5B4? \uB108 \uD63C\uC790 \uAC00\uB294\uAC70\uC57C?\""
+    text: "\uC5B4\uC5B4? \uB108 \uAC70\uAE38 \uC62C\uB77C\uAC00\uB294 \uAC70\uC57C?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -464,8 +477,9 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 4
-    text: "\"\uC751? \uC65C\uADF8\uB798? \uACBD\uC0AC\uB85C\uB97C \uBABB\uC624\uB974\uB294
-      \uAC70\uC57C?\""
+    text: "\uC751! \uC5EC\uAE30\uAC00 \uAE38\uC778 \uAC83 \uAC19\uC544! \uC5B4\uC11C
+      \uB108\uB3C4 \uC62C\uB77C\uC640!\\n\uC544, \uD639\uC2DC \uB192\uC740 \uACF3\uC744
+      \uBB34\uC11C\uC6CC \uD574?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -474,8 +488,10 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 2
-    text: "\"\uC544\uB2C8, \uADF8\u2026 \uC808\uB300 \uBB34\uC11C\uC6B4\uAC74 \uC544\uB2C8\uACE0,
-      \uBC29\uAE08 \uBC15\uCE58\uAE30\uB85C \uC870\uAE08 \uB2E4\uCCE4\uB098\uBD10.\""
+    text: "\uBB50?! \uC808\uB300 \uC544\uB2C8\uC57C! \uBB34\uC12D\uB2E4\uB2C8\u2026!
+      \uADF8\u2026 \uC808\uB300 \uBB34\uC11C\uC6B4 \uAC74 \uC544\uB2C8\uACE0, \uBC29\uAE08
+      \uBC15\uCE58\uAE30\uB85C \uC870\uAE08 \uB2E4\uCE5C \uAC83 \uAC19\uC544\uC11C.
+      \uC751..."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -484,7 +500,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uC9C0\uB098\uAC08 \uC218 \uC788\uAC8C \uAE38\uC744 \uB9CC\uB4E4\uC5B4\uC904\uB798?\""
+    text: "\uC9C0\uB098\uAC08 \uC218 \uC788\uAC8C \uAE38\uC744 \uB9CC\uB4E4\uC5B4\uC904\uB798?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -493,8 +509,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uC57C \uB108 \uC9D1\uC5D0 \uC548 \uAC00\uBA74 \uC548\uB3FC? \uB098\uB791
-      \uACC4\uC18D \uB180\uC790!\""
+    text: "\uC57C \uB108 \uC9D1\uC5D0 \uC548 \uAC00\uBA74 \uC548 \uB3FC? \uB098\uB791
+      \uACC4\uC18D \uB180\uC790!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -503,8 +519,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uD558\uC9C0\uB9CC \uB09C \uAF2D \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC00\uC57C
-      \uD574!\""
+    text: "\uD558\uC9C0\uB9CC \uB09C \uAF2D \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC00\uC57C
+      \uD574!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -513,7 +529,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 4
-    text: "\"\uC65C? \uAC70\uAE30 \uBB50 \uB300\uB2E8\uD55C \uAC70\uB77C\uB3C4 \uC788\uC5B4?\""
+    text: "\uC65C? \uAC70\uAE30 \uBB50 \uB300\uB2E8\uD55C \uAC70\uB77C\uB3C4 \uC788\uC5B4?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -522,8 +538,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uC751! \uBCF4\uBB3C \uAC19\uC740 \uC874\uC7AC\uAC00 \uC788\uAC70\uB4E0.
-      \uB0A0 \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC5B4!\""
+    text: "\uC751! \uBCF4\uBB3C \uAC19\uC740 \uC874\uC7AC\uAC00 \uC788\uAC70\uB4E0.
+      \uB0A0 \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC5B4!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -532,8 +548,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uC544, \uC8FC\uC778\uC774\uB77C\uB294 \uAC70 \uB9D0\uC774\uC9C0? \uC694\uC998
-      \uAC1C \uCE5C\uAD6C\uB4E4\uC740 \uC774\uC81C \uC8FC\uC778 \uC548 \uCC3E\uB358\uB370?\""
+    text: "\uC544, \uC8FC\uC778\uC774\uB77C\uB294 \uAC70 \uB9D0\uC774\uC9C0? \uC694\uC998
+      \uAC1C \uCE5C\uAD6C\uB4E4\uC740 \uC774\uC81C \uC8FC\uC778 \uC548 \uCC3E\uB358\uB370?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -542,7 +558,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 4
-    text: "\"\uC751? \uC65C?\""
+    text: "\uC751? \uC65C?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -551,8 +567,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uADF8\uC57C\u2026 \uC8FC\uC778\uC774 \uC790\uAE30\uB4E4\uC744 \uBC84\uB838\uB2E4\uACE0
-      \uD588\uC5B4. \uC544\uB2C8\uBA74 \uC11C\uB85C \uC78A\uC5C8\uB2E4\uB098 \uBB50\uB77C\uB098!\""
+    text: "\uADF8\uC57C\u2026 \uC8FC\uC778\uC774 \uC790\uAE30\uB4E4\uC744 \uBC84\uB838\uB2E4\uACE0
+      \uD588\uC5B4. \uC544\uB2C8\uBA74 \uC11C\uB85C \uC78A\uC5C8\uB2E4\uB098 \uBB50\uB77C\uB098!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -561,9 +577,9 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 1
-    text: "\"\uADF8\uB798\uC11C \uC9C0\uAE08\uC740 \uB098\uB791 \uB178\uB294 \uAC8C
+    text: "\uADF8\uB798\uC11C \uC9C0\uAE08\uC740 \uB098\uB791 \uB178\uB294 \uAC8C
       \uB354 \uC990\uAC81\uB300. \uB108\uB3C4 \uB098\uB791 \uAC19\uC774 \uB180\uB7EC
-      \uB2E4\uB2C8\uC790.\""
+      \uB2E4\uB2C8\uC790."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -572,8 +588,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 4
-    text: "\"\uBB50? \uC544\uB0D0! \uADF8\uAC74 \uB124 \uCE5C\uAD6C\uB4E4\uC774 \uC624\uD574\uD558\uB294
-      \uAC70\uC57C. \uAC54\uB124 \uC8FC\uC778\uC774 \uBC84\uB9B4\uB9AC \uC5C6\uC5B4.\""
+    text: "\uBB50? \uC544\uB0D0! \uADF8\uAC74 \uB124 \uCE5C\uAD6C\uB4E4\uC774 \uC624\uD574\uD558\uB294
+      \uAC70\uC57C. \uAC54\uB124 \uC8FC\uC778\uC774 \uBC84\uB9B4\uB9AC \uC5C6\uC5B4."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -582,7 +598,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 4
-    text: "\"\uC5B4? \uBC29\uAE08 \uC790\uD310\uAE30 \uBD88\uC774 \uCF1C\uC84C\uC5B4!\""
+    text: "\uC5B4? \uBC29\uAE08 \uC790\uD310\uAE30 \uBD88\uC774 \uCF1C\uC84C\uC5B4!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -591,7 +607,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uBB50? \uC798\uBABB \uBCF8\uAC70\uC57C, \uBC14\uBCF4\uC57C!\""
+    text: "\uBB50? \uC798\uBABB \uBCF8\uAC70\uC57C, \uBC14\uBCF4\uC57C!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -600,8 +616,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 4
-    text: "\"\uC544\uB0D0, \uBD84\uBA85\uD788 \uBD24\uC5B4! \uC790\uD310\uAE30 \uC548\uC5D0
-      \uC544\uC9C1 \uC791\uC740 \uBD88\uBE5B\uC774 \uB0A8\uC544\uC788\uC5B4!\""
+    text: "\uC544\uB0D0, \uBD84\uBA85\uD788 \uBD24\uC5B4! \uC790\uD310\uAE30 \uC548\uC5D0
+      \uC544\uC9C1 \uC791\uC740 \uBD88\uBE5B\uC774 \uB0A8\uC544\uC788\uC5B4!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -610,8 +626,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uC57C, \uC774 \uC138\uC0C1\uC5D0 \uB354 \uC774\uC0C1 \uBD88\uBE5B \uAC19\uC740
-      \uAC74 \uC5C6\uC5B4.\""
+    text: "\uC57C, \uC774 \uC138\uC0C1\uC5D0 \uB354 \uC774\uC0C1 \uBD88\uBE5B \uAC19\uC740
+      \uAC74 \uC5C6\uC5B4."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -620,7 +636,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"...\uB0B4 \uC0DD\uAC01\uC5D0\uB294 \uB108\uAC00 \uB354 \uBC14\uBCF4\uC57C!\""
+    text: "...\uB0B4 \uC0DD\uAC01\uC5D0\uB294 \uB108\uAC00 \uB354 \uBC14\uBCF4\uC57C!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -629,7 +645,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC800 \uBB38\uC740 \uBB50\uC9C0? \uC9C0\uB098 \uAC08 \uC218\uAC00 \uC5C6\uC796\uC544?\""
+    text: "\uC800 \uBB38\uC740 \uBB50\uC9C0? \uC9C0\uB098 \uAC08 \uC218\uAC00 \uC5C6\uC796\uC544?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -638,8 +654,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uC544! \uC774\uAC74 \uBC84\uD2BC\uCC3E\uAE30 \uB180\uC774\uC57C. \uBC84\uD2BC\uC744
-      \uCC3E\uC544\uC11C \uB204\uB974\uBA74 \uBB38\uC774 \uC9E0! \uD558\uACE0 \uC5F4\uB824.\""
+    text: "\uC544! \uC774\uAC74 \uBC84\uD2BC\uCC3E\uAE30 \uB180\uC774\uC57C. \uBC84\uD2BC\uC744
+      \uCC3E\uC544\uC11C \uB204\uB974\uBA74 \uBB38\uC774 \uC9E0! \uD558\uACE0 \uC5F4\uB824."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -648,7 +664,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uC8FC\uC704\uC5D0 \uBC84\uD2BC\uC774 \uC788\uC744\uAC70\uC57C, \uCC3E\uC544\uBCF4\uC790!\""
+    text: "\uC8FC\uC704\uC5D0 \uBC84\uD2BC\uC774 \uC788\uC744\uAC70\uC57C, \uCC3E\uC544\uBCF4\uC790!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -657,7 +673,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC800\uAE30 \uBC84\uD2BC\uC774 \uC788\uC5B4! \uC5B4\uB5BB\uAC8C \uD574\uC57C\uD558\uC9C0?\""
+    text: "\uC800\uAE30 \uBC84\uD2BC\uC774 \uC788\uC5B4! \uC5B4\uB5BB\uAC8C \uD574\uC57C\uD558\uC9C0?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -666,8 +682,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uBC1C\uD310\uC5D0 \uC62C\uB77C\uC11C\uAC70\uB098 \uC0C1\uC790\uB97C
-      \uC62C\uB9AC\uBA74 \uB418. \uADFC\uB370 \uC9C0\uAE08 \uC0C1\uC790\uAC00 \uC548\uBCF4\uC774\uB2C8\uAE4C...\""
+    text: "\uBC1C\uD310\uC5D0 \uC62C\uB77C\uC11C\uAC70\uB098 \uC0C1\uC790\uB97C \uC62C\uB9AC\uBA74
+      \uB3FC. \uADFC\uB370 \uC9C0\uAE08 \uC0C1\uC790\uAC00 \uC548\uBCF4\uC774\uB2C8\uAE4C..."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -676,8 +692,9 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uB0B4\uAC00 \uC62C\uB77C\uAC00\uC11C \uC5F4\uACE0 \uC788\uC5B4\uC904\uAC8C!
-      \uB098 \uC78A\uC9C0 \uB9D0\uC544\uC57C \uD574!\""
+    text: "\uB108\uBCF4\uB2E4 \uB354 \uC798 \uC544\uB294 \uB0B4\uAC00 \uC62C\uB77C\uAC00\uC11C
+      \uC5F4\uACE0 \uC788\uC5B4\uC904\uAC8C!\\n\uC57C, \uADFC\uB370 \uB098 \uB193\uACE0
+      \uADF8\uB0E5 \uAC00\uBC84\uB9AC\uBA74 \uC9C4\uC9DC \uD63C\uB09C\uB2E4?!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -686,7 +703,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uC5B4\uB77C? \uB09C \uC65C \uBC84\uD2BC\uC774 \uC548\uB20C\uB7EC\uC9C0\uC9C0?\""
+    text: "\uC5B4\uB77C? \uB09C \uC65C \uBC84\uD2BC\uC774 \uC548 \uB20C\uB7EC\uC9C0\uC9C0?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -695,8 +712,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uB10C \uB108\uBB34 \uAC00\uBCCD\uB098\uBD10. \uD558\uD558! \uB354 \uBB34\uAC70\uC6B4
-      \uB0B4 \uC2B9\uB9AC!\""
+    text: "\uB10C \uB108\uBB34 \uAC00\uBCCD\uB098\uBD10. \uD558\uD558! \uB354 \uBB34\uAC70\uC6B4
+      \uB0B4 \uC2B9\uB9AC!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -705,7 +722,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\"\uBA67\uB3FC\uC9C0\uC57C! \uB098\uB791 \uB180\uACE0 \uC2F6\uC5B4?\""
+    text: "\uBA67\uB3FC\uC9C0\uC57C! \uB098\uB791 \uB180\uACE0 \uC2F6\uC5B4?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -714,7 +731,7 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 1
-    text: "\"\uB2F9\uC5F0\uD558\uC9C0!\""
+    text: "\uB2F9\uC5F0\uD558\uC9C0!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -723,9 +740,9 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 2
-    text: "\"\uB108\uD55C\uD150 \uCE5C\uAD6C\uAC00\u2026 \uBCF4\uBB3C \uAC19\uC740
+    text: "\uB108\uD55C\uD150 \uCE5C\uAD6C\uAC00\u2026 \uBCF4\uBB3C \uAC19\uC740
       \uC874\uC7AC\uC778\uAC00 \uBD10. \uD558\uC9C0\uB9CC \uB098\uB294 \uAF2D \uB3CC\uC544\uAC00\uC57C
-      \uD574.\""
+      \uD574."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -734,8 +751,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 0
-    text: "\"\uADF8 \uC8FC\uC778\uC774\uB77C\uB294 \uAC8C, \uB108\uD55C\uD150 \uB0B4
-      \uCE5C\uAD6C\uB4E4\uB9CC\uD07C \uC18C\uC911\uD55C \uAC70\uC600\uC5B4?\""
+    text: "\uADF8 \uC8FC\uC778\uC774\uB77C\uB294 \uAC8C, \uB108\uD55C\uD150 \uB0B4
+      \uCE5C\uAD6C\uB4E4\uB9CC\uD07C \uC18C\uC911\uD55C \uAC70\uC600\uC5B4?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -744,7 +761,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uC751! \uC138\uC0C1\uC5D0\uC11C \uC81C\uC77C \uC18C\uC911\uD574.\""
+    text: "\uC751! \uC138\uC0C1\uC5D0\uC11C \uC81C\uC77C \uC18C\uC911\uD574."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -753,8 +770,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 2
-    text: "\"\uADF8\uB7FC \uC5BC\uB978 \uAC00\uC57C\uACA0\uB124. \uC18C\uC911\uD55C
-      \uAC78 \uAE30\uB2E4\uB9AC\uAC8C \uD574\uC11C\uB294 \uC548 \uB418\uB2C8\uAE4C.\""
+    text: "\uADF8\uB7FC \uC5BC\uB978 \uAC00\uC57C\uACA0\uB124. \uC18C\uC911\uD55C
+      \uAC78 \uAE30\uB2E4\uB9AC\uAC8C \uD574\uC11C\uB294 \uC548 \uB418\uB2C8\uAE4C."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -763,8 +780,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 1
     emotion: 1
-    text: "\"\uB300\uC2E0 \uC885\uC885 \uB098\uB791\uB3C4 \uB180\uC544\uC918\uC57C
-      \uD574. \uB108\uB3C4 \uC774\uC81C \uB0B4 \uCE5C\uAD6C\uB2C8\uAE4C!\""
+    text: "\uB300\uC2E0 \uC885\uC885 \uB098\uB791\uB3C4 \uB180\uC544\uC918\uC57C
+      \uD574. \uB108\uB3C4 \uC774\uC81C \uB0B4 \uCE5C\uAD6C\uB2C8\uAE4C!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -773,8 +790,18 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\"\uC751! \uB2E4\uC74C\uC5D0 \uB610 \uB180\uC790! \uADF8\uB54C \uB0B4\uAC00
-      \uAC04\uC2DD\uB3C4 \uAC00\uC838\uC62C\uAC8C!\""
+    text: "\uC751! \uB2F9\uC5F0\uD558\uC9C0, \uCE5C\uAD6C! \uB2E4\uC74C\uC5D0 \uB610
+      \uB180\uC790!"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_1_10_11
+    seq: 8
+    speaker_position: 1
+    speaker_id: 1
+    emotion: 1
+    text: "\uB2E4\uC74C\uC5D0\uB294 \uB0B4\uAC00 \uB108\uC758 \uBCF4\uAE08\uC790\uB9AC\uB85C
+      \uB180\uB7EC\uAC00\uC8FC\uB9C8!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null

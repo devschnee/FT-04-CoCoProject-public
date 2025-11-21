@@ -117,7 +117,7 @@ public class StageManager : MonoBehaviour, IStageManager
         AudioEvents.RaiseStageBGM(bgmClip);
 
         camControl.FindWayPoint();
-        yield return camControl.StartCoroutine(camControl.CameraWalking(5f));
+        yield return camControl.StartCoroutine(camControl.CameraWalking(1.25f));
 
 
         //Todo : 컷씬 지난후 대화가 있다면 여기서 실행

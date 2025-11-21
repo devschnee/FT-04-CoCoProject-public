@@ -28,11 +28,16 @@ public class CamControl : MonoBehaviour
 
     public void FindWayPoint()
     {
-        if (wayPoint == null || wayPoint.Length < 2)
-            wayPoint = new Transform[2];
+        if (wayPoint == null || wayPoint.Length < 5)
+            wayPoint = new Transform[5];
 
         wayPoint[0] = stage.GetComponentInChildren<EndBlock>().transform;
-        wayPoint[1] = stage.GetComponentInChildren<StartBlock>().transform;
+        wayPoint[4] = stage.GetComponentInChildren<StartBlock>().transform;
+        var treasureposList = stage.GetComponentsInChildren<Treasure>();
+        for (int i = 0; i < treasureposList.Length; i++)
+        {
+            wayPoint[i + 1] = treasureposList[i].transform;
+        }
     }
 
     public IEnumerator CameraWalking(float duration = 2f)
@@ -43,23 +48,32 @@ public class CamControl : MonoBehaviour
             yield break;
         }
 
-        // 시작 / 끝 위치 설정
-        Vector3 startPos = wayPoint[0].position + offset;
-        Vector3 endPos = wayPoint[1].position + offset;
+        //Transform[] wayPoints = new Transform[wayPoint.Length];
 
-        float t = 0f;
+        
+        //// 시작 / 끝 위치 설정
+        //Vector3 startPos = wayPoint[0].position + offset;
+        //Vector3 endPos = wayPoint[4].position + offset;
 
-        cam.transform.position = startPos;
+
 
         // duration 동안 천천히 이동
-        while (t < duration)
+
+        for (int i = 0; i < wayPoint.Length - 1; i++)
         {
-            t += Time.deltaTime;
-            float lerpT = Mathf.Clamp01(t / duration);
+            cam.transform.position = wayPoint[i].position + offset;
+            float t = 0f;
+            while (t < duration)
+            {
+        
+                t += Time.deltaTime;
+                float lerpT = Mathf.Clamp01(t / duration);
 
-            cam.transform.position = Vector3.Lerp(startPos, endPos, lerpT);
+                cam.transform.position = 
+                    Vector3.Lerp(wayPoint[i].position + offset, wayPoint[i + 1].position + offset, lerpT);
 
-            yield return null;
+                yield return null;
+            }
         }
     }
     //카메라워킹 맵 로딩 후 end블록에서 start블록으로 offset 얼마?

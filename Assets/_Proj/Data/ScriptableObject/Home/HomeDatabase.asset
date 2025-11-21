@@ -23,7 +23,7 @@ MonoBehaviour:
       \uB290\uAEF4\uC9C0\uB294 \uC9D1\uC785\uB2C8\uB2E4.\""
   - home_id: 40002
     home_name: "\uCEA0\uD551\uCE74"
-    home_prefab: Prefabs/Home/car-camper-vintage
+    home_prefab: Prefabs/Home/car-caravan-small-standing-b
     home_icon: Icons/Home/icon_home_camping_car
     home_tag: 0
     home_acquire: 0
