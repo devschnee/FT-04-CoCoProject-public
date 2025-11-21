@@ -582,30 +582,40 @@ public class FirebaseManager : MonoBehaviour
             displayMessage?.Invoke("<color=red>같은 이름으로는 변경할 수 없어요!</color>");
             return false;
         }
-
-        displayMessage?.Invoke($"새 닉네임 {newName} 중복 검사 중...");
-        //DB의 '이미 존재하는 닉네임' 노드에 새 닉네임이 있는지 검사하는 트랜잭션 수행.
-        var result = await AllNamesRef.Child(newName).RunTransaction(mutableData =>
+        try
         {
-            if (mutableData.Value != null)
+            displayMessage?.Invoke($"새 닉네임 {newName} 중복 검사 중...");
+            //DB의 '이미 존재하는 닉네임' 노드에 새 닉네임이 있는지 검사하는 트랜잭션 수행.
+            //TransactionResult transactionResult = null;
+            
+            var result = await AllNamesRef.Child(newName).RunTransaction(mutableData =>
             {
-                //이미 mutableData가 존재: 중복 닉으로 존재한다는 뜻.
-                displayMessage?.Invoke($"<color=red>이미 사용 중인 닉네임이에요!</color>");
-                return TransactionResult.Abort();
+                
+                if (mutableData.Value != null)
+                {
+                    //이미 mutableData가 존재: 중복 닉으로 존재한다는 뜻.
+                    displayMessage?.Invoke($"<color=red>이미 사용 중인 닉네임이에요!</color>");
+                    return TransactionResult.Abort();
+                }
+
+                //'닉네임'이라는 키의 '값'을 현재 유저의 uid로
+                mutableData.Value = Auth.CurrentUser.UserId;
+
+                //
+
+
+                //커밋 요청 부분
+                return TransactionResult.Success(mutableData);
+            });
+
+            //result.Exists == false면, 중복 닉이란 뜻임.
+            if (result == null || !result.Exists)
+            {
+                displayMessage?.Invoke("<color=red>이미 사용 중인 닉네임이에요!</color>");
+                return false;
             }
-
-            //'닉네임'이라는 키의 '값'을 현재 유저의 uid로
-            mutableData.Value = Auth.CurrentUser.UserId;
-
-            //
-
-
-            //커밋 요청 부분
-            return TransactionResult.Success(mutableData);
-        });
-
-        //result.Exists == false면, 중복 닉이란 뜻임.
-        if ((string)result.Value != Auth.CurrentUser.UserId)
+        }
+        catch (Exception e)
         {
             displayMessage?.Invoke("<color=red>이미 사용 중인 닉네임이에요!</color>");
             return false;

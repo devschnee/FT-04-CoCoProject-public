@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,10 +14,11 @@ public class NicknameSceneManager : MonoBehaviour
     [SerializeField] Button confirmButton;
     void Awake()
     {
-        confirmButton.onClick.AddListener(() => OnConfirmButtonClick());
+        //confirmButton.onClick.AddListener(() => await OnConfirmButtonClick());
+        confirmButton.onClick.AddListener(async () => await OnConfirmButtonClick());
     }
 
-    public async void OnConfirmButtonClick()
+    public async Task OnConfirmButtonClick()
     {
         confirmButton.interactable = false;
         bool isSucceed = await FirebaseManager.Instance.CheckIfNameReservedAndReset(nicknameInputField.text, ShowLog);
