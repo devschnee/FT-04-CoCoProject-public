@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BuggyBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Buggy
+  blockName: BuggyProp
   icon: {fileID: 21300000, guid: 7dd5a84e347724c418a587c8c6d000fd, type: 3}
-  prefab: {fileID: 1800983858030130224, guid: 5547f55f9cc1fbe48917944880a16aa3, type: 3}
+  prefab: {fileID: 2586977307150294849, guid: 5547f55f9cc1fbe48917944880a16aa3, type: 3}

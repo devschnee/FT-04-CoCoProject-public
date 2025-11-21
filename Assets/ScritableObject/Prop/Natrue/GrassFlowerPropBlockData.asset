@@ -15,4 +15,4 @@ MonoBehaviour:
   blockType: 17
   blockName: GrassFlowerProp
   icon: {fileID: 21300000, guid: fefbe781d5a73b046a9dc50b063e0514, type: 3}
-  prefab: {fileID: 5200055345701486149, guid: 621668145de21c045bee7968155533a7, type: 3}
+  prefab: {fileID: 8821344791760855605, guid: 8ec3c49b41ad239498f8309f7e7fa85d, type: 3}

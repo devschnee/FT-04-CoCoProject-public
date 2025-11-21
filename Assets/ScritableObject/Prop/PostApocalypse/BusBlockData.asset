@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BusBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Bus
+  blockName: BusProp
   icon: {fileID: 21300000, guid: 87fc6b6f547eb044884db3e4d85b59a7, type: 3}
-  prefab: {fileID: 3920792900693390878, guid: 6eb5da9a4604bbf418e671abdd2a87b9, type: 3}
+  prefab: {fileID: 711662003436036298, guid: 6eb5da9a4604bbf418e671abdd2a87b9, type: 3}

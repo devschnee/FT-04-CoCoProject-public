@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GasBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Gas
+  blockName: GasProp
   icon: {fileID: 21300000, guid: e280b5f02606b6f489d79c57d4b1db6d, type: 3}
-  prefab: {fileID: 5949537532173166016, guid: dd469477851a1314a876454afc773e20, type: 3}
+  prefab: {fileID: 1878743321304180596, guid: dd469477851a1314a876454afc773e20, type: 3}

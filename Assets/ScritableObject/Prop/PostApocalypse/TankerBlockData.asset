@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TankerBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Tanker
+  blockName: TankerProp
   icon: {fileID: 21300000, guid: fc15478e20e4f8848a4b69cfc78a3960, type: 3}
-  prefab: {fileID: 3717425071301416377, guid: 22af7e3c83eb7de4695ac88b19490878, type: 3}
+  prefab: {fileID: 211787244179523390, guid: 22af7e3c83eb7de4695ac88b19490878, type: 3}

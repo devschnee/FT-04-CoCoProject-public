@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RailBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: Rail
+  blockName: RailProp
   icon: {fileID: 21300000, guid: 5061c95241c0d7944b6604b0f554dd2c, type: 3}
-  prefab: {fileID: 3902330608743203154, guid: 82c96f3bed78fbe4cabb38ac5af3e125, type: 3}
+  prefab: {fileID: 4893553090321660947, guid: 82c96f3bed78fbe4cabb38ac5af3e125, type: 3}

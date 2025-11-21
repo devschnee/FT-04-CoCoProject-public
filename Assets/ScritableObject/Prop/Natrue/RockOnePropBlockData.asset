@@ -15,4 +15,4 @@ MonoBehaviour:
   blockType: 17
   blockName: RockOneProp
   icon: {fileID: 21300000, guid: 036e13e0c0f59d147819614f6014f597, type: 3}
-  prefab: {fileID: 5081574967270136364, guid: b8ae9b73ac663a847bd3b8c157cffd7f, type: 3}
+  prefab: {fileID: 6899720915197107007, guid: b8ae9b73ac663a847bd3b8c157cffd7f, type: 3}

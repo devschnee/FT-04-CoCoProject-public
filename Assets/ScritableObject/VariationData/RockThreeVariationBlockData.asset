@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6709f9597b19091438fde9648ca8a6d7, type: 3}
+  m_Name: RockThreeVariationBlockData
+  m_EditorClassIdentifier: 
+  blockType: 0
+  blockName: RockThreeVariationBlock
+  icon: {fileID: 21300000, guid: 75b2314d7a1247c4a9733f8c6d9b6c04, type: 3}
+  prefab: {fileID: 3011997372587890398, guid: b3e900916c7f0d443b0a48a17b73cef6, type: 3}

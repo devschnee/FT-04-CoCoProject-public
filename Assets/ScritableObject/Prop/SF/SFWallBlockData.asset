@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SFWallBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: SFWall
+  blockName: SFWallProp
   icon: {fileID: 21300000, guid: 8683c76070b68c747bb121d842a64f47, type: 3}
-  prefab: {fileID: 5755180321215931812, guid: 4ff49f6bbe5d0cb4e8dce224645b3159, type: 3}
+  prefab: {fileID: 6050818059091372638, guid: 4ff49f6bbe5d0cb4e8dce224645b3159, type: 3}

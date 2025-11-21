@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TrainOneBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: TrainOne
+  blockName: TrainOneProp
   icon: {fileID: 21300000, guid: 7a83a095d0e7cba41a45ea0d3c69964f, type: 3}
-  prefab: {fileID: 808252703476398537, guid: 745da22bc3339cd46879a61eea1529f1, type: 3}
+  prefab: {fileID: 5199549470770655982, guid: 45317c31234d1db4aa1289de19272fc6, type: 3}

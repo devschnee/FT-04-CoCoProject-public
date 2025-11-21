@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RoadSignBlockData
   m_EditorClassIdentifier: 
   blockType: 17
-  blockName: RoadSign
+  blockName: RoadSignProp
   icon: {fileID: 21300000, guid: d026d13bd909ccd409c5d7bfd66ff838, type: 3}
-  prefab: {fileID: 8665895390113943770, guid: d295724e2df565644acadb43de85d949, type: 3}
+  prefab: {fileID: 320987188703012448, guid: d295724e2df565644acadb43de85d949, type: 3}

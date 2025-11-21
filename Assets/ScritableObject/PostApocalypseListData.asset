@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6dfc3e6eba0931439c057868a977b6f, type: 3}
   m_Name: PostApocalypseListData
   m_EditorClassIdentifier: 
-  categoryName: F7
+  categoryName: F6
   icon: {fileID: 21300000, guid: 8f9e1a577ef67d141832589ca797fd1e, type: 3}
   blocks:
   - {fileID: 11400000, guid: c8d8bf76129f92545887024bf546b2b9, type: 2}

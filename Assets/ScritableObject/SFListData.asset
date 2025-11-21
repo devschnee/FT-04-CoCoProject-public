@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6dfc3e6eba0931439c057868a977b6f, type: 3}
   m_Name: SFListData
   m_EditorClassIdentifier: 
-  categoryName: F8
+  categoryName: F7
   icon: {fileID: 21300000, guid: a1f54a34eddcae34cba5ec80e9ff29f3, type: 3}
   blocks:
   - {fileID: 11400000, guid: 8e5d6ad7c2e26d94b85d53bebca61154, type: 2}
