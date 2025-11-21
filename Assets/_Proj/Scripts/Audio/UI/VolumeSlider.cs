@@ -21,18 +21,18 @@ public class VolumeSlider : MonoBehaviour
                 slider.value = audioManager.GetVolume(audioType);
                 slider.onValueChanged.AddListener(v => audioManager.SetVolume(audioType, v));
                 break;
-            case AudioType.Ambient:
-                slider.value = audioManager.GetVolume(audioType);
-                slider.onValueChanged.AddListener(v => audioManager.SetVolume(audioType, v));
-                break;
-            case AudioType.Cutscene:
-                slider.value = audioManager.GetVolume(audioType);
-                slider.onValueChanged.AddListener(v => audioManager.SetVolume(audioType, v));
-                break;
-            case AudioType.Voice:
-                slider.value = audioManager.GetVolume(audioType);
-                slider.onValueChanged.AddListener(v => audioManager.SetVolume(audioType, v));
-                break;
+            // case AudioType.Ambient:
+            //     slider.value = audioManager.GetVolume(audioType);
+            //     slider.onValueChanged.AddListener(v => audioManager.SetVolume(audioType, v));
+            //     break;
+            // case AudioType.Cutscene:
+            //     slider.value = audioManager.GetVolume(audioType);
+            //     slider.onValueChanged.AddListener(v => audioManager.SetVolume(audioType, v));
+            //     break;
+            // case AudioType.Voice:
+            //     slider.value = audioManager.GetVolume(audioType);
+            //     slider.onValueChanged.AddListener(v => audioManager.SetVolume(audioType, v));
+            //     break;
             case AudioType.Master:
                 slider.value = audioManager.GetVolume(audioType);
                 slider.onValueChanged.AddListener(v => audioManager.SetVolume(audioType, v));

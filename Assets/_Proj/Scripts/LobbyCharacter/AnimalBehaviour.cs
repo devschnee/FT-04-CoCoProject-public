@@ -35,17 +35,17 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour
         base.Update();
     }
 
-    // 인터페이스 영역
-    public override void OnCocoAnimalEmotion()
+    // 코코두기 상호작용
+    public void EndAnimalInteractState()
     {
-        base.OnCocoAnimalEmotion();
-        if (!agent.isStopped) agent.isStopped = true;
+        fsm.ChangeState(IdleState);
+    }
+    public void ChangeAnimalInteractState()
+    {
+        fsm.ChangeState(InteractState);
+    }
 
-    }
-    public override void OnCocoMasterEmotion()
-    {
-        base.OnCocoMasterEmotion();
-    }
+    // 인터페이스 영역
     public override void OnLobbyBeginDrag(Vector3 position)
     {
         base.OnLobbyBeginDrag(position);

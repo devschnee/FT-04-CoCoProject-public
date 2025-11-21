@@ -47,25 +47,20 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
     }
 
     //코코두기 상호작용
-    public void OnMasterInteractionEnd()
+    public void EndMasterInteractState()
     {
-        LobbyCharacterManager.Instance.GetCoco()?.EndMasterInteraction();
         fsm.ChangeState(IdleState);
+    }
+    public void ChangeMasterInteractState()
+    {
+        fsm.ChangeState(InteractState);
+    }
+    public void EndCocoInteractState()
+    {
+        LobbyCharacterManager.Instance.GetCoco()?.EndCocoInteractState();
     }
 
     // 인터페이스 영역
-    public override void OnCocoAnimalEmotion()
-    {
-        base.OnCocoAnimalEmotion();
-    }
-    public override void OnCocoMasterEmotion()
-    {
-        if (fsm.CurrentState == MoveState)
-        {
-            fsm.ChangeState(InteractState);
-        }
-        else return;
-    }
     public override void OnLobbyBeginDrag(Vector3 position)
     {
         base.OnLobbyBeginDrag(position);

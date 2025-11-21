@@ -1352,7 +1352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6904664834083274978, guid: 89be32c66ccb304408efa8939d3af672, type: 3}
       propertyPath: fadeInTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6904664834083274978, guid: 89be32c66ccb304408efa8939d3af672, type: 3}
       propertyPath: fadeOutTime
@@ -14400,6 +14400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plane: {fileID: 560317841}
   editController: {fileID: 444961667}
+  interactDistance: 10
   IsInitMode: 1
 --- !u!4 &1479412857
 Transform:

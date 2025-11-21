@@ -34,7 +34,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual14
+    stage_bgm: Sound/Bgm/Casual14
   - stage_id: stage_0_2
     stage_name: "\uD504\uB864\uB85C\uADF82"
     stage_img: Img/Stage/stage_1_1_main
@@ -56,7 +56,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual7
+    stage_bgm: Sound/Bgm/Casual7
   - stage_id: stage_1_1
     stage_name: "1-1. \uC78A\uD600\uC9C4 \uACE0\uC18D\uB3C4\uB85C(1)"
     stage_img: Img/Stage/stage_1_1_main
@@ -79,7 +79,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_2
     stage_name: "1-2. \uC78A\uD600\uC9C4 \uACE0\uC18D\uB3C4\uB85C(2) "
     stage_img: Img/Stage/stage_1_1_main
@@ -103,7 +103,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_3
     stage_name: "1-3. \uC232\uC18D\uC758 \uB0AF\uC120 \uC2DC\uC120"
     stage_img: Img/Stage/stage_1_1_main
@@ -127,7 +127,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_4
     stage_name: "1-4. \uACBD\uACC4\uC120\uC758 \uB9CC\uB0A8(1)"
     stage_img: Img/Stage/stage_1_1_main
@@ -150,7 +150,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_5
     stage_name: "1-5. \uACBD\uACC4\uC120\uC758 \uB9CC\uB0A8(2)"
     stage_img: Img/Stage/stage_1_1_main
@@ -174,7 +174,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_6
     stage_name: "1-6. \uB450 \uAC08\uB798\uC758 \uB9C8\uC74C"
     stage_img: Img/Stage/stage_1_1_main
@@ -197,7 +197,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_7
     stage_name: "1-7. \uD76C\uBBF8\uD55C \uBD88\uBE5B(1)"
     stage_img: Img/Stage/stage_1_1_main
@@ -221,7 +221,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_8
     stage_name: "1-8. \uD76C\uBBF8\uD55C \uBD88\uBE5B(2)"
     stage_img: Img/Stage/stage_1_1_main
@@ -245,7 +245,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_9
     stage_name: "1-9. \uD76C\uBBF8\uD55C \uBD88\uBE5B(3)"
     stage_img: Img/Stage/stage_1_1_main
@@ -269,7 +269,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_1_10
     stage_name: "1-10. \uC18C\uC911\uD55C \uBCF4\uBB3C"
     stage_img: Img/Stage/stage_1_1_main
@@ -294,7 +294,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual10
+    stage_bgm: Sound/Bgm/Casual10
   - stage_id: stage_2_1
     stage_name: "2-1. \uB2EC\uBE5B\uC758 \uAC15\uAC00(1)"
     stage_img: Img/Stage/stage_2_1_main
@@ -317,7 +317,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual2
+    stage_bgm: Sound/Bgm/Casual2
   - stage_id: stage_2_2
     stage_name: "2-1. \uB2EC\uBE5B\uC758 \uAC15\uAC00(2)"
     stage_img: Img/Stage/stage_2_1_main
@@ -341,7 +341,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual2
+    stage_bgm: Sound/Bgm/Casual2
   - stage_id: stage_2_3
     stage_name: "2-3. \uC870\uC6A9\uD55C \uAC15\uAC00\uC758 \uC190\uB2D8"
     stage_img: Img/Stage/stage_2_1_main
@@ -365,7 +365,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual2
+    stage_bgm: Sound/Bgm/Casual2
   - stage_id: stage_2_4
     stage_name: "2-4. \uD750\uB984\uC758 \uB3D9\uD589(1)"
     stage_img: Img/Stage/stage_2_1_main
@@ -389,7 +389,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual2
+    stage_bgm: Sound/Bgm/Casual2
   - stage_id: stage_2_5
     stage_name: "2-5. \uD750\uB984\uC758 \uB3D9\uD589(2)"
     stage_img: Img/Stage/stage_2_1_main
@@ -412,7 +412,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual2
+    stage_bgm: Sound/Bgm/Casual2
   - stage_id: stage_2_6
     stage_name: "2-6. \uD750\uB984\uC758 \uB3D9\uD589(3)"
     stage_img: Img/Stage/stage_2_1_main
@@ -435,7 +435,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual2
+    stage_bgm: Sound/Bgm/Casual2
   - stage_id: stage_2_7
     stage_name: "2-7. \uBC1C\uB05D\uC758 \uC6A9\uAE30"
     stage_img: Img/Stage/stage_2_1_main
@@ -458,7 +458,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual2
+    stage_bgm: Sound/Bgm/Casual2
   - stage_id: stage_2_8
     stage_name: "2-8. \uB2EC\uBE5B\uC758 \uCDA4"
     stage_img: Img/Stage/stage_2_1_main
@@ -482,4 +482,4 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: /Sound/Bgm/Casual2
+    stage_bgm: Sound/Bgm/Casual2

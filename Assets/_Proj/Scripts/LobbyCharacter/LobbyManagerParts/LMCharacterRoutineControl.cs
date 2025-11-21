@@ -9,12 +9,8 @@ public class LMCharacterRoutineControl
 {
     private CocoDoogyBehaviour coco;
     private MasterBehaviour master;
-    //private ILobbyCharactersEmotion emotion;
     private WaitForSeconds delay;
     private WaitUntil wait;
-    //private float interactDistance = 10f;
-    //private float loading = 0f;
-    //private float RoutineDelay = 5f;
 
     public LMCharacterRoutineControl(CocoDoogyBehaviour coco, MasterBehaviour master)
     {
@@ -31,23 +27,6 @@ public class LMCharacterRoutineControl
         {
             if (!coco.gameObject.activeSelf) yield return CocoRoutine();
             if (!master.gameObject.activeSelf) yield return MasterRoutine();
-            // if (coco.gameObject.activeSelf && master.gameObject.activeSelf)
-            // {
-            //     // 코코두기와 마스터, 동물들 상호작용. 일단 코코두기와 마스터 먼저 만들자.
-            //     if (LobbyCharacterManager.Instance.IsEditMode == false)
-            //     {
-            //         float cmDist = Vector3.Distance(coco.transform.position, master.transform.position);
-            //         if (cmDist < interactDistance && !coco.IsInteracting && !coco.IsCMInteracted)
-            //         {
-            //             coco.OnCocoMasterEmotion();
-            //             master.OnCocoMasterEmotion();
-            //         }
-            //     }
-            //     else
-            //     {
-            //         yield return wait;
-            //     }
-            // }
             yield return null;
         }
     }
@@ -59,7 +38,7 @@ public class LMCharacterRoutineControl
         {
             yield return delay = new (5f); // 로비 시작 후 좀 있다가 생성하는게 이쁘지 않을까?
             coco.gameObject.SetActive(true);
-            coco.ResetInteractCount();
+            coco.SetCharInteracted(2);
             yield break;
         }
         else
@@ -138,15 +117,3 @@ public class LMCharacterRoutineControl
 //             master.ResetInteract(0);
 //         }
 //     }
-
-// 코코두기 안드로이드 거리 감지 및 상호작용 이벤트
-//      1회성만 가능하게 만들어야함
-//      if (coco.gameObject.activeSelf && master.gameObject.activeSelf)
-//      {
-//          float dist = Vector3.Distance(coco.transform.position, master.transform.position);
-//          if (dist < interactDistance)
-//          {
-//               coco.OnCocoMasterEmotion();
-//              master.OnCocoMasterEmotion();
-//          }
-//      }

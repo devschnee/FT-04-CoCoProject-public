@@ -19,7 +19,7 @@ public class BGMPlayer : AudioPlayerControl
         currentSource = gObj.AddComponent<AudioSource>();
         activeSources.Add(currentSource);
         currentSource.outputAudioMixerGroup = group;
-        currentSource.volume = 1;
+        currentSource.volume = 1f;
     }
 
     public void PlayAudio(AudioClip clip, float fadeIn, float fadeOut, bool loop)
@@ -89,7 +89,7 @@ public class BGMPlayer : AudioPlayerControl
         }
         else
         {
-            Debug.Log($"BGMPlayer : AudioClip 없음 {clip.name}");
+            Debug.Log($"BGMPlayer : AudioClip 없음");
         }
     }
 

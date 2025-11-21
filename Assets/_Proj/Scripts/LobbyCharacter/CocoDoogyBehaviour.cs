@@ -11,9 +11,9 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
 {
     public Vector3 LastDragEndPos { get; private set; }
     public bool IsDragged { get; private set; }
-    public bool IsCMInteracted { get; private set; } = false;
-    public bool IsCAInteracted { get; private set; } = false;
-    public bool IsInteracting { get; private set; } = false;
+    public bool IsCMInteracted { get; private set; }
+    public bool IsCAInteracted { get; private set; }
+    private bool isInteracting;
 
     protected override void InitStates()
     {
@@ -47,35 +47,11 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     }
 
     // 코코두기 상호작용 부분
-    public void SetIsInteracting(bool trueorfalse)
-    {
-        if (trueorfalse)
-        {
-            IsInteracting = true;
-        }
-        else
-        {
-            IsInteracting = false;
-        }
-    }
-    public void EndMasterInteraction()
-    {
-        SetTrueCharInteract(0);
-        fsm.ChangeState(IdleState);
-        SetIsInteracting(false);
-        Debug.Log($"{name} : IsCMInteracted : {IsCMInteracted}, IsInteracting : {IsInteracting}");
-    }
-    public void EndAnimalInteraction()
-    {
-        SetTrueCharInteract(1);
-        fsm.ChangeState(IdleState);
-        SetIsInteracting(false);
-    }
     /// <summary>
-    /// 코코두기의 상호작용. 0 = 마스터, 1 = 동물들
+    /// 코코두기의 상호작용. 0 = 마스터 상호작용 함, 1 = 동물 상호작용 함, 2 = 둘다 리셋 false로
     /// </summary>
     /// <param name="i"></param>
-    public void SetTrueCharInteract(int i)
+    public void SetCharInteracted(int i)
     {
         if (i == 0)
         {
@@ -85,11 +61,11 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
         {
             IsCAInteracted = true;  
         }
-    }
-    public void ResetInteractCount()
-    {
-        IsCMInteracted = false;
-        IsCAInteracted = false;
+        else if (i == 2)
+        {
+            IsCMInteracted = false;
+            IsCAInteracted = false;
+        }
     }
 
     public void SetLastDragEndPos(Vector3 pos)
@@ -100,25 +76,49 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     {
         IsDragged = which;
     }
-
-    // 인터페이스 영역
-    public override void OnCocoAnimalEmotion()
+    public void ResetInteracting()
     {
-        base.OnCocoAnimalEmotion();
-        (InteractState as LCocoDoogyInteractState).SetCAM(0, false);
-        (InteractState as LCocoDoogyInteractState).SetCAM(1, true);
-        fsm.ChangeState(InteractState);
+        isInteracting = false;
     }
-    public override void OnCocoMasterEmotion()
+    public void EndCocoInteractState()
     {
-        if (fsm.CurrentState == MoveState)
+        fsm.ChangeState(IdleState);
+        ResetInteracting();
+    }
+    public void ChangeMasterInteractState()
+    {
+        LobbyCharacterManager.Instance.GetMaster()?.ChangeMasterInteractState();
+    }
+    // 인터페이스 영역
+    /// <summary>
+    /// 코코두기와 동물들 상호작용
+    /// </summary>
+    public void OnCocoAnimalEmotion()
+    {
+        if(!(fsm.CurrentState == MoveState) || IsCAInteracted == true) return;
+        if (isInteracting == false)
         {
             (InteractState as LCocoDoogyInteractState).SetCAM(0, true);
-            (InteractState as LCocoDoogyInteractState).SetCAM(1, false);
             fsm.ChangeState(InteractState);
+            isInteracting = true;
         }
         else return;
     }
+    /// <summary>
+    /// 코코두기와 마스터 상호작용
+    /// </summary>
+    public void OnCocoMasterEmotion()
+    {
+        if(!(fsm.CurrentState == MoveState) || IsCMInteracted == true) return;
+        if (isInteracting == false)
+        {
+            (InteractState as LCocoDoogyInteractState).SetCAM(1, true);
+            fsm.ChangeState(InteractState);
+            isInteracting = true;
+        }
+        else return;
+    }
+
     public override void OnLobbyBeginDrag(Vector3 position)
     {
         base.OnLobbyBeginDrag(position);
@@ -172,6 +172,7 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     public override void LoadInit()
     {
         base.LoadInit();
+        isInteracting = false;
         IsCMInteracted = false;
         IsCAInteracted = false;
         agent.avoidancePriority = 20;

@@ -24,14 +24,17 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
         if (isCM)
         {
+            isCM = false;
             var master = LobbyCharacterManager.Instance.GetMaster();
             owner.transform.LookAt(master.transform.position);
             charAnim.PlayCocoInterationWithMaster(master.transform.position);
+            (owner as CocoDoogyBehaviour).SetCharInteracted(0);
 
         }
         else if (isCA)
         {
-            
+            isCA = false;
+            (owner as CocoDoogyBehaviour).SetCharInteracted(1);
         }
 
         //owner.StartCoroutine(WaitAndFinish());
@@ -43,6 +46,7 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
     public override void OnStateExit()
     {
         owner.StopAllCoroutines();
+        (owner as CocoDoogyBehaviour).ResetInteracting();
         agent.isStopped = false;
         isCA = false;
         isCM = false;
@@ -59,7 +63,7 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
     /// i = 0 : CA, i = 1 : CM
     /// </summary>
     /// <param name="i"></param>
-    /// <param name="which"></param>
+    // /// <param name="which"></param>
     public void SetCAM(int i, bool which)
     {
         if (which == true)

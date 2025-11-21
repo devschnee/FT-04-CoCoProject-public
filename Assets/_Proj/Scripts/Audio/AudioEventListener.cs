@@ -48,13 +48,13 @@ public class AudioEventListener : MonoBehaviour
 
     private void HandlePlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
     {
-        PlayAudio(key, index, fadeIn, fadeOut, loop, pooled, pos);
-    }
-
-    public void PlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
-    {
         AudioManager.Instance.PlayAudio(key, index, fadeIn, fadeOut, loop, pooled, pos);
     }
+
+    // public void PlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
+    // {
+    //     AudioManager.Instance.PlayAudio(key, index, fadeIn, fadeOut, loop, pooled, pos);
+    // }
 
     // 일단 임시로 만듦
     private void HandlePlayDialogueSound(AudioType type, string audioFileName)
