@@ -38,8 +38,8 @@ kr_text_id,kr_text
 [icon_11],챕터 3 아이콘
 [coin],동전
 [cap],병뚜껑
-[coco_get_coin],"반짝이는 동전이야! 주인님께 가져다드리자!"
-[coco_get_cap],"병뚜껑 재밌겠다! 이걸로 뭘 할수 있을까?"
+[coco_get_coin],"반짝이는 동전이야!\n주인님께 가져다드리자!"
+[coco_get_cap],"병뚜껑 재밌겠다!\n이걸로 뭘 할수 있을까?"
 [chapter_1_name],불안
 [chapter_2_name],힐링
 [chapter_3_name],위로

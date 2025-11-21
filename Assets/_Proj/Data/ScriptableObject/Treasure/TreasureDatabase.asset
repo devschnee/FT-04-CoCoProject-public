@@ -36,607 +36,607 @@ MonoBehaviour:
     reward_id: 110003
     count: 500
     view_codex_id: codex_artifact_coin
-    coco_coment: "\uBC18\uC9DD\uC774\uB294 \uB3D9\uC804\uC774\uC57C! \uC8FC\uC778\uB2D8\uAED8
+    coco_coment: "\uBC18\uC9DD\uC774\uB294 \uB3D9\uC804\uC774\uC57C!\\n\uC8FC\uC778\uB2D8\uAED8
       \uAC00\uC838\uB2E4\uB4DC\uB9AC\uC790!"
   - treasure_id: treasure_1_2_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_2_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_3_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_3_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_3_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_4_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_4_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_4_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_5_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_5_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_5_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_6_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_6_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_6_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_7_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_7_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_7_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_8_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_8_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_8_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_9_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_9_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_9_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_10_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_10_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_10_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_1_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_1_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_1_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_2_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_2_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_2_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_3_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_3_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_3_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_4_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_4_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_4_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_5_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_5_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_5_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_6_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_6_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_6_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_7_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_7_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_7_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_8_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_8_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_8_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_9_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_9_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_9_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_10_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_10_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_2_10_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_1_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_1_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_1_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_2_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_2_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_2_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_3_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_3_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_3_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_4_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_4_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_4_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_5_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_5_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_5_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_6_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_6_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_6_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_7_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_7_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_7_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_8_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_8_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_8_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_9_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_9_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_9_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_10_1
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_10_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_3_10_3
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
       \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
