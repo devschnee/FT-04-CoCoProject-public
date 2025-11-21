@@ -234,7 +234,7 @@ public partial class EditModeController
             switch (tag.category)
             {
                 case PlaceableCategory.Deco:
-                    InventoryService.I?.Add(PlaceableCategory.Deco, tag.id, 1); // 수량 환원
+                    InventoryService.I?.Add(tag.id, 1); // 수량 환원
                     break;
 
                 case PlaceableCategory.Animal:
@@ -275,7 +275,8 @@ public partial class EditModeController
             Object.Destroy(tr.gameObject);
 
             if (decoId != 0 && InventoryService.I != null)
-                InventoryService.I.Add(PlaceableCategory.Deco, decoId, 1);
+                InventoryService.I.Add(decoId, 1);
+
         }
     }
 
@@ -524,7 +525,8 @@ public partial class EditModeController
 
             int count = 0;
             if (InventoryService.I != null)
-                count = InventoryService.I.GetCount(PlaceableCategory.Deco, d.deco_id);
+                count = InventoryService.I.GetCount(d.deco_id);
+
 
             result.Add((d.deco_id, count));
         }
@@ -539,7 +541,7 @@ public partial class EditModeController
 
         foreach (var s in snap)
         {
-            InventoryService.I.Set(PlaceableCategory.Deco, s.id, s.count);
+            InventoryService.I.Set(s.id, s.count);
         }
     }
     #endregion

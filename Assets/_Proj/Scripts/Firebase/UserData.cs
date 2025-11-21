@@ -190,7 +190,7 @@ public class UserData : IUserData
 
 
         }
-        public int this[PlaceableCategory cat, int id]
+        public int this[int id]
         {
 
             get => items.TryGetValue(id.ToString(), out int value) ? value : 0;

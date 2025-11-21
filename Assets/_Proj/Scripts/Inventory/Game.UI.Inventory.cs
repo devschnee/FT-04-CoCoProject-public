@@ -108,42 +108,36 @@ namespace Game.UI.Inventory
         ///     - 슬롯 있으면: 수량만 갱신
         ///     - 슬롯 없으면: Rebuild()로 전체 다시 그리고 슬롯 생성
         /// </summary>
-        private void OnInvChanged(PlaceableCategory cat, int id, int newCount)
+        private void OnInvChanged(int id, int newCount)
         {
             // 이 패널이 Deco 인벤이 아닐 때는 무시
-            if (category != InventoryCategory.Deco) return;
-            if (cat != PlaceableCategory.Deco) return;
+            if (category != InventoryCategory.Deco)
+                return;
 
-            // ───────────────────────────────────────────
+            // Deco id 범위: 10000 < id < 20000
+            if (id <= 10000 || id >= 20000)
+                return;
+
             // 1) 0개가 된 경우 → 슬롯 숨김
-            // ───────────────────────────────────────────
             if (newCount <= 0)
             {
                 if (_slotById.TryGetValue(id, out var slot) && slot)
-                {
                     slot.gameObject.SetActive(false);
-                }
                 return;
             }
 
-            // ───────────────────────────────────────────
-            // 2) 1개 이상인데, 슬롯이 이미 있는 경우 → 수량만 업데이트
-            // ───────────────────────────────────────────
+            // 2) 슬롯이 이미 있으면 → 수량만 업데이트
             if (_slotById.TryGetValue(id, out var existingSlot) && existingSlot)
             {
-                string label = newCount.ToString();   // 1 → "1", 2 → "2", ...
-                existingSlot.SetCount(label);
+                existingSlot.SetCount(newCount.ToString());
                 existingSlot.gameObject.SetActive(true);
                 return;
             }
 
-            // ───────────────────────────────────────────
-            // 3) 1개 이상인데, 슬롯이 아직 없으면
-            //    → (예: 0개였다가 인벤으로 다시 들어온 경우)
-            //    → 전체 Rebuild() 해서 새 슬롯을 생성
-            // ───────────────────────────────────────────
+            // 3) 슬롯이 없으면 → 전체 Rebuild
             Rebuild();
         }
+
 
 
 
@@ -477,7 +471,7 @@ namespace Game.UI.Inventory
                 // ───────────────────────────────────────────
                 // 4) 수량 표시 (1개도 숫자가 보이도록 수정)
                 // ───────────────────────────────────────────
-                int trueCount = InventoryService.I.GetCount(PlaceableCategory.Deco, id);
+                int trueCount = InventoryService.I.GetCount(id);
                 string countLabel =
                     trueCount > 0 ? trueCount.ToString() : ""; // 1 → "1", 2 → "2", ...
 
@@ -493,7 +487,7 @@ namespace Game.UI.Inventory
                 slot.SetOnClick(() =>
                 {
                     // 수량 확인 + 소비
-                    if (!InventoryService.I.TryConsume(PlaceableCategory.Deco, id, 1))
+                    if (!InventoryService.I.TryConsume(id, 1))
                     {
                         Debug.Log($"[Inventory] Deco id={id} 수량 부족");
                         return;

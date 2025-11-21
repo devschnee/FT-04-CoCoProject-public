@@ -17,7 +17,9 @@ namespace Game.Inventory
         public static InventoryService I { get; private set; }
 
         /// <summary>(cat,id,newCount)</summary>
-        public event Action<PlaceableCategory, int, int> OnChanged;
+        // id, newCount 만 통지
+        public event Action<int, int> OnChanged;
+
 
         //private readonly Dictionary<(PlaceableCategory cat, int id), int> _counts = new();
         private UserData.Inventory inventory => UserData.Local.inventory;
@@ -38,27 +40,33 @@ namespace Game.Inventory
         // ───────────────────────────────────────
         // Public API
         // ───────────────────────────────────────
-        public int GetCount(PlaceableCategory cat, int id)
+        public int GetCount(int id)
         {
-            return inventory[cat, id];
+            return inventory[id];
             //return _counts.TryGetValue((cat, id), out var c) ? c : 0;
         }
 
-        public void Add(PlaceableCategory cat, int id, int n = 1)
+
+        public void Add(int id, int n = 1)
         {
             if (id <= 0 || n <= 0) return;
-            int cur = inventory[cat, id];
 
+            int cur = inventory[id];
             int next = cur + n;
-            Set(cat, id, next);
-            
-            
-            ////_counts[(cat, id)] = next;
-            //OnChanged?.Invoke(cat, id, next);
-            
-            
-            //SaveOne(cat, id, next);
+
+            inventory[id] = next;
+            OnChanged?.Invoke(id, next);
+            inventory.Save();
         }
+
+        ////_counts[(cat, id)] = next;
+        //OnChanged?.Invoke(cat, id, next);
+
+
+        //SaveOne(cat, id, next);
+
+
+
 
         /// <summary>
         /// 인벤토리에서 아이템을 '사용'하는 처리를 시도하는 메서드
@@ -67,38 +75,31 @@ namespace Game.Inventory
         /// <param name="id"></param>
         /// <param name="n"></param>
         /// <returns>true: 인벤토리에서 아이템을 사용하는 데 성공함. false: 인벤토리에서 아이템을 사용하는 데 실패함.</returns>
-        public bool TryConsume(PlaceableCategory cat, int id, int n = 1)
+        public bool TryConsume(int id, int n = 1)
         {
-            //유효성 검증
             if (id <= 0 || n <= 0) return false;
 
-
-            int cur = inventory[cat, id];
+            int cur = inventory[id];
             if (cur < n) return false;
 
             int next = cur - n;
-            inventory[cat, id] = next;
-            
-            //_counts[(cat, id)] = next;
-            OnChanged?.Invoke(cat, id, next);
-            inventory.Save();
+            inventory[id] = next;
 
-            //SaveOne(cat, id, next);
+            OnChanged?.Invoke(id, next);
+            inventory.Save();
             return true;
         }
 
-        public void Set(PlaceableCategory cat, int id, int count)
+        public void Set(int id, int count)
         {
             if (id <= 0 || count < 0) return;
 
-            inventory[cat, id] = count;
+            inventory[id] = count;
 
-            //_counts[(cat, id)] = count;
-            OnChanged?.Invoke(cat, id, count);
+            OnChanged?.Invoke(id, count);
             inventory.Save();
-            
-            //SaveOne(cat, id, count);
         }
+
 
         // ───────────────────────────────────────
         // Storage (PlayerPrefs)

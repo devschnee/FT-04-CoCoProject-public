@@ -397,7 +397,7 @@ public partial class EditModeController
                 AnimalReturnedToInventory?.Invoke(ptag.id);
 
             if (ptag.category == PlaceableCategory.Deco && InventoryService.I != null)
-                InventoryService.I.Add(PlaceableCategory.Deco, ptag.id, 1); // ★ 변경
+                InventoryService.I.Add(ptag.id, 1);
         }
 
         var go = CurrentTarget.gameObject;
@@ -421,12 +421,11 @@ public partial class EditModeController
         switch (tag.category)
         {
             case PlaceableCategory.Deco:
-                if (InventoryService.I != null) // ★ 변경
-                    InventoryService.I.Add(PlaceableCategory.Deco, tag.id, 1);
+                if (InventoryService.I != null)
+                    InventoryService.I.Add(tag.id, 1);
                 Destroy(t.gameObject);
                 hasUnsavedChanges = true;
                 break;
-
             case PlaceableCategory.Animal:
                 AnimalReturnedToInventory?.Invoke(tag.id);
                 Destroy(t.gameObject);
