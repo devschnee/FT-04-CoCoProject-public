@@ -32,6 +32,8 @@ public class SFXPlayer : AudioPlayerControl
             gObj.transform.parent = myTrans;
             currentSource = gObj.AddComponent<AudioSource>();
             activeSources.Add(currentSource);
+            currentSource.volume = 1f;
+            currentSource.pitch = 1f;
         }
         currentSource.outputAudioMixerGroup = group;
         currentSource.clip = clip;
@@ -59,8 +61,8 @@ public class SFXPlayer : AudioPlayerControl
         }
         else currentSource.spatialBlend = 0f;
 
-        currentSource.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
-        currentSource.volume = UnityEngine.Random.Range(0.95f, 1f);
+        // currentSource.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
+        // currentSource.volume = UnityEngine.Random.Range(0.95f, 1f);
 
         // 풀링이라면
         if (pooled)
@@ -106,10 +108,17 @@ public class SFXPlayer : AudioPlayerControl
     public override void SetVolumeHalf()
     {
         base.SetVolumeHalf();
+        audioPool.SetPoolVolumeHalf();
     }
     public override void SetVolumeNormal()
     {
         base.SetVolumeNormal();
+        audioPool.SetPoolVolumeNormal();
+    }
+    public override void SetVolumeZero()
+    {
+        base.SetVolumeZero();
+        audioPool.SetPoolVolumeZero();
     }
 
     private void NewDestroy(GameObject gObj, float length)

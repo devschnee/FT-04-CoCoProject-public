@@ -45,6 +45,19 @@ public class AudioGroupController
         }
     }
     /// <summary>
+    /// true = 볼륨 0, false = 볼륨 1
+    /// </summary>
+    /// <param name="isEntering"></param>
+    public void SetVolumeOneORZero(bool isEntering)
+    {
+        foreach (IAudioController aG in audioGroups)
+        {
+            if (aG is BGMGroup) continue;
+            if (isEntering) aG.SetVolumeZero();
+            else if (!isEntering) aG.SetVolumeNormal();
+        }
+    }
+    /// <summary>
     /// true = 다이얼로그 입장, false = 다이얼로그 퇴장
     /// </summary>
     /// <param name="isEntering"></param>

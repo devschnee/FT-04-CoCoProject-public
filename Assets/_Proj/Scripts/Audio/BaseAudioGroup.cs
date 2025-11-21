@@ -19,4 +19,5 @@ public abstract class BaseAudioGroup : MonoBehaviour, IAudioController
     public abstract void ResetPlayer();
     public abstract void SetVolumeHalf();
     public abstract void SetVolumeNormal();
+    public abstract void SetVolumeZero();
 }

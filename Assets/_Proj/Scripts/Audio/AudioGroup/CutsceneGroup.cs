@@ -48,4 +48,9 @@ public class CutsceneGroup : BaseAudioGroup
     {
         
     }
+
+    public override void SetVolumeZero()
+    {
+        
+    }
 }

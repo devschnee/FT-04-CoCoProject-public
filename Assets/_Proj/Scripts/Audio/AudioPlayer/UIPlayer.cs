@@ -47,4 +47,7 @@ public class UIPlayer : AudioPlayerControl
     {
         base.ResetAll();
     }
+    public override void SetVolumeHalf() { }
+    public override void SetVolumeNormal() { }
+    public override void SetVolumeZero() { }
 }

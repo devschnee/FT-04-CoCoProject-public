@@ -52,4 +52,9 @@ public class BGMGroup : BaseAudioGroup
     {
         player.SetVolumeNormal();
     }
+
+    public override void SetVolumeZero()
+    {
+        player.SetVolumeZero();
+    }
 }

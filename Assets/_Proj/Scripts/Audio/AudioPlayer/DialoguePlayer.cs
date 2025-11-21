@@ -88,4 +88,8 @@ public class DialoguePlayer : AudioPlayerControl
     {
         // ?필요없음
     }
+    public override void SetVolumeZero()
+    {
+        // ?필요없음
+    }
 }

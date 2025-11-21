@@ -10,14 +10,14 @@ public class AudioPlayTest : MonoBehaviour
     // {
     //     AudioEvents.Raise(CutsceneKey.CutsceneId01, -1, 1f, 1f, true);
     // }
-    public void SFXPlay()
-    {
-        AudioEvents.Raise(SFXKey.CocodoogyFootstep, -1, loop : false, pooled : false, pos : transform.position);
-    }
-    public void SFXPooledPlay()
-    {
-        AudioEvents.Raise(SFXKey.CocodoogyFootstep, -1, loop : false, pooled : true, pos : transform.position);
-    }
+    // public void SFXPlay()
+    // {
+    //     AudioEvents.Raise(SFXKey.CocodoogyFootstep, -1, loop : false, pooled : false, pos : transform.position);
+    // }
+    // public void SFXPooledPlay()
+    // {
+    //     AudioEvents.Raise(SFXKey.CocodoogyFootstep, -1, loop : false, pooled : true, pos : transform.position);
+    // }
     public void AmbientPlay()
     {
         AudioEvents.Raise(AmbientKey.Birdsong, -1, loop: false, pooled: false, pos: transform.position);

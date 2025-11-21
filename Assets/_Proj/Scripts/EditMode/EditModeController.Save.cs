@@ -370,7 +370,7 @@ public partial class EditModeController
         savedOkButton.onClick.RemoveAllListeners();
         savedOkButton.onClick.AddListener(() => 
         {
-            savedInfoPanel?.SetActive(false);
+            savedInfoPanel?.SetActive(false); 
             //LSH 추가 1121
             if (LobbyCharacterManager.Instance == null) return;
             LobbyCharacterManager.Instance.InitWayPoint();

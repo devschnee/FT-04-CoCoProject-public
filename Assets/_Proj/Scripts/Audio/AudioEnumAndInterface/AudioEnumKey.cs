@@ -25,10 +25,9 @@ public enum BGMKey
 
 public enum SFXKey
 {
-    CocodoogyFootstep = 0,
-    MasterFootstep,
-    Master_AndroidFootstep,
-    PigFootstep
+    Cocodoogy = 0,
+    Master,
+    Animal
 
 }
 

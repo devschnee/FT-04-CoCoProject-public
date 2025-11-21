@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(GameObjectData), typeof(UserInteractionHandler), typeof(Draggable))]
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
-public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDraggable, ILobbyPressable, ILobbyCharactersEmotion, ILobbyState
+public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDraggable, ILobbyPressable, ILobbyState
 {
     [Header("NavMeshAgent")]
     [SerializeField] protected float moveSpeed = 3.5f;

@@ -8,9 +8,9 @@ public class AudioVolumeData
     public float Master = 1f;
     public float BGM = 1f;
     public float SFX = 1f;
-    public float Ambient = 1f; // 합칠 시 삭제
-    public float Cutscene = 1f; // 합칠 시 삭제
-    public float Voice = 1f;
+    // public float Ambient = 1f; // 합칠 시 삭제
+    // public float Cutscene = 1f; // 합칠 시 삭제
+    // public float Voice = 1f;
     //public bool MuteMaster = false;
     
 }
@@ -21,9 +21,9 @@ public class AudioVolumeHandler
     private const string MasterParam = "MasterVolumeParam";
     private const string BGMParam = "BGMVolumeParam";
     private const string SFXParam = "SFXVolumeParam";
-    private const string AmbientParam = "AmbientVolumeParam";
-    private const string CutsceneParam = "CutsceneVolumeParam";
-    private const string VoiceParam = "VoiceVolumeParam";
+    // private const string AmbientParam = "AmbientVolumeParam";
+    // private const string CutsceneParam = "CutsceneVolumeParam";
+    // private const string VoiceParam = "VoiceVolumeParam";
 
     public AudioVolumeHandler(AudioMixer mixer)
     {
@@ -37,9 +37,9 @@ public class AudioVolumeHandler
         SetVolume(AudioType.Master, data.Master);
         SetVolume(AudioType.BGM, data.BGM);
         SetVolume(AudioType.SFX, data.SFX);
-        SetVolume(AudioType.Ambient, data.Ambient);
-        SetVolume(AudioType.Cutscene, data.Cutscene);
-        SetVolume(AudioType.Voice, data.Voice);
+        SetVolume(AudioType.Ambient, data.SFX);
+        SetVolume(AudioType.Cutscene, data.BGM);
+        //SetVolume(AudioType.Voice, data.Voice);
     }
 
     public void SetVolume(AudioType type, float linear)
@@ -53,25 +53,25 @@ public class AudioVolumeHandler
             case AudioType.SFX:
                 mixer.SetFloat(SFXParam, dB);
                 break;
-            case AudioType.Ambient:
-                mixer.SetFloat(AmbientParam, dB);
-                break;
-            case AudioType.Cutscene:
-                mixer.SetFloat(CutsceneParam, dB);
-                break;
-            case AudioType.Voice:
-                mixer.SetFloat(VoiceParam, dB);
-                break;
+            // case AudioType.Ambient:
+            //     mixer.SetFloat(AmbientParam, dB);
+            //     break;
+            // case AudioType.Cutscene:
+            //     mixer.SetFloat(CutsceneParam, dB);
+            //     break;
+            // case AudioType.Voice:
+            //     mixer.SetFloat(VoiceParam, dB);
+            //     break;
             case AudioType.Master:
                 mixer.SetFloat(MasterParam, dB);
                 break;
         }
     }
 
-    public void MuteMaster(bool mute)
-    {
+    // public void MuteMaster(bool mute)
+    // {
         
-    }
+    // }
 
     // ���� �������� �� �������� �� �ƴ��ݾ� ���� �� ���ø� �ϸ� ����
     //public float GetVolume(AudioType type)

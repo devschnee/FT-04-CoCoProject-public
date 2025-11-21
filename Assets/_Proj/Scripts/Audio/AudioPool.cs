@@ -23,6 +23,8 @@ public class AudioPool
             src.gameObject.tag = "pooled";
             src.outputAudioMixerGroup = defaultGroup;
             src.transform.SetParent(parent);
+            src.volume = 1f;
+            src.pitch = 1f;
             src.gameObject.SetActive(false);
             pool.Enqueue(src);
         }
@@ -32,7 +34,7 @@ public class AudioPool
     {
         if (pool.Count == 0)
         {
-            Debug.LogWarning("»õ·Î ¸¸µé°Ô¿ë");
+            Debug.LogWarning("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½");
             var newPool = new GameObject("NewPooledAudio").AddComponent<AudioSource>();
             newPool.transform.SetParent(parent);
             newPool.tag = "newPooled";
@@ -52,7 +54,7 @@ public class AudioPool
         pool.Enqueue(src);
     }
 
-    // Ç®·Î Àç»ý ÆÄÀÏ Áß ¹Ýº¹ Àç»ýÇÏ´Â ÆÄÀÏµé Ç®¿¡¼­ ²¨³»±â ex) È¯°æÀ½ Áß¿¡¼­ ¹° Èå¸£´Â ¼Ò¸®
+    // Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ýºï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ïµï¿½ Ç®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ex) È¯ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½å¸£ï¿½ï¿½ ï¿½Ò¸ï¿½
     public void PlayPool()
     {
         foreach (var src in pool)
@@ -109,6 +111,48 @@ public class AudioPool
                 GameObject gO;
                 gO = gObj.gameObject;
                 UnityEngine.GameObject.Destroy(gO);
+            }
+        }
+    }
+    public void SetPoolVolumeHalf()
+    {
+        foreach (var src in pool)
+        {
+            if (src != null) 
+            {
+                if (DOTween.IsTweening(src, true))
+                {
+                    src.DOKill();
+                }
+                src.DOFade(0.3f, 0.5f);
+            }
+        }
+    }
+    public void SetPoolVolumeNormal()
+    {
+        foreach (var src in pool)
+        {
+            if (src != null) 
+            {
+                if (DOTween.IsTweening(src, true))
+                {
+                    src.DOKill();
+                }
+                src.DOFade(1, 0.5f);
+            }
+        }
+    }
+    public void SetPoolVolumeZero()
+    {
+        foreach (var src in pool)
+        {
+            if (src != null) 
+            {
+                if (DOTween.IsTweening(src, true))
+                {
+                    src.DOKill();
+                }
+                src.DOFade(0, 0.5f);
             }
         }
     }

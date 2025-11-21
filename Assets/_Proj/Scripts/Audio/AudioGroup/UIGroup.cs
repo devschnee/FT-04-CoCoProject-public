@@ -47,4 +47,8 @@ public class UIGroup : BaseAudioGroup
     {
         
     }
+    public override void SetVolumeZero()
+    {
+        
+    }
 }

@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(UserInteractionHandler), typeof(Draggable), typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
-public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInteractable, ILobbyDraggable, ILobbyPressable, ILobbyCharactersEmotion, ILobbyState
+public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInteractable, ILobbyDraggable, ILobbyPressable, ILobbyState
 {
     [Header("NavMeshAgent")]
     [SerializeField] protected float moveSpeed = 3.5f;
@@ -119,24 +119,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         fsm.ChangeState(IdleState);
     }
 
-
     // 인터페이스 영역
-    /// <summary>
-    /// 코코두기와 동물들 상호작용
-    /// </summary>
-    public virtual void OnCocoAnimalEmotion()
-    {
-        if(!(fsm.CurrentState == MoveState)) return;
-    }
-
-    /// <summary>
-    /// 코코두기와 마스터 상호작용
-    /// </summary>
-    public virtual void OnCocoMasterEmotion()
-    {
-        if(!(fsm.CurrentState == MoveState)) return;
-    }
-
     /// <summary>
     /// ILobbyDraggable, 드래그 시작
     /// </summary>

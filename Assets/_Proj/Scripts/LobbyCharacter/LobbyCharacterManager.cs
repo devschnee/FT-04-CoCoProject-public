@@ -13,6 +13,7 @@ public class LobbyCharacterManager : MonoBehaviour
 {
     [SerializeField] GameObject plane;
     [SerializeField] EditModeController editController;
+    [SerializeField] float interactDistance = 10f;
     //[SerializeField] WaypointsControl waypointsControl; // 보류
 
     private LMCharacterInit lobbyChracterInit; // 씬 시작시 초기화
@@ -26,6 +27,7 @@ public class LobbyCharacterManager : MonoBehaviour
     public bool IsInitMode = true;
     private int originalLayer; // 평상 시 레이어
     private int editableLayer; // 편집모드 시 레이어
+    private float interactionCooldown = 0;
 
     public List<LobbyWaypoint> Waypoints { get; private set; } = new();
     private List<ILobbyState> lobbyCharacter = new(); // 맵에 활성화 된 캐릭터들 모음
@@ -116,15 +118,24 @@ public class LobbyCharacterManager : MonoBehaviour
 
         // 코코두기 안드로이드 거리 감지 및 상호작용 이벤트
         // 1회성만 가능하게 만들어야함
-        // if (coco.gameObject.activeSelf && master.gameObject.activeSelf)
-        // {
-        //     float dist = Vector3.Distance(coco.transform.position, master.transform.position);
-        //     if (dist < interactDistance)
-        //     {
-        //         coco.OnCocoMasterEmotion();
-        //         master.OnCocoMasterEmotion();
-        //     }
-        // }
+        if (!IsEditMode && !IsInitMode)
+        {
+            if (coco.gameObject.activeSelf && master.gameObject.activeSelf)
+            {
+                interactionCooldown -= Time.deltaTime;
+                if (interactionCooldown > 0)return;
+                float dist = Vector3.Distance(coco.transform.position, master.transform.position);
+                if (dist < interactDistance)
+                {
+                    if (!coco.IsCMInteracted)
+                    {
+                        interactionCooldown = 0.3f;
+                        coco.OnCocoMasterEmotion();
+                    }
+                }
+            }
+            
+        }
     }
 
     private void OnDisable()
@@ -144,6 +155,17 @@ public class LobbyCharacterManager : MonoBehaviour
         //     }
         // }
     }
+
+    // private void ChangeMasterStateToInteractState()
+    // {
+    // }
+    // private void ChangeAnimalStateToInteractState()
+    // {
+    //     foreach (var lC in lobbyCharacter)
+    //     {
+    //         if (lC is not AnimalBehaviour) return;
+    //     }
+    // }
 
     public void InitWayPoint()
     {

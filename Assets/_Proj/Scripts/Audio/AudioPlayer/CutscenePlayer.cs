@@ -31,7 +31,7 @@ public class CutscenePlayer : AudioPlayerControl
         {
             if (src != null)
             {
-                src.DOKill();
+                if (DOTween.IsTweening(src, true)) src.DOKill();
                 if (src.volume != 1)
                 {
                     src.DOFade(1, 0.5f);
@@ -46,7 +46,7 @@ public class CutscenePlayer : AudioPlayerControl
         {
             if (src != null)
             {
-                src.DOKill();
+                if (DOTween.IsTweening(src, true)) src.DOKill();
                 src.DOFade(0, 0.5f);
             }
         }
@@ -57,7 +57,7 @@ public class CutscenePlayer : AudioPlayerControl
         {
             if (src != null)
             {
-                src.DOKill();
+                if (DOTween.IsTweening(src, true)) src.DOKill();
                 src.DOFade(1, 0.5f);
             }
         }
@@ -68,7 +68,7 @@ public class CutscenePlayer : AudioPlayerControl
         {
             if (src != null) 
             {
-                src.DOKill();
+                if (DOTween.IsTweening(src, true)) src.DOKill();
                 src.DOFade(0, 0.5f);
             } 
         }
@@ -79,6 +79,7 @@ public class CutscenePlayer : AudioPlayerControl
         {
             if (src != null)
             {
+                if (DOTween.IsTweening(src, true)) src.DOKill();
                 src.loop = false;
                 src.volume = 1f;
                 src.pitch = 1f;
@@ -90,7 +91,7 @@ public class CutscenePlayer : AudioPlayerControl
     {
         foreach (var src in activeSources)
         {
-            src.DOKill();
+            if (DOTween.IsTweening(src, true)) src.DOKill();
             src.DOFade(0.5f, 0.5f);
         }
     }
@@ -98,8 +99,13 @@ public class CutscenePlayer : AudioPlayerControl
     {
         foreach (var src in activeSources)
         {
-            src.DOKill();
+            if (DOTween.IsTweening(src, true)) src.DOKill();
             src.DOFade(1, 0.5f);
         }
+    }
+
+    public override void SetVolumeZero()
+    {
+        base.SetVolumeZero();
     }
 }

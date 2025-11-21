@@ -61,4 +61,9 @@ public class AmbientGroup : BaseAudioGroup
     {
         
     }
+
+    public override void SetVolumeZero()
+    {
+        
+    }
 }

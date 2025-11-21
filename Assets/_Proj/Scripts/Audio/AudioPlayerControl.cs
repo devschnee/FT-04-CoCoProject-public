@@ -24,7 +24,10 @@ public abstract class AudioPlayerControl
         {
             if (src != null && !src.isPlaying)
             {
-                src.DOKill();
+                if (DOTween.IsTweening(src, true))
+                {
+                    src.DOKill();
+                }
                 if (src.volume != 1)
                 {
                     src.Play();
@@ -44,7 +47,10 @@ public abstract class AudioPlayerControl
         {
             if (src != null && src.isPlaying)
             {
-                src.DOKill();
+                if (DOTween.IsTweening(src, true))
+                {
+                    src.DOKill();
+                }
                 src.DOFade(0, 0.5f).OnComplete(() => src.Pause());
             }
         }
@@ -56,7 +62,10 @@ public abstract class AudioPlayerControl
         {
             if (src != null && !src.isPlaying)
             {
-                src.DOKill();
+                if (DOTween.IsTweening(src, true))
+                {
+                    src.DOKill();
+                }
                 src.UnPause();
                 src.DOFade(1, 0.5f);
             }
@@ -68,7 +77,10 @@ public abstract class AudioPlayerControl
         {
             if (src != null && src.isPlaying) 
             {
-                src.DOKill();
+                if (DOTween.IsTweening(src, true))
+                {
+                    src.DOKill();
+                }
                 src.DOFade(0, 0.5f).OnComplete(() => src.Stop());
             } 
         }
@@ -82,7 +94,10 @@ public abstract class AudioPlayerControl
             {
                 if (src.isPlaying) 
                 {
-                    src.DOKill();
+                    if (DOTween.IsTweening(src, true))
+                    {
+                        src.DOKill();
+                    }
                     src.DOFade(0, 0.3f).OnComplete(() => {src.Stop(); src.volume = 1f;});
                 }
                 src.loop = false;
@@ -93,11 +108,26 @@ public abstract class AudioPlayerControl
         }
     }
 
+    public virtual void SetVolumeZero()
+    {
+        foreach (var src in activeSources)
+        {
+            if (DOTween.IsTweening(src, true))
+            {
+                src.DOKill();
+            }
+            src.DOFade(0, 0.5f);
+        }
+    }
+
     public virtual void SetVolumeHalf()
     {
         foreach (var src in activeSources)
         {
-            src.DOKill();
+            if (DOTween.IsTweening(src, true))
+            {
+                src.DOKill();
+            }
             src.DOFade(0.3f, 0.5f);
         }
     }
@@ -106,7 +136,10 @@ public abstract class AudioPlayerControl
     {
         foreach (var src in activeSources)
         {
-            src.DOKill();
+            if (DOTween.IsTweening(src, true))
+            {
+                src.DOKill();
+            }
             src.DOFade(1, 0.5f);
         }
     }

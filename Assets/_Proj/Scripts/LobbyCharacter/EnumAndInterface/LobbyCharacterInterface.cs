@@ -16,13 +16,6 @@ public interface ILobbyPressable
     void OnLobbyPress();
 }
 
-// 코코두기와 아이들 상호작용
-public interface ILobbyCharactersEmotion
-{
-    void OnCocoMasterEmotion();
-    void OnCocoAnimalEmotion();
-}
-
 // 일반모드, 편집모드 시 전환
 public interface ILobbyState
 {

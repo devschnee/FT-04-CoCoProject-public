@@ -163,6 +163,8 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     }
 
     // 오디오 그룹 제어
+    public void EnterChapterPanel() => AudioGroupController.SetVolumeOneORZero(true);
+    public void ExitChapterOrStagePanel() => AudioGroupController.SetVolumeOneORZero(false);
     public void EnterDialogue() => AudioGroupController.SetDialogueState(true);
     public void ExitDialogue() => AudioGroupController.SetDialogueState(false);
 
@@ -227,15 +229,15 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
             case AudioType.SFX:
                 data.SFX = value;
                 break;
-            case AudioType.Ambient:
-                data.Ambient = value;
-                break;
-            case AudioType.Cutscene:
-                data.Cutscene = value;
-                break;
-            case AudioType.Voice:
-                data.Voice = value;
-                break;
+            // case AudioType.Ambient:
+            //     data.Ambient = value;
+            //     break;
+            // case AudioType.Cutscene:
+            //     data.Cutscene = value;
+            //     break;
+            // case AudioType.Voice:
+            //     data.Voice = value;
+            //     break;
             case AudioType.Master:
                 data.Master = value;
                 break;
@@ -255,12 +257,12 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
                 return data.BGM;
             case AudioType.SFX:
                 return data.SFX;
-            case AudioType.Ambient:
-                return data.Ambient;
-            case AudioType.Cutscene:
-                return data.Cutscene;
-            case AudioType.Voice:
-                return data.Voice;
+            // case AudioType.Ambient:
+            //     return data.Ambient;
+            // case AudioType.Cutscene:
+            //     return data.Cutscene;
+            // case AudioType.Voice:
+            //     return data.Voice;
             case AudioType.Master:
                 return data.Master;
         }
@@ -269,7 +271,8 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
 
     public void PlayStageBGM(AudioClip clip)
     {
-        bgmGroup.PlayBGMForResources(clip, 0, 0, true);
+        bgmGroup.PlayBGMForResources(clip, 2, 1, true);
+        Debug.Log("StageBGM 시작");
     }
 
     // 만약 Awake에서 각 그룹들을 캐싱해서 사용하는 것이 별로면 이 방식으로

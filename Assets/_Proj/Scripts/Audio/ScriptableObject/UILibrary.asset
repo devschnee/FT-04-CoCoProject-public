@@ -17,7 +17,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: e57cf4c0b67207d42ba4bc6d6553d41f, type: 3}
     - {fileID: 8300000, guid: ddb902a04a1b3f6479db4ee472f90452, type: 3}
-    - {fileID: 8300000, guid: 8c9b2291974d9fc48832555c9a448415, type: 3}
+    - {fileID: 8300000, guid: 6288b8d7150f1294c853bba5676e2115, type: 3}
   - key: 1
     clips:
     - {fileID: 8300000, guid: aa7f9557a2ee291479ec5ef9ca7ac2a7, type: 3}

@@ -148,4 +148,14 @@ public class PanelRouter : MonoBehaviour
             else Toggle(optionPanel);
         }
     }
+
+    //LSH 추가 1121
+    public void EnterChapterPanel()
+    {
+        AudioManager.Instance.EnterChapterPanel();
+    }
+    public void ReturnToMain()
+    {
+        AudioManager.Instance.ExitChapterOrStagePanel();
+    }
 }

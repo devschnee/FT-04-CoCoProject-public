@@ -55,17 +55,17 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
-        functionName: OnMasterInteractionEnd
+      - time: 0.97959185
+        functionName: EndCocoInteractState
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e9ad2bb572d2f134c91a40d0a1f11547, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0
-        functionName: NewEvent
+      - time: 1
+        functionName: EndMasterInteractState
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 05bf2c9ddbbd10b4c81be270844a91f7, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e9ad2bb572d2f134c91a40d0a1f11547, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
