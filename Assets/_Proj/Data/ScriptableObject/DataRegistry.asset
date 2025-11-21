@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cece058189f6ea4a99e9232cd56555a, type: 3}
   m_Name: DataRegistry
   m_EditorClassIdentifier: 
-  animalDB: {fileID: 0}
+  animalDB: {fileID: 11400000, guid: cf238dff9788eed47831c21b58e8c07e, type: 2}
   artifactDB: {fileID: 11400000, guid: a54830c91f91a76448d894ea23cc2244, type: 2}
   backgroundDB: {fileID: 11400000, guid: 27b641d3739acc147b53051921310ee0, type: 2}
   chapterDB: {fileID: 11400000, guid: b1350df3d3a5248488e4b08e8114afca, type: 2}
