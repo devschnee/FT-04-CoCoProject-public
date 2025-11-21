@@ -97,3 +97,23 @@ kr_text_id,kr_text
 [goods_energy],행동력
 [goods_cap],병뚜껑
 [goods_coin],유료 코인
+[artifact_woodenboard],나무 판자
+[artifact_shellnecklace],조개 껍질 목걸이
+[artifact_laundry],세탁물
+[artifact_tube],튜브
+[artifact_paddle],패들
+[artifact_fishingrod],낚싯대
+[artifact_paperboat],종이배
+[artifact_seaweed],해초
+[artifact_pebbles],조약돌
+[artifact_waterdrop],물방울
+[artifact_survivaldiary],생존 일지
+[artifact_map],지도
+[artifact_compass],나침반
+[artifact_whistle],비상 호루라기
+[artifact_jointring],관절 링 부품
+[artifact_stopsign],출입 금지 표지판
+[artifact_umbrella],우산
+[artifact_tent],텐트
+[artifact_pipe],파이프 조각
+[artifact_flashlight],손전등

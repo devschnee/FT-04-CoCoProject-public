@@ -542,3 +542,233 @@ MonoBehaviour:
     codex_display: System/icon_coin
     codex_icon: System/icon_coin
     codex_name: "\uC720\uB8CC \uCF54\uC778"
+  - codex_id: codex_artifact_woodenboard
+    codex_type: 4
+    item_id: 50011
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uB098\uBB34 \uD310\uC790.\n\uC624\uB798\uC804\uC5D0
+      \uB204\uAD70\uAC00 \uC791\uC740 \uB5CF\uBAA9\uCC98\uB7FC \uC0AC\uC6A9\uD588\uB358
+      \uD754\uC801\uC774 \uB0A8\uC544 \uC788\uB2E4.\n\uAC70\uBD81\uC774\uC640 \uCF54\uCF54\uB450\uAE30\uB294
+      \uADF8 \uB098\uBB34\uD310\uC790 \uC704\uC5D0 \uB098\uB780\uD788 \uC62C\uB77C
+      \uB204\uC6CC,\n\uD750\uB974\uB294 \uBB3C\uACB0\uC5D0 \uBAB8\uC744 \uB9E1\uAE34
+      \uCC44 \uD587\uC0B4\uC744 \uBC1B\uC73C\uBA70 \uC870\uC6A9\uD788 \uB0AE\uC7A0\uC744
+      \uC990\uACBC\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_woodenboard
+    codex_icon: Icons/Artifact/icon_artifact_woodenboard
+    codex_name: "\uB098\uBB34 \uD310\uC790"
+  - codex_id: codex_artifact_shellnecklace
+    codex_type: 4
+    item_id: 50012
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uC791\uC740 \uC870\uAC1C
+      \uAECD\uC9C8 \uBAA9\uAC78\uC774.\n\uC791\uC740 \uC870\uAC1C \uAECD\uC9C8\uB4E4\uC744
+      \uBAA8\uC544 \uB9CC\uB4E0 \uAC04\uB2E8\uD55C \uBAA9\uAC78\uC774\uB2E4.\n\uAC70\uBD81\uC774\uAC00
+      \uAC15\uBB3C \uC18D\uC73C\uB85C \uC131\uD07C \uB4E4\uC5B4\uAC00 \uBC14\uB2E5\uC744
+      \uB4A4\uC800\uB354\uB2C8, \uC870\uAC1C\uAECD\uC9C8\uC744 \uD55C \uC6C0\uD07C\uC529
+      \uBAA8\uC544\uC654\uB2E4.\n\uADF8 \uC870\uAC1C\uB4E4\uC744 \uCC28\uBD84\uD788
+      \uACE8\uB77C \uC791\uC740 \uBAA9\uAC78\uC774\uB85C \uC5EE\uC5B4 \uCF54\uCF54\uB450\uAE30\uC5D0\uAC8C
+      \uB0B4\uBC00\uC5C8\uACE0, \uCF54\uCF54\uB450\uAE30\uB294 \uADF8 \uC790\uB9AC\uC5D0\uC11C
+      \uD658\uD558\uAC8C \uC6C3\uC5C8\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_shellnecklace
+    codex_icon: Icons/Artifact/icon_artifact_shellnecklace
+    codex_name: "\uC870\uAC1C \uAECD\uC9C8 \uBAA9\uAC78\uC774"
+  - codex_id: codex_artifact_laundry
+    codex_type: 4
+    item_id: 50013
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uC791\uC740 \uCC9C \uC870\uAC01.\n\uB204\uAD70\uAC00
+      \uBE68\uB798\uD558\uB2E4\uAC00 \uD758\uB9B0 \uB4EF \uC790\uC5F0\uC2A4\uB7FD\uAC8C
+      \uB193\uC5EC \uC788\uB2E4.\n\uD587\uBCD5\uC5D0 \uB9CE\uC774 \uBC14\uB798 \uC0C9\uC774
+      \uC605\uC5B4\uC84C\uC9C0\uB9CC, \uC0DD\uD65C\uC758 \uD754\uC801\uC774 \uB290\uAEF4\uC9C4\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_laundry
+    codex_icon: Icons/Artifact/icon_artifact_laundry
+    codex_name: "\uC138\uD0C1\uBB3C"
+  - codex_id: codex_artifact_tube
+    codex_type: 4
+    item_id: 50014
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uD29C\uBE0C.\n\uC608\uC804\uC5D0
+      \uB204\uAD70\uAC00 \uBAB0\uB180\uC774\uB97C \uD558\uB2E4 \uB450\uACE0 \uAC04
+      \uB4EF, \uD45C\uBA74\uC5D4 \uD76C\uBBF8\uD55C \uADF8\uB9BC\uACFC \uAE01\uD78C
+      \uC790\uAD6D\uC774 \uB0A8\uC544 \uC788\uB2E4.\n\uC624\uB798 \uB5A0\uB2E4\uB2CC
+      \uC2DC\uAC04 \uD0D3\uC5D0 \uACF5\uAE30\uAC00 \uBE60\uC838 \uC788\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_tube
+    codex_icon: Icons/Artifact/icon_artifact_tube
+    codex_name: "\uD29C\uBE0C"
+  - codex_id: codex_artifact_paddle
+    codex_type: 4
+    item_id: 50015
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uD328\uB4E4.\n\uAC15\uD55C
+      \uBB3C\uC0B4\uC744 \uC774\uAE30\uC9C0 \uBABB\uD558\uACE0 \uB204\uAD70\uAC00\uC758
+      \uBC30\uC5D0\uC11C \uD640\uB85C \uB5A8\uC5B4\uC838 \uB098\uC628 \uD328\uB4E4\uC774\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_paddle
+    codex_icon: Icons/Artifact/icon_artifact_paddle
+    codex_name: "\uD328\uB4E4"
+  - codex_id: codex_artifact_fishingrod
+    codex_type: 4
+    item_id: 50016
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uBD80\uB7EC\uC9C4 \uB09A\uC2EF\uB300.\n\uB09A\uC2EF\uB300\uC758
+      \uC8FC\uC778\uC774 \uB09A\uC2DC\uB300\uAC00 \uBD80\uB7EC\uC9C8 \uB54C\uAE4C\uC9C0,
+      \uB204\uAD70\uAC00\uB97C \uAE30\uB2E4\uB9AC\uBA70 \uC870\uC6A9\uD788 \uC2DC\uAC04\uC744
+      \uBCF4\uB0C8\uB358 \uD754\uC801\uC774 \uC190\uC7A1\uC774\uC5D0 \uACE0\uC2A4\uB780\uD788
+      \uB0A8\uC544 \uC788\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_fishingrod
+    codex_icon: Icons/Artifact/icon_artifact_fishingrod
+    codex_name: "\uB09A\uC2EF\uB300"
+  - codex_id: codex_artifact_paperboat
+    codex_type: 4
+    item_id: 50017
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uC791\uC740 \uC885\uC774\uBC30.\n\uB204\uAD70\uAC00
+      \uC624\uB79C\uC804\uC5D0 \uC811\uC5B4 \uB744\uC6B4 \uD754\uC801\uC774 \uB0A8\uC544
+      \uC788\uB2E4.\n\uBB3C\uC0B4\uC5D0 \uD754\uB4E4\uB9AC\uBA74\uC11C\uB3C4 \uAC00\uB77C\uC549\uC9C0
+      \uC54A\uACE0 \uCC9C\uCC9C\uD788 \uBB3C\uC0B4 \uB530\uB77C \uC6C0\uC9C1\uC600\uB2E4.\n\uADF8
+      \uC8FC\uC704\uB97C \uAC10\uC2F8\uB294 \uBB3C\uACB0\uB3C4 \uB2EC\uBE5B\uC744
+      \uBC1B\uC544 \uC740\uC740\uD558\uAC8C \uBE5B\uB0AC\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_paperboat
+    codex_icon: Icons/Artifact/icon_artifact_paperboat
+    codex_name: "\uC885\uC774\uBC30"
+  - codex_id: codex_artifact_seaweed
+    codex_type: 4
+    item_id: 50018
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uD574\uCD08.\n\uBB3C\uACB0\uC5D0
+      \uC2E4\uB824 \uD574\uCD08\uAC00 \uCDA4\uC744 \uCD94\uB4EF \uD754\uB4E4\uB838\uB2E4.\n
+      \uCF54\uCF54\uB450\uAE30\uB294 \uADF8 \uBAA8\uC2B5\uC744 \uD55C\uCC38\uC774\uB098
+      \uBC14\uB77C\uBCF4\uB2E4\uAC00, \uC5B4\uB290\uC0C8 \uC790\uC2E0\uB3C4 \uBAA8\uB974\uAC8C
+      \uBB3C\uAC00\uC5D0 \uBAB8\uC744 \uAE30\uC6B8\uC600\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_seaweed
+    codex_icon: Icons/Artifact/icon_artifact_seaweed
+    codex_name: "\uD574\uCD08"
+  - codex_id: codex_artifact_pebbles
+    codex_type: 4
+    item_id: 50019
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uC870\uC57D\uB3CC.\n\uB204\uAD70\uAC00
+      \uC18C\uC6D0\uC744 \uB2F4\uC544 \uC870\uC2EC\uC2A4\uB7FD\uAC8C \uC313\uC544\uB454
+      \uC791\uC740 \uC870\uC57D\uB3CC \uBB34\uB354\uAE30."
+    codex_display: Img/Codex_display/Artifact/codex_display_pebbles
+    codex_icon: Icons/Artifact/icon_artifact_pebbles
+    codex_name: "\uC870\uC57D\uB3CC"
+  - codex_id: codex_artifact_waterdrop
+    codex_type: 4
+    item_id: 50020
+    codex_lore: "\uAC15\uAC00\uC5D0\uC11C \uC5BB\uC740 \uBC18\uC9DD\uC774\uB294 \uBB3C\uBC29\uC6B8.\n\uAC70\uBD81\uC774\uB294
+      \uCF54\uCF54\uB450\uAE30\uB97C \uC5C5\uC740 \uCC44 \uBB3C\uC0B4\uC758 \uD750\uB984\uC5D0
+      \uC790\uC5F0\uC2A4\uB7FD\uAC8C \uBAB8\uC744 \uC2E4\uC5C8\uB2E4.\n\uADF8 \uC6C0\uC9C1\uC784\uC5D0
+      \uCF54\uCF54\uB450\uAE30\uB294 \uBB3C\uC0B4\uC5D0 \uB9DE\uCDB0 \uB4E4\uC369\uC774\uB294
+      \uBAB8\uC9D3\uC774 \uCDA4\uC744 \uCD94\uB294 \uAC83 \uAC19\uC740 \uAE30\uBD84\uC774
+      \uB4E4\uC5C8\uB2E4.\n\uAC00\uBCCD\uAC8C \uD284 \uBB3C\uBC29\uC6B8 \uD558\uB098\uAC00
+      \uB2EC\uBE5B\uC744 \uBC1B\uC544 \uBC18\uC9DD\uC774\uBA70 \uCF54\uCF54\uB450\uAE30
+      \uACC1\uC740 \uC2A4\uCCD0\uAC14\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_waterdrop
+    codex_icon: Icons/Artifact/icon_artifact_waterdrop
+    codex_name: "\uBB3C\uBC29\uC6B8"
+  - codex_id: codex_artifact_survivaldiary
+    codex_type: 4
+    item_id: 50021
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uC0DD\uC874 \uC77C\uC9C0.\n\uB204\uAD70\uAC00\uAC00
+      \uC791\uC131\uD588\uB358 \uD754\uC801\uC774 \uC788\uB294 \uAE30\uB85D\uC7A5\uC774\uB2E4.\n'\uC0B4\uC544\uB0A8\uC740
+      \uC9C0 637\uC77C\uC9F8'\n\uC5B4\uB290 \uB0A0\uBD80\uD130 \uB450\uB824\uC6C0\uC758
+      \uB300\uC0C1\uC774\uB358 \uBCD1\uAE30 \uC548\uB4DC\uB85C\uC774\uB4DC\uB4E4\uC774
+      \uB208\uC5D0 \uB744\uC9C0 \uC54A\uAE30 \uC2DC\uC791\uD588\uB2E4.\n\uC5B4\uB514\uC5D0
+      \uBAA8\uC5EC \uBB34\uC5C7\uC744 \uC900\uBE44\uD558\uB294 \uAC78\uAE4C?\n\uC804\uC7C1\uC774
+      \uC815\uB9D0 \uB05D\uB09C\uAC8C \uB9DE\uB294 \uAC78\uAE4C?"
+    codex_display: Img/Codex_display/Artifact/codex_display_survivaldiary
+    codex_icon: Icons/Artifact/icon_artifact_survivaldiary
+    codex_name: "\uC0DD\uC874 \uC77C\uC9C0"
+  - codex_id: codex_artifact_map
+    codex_type: 4
+    item_id: 50022
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uB0A1\uC740 \uC9C0\uB3C4
+      \uC870\uAC01.\n\uC911\uC559\uC5D0 \uCC22\uACA8 \uB098\uAC00 \uC788\uC5B4 \uAE38\uC758
+      \uC2DC\uC791\uACFC \uB05D\uC774 \uBAA8\uB450 \uC0AC\uB77C\uC838 \uC788\uB2E4.\n\uC808\uBCBD
+      \uC0B0 \uCABD\uC5D0\uB9CC \uD750\uB9BF\uD558\uAC8C 'X' \uD45C\uC2DC\uAC00 \uB0A8\uC544
+      \uC788\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_map
+    codex_icon: Icons/Artifact/icon_artifact_map
+    codex_name: "\uC9C0\uB3C4"
+  - codex_id: codex_artifact_compass
+    codex_type: 4
+    item_id: 50023
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uB098\uCE68\uBC18.\n\uAE08\uC18D\uC774
+      \uB4A4\uD2C0\uB824 \uC815\uD655\uD55C \uBC29\uD5A5\uC744 \uAC00\uB9AC\uD0A4\uC9C0
+      \uC54A\uB294\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_compass
+    codex_icon: Icons/Artifact/icon_artifact_compass
+    codex_name: "\uB098\uCE68\uBC18"
+  - codex_id: codex_artifact_whistle
+    codex_type: 4
+    item_id: 50024
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uBE44\uC0C1 \uD638\uB8E8\uB77C\uAE30.\n\uB179\uC2AC\uC5B4
+      \uAC70\uC758 \uC18C\uB9AC\uAC00 \uB098\uC9C0 \uC54A\uB294\uB2E4.\n\uD55C \uBC88
+      \uBD88\uBA74 \uD76C\uBBF8\uD55C \uBC14\uB78C \uC18C\uB9AC\uB9CC \uB0A0\uBFD0,
+      \uACBD\uACE0\uC74C\uC744 \uB0B4\uC9C0 \uBABB\uD55C\uB2E4.\n\uC544\uB7AB\uBD80\uBD84\uC5D4
+      \uB204\uAD70\uAC00 \uC138\uAC8C \uBB3C\uC5B4 \uB72F\uC740 \uB4EF\uD55C \uC790\uAD6D\uC774
+      \uC788\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_whistle
+    codex_icon: Icons/Artifact/icon_artifact_whistle
+    codex_name: "\uBE44\uC0C1 \uD638\uB8E8\uB77C\uAE30"
+  - codex_id: codex_artifact_jointring
+    codex_type: 4
+    item_id: 50025
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uAD00\uC808 \uB9C1.\n\uBC84\uD314\uB85C
+      \uCE5C\uAD6C\uC778 \uBCD1\uAE30 \uC548\uB4DC\uB85C\uC774\uB4DC\uC758 \uC190\uAC00\uB77D
+      \uB9C8\uB514\uC5D0\uC11C \uB5A8\uC5B4\uC838 \uB098\uC628 \uAD00\uC808 \uB9C1.\n\uC190\uC758
+      \uC6C0\uC9C1\uC784\uC744 \uBBF8\uC138\uD558\uAC8C \uC870\uC815\uD558\uB294
+      \uC911\uC694\uD55C \uBD80\uD488\uC774\uB2E4.\n\uBC84\uD314\uB85C\uC758 \uCE5C\uAD6C\uAC00
+      \uBC84\uD314\uB85C\uC5D0\uAC8C \uAC74\uB138\uC5C8\uB358 '\uC6B0\uC815\uC758
+      \uC99D\uD45C'\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_jointring
+    codex_icon: Icons/Artifact/icon_artifact_jointring
+    codex_name: "\uAD00\uC808 \uB9C1 \uBD80\uD488"
+  - codex_id: codex_artifact_stopsign
+    codex_type: 4
+    item_id: 50026
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uCD9C\uC785 \uAE08\uC9C0
+      \uD45C\uC9C0\uD310.\n'\uC811\uADFC \uAE08\uC9C0' \uBB38\uAD6C\uAC00 \uC801\uD600\uC788\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_stopsign
+    codex_icon: Icons/Artifact/icon_artifact_stopsign
+    codex_name: "\uCD9C\uC785 \uAE08\uC9C0 \uD45C\uC9C0\uD310"
+  - codex_id: codex_artifact_umbrella
+    codex_type: 4
+    item_id: 50027
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uCC9C\uC774 \uBC1B\uCBE4
+      \uCC22\uACA8\uB098\uAC04 \uC6B0\uC0B0.\n\uBE44\uAC00 \uC3DF\uC544\uC9C0\uC790
+      \uBC84\uD314\uB85C\uB294 \uC6B0\uC0B0\uC744 \uC50C\uC6CC\uC8FC\uACE0 \uC26C\uB824
+      \uD588\uC9C0\uB9CC,\uCF54\uCF54\uB450\uAE30\uB294 \uB180\uC790\uBA70 \uC6B0\uC0B0\uC744
+      \uD754\uB4E4\uC5B4 \uB314\uB2E4.\n\uACB0\uAD6D \uB458\uC740 \uC6B0\uC0B0\uC744
+      \uC811\uC740 \uCC44 \uBE57\uC18D\uC5D0\uC11C \uBB3C\uC744 \uD280\uAE30\uBA70
+      \uB6F0\uC5B4\uB2E4\uB154\uACE0, \uC628\uBAB8\uC774 \uC816\uC5C8\uC9C0\uB9CC
+      \uC6C3\uC74C\uC774 \uB04A\uC774\uC9C8 \uC54A\uC558\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_umbrella
+    codex_icon: Icons/Artifact/icon_artifact_umbrella
+    codex_name: "\uC6B0\uC0B0"
+  - codex_id: codex_artifact_tent
+    codex_type: 4
+    item_id: 50028
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uC624\uB798\uB41C
+      \uD150\uD2B8 \uC870\uAC01.\n\uC624\uB798\uC804 \uB204\uAD70\uAC00 \uC774\uACF3\uC5D0\uC11C
+      \uBC24\uC744 \uBCF4\uB0B4\uBA70 \uB3C4\uC6C0\uC744 \uAE30\uB2E4\uB838\uB358
+      \uD754\uC801\uC774 \uB0A8\uC544 \uC788\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_tent
+    codex_icon: Icons/Artifact/icon_artifact_tent
+    codex_name: "\uD150\uD2B8"
+  - codex_id: codex_artifact_pipe
+    codex_type: 4
+    item_id: 50029
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uD30C\uC774\uD504
+      \uC870\uAC01.\n\uB0A1\uC740 \uC794\uD574 \uB354\uBBF8 \uC18D\uC5D0\uC11C \uB5A8\uC5B4\uC838
+      \uB098\uC628 \uBB3C\uAC74\uC774\uB2E4.\n\uBC14\uB78C\uC774 \uC2A4\uCE58\uBA70
+      \uB0AE\uAC8C \uC6B8\uB9AC\uBA70, \uADF8 \uC6B8\uB9BC\uC774 \uBA40\uB9AC\uAE4C\uC9C0
+      \uD37C\uC9C4\uB2E4.\n\uBC84\uD314\uB85C\uC640 \uCF54\uCF54\uB450\uAE30\uB294
+      \uC11C\uB85C\uC758 \uC704\uCE58\uB97C \uD655\uC778\uD558\uAE30 \uC704\uD574
+      \uC774 \uD30C\uC774\uD504 \uC870\uAC01\uC744 \uAC00\uBCCD\uAC8C \uB450\uB4DC\uB824
+      \uC6B8\uB838\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_pipe
+    codex_icon: Icons/Artifact/icon_artifact_pipe
+    codex_name: "\uD30C\uC774\uD504 \uC870\uAC01"
+  - codex_id: codex_artifact_flashlight
+    codex_type: 4
+    item_id: 50030
+    codex_lore: "\uC808\uBCBD \uC0B0\uC5D0\uC11C \uC5BB\uC740 \uC190\uC804\uB4F1.\n\uBC24\uC774
+      \uC624\uBA74 \uCF54\uCF54\uB450\uAE30\uC640 \uBC84\uD314\uB85C\uB294 \uC808\uBCBD
+      \uC544\uB798 \uD480\uC232\uC5D0 \uC549\uC544 \uC190\uC804\uB4F1 \uBD88\uBE5B\uC744
+      \uAC00\uC9C0\uACE0 \uADF8\uB9BC\uC790\uB97C \uB298\uC600\uB2E4 \uC904\uC600\uB2E4
+      \uD558\uBA70 \uC7A5\uB09C\uC744 \uCCE4\uB2E4."
+    codex_display: Img/Codex_display/Artifact/codex_display_flashlight
+    codex_icon: Icons/Artifact/icon_artifact_flashlight
+    codex_name: "\uC190\uC804\uB4F1"

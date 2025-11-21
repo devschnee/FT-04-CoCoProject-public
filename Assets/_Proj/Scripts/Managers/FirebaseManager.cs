@@ -89,7 +89,7 @@ public class FirebaseManager : MonoBehaviour
 
             
             Debug.Log($"[파이어베이스 인증]로컬에 남아있는 유저 아이디 : {Auth.CurrentUser?.UserId}");
-
+            Debug.Log($"[파이어베이스 인증]현재 유저의 표기 이름 : {Auth.CurrentUser?.DisplayName}");
 
             //StartCoroutine(TestLog());
 
@@ -567,7 +567,7 @@ public class FirebaseManager : MonoBehaviour
         //TODO: 나중에 정규식 넣어서 필터링할수도 있겠음
         if (newName == "DEFAULT" || newName.IsNullOrEmpty())
         {
-            displayMessage?.Invoke("사용 불가능한 닉네임입니다...");
+            displayMessage?.Invoke("<color=red>사용 불가능한 닉네임입니다.</color>");
 
             return false;
 
@@ -579,7 +579,7 @@ public class FirebaseManager : MonoBehaviour
         string oldName = UserData.Local.master.nickName;
         if (oldName == newName)
         {
-            displayMessage?.Invoke("같은 이름으로는 변경할 수 없어요!");
+            displayMessage?.Invoke("<color=red>같은 이름으로는 변경할 수 없어요!</color>");
             return false;
         }
 
@@ -590,7 +590,7 @@ public class FirebaseManager : MonoBehaviour
             if (mutableData.Value != null)
             {
                 //이미 mutableData가 존재: 중복 닉으로 존재한다는 뜻.
-                displayMessage?.Invoke($"이미 사용 중인 닉네임이에요!");
+                displayMessage?.Invoke($"<color=red>이미 사용 중인 닉네임이에요!</color>");
                 return TransactionResult.Abort();
             }
 
@@ -607,7 +607,7 @@ public class FirebaseManager : MonoBehaviour
         //result.Exists == false면, 중복 닉이란 뜻임.
         if ((string)result.Value != Auth.CurrentUser.UserId)
         {
-            displayMessage?.Invoke("이미 사용중인 닉네임입니다.");
+            displayMessage?.Invoke("<color=red>이미 사용 중인 닉네임이에요!</color>");
             return false;
         }
 
@@ -626,7 +626,7 @@ public class FirebaseManager : MonoBehaviour
             }
             catch (FirebaseException fe)
             {
-                displayMessage?.Invoke("DB 업데이트 실패! 닉네임 등록을 취소합니다...");
+                displayMessage?.Invoke("<color=red>DB 업데이트 실패!</color>\n닉네임 등록을 취소합니다...");
                 //실패했으니 닉네임 풀 롤백
                 await AllNamesRef.Child(newName).RemoveValueAsync();
                 await AllNamesRef.Child(oldName.IsNullOrEmpty() ? "DONOTREMOVE" : oldName).SetValueAsync(Auth.CurrentUser.UserId);
@@ -643,7 +643,7 @@ public class FirebaseManager : MonoBehaviour
         }
         catch (FirebaseException fe)
         {
-            displayMessage?.Invoke("DB 업데이트 실패! 닉네임 등록을 취소합니다...");
+            displayMessage?.Invoke("<color=red>DB 업데이트 실패!</color>\n닉네임 등록을 취소합니다...");
             //실패했으니 닉네임 풀 롤백
             await AllNamesRef.Child(newName).RemoveValueAsync();
             await AllNamesRef.Child(oldName.IsNullOrEmpty() ? "DONOTREMOVE" : oldName).SetValueAsync(Auth.CurrentUser.UserId);
@@ -661,7 +661,7 @@ public class FirebaseManager : MonoBehaviour
         }
         catch (FirebaseException fe)
         {
-            displayMessage?.Invoke("인증 정보 업데이트 실패! 닉네임 등록을 취소합니다...");
+            displayMessage?.Invoke("<color=red>인증 정보 업데이트 실패!</color>\n닉네임 등록을 취소합니다...");
             //실패했으니 DB 롤백
             await CurrentUserDataRef.Child("master").Child("nickName").SetValueAsync(oldName);
             //실패했으니 닉네임 풀 롤백
@@ -677,6 +677,7 @@ public class FirebaseManager : MonoBehaviour
 
         //남은 처리: 로컬 유저데이터의 이름 변경해주기.
         UserData.Local.master.nickName = newName;
+        displayMessage?.Invoke("<color=green>닉네임 설정 완료!</color>\n버튼을 누르면 로비로 이동합니다.");
         //TODO: 포톤에까지 접속 후에 닉네임 변경할 때의 처리 필요.
         //if (PhotonNetwork.IsConnected) PhotonNetwork.LocalPlayer.NickName = newName;
 

@@ -19,12 +19,12 @@ public class NicknameSceneManager : MonoBehaviour
     public async void OnConfirmButtonClick()
     {
         confirmButton.interactable = false;
-        if (await FirebaseManager.Instance.CheckIfNameReservedAndReset(nicknameInputField.text, ShowLog))
+        bool isSucceed = await FirebaseManager.Instance.CheckIfNameReservedAndReset(nicknameInputField.text, ShowLog);
+        if (isSucceed)
         {
             confirmButton.onClick.RemoveAllListeners();
             confirmButton.onClick.AddListener(() => ToMainScene());
             confirmButton.interactable = true;
-            ShowLog("<color=green>닉네임 설정 완료!</color>\n버튼을 누르면 로비로 이동합니다.");
         }
         else
         {
