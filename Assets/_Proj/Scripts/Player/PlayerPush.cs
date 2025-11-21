@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+//KHJ - 11/21 TODO : 기획팀 요청 : push가 끝난 후 n초동안 이동을 입력을 0으로 만들어서 push가 연속으로 되는 문제를 딜레이줘서 해결하도록. n초는 inspector에서 수정할 수 있어야 함.
+
 public class PlayerPush : MonoBehaviour, IMoveStrategy
 {
     [Header("Push Settings")]

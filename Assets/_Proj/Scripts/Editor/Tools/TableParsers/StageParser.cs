@@ -46,7 +46,7 @@ public static class StageParser
                 stage_id = id,
                 stage_name = finalName,
                 stage_img = v[2],
-                stage_desc = v[3].Replace("\\n", "\n"),
+                stage_desc = v[3],
                 map_id= v[4],
                 start_cutscene = v[5],
                 start_talk = v[6],

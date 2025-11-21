@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9566e36e9998e34a8dccf57b0c8e430, type: 3}
+  m_Name: RockTwoPropBlock
+  m_EditorClassIdentifier: 
+  blockType: 17
+  blockName: RockTwoProp
+  prefab: {fileID: 1867162861309521752, guid: 8e3499e155db9d14c8217f8d1c9fbe2f, type: 3}

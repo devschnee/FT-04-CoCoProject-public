@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CamControl : MonoBehaviour
@@ -33,10 +34,22 @@ public class CamControl : MonoBehaviour
 
         wayPoint[0] = stage.GetComponentInChildren<EndBlock>().transform;
         wayPoint[4] = stage.GetComponentInChildren<StartBlock>().transform;
-        var treasureposList = stage.GetComponentsInChildren<Treasure>();
-        for (int i = 0; i < treasureposList.Length; i++)
+        var treasurePosList = stage.GetComponentsInChildren<Treasure>();
+
+        foreach (var treasure in treasurePosList)
         {
-            wayPoint[i + 1] = treasureposList[i].transform;
+            if (treasure.treaureBlockName.Contains("1")) 
+            {
+                wayPoint[3] = treasure.transform;
+            }
+            else if (treasure.treaureBlockName.Contains("2"))
+            {
+                wayPoint[2] = treasure.transform;
+            }
+            else if (treasure.treaureBlockName.Contains("3"))
+            {
+                wayPoint[1] = treasure.transform;
+            }
         }
     }
 
@@ -79,4 +92,6 @@ public class CamControl : MonoBehaviour
     //카메라워킹 맵 로딩 후 end블록에서 start블록으로 offset 얼마?
     //카메라워킹 끝나면 플레이어한테 가야한다
     //웨이포인트 쓰는데 시작지점은 end블록 끝 지점은 start블록
+
+    // KHJ - TODO : 이동이 끝나고 플레이어를 찾아서 연결해줬으면 이후에 터치가 두 손가락으로 들어왔을 때 캠의 타게팅을 플레이어에 고정시키던 것을 주변을 둘러볼 수 있도록 바꿔야 함. 터치가 손가락 하나이하가 되면 다시 플레이어 타겟팅
 }

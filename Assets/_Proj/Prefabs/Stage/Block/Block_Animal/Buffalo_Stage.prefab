@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7842754840454281407}
   - component: {fileID: 992193947829246877}
   - component: {fileID: 1652673128369942235}
+  - component: {fileID: -5874823324159413397}
+  - component: {fileID: 1172283310861793811}
   m_Layer: 0
   m_Name: Buffalo_Stage
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 565766366378493080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -134,6 +136,53 @@ MonoBehaviour:
     property:
       isOn: 0
       linkedPos: {x: 2147483647, y: 2147483647, z: 2147483647}
+--- !u!114 &-5874823324159413397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565766366378493080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9850be12b7364e84a84b6e9d4c17cdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridPosition: {x: 0, y: 0, z: 0}
+  origin:
+    blockType: 0
+    blockName: 
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    property:
+      isOn: 0
+      linkedPos: {x: 2147483647, y: 2147483647, z: 2147483647}
+  transparentColliders: []
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  rayOffsetY: 0
+--- !u!65 &1172283310861793811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565766366378493080}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5077943504914485904
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,18 +562,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6114732397278702547}
-  m_LocalRotation: {x: 0.49999917, y: -0, z: -0, w: 0.8660259}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4051458657754265652}
   m_Father: {fileID: 3762624979193485081}
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 0, y: 3.5}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5286084692691044558
 Canvas:
@@ -678,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5688514589227935448, guid: ad0058799afa43640919848d26f0f33b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5688514589227935448, guid: ad0058799afa43640919848d26f0f33b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -711,6 +760,14 @@ PrefabInstance:
     - target: {fileID: 5688514589227935448, guid: ad0058799afa43640919848d26f0f33b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688514589227935449, guid: ad0058799afa43640919848d26f0f33b, type: 3}
+      propertyPath: m_Height
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5688514589227935449, guid: ad0058799afa43640919848d26f0f33b, type: 3}
+      propertyPath: m_Center.z
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5688514589227935463, guid: ad0058799afa43640919848d26f0f33b, type: 3}
       propertyPath: m_Name

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9566e36e9998e34a8dccf57b0c8e430, type: 3}
+  m_Name: BushPropBlock
+  m_EditorClassIdentifier: 
+  blockType: 17
+  blockName: BushProp
+  prefab: {fileID: 660889961976151989, guid: 1ef3efe5887a1b745be1f71df2ce98ca, type: 3}

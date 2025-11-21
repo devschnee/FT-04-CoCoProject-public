@@ -80,7 +80,7 @@ public class Buffalo : MonoBehaviour, IPlayerFinder
         if (interactionBtn)
         {
             // World Rotation을 Quaternion.identity(X=0, Y=0, Z=0)로 설정
-            interactionBtn.transform.rotation = Quaternion.Euler(60f, 0, 0);
+            interactionBtn.transform.rotation = Quaternion.Euler(75f, 0, 0);
         }
     }
 

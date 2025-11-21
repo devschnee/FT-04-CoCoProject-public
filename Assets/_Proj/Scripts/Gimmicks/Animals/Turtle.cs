@@ -86,7 +86,7 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
             if (inRange)
             {
                 // NOTE : 추후 각도 변경 가능성 있음.
-                btnGroup.transform.rotation = Quaternion.Euler(90f, 0, 0);
+                btnGroup.transform.rotation = Quaternion.Euler(75f, 0, 0);
             }
         }
     }

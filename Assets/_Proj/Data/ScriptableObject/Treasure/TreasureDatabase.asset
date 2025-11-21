@@ -18,13 +18,15 @@ MonoBehaviour:
     reward_id: 110003
     count: 100
     view_codex_id: codex_artifact_coin
-    coco_coment: '[coco_get_coin]'
+    coco_coment: "\uBC18\uC9DD\uC774\uB294 \uB3D9\uC804\uC774\uC57C! \uC8FC\uC778\uB2D8\uAED8
+      \uAC00\uC838\uB2E4\uB4DC\uB9AC\uC790!"
   - treasure_id: treasure_1_1_2
     treasureType: 1
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_cap
-    coco_coment: '[coco_get_cap]'
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
   - treasure_id: treasure_1_1_3
     treasureType: 2
     reward_id: 10001
@@ -48,4 +50,5 @@ MonoBehaviour:
     reward_id: 110002
     count: 500
     view_codex_id: codex_artifact_coin
-    coco_coment: '[coco_get_cap]'
+    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4! \uC774\uAC78\uB85C
+      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"

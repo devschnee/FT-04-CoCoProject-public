@@ -68,7 +68,7 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
     private void LateUpdate()
     {
         // 멧돼지(부모)의 회전에 상관없이 UI가 월드 축에 고정되게 유지
-        if (btnGroup) btnGroup.transform.rotation = Quaternion.Euler(60f, 0, 0);
+        if (btnGroup) btnGroup.transform.rotation = Quaternion.Euler(75f, 0, 0);
     }
 
     // 플레이어 감지
@@ -279,7 +279,7 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
             checkTailPos + Vector3.up * 0.5f,
             halfExt,
             Quaternion.identity,
-             blockingMask
+             blockingMask | LayerMask.GetMask("Player")
             );
 
             if (tailBlocked)

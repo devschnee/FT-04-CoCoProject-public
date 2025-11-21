@@ -62,6 +62,8 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
     }
     void Update()
     {
+        if (allowFall && !isMoving && !isFalling && !isRiding) StartCoroutine(CheckFall());
+
         if (!isHoling || isMoving || isRiding) return;
 
         // 밀고 있는 시간 누적
@@ -351,7 +353,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         if (fell) //.
             OnLanded();
     }
-    
+
     // 모양에 맞는 충돌 검사 구현하도록
     //protected abstract bool CheckBlocking(Vector3 target);
     // NOTE : 11/5 Orb가 BoxCollider를 갖게 되면서 PuhsableObjects에 통합됨.
@@ -415,7 +417,9 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
     // 복귀
     IEnumerator WaveLiftCoroutine(float rise, float holdSec, float fall)
     {
-        isFalling = true; //.
+        LayerMask landingLayer = groundMask | LayerMask.GetMask("Player");
+
+        isFalling = true;
         isMoving = true;
 
         Vector3 start = transform.position;
@@ -437,6 +441,18 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         if (holdSec > 0f)
             yield return new WaitForSeconds(holdSec);
 
+        Vector3 checkSize = new Vector3(0.45f, 0.05f, 0.45f);
+        float checkDist = 1.1f; // center(0.5f) + check distance(0.6f) <- 코코두기의 키가 0.6~0.7f정도 됨.
+
+        if (Physics.BoxCast(transform.position, checkSize, Vector3.down, out RaycastHit hit, Quaternion.identity, checkDist, landingLayer))
+        {
+            Debug.Log($"[PO] {name} 하강 하려 했는데 {hit.collider.name} 감지 함. 하강 못함.");
+            transform.position = target;
+            isMoving = false;
+            isFalling = false;
+            yield break;
+        }
+
         t = 0f;
         while (t < fall)
         {
@@ -448,7 +464,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
         isMoving = false;
         isFalling = false; //.
-        Debug.Log($"{name} 충격파 영향 받음");
+        Debug.Log($"[PO] {name} 충격파 영향 받음. 이제 떨어질 것임.");
         //yield break;
         // NOTE : 혹시나 뭔가 다른 작업을 하다 여기에서 CheckFall()을 할 일이 생긴다면 차라리 다른 스크립트를 작성하는 것을 권장. 원위치 복귀 후 다시 낙하 검사하는 실수 생기면 안 됨.
         // pushables가 충격파 받은 이후로 적층된 물체들이 원위치 후 다시 낙하 검사를 하게 되면 한 번 더 낙하해서 원위치에서 -y로 더 내려가게 됨

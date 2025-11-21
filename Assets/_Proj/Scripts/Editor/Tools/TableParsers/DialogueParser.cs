@@ -26,8 +26,7 @@ public class DialogueParser
             if (string.IsNullOrWhiteSpace(line)) continue;
 
             //CSV 포맷 그대로 두고, 정규식으로 필드 파싱
-            var v = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-
+            var v = System.Text.RegularExpressions.Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
             for (int j = 0; j < v.Length; j++)
                 v[j] = v[j].Trim().Trim('"').Trim('\uFEFF');
 

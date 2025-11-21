@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureIndex: 2
+  treaureBlockName: 3
 --- !u!1 &3575787489747564077
 GameObject:
   m_ObjectHideFlags: 0

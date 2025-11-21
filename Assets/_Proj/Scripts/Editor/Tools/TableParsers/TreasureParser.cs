@@ -42,6 +42,9 @@ public static class TreasureParser
 
             Enum.TryParse(v[1], true, out TreasureType type);
 
+            string rawDesc = v[5];
+            string finalDesc = TextParser.Resolve(rawDesc, textDict);
+
             db.treasureList.Add(new TreasureData
             {
                 treasure_id = id,
@@ -49,7 +52,7 @@ public static class TreasureParser
                 reward_id = reward_id,
                 count = count,
                 view_codex_id = v[4],
-                coco_coment = v[5],
+                coco_coment = finalDesc
             });
         }
 

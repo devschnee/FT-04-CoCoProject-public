@@ -4,6 +4,7 @@ using UnityEngine;
 public class Treasure : MonoBehaviour
 {
     public int treasureIndex;
+    public string treaureBlockName;
     private string treasureId;
     private bool isCollected = false;
     void Start()

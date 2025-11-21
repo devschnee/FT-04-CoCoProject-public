@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9566e36e9998e34a8dccf57b0c8e430, type: 3}
+  m_Name: SolarPanelBlock
+  m_EditorClassIdentifier: 
+  blockType: 17
+  blockName: SolarPanelProp
+  prefab: {fileID: 2211179209959115702, guid: 452456834ac1e104da98d2ea8b2c929e, type: 3}

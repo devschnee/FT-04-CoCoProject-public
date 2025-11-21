@@ -101,7 +101,7 @@ public class Joystick : MonoBehaviour
             Drag((Vector3)touch.position.ReadValue() - transform.position);
         }
         
-       
+       // TODO : 두 손가락으로 터치하면 플레이어의 입력을 0으로 막고, 이 상태에서 드래그 한다면 TwoFingerDrag()를 호출해야 함.
 
     }
 
@@ -146,6 +146,12 @@ public class Joystick : MonoBehaviour
 
         Vector2 inputNormal = clamped.sqrMagnitude > 0.0001f ? (clamped / moveRange) : Vector2.zero;
         InputDir = new Vector3(inputNormal.x, 0, inputNormal.y);
+    }
+
+    // TODO : 두 손가락으로 터치한 상태로 드래그 할 경우, 카메라가 드래그하는 방향, 드래그 하는 만큼의 -방향으로 이동돼야 함. 이때, 플레이어가 화면 밖으로 벗어날 정도로 움직이면 안 됨.(현재 플레이어는 카메라의 정중앙에 위치하도록 되어 있음.). CamControl.cs에서 두 손가락 터치가 입력될 경우 Cam의 타겟을 플레이어에서 끊고 주변을 둘러볼 수 있게 해야 함. 손가락이 하나라도 떨어지면 다시 코코두기를 타겟팅.
+    public void TwoFingerDrag()
+    {
+
     }
 
     public void ResetJoystick()
