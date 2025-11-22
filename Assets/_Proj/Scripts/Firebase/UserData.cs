@@ -389,7 +389,7 @@ public class UserData : IUserData
 
     /// <summary>
     /// <b>이벤트 기록</b>
-    /// <br>1. keyValues (TKey: 장식물의 id, TValue: 그 장식물의 배치 정보 리스트)</br>
+    /// <br>1. keyValues (TKey: 이벤트(시즌)의 id, TValue: 해당 이벤트에서 받은 좋아요 개수)</br>
     /// </summary>
     [Serializable]
     public class EventArchive : IUserDataCategory
@@ -450,34 +450,57 @@ public class UserData : IUserData
     public class Codex : IUserDataCategory
     {
         
-
+        //키: 코덱스 타입(home, artifact, animal, costume, deco),
+        //아이템아이디별 코덱스 구간: 10001~19999: deco, 50001~59999: artifact, 
+        //밸류: 각각의 해시셋에는 해금된 도감의 codex_id(string)가 들어가야 논리적으로 맞는데...
+        //아이템아이디가 전부 할당되어 있고, 이걸 기준으로 찾아도 되니까 int로 저장하려고 했지만 아이템아이디가 중구난방임.
+        //5만번대면 artifact여야 하는데 코인, 병뚜껑, 에너지는 11만번대면서 artifact임. 에너지는 또 왜 있어 이거
+        //뭐 아무튼간에 이 클래스는 '코덱스 전체의 해금 여부'만을 기본적으로 제공하면 됨.
         public Dictionary<string, HashSet<int>> categories = new();
 
 
         public Codex()
         {
-
-        }
-        //TODO: 수정할 것.
-        public Dictionary<CodexType, HashSet<int>> LoadUnlocked()
-        {
-            var result = new Dictionary<CodexType, HashSet<int>>();
-
-            foreach (var categoryKV in categories)
+            string[] enumStrings = Enum.GetNames(typeof(CodexType));
+            foreach (var enumString in enumStrings)
             {
-                if (Enum.TryParse<CodexType>(categoryKV.Key, out var resultEnum))
-                {
-                    result.Add(resultEnum, categoryKV.Value);
-                }
-                else
-                {
-                    Debug.LogWarning("?????머임");
-                }
-                
+                categories.Add(enumString.ToLower(), new HashSet<int>());
             }
-            return result;
-
         }
+
+        /// <summary>
+        /// 아이템아이디를 매개변수로 이 코덱스에 접근하기만 하면 해금이 되었는지 아닌지 여부를 반환.
+        /// </summary>
+        /// <param name="itemId">해금 여부를 검사하고 싶은 요소의 item_id</param>
+        /// <returns></returns>
+        public bool this[CodexType type, int itemId] 
+        { 
+            get
+            {
+                Debug.Log($"UserData-Codex: {type.ToString().ToLower()}를 검사 중");
+                if (!categories.TryGetValue(type.ToString().ToLower(), out var values))
+                {
+                    //아예 아무것도 없는 상황임.
+                    categories.Add(type.ToString().ToLower(), new HashSet<int>());
+                    return false;
+                }
+                    return values.Contains(itemId);
+            } 
+            set
+            {
+                if (value)
+                {
+                    if (!categories.TryGetValue(type.ToString().ToLower(), out var values))
+                    {
+                        categories.Add(type.ToString().ToLower(), new HashSet<int>());
+                    }
+                    values.Add(itemId);
+                    
+                }
+                //false 대입 시의 동작.. 코덱스 해금 상태 해제? 지금은 필요가 없음.
+            }
+        }
+
 
 
 
@@ -606,6 +629,7 @@ public class UserData : IUserData
         lobby = new Lobby();
         eventArchive = new EventArchive();
         friends = new Friends();
+        codex = new Codex();
         progress = new Progress();
         preferences = new Preferences();
         flag = 0;

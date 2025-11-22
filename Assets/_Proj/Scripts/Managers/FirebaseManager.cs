@@ -468,9 +468,10 @@ public class FirebaseManager : MonoBehaviour
                               category is UserData.Lobby ? "lobby" :
                               category is UserData.EventArchive ? "eventArchive" :
                               category is UserData.Friends ? "friends" :
+                              category is UserData.Codex ? "codex" :
                               category is UserData.Progress ? "progress" :
                               category is UserData.Preferences ? "preferences" :
-                              "invalidNode";
+                              "UndefinedNode";
 
         try
         {

@@ -24732,6 +24732,7 @@ MonoBehaviour:
   detailName: {fileID: 6394424773572379582}
   detailDesc: {fileID: 4588587066481180226}
   detailScroll: {fileID: 6691119301351291646}
+  slotLabel: {fileID: 3239809702297958423}
   gridParent: {fileID: 278433560899342212}
   slotPrefab: {fileID: 3192819050530189671, guid: a66fee0cefebd3d43ac525460ce5f180, type: 3}
   pageLabel: {fileID: 5600623033322713223}

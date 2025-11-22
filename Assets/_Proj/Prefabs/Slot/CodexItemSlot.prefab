@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.79215693, g: 0.5568628, b: 0.32941177, a: 1}
+  m_Color: {r: 0.79215693, g: 0.5568628, b: 0.32941177, a: 0.4}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -209,8 +209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.79215693, g: 0.5568628, b: 0.32941177, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 20, y: 15, z: 20, w: 15}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -280,8 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconImage: {fileID: 1944014009917166101}
   lockedOverlay: {fileID: 2044104599712438340}
-  lockIcon: {fileID: 1194841356172409058}
-  slotFrame: {fileID: 7573520661541158773}
+  lockIcon: {fileID: 4035393772049491614}
   button: {fileID: 6065497604077686214}
 --- !u!114 &6065497604077686214
 MonoBehaviour:

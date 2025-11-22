@@ -223,9 +223,31 @@ public class StageManager : MonoBehaviour, IStageManager
         {
             prev.bestTreasureCount = Mathf.Max(prev.bestTreasureCount, collectedCount);
         }
-
+        UnlockAcquiredTreasureCodex();
         PlayerProgressManager.Instance.SaveProgress();
     }
+
+    //보물 획득으로 해금되는 도감의 해금 처리. 이전보다 더 많은 별을 획득했는지의 여부는 관심 없이 스테이지 클리어하면 곧바로 해금하도록 처리.
+    void UnlockAcquiredTreasureCodex()
+    {
+        var stageData = DataManager.Instance.Stage.GetData(currentStageId);
+        string[] treasureIds = { stageData.treasure_01_id, stageData.treasure_02_id, stageData.treasure_03_id };
+        for (int i = 0; i < treasureIds.Length; i++)
+        {
+            if (collectedTreasures[i])
+            {
+                var itemIdFromTreasure = DataManager.Instance.Treasure.GetData(treasureIds[i]).reward_id;
+                if (50000 < itemIdFromTreasure && itemIdFromTreasure < 60000) //아티팩트라는 뜻...
+                {
+                    UserData.Local.codex[CodexType.artifact, itemIdFromTreasure] = true;
+                }
+            }
+        }
+        UserData.Local.codex.Save();
+
+    }
+
+
     void SpawnPlayer()
     {
         playerObject = Instantiate(playerPrefab, startPoint, Quaternion.identity);
