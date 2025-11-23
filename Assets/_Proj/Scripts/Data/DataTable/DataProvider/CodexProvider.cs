@@ -11,6 +11,8 @@ public class CodexProvider : IDataProvider<string, CodexData>
         loader = resLoader;
     }
 
+    public CodexDatabase Value => database;
+
     public CodexData GetData(string id)
     {
         return database.codexList.Find(a => a.codex_id == id);

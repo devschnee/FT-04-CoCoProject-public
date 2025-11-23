@@ -10,6 +10,7 @@ public class StageProvider : IDataProvider<string, StageData>
         database = db;
         loader = resLoader;
     }
+    public StageDatabase Value => database;
 
     public StageData GetData(string id)
     {

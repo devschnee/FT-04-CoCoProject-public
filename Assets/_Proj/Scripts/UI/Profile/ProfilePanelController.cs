@@ -29,11 +29,13 @@ public class ProfilePanelController : MonoBehaviour
     // 외부(헤더)에 있는 프로필 버튼이 여기 구독해서 아이콘만 바꾸면 됨
     public System.Action<Sprite, int> OnProfileIconChanged;
 
-    private FirebaseAuth _auth;
+    //이제 이 클래스는 파이어베이스 Auth를 전혀 몰라도 됩니다.
+    //Firebase Auth가 필요한 부분은 uid 외에는 없음. 따라서 임시 변수로 돌립니다.
+    //private FirebaseAuth _auth;
 
     private void Awake()
     {
-        _auth = FirebaseAuth.DefaultInstance;
+        //_auth = FirebaseAuth.DefaultInstance;
     }
 
     private void OnEnable()
@@ -50,9 +52,11 @@ public class ProfilePanelController : MonoBehaviour
 
     private void SetupUserInfo()
     {
-        var user = _auth.CurrentUser;
-        if (nicknameText) nicknameText.text = user?.DisplayName ?? "-";
-        if (uidText) uidText.text = user?.UserId ?? "-";
+        //var user = _auth.CurrentUser;
+        var user = UserData.Local.master;
+
+        if (nicknameText) nicknameText.text = UserData.Local.master.nickName ?? "-";
+        if (uidText) uidText.text = FirebaseAuth.DefaultInstance.CurrentUser?.UserId ?? "-";
         if (joindateText)
         {
             var createdAt =  UserData.Local.master.createdAt; 
@@ -142,9 +146,11 @@ public class ProfilePanelController : MonoBehaviour
     }
 
     // 프로필 아이콘 저장(Firebase)
+    // ???? 이건 등록된 프로필 아이콘을 저장할 방법을 궁리해봐야 할 듯. 프로필 아이콘은 유저가 업로드할 이미지들인지? 게임 리소스로 존재할 것인지?
+    // 단, 유저가 직접 업로드하는 이미지라면 일반적인 방법으로는 프로필 아이콘 설정이 불가능함.
     public void SaveEquipped(ProfileType type, int itemId)
     {
-        var user = _auth.CurrentUser;
+        var user = FirebaseAuth.DefaultInstance.CurrentUser;
         if (user == null) return;
 
         FirebaseDatabase.DefaultInstance

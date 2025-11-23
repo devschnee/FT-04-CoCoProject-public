@@ -473,18 +473,34 @@ public class UserData : IUserData
         /// </summary>
         /// <param name="itemId">해금 여부를 검사하고 싶은 요소의 item_id</param>
         /// <returns></returns>
-        public bool this[CodexType type, int itemId] 
+        public bool this[CodexType? type, int itemId] 
         { 
             get
             {
-                Debug.Log($"UserData-Codex: {type.ToString().ToLower()}를 검사 중");
-                if (!categories.TryGetValue(type.ToString().ToLower(), out var values))
+                if (type != null)
                 {
-                    //아예 아무것도 없는 상황임.
-                    categories.Add(type.ToString().ToLower(), new HashSet<int>());
+                    Debug.Log($"UserData-Codex: {type.ToString().ToLower()}를 검사 중");
+                    if (!categories.TryGetValue(type.ToString().ToLower(), out var values))
+                    {
+                        //아예 아무것도 없는 상황임.
+                        categories.Add(type.ToString().ToLower(), new HashSet<int>());
+                        return false;
+                    }
+                    return values.Contains(itemId);
+                }
+                else
+                {
+                    Debug.Log($"UserData-Codex: 모든 코덱스 타입을 검사 중");
+                    var allCats = categories.Values;
+                    foreach (var item in allCats)
+                    {
+                        if (item.Contains(itemId))
+                        {
+                            return true;
+                        }
+                    }
                     return false;
                 }
-                    return values.Contains(itemId);
             } 
             set
             {

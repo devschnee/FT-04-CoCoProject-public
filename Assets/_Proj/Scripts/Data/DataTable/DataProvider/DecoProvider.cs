@@ -5,7 +5,9 @@ public class DecoProvider : IDataProvider<int, DecoData>
     private DecoDatabase database;
     private IResourceLoader loader;
 
-    public DecoDatabase Value { get; internal set; }
+    public DecoDatabase Value => database;
+
+    
 
     public DecoProvider(DecoDatabase db, IResourceLoader resLoader)
     {
@@ -28,4 +30,7 @@ public class DecoProvider : IDataProvider<int, DecoData>
         var data = GetData(id);
         return data?.GetIcon(loader);
     }
+
+
+    
 }
