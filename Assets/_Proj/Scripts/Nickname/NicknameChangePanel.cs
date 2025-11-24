@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class NicknameSceneManager : MonoBehaviour
+public class NicknameChangePanel : MonoBehaviour
 {
     [HideInInspector]
     public bool isNicknameChangedSuccessfully;
