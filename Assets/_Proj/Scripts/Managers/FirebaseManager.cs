@@ -498,7 +498,7 @@ public class FirebaseManager : MonoBehaviour
             yield return localUserDataExists;
             if (UserData.Local == null)
                 yield break;
-            SendHeartbeatAsync();
+            _ = SendHeartbeatAsync();
 
             if (heartbeatInterval < 1f) heartbeatInterval = 5f;
 
@@ -536,7 +536,7 @@ public class FirebaseManager : MonoBehaviour
         }
         catch (FirebaseException fe)
         {
-            Debug.LogError($"{Auth.CurrentUser.UserId}: 하트비트 보내는 중 오류 발생");
+            Debug.LogError($"{Auth.CurrentUser.UserId}: 하트비트 보내는 중 오류 발생: {fe.Message}");
         }
     }
 
@@ -619,6 +619,7 @@ public class FirebaseManager : MonoBehaviour
         catch (Exception e)
         {
             displayMessage?.Invoke("<color=red>이미 사용 중인 닉네임이에요!</color>");
+            Debug.LogError(e);
             return false;
         }
 

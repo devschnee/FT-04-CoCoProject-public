@@ -5,7 +5,7 @@ public class CostumeProvider : IDataProvider<int, CostumeData>
     private CostumeDatabase database;
     private IResourceLoader loader;
 
-    public CostumeDatabase Value { get; internal set; }
+    public CostumeDatabase Value => database;
 
     public CostumeProvider(CostumeDatabase db, IResourceLoader resLoader)
     {
