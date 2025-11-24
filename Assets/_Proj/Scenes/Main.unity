@@ -6128,6 +6128,92 @@ LODGroup:
     renderers:
     - renderer: {fileID: 409178341}
   m_Enabled: 1
+--- !u!1001 &432695791
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1556027918}
+    m_Modifications:
+    - target: {fileID: 1705714621587406665, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_Name
+      value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705714621587406665, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.64000016
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.953717
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.30070576
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787059407622779920, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+--- !u!4 &432695792 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2080727648335062515, guid: 852abc6d04c3f45c2bb339d560dba0ef, type: 3}
+  m_PrefabInstance: {fileID: 432695791}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &433674767
 GameObject:
   m_ObjectHideFlags: 0
@@ -14976,6 +15062,7 @@ Transform:
   - {fileID: 1430948850}
   - {fileID: 1263453259}
   - {fileID: 1252139028}
+  - {fileID: 432695792}
   m_Father: {fileID: 560317845}
   m_LocalEulerAnglesHint: {x: 0, y: 82.529, z: 0}
 --- !u!1 &1571798241
