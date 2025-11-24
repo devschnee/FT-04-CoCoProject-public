@@ -21,7 +21,8 @@ public class PushableOrb : PushableObjects
     public float probeUp = 0.1f;
     [Min(0.6f)] public float probeDown = 0.6f;
     private bool wasGrounded;
-
+    [Tooltip("SphereCast 반지름 (Orb의 반지름)")]
+    public float sphereRadius = 0.35f;
 
     protected override void Awake()
     {
@@ -44,13 +45,26 @@ public class PushableOrb : PushableObjects
 
         // Raycast를 사용하여 현재 땅에 닿아있는지 확인
         // tileSize를 곱하여 월드 단위 길이로 변환
-        bool grounded = Physics.Raycast(
-            origin: transform.position + Vector3.up * probeUp * tileSize,
-            direction: Vector3.down,
+
+        Vector3 origin = transform.position + Vector3.up * probeUp * tileSize;
+        float distance = probeDown * tileSize;
+
+        bool grounded = Physics.SphereCast(
+            origin: transform.position + transform.up * probeUp * tileSize,
+            sphereRadius,
+            Vector3.down,
+            out RaycastHit hit,
             maxDistance: probeDown * tileSize,
             layerMask: groundMask,
             queryTriggerInteraction: QueryTriggerInteraction.Ignore
         );
+        //bool grounded = Physics.Raycast(
+        //    origin: transform.position + transform.up * probeUp * tileSize,
+        //    direction: -transform.up,
+        //    maxDistance: probeDown * tileSize,
+        //    layerMask: groundMask,
+        //    queryTriggerInteraction: QueryTriggerInteraction.Ignore
+        //);
 
         // 이전에는 공중이었는데, 지금은 지상에 닿은 경우 = 착지 완료
         if (!wasGrounded && grounded)
@@ -74,14 +88,22 @@ public class PushableOrb : PushableObjects
         if (Time.time - lastShockwaveTime < orbCoolTime)
             return;
 
-        bool grounded = Physics.Raycast(
-            transform.position + Vector3.up * probeUp * tileSize,
+        //bool grounded = Physics.Raycast(
+        //    transform.position + transform.up * probeUp * tileSize,
+        //    -transform.up,
+        //    probeDown * tileSize,
+        //    groundMask,
+        //    QueryTriggerInteraction.Ignore
+        //);
+        bool grounded = Physics.SphereCast(
+            origin: transform.position + transform.up * probeUp * tileSize,
+            sphereRadius,
             Vector3.down,
-            probeDown * tileSize,
-            groundMask,
-            QueryTriggerInteraction.Ignore
+            out RaycastHit hit,
+            maxDistance: probeDown * tileSize,
+            layerMask: groundMask,
+            queryTriggerInteraction: QueryTriggerInteraction.Ignore
         );
-
         if (!grounded || isMoving || isFalling)
             return;
 
