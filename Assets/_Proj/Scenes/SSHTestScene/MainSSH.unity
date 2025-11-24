@@ -1051,6 +1051,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4101606677995521358, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4145915984316909567, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -6172,7 +6176,7 @@ MonoBehaviour:
   undoMax: -1
   overlapEpsilon: 0.0005
   undoButton: {fileID: 797287641}
-  actionToolbar: {fileID: 1868768810}
+  actionToolbar: {fileID: 0}
   longPressTarget: {fileID: 0}
   longPressSeconds: 1
   longPressSlopPixels: 10
@@ -17683,17 +17687,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863282857}
   m_Mesh: {fileID: -658816561912475498, guid: 9af4f8df4ad024cef85391251b406c95, type: 3}
---- !u!114 &1868768810 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1476984488903601844, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
-  m_PrefabInstance: {fileID: 54818902}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c440c06824ebc846a6696e4729deddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1909618146
 GameObject:
   m_ObjectHideFlags: 0

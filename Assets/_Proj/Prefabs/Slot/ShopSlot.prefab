@@ -246,8 +246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -49, y: 17}
-  m_SizeDelta: {x: 100, y: 60}
+  m_AnchoredPosition: {x: -33.4, y: 17}
+  m_SizeDelta: {x: 120, y: 60}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &5232338356568892665
 CanvasRenderer:
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "000\uAC1C"
+  m_text: "\uAD6C\uB9E4\uAC00\uB2A5"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 692200064f896b54c8fa08df8d167886, type: 2}
   m_sharedMaterial: {fileID: 235566447649535823, guid: 692200064f896b54c8fa08df8d167886, type: 2}
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 7231436144146321751}
   - component: {fileID: 4914850106890540459}
   m_Layer: 5
-  m_Name: SoldoutOverlay
+  m_Name: SoldOutOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1069,7 +1069,7 @@ GameObject:
   - component: {fileID: 8193328934330649407}
   - component: {fileID: 8523803078377932783}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: SoldOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1282,7 +1282,8 @@ MonoBehaviour:
   priceText: {fileID: 7156496856981174804}
   goodsIcon: {fileID: 6510833915464877295}
   stockText: {fileID: 8189703844797584888}
-  backgroundImage: {fileID: 4914850106890540459}
+  darkMask: {fileID: 4183743511047314101}
+  soldOutOverlay: {fileID: 7374329564947200716}
   normalColor: {r: 1, g: 1, b: 1, a: 0}
   soldOutColor: {r: 0, g: 0, b: 0, a: 0.7058824}
 --- !u!114 &-3489077781209183010
