@@ -51,12 +51,12 @@ public class StageDetailInfo : MonoBehaviour
 
     async void EnterStage()
     {
-        //if (UserData.Local.goods[110001] < consume)
+        //if (UserData.Local.goods[GoodsType.energy] < consume)
         //{
         //    //Todo : 행동력이 부족하다면 추가 팝업 보여주고 리턴
         //    print("행동려기부족카당");
         //    return;
-        //} 
+        //}
         await FirebaseManager.Instance.FindMapDataByStageID(currentStageId);
 
         //행동력을 consume 만큼 빼줘야함
