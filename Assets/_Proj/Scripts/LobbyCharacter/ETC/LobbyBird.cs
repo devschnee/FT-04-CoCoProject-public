@@ -19,7 +19,7 @@ public class LobbyBird : MonoBehaviour
 
     private void Start()
     {
-        wStartSound = startDelay;
+        wStartSound = new WaitForSeconds(startSound);
         bird = Object.Instantiate(bird, startPoint.position, Quaternion.identity, gameObject.transform);
         bird.SetActive(false);
         StartCoroutine(MoveBird());
@@ -57,9 +57,9 @@ public class LobbyBird : MonoBehaviour
 
     private IEnumerator BirdSong()
     {
-        yield return startSound;
+        yield return wStartSound;
         int i = 0;
-        while (i < 8 && bird.activeSelf)
+        while (i < 6 && bird.activeSelf)
         {
             float rand = Random.Range(0.3f, 1f);
             AudioEvents.Raise(AmbientKey.Birdsong, index: -1, pooled: true, pos: bird.transform.position);

@@ -81,7 +81,7 @@ MonoBehaviour:
   startPoint: {fileID: 8496865271705535554}
   endPoint: {fileID: 5325533497085066132}
   moveTime: 9
-  startSound: 13.4
+  startSound: 2.3
 --- !u!1 &8712133712676912521
 GameObject:
   m_ObjectHideFlags: 0
