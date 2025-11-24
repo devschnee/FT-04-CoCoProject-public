@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8320691726217874437}
-  - component: {fileID: 4542518174566619844}
   - component: {fileID: 104124710466412594}
   m_Layer: 14
   m_Name: CityStepVariationBlock
@@ -36,27 +35,6 @@ Transform:
   - {fileID: 892079555290590291}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4542518174566619844
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 148593413111672007}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &104124710466412594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,6 +569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 892079555290590291}
   - component: {fileID: 7216267834663221945}
+  - component: {fileID: 1567301859080014956}
   m_Layer: 14
   m_Name: stair_stone1_straight_LOD_setup
   m_TagString: Untagged
@@ -643,6 +622,28 @@ LODGroup:
     renderers:
     - renderer: {fileID: 734859915372715740}
   m_Enabled: 1
+--- !u!64 &1567301859080014956
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901482818860715607}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: 6a395ff7f84d0dc45b1e0d2929ac071b, type: 3}
 --- !u!1 &7191398149000955842
 GameObject:
   m_ObjectHideFlags: 0

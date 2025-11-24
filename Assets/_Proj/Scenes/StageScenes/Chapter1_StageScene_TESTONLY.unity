@@ -324,7 +324,7 @@ MonoBehaviour:
   joystickRoot: {fileID: 484405798}
   playerObject: {fileID: 0}
   camControl: {fileID: 1722618159}
-  mapNameToLoad: PropTest2
+  mapNameToLoad: map_3_6
   blockPositions: []
   blocks: []
   factory: {fileID: 1415150933}
@@ -4122,7 +4122,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   offset: {x: 0, y: 11, z: -3}
-  dampingStrength: 0.5
+  dampingStrength: 4
+  maxLookAroundDistance: 5
+  lookAroundSpeed: 25
 --- !u!1 &1752784471
 GameObject:
   m_ObjectHideFlags: 0

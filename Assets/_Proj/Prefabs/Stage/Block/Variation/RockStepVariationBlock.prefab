@@ -547,7 +547,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5650938942925737267}
-  - component: {fileID: -587365738719539716}
   - component: {fileID: 3042032251531749361}
   m_Layer: 14
   m_Name: RockStepVariationBlock
@@ -574,27 +573,6 @@ Transform:
   - {fileID: 6272462259149584374}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &-587365738719539716
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8068666247389649454}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3042032251531749361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,6 +657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6272462259149584374}
   - component: {fileID: 7022271447934017399}
+  - component: {fileID: 9175056514864209920}
   m_Layer: 14
   m_Name: stairs_stone_straight
   m_TagString: Untagged
@@ -731,6 +710,28 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5357742133294705040}
   m_Enabled: 1
+--- !u!64 &9175056514864209920
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543335785852009271}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: 6a395ff7f84d0dc45b1e0d2929ac071b, type: 3}
 --- !u!1 &8650001037278841512
 GameObject:
   m_ObjectHideFlags: 0
