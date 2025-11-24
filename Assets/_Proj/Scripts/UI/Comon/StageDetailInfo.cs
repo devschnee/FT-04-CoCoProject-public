@@ -37,6 +37,7 @@ public class StageDetailInfo : MonoBehaviour
         var data = DataManager.Instance.Stage.GetData(id);
         var progress = PlayerProgressManager.Instance.GetStageProgress(id);
 
+        stageImage.sprite = DataManager.Instance.Stage.GetIcon(id);
         stageName.text = data.stage_name;
         stageDesc.text = data.stage_desc;
 
