@@ -28,8 +28,6 @@ public class PanelRouter : MonoBehaviour
     {
         if (startClosed) CloseAll();
         SyncDim();
-        stageIdInformation = FindAnyObjectByType<StageIdInformation>();
-        stageIdInformation.pr = this;
     }
     void OnEnable()
     {
@@ -37,21 +35,12 @@ public class PanelRouter : MonoBehaviour
         {
             EditModeManager.OnEnter += CloseAll;
         }
-        if (stageIdInformation != null)
-        {
-            stageIdInformation.OnLoadMainScene += stageIdInformation.OpenStagePanel;
-            print("이벤트구독했지롱");
-        }
     }
     void OnDisable()
     {
         if (typeof(EditModeManager) != null)
         { 
             EditModeManager.OnEnter -= CloseAll;
-        }
-        if (stageIdInformation != null)
-        {
-            stageIdInformation.OnLoadMainScene -= stageIdInformation.OpenStagePanel;
         }
     }
     public void ToggleProfile() => Toggle(profilePanel);

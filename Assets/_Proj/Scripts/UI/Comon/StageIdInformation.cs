@@ -22,11 +22,13 @@ public class StageIdInformation : MonoBehaviour
     }
     void OnEnable()
     {
+        OnLoadMainScene += OpenStagePanel;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
+        OnLoadMainScene -= OpenStagePanel;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -35,6 +37,7 @@ public class StageIdInformation : MonoBehaviour
         // 메인 씬 로딩됐을 때만
         if (scene.name == "Main")
         {
+            pr = FindAnyObjectByType<PanelRouter>(); // 여기서 재연결
             OnLoadMainScene?.Invoke();
             print("씬 로딩됨 → 이벤트 실행!");
         }
