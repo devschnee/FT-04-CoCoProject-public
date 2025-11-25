@@ -423,6 +423,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         isMoving = true;
 
         Vector3 start = transform.position;
+        Vector3 end = start + Vector3.up * tileSize * 1.2f;
         Vector3 target = start + Vector3.up * tileSize;
 
         rise = Mathf.Max(0.01f, rise);
@@ -433,10 +434,10 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         while (t < rise)
         {
             t += Time.deltaTime;
-            transform.position = Vector3.Lerp(start, target, t / rise);
+            transform.position = Vector3.Lerp(start, end, t / rise);
             yield return null;
         }
-        transform.position = target;
+        transform.position = end;
 
         if (holdSec > 0f)
             yield return new WaitForSeconds(holdSec);
@@ -457,7 +458,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         while (t < fall)
         {
             t += Time.deltaTime;
-            transform.position = Vector3.Lerp(target, start, t / fall);
+            transform.position = Vector3.Lerp(end, start, t / fall);
             yield return null;
         }
         transform.position = start;
