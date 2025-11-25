@@ -90,10 +90,28 @@ public class Treasure : MonoBehaviour
         StageUIManager.Instance.TreasureName.text = transData.codex_name;
         StageUIManager.Instance.TreasureDesc.text = transData.codex_lore;
         StageUIManager.Instance.TreasureImage.sprite = DataManager.Instance.Codex.GetCodexIcon(data.view_codex_id);
-        StageUIManager.Instance.TreasureType.text = data.treasureType <= (TreasureType)1 ? "수량" :
-            data.treasureType == TreasureType.deco ? "장식" :
-            data.treasureType == TreasureType.costume ? "의상" :
-            "유물";
+        
+        var typeTMP = StageUIManager.Instance.TreasureType;
+        switch (data.treasureType)
+        {
+            case TreasureType.coin:
+            case TreasureType.cap:
+                typeTMP.text = "수량";
+                typeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+                break;
+            case TreasureType.deco:
+                typeTMP.text = "조경";
+                typeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+                break;
+            case TreasureType.costume:
+                typeTMP.text = "치장";
+                typeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+                break;
+            case TreasureType.artifact:
+                typeTMP.text = "유물";
+                typeTMP.alignment = TMPro.TextAlignmentOptions.Center;
+                break;
+        }
         StageUIManager.Instance.TreasureCount.text = data.count < 2 ? "" : data.count.ToString();
         StageUIManager.Instance.CocoDoogyDesc.text = data.coco_coment;
     }
