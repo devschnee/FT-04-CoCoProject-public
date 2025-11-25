@@ -19,7 +19,8 @@ public class StageDetailInfo : MonoBehaviour
 
     void Awake()
     {
-        enterButton.onClick.AddListener(EnterStage);
+        // LSH 추가 1125
+        enterButton.onClick.AddListener(() => {EnterStage(); AudioEvents.Raise(UIKey.Normal, 2);});
     }
     public void OnEnable()
     {
@@ -80,6 +81,9 @@ public class StageDetailInfo : MonoBehaviour
 
     public void CloseButton()
     {
+        // LSH 추가 1125
+        AudioEvents.Raise(UIKey.Normal, 2);
+        //
         currentStageId = null;
         gameObject.SetActive(false);
         GameObject obj = GameObject.Find("SelectStageDimOverlay");

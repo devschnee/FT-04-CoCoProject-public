@@ -29,8 +29,6 @@ public class StageInfo : MonoBehaviour
         PlayerProgressManager.OnProgressUpdated += RefreshUI;
         Debug.Log("[StageInfo] OnEnable → 이벤트 구독 완료");
         RefreshUI();
-        //LSH 추가 1125
-        AudioManager.Instance.EnterChapterPanel();
     }
 
     void OnDisable()
@@ -40,6 +38,9 @@ public class StageInfo : MonoBehaviour
 
     public void ShowStages(string chapterId)
     {
+        //LSH 추가 1125
+        AudioManager.Instance.EnterChapterPanel();
+        //
         currentChapterId = chapterId; // 챕터 기억
         Debug.Log($"[StageInfo] ShowStages 호출됨 — chapterId:{chapterId}");
         RefreshUI();
@@ -149,7 +150,8 @@ public class StageInfo : MonoBehaviour
         // 클릭 이벤트
         var btn = stageObj.GetComponentInChildren<Button>();
         btn.interactable = canEnter;
-        btn.onClick.AddListener(() => ShowStageDetail(data.stage_id));
+        // LSH 추가 1125
+        btn.onClick.AddListener(() => {ShowStageDetail(data.stage_id); AudioEvents.Raise(UIKey.Normal, 2);});
     }
 
     void ShowStageDetail(string id)
