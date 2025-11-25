@@ -15294,11 +15294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be456ec09b86809448c681cf16403a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  morningSkybox: {fileID: 2100000, guid: 8fc56946a1b593c4d8e3e0e94483338e, type: 2}
-  lunchSkybox: {fileID: 2100000, guid: 56113b3b655ab7349bab4d7d405c258a, type: 2}
-  afternoonSkybox: {fileID: 2100000, guid: 5464c15ff9c6ca04cb5790c1773e76fa, type: 2}
-  nightSkybox: {fileID: 2100000, guid: 52fcefd712182d743a781fde12426775, type: 2}
-  dawnSkybox: {fileID: 2100000, guid: baef7505b9e48404cb74585601f49ff9, type: 2}
+  morningSkybox: {fileID: 2100000, guid: 4a07a598ea1638840b18deb0b0b43725, type: 2}
+  lunchSkybox: {fileID: 2100000, guid: b1f4397a8dab88d4cb160d579ee30d85, type: 2}
+  afternoonSkybox: {fileID: 2100000, guid: 515f60d0ae081b447a9b79bdd3ce7a07, type: 2}
+  nightSkybox: {fileID: 2100000, guid: d0ef88aaecad5f743bafb0f7c65ef962, type: 2}
+  dawnSkybox: {fileID: 2100000, guid: 0bb40cf1dc0f79744bfcc7f183cdffc8, type: 2}
   rotateDuration: 3
   fadeDuration: 2
   rotationAmount: 180
@@ -34367,7 +34367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2981851272884426961
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42687,7 +42687,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clockText: {fileID: 2020416818985615345}
   defaultColor: {r: 0.2924528, g: 0.17644988, b: 0.03724635, a: 1}
-  nightColor: {r: 1, g: 0.90617925, b: 0.8160377, a: 1}
 --- !u!1 &9164444759822790186
 GameObject:
   m_ObjectHideFlags: 0
