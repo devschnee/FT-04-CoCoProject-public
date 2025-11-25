@@ -111,6 +111,12 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    private void Start()
+    {
+        var volumeData = SettingManager.Instance.settingData;
+        volumeHandler.ApplyVolumes(volumeData.audio);
+    }
+
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
