@@ -24,6 +24,7 @@ public class PushableOrb : PushableObjects
     private bool wasGrounded;
     [Tooltip("SphereCast 반지름 (Orb의 반지름)")]
     public float sphereRadius = 0.35f;
+    public LayerMask orbLandLayer;
 
     protected override void Awake()
     {
@@ -45,7 +46,7 @@ public class PushableOrb : PushableObjects
             Vector3.down,
             out RaycastHit hit,
             maxDistance: probeDown * tileSize,
-            layerMask: groundMask,
+            layerMask: orbLandLayer,
             queryTriggerInteraction: QueryTriggerInteraction.Ignore
         );
 

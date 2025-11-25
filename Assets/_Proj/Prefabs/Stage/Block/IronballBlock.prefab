@@ -79,6 +79,9 @@ MonoBehaviour:
   probeUp: 0.1
   probeDown: 0.6
   sphereRadius: 0.35
+  orbLandLayer:
+    serializedVersion: 2
+    m_Bits: 33664
 --- !u!65 &5937561180784654500
 BoxCollider:
   m_ObjectHideFlags: 0

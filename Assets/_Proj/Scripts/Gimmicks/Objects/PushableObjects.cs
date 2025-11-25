@@ -6,7 +6,6 @@ using Water;
 public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 {
     #region Variables
-
     GameObject IPushHandler.gameObject => gameObject;
 
     public float moveTime = 0.12f;
