@@ -69,16 +69,23 @@ public class Treasure : MonoBehaviour
                     break;
             }
 
-
+            Joystick joystick = FindAnyObjectByType<Joystick>();
+            if (joystick != null)
+            {
+                // KHJ - Treasure Panel이 켜졌으니 조이스틱 입력 잠금
+                joystick.IsLocked = true;
+            }
             // 플레이어 이동 막기
             other.GetComponent<PlayerMovement>().enabled = false;
 
             // 확인 버튼 클릭 시 호출되도록 이벤트 등록
             StageUIManager.Instance.OnTreasureConfirm = () => OnQuitAction(() =>
             {
+                
                 StageUIManager.Instance.stageManager.OnTreasureCollected(treasureIndex);
                 StageUIManager.Instance.TreasurePanel.SetActive(false);
                 StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(true);
+                joystick.IsLocked = false;
                 other.GetComponent<PlayerMovement>().enabled = true;
             });
         }

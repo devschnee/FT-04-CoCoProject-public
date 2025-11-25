@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+﻿using System;
 using TMPro;
-using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageUIManager : MonoBehaviour
 {
@@ -95,6 +95,13 @@ public class StageUIManager : MonoBehaviour
         OptionPanel.SetActive(true);
         Overlay.SetActive(true);
         OptionOpenButton.gameObject.SetActive(false);
+        
+        Joystick joystick = FindAnyObjectByType<Joystick>();
+        if (joystick != null)
+        {
+            // KHJ - Option Panel이 켜졌으니 조이스틱 입력 잠금
+            joystick.IsLocked = true;
+        }
     }
 
     void OptionClose()
@@ -104,6 +111,12 @@ public class StageUIManager : MonoBehaviour
         OptionPanel.SetActive(false);
         Overlay.SetActive(false);
         OptionOpenButton.gameObject.SetActive(true);
+
+        Joystick joystick = FindAnyObjectByType<Joystick>();
+        if (joystick != null)
+        {
+            joystick.IsLocked = false;
+        }
     }
 
     void Retry()

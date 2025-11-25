@@ -26,6 +26,8 @@ public class Joystick : MonoBehaviour
 
     private Vector2 lastTwoFingerPos;
 
+    // 패널 켜졌을 떄 조이스틱을 잠그기 위한 변수
+    public bool IsLocked { get; set; } = false;
 
     void Start()
     {
@@ -87,6 +89,12 @@ public class Joystick : MonoBehaviour
         //    return;
         //}
         #endregion
+
+        if (IsLocked)
+        {
+            ResetJoystick();
+            return;
+        }
 
         if (Touchscreen.current == null) return;
 

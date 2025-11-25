@@ -167,6 +167,8 @@ public class StageManager : MonoBehaviour, IStageManager
         StageUIManager.Instance.ExitButton.onClick.AddListener(() =>
         {
             waitConfirm = false;
+            Joystick joystick = FindAnyObjectByType<Joystick>();
+            joystick.IsLocked = false;
         });
         while (waitConfirm)
             yield return null;
@@ -190,7 +192,12 @@ public class StageManager : MonoBehaviour, IStageManager
         StageUIManager.Instance.Overlay.SetActive(true);
         StageUIManager.Instance.ResultPanel.SetActive(true);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
-
+        Joystick joystick = FindAnyObjectByType<Joystick>();
+        if (joystick != null)
+        {
+            // KHJ - Result Panel이 켜졌으니 조이스틱 입력 잠금
+            joystick.IsLocked = true;
+        }
         var data = DataManager.Instance.Stage.GetData(currentStageId);
 
         StageUIManager.Instance.stageName.text = data.stage_name;
