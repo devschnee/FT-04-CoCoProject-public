@@ -18,12 +18,21 @@ public class CodexProvider : IDataProvider<string, CodexData>
         return database.codexList.Find(a => a.codex_id == id);
     }
 
+    public CodexData GetData(int id) => database.codexList.Find(x=>x.item_id == id);
+  
+
     public Sprite GetCodexDisplay(string id)
     {
         var data = GetData(id);
         return data?.GetCodexDisplay(loader);
     }
     public Sprite GetCodexIcon(string id)
+    {
+        var data = GetData(id);
+        return data?.GetCodexIcon(loader);
+    }
+
+    public Sprite GetCodexIcon(int id)
     {
         var data = GetData(id);
         return data?.GetCodexIcon(loader);

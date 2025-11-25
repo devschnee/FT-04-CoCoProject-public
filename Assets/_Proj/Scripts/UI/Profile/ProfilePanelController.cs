@@ -8,7 +8,7 @@ using UnityEngine;
 public class ProfilePanelController : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] private ProfileService profileService;
+    [SerializeField] public ProfileService profileService;
 
     [Header("Top Info (optional)")]
     [SerializeField] private TMP_Text nicknameText;
@@ -80,15 +80,45 @@ public class ProfilePanelController : MonoBehaviour
     {
         if (!target || !profileService) return;
 
-        var entries = profileService.GetByType(type);
-        foreach (var e in entries)
-        {
-            if (!e.IsUnlocked) continue;
-            target.Initialize(this, type, e.Icon, e.Id);
-            return;
-        }
+        target.Initialize(this, type, -1);
+        
+        //if (type == ProfileType.animal)
+        //{
+        //    int startingId = 30000;
+        //    foreach(var entry in entries)
+        //    {
+        //        entry.Init(++startingId, profileService);
+        //    }
+        //}
+        //if (type == ProfileType.deco)
+        //{
+        //    int startingId = 10000;
+        //    foreach (var entry in entries)
+        //    {
+        //        entry.Init(++startingId, profileService);
+        //    }
+        //}
+        //if (type == ProfileType.costume)
+        //{
+        //    int startingId = 20000;
+        //    foreach (var entry in entries)
+        //    {
+        //        entry.Init(++startingId, profileService);
+        //    }
+        //}
+        //if (type == ProfileType.artifact)
+        //{
+        //    int startingId = 50000;
+        //    foreach (var entry in entries)
+        //    {
+        //        entry.Init(++startingId, profileService);
+        //    }
+        //}
 
-        target.Initialize(this, type, null, -1);
+        
+        
+        
+        
     }
 
     // 아이콘 팝업 켰을 때 첫 리스트에 노출할 실제 아이콘
@@ -113,53 +143,23 @@ public class ProfilePanelController : MonoBehaviour
         iconSelectorPopup.Open(this);
     }
 
-    // 공통: 타입별로 내가 가지고 있는 아이템 가져가기
-    public List<ProfileOwnedItemData> GetOwnedItemsByType(ProfileType type)
-    {
+    
 
-        var list = new List<ProfileOwnedItemData>();
-        var entries = profileService ? profileService.GetByType(type) : null;
-        if (entries == null) return list;
-
-        foreach (var e in entries)
-        {
-            if (!e.IsUnlocked) continue;
-            list.Add(new ProfileOwnedItemData
-            {
-                type = type,
-                itemId = e.Id,
-                icon = e.Icon
-            });
-        }
-        return list;
-    }
-
-    // 실제 아이콘 얻기
-    public Sprite GetIconByTypeAndId(ProfileType type, int itemId)
-    {
-        var entries = profileService ? profileService.GetByType(type) : null;
-        if (entries == null) return null;
-
-        foreach (var e in entries)
-        {
-            if (e.Id == itemId)
-                return e.Icon;
-        }
-        return null;
-    }
+    
 
     // 프로필 아이콘 저장(Firebase)
     // ???? 이건 등록된 프로필 아이콘을 저장할 방법을 궁리해봐야 할 듯. 프로필 아이콘은 유저가 업로드할 이미지들인지? 게임 리소스로 존재할 것인지?
     // 단, 유저가 직접 업로드하는 이미지라면 일반적인 방법으로는 프로필 아이콘 설정이 불가능함.
-    public void SaveEquipped(ProfileType type, int itemId)
-    {
-        var user = FirebaseAuth.DefaultInstance.CurrentUser;
-        if (user == null) return;
+    //TODO: 이거 고쳐야 함. 잘못된 노드를 firebase에 만들고 있음.
+    //public void SaveEquipped(ProfileType type, int itemId)
+    //{
+    //    var user = FirebaseAuth.DefaultInstance.CurrentUser;
+    //    if (user == null) return;
 
-        FirebaseDatabase.DefaultInstance
-            .GetReference($"users/{user.UserId}/profile/equipped/{type}")
-            .SetValueAsync(itemId);
-    }
+    //    FirebaseDatabase.DefaultInstance
+    //        .GetReference($"users/{user.UserId}/profile/equipped/{type}")
+    //        .SetValueAsync(itemId);
+    //}
 
     // 프로필 아이콘 바뀌었을 때: 패널 안 + 외부에 알림
     public void NotifyProfileIconChanged(Sprite icon, int itemId)
@@ -168,12 +168,5 @@ public class ProfilePanelController : MonoBehaviour
         OnProfileIconChanged?.Invoke(icon, itemId);
     }
 
-    // 팝업이 쓰는 DTO
-    [System.Serializable]
-    public class ProfileOwnedItemData
-    {
-        public ProfileType type;
-        public int itemId;
-        public Sprite icon;
-    }
+
 }

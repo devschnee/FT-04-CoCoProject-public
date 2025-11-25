@@ -11,7 +11,7 @@ public class ArtifactProvider : IDataProvider<int, ArtifactData>
         loader = resloader;
     }
 
-    public ArtifactDatabase Value { get; internal set; }
+    public ArtifactDatabase Value => database;
 
     public ArtifactData GetData(int id)
     {

@@ -1,27 +1,63 @@
 using System.Collections.Generic;
+using System.Text;
+using UnityEditor.Experimental;
 using UnityEngine;
 
 public class ProfileService : MonoBehaviour
 {
-    [SerializeField] private MonoBehaviour sourceBehaviour;
-    [SerializeField] private MonoBehaviour progressStoreBehaviour;
-
-    private IProfileSource _source;
-    private IProfileProgressStore _progress;
-
-    private void Awake()
+    
+    public List<ProfileEntry> GetAll()
     {
-        _source = sourceBehaviour as IProfileSource;
-        _progress = progressStoreBehaviour as IProfileProgressStore;
+        var list = new List<ProfileEntry>();
+        list.AddRange(GetByType(ProfileType.animal));
+        list.AddRange(GetByType(ProfileType.deco));
+        list.AddRange(GetByType(ProfileType.costume));
+        list.AddRange(GetByType(ProfileType.artifact));
+        list.AddRange(GetByType(ProfileType.icon));
+        return list;
     }
 
-    public IReadOnlyList<ProfileEntry> GetByType(ProfileType type)
+    
+    public List<ProfileEntry> GetByType(ProfileType type)
     {
-        var entries = _source.GetByType(type);
-        if (_progress == null) return entries;
+        var entries = new List<ProfileEntry>();
 
-        foreach (var e in entries)
-            e.IsUnlocked = _progress.IsUnlocked(type, e.Id);
+        switch (type)
+        {
+            case ProfileType.animal:
+                foreach (var animal in DataManager.Instance.Animal.Value)
+                {
+                    entries.Add(new ProfileEntry(animal.animal_id));
+                }
+                break;
+            case ProfileType.deco:
+                foreach (var deco in DataManager.Instance.Deco.Value)
+                {
+                    entries.Add(new ProfileEntry(deco.deco_id));
+                }
+                break;
+            case ProfileType.costume:
+                foreach (var costume in DataManager.Instance.Costume.Value)
+                {
+                    entries.Add(new ProfileEntry(costume.costume_id));
+                }
+                break;
+            case ProfileType.artifact:
+                foreach (var artifact in DataManager.Instance.Artifact.Value)
+                {
+                    entries.Add(new ProfileEntry(artifact.artifact_id));
+                }
+                break;
+            case ProfileType.icon:
+                Debug.Log($"构啊 null老鳖? DataManager.Instance?: {DataManager.Instance==null}");
+                Debug.Log($"构啊 null老鳖? DataManager.Instance.Profile?: {DataManager.Instance.Profile==null}");
+                Debug.Log($"构啊 null老鳖? Profile.Value?: {DataManager.Instance.Profile.Value==null}");
+                foreach (var profile in DataManager.Instance.Profile.Value)
+                {
+                    entries.Add(new ProfileEntry(profile.icon_id));
+                }
+                break;
+        }
 
         return entries;
     }
