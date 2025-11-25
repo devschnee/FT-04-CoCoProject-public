@@ -54,7 +54,7 @@ MonoBehaviour:
   tileSize: 1
   pushables:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 262400
   frontOffset: 0.35
   pushCooltime: 0.3
 --- !u!114 &-2257239476015702201

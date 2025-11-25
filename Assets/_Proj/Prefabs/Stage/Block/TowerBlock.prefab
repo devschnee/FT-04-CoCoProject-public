@@ -95,7 +95,7 @@ MonoBehaviour:
   useOcclusion: 1
   occluderMask:
     serializedVersion: 2
-    m_Bits: 22400
+    m_Bits: 284544
   towerLayer:
     serializedVersion: 2
     m_Bits: 12288

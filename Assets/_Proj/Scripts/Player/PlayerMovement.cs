@@ -86,6 +86,8 @@ public class PlayerMovement : MonoBehaviour, IRider
             return; // 이후의 모든 이동 로직을 건너뜀
         }
         Vector2 input = new Vector2(joystick.InputDir.x, joystick.InputDir.z);
+
+        #region 주석처리 된 긴 코드 부분
         //if (input.magnitude > 0)
         //{
         //    Vector3 input45Below = new(joystick.InputDir.x, -1, joystick.InputDir.z);
@@ -201,11 +203,7 @@ public class PlayerMovement : MonoBehaviour, IRider
         //    }
         //}
 
-
-
-
-
-
+        #endregion
 
 
         if (input.sqrMagnitude < 0.01f)

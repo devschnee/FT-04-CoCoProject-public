@@ -105,11 +105,11 @@ MonoBehaviour:
   radiusShock: 5
   targetLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 262400
   useOcclusion: 1
   occluderMask:
     serializedVersion: 2
-    m_Bits: 54144
+    m_Bits: 316288
   riseSec: 0.4
   hangSec: 0.6
   fallSec: 0.2

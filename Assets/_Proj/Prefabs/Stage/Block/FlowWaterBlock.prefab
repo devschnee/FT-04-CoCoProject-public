@@ -92,7 +92,7 @@ MonoBehaviour:
   flowInterval: 0.65
   pushableMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 262400
 --- !u!1 &7509723137891210488
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
     protected bool isHoling = false;
     protected bool isFalling = false;
     protected bool isRiding = false;
+    protected bool isLifting = false;
     public float requiredHoldtime = 0.6f;
     protected float currHold = 0f;
     protected Vector2Int holdDir;
@@ -32,7 +33,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
     public bool allowFall = true;
     public bool allowSlope = false;
-    private BoxCollider boxCol;
+    protected BoxCollider boxCol;
 
     [Header("For Flow Water")]
     public bool IsMoving => isMoving;
@@ -327,11 +328,11 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
     public IEnumerator CheckFall()
     {
-        if (isFalling) yield break; // .
-
+        if (isFalling) yield break;
+        
         isFalling = true;
         Vector3 currPos = transform.position;
-        bool fell = false; //.
+        bool fell = false;
 
         // Pushable도 땅으로 인식
         while (!Physics.BoxCast(
@@ -346,11 +347,13 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
             Vector3 fallTarget = currPos + Vector3.down * tileSize;
             yield return StartCoroutine(MoveTo(fallTarget));
             currPos = transform.position;
-            fell = true; //.
+            fell = true;
         }
-
         isFalling = false;
-        if (fell) //.
+        isLifting = false;
+        
+            
+        if (fell)
             OnLanded();
     }
 
@@ -359,24 +362,51 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
     // NOTE : 11/5 Orb가 BoxCollider를 갖게 되면서 PuhsableObjects에 통합됨.
     protected virtual bool CheckBlocking(Vector3 target)
     {
+        // Lifting중이면 TryPush 안 들어오기 때문에 굳이 여기서 isLifting 상태를 변경해줄 필요는 없을 것.
         var b = boxCol.bounds;
         Vector3 half = b.extents - Vector3.one * 0.005f;
         Vector3 center = new Vector3(target.x, target.y + b.extents.y, target.z);
 
         // 규칙상 차단 (blocking)
-        if (Physics.CheckBox(center, half, transform.rotation, blockingMask, QueryTriggerInteraction.Ignore))
-            return true;
+        //if (Physics.CheckBox(center, half, transform.rotation, blockingMask, QueryTriggerInteraction.Ignore))
+        //    return true;
+        // 규칙상 차단 (blocking) -> 여기서 Lift상태인 객체는 차단하면 안 됨
+        var blockingHits = Physics.OverlapBox(
+            center, 
+            half, 
+            transform.rotation, 
+            blockingMask, 
+            QueryTriggerInteraction.Ignore
+        );
 
-        // 점유 차단(허용 레이어 제외)
+        foreach (var h in blockingHits)
+        {
+            float dy = Mathf.Abs(h.transform.position.y - transform.position.y);
+            if (rb && h.attachedRigidbody == rb) continue; // 자기 자신
+            if (h.transform.IsChildOf(transform)) continue; // 자식
+            if (h.TryGetComponent<PushableObjects>(out var po) && po.isLifting)
+            {
+                Debug.Log($"[PO] 규칙 차단 제외 {h.name} Lifting 중.");
+                continue;
+            }
+            // 그 외엔 차단
+            return true;
+        }
+
+        // 점유 차단(허용 레이어 제외) -> 여기서도 Lift 상태인 객체는 제외
         var hits = Physics.OverlapBox(center, half, transform.rotation, ~throughLayer, QueryTriggerInteraction.Ignore);
         foreach (var c in hits)
         {
             //if ((groundMask.value & (1 << c.gameObject.layer)) != 0) continue;
             if (rb && c.attachedRigidbody == rb) continue; // 자기 자신
             if (c.transform.IsChildOf(transform)) continue; // 자식
+            if (c.TryGetComponent<PushableObjects>(out var po) && po.isLifting)
+            {
+                Debug.Log($"[PO] 점유 검사 제외 {c.name} Lifting 중.");
+                continue;
+            }
             return true;
         }
-
         return false;
     }
     #endregion
@@ -421,6 +451,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
         isFalling = true;
         isMoving = true;
+        isLifting = true;
 
         Vector3 start = transform.position;
         Vector3 end = start + Vector3.up * tileSize * 1.2f;
@@ -462,14 +493,15 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
             yield return null;
         }
         transform.position = start;
-
+        
         isMoving = false;
-        isFalling = false; //.
+        isFalling = false;
+        isLifting = false;
         Debug.Log($"[PO] {name} 충격파 영향 받음. 이제 떨어질 것임.");
         //yield break;
         // NOTE : 혹시나 뭔가 다른 작업을 하다 여기에서 CheckFall()을 할 일이 생긴다면 차라리 다른 스크립트를 작성하는 것을 권장. 원위치 복귀 후 다시 낙하 검사하는 실수 생기면 안 됨.
         // pushables가 충격파 받은 이후로 적층된 물체들이 원위치 후 다시 낙하 검사를 하게 되면 한 번 더 낙하해서 원위치에서 -y로 더 내려가게 됨
-        StartCoroutine(CallFallCheck()); //.
+        StartCoroutine(CallFallCheck());
     }
 
     // 접적인 대기 연결 고리 끊기 위해 WaveLiftCoroutine에서 분리. 리프팅 후에는 한 텀 뒤에 CheckFall()할 필요 있음.
@@ -659,4 +691,9 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         }
     }
     #endregion
+
+    void OnDrawGizmosSelected()
+    {
+        
+    }
 }

@@ -551,10 +551,10 @@ MonoBehaviour:
   moveSpeed: 5
   blockLayer:
     serializedVersion: 2
-    m_Bits: 131968
+    m_Bits: 394112
   ridableLayer:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 262408
   detectRadius: 3
   playerLayer:
     serializedVersion: 2

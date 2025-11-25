@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3683261028050005787}
   - component: {fileID: 8611777253475136124}
   - component: {fileID: 180925807758137407}
-  m_Layer: 8
+  m_Layer: 18
   m_Name: IronballBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ MonoBehaviour:
   tileSize: 1
   blockingMask:
     serializedVersion: 2
-    m_Bits: 63360
+    m_Bits: 325504
   groundMask:
     serializedVersion: 2
     m_Bits: 769
@@ -78,6 +78,7 @@ MonoBehaviour:
   orbCoolTime: 6
   probeUp: 0.1
   probeDown: 0.6
+  sphereRadius: 0.35
 --- !u!65 &5937561180784654500
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -233,19 +234,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1060442986644140, guid: 3223543c5c1bd614d93d621524c4e9ba, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1230407975484872, guid: 3223543c5c1bd614d93d621524c4e9ba, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1345280947682272, guid: 3223543c5c1bd614d93d621524c4e9ba, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1923597383269112, guid: 3223543c5c1bd614d93d621524c4e9ba, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4003129616334518, guid: 3223543c5c1bd614d93d621524c4e9ba, type: 3}
       propertyPath: m_LocalScale.x

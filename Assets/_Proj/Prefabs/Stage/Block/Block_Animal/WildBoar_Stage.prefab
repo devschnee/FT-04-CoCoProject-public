@@ -589,7 +589,7 @@ MonoBehaviour:
   tileSize: 1
   blockingMask:
     serializedVersion: 2
-    m_Bits: 62080
+    m_Bits: 324224
   groundMask:
     serializedVersion: 2
     m_Bits: 131840
@@ -617,7 +617,7 @@ MonoBehaviour:
   detectRadius: 3
   pushableLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 262400
   dashSpeed: 0.08
   rotateLerp: 25
   useGlobalTimeScale: 1

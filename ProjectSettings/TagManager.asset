@@ -22,7 +22,7 @@ TagManager:
   - UI
   - Editable
   - Wall
-  - Pushables
+  - WoodBox
   - Ground
   - Animal
   - TransparentWall
@@ -32,7 +32,7 @@ TagManager:
   - Turret
   - Unstackable
   - Turtle
-  - 
+  - Ironball
   - 
   - 
   - 

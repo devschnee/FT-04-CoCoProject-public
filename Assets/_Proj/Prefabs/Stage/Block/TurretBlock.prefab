@@ -320,7 +320,7 @@ MonoBehaviour:
     m_Bits: 1032
   occluderMask:
     serializedVersion: 2
-    m_Bits: 54160
+    m_Bits: 316304
   useOcclusion: 1
   ring: {fileID: 6656029803528446295}
   detectedColor: {r: 1, g: 0.2216981, b: 0.2216981, a: 0.9019608}

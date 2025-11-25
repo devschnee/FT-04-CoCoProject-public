@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 // Shockwave 사용해서 버팔로와 같이 충격파 발생시킬 수 있어야 함.
 // 버팔로와 같이 낙하 시점에 충격파를 발생시켜야 함. -> 감지탑에 충격파 발생 여부 전달
@@ -35,17 +36,6 @@ public class PushableOrb : PushableObjects
 
     void FixedUpdate()
     {
-        //if (isMoving || isFalling)
-        //{
-        //    // 이동/낙하 중일 때 wasGrounded를 false로 유지 (공중 상태로 간주)
-        //    Debug.LogWarning($"{name}: 밀기 불가 - isMoving={isMoving}, isFalling={isFalling}");
-        //    wasGrounded = false;
-        //    return;
-        //}
-
-        // Raycast를 사용하여 현재 땅에 닿아있는지 확인
-        // tileSize를 곱하여 월드 단위 길이로 변환
-
         Vector3 origin = transform.position + Vector3.up * probeUp * tileSize;
         float distance = probeDown * tileSize;
 
@@ -58,13 +48,6 @@ public class PushableOrb : PushableObjects
             layerMask: groundMask,
             queryTriggerInteraction: QueryTriggerInteraction.Ignore
         );
-        //bool grounded = Physics.Raycast(
-        //    origin: transform.position + transform.up * probeUp * tileSize,
-        //    direction: -transform.up,
-        //    maxDistance: probeDown * tileSize,
-        //    layerMask: groundMask,
-        //    queryTriggerInteraction: QueryTriggerInteraction.Ignore
-        //);
 
         // 이전에는 공중이었는데, 지금은 지상에 닿은 경우 = 착지 완료
         if (!wasGrounded && grounded)
@@ -88,13 +71,6 @@ public class PushableOrb : PushableObjects
         if (Time.time - lastShockwaveTime < orbCoolTime)
             return;
 
-        //bool grounded = Physics.Raycast(
-        //    transform.position + transform.up * probeUp * tileSize,
-        //    -transform.up,
-        //    probeDown * tileSize,
-        //    groundMask,
-        //    QueryTriggerInteraction.Ignore
-        //);
         bool grounded = Physics.SphereCast(
             origin: transform.position + transform.up * probeUp * tileSize,
             sphereRadius,
@@ -146,5 +122,27 @@ public class PushableOrb : PushableObjects
             shockPing.PingTowers(transform.position);
             Debug.Log($"[Orb] 감지탑 Ping 전송 by {name}.", this);
         }
+    }
+
+    // Orb(Ironball)는 근처 물체가 lifting 중이더라도 그 밑으로 밀릴 수 없음
+    protected override bool CheckBlocking(Vector3 target)
+    {
+        var b = boxCol.bounds;
+        Vector3 half = b.extents - Vector3.one * 0.005f;
+        Vector3 center = new Vector3(target.x, target.y + b.extents.y, target.z);
+
+        // 규칙상 차단(blocking)
+        if (Physics.CheckBox(center, half, transform.rotation, blockingMask, QueryTriggerInteraction.Ignore))
+            return true;
+
+        // 점유 차단(허용 레이어 제외)
+        var hits = Physics.OverlapBox(center, half, transform.rotation, ~throughLayer, QueryTriggerInteraction.Ignore);
+        foreach (var c in hits)
+        {
+            if (rb && c.attachedRigidbody == rb) continue; // 자기 자신
+            if (c.transform.IsChildOf(transform)) continue; // 자식
+            return true;
+        }
+        return false;
     }
 }
