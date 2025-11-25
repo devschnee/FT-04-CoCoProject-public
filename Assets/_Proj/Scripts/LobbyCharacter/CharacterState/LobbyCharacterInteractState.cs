@@ -63,7 +63,7 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
         lookAtMe.y = who.transform.position.y;
         who.transform.LookAt(lookAtMe);
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.8f);
 
         if (who is MasterBehaviour) charAnim.PlayCocoInterationWithMaster();
         else if (who is AnimalBehaviour) charAnim.PlayCocoInteractionWithAnimal();
