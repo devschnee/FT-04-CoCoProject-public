@@ -45513,6 +45513,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 519308049254786497, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_MovementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 519308049254786497, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_VerticalScrollbarVisibility
       value: 0
       objectReference: {fileID: 0}
@@ -45575,6 +45579,10 @@ PrefabInstance:
     - target: {fileID: 2547115190621566128, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202727114170818441, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_MovementType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3202727114170818441, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_VerticalScrollbarVisibility
@@ -45660,6 +45668,18 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: -12
       objectReference: {fileID: 0}
+    - target: {fileID: 4046846000583319447, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Spacing.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046846000583319447, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Spacing.y
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046846000583319447, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4152049283504547211, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -45744,6 +45764,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.5294118
       objectReference: {fileID: 0}
+    - target: {fileID: 5750159215994827519, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Spacing.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750159215994827519, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Spacing.y
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5750159215994827519, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5846707699222780552, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -45763,6 +45795,10 @@ PrefabInstance:
     - target: {fileID: 5846707699222780552, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_Color.r
       value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368715662709919656, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_MovementType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6368715662709919656, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_VerticalScrollbarVisibility
@@ -45848,25 +45884,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6996221313762287981, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Spacing.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996221313762287981, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Spacing.y
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996221313762287981, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7218380786512843801, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_MovementType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7386004139323045402, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_Spacing.x
-      value: 25
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7386004139323045402, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_Spacing.y
-      value: 25
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7386004139323045402, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_Padding.m_Top
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7386004139323045402, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_Padding.m_Left
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7538433957425034975, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_MovementType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7538433957425034975, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_VerticalScrollbarVisibility
@@ -45884,6 +45936,10 @@ PrefabInstance:
       propertyPath: content
       value: 
       objectReference: {fileID: 7359214362952681282}
+    - target: {fileID: 7889469914458009444, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_MovementType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7889469914458009444, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_VerticalScrollbarVisibility
       value: 0
@@ -45947,6 +46003,18 @@ PrefabInstance:
     - target: {fileID: 8601215001995381659, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
       propertyPath: m_Color.r
       value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011129006064462953, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Spacing.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011129006064462953, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Spacing.y
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011129006064462953, guid: 8757955fab48a6040ad6503d6a5d7c7e, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
