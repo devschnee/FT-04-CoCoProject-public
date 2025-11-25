@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 48c8aec77a06be9419f60aeebe7a0409
+guid: c0fdb54080a77ae439918cc11d828db5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HandRaising
+      name: Spin In Place
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 122
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -63,7 +63,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: EndMasterInteractState
+        functionName: FromAToB
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: e9ad2bb572d2f134c91a40d0a1f11547, type: 3}
         floatParameter: 0

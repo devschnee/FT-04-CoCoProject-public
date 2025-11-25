@@ -67,7 +67,15 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
             IsCAInteracted = false;
         }
     }
-
+    public override void ChangeStateToIdleState()
+    {
+        base.ChangeStateToIdleState();
+        ResetInteracting();
+    }
+    public override void ChangeStateToInteractState()
+    {
+        base.ChangeStateToInteractState();
+    }
     public void SetLastDragEndPos(Vector3 pos)
     {
         LastDragEndPos = pos;
@@ -80,14 +88,20 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     {
         isInteracting = false;
     }
-    public void EndCocoInteractState()
+    public void ChangeOtherCharStateToInteractState(string name)
     {
-        fsm.ChangeState(IdleState);
-        ResetInteracting();
+        if (name == "Master")
+        {
+            LobbyCharacterManager.Instance.GetMaster()?.ChangeStateToInteractState();
+        }
+        else if (name == "Animal")
+        {
+            LobbyCharacterManager.Instance.GetAnimal()?.ChangeStateToInteractState();
+        }
     }
-    public void ChangeMasterInteractState()
+    public void ChangeAnimalStateToInteractState()
     {
-        LobbyCharacterManager.Instance.GetMaster()?.ChangeMasterInteractState();
+        LobbyCharacterManager.Instance.GetAnimal()?.ChangeStateToInteractState();
     }
     // 인터페이스 영역
     /// <summary>

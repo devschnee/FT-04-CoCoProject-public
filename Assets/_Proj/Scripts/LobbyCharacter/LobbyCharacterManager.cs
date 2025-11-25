@@ -6,9 +6,6 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.AI;
 
-// 저장되어있는 동물 오브젝트, 데코 오브젝트, 집 오브젝트를 어떻게 분리할까
-
-
 public class LobbyCharacterManager : MonoBehaviour
 {
     [SerializeField] GameObject plane;
@@ -18,16 +15,18 @@ public class LobbyCharacterManager : MonoBehaviour
 
     private LMCharacterInit lobbyChracterInit; // 씬 시작시 초기화
     private LMWaypoints getWaypoints; // 웨이포인트 얻기
-    private LMCharacterRoutineControl routineControl;
+    private LMCharacterRoutineControl routineControl; // 코코두기, 안드로이드 루틴 스케쥴러
     private NavMeshSurface planeSurface; // Bake 용
     private CocoDoogyBehaviour coco; // 코코두기 제어 용
     private MasterBehaviour master; // 안드로이드 제어 용
+    private AnimalBehaviour animal; // 코코두기 상호작용 용
 
     public bool IsEditMode { get; private set; } // 에딧컨트롤러에서 받아오기
-    public bool IsInitMode = true;
+    public bool IsInitMode { get; private set; } = true; // 씬 첫 초기화 모드인지 판단
     private int originalLayer; // 평상 시 레이어
     private int editableLayer; // 편집모드 시 레이어
     private float interactionCooldown = 0;
+    private Collider[] animalHits; // 코코두기가 상호작용할 동물들 콜라이더 배열(OverlapSphere)
 
     public List<LobbyWaypoint> Waypoints { get; private set; } = new();
     private List<ILobbyState> lobbyCharacter = new(); // 맵에 활성화 된 캐릭터들 모음
@@ -120,21 +119,76 @@ public class LobbyCharacterManager : MonoBehaviour
         // 1회성만 가능하게 만들어야함
         if (!IsEditMode && !IsInitMode)
         {
+            interactionCooldown -= Time.deltaTime;
+            if (interactionCooldown > 0)return;
+
+            // 코코, 깡통 상호작용
             if (coco.gameObject.activeSelf && master.gameObject.activeSelf)
             {
-                interactionCooldown -= Time.deltaTime;
-                if (interactionCooldown > 0)return;
-                float dist = Vector3.Distance(coco.transform.position, master.transform.position);
-                if (dist < interactDistance)
+
+                float distCM = Vector3.Distance(coco.transform.position, master.transform.position);
+                if (distCM < interactDistance)
                 {
-                    if (!coco.IsCMInteracted)
+                    var currentState = master.GetCurrentState();
+                    if (!coco.IsCMInteracted && (currentState == master.MoveState))
                     {
                         interactionCooldown = 0.3f;
                         coco.OnCocoMasterEmotion();
+                        return;
                     }
                 }
             }
-            
+            // 코코, 고기들 상호작용 OverlapSphere를 업데이트에서 쓰면 안 좋다캄
+            if (coco.gameObject.activeSelf)
+            {
+                int count = Physics.OverlapSphereNonAlloc(coco.transform.position, interactDistance, animalHits, LayerMask.GetMask("InLobbyObject"));
+
+                AnimalBehaviour nearestAnimal = null;
+
+                float nearestDist = float.MaxValue;
+
+                for (int i = 0; i < count; i++)
+                {
+                    if (animalHits[i].CompareTag("Animal"))
+                    {
+                        float dist = Vector3.Distance(animalHits[i].transform.position, coco.transform.position);
+
+                        if (dist < nearestDist)
+                        {
+                            nearestDist = dist;
+                            nearestAnimal = animalHits[i].GetComponent<AnimalBehaviour>();
+                        }
+                    }
+                }
+
+                if (nearestAnimal != null && !coco.IsCAInteracted)
+                {
+                    var currentState = nearestAnimal.GetCurrentState();
+                    if (currentState == nearestAnimal.MoveState)
+                    {
+                        animal = nearestAnimal;
+                        interactionCooldown = 0.3f;
+                        coco.OnCocoAnimalEmotion();
+                    }
+                }
+
+                // var hits = Physics.OverlapSphere(coco.transform.position, interactDistance, LayerMask.GetMask("InLobbyObject"));
+
+                // foreach (var hit in hits)
+                // {
+                //     if (hit.CompareTag("Animal"))
+                //     {
+                //         var getAnimal = hit.GetComponent<AnimalBehaviour>();
+                //         if (!coco.IsCAInteracted)
+                //         {
+                //             animal = getAnimal;
+                //             interactionCooldown = 0.3f;
+                //             coco.OnCocoAnimalEmotion();
+                //             break;
+                //         }
+                //     }
+                // }
+            }
         }
     }
 
@@ -156,18 +210,7 @@ public class LobbyCharacterManager : MonoBehaviour
         // }
     }
 
-    // private void ChangeMasterStateToInteractState()
-    // {
-    // }
-    // private void ChangeAnimalStateToInteractState()
-    // {
-    //     foreach (var lC in lobbyCharacter)
-    //     {
-    //         if (lC is not AnimalBehaviour) return;
-    //     }
-    // }
-
-    public void InitWayPoint()
+    public void InitWayPoint() // 집 바꿀 시 웨이포인트 재탐색
     {
         Waypoints.Clear();
         Waypoints = getWaypoints.GetWaypoints();
@@ -176,6 +219,19 @@ public class LobbyCharacterManager : MonoBehaviour
         {
             c.InitWaypoint();
         }
+
+        RefreshAniamlHitsArray();
+    }
+
+    private void RefreshAniamlHitsArray()
+    {
+        int animalCount = 0;
+        foreach (var a in lobbyCharacter)
+        {
+            if (a is AnimalBehaviour) animalCount++;
+        }
+
+        animalHits = new Collider[animalCount];
     }
 
     public List<LobbyWaypoint> GetWaypointsForChar()
@@ -189,6 +245,7 @@ public class LobbyCharacterManager : MonoBehaviour
         coco = lobbyChracterInit.CocoInit();
         master = lobbyChracterInit.MasterInit();
         routineControl = new LMCharacterRoutineControl(coco, master);
+        RefreshAniamlHitsArray(); // 로비에 나온 동물들 찾아서 animalHits에 넣기
         IsInitMode = false;
         StartCoroutine(routineControl.MainCharRoutineLoop());
     }
@@ -201,6 +258,10 @@ public class LobbyCharacterManager : MonoBehaviour
     {
         return master;
     }
+    public AnimalBehaviour GetAnimal()
+    {
+        return animal;
+    }
 
     // 코코두기 안드로이드 전용 이벤트
     public static void RaiseCharacterEvent(BaseLobbyCharacterBehaviour who)
@@ -210,7 +271,7 @@ public class LobbyCharacterManager : MonoBehaviour
     private void DeactivateChar(BaseLobbyCharacterBehaviour who)
     {
         who.gameObject.SetActive(false);
-        who.CocoMasterSetIsActive(false); // 루틴 컨트롤 위함
+        who.SetCocoMasterIsActive(false); // 루틴 컨트롤 위함
     }
 
     // 로비 캐릭터들 등록 및 삭제

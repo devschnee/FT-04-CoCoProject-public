@@ -1,34 +1,34 @@
 treasure_id,treasure_type,reward_id,count,view_codex_id,coco_coment
-treasure_1_1_1,deco,10001,1,codex_deco_tree_lime,"가구를 먹었어!"
-treasure_1_1_2,costume,20001,1,codex_costume_cowboy,"코스튬을 먹었어!"
-treasure_1_1_3,artifact,50001,1,codex_artifact_travelbag,"유물을 먹었어!"
-treasure_1_2_1,coin,110003,500,codex_artifact_coin,[coco_get_coin]
-treasure_1_2_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_2_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_3_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_3_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_3_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_4_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_4_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_4_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_5_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_5_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_5_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_6_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_6_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_6_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_7_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_7_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_7_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_8_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_8_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_8_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_9_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_9_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_9_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_10_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_10_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_1_10_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
+treasure_1_1_1,deco,10001,1,codex_deco_tree_lime,"조경물을 획득했어. 배치해보자!"
+treasure_1_1_2,costume,20001,1,codex_costume_cowboy,"머리에 쓸 수 있겠다!"
+treasure_1_1_3,artifact,50001,1,codex_artifact_travelbag,"…누군가의 추억이 담겨있어."
+treasure_1_2_1,cap,110002,1000,codex_artifact_cap,"병뚜껑이다!"
+treasure_1_2_2,deco,10004,2,codex_deco_fence,"조경물을 획득했어. 배치해보자!"
+treasure_1_2_3,artifact,50009,1,codex_artifact_handle,"집으로 돌아갈 수 있을까?"
+treasure_1_3_1,cap,110002,1000,codex_artifact_cap,"병뚜껑이다!"
+treasure_1_3_2,deco,10006,2,codex_deco_well,"조경물을 획득했어. 배치해보자!"
+treasure_1_3_3,artifact,50003,1,codex_artifact_smallmetal,"주인은 지금 뭘 하고 있을까?"
+treasure_1_4_1,cap,110002,1000,codex_artifact_cap,"병뚜껑이다!"
+treasure_1_4_2,artifact,50004,1,codex_artifact_toyrobot,"이 장난감도 친구를 기다리고 있었던 걸까…"
+treasure_1_4_3,deco,10011,1,codex_deco_carriage,"조경물을 획득했어. 배치해보자!"
+treasure_1_5_1,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_1_5_2,artifact,50005,1,codex_artifact_familypic,"누군가의 추억이 담겨있어."
+treasure_1_5_3,deco,10012,1,codex_deco_traffic_cone,"조경물을 획득했어. 배치해보자!"
+treasure_1_6_1,cap,110002,1000,codex_artifact_cap,"병뚜껑이다!"
+treasure_1_6_2,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_1_6_3,artifact,50006,1,codex_artifact_tornnewspaper,"…다시 떠올리고 싶지 않아."
+treasure_1_7_1,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_1_7_2,deco,10013,1,codex_deco_tires,"조경물을 획득했어. 배치해보자!"
+treasure_1_7_3,artifact,50007,1,codex_artifact_posterfragment,"흥, 그대로 믿으라지!"
+treasure_1_8_1,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_1_8_2,deco,10018,1,codex_deco_wood_chair,"조경물을 획득했어. 배치해보자!"
+treasure_1_8_3,artifact,50008,1,codex_artifact_baseball,"주인에게도 가져가서 같이 놀자고 해야지!"
+treasure_1_9_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_1_9_2,artifact,50010,1,codex_artifact_flowerbouquet,"…누군가의 추억이 담겨있어."
+treasure_1_9_3,deco,10020,1,codex_deco_log_chair,"조경물을 획득했어. 배치해보자!"
+treasure_1_10_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_1_10_2,deco,10009,1,codex_deco_firepit,"조경물을 획득했어. 배치해보자!"
+treasure_1_10_3,artifact,50002,1,codex_artifact_leafcrown,"나는 멧돼지를 '숲의 왕'이라고 부르지. 그는 그만큼 멋있으니까!"
 treasure_2_1_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
 treasure_2_1_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
 treasure_2_1_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]

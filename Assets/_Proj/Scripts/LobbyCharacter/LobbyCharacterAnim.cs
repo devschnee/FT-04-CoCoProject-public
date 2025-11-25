@@ -6,29 +6,42 @@ using UnityEngine;
 public class LobbyCharacterAnim
 {
     private int number;
+    private readonly MonoBehaviour owner;
     private readonly Animator anim;
     private AnimationClip animClip;
 
     private String[] lobbyInteractionAnimalAnimsName = { "Bounce", "Roll", "Jump" };
     //private String[] masterClick = { "Click0", "Click1" };
     
-    public LobbyCharacterAnim(Animator anim)
+    public LobbyCharacterAnim(MonoBehaviour owner, Animator anim)
     {
+        this.owner = owner;
         this.anim = anim;
     }
 
-    public void PlayCocoInterationWithMaster(Vector3 pos)
+    public void PlayCocoInterationWithMaster()
     {
         //anim.SetLookAtPosition(pos);
         anim.Play("Spin");
-        AudioEvents.Raise(SFXKey.Cocodoogy, 0, loop: false, pooled: true);
+        AudioEvents.Raise(SFXKey.Cocodoogy, 0, loop: false, pooled: true, pos: owner.transform.position);
     }
 
-    public void PlayMasterInterationWithCoco(Vector3 pos)
+    public void PlayMasterInterationWithCoco()
     {
         //anim.SetLookAtPosition(pos);
-        anim.Play("InteractCoco0");
-        AudioEvents.Raise(SFXKey.Master, 1, loop: false, pooled: true);
+        anim.Play("InteractCoco2");
+        AudioEvents.Raise(SFXKey.Master, 1, loop: false, pooled: true, pos: owner.transform.position);
+    }
+
+    public void PlayCocoInteractionWithAnimal()
+    {
+        anim.Play("Spin2");
+        AudioEvents.Raise(SFXKey.Master, 1, loop: false, pooled: true, pos: owner.transform.position);
+    }
+    public void PlayAnimalInteractionWithCoco()
+    {
+        anim.Play("Spin");
+        AudioEvents.Raise(SFXKey.Master, 1, loop: false, pooled: true, pos: owner.transform.position);
     }
 
     public void MoveAnim(float speed)

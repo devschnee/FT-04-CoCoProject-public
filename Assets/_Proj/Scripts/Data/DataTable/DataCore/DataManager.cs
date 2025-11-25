@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class DataManager : MonoBehaviour
 {
     //Data를 초기화하고 등록, Provider 클래스들을 통해 데이터에 접근

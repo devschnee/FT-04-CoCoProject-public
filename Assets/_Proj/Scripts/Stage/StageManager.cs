@@ -235,6 +235,8 @@ public class StageManager : MonoBehaviour, IStageManager
     //보물 획득으로 해금되는 도감의 해금 처리. 이전보다 더 많은 별을 획득했는지의 여부는 관심 없이 스테이지 클리어하면 곧바로 해금하도록 처리.
     void ClaimRewards()
     {
+        //리플레이시
+        //추가 획득이나 코인같은 보상대체는 없음                                                 
         var stageData = DataManager.Instance.Stage.GetData(currentStageId);
         string[] treasureIds = { stageData.treasure_01_id, stageData.treasure_02_id, stageData.treasure_03_id };
 

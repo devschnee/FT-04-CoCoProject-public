@@ -63,7 +63,7 @@ public abstract class aaTestaa : MonoBehaviour, ILobbyInteractable, ILobbyDragga
         // agent
         charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius);
         // charAnim
-        charAnim = new LobbyCharacterAnim(anim);
+        charAnim = new LobbyCharacterAnim(this, anim);
         mainCam = Camera.main;
         mainPlaneMask = LayerMask.NameToLayer("MainPlaneLayer");
         waitU = new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= 0.5f);

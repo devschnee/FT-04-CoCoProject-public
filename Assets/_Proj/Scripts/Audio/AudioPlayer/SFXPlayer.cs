@@ -34,6 +34,11 @@ public class SFXPlayer : AudioPlayerControl
             activeSources.Add(currentSource);
             currentSource.volume = 1f;
             currentSource.pitch = 1f;
+            currentSource.rolloffMode = AudioRolloffMode.Custom;
+            AnimationCurve curve = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(50f, 0.877f), new Keyframe(60f, 0.59f), new Keyframe(80f, 0.34f), new Keyframe(128f, 0.125f), new Keyframe(200f, 0.002f));
+            currentSource.SetCustomCurve(AudioSourceCurveType.CustomRolloff, curve);
+            currentSource.minDistance = 40f;
+            currentSource.maxDistance = 200f;
         }
         currentSource.outputAudioMixerGroup = group;
         currentSource.clip = clip;
@@ -44,20 +49,6 @@ public class SFXPlayer : AudioPlayerControl
         {
             currentSource.transform.position = pos.Value;
             currentSource.spatialBlend = 1f;
-
-            #region 사용자지정버전
-            //src.rolloffMode = AudioRolloffMode.Custom;
-            //AnimationCurve curve = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(0.9f, 0.5f), new Keyframe(0.3f, 0.3f), new Keyframe(1f, 0f));
-            //src.SetCustomCurve(AudioSourceCurveType.CustomRolloff, curve);
-            //src.minDistance = 0.3f;  // float �� �̳��� �׻� �ִ� ����
-            //src.maxDistance = 5f; // float �� �̻��� �� �鸲
-            #endregion
-
-            #region 일반버전
-            currentSource.rolloffMode = AudioRolloffMode.Logarithmic; // �ڿ������� ����
-            currentSource.minDistance = 1f;  // float �� �̳��� �׻� �ִ� ����
-            currentSource.maxDistance = 50f; // float �� �̻��� �� �鸲
-            #endregion
         }
         else currentSource.spatialBlend = 0f;
 

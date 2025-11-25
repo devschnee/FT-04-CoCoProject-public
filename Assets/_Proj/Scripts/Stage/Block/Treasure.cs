@@ -7,6 +7,8 @@ public class Treasure : MonoBehaviour
     public string treaureBlockName;
     private string treasureId;
     private bool isCollected = false;
+    private bool isGetTreasure;
+
     void Start()
     {
         var progress = PlayerProgressManager.Instance.GetStageProgress(StageUIManager.Instance.stageManager.currentStageId);
@@ -15,16 +17,17 @@ public class Treasure : MonoBehaviour
         if (progress.treasureCollected[treasureIndex])
         {
             // 시각적 표시
-            //GetComponent<Renderer>().material.color = Color.gray;
+            GetComponentInChildren<MeshRenderer>().material.color = Color.red;
             //isCollected = true; // 다시 못먹게
         }
     }
     public void Init(string id)
     {
         treasureId = id;
-        Debug.Log($"[Treasure] Init 완료 → ID: {treasureId}");
 
+        Debug.Log($"[Treasure] Init 완료 → ID: {treasureId}");
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (isCollected) return;

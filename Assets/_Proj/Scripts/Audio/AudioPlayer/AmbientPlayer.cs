@@ -53,9 +53,9 @@ public class AmbientPlayer : AudioPlayerControl
             #endregion
 
             #region �븻
-            currentSource.rolloffMode = AudioRolloffMode.Logarithmic; // �ڿ������� ����
-            currentSource.minDistance = 1f;  // float �� �̳��� �׻� �ִ� ����
-            currentSource.maxDistance = 50f; // float �� �̻��� �� �鸲
+            // currentSource.rolloffMode = AudioRolloffMode.Logarithmic; // �ڿ������� ����
+            // currentSource.minDistance = 1f;  // float �� �̳��� �׻� �ִ� ����
+            // currentSource.maxDistance = 50f; // float �� �̻��� �� �鸲
             #endregion
         }
         else currentSource.spatialBlend = 0f;

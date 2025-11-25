@@ -256,6 +256,7 @@ MonoBehaviour:
   angularSpeed: 120
   acceleration: 8
   moveRadius: 8
+  hasBeenInit: 0
 --- !u!1 &2038810656147580363
 GameObject:
   m_ObjectHideFlags: 0

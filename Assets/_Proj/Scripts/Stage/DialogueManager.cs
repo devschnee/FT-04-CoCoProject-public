@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -256,9 +257,18 @@ public class DialogueManager : MonoBehaviour
     {
         isTyping = true;
         textComponent.text = "";
+        char? cache = null;
         foreach (char c in fullText)
         {
-            textComponent.text += c;
+            if (cache != null && cache == '\\')
+            {
+                textComponent.text += cache;
+                cache = null;
+            }
+            if (c == '\\')
+                cache = '\\';
+            else
+                textComponent.text += c;
             yield return new WaitForSeconds(delay);
         }
         isTyping = false;

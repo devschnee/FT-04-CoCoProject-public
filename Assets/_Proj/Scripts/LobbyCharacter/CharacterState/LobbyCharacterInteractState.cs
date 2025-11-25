@@ -26,14 +26,15 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
         {
             isCM = false;
             var master = LobbyCharacterManager.Instance.GetMaster();
-            owner.transform.LookAt(master.transform.position);
-            charAnim.PlayCocoInterationWithMaster(master.transform.position);
+            owner.StartCoroutine(LetsDance(master));
             (owner as CocoDoogyBehaviour).SetCharInteracted(0);
 
         }
         else if (isCA)
         {
             isCA = false;
+            var animal = LobbyCharacterManager.Instance.GetAnimal();
+            owner.StartCoroutine(LetsDance(animal));
             (owner as CocoDoogyBehaviour).SetCharInteracted(1);
         }
 
@@ -52,12 +53,20 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
         isCM = false;
     }
 
-    private IEnumerator WaitAndFinish()
+    private IEnumerator LetsDance(BaseLobbyCharacterBehaviour who)
     {
-        yield return new WaitForSeconds(1f);
-        //owner.EndInteract(0);
-        fsm.ChangeState(owner.IdleState);
-        yield break;
+        Vector3 lookTarget = who.transform.position;
+        lookTarget.y = owner.transform.position.y;
+        owner.transform.LookAt(lookTarget);
+
+        Vector3 lookAtMe = owner.transform.position;
+        lookAtMe.y = who.transform.position.y;
+        who.transform.LookAt(lookAtMe);
+
+        yield return new WaitForSeconds(0.3f);
+
+        if (who is MasterBehaviour) charAnim.PlayCocoInterationWithMaster();
+        else if (who is AnimalBehaviour) charAnim.PlayCocoInteractionWithAnimal();
     }
     /// <summary>
     /// i = 0 : CA, i = 1 : CM
@@ -96,11 +105,7 @@ public class LMasterInteractState : LobbyCharacterBaseState
         if (!agent.enabled) agent.enabled = true;
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
 
-        var coco = LobbyCharacterManager.Instance.GetCoco();
-        owner.transform.LookAt(coco.transform.position);
-        charAnim.PlayMasterInterationWithCoco(coco.transform.position);
-
-        //owner.StartCoroutine(WaitAndFinish());
+        charAnim.PlayMasterInterationWithCoco();
     }
     public override void OnStateUpdate()
     {
@@ -110,14 +115,6 @@ public class LMasterInteractState : LobbyCharacterBaseState
     {
         owner.StopAllCoroutines();
         agent.isStopped = false;
-    }
-
-    private IEnumerator WaitAndFinish()
-    {
-        yield return new WaitForSeconds(3f);
-        //owner.EndInteract(0);
-        fsm.ChangeState(owner.IdleState);
-        yield break;
     }
 }
 
@@ -137,8 +134,8 @@ public class LAnimalInteractState : LobbyCharacterBaseState
         base.OnStateEnter();
         if (!agent.enabled) agent.enabled = true;
         if (agent.enabled && !agent.isStopped) agent.isStopped = true;
-        
-        owner.StartCoroutine(WaitAndFinish());
+
+        charAnim.PlayAnimalInteractionWithCoco();
     }
     public override void OnStateUpdate()
     {
@@ -148,13 +145,5 @@ public class LAnimalInteractState : LobbyCharacterBaseState
     {
         owner.StopAllCoroutines();
         agent.isStopped = false;
-    }
-
-    private IEnumerator WaitAndFinish()
-    {
-        yield return new WaitForSeconds(3f);
-        //owner.EndInteract(0);
-        fsm.ChangeState(owner.IdleState);
-        yield break;
     }
 }

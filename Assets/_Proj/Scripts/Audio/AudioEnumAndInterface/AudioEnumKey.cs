@@ -20,15 +20,18 @@ public enum BGMKey
     Intro,
     Chapter01,
     Chapter02,
-    Chapter03,
+    Chapter03
 }
 
 public enum SFXKey
 {
     Cocodoogy = 0,
     Master,
-    Animal
-
+    Buffalo,
+    Donkey,
+    Hog,
+    Rooster,
+    Tortoise
 }
 
 public enum AmbientKey

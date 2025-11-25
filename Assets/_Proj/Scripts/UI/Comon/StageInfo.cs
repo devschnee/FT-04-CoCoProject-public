@@ -119,11 +119,8 @@ public class StageInfo : MonoBehaviour
             }
         }
 
-
-        
-
-            // 보물 아이콘 그룹
-            Transform treasureGroup = stageObj.transform.Find("TreasureGroup");
+        // 보물 아이콘 그룹
+        Transform treasureGroup = stageObj.transform.Find("TreasureGroup");
         if (treasureGroup)
         {
             int collectedCount = progress.GetCollectedCount();
@@ -132,6 +129,10 @@ public class StageInfo : MonoBehaviour
             {
                 var icon = treasureGroup.GetChild(i).GetComponent<Image>();
                 icon.sprite = i < collectedCount ? collectedSprite : notCollectedSprite;
+                if(!canEnter)
+                {
+                    icon.color = new Color(1, 1, 1, .5f);
+                }
             }
         }
 

@@ -248,8 +248,7 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -285,8 +284,7 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -322,8 +320,7 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -359,8 +356,7 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -396,8 +392,14 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: EnterAnimalInteractState
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 1efa3ec9f5f163b41ab03a576de1c049, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -433,8 +435,7 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -470,8 +471,7 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -594,8 +594,7 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -631,8 +630,7 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -697,8 +695,7 @@ ModelImporter:
       - time: 1
         functionName: FromAToB
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c,
-          type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -732,10 +729,9 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: ChangeMasterInteractState
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 1efa3ec9f5f163b41ab03a576de1c049,
-          type: 3}
+        functionName: ChangeOtherCharStateToInteractState
+        data: Master
+        objectReferenceParameter: {fileID: 11500000, guid: 1efa3ec9f5f163b41ab03a576de1c049, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -797,6 +793,49 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Spin2
+      takeName: Spin
+      internalID: -610366241900453603
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: ChangeOtherCharStateToInteractState
+        data: Animal
+        objectReferenceParameter: {fileID: 11500000, guid: 1efa3ec9f5f163b41ab03a576de1c049, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: FromAToB
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: e201fa74640c6074aa8a4c8a2514f05c, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

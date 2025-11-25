@@ -14,4 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioEntries:
   - key: 0
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: a9bba17d5d654ac4bad29011c795a774, type: 3}
+    - {fileID: 8300000, guid: f26ef33cd18639840b6261f828598d18, type: 3}
+    - {fileID: 8300000, guid: 79696b1ca62b90445b13a5db417abdec, type: 3}
+    - {fileID: 8300000, guid: 24fd0f031844d8f4ca5c946a6f132547, type: 3}
+    - {fileID: 8300000, guid: 0ad66772abaeb41418792499fac3ea30, type: 3}
+    - {fileID: 8300000, guid: 6c4f0cb8050bdff4f8269300791649ef, type: 3}
+    - {fileID: 8300000, guid: 62d304da6c8679a40a929b0df829765b, type: 3}
+    - {fileID: 8300000, guid: ef44394fd7c1fa84c93ed32f84d5db10, type: 3}
+    - {fileID: 8300000, guid: 50845ce8247075942b3ed951d9cc5a5c, type: 3}

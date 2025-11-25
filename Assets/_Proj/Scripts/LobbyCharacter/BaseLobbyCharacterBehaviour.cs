@@ -97,7 +97,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         }
     }
     
-    public void CocoMasterSetIsActive(bool which)
+    public void SetCocoMasterIsActive(bool which)
     {
         CMSetIsActive = which;
     }
@@ -108,6 +108,12 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         if (agent != null && agent.isActiveAndEnabled) agent.ResetPath();
     }
 
+    public LobbyCharacterBaseState GetCurrentState()
+    {
+        var currentState = fsm.CurrentState;
+        return currentState;
+    }
+
     // 애니메이션 이벤트 마지막 부분에
     public void FromAToB()
     {
@@ -116,6 +122,20 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     protected IEnumerator EndAnim()
     {
         yield return new WaitForSeconds(1f);
+        fsm.ChangeState(IdleState);
+    }
+    /// <summary>
+    /// 상호작용 상태로 만들어버리기
+    /// </summary>
+    public virtual void ChangeStateToInteractState()
+    {
+        fsm.ChangeState(InteractState);
+    }
+    /// <summary>
+    /// 평상 시 상태로 만들어버리기
+    /// </summary>
+    public virtual void ChangeStateToIdleState()
+    {
         fsm.ChangeState(IdleState);
     }
 
@@ -242,7 +262,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
         anim = GetComponent<Animator>();
         Waypoints = LobbyCharacterManager.Instance.Waypoints;
         charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius);
-        charAnim = new LobbyCharacterAnim(anim);
+        charAnim = new LobbyCharacterAnim(this, anim);
         MainCam = Camera.main;
         fsm = new LobbyCharacterFSM(null);
     }

@@ -18,7 +18,7 @@ public class RandomWalker : MonoBehaviour, ILobbyInteractable, ILobbyDraggable, 
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        animationController = new LobbyCharacterAnim(anim);
+        animationController = new LobbyCharacterAnim(this, anim);
         agent.speed = moveSpeed;
         agent.angularSpeed = angularSpeed;
         agent.acceleration = acceleration;

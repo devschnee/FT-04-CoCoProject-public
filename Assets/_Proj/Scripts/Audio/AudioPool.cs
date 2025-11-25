@@ -25,6 +25,22 @@ public class AudioPool
             src.transform.SetParent(parent);
             src.volume = 1f;
             src.pitch = 1f;
+            src.spatialBlend = 1f;
+
+            #region 사용자지정버전
+            src.rolloffMode = AudioRolloffMode.Custom;
+            AnimationCurve curve = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(50f, 0.877f), new Keyframe(60f, 0.59f), new Keyframe(80f, 0.34f), new Keyframe(128f, 0.125f), new Keyframe(200f, 0.002f));
+            //curve = AnimationCurve.EaseInOut(0f, 1f, 200f, 0f);
+            src.SetCustomCurve(AudioSourceCurveType.CustomRolloff, curve);
+            src.minDistance = 40f;
+            src.maxDistance = 200f;
+            #endregion
+
+            #region 일반버전
+            // src.rolloffMode = AudioRolloffMode.Logarithmic; // �ڿ������� ����
+            // src.minDistance = 40f;  // float �� �̳��� �׻� �ִ� ����
+            // src.maxDistance = 170f; // float �� �̻��� �� �鸲
+            #endregion
             src.gameObject.SetActive(false);
             pool.Enqueue(src);
         }

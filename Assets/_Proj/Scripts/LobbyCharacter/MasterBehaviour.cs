@@ -47,17 +47,17 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
     }
 
     //코코두기 상호작용
-    public void EndMasterInteractState()
+    public override void ChangeStateToIdleState()
     {
-        fsm.ChangeState(IdleState);
+        base.ChangeStateToIdleState();
     }
-    public void ChangeMasterInteractState()
+    public override void ChangeStateToInteractState()
     {
-        fsm.ChangeState(InteractState);
+        base.ChangeStateToInteractState();
     }
     public void EndCocoInteractState()
     {
-        LobbyCharacterManager.Instance.GetCoco()?.EndCocoInteractState();
+        LobbyCharacterManager.Instance.GetCoco()?.ChangeStateToIdleState();
     }
 
     // 인터페이스 영역
