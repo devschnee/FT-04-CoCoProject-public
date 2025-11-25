@@ -91,6 +91,8 @@ public class UserData : IUserData
         //public DateTime lastActive;
         public long lastActiveTime;
 
+        //프로필에 표시될 아이콘, 프로필에 표시될 애장품 목록.
+        public Dictionary<string, int> profile = new();
         public Master()
         {
             var now = DateTime.UtcNow;
@@ -99,9 +101,32 @@ public class UserData : IUserData
             createdAt = ((DateTimeOffset)now).ToUnixTimeSeconds();
             lastLoginAt = ((DateTimeOffset)now).ToUnixTimeSeconds();
             lastActiveTime = ((DateTimeOffset)now).ToUnixTimeSeconds();
+            
+            string[] enums = Enum.GetNames(typeof(ProfileType));
+            for (int i = 0; i < enums.Length; i++)
+            {
+                profile.TryAdd(enums[i].ToString().ToLower(), -1);
+            }
+            profile["icon"] = 120001;
         }
 
+        public int this[ProfileType type]
+        {
+            get
+            {
+                string enumString = type.ToString().ToLower();
+                return profile.TryGetValue(enumString, out var value) ? value : -1 ;
+            }
 
+            set
+            {
+                string enumString = type.ToString().ToLower();
+                if (!profile.ContainsKey(enumString))
+                    profile.Add(enumString, value);
+                else
+                    profile[enumString] = value;
+            }
+        }
     }
 
     /// <summary>

@@ -7436,8 +7436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a9d7a9765cf8846ba712698db80e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceBehaviour: {fileID: 829421380111019818}
-  progressStoreBehaviour: {fileID: 0}
 --- !u!1 &1457146580447157536
 GameObject:
   m_ObjectHideFlags: 0
@@ -33010,6 +33008,7 @@ MonoBehaviour:
   uidText: {fileID: 9100967979111421608}
   joindateText: {fileID: 5813589239961458909}
   totalLikeText: {fileID: 9188350682446842890}
+  profileBigImage: {fileID: 879867541656114991}
   animalIcon: {fileID: 8496750534104425896}
   decoIcon: {fileID: 2529032199777532863}
   costumeIcon: {fileID: 5391619819349682568}

@@ -3,7 +3,9 @@ using Firebase.Database;
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProfilePanelController : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class ProfilePanelController : MonoBehaviour
     [SerializeField] private TMP_Text uidText;
     [SerializeField] private TMP_Text joindateText;
     [SerializeField] private TMP_Text totalLikeText;
+
+    [Header("Big Profile Image")]
+    [SerializeField] private Image profileBigImage;
 
     [Header("Category Icons (item slots)")]
     [SerializeField] private ProfileFavoriteIcon animalIcon;
@@ -64,6 +69,7 @@ public class ProfilePanelController : MonoBehaviour
             string formatted = dateTimeOffset.ToLocalTime().ToString("yyyy/MM/dd");
             joindateText.text = formatted;
         }
+        profileBigImage.sprite = DataManager.Instance.Profile.GetIcon(UserData.Local.master[ProfileType.icon]);
 
 
     }
@@ -80,7 +86,7 @@ public class ProfilePanelController : MonoBehaviour
     {
         if (!target || !profileService) return;
 
-        target.Initialize(this, type, -1);
+        target.Initialize(this, type, UserData.Local.master[type]);
         
         //if (type == ProfileType.animal)
         //{
@@ -166,6 +172,7 @@ public class ProfilePanelController : MonoBehaviour
     {
         // 패널 안에서 다른 UI들도 바꾸고 싶으면 여기서 처리
         OnProfileIconChanged?.Invoke(icon, itemId);
+        profileBigImage.sprite = icon;
     }
 
 
