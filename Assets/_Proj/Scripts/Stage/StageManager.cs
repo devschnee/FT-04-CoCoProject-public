@@ -121,12 +121,15 @@ public class StageManager : MonoBehaviour, IStageManager
         camControl.FindWayPoint();
         yield return camControl.StartCoroutine(camControl.CameraWalking(1.25f));
 
+        // KHJ - NOTE : 컷씬 후 다이얼로그가 나올 경우, Joystick 잠금을 위해서는 Joystick을 사용하는 플레이어가 먼저 생성돼야하므로 if(data.start_talk != "-1")...와 SpawnPlayer()의 순서를 변경합니다.
+        // 순서 변경이 불가한 경우 DialogueManager.cs의 Update()에 주석처리 된 부분을 켜주면 됨.
+        //TODO: 4. 시작점에 코코두기를 생성해줌.
+        SpawnPlayer();
 
         //Todo : 컷씬 지난후 대화가 있다면 여기서 실행
         if (data.start_talk != "-1")
             DialogueManager.Instance.NewDialogueMethod(data.start_talk);
-        //TODO: 4. 시작점에 코코두기를 생성해줌.
-        SpawnPlayer();
+        
         //yield return null;
 
         yield return null;
@@ -167,6 +170,8 @@ public class StageManager : MonoBehaviour, IStageManager
         StageUIManager.Instance.ExitButton.onClick.AddListener(() =>
         {
             waitConfirm = false;
+            Joystick joystick = FindAnyObjectByType<Joystick>();
+            joystick.IsLocked = false;
         });
         while (waitConfirm)
             yield return null;
@@ -190,7 +195,12 @@ public class StageManager : MonoBehaviour, IStageManager
         StageUIManager.Instance.Overlay.SetActive(true);
         StageUIManager.Instance.ResultPanel.SetActive(true);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
-
+        Joystick joystick = FindAnyObjectByType<Joystick>();
+        if (joystick != null)
+        {
+            // KHJ - Result Panel이 켜졌으니 조이스틱 입력 잠금
+            joystick.IsLocked = true;
+        }
         var data = DataManager.Instance.Stage.GetData(currentStageId);
 
         StageUIManager.Instance.stageName.text = data.stage_name;

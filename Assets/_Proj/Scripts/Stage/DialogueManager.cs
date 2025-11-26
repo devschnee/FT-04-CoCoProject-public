@@ -58,11 +58,25 @@ public class DialogueManager : MonoBehaviour
         ShowDialogue(dialogueId, currentSeq);
         isDialogueActive = true;
 
+        // KHJ 추가
+        Joystick joystick = FindAnyObjectByType<Joystick>();
+        if (joystick != null)
+            joystick.IsLocked = true;
+
         return true;
     }
 
     void Update()
     {
+        // KHJ - NOTE : StageManager.cs의 StageStart()에서 처리가 안 된다면 이 주석을 켜면 됨.(SpawnPlayer()순서가 변경되면 안 될 경우. StageManager.cs 관련 주석 참고)
+        //if (isDialogueActive)
+        //{
+        //    // 조이스틱이 뒤늦게 생성된 경우 다시 잠금 적용
+        //    var joystick = FindAnyObjectByType<Joystick>();
+        //    if (joystick != null && joystick.IsLocked == false)
+        //        joystick.IsLocked = true;
+        //    // false는 EndDialogue()에서 처리될 것
+        //}
         if (!isDialogueActive) return;
 
         if (Touchscreen.current != null)
@@ -289,6 +303,10 @@ public class DialogueManager : MonoBehaviour
 
         if(playerMovement != null)
             playerMovement.enabled = true;
+        // KHJ 추가
+        Joystick joystick = FindAnyObjectByType<Joystick>();
+        if (joystick != null)
+            joystick.IsLocked = false;
 
         OnDialogueEnd?.Invoke();
     }

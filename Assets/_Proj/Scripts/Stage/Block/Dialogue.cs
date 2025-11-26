@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using TMPro;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
@@ -21,8 +18,13 @@ public class Dialogue : MonoBehaviour
         if (UserData.Local.preferences.skipDialogues == true) return;
         if (isread) return;
         if (!other.CompareTag("Player")) return;
-
         playerMovement = other.GetComponent<PlayerMovement>();
+        Joystick joystick = FindAnyObjectByType<Joystick>();
+        if (joystick != null)
+        {
+            // KHJ - Dialogue Panel이 켜졌으니 조이스틱 입력 잠금
+            joystick.IsLocked = true;
+        }
         playerMovement.enabled = false;
 
         DialogueManager.Instance.NewDialogueMethod(dialogueId);
@@ -32,6 +34,8 @@ public class Dialogue : MonoBehaviour
         {
             if (playerMovement != null)
                 playerMovement.enabled = true;
+            if(joystick != null)
+                joystick.IsLocked = false;
         };
 
         isread = true;
