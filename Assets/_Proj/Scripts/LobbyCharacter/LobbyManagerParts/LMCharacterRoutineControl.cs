@@ -39,6 +39,7 @@ public class LMCharacterRoutineControl
             yield return delay = new (5f); // 로비 시작 후 좀 있다가 생성하는게 이쁘지 않을까?
             coco.gameObject.SetActive(true);
             coco.SetCharInteracted(2);
+            coco.SetTimeToGoHome(false);
             yield break;
         }
         else
@@ -54,6 +55,7 @@ public class LMCharacterRoutineControl
         {
             yield return delay = new (10f);
             master.gameObject.SetActive(true);
+            master.SetTimeToGoHome(false);
             yield break;
         }
         else

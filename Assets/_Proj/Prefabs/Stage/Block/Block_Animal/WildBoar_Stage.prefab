@@ -892,6 +892,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3863027491269863611, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: f819c0c0b485e10478094c0c7955a888, type: 3}
+    - target: {fileID: 3863027491269863611, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cd420c12d0cc935468511f5168245b0c, type: 2}
     - target: {fileID: 3863027491392409892, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -951,10 +959,41 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3863027491269863588, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8119029001564004213}
   m_SourcePrefab: {fileID: 100100000, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+--- !u!95 &1505846247401271268 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3863027491269863611, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+  m_PrefabInstance: {fileID: 2412218724326066015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1505846247401271270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3863027491269863609, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
   m_PrefabInstance: {fileID: 2412218724326066015}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1505846247401271291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3863027491269863588, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+  m_PrefabInstance: {fileID: 2412218724326066015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8119029001564004213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505846247401271291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d039d4628cb3c1347a0ff8b4e2a57968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalType: 0
+  anim: {fileID: 1505846247401271268}
+  buffalo: {fileID: 0}
+  turtle: {fileID: 0}
+  boar: {fileID: 7038002128938173689}
+  hello: 0

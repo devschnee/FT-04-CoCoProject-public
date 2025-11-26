@@ -769,6 +769,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 5688514589227935450, guid: ad0058799afa43640919848d26f0f33b, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: fe5cfddbee76a6e4b8a2a95a019279cd, type: 3}
+    - target: {fileID: 5688514589227935450, guid: ad0058799afa43640919848d26f0f33b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b82a36fe6fc711944b3e5f6b3ba75eef, type: 2}
     - target: {fileID: 5688514589227935463, guid: ad0058799afa43640919848d26f0f33b, type: 3}
       propertyPath: m_Name
       value: Buffalo
@@ -776,8 +784,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5688514589227935463, guid: ad0058799afa43640919848d26f0f33b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 453127413228829219}
   m_SourcePrefab: {fileID: 100100000, guid: ad0058799afa43640919848d26f0f33b, type: 3}
+--- !u!1 &7758893229281467672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5688514589227935463, guid: ad0058799afa43640919848d26f0f33b, type: 3}
+  m_PrefabInstance: {fileID: 2692178038938909695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &453127413228829219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7758893229281467672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d039d4628cb3c1347a0ff8b4e2a57968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalType: 2
+  anim: {fileID: 7758893229281467685}
+  buffalo: {fileID: 7842754840454281407}
+  turtle: {fileID: 0}
+  boar: {fileID: 0}
+  hello: 0
+--- !u!95 &7758893229281467685 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5688514589227935450, guid: ad0058799afa43640919848d26f0f33b, type: 3}
+  m_PrefabInstance: {fileID: 2692178038938909695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7758893229281467687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5688514589227935448, guid: ad0058799afa43640919848d26f0f33b, type: 3}

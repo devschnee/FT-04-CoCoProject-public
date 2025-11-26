@@ -74,6 +74,7 @@ public class LMasterMoveState : LobbyCharacterBaseState
             {
                 // 루틴 끝
                 charAgent.MoveToLastPoint(startPoint);
+                (owner as MasterBehaviour).SetTimeToGoHome(true);
                 while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
                 {
                     yield return null;
