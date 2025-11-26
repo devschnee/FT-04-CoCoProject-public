@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +39,10 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
     //public ParticleSystem hitFx;
 
     private bool isCooldown = false;
+
+    // LSH 추가 1126
+    public event Action OnPushStart;
+
     protected override void Awake()
     {
         base.Awake();
@@ -458,6 +463,8 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
     // 연속된 pushables를 동시에 1칸 이동시키는 메서드
     IEnumerator ChainShiftOneCell(List<List<PushableObjects>> chainOfStacks, Vector2Int dir)
     {
+        // LSH 추가 1126
+        OnPushStart?.Invoke();
         int totalObjects = 0;
         foreach (var stack in chainOfStacks)
             totalObjects += stack.Count;
