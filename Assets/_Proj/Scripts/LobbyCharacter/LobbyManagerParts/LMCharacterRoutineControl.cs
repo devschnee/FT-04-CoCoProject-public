@@ -7,13 +7,15 @@ using UnityEngine;
 /// </summary>
 public class LMCharacterRoutineControl
 {
+    private readonly LobbyCharacterManager lobbyManager;
     private CocoDoogyBehaviour coco;
     private MasterBehaviour master;
     private WaitForSeconds delay;
     private WaitUntil wait;
 
-    public LMCharacterRoutineControl(CocoDoogyBehaviour coco, MasterBehaviour master)
+    public LMCharacterRoutineControl(LobbyCharacterManager lobbyManager, CocoDoogyBehaviour coco, MasterBehaviour master)
     {
+        this.lobbyManager = lobbyManager;
         this.coco = coco;
         this.master = master;
         Debug.Log($"coco : {this.coco.gameObject.name}");
@@ -33,12 +35,16 @@ public class LMCharacterRoutineControl
 
     private IEnumerator CocoRoutine()
     {
+        Vector3 spawnPos = SpawnPoint.GetSpawnPoint(lobbyManager.Waypoints[0].transform.position);
+
         //if (LobbyCharacterManager.Instance.IsEditMode) yield return wait;
         if (LobbyCharacterManager.Instance.IsEditMode == false)
         {
+            coco.transform.position = spawnPos;
             yield return delay = new (5f); // 로비 시작 후 좀 있다가 생성하는게 이쁘지 않을까?
             coco.gameObject.SetActive(true);
             coco.SetCharInteracted(2);
+            coco.SetTimeToGoHome(false);
             yield break;
         }
         else
@@ -49,11 +55,15 @@ public class LMCharacterRoutineControl
     }
     private IEnumerator MasterRoutine()
     {
+        Vector3 spawnPos = SpawnPoint.GetSpawnPoint(lobbyManager.Waypoints[0].transform.position);
+
         //if (LobbyCharacterManager.Instance.IsEditMode) yield return wait;
         if (LobbyCharacterManager.Instance.IsEditMode == false)
         {
+            master.transform.position = spawnPos;
             yield return delay = new (10f);
             master.gameObject.SetActive(true);
+            master.SetTimeToGoHome(false);
             yield break;
         }
         else

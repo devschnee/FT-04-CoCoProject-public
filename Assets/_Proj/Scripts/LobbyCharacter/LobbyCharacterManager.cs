@@ -244,7 +244,7 @@ public class LobbyCharacterManager : MonoBehaviour
         yield return StartCoroutine(lobbyChracterInit.Init());
         coco = lobbyChracterInit.CocoInit();
         master = lobbyChracterInit.MasterInit();
-        routineControl = new LMCharacterRoutineControl(coco, master);
+        routineControl = new LMCharacterRoutineControl(this, coco, master);
         RefreshAniamlHitsArray(); // 로비에 나온 동물들 찾아서 animalHits에 넣기
         IsInitMode = false;
         StartCoroutine(routineControl.MainCharRoutineLoop());

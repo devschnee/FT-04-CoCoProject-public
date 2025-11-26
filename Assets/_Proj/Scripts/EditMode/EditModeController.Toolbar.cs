@@ -4,8 +4,9 @@ using Game.Inventory; // ★ 추가: InventoryService
 public partial class EditModeController
 {
     private bool infoPanelAutoOpened = false;
-
+    private Coroutine savedInfoRoutine;
     #region Selection
+
     private Camera camCache;
     private Camera WorldCam
     {
@@ -186,7 +187,20 @@ public partial class EditModeController
 
         return true;
     }
+    private System.Collections.IEnumerator HideSavedPanelDelayed()
+    {
+        // 2초 대기
+        yield return new WaitForSeconds(2f);
 
+        if (savedInfoPanel)
+            savedInfoPanel.SetActive(false);
+
+        // 기존 확인 버튼에서 하던 작업도 여기서 수행
+        if (LobbyCharacterManager.Instance != null)
+            LobbyCharacterManager.Instance.InitWayPoint();
+
+        savedInfoRoutine = null;
+    }
     #endregion
 
     #region Toolbar (layout & dispatch)

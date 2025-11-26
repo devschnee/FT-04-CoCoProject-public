@@ -152,19 +152,19 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.5146126
+  - screenRelativeHeight: 0.4930664
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3863027491392409915}
-  - screenRelativeHeight: 0.29021952
+  - screenRelativeHeight: 0.19653086
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3863027490940249691}
-  - screenRelativeHeight: 0.07602459
+  - screenRelativeHeight: 0.047315013
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3863027491682197392}
-  - screenRelativeHeight: 0.0033664731
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3863027491970123472}
@@ -178,7 +178,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3863027491269863588}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 434ffe68bbe5d5b49b417181e5b0cc65, type: 3}
+  m_Avatar: {fileID: 9000000, guid: b59831a7ecdfaf34cbbe56903ef794fc, type: 3}
   m_Controller: {fileID: 9100000, guid: 9e5b69e1e9b5aa44a8813416e97ca931, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0

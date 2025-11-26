@@ -13,6 +13,7 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     public bool IsDragged { get; private set; }
     public bool IsCMInteracted { get; private set; }
     public bool IsCAInteracted { get; private set; }
+    public bool TimeToGoHome { get; private set; } // 코코두기 마지막 집가는 루틴이면 상호작용 막기
     private bool isInteracting;
 
     protected override void InitStates()
@@ -67,6 +68,11 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
             IsCAInteracted = false;
         }
     }
+    public void SetTimeToGoHome(bool which)
+    {
+        if (which) TimeToGoHome = true;
+        else TimeToGoHome = false;
+    }
     public override void ChangeStateToIdleState()
     {
         base.ChangeStateToIdleState();
@@ -109,7 +115,7 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     /// </summary>
     public void OnCocoAnimalEmotion()
     {
-        if(!(fsm.CurrentState == MoveState) || IsCAInteracted == true) return;
+        if(!(fsm.CurrentState == MoveState) || IsCAInteracted == true || TimeToGoHome) return;
         if (isInteracting == false)
         {
             (InteractState as LCocoDoogyInteractState).SetCAM(0, true);
@@ -123,7 +129,8 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     /// </summary>
     public void OnCocoMasterEmotion()
     {
-        if(!(fsm.CurrentState == MoveState) || IsCMInteracted == true) return;
+        bool masterGoHome = LobbyCharacterManager.Instance.GetMaster().TimeToGoHome;
+        if(!(fsm.CurrentState == MoveState) || masterGoHome == true || IsCMInteracted == true || TimeToGoHome) return;
         if (isInteracting == false)
         {
             (InteractState as LCocoDoogyInteractState).SetCAM(1, true);
@@ -189,6 +196,7 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
         isInteracting = false;
         IsCMInteracted = false;
         IsCAInteracted = false;
+        TimeToGoHome = false;
         agent.avoidancePriority = 20;
     }
     public override void FinalInit()

@@ -44,14 +44,14 @@ public class LMCharacterInit
             }
         }
 
-        GameObject gObj = Object.Instantiate(DataManager.Instance.mainChar.GetPrefab(99999), SpawnPoint(LCM.Waypoints[0].transform.position), Quaternion.identity);
+        GameObject gObj = Object.Instantiate(DataManager.Instance.mainChar.GetPrefab(99999), SpawnPoint.GetSpawnPoint(LCM.Waypoints[0].transform.position), Quaternion.identity);
         gObj.transform.localScale = new Vector3(3, 3, 3);
         gObj.tag = "CocoDoogy";
         gObj.SetActive(false);
         var cocoInit = gObj.AddComponent<CocoDoogyBehaviour>();
         lobbyCharacter.Add(cocoInit);
 
-        GameObject gObj2 = Object.Instantiate(DataManager.Instance.mainChar.GetPrefab(99998), SpawnPoint(LCM.Waypoints[0].transform.position), Quaternion.identity);
+        GameObject gObj2 = Object.Instantiate(DataManager.Instance.mainChar.GetPrefab(99998), SpawnPoint.GetSpawnPoint(LCM.Waypoints[0].transform.position), Quaternion.identity);
         gObj2.transform.localScale = new Vector3(3, 3, 3);
         gObj2.tag = "Master";
         gObj2.SetActive(false);
@@ -87,19 +87,6 @@ public class LMCharacterInit
         coco = cocoInit;
         master = masterInit;
     }
-
-    private Vector3 SpawnPoint(Vector3 pos)
-    {
-        Vector3 spawn = pos;
-        Vector3 randomDir = pos + Random.insideUnitSphere * 1f;
-        randomDir.y = pos.y;
-        if (NavMesh.SamplePosition(randomDir, out NavMeshHit hit, 0.1f, NavMesh.AllAreas))
-        {
-            spawn = hit.position;
-        }
-        return spawn;
-    }
-
     public CocoDoogyBehaviour CocoInit()
     {
         return coco;
