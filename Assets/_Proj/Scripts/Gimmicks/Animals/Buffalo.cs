@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,9 @@ public class Buffalo : MonoBehaviour, IPlayerFinder
     bool onCooldown;
 
     Transform IPlayerFinder.Player { get => playerTrans; set => playerTrans = value; }
+
+    // LSH 추가 1126
+    public event Action OnBombStart;
 
     void Awake()
     {
@@ -110,6 +114,8 @@ public class Buffalo : MonoBehaviour, IPlayerFinder
 
     IEnumerator WaveRunCoroutine()
     {
+        // LSH 추가 1126
+        OnBombStart?.Invoke();
         running = true;
 
         float tile = Mathf.Max(0.01f, shockwave? shockwave.tileHeight : 1f);

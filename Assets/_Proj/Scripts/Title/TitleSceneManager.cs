@@ -21,7 +21,7 @@ public class TitleSceneManager : MonoBehaviour
     public float logoWaitTime = 1f;
     public float logoMoveDuration = 3f;
     public float loginMethodsFadeTime = 1f;
-    public Vector2 logoTargetPos = new(0, 200);
+    public Vector2 logoTargetPos = new(0, 155);
 
     void Start()
     {

@@ -244,20 +244,22 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
             }
         }
 
-
+        YieldInstruction wait = new WaitForFixedUpdate();
         while (elapsed < moveTime)
         {
             transform.position = Vector3.Lerp(start, target, elapsed / moveTime);
-            elapsed += Time.deltaTime;
-
             if (playerTransform)
             {
                 float yOffset = playerTransform.position.y - transform.position.y;
                 playerTransform.position = Vector3.Lerp(playerTransform.position, transform.position + Vector3.up * yOffset, elapsed);
             }
-            yield return null;
+            //yield return null;
+            yield return wait;
+            elapsed += Time.deltaTime;
         }
-
+        yield return new WaitForEndOfFrame();
+        if (playerTransform)
+            playerTransform.position = target + (Vector3.up * (playerTransform.position.y - transform.position.y));
         transform.position = target;
 
         isMoving = false;

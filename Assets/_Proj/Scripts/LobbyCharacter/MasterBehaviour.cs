@@ -6,6 +6,7 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
 {
     public LMasterUniqueState UniqueState { get; private set; }
 
+    public bool TimeToGoHome { get; private set; }
     protected override void InitStates()
     {
         IdleState = new LMasterIdleState(this, fsm);
@@ -34,6 +35,12 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
     protected override void Update()
     {
         base.Update();
+    }
+    
+    public void SetTimeToGoHome(bool which)
+    {
+        if (which) TimeToGoHome = true;
+        else TimeToGoHome = false;
     }
 
     // 드래그 엔드 성공 시
@@ -116,6 +123,7 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
         UniqueState = new LMasterUniqueState(this, fsm);
         base.LoadInit();
         agent.avoidancePriority = 10;
+        TimeToGoHome = false;
     }
     public override void FinalInit()
     {

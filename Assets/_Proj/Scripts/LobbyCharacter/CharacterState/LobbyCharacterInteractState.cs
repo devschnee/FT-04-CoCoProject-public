@@ -3,7 +3,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-// 우선 코코두기와 마스터 먼저 상호작용하는 걸 끝내자.
 public class LCocoDoogyInteractState : LobbyCharacterBaseState
 {
     private readonly NavMeshAgent agent;
