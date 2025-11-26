@@ -601,12 +601,23 @@ public partial class EditModeController
         SetEditMode(true, keepTarget: false);
         SelectTarget(go.transform);
 
-        // ✅ 스폰 위치: (0, 0, -10)
+        // ✅ 스폰 위치: (0, 0, -20)
         go.transform.position = new Vector3(0f, 0f, -20f);
-        go.transform.rotation = Quaternion.identity;
+
+        // 🔹 DecoDatabase 8번, 18번만 Y축 180도 회전
+        if (cat == PlaceableCategory.Deco && (data.Id == 10008 || data.Id == 10018))
+        {
+            go.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        else
+        {
+            go.transform.rotation = Quaternion.identity;
+        }
 
         // 그리드 스냅 옵션
-        if (snapToGrid) go.transform.position = SnapToGrid(go.transform.position);
+        if (snapToGrid)
+            go.transform.position = SnapToGrid(go.transform.position);
+
 
         //LSH 추가
         switch (cat)
