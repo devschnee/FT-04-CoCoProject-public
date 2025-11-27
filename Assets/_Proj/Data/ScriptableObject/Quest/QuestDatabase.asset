@@ -115,7 +115,7 @@ MonoBehaviour:
   - quest_id: 70011
     quest_name: "\uC791\uC740 \uBC1C\uC790\uAD6D"
     quest_type: 2
-    quest_object: 1
+    quest_object: 13
     quest_obj_desc: "\uB204\uC801 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4 30\uD68C"
     quest_value: 30
     quest_reward_item: 110002
@@ -125,7 +125,7 @@ MonoBehaviour:
   - quest_id: 70012
     quest_name: "\uD0D0\uD5D8\uC758 \uC2DC\uC791"
     quest_type: 2
-    quest_object: 1
+    quest_object: 13
     quest_obj_desc: "\uB204\uC801 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4 50\uD68C"
     quest_value: 50
     quest_reward_item: 110002
@@ -135,7 +135,7 @@ MonoBehaviour:
   - quest_id: 70013
     quest_name: "\uAFB8\uC900\uD55C \uC5EC\uD589\uC790"
     quest_type: 2
-    quest_object: 1
+    quest_object: 13
     quest_obj_desc: "\uB204\uC801 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4 70\uD68C"
     quest_value: 70
     quest_reward_item: 110002
@@ -145,8 +145,8 @@ MonoBehaviour:
   - quest_id: 70014
     quest_name: "\uB05D\uC5C6\uB294 \uC5EC\uC815"
     quest_type: 2
-    quest_object: 1
-    quest_obj_desc: "\uB204\uC801 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4 1000\uD68C"
+    quest_object: 13
+    quest_obj_desc: "\uB204\uC801 \uC2A4\uD14C\uC774\uC9C0 \uD074\uB9AC\uC5B4 100\uD68C"
     quest_value: 100
     quest_reward_item: 10001
     quest_reward_item_count: 1
@@ -396,7 +396,7 @@ MonoBehaviour:
       \uD574\uC57C\uD55C\uB2E4.\""
   - quest_id: 70038
     quest_name: "\uC8FC1\uD68C"
-    quest_type: 3
+    quest_type: 4
     quest_object: 11
     quest_obj_desc: "\uC8FC\uAC04 \uD018\uC2A4\uD2B8 \uD074\uB9AC\uC5B41\uD68C"
     quest_value: 1
@@ -406,7 +406,7 @@ MonoBehaviour:
       \uD574\uC57C\uD55C\uB2E4.\""
   - quest_id: 70039
     quest_name: "\uC8FC3\uD68C"
-    quest_type: 3
+    quest_type: 4
     quest_object: 11
     quest_obj_desc: "\uC8FC\uAC04 \uD018\uC2A4\uD2B8 \uD074\uB9AC\uC5B43\uD68C"
     quest_value: 3
@@ -416,7 +416,7 @@ MonoBehaviour:
       \uD574\uC57C\uD55C\uB2E4.\""
   - quest_id: 70040
     quest_name: "\uC8FC5\uD68C"
-    quest_type: 3
+    quest_type: 4
     quest_object: 11
     quest_obj_desc: "\uC8FC\uAC04 \uD018\uC2A4\uD2B8 \uD074\uB9AC\uC5B45\uD68C"
     quest_value: 5
@@ -427,7 +427,7 @@ MonoBehaviour:
   - quest_id: 70041
     quest_name: "\uCF54\uCF54\uB450\uAE30\uC640 \uCE5C\uAD6C\uD558\uAE30"
     quest_type: 2
-    quest_object: 12
+    quest_object: 0
     quest_obj_desc: "\uAD6C\uAE00 \uACC4\uC815 1\uD68C \uC5F0\uB3D9"
     quest_value: 1
     quest_reward_item: 10004

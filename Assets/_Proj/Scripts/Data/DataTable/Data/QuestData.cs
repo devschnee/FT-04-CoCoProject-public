@@ -17,9 +17,9 @@ public class QuestData
 
 public enum QuestType
 {
-    daily, weekly, achievements, stackrewards
+    daily, weekly, achievements, daily_stackrewards, weekly_stackrewards
 }
 public enum QuestObject
 {
-    login, stage_clear, touch_animals, send_like, receive_like, visit_lobby, change_deployment, collect_cap, use_cap, collect_star, daily_quest_stack, weekly_quest_stack, connet_guest
+    login, stage_clear, touch_animals, send_like, receive_like, visit_lobby, change_deployment, collect_cap, use_cap, collect_star, daily_quest_stack, weekly_quest_stack, connet_guest, unique_stage_clear
 }
