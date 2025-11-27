@@ -66,7 +66,7 @@ treasure_3_2_1,deco,10012,1,codex_deco_traffic_cone,"조경물을 획득했어. 
 treasure_3_2_2,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
 treasure_3_2_3,artifact,50024,1,codex_artifact_whistle,"…누군가의 추억이 담겨 있어."
 treasure_3_3_1,deco,10018,1,codex_deco_wood_chair,"조경물을 획득했어. 배치해보자!"
-treasure_3_3_2,artifact,50026,1,codex_artifcat_stopsign,"집으로 돌아갈 수 있을까?"
+treasure_3_3_2,artifact,50026,1,codex_artifact_stopsign,"집으로 돌아갈 수 있을까?"
 treasure_3_3_3,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
 treasure_3_4_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
 treasure_3_4_2,artifact,50021,1,codex_artifact_survivaldiary,"누군가의 추억이 담겨있어."

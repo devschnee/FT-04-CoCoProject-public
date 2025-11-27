@@ -440,7 +440,7 @@ MonoBehaviour:
     treasureType: 4
     reward_id: 50026
     count: 1
-    view_codex_id: codex_artifcat_stopsign
+    view_codex_id: codex_artifact_stopsign
     coco_coment: "\"\uC9D1\uC73C\uB85C \uB3CC\uC544\uAC08 \uC218 \uC788\uC744\uAE4C?\""
   - treasure_id: treasure_3_3_3
     treasureType: 1
