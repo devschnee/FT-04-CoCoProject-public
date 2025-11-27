@@ -423,7 +423,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2336ce1886c4e4e4ea93304e73d2eaf6, type: 3}
   - {fileID: 21300000, guid: cd0ccf5007ed2ba4ca96a408638f2244, type: 3}
   - {fileID: 21300000, guid: bd273976546751541b2614164981d66c, type: 3}
-  CollecTreausreCountText: {fileID: 0}
+  CollecTreausreCountText: {fileID: 1570694791}
   videoImage: {fileID: 249544900}
   stageIdInformation: {fileID: 0}
   stageGetTreasureCount: 0
