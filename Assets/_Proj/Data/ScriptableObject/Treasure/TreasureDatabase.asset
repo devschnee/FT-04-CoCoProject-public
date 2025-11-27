@@ -202,420 +202,380 @@ MonoBehaviour:
   - treasure_id: treasure_2_1_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBCD1\uB69C\uAED1\uC774\uB2E4!\""
   - treasure_id: treasure_2_1_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50012
+    count: 1
+    view_codex_id: codex_artifact_shellnecklace
+    coco_coment: "\"\uC774 \uC791\uC740 \uC870\uAC1C\uB4E4\uC774 \uBAA8\uC5EC \uBCF4\uC11D\uBCF4\uB2E4
+      \uB354 \uBC18\uC9DD\uC5EC!\""
   - treasure_id: treasure_2_1_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 3
+    reward_id: 20002
+    count: 1
+    view_codex_id: codex_costume_crown
+    coco_coment: "\"\uBA38\uB9AC\uC5D0 \uC4F8 \uC218 \uC788\uACA0\uB2E4!\""
   - treasure_id: treasure_2_2_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBCD1\uB69C\uAED1\uC774\uB2E4!\""
   - treasure_id: treasure_2_2_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50011
+    count: 1
+    view_codex_id: codex_artifact_woodenboard
+    coco_coment: "\"\uBB3C \uC704\uAC00 \uC774\uB807\uAC8C \uD3B8\uC548\uD55C \uACF3\uC77C
+      \uC904\uC740 \uBAB0\uB790\uC5B4!\""
   - treasure_id: treasure_2_2_3
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBCD1\uB69C\uAED1\uC774\uB2E4!\""
   - treasure_id: treasure_2_3_1
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10005
+    count: 2
+    view_codex_id: codex_deco_white_fence
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_2_3_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50013
+    count: 1
+    view_codex_id: codex_artifact_laundry
+    coco_coment: "\"\uB2E4\uB4E4 \uC5EC\uAE30\uC11C \uBE68\uB798\uB97C \uD558\uACE4
+      \uD558\uC9C0.\""
   - treasure_id: treasure_2_3_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10007
+    count: 1
+    view_codex_id: codex_deco_ground_planks
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_2_4_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBCD1\uB69C\uAED1\uC774\uB2E4!\""
   - treasure_id: treasure_2_4_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10010
+    count: 1
+    view_codex_id: codex_deco_fireplace
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_2_4_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50014
+    count: 1
+    view_codex_id: codex_artifact_tube
+    coco_coment: "\"\uC774\uAC78 \uD0C0\uBA74 \uB098\uB3C4 \uBB3C\uC5D0 \uB465\uB465
+      \uB730 \uC218 \uC788\uC744\uAE4C?\""
   - treasure_id: treasure_2_5_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBB34\uC5B8\uAC00\uB97C \uAD6C\uB9E4\uD560 \uC218 \uC788\uC744
+      \uAC70\uC57C.\""
   - treasure_id: treasure_2_5_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10015
+    count: 2
+    view_codex_id: codex_deco_decorative_pot
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_2_5_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50017
+    count: 1
+    view_codex_id: codex_artifact_paperboat
+    coco_coment: "\"\uBB3C\uC774 \uC774\uB807\uAC8C \uBC18\uC9DD\uC774\uAE30\uB3C4
+      \uD558\uB294\uAD6C\uB098\u2026\""
   - treasure_id: treasure_2_6_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBB34\uC5B8\uAC00\uB97C \uAD6C\uB9E4\uD560 \uC218 \uC788\uC744
+      \uAC70\uC57C.\""
   - treasure_id: treasure_2_6_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10016
+    count: 2
+    view_codex_id: codex_deco_weed_pot
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_2_6_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50020
+    count: 1
+    view_codex_id: codex_artifact_waterdrop
+    coco_coment: "\"\uCC98\uC74C\uC73C\uB85C \uBB3C\uC774 \uBB34\uC12D\uC9C0 \uC54A\uC558\uC5B4!\""
   - treasure_id: treasure_2_7_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBB34\uC5B8\uAC00\uB97C \uAD6C\uB9E4\uD560 \uC218 \uC788\uC744
+      \uAC70\uC57C.\""
   - treasure_id: treasure_2_7_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50018
+    count: 1
+    view_codex_id: codex_artifact_seaweed
+    coco_coment: "\"\uBB54\uAC00 \uC7AC\uBC0C\uC5B4 \uBCF4\uC5EC. \uB098\uB3C4 \uD568\uAED8
+      \uB180\uACE0 \uC2F6\uB2E4\u2026\""
   - treasure_id: treasure_2_7_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10017
+    count: 2
+    view_codex_id: codex_deco_mini_pot
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_2_8_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 2000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uC6B0\uB9B0 \uBD80\uC790\uC57C!\""
   - treasure_id: treasure_2_8_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50016
+    count: 1
+    view_codex_id: codex_artifact_fishingrod
+    coco_coment: "\"\u2026\uB204\uAD70\uAC00\uC758 \uCD94\uC5B5\uC774 \uB2F4\uACA8
+      \uC788\uC5B4.\""
   - treasure_id: treasure_2_8_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10018
+    count: 1
+    view_codex_id: codex_deco_wood_chair
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_2_9_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 2000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uC6B0\uB9B0 \uBD80\uC790\uC57C!\""
   - treasure_id: treasure_2_9_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10019
+    count: 1
+    view_codex_id: codex_deco_orange_audio
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_2_9_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50019
+    count: 1
+    view_codex_id: codex_artifact_pebbles
+    coco_coment: "\"\u2026\uB204\uAD70\uAC00\uC758 \uCD94\uC5B5\uC774 \uB2F4\uACA8
+      \uC788\uC5B4.\""
   - treasure_id: treasure_2_10_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 2000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uC6B0\uB9B0 \uBD80\uC790\uC57C!\""
   - treasure_id: treasure_2_10_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10020
+    count: 2
+    view_codex_id: codex_deco_log_chair
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_2_10_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50015
+    count: 1
+    view_codex_id: codex_artifact_paddle
+    coco_coment: "\"\u2026\uB204\uAD70\uAC00\uC758 \uCD94\uC5B5\uC774 \uB2F4\uACA8
+      \uC788\uC5B4.\""
   - treasure_id: treasure_3_1_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBB34\uC5B8\uAC00\uB97C \uAD6C\uB9E4\uD560 \uC218 \uC788\uC744
+      \uAC70\uC57C.\""
   - treasure_id: treasure_3_1_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50022
+    count: 1
+    view_codex_id: codex_artifact_compass
+    coco_coment: "\"\uC9D1\uC73C\uB85C \uB3CC\uC544\uAC08 \uC218 \uC788\uC744\uAE4C?\""
   - treasure_id: treasure_3_1_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10011
+    count: 1
+    view_codex_id: codex_deco_carriage
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_3_2_1
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10012
+    count: 1
+    view_codex_id: codex_deco_traffic_cone
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_3_2_2
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBB34\uC5B8\uAC00\uB97C \uAD6C\uB9E4\uD560 \uC218 \uC788\uC744
+      \uAC70\uC57C.\""
   - treasure_id: treasure_3_2_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50024
+    count: 1
+    view_codex_id: codex_artifact_whistle
+    coco_coment: "\"\u2026\uB204\uAD70\uAC00\uC758 \uCD94\uC5B5\uC774 \uB2F4\uACA8
+      \uC788\uC5B4.\""
   - treasure_id: treasure_3_3_1
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10018
+    count: 1
+    view_codex_id: codex_deco_wood_chair
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_3_3_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50026
+    count: 1
+    view_codex_id: codex_artifcat_stopsign
+    coco_coment: "\"\uC9D1\uC73C\uB85C \uB3CC\uC544\uAC08 \uC218 \uC788\uC744\uAE4C?\""
   - treasure_id: treasure_3_3_3
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBB34\uC5B8\uAC00\uB97C \uAD6C\uB9E4\uD560 \uC218 \uC788\uC744
+      \uAC70\uC57C.\""
   - treasure_id: treasure_3_4_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 2000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uC6B0\uB9B0 \uBD80\uC790\uC57C!\""
   - treasure_id: treasure_3_4_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50021
+    count: 1
+    view_codex_id: codex_artifact_survivaldiary
+    coco_coment: "\"\uB204\uAD70\uAC00\uC758 \uCD94\uC5B5\uC774 \uB2F4\uACA8\uC788\uC5B4.\""
   - treasure_id: treasure_3_4_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10020
+    count: 1
+    view_codex_id: codex_deco_log_chair
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_3_5_1
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50022
+    count: 1
+    view_codex_id: codex_aritfact_map
+    coco_coment: "\"\uC9D1\uC73C\uB85C \uB3CC\uC544\uAC08 \uC218 \uC788\uC744\uAE4C?\""
   - treasure_id: treasure_3_5_2
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 1500
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uBB34\uC5B8\uAC00\uB97C \uAD6C\uB9E4\uD560 \uC218 \uC788\uC744
+      \uAC70\uC57C.\""
   - treasure_id: treasure_3_5_3
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 2000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uC6B0\uB9B0 \uBD80\uC790\uC57C!\""
   - treasure_id: treasure_3_6_1
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50028
+    count: 1
+    view_codex_id: codex_artifcat_tent
+    coco_coment: "\"\u2026\uB204\uAD70\uAC00\uC758 \uCD94\uC5B5\uC774 \uB2F4\uACA8\uC788\uC5B4.\""
   - treasure_id: treasure_3_6_2
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 2000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uC6B0\uB9B0 \uBD80\uC790\uC57C!\""
   - treasure_id: treasure_3_6_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10015
+    count: 2
+    view_codex_id: codex_deco_decorative_pot
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_3_7_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 2000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uC6B0\uB9B0 \uBD80\uC790\uC57C!\""
   - treasure_id: treasure_3_7_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50027
+    count: 1
+    view_codex_id: codex_artifact_umbrella
+    coco_coment: "\"\uC774\uB807\uAC8C \uB354\uC6B4 \uB0A0\uC5D0\uB294 \uB2F9\uC5F0\uD788
+      \uBB3C\uB180\uC774\uC9C0!\""
   - treasure_id: treasure_3_7_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10016
+    count: 2
+    view_codex_id: codex_deco_weed_pot
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_3_8_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 2000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uC6B0\uB9B0 \uBD80\uC790\uC57C!\""
   - treasure_id: treasure_3_8_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50030
+    count: 1
+    view_codex_id: codex_artifact_flashlight
+    coco_coment: "\"\uBC24\uC774 \uBB34\uC12D\uC9C0 \uC54A\uC558\uC5B4!\""
   - treasure_id: treasure_3_8_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10017
+    count: 2
+    view_codex_id: codex_deco_mini_pot
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_3_9_1
     treasureType: 1
     reward_id: 110002
-    count: 500
+    count: 2000
     view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    coco_coment: "\"\uC6B0\uB9B0 \uBD80\uC790\uC57C!\""
   - treasure_id: treasure_3_9_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50025
+    count: 1
+    view_codex_id: codex_artifact_jointring
+    coco_coment: "\"\uBC84\uD314\uB85C\uAC00 \uBD84\uBA85 \uC783\uC5B4\uBC84\uB838\uB2E4\uACE0
+      \uD588\uC5C8\uB294\uB370, \uB0B4\uAC00 \uCC3E\uC544\uC11C \uB2E4\uD589\uC774\uC57C!\""
   - treasure_id: treasure_3_9_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10005
+    count: 1
+    view_codex_id: codex_deco_white_fence
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_3_10_1
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10007
+    count: 1
+    view_codex_id: codex_deco_ground_planks
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""
   - treasure_id: treasure_3_10_2
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 4
+    reward_id: 50029
+    count: 1
+    view_codex_id: codex_artifact_pipe
+    coco_coment: "\"\uC18C\uB9AC\uAC00 \uB4E4\uB9B0\uB2E4\uB294 \uAC83\uB9CC\uC73C\uB85C
+      \uC774\uB807\uAC8C \uC548\uC2EC\uB41C \uAC74 \uCC98\uC74C\uC774\uC57C!\""
   - treasure_id: treasure_3_10_3
-    treasureType: 1
-    reward_id: 110002
-    count: 500
-    view_codex_id: codex_artifact_cap
-    coco_coment: "\uBCD1\uB69C\uAED1 \uC7AC\uBC0C\uACA0\uB2E4!\\n\uC774\uAC78\uB85C
-      \uBB58 \uD560\uC218 \uC788\uC744\uAE4C?"
+    treasureType: 2
+    reward_id: 10010
+    count: 1
+    view_codex_id: codex_deco_fireplace
+    coco_coment: "\"\uC870\uACBD\uBB3C\uC744 \uD68D\uB4DD\uD588\uC5B4. \uBC30\uCE58\uD574\uBCF4\uC790!\""

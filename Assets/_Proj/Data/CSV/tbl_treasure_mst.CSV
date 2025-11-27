@@ -29,63 +29,63 @@ treasure_1_9_3,deco,10020,1,codex_deco_log_chair,"조경물을 획득했어. 배
 treasure_1_10_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
 treasure_1_10_2,deco,10009,1,codex_deco_firepit,"조경물을 획득했어. 배치해보자!"
 treasure_1_10_3,artifact,50002,1,codex_artifact_leafcrown,"나는 멧돼지를 '숲의 왕'이라고 부르지. 그는 그만큼 멋있으니까!"
-treasure_2_1_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_1_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_1_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_2_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_2_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_2_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_3_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_3_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_3_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_4_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_4_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_4_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_5_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_5_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_5_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_6_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_6_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_6_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_7_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_7_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_7_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_8_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_8_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_8_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_9_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_9_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_9_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_10_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_10_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_2_10_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_1_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_1_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_1_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_2_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_2_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_2_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_3_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_3_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_3_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_4_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_4_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_4_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_5_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_5_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_5_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_6_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_6_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_6_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_7_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_7_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_7_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_8_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_8_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_8_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_9_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_9_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_9_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_10_1,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_10_2,cap,110002,500,codex_artifact_cap,[coco_get_cap]
-treasure_3_10_3,cap,110002,500,codex_artifact_cap,[coco_get_cap]
+treasure_2_1_1,cap,110002,1000,codex_artifact_cap,"병뚜껑이다!"
+treasure_2_1_2,artifact,50012,1,codex_artifact_shellnecklace,"이 작은 조개들이 모여 보석보다 더 반짝여!"
+treasure_2_1_3,costume,20002,1,codex_costume_crown,"머리에 쓸 수 있겠다!"
+treasure_2_2_1,cap,110002,1000,codex_artifact_cap,"병뚜껑이다!"
+treasure_2_2_2,artifact,50011,1,codex_artifact_woodenboard,"물 위가 이렇게 편안한 곳일 줄은 몰랐어!"
+treasure_2_2_3,cap,110002,1000,codex_artifact_cap,"병뚜껑이다!"
+treasure_2_3_1,deco,10005,2,codex_deco_white_fence,"조경물을 획득했어. 배치해보자!"
+treasure_2_3_2,artifact,50013,1,codex_artifact_laundry,"다들 여기서 빨래를 하곤 하지."
+treasure_2_3_3,deco,10007,1,codex_deco_ground_planks,"조경물을 획득했어. 배치해보자!"
+treasure_2_4_1,cap,110002,1000,codex_artifact_cap,"병뚜껑이다!"
+treasure_2_4_2,deco,10010,1,codex_deco_fireplace,"조경물을 획득했어. 배치해보자!"
+treasure_2_4_3,artifact,50014,1,codex_artifact_tube,"이걸 타면 나도 물에 둥둥 뜰 수 있을까?"
+treasure_2_5_1,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_2_5_2,deco,10015,2,codex_deco_decorative_pot,"조경물을 획득했어. 배치해보자!"
+treasure_2_5_3,artifact,50017,1,codex_artifact_paperboat,"물이 이렇게 반짝이기도 하는구나…"
+treasure_2_6_1,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_2_6_2,deco,10016,2,codex_deco_weed_pot,"조경물을 획득했어. 배치해보자!"
+treasure_2_6_3,artifact,50020,1,codex_artifact_waterdrop,"처음으로 물이 무섭지 않았어!"
+treasure_2_7_1,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_2_7_2,artifact,50018,1,codex_artifact_seaweed,"뭔가 재밌어 보여. 나도 함께 놀고 싶다…"
+treasure_2_7_3,deco,10017,2,codex_deco_mini_pot,"조경물을 획득했어. 배치해보자!"
+treasure_2_8_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_2_8_2,artifact,50016,1,codex_artifact_fishingrod,"…누군가의 추억이 담겨 있어."
+treasure_2_8_3,deco,10018,1,codex_deco_wood_chair,"조경물을 획득했어. 배치해보자!"
+treasure_2_9_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_2_9_2,deco,10019,1,codex_deco_orange_audio,"조경물을 획득했어. 배치해보자!"
+treasure_2_9_3,artifact,50019,1,codex_artifact_pebbles,"…누군가의 추억이 담겨 있어."
+treasure_2_10_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_2_10_2,deco,10020,2,codex_deco_log_chair,"조경물을 획득했어. 배치해보자!"
+treasure_2_10_3,artifact,50015,1,codex_artifact_paddle,"…누군가의 추억이 담겨 있어."
+treasure_3_1_1,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_3_1_2,artifact,50022,1,codex_artifact_compass,"집으로 돌아갈 수 있을까?"
+treasure_3_1_3,deco,10011,1,codex_deco_carriage,"조경물을 획득했어. 배치해보자!"
+treasure_3_2_1,deco,10012,1,codex_deco_traffic_cone,"조경물을 획득했어. 배치해보자!"
+treasure_3_2_2,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_3_2_3,artifact,50024,1,codex_artifact_whistle,"…누군가의 추억이 담겨 있어."
+treasure_3_3_1,deco,10018,1,codex_deco_wood_chair,"조경물을 획득했어. 배치해보자!"
+treasure_3_3_2,artifact,50026,1,codex_artifcat_stopsign,"집으로 돌아갈 수 있을까?"
+treasure_3_3_3,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_3_4_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_3_4_2,artifact,50021,1,codex_artifact_survivaldiary,"누군가의 추억이 담겨있어."
+treasure_3_4_3,deco,10020,1,codex_deco_log_chair,"조경물을 획득했어. 배치해보자!"
+treasure_3_5_1,artifact,50022,1,codex_aritfact_map,"집으로 돌아갈 수 있을까?"
+treasure_3_5_2,cap,110002,1500,codex_artifact_cap,"무언가를 구매할 수 있을 거야."
+treasure_3_5_3,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_3_6_1,artifact,50028,1,codex_artifcat_tent,"…누군가의 추억이 담겨있어."
+treasure_3_6_2,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_3_6_3,deco,10015,2,codex_deco_decorative_pot,"조경물을 획득했어. 배치해보자!"
+treasure_3_7_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_3_7_2,artifact,50027,1,codex_artifact_umbrella,"이렇게 더운 날에는 당연히 물놀이지!"
+treasure_3_7_3,deco,10016,2,codex_deco_weed_pot,"조경물을 획득했어. 배치해보자!"
+treasure_3_8_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_3_8_2,artifact,50030,1,codex_artifact_flashlight,"밤이 무섭지 않았어!"
+treasure_3_8_3,deco,10017,2,codex_deco_mini_pot,"조경물을 획득했어. 배치해보자!"
+treasure_3_9_1,cap,110002,2000,codex_artifact_cap,"우린 부자야!"
+treasure_3_9_2,artifact,50025,1,codex_artifact_jointring,"버팔로가 분명 잃어버렸다고 했었는데, 내가 찾아서 다행이야!"
+treasure_3_9_3,deco,10005,1,codex_deco_white_fence,"조경물을 획득했어. 배치해보자!"
+treasure_3_10_1,deco,10007,1,codex_deco_ground_planks,"조경물을 획득했어. 배치해보자!"
+treasure_3_10_2,artifact,50029,1,codex_artifact_pipe,"소리가 들린다는 것만으로 이렇게 안심된 건 처음이야!"
+treasure_3_10_3,deco,10010,1,codex_deco_fireplace,"조경물을 획득했어. 배치해보자!"
