@@ -58,6 +58,8 @@ public class StageUIManager : MonoBehaviour
     public GameObject videoImage;
 
     public StageIdInformation stageIdInformation;
+    public int stageGetTreasureCount;
+
     private string currentChapter;
 
     void Awake()
@@ -86,6 +88,7 @@ public class StageUIManager : MonoBehaviour
         ResultPanel.SetActive(false);
         
         stageIdInformation = FindAnyObjectByType<StageIdInformation>();
+        stageGetTreasureCount = 0;
     }
 
     void OptionOpen()
