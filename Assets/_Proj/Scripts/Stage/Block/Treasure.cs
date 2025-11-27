@@ -106,6 +106,7 @@ public class Treasure : MonoBehaviour
                 sprite.color = new Color(1, 1, 1, 0);
                 particle.SetActive(false);
                 StageUIManager.Instance.stageGetTreasureCount++;
+                StageUIManager.Instance.CollecTreausreCountText.text = $"{StageUIManager.Instance.stageGetTreasureCount} / 3";
             });
         }
     }
