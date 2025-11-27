@@ -26,6 +26,10 @@ public class PushableOrb : PushableObjects
     public float sphereRadius = 0.35f;
     public LayerMask orbLandLayer;
 
+    private RingRange ring;
+    [Tooltip("범위 시각화 ring 표시 시간")]
+    [Range(0.5f, 2)] public float ringDuration;
+
     protected override void Awake()
     {
         base.Awake();
@@ -33,6 +37,8 @@ public class PushableOrb : PushableObjects
         shockwave = GetComponent<Shockwave>();
         shockPing = GetComponent<ShockPing>();
         wasGrounded = true;
+        ring = GetComponentInChildren<RingRange>();
+        ring.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
@@ -117,12 +123,21 @@ public class PushableOrb : PushableObjects
             fallSeconds: shockwave.fallSec
         );
 
+        StartCoroutine(ShowRingRange());
+
         // 감지탑 통지
         if (shockPing)
         {
             shockPing.PingTowers(transform.position);
             Debug.Log($"[Orb] 감지탑 Ping 전송 by {name}.", this);
         }
+    }
+
+    IEnumerator ShowRingRange()
+    {
+        ring.gameObject.SetActive(true);
+        yield return new WaitForSeconds(ringDuration);
+        ring.gameObject.SetActive(false);
     }
 
     // Orb(Ironball)는 근처 물체가 lifting 중이더라도 그 밑으로 밀릴 수 없음

@@ -325,8 +325,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4425658529991305049}
-  - component: {fileID: 4351770799529354780}
   - component: {fileID: 3212257459837711367}
+  - component: {fileID: 4351770799529354780}
   - component: {fileID: 7784038285785498510}
   - component: {fileID: 4830502333486594477}
   m_Layer: 0
@@ -345,12 +345,37 @@ Transform:
   m_GameObject: {fileID: 5267669504906952153}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3762624979193485081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3212257459837711367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267669504906952153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb7908d95cc52344bf52421a85d8845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  innerGap: 0.05
+  segments: 96
+  visibleAngle: 360
+  forwardDir: {x: 0, y: 0, z: 1}
+  lineWidth: 0.05
+  lineColor: {r: 1, g: 1, b: 1, a: 0}
+  fillColor: {r: 0.19999999, g: 0.34691733, b: 1, a: 0.78039217}
+  softEdge: 0.048
+  rippleOnShock: 1
+  rippleWidthMul: 2.2
+  rippleDuration: 0.22
+  lr: {fileID: 0}
 --- !u!120 &4351770799529354780
 LineRenderer:
   serializedVersion: 2
@@ -458,31 +483,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &3212257459837711367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267669504906952153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cb7908d95cc52344bf52421a85d8845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 5
-  innerGap: 0.139
-  segments: 96
-  visibleAngle: 360
-  forwardDir: {x: 0, y: 0, z: 1}
-  lineWidth: 0.05
-  lineColor: {r: 1, g: 1, b: 1, a: 0}
-  fillColor: {r: 0.19999999, g: 0.34691733, b: 1, a: 0.6156863}
-  softEdge: 0.12
-  rippleOnShock: 1
-  rippleWidthMul: 2.2
-  rippleDuration: 0.22
-  lr: {fileID: 0}
 --- !u!23 &7784038285785498510
 MeshRenderer:
   m_ObjectHideFlags: 0
