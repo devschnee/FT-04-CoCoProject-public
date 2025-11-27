@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AnimalBehaviour : BaseLobbyCharacterBehaviour
+public class AnimalBehaviour : BaseLobbyCharacterBehaviour, IQuestBehaviour
 {
     public Transform TargetDeco { get; set; }
     [SerializeField] AnimalType animalType;
@@ -62,6 +62,7 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour
     public override void OnLobbyClick()
     {
         base.OnLobbyClick();
+        QuestManager.Instance.Handle(this);
     }
     public override void OnLobbyPress()
     {

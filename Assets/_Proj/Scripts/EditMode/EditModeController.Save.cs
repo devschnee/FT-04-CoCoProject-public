@@ -9,7 +9,7 @@ using UnityEngine.Assertions.Must;
 /// 편집모드 on/off, 저장/복원, 인벤에서 가져오기
 /// (Core에서 이어지는 부분)
 /// </summary>
-public partial class EditModeController
+public partial class EditModeController : IQuestBehaviour
 {
     #region ===== Edit Mode Toggle =====
 
@@ -159,6 +159,9 @@ public partial class EditModeController
 
     private void OnSaveClicked()
     {
+        // -1: 배치 저장하기 퀘스트의 진행도 1 올려주기
+        QuestManager.Instance.Handle(this);
+
         // 🔹 (0) 집 프리뷰가 있지만 OK(확정)를 안 한 상태라면 → 원래 집으로 되돌리기
         if (homePreview != null && !homePreviewConfirmed)
         {
