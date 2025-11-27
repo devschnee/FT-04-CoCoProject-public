@@ -427,7 +427,7 @@ MonoBehaviour:
   - quest_id: 70041
     quest_name: "\uCF54\uCF54\uB450\uAE30\uC640 \uCE5C\uAD6C\uD558\uAE30"
     quest_type: 2
-    quest_object: 0
+    quest_object: 12
     quest_obj_desc: "\uAD6C\uAE00 \uACC4\uC815 1\uD68C \uC5F0\uB3D9"
     quest_value: 1
     quest_reward_item: 10004

@@ -23,6 +23,8 @@ public static class StageParser
             if (string.IsNullOrWhiteSpace(line)) continue;
 
             var v = System.Text.RegularExpressions.Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+            for (int j = 0; j < v.Length; j++)
+                v[j] = v[j].Trim().Trim('"').Trim('\uFEFF');
 
             if (v.Length < 21)
             {
