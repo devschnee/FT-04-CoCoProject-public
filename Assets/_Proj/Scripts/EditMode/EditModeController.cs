@@ -353,28 +353,8 @@ public partial class EditModeController : MonoBehaviour
             }
 
             int homeId = data.Id;
-            Quaternion rot;
+            Quaternion rot = GetHomeRotation(homeId);
 
-            // 🔥 ID별 회전 규칙
-            switch (homeId)
-            {
-                case 40001:   // 기본 집(인벤에서 꺼낼 때는 기존 회전 유지)
-                    rot = homePrev ? homePrev.rotation : Quaternion.identity;
-                    break;
-
-                case 40002:   // 90도
-                    rot = Quaternion.Euler(0f, 90f, 0f);
-                    break;
-
-                case 40003:   // 0도
-                case 40004:   // 0도
-                    rot = Quaternion.Euler(0f, 180f, 0f);
-                    break;
-
-                default:
-                    rot = homePrev ? homePrev.rotation : Quaternion.identity;
-                    break;
-            }
 
             var preview = Instantiate(prefab, Vector3.zero, rot);
             preview.name = data.DisplayName;
@@ -401,6 +381,25 @@ public partial class EditModeController : MonoBehaviour
         finally
         {
             _homeSwapBusy = false;
+        }
+    }
+    // 집 id별 "절대 회전값"을 반환하는 헬퍼
+    private Quaternion GetHomeRotation(int homeId)
+    {
+        switch (homeId)
+        {
+            case 40001:          // 기본집 → 항상 0도
+                return Quaternion.Euler(0f, 180f, 0f);
+
+            case 40002:          // 90도
+                return Quaternion.Euler(0f, 90f, 0f);
+
+            case 40003:          // 180도
+            case 40004:          // 180도
+                return Quaternion.Euler(0f, 180f, 0f);
+
+            default:             // 나머지는 일단 0도
+                return Quaternion.identity;
         }
     }
 

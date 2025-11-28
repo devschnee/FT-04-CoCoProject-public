@@ -435,11 +435,30 @@ public partial class EditModeController
         switch (tag.category)
         {
             case PlaceableCategory.Deco:
-                if (InventoryService.I != null)
-                    InventoryService.I.Add(tag.id, 1);
-                Destroy(t.gameObject);
-                hasUnsavedChanges = true;
-                break;
+                {
+                    // 1) 인벤 수량은 바로 올려줌 (편집 중엔 인벤에서 다시 꺼낼 수 있어야 하니까)
+                    if (InventoryService.I != null)
+                        InventoryService.I.Add(tag.id, 1);
+
+                    // 2) "인벤에서 막 꺼낸 임시 오브젝트"인지, 원래 씬에 있던 오브젝트인지 구분
+                    bool isTemp = IsInventoryTempObject(t);
+
+                    if (isTemp)
+                    {
+                        // 인벤에서 꺼낸 임시 데코 → 그냥 삭제해도 됨 (원래 씬에 없었음)
+                        Destroy(t.gameObject);
+                    }
+                    else
+                    {
+                        // 씬에 원래 있던 데코 → 저장 안 하고 나갈 수도 있으니 Destroy 금지
+                        // 바로 사라져 보이게만 하고, baseline 복원 시 다시 켜지게 둠
+                        t.gameObject.SetActive(false);
+                    }
+
+                    hasUnsavedChanges = true;
+                    break;
+                }
+
             case PlaceableCategory.Animal:
                 AnimalReturnedToInventory?.Invoke(tag.id);
                 // LSH 추가 1127
@@ -454,6 +473,7 @@ public partial class EditModeController
                 break;
         }
     }
+
     #endregion
 
     #region InventoryTemp Marker
