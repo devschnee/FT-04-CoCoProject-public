@@ -108,27 +108,51 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
             }
         }
 
-        // 목적지에 뭔가 있으면 못 감
+        // 목적지에 뭔가 있으면 못 감(같은 층)
         if (CheckBlocking(target))
             return false;
 
         // 바닥 유무 확인
-        bool hasGroundAtTarget = Physics.Raycast(target + Vector3.up * 0.1f, Vector3.down, 10f, groundMask);
+        bool hasGroundAtTarget = false;
+
+        LayerMask groundOrBlock = groundMask | blockingMask;
+
+        Vector3 groundCheck = target + Vector3.up * 0.1f;
+
+        // 타겟 위치 바닥에 땅이 있는지 차폐물이 있는지 검사
+        if (Physics.Raycast(groundCheck, Vector3.down, out var downHit, 10f, groundOrBlock, QueryTriggerInteraction.Ignore))
+        {
+            int hitLayer = downHit.collider.gameObject.layer;
+            bool isGround = (groundMask.value & (1 << hitLayer)) != 0;
+            bool isBlocking = (blockingMask.value & (1 << hitLayer)) != 0;
+
+            if (isGround)
+            {
+                hasGroundAtTarget = true;
+            }
+            else if (isBlocking)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            hasGroundAtTarget = false;
+        }
 
         if (!hasGroundAtTarget)
         {
-            // 타겟 바로 아래 칸에 뭔가 있으면 전진 금지
-            Vector3 oneDown = target + Vector3.down * tileSize;
-            if (CheckBlocking(oneDown))
-                return false;
-
             // 실제 착지 위치를 미리 계산, 그 칸이 비어있는지도 확인
-            if (Physics.Raycast(target + Vector3.up * 3f, Vector3.down, out var hit, 20f, groundMask))
+            if (Physics.Raycast(target + Vector3.up * 3f, Vector3.down, out var hit, 20f, groundMask, QueryTriggerInteraction.Ignore))
             {
                 // 착지 y를 칸 단위로 정규화
                 Vector3 landing = new Vector3(target.x, Mathf.Floor(hit.point.y / tileSize) * tileSize, target.z);
+
                 if (CheckBlocking(landing))
+                {
+                    Debug.Log($"[PushableObjects] {name}: 낙하 착지 예정 위치 {landing}에 blocking 존재 -> 이동 금지");
                     return false;
+                }
             }
             else
             {
@@ -692,9 +716,4 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         }
     }
     #endregion
-
-    void OnDrawGizmosSelected()
-    {
-        
-    }
 }

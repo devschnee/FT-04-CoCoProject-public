@@ -599,7 +599,7 @@ MonoBehaviour:
   throughLayer:
     serializedVersion: 2
     m_Bits: 2048
-  requiredHoldtime: 1.2
+  requiredHoldtime: 0.9
   allowFall: 1
   allowSlope: 0
   immuneTime: 5

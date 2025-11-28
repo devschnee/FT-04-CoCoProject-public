@@ -618,17 +618,6 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
         return hasGround;
     }
 
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    Vector3 moveDir = Vector3.up * 0.5f;
-    //    Vector3 currPos = transform.position;
-    //    Vector3 nextPos = currPos + moveDir * tileSize;
-
-
-    //    StartCoroutine(DashMoveTo(nextPos, moveDir));
-
-    //}
-
 #if UNITY_EDITOR
     void OnDrawGizmos()
     {
