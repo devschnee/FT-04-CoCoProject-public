@@ -14,6 +14,8 @@ public class CamControl : MonoBehaviour
     private Vector3 endPosition;
     public Vector3 offset;
 
+    private float waitTime = 0.45f; // 카메라 워킹 지점마다 대기 시간
+
     [Range(0.5f, 50f), Tooltip("카메라 댐핑 강도, 50 = 댐핑 없음")]
     public float dampingStrength = 0.5f;
 
@@ -79,42 +81,85 @@ public class CamControl : MonoBehaviour
         }
     }
 
-    public IEnumerator CameraWalking(float duration = 2f)
+    //public IEnumerator CameraWalking(float duration = 2f)
+    //{
+    //    if (wayPoint[0] == null || wayPoint[1] == null)
+    //    {
+    //        Debug.LogError("WayPoint null!");
+    //        yield break;
+    //    }
+
+    //    //Transform[] wayPoints = new Transform[wayPoint.Length];
+
+
+    //    //// 시작 / 끝 위치 설정
+    //    //Vector3 startPos = wayPoint[0].position + offset;
+    //    //Vector3 endPos = wayPoint[4].position + offset;
+
+
+
+    //    // duration 동안 천천히 이동
+
+    //    for (int i = 0; i < wayPoint.Length - 1; i++)
+    //    {
+    //        cam.transform.position = wayPoint[i].position + offset;
+    //        float t = 0f;
+    //        while (t < duration)
+    //        {
+
+    //            t += Time.deltaTime;
+    //            float lerpT = Mathf.Clamp01(t / duration);
+
+    //            cam.transform.position = 
+    //                Vector3.Lerp(wayPoint[i].position + offset, wayPoint[i + 1].position + offset, lerpT);
+
+    //            yield return null;
+    //        }
+    //    }
+    //}
+
+    // 속도가 높을수록 카메라 속도 빨라짐. 속도 일정하게 유지하면서 이동하는 카메라워킹
+    public IEnumerator CameraWalking(float speed = 6f)
     {
-        if (wayPoint[0] == null || wayPoint[1] == null)
+        if (wayPoint[0] == null || wayPoint[4] == null)
         {
             Debug.LogError("WayPoint null!");
             yield break;
         }
 
-        //Transform[] wayPoints = new Transform[wayPoint.Length];
-
-        
-        //// 시작 / 끝 위치 설정
-        //Vector3 startPos = wayPoint[0].position + offset;
-        //Vector3 endPos = wayPoint[4].position + offset;
-
-
-
-        // duration 동안 천천히 이동
-
+        // 각 웨이포인트 구간을 순서대로 이동
         for (int i = 0; i < wayPoint.Length - 1; i++)
         {
-            cam.transform.position = wayPoint[i].position + offset;
+            Vector3 startPos = wayPoint[i].position + offset;
+            Vector3 endPos = wayPoint[i + 1].position + offset;
+
+            float dist = Vector3.Distance(startPos, endPos);
+            float duration = dist / speed;  // 속도 일정하게 유지하도록
             float t = 0f;
+
+            // 카메라를 시작점으로 이동
+            cam.transform.position = startPos;
+
+            // 정해진 속도로 이동
             while (t < duration)
             {
-        
                 t += Time.deltaTime;
                 float lerpT = Mathf.Clamp01(t / duration);
-
-                cam.transform.position = 
-                    Vector3.Lerp(wayPoint[i].position + offset, wayPoint[i + 1].position + offset, lerpT);
+                float easedT = Mathf.SmoothStep(0f, 1f, lerpT);
+                cam.transform.position = Vector3.Lerp(startPos, endPos, easedT);
 
                 yield return null;
             }
+
+            cam.transform.position = endPos;
+
+            // endPos에는 대기 없도록
+            if (i < wayPoint.Length - 2 && waitTime > 0f)
+                yield return new WaitForSeconds(waitTime);
         }
     }
+
+
     //카메라워킹 맵 로딩 후 end블록에서 start블록으로 offset 얼마?
     //카메라워킹 끝나면 플레이어한테 가야한다
     //웨이포인트 쓰는데 시작지점은 end블록 끝 지점은 start블록
