@@ -95,7 +95,6 @@ public class StageManager : MonoBehaviour, IStageManager, IQuestBehaviour
         LinkSignals();
 
         //가림막치워주기
-        fp.GetComponent<FadeController>().FadeOut();
         //if (isTest)
         //{
         //    var dataTest = DataManager.Instance.Stage.GetMapNameData(mapNameToLoad);
@@ -108,10 +107,13 @@ public class StageManager : MonoBehaviour, IStageManager, IQuestBehaviour
         //    yield return null;
         //}
 
+        yield return new WaitForSeconds(.5f);
+
         var data = DataManager.Instance.Stage.GetData(currentStageId);
         var data_start_cutscene = DataManager.Instance.Stage.GetStartCutsceneUrl(currentStageId);
         if (!string.IsNullOrEmpty(data_start_cutscene) && data.start_cutscene != "-1")
         {
+            fp.GetComponent<FadeController>().FadeOut();
             yield return PlayCutscene(data_start_cutscene);
         }
         //TODO: 3. 가져온 맵 정보로 모든 블록이 생성되고 연결까지 끝나면 가리고 있던 부분을 치워줌.
