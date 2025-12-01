@@ -68,7 +68,11 @@ public class MasterBehaviour : BaseLobbyCharacterBehaviour
     }
     public void EndCocoInteractState()
     {
-        LobbyCharacterManager.Instance.GetCoco()?.ChangeStateToIdleState();
+        if (LobbyCharacterManager.Instance)
+            LobbyCharacterManager.Instance.GetCoco().ChangeStateToIdleState();
+        if (LobbyCharacterManager_Friend.Instance)
+            LobbyCharacterManager_Friend.Instance.GetCoco().ChangeStateToIdleState();
+
     }
 
     // 인터페이스 영역

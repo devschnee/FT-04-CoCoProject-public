@@ -7,13 +7,13 @@ using UnityEngine;
 /// </summary>
 public class LMCharacterRoutineControl
 {
-    private readonly LobbyCharacterManager lobbyManager;
+    private readonly ILobbyCharacterManager lobbyManager;
     private CocoDoogyBehaviour coco;
     private MasterBehaviour master;
     private WaitForSeconds delay;
     private WaitUntil wait;
 
-    public LMCharacterRoutineControl(LobbyCharacterManager lobbyManager, CocoDoogyBehaviour coco, MasterBehaviour master)
+    public LMCharacterRoutineControl(ILobbyCharacterManager lobbyManager, CocoDoogyBehaviour coco, MasterBehaviour master)
     {
         this.lobbyManager = lobbyManager;
         this.coco = coco;

@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 7189426572026667930}
   - component: {fileID: 8473353493690693809}
   - component: {fileID: 1980833829064646297}
+  - component: {fileID: 3493179872027727099}
   m_Layer: 5
   m_Name: EnterButton
   m_TagString: Untagged
@@ -735,6 +736,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3493179872027727099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4410080838933121793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977eff4d60cbe174e969099135476647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressScale: 0.94
+  releaseScale: 1
+  pressDuration: 0.08
+  releaseDuration: 0.22
 --- !u!1 &6164806239079413510
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +839,7 @@ GameObject:
   - component: {fileID: 8572644826755703277}
   - component: {fileID: 708352172693748751}
   - component: {fileID: 8844773819128342046}
+  - component: {fileID: 9148801102217936709}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -943,6 +961,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9148801102217936709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503296508567918497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977eff4d60cbe174e969099135476647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressScale: 0.94
+  releaseScale: 1
+  pressDuration: 0.08
+  releaseDuration: 0.22
 --- !u!1 &7338793863874322013
 GameObject:
   m_ObjectHideFlags: 0

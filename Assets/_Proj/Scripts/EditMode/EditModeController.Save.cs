@@ -79,6 +79,10 @@ public partial class EditModeController : IQuestBehaviour
             UpdateUndoUI();
             actionToolbar?.Hide();
         }
+        if (!on)
+        {
+            QuestRedDotManager.Recalculate();
+        }
     }
 
     // CocoDoogy, Master 태그는 위치 저장에서 제외

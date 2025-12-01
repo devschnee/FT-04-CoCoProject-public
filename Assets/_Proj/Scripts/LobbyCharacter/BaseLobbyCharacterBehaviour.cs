@@ -47,13 +47,26 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
 
     protected virtual void OnEnable()
     {
-        if (!LobbyCharacterManager.Instance.IsInitMode && !hasBeenInit)
+        if (LobbyCharacterManager.Instance)
         {
-            Debug.Log($"{gameObject.name} : 내가 먼저 되냐?");
-            StartCoroutine(InitMode());
+            if (!LobbyCharacterManager.Instance.IsInitMode && !hasBeenInit)
+            {
+                Debug.Log($"{gameObject.name} : 내가 먼저 되냐?");
+                StartCoroutine(InitMode());
+            }
+            if (fsm != null && LobbyCharacterManager.Instance.IsEditMode) fsm.ChangeState(EditState);
+            if (fsm != null && !LobbyCharacterManager.Instance.IsEditMode) fsm.ChangeState(IdleState);
         }
-        if (fsm != null && LobbyCharacterManager.Instance.IsEditMode) fsm.ChangeState(EditState);
-        if (fsm != null && !LobbyCharacterManager.Instance.IsEditMode) fsm.ChangeState(IdleState);
+        if (LobbyCharacterManager_Friend.Instance)
+        {
+            if (!LobbyCharacterManager_Friend.Instance.IsInitMode && !hasBeenInit)
+            {
+                Debug.Log($"{gameObject.name} : 내가 먼저 되냐?");
+                StartCoroutine(InitMode());
+            }
+            if (fsm != null && LobbyCharacterManager_Friend.Instance.IsEditMode) fsm.ChangeState(EditState);
+            if (fsm != null && !LobbyCharacterManager_Friend.Instance.IsEditMode) fsm.ChangeState(IdleState);
+        }
     }
 
     protected virtual void Start() { }
@@ -212,19 +225,29 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
 
     public virtual void InitWaypoint()
     {
-        Waypoints = LobbyCharacterManager.Instance.GetWaypointsForChar(); // 다시 웨이포인트 얻기
+        if (LobbyCharacterManager.Instance)
+        {
+            Waypoints = LobbyCharacterManager.Instance.GetWaypointsForChar(); // 다시 웨이포인트 얻기
+        }
+        if (LobbyCharacterManager_Friend.Instance)
+        {
+            Waypoints = LobbyCharacterManager_Friend.Instance.GetWaypointsForChar(); // 다시 웨이포인트 얻기
+        }
     }
     /// <summary>
     /// ILobbyState, 오브젝트 생성 시 등록
     /// </summary>
     public virtual void Register()
     {
-        if (LobbyCharacterManager.Instance == null)
+        if (!(LobbyCharacterManager.Instance || LobbyCharacterManager_Friend.Instance))
         {
             Debug.LogWarning("로비인터페이스 못 찾음");
             return;
         }
+        if (LobbyCharacterManager.Instance)
         LobbyCharacterManager.Instance.RegisterLobbyChar(this);
+        if (LobbyCharacterManager_Friend.Instance)
+        LobbyCharacterManager_Friend.Instance.RegisterLobbyChar(this);
         Debug.Log($"{this} 등록");
     }
 
@@ -233,13 +256,16 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     /// </summary>
     public virtual void Unregister()
     {
-        if (LobbyCharacterManager.Instance == null)
+        if (!(LobbyCharacterManager.Instance || LobbyCharacterManager_Friend.Instance))
         {
             Debug.LogWarning("로비인터페이스 못 찾음");
             return;
         }
         if (gameObject.CompareTag("CocoDoogy") || gameObject.CompareTag("Master")) return;
-        LobbyCharacterManager.Instance.UnregisterLobbyChar(this);
+        if (LobbyCharacterManager.Instance)
+            LobbyCharacterManager.Instance.UnregisterLobbyChar(this);
+        if (LobbyCharacterManager_Friend.Instance)
+            LobbyCharacterManager_Friend.Instance.UnregisterLobbyChar(this);
         Debug.Log($"{this} 삭제");
     }
 
@@ -249,23 +275,41 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     public virtual void Init()
     {
         Debug.Log($"{gameObject.name} : 아니 내가 먼저 되는데?");
-        
-        if (LobbyCharacterManager.Instance.IsEditMode)
+
+        if (LobbyCharacterManager.Instance)
         {
-            gameObject.layer = LayerMask.NameToLayer("Editable");
+
+            if (LobbyCharacterManager.Instance.IsEditMode)
+            {
+                gameObject.layer = LayerMask.NameToLayer("Editable");
+            }
+            else
+            {
+                gameObject.layer = LayerMask.NameToLayer("InLobbyObject");
+            }
+            agent = GetComponent<NavMeshAgent>();
+            anim = GetComponent<Animator>();
+            Waypoints = LobbyCharacterManager.Instance.Waypoints;
+            charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius);
+            charAnim = new LobbyCharacterAnim(this, anim);
+            MainCam = Camera.main;
+            fsm = new LobbyCharacterFSM(null);
         }
-        else
+        if (LobbyCharacterManager_Friend.Instance)
         {
-            gameObject.layer = LayerMask.NameToLayer("InLobbyObject");
+            {
+                gameObject.layer = LayerMask.NameToLayer("InLobbyObject");
+            }
+            agent = GetComponent<NavMeshAgent>();
+            anim = GetComponent<Animator>();
+            Waypoints = LobbyCharacterManager_Friend.Instance.Waypoints;
+            charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius);
+            charAnim = new LobbyCharacterAnim(this, anim);
+            MainCam = Camera.main;
+            fsm = new LobbyCharacterFSM(null);
         }
-        agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
-        Waypoints = LobbyCharacterManager.Instance.Waypoints;
-        charAgent = new NavMeshAgentControl(agent, moveSpeed, angularSpeed, acceleration, moveRadius);
-        charAnim = new LobbyCharacterAnim(this, anim);
-        MainCam = Camera.main;
-        fsm = new LobbyCharacterFSM(null);
     }
+    
     /// <summary>
     /// Init 후 초기화 Awake 다음에 올
     /// </summary>
@@ -289,9 +333,16 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     /// LoadInit 후 초기화
     /// </summary>
     public virtual void FinalInit()
-    {        
-        if (isActiveAndEnabled && !LobbyCharacterManager.Instance.IsEditMode) fsm.ChangeState(IdleState);
-        else if(isActiveAndEnabled && LobbyCharacterManager.Instance.IsEditMode) fsm.ChangeState(EditState);
+    {
+        if (LobbyCharacterManager.Instance)
+        {
+            if (isActiveAndEnabled && !LobbyCharacterManager.Instance.IsEditMode) fsm.ChangeState(IdleState);
+            else if(isActiveAndEnabled && LobbyCharacterManager.Instance.IsEditMode) fsm.ChangeState(EditState);
+        }
+        if (LobbyCharacterManager_Friend.Instance)
+        {
+            if (isActiveAndEnabled && !LobbyCharacterManager_Friend.Instance.IsEditMode) fsm.ChangeState(IdleState);
+        }
     }
     /// <summary>
     /// 

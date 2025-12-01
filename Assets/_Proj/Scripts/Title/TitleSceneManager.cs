@@ -102,7 +102,7 @@ public class TitleSceneManager : MonoBehaviour
         //모든 튜토리얼을 끝냈을 때만 메인을 직접 로드.
         //if (UserData.Local.passedTutorials >= 2)
 
-        if (UserData.Local.passedTutorials >= 2)
+        if (UserData.Local.passedTutorials >= 3)
             if (!UserData.Local.master.nickName.IsNullOrEmpty())
                  { SceneManager.LoadScene("Main"); }
             else { SceneManager.LoadScene("Nickname"); }

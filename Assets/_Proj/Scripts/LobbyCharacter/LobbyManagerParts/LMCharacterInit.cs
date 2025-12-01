@@ -7,12 +7,12 @@ using UnityEngine.AI;
 
 public class LMCharacterInit
 {
-    private readonly LobbyCharacterManager LCM;
+    private readonly ILobbyCharacterManager LCM;
     private CocoDoogyBehaviour coco;
     private MasterBehaviour master;
     private List<ILobbyState> lobbyCharacter = new();
 
-    public LMCharacterInit(LobbyCharacterManager LCM, List<ILobbyState> lobbyCharacter)
+    public LMCharacterInit(ILobbyCharacterManager LCM, List<ILobbyState> lobbyCharacter)
     {
         this.LCM = LCM;
         this.lobbyCharacter = lobbyCharacter;

@@ -123,7 +123,9 @@ public class PlayerPush : MonoBehaviour, IMoveStrategy
                 currCooltime = pushCooltime;
 
                 //NOTE: 테스트용. 밀고 있는 경우에는 클램프매그니튜드
-                return (Vector3.ClampMagnitude(moveDir, .05f), Vector3.zero);
+                //return (Vector3.ClampMagnitude(moveDir, .05f), Vector3.zero);
+                //NOTE: 밀고 있는 경우에 클램프매그니튜드 없이 바로 현재 방향대로 리턴하도록 해봄. 상자에 틱틱 걸리는 느낌이 든다고 함.
+                return (moveDir, Vector3.zero);
             }
         }
         else

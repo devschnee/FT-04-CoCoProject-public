@@ -61,6 +61,16 @@ MonoBehaviour:
     char_delay: 0.04
     sound_type: 1
     sound_key: null
+  - dialogue_id: dialogue_0_1_0
+    seq: 5
+    speaker_position: 0
+    speaker_id: 5
+    emotion: 0
+    text: "\uD654\uBA74\uC744 \uD130\uCE58\uD574\uC11C \uCF54\uCF54\uB450\uAE30\uB97C
+      \uC6C0\uC9C1\uC5EC \uBCF4\uC138\uC694!"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
   - dialogue_id: dialogue_0_1_1
     seq: 0
     speaker_position: 0
@@ -132,7 +142,7 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 4
-    text: "\uD5C9, \uBC8C\uC368 \uD574\uAC00 \uC9C0\uC796\uC544!"
+    text: "\uC557, \uBC8C\uC368 \uD574\uAC00 \uC9C0\uC796\uC544!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -150,8 +160,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\uC0C1\uC790\uAC00 \uAE38\uC744 \uB9C9\uACE0 \uC788\uB124, \uC6C0\uC9C1\uC5EC\uC11C
-      \uCB48\uC6B1 \uBC00\uC5B4\uBCFC \uC218 \uC788\uC744 \uAC83 \uAC19\uC544!"
+    text: "\uC0C1\uC790\uAC00 \uAE38\uC744 \uB9C9\uACE0 \uC788\uB124... \uC0B4\uC9DD
+      \uBC00\uBA74 \uC9C0\uB098\uAC08 \uC218 \uC788\uC744 \uAC83 \uAC19\uC544!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -160,8 +170,8 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\uACBD\uC0AC\uB85C\uCABD\uC73C\uB85C \uBC00\uAE30 \uD798\uB4E4\uAC83 \uAC19\uC740\uB370\u2026
-      \uC606\uC73C\uB85C \uBC00\uC5B4\uBCFC\uAE4C?"
+    text: "\uACBD\uC0AC \uCABD\uC73C\uB85C \uBC00\uBA74 \uC548 \uC6C0\uC9C1\uC77C
+      \uAC83 \uAC19\uC544\u2026 \uC606\uC73C\uB85C \uBC00\uC5B4\uBCFC\uAE4C?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -170,8 +180,48 @@ MonoBehaviour:
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\uAE38\uC774 \uB04A\uC5B4\uC838\uC788\uB124? \uC0C1\uC790\uB85C \uC5B4\uB5BB\uAC8C
-      \uB9E4\uC6B8\uC218 \uC788\uC9C0 \uC54A\uC744\uAE4C?"
+    text: "\uB192\uC740 \uACF3\uC740 \uC5B8\uC81C\uB098 \uC88B\uC740 \uAC83 \uAC19\uC544!"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_2_3
+    seq: 1
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 0
+    text: "\uC8FC\uC778\uC740 \uC885\uC885 \uB192\uC740 \uACF3\uC5D0 \uC62C\uB77C\uC11C
+      \uC870\uC6A9\uD788 \uD48D\uACBD\uC744 \uBC14\uB77C\uBCF4\uACE4 \uD588\uC5B4."
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_2_3
+    seq: 2
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 1
+    text: "\uB098\uB3C4 \uC8FC\uC778\uC774 \uBCF4\uB358 \uD48D\uACBD\uC744 \uB530\uB77C
+      \uBCF4\uACE0 \uC2F6\uC5B4!"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_2_3
+    seq: 3
+    speaker_position: 0
+    speaker_id: 5
+    emotion: 0
+    text: "\uB450 \uC190\uAC00\uB77D\uC73C\uB85C \uD654\uBA74\uC744 \uB4DC\uB798\uADF8
+      \uD574\uC11C \uD654\uBA74\uC744 \uC6C0\uC9C1\uC5EC \uBCF4\uC138\uC694!"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_2_4
+    seq: 0
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 0
+    text: "\uB044\uC751.. \uC5ED\uC2DC \uC0C1\uC790 2\uAC1C\uB97C \uB3D9\uC2DC\uC5D0
+      \uBC00\uAE30 \uD798\uB4E0 \uAC83 \uAC19\uC544. \uC606\uC73C\uB85C \uD558\uB098\uC529
+      \uBC00\uC5B4\uBCFC\uAE4C?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
@@ -179,41 +229,105 @@ MonoBehaviour:
     seq: 0
     speaker_position: 0
     speaker_id: 0
-    emotion: 1
-    text: "\uB4DC\uB514\uC5B4 \uB3C4\uCC29\u2026! \uB098 \uD63C\uC790 \uD798\uC73C\uB85C
-      \uC5EC\uAE30\uAE4C\uC9C0 \uC654\uC5B4!\\n\uC8FC\uC778\uC774 \uBD84\uBA85 \uCE6D\uCC2C\uD558\uACA0\uC9C0!"
+    emotion: 0
+    text: "\uC6B0\uC640\u2026 \uC0DD\uAC01\uBCF4\uB2E4 \uBA40\uB9AC\uAE4C\uC9C0 \uC654\uB098\uBD10.
+      \uC5EC\uC804\uD788 \uAC08 \uAE38\uC774 \uBA38\uB124\u2026 \uC870\uAE08\uB9CC
+      \uC26C\uC5B4\uC57C\uACA0\uC5B4."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
-  - dialogue_id: dialogue_1_1_0
+  - dialogue_id: dialogue_0_3_0
+    seq: 0
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 4
+    text: "!!! \uC5B8\uC81C\uC801 \uAFC8\uC774\uC9C0?"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_3_0
+    seq: 1
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 2
+    text: "\uC8FC\uC778\u2026 \uC5BC\uB978 \uBCF4\uACE0\uC2F6\uC5B4"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_3_1
+    seq: 0
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 4
+    text: "\uAD6C\uB369\uC774\uC796\uC544! \uC5B4\uB5BB\uAC8C \uC9C0\uB098\uAC00\uC9C0?"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_3_1
+    seq: 1
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 4
+    text: "\uC606\uC758 \uC0C1\uC790\uB97C \uBC00\uC5B4 \uB5A8\uC5B4\uD2B8\uB9AC\uBA74\u2026
+      \uC0C1\uC790\uB97C \uBC1F\uACE0 \uC9C0\uB098\uAC08 \uC218 \uC788\uC9C0 \uC54A\uC744\uAE4C?"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_3_1
+    seq: 2
+    speaker_position: 0
+    speaker_id: 5
+    emotion: 0
+    text: "\uC0C1\uC790\uB97C \uAD6C\uB369\uC774\uB85C \uBC00\uC5B4\uBCF4\uC138\uC694!"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_3_2
     seq: 0
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\uC8FC\uC778\uC774 \uB0A0 \uB450\uACE0 \uB610 \uBA3C\uC800 \uAC14\uC5B4\u2026
-      \uC544! \uD639\uC2DC \uC220\uB798\uC7A1\uAE30 \uB180\uC774\uC778\uAC00?\\n\uC8FC\uC778\uC774
-      \uBA3C\uC800 \uC9D1\uC73C\uB85C \uAC00\uACE0, \uB0B4\uAC00 \uC220\uB798\uAC00
-      \uB3FC\uC11C \uC8FC\uC778\uC744 \uCC3E\uC544\uC57C \uD558\uB294 \uB180\uC774!"
+    text: "\uB610 \uAD6C\uB369\uC774\uC796\uC544? \uC694\uC998 \uC790\uAFB8 \uC5C6\uB358
+      \uAD6C\uB369\uC774\uAC00 \uC0DD\uAE30\uB294 \uAC83 \uAC19\uC544."
     char_delay: 0.04
     sound_type: 1
     sound_key: null
-  - dialogue_id: dialogue_1_1_0
+  - dialogue_id: dialogue_0_3_2
     seq: 1
     speaker_position: 0
     speaker_id: 0
     emotion: 0
-    text: "\uC88B\uC544\u2026 \uB2F9\uC7A5 \uC8FC\uC778\uC744 \uCC3E\uC73C\uB7EC
-      \uAC00\uC57C\uC9C0!"
+    text: "\u2026\uB204\uAC00 \uC77C\uBD80\uB7EC \uB0A8\uACA8\uB193\uB294 \uAC78\uAE4C?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
-  - dialogue_id: dialogue_1_1_1
+  - dialogue_id: dialogue_0_3_3
     seq: 0
     speaker_position: 0
     speaker_id: 0
     emotion: 1
-    text: "\uC6B0\uC640, \uD558\uB298\uC5D0\uC11C \uB5A8\uC5B4\uC9C4 \uBCC4 \uC870\uAC01\uC778\uAC00?
-      \uAF2D \uB098\uD55C\uD14C \uC778\uC0AC\uD558\uB294 \uAC83 \uAC19\uC544."
+    text: "\uD081... \uC9D1\uC774 \uCF54\uC55E\uC774\uC57C. \uC8FC\uC778 \uB0C4\uC0C8\uAC00
+      \uD76C\uBBF8\uD558\uAC8C \uB098!"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_3_3
+    seq: 1
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 1
+    text: "\uAD6C\uB369\uC774\uB3C4 \uC774\uC81C\uB294 \uC810\uC810 \uC7AC\uBC0C\uC5B4,
+      \uD5E4\uD5E4"
+    char_delay: 0.04
+    sound_type: 1
+    sound_key: null
+  - dialogue_id: dialogue_0_3_10
+    seq: 0
+    speaker_position: 0
+    speaker_id: 0
+    emotion: 1
+    text: "\uB4DC\uB514\uC5B4 \uB3C4\uCC29\u2026! \uB098 \uD63C\uC790 \uD798\uC73C\uB85C
+      \uC5EC\uAE30\uAE4C\uC9C0 \uC654\uC5B4!\\n\uC8FC\uC778\uC774 \uBD84\uBA85 \uCE6D\uCC2C\uD558\uACA0\uC9C0!"
     char_delay: 0.04
     sound_type: 1
     sound_key: null

@@ -34,7 +34,7 @@ MonoBehaviour:
     dialogue_box_7: -1
     dialogue_box_8: -1
     dialogue_box_9: -1
-    stage_bgm: Sound/Bgm/Casual14
+    stage_bgm: Sound/Bgm/Casual7
   - stage_id: stage_0_2
     stage_name: "\uD504\uB864\uB85C\uADF82"
     stage_img: Img/Stage/stage_1_1_main
@@ -43,13 +43,35 @@ MonoBehaviour:
     start_cutscene: -1
     start_talk: dialogue_0_2_0
     end_talk: dialogue_0_2_10
-    end_cutscene: -1
+    end_cutscene: Movie/Stage/stage_0_2_end.mp4
     treasure_01_id: -1
     treasure_02_id: -1
     treasure_03_id: -1
     dialogue_box_1: dialogue_0_2_1
     dialogue_box_2: dialogue_0_2_2
     dialogue_box_3: dialogue_0_2_3
+    dialogue_box_4: dialogue_0_2_4
+    dialogue_box_5: -1
+    dialogue_box_6: -1
+    dialogue_box_7: -1
+    dialogue_box_8: -1
+    dialogue_box_9: -1
+    stage_bgm: Sound/Bgm/Casual7
+  - stage_id: stage_0_3
+    stage_name: "\uD504\uB864\uB85C\uADF83"
+    stage_img: Img/Stage/stage_1_1_main
+    stage_desc: "\uD504\uB864\uB85C\uADF83"
+    map_id: map_0_3
+    start_cutscene: -1
+    start_talk: dialogue_0_3_0
+    end_talk: dialogue_0_3_10
+    end_cutscene: Movie/Stage/stage_0_3_end.mp4
+    treasure_01_id: -1
+    treasure_02_id: -1
+    treasure_03_id: -1
+    dialogue_box_1: dialogue_0_3_1
+    dialogue_box_2: dialogue_0_3_2
+    dialogue_box_3: dialogue_0_3_3
     dialogue_box_4: -1
     dialogue_box_5: -1
     dialogue_box_6: -1
@@ -63,7 +85,7 @@ MonoBehaviour:
     stage_desc: "\uBD95\uAD34\uB41C \uACE0\uC18D\uB3C4\uB85C \uCD08\uC785\uC785\uB2C8\uB2E4.\\n\uBD80\uC11C\uC9C4
       \uCC28\uB7C9\uACFC \uAC00\uB4DC\uB808\uC77C\uC774 \uD769\uC5B4\uC838\\n\uC788\uC2B5\uB2C8\uB2E4."
     map_id: map_1_1
-    start_cutscene: -1
+    start_cutscene: Movie/Stage/stage_1_1_start.mp4
     start_talk: dialogue_1_1_0
     end_talk: dialogue_1_1_10
     end_cutscene: -1
@@ -183,7 +205,7 @@ MonoBehaviour:
     start_cutscene: -1
     start_talk: -1
     end_talk: dialogue_1_6_10
-    end_cutscene: -1
+    end_cutscene: Movie/Stage/stage_1_6_end.mp4
     treasure_01_id: treasure_1_6_1
     treasure_02_id: treasure_1_6_2
     treasure_03_id: treasure_1_6_3
@@ -279,7 +301,7 @@ MonoBehaviour:
     start_cutscene: -1
     start_talk: -1
     end_talk: dialogue_1_10_10
-    end_cutscene: -1
+    end_cutscene: Movie/Stage/stage_1_10_end.mp4
     treasure_01_id: treasure_1_10_1
     treasure_02_id: treasure_1_10_2
     treasure_03_id: treasure_1_10_3

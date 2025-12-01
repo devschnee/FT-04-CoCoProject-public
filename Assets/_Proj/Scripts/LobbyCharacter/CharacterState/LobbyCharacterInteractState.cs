@@ -24,7 +24,7 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
         if (isCM)
         {
             isCM = false;
-            var master = LobbyCharacterManager.Instance.GetMaster();
+            var master = LobbyCharacterManager.Instance ? LobbyCharacterManager.Instance.GetMaster() : LobbyCharacterManager_Friend.Instance.GetMaster();
             owner.StartCoroutine(LetsDance(master));
             (owner as CocoDoogyBehaviour).SetCharInteracted(0);
 
@@ -32,7 +32,7 @@ public class LCocoDoogyInteractState : LobbyCharacterBaseState
         else if (isCA)
         {
             isCA = false;
-            var animal = LobbyCharacterManager.Instance.GetAnimal();
+            var animal = LobbyCharacterManager.Instance ? LobbyCharacterManager.Instance.GetAnimal() : LobbyCharacterManager_Friend.Instance.GetAnimal(); ;
             owner.StartCoroutine(LetsDance(animal));
             (owner as CocoDoogyBehaviour).SetCharInteracted(1);
         }

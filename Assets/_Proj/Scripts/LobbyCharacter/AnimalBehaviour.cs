@@ -31,9 +31,20 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour, IQuestBehaviour
     protected override void OnEnable()
     {
         base.OnEnable();
-        if (!LobbyCharacterManager.Instance.IsInitMode) agent.avoidancePriority = UnityEngine.Random.Range(50, 70);
-        ETCEvent.OnSaveAnimalPositions += HandleSetAnimalPos;
-        ETCEvent.OnDeleteAnimalPosition += HandleDeleteAnimalPos;
+        if (LobbyCharacterManager.Instance)
+        {
+            if (!LobbyCharacterManager.Instance.IsInitMode) 
+                agent.avoidancePriority = UnityEngine.Random.Range(50, 70);
+            ETCEvent.OnSaveAnimalPositions += HandleSetAnimalPos;
+            ETCEvent.OnDeleteAnimalPosition += HandleDeleteAnimalPos;
+        }
+        if (LobbyCharacterManager_Friend.Instance)
+        {
+            if (!LobbyCharacterManager_Friend.Instance.IsInitMode) 
+                agent.avoidancePriority = UnityEngine.Random.Range(50, 70);
+            ETCEvent.OnSaveAnimalPositions += HandleSetAnimalPos;
+            ETCEvent.OnDeleteAnimalPosition += HandleDeleteAnimalPos;
+        }
     }
     protected override void Start()
     {
@@ -125,11 +136,11 @@ public class AnimalBehaviour : BaseLobbyCharacterBehaviour, IQuestBehaviour
 
         string name = gameObject.name;
 
-        if (SettingManager.Instance.TryGetAnimalPosition(name, out Vector3 pos))
-        {
-            if (agent != null) agent.Warp(pos);
-            else transform.position = pos;
-        }
+        //if (SettingManager.Instance.TryGetAnimalPosition(name, out Vector3 pos))
+        //{
+        //    if (agent != null) agent.Warp(pos);
+        //    else transform.position = pos;
+        //}
     }
     public override void FinalInit()
     {

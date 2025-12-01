@@ -4070,6 +4070,7 @@ GameObject:
   - component: {fileID: 3707633734773986606}
   - component: {fileID: 8636357173273936178}
   - component: {fileID: 7551475046625894041}
+  - component: {fileID: 2489952613916942276}
   m_Layer: 5
   m_Name: BackPanel
   m_TagString: Untagged
@@ -4137,6 +4138,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2489952613916942276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4776769449499937460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b255ed87ca84b4c917ce0c2adbd01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInDuration: 0.18
+  fadeOutDuration: 0.12
+  startScale: 0.9
+  peakScale: 1.05
+  endScale: 1
+  scaleUpDuration: 0.2
+  scaleDownDuration: 0.15
 --- !u!1 &4779834637377983233
 GameObject:
   m_ObjectHideFlags: 0
@@ -6020,6 +6040,7 @@ GameObject:
   - component: {fileID: 7439568213979984526}
   - component: {fileID: 2758219406714575754}
   - component: {fileID: 6871892367710802132}
+  - component: {fileID: 1277106837807889940}
   m_Layer: 5
   m_Name: SavePanel
   m_TagString: Untagged
@@ -6086,6 +6107,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1277106837807889940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548418378655339896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b255ed87ca84b4c917ce0c2adbd01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInDuration: 0.18
+  fadeOutDuration: 0.12
+  startScale: 0.9
+  peakScale: 1.05
+  endScale: 1
+  scaleUpDuration: 0.2
+  scaleDownDuration: 0.15
 --- !u!1 &7699458105177630343
 GameObject:
   m_ObjectHideFlags: 0

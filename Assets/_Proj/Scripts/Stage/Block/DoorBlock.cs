@@ -103,7 +103,7 @@ public class DoorBlock : Block, ISignalReceiver
 
             if (sender is SwitchBlock)
                 connectedType = GimmickType.Switch;
-            else if (sender is ShockDetectionTower)
+            else if (sender is ShockDetectionTower || sender is TowerBlock)
                 connectedType = GimmickType.Tower;
             else if (sender is Turret || sender is TurretBlock)
                 connectedType = GimmickType.Turret;

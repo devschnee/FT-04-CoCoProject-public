@@ -101,18 +101,35 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     }
     public void ChangeOtherCharStateToInteractState(string name)
     {
-        if (name == "Master")
+        if (LobbyCharacterManager.Instance)
         {
-            LobbyCharacterManager.Instance.GetMaster()?.ChangeStateToInteractState();
+            if (name == "Master")
+            {
+                LobbyCharacterManager.Instance.GetMaster()?.ChangeStateToInteractState();
+            }
+            else if (name == "Animal")
+            {
+                LobbyCharacterManager.Instance.GetAnimal()?.ChangeStateToInteractState();
+            }
         }
-        else if (name == "Animal")
+        if (LobbyCharacterManager_Friend.Instance)
         {
-            LobbyCharacterManager.Instance.GetAnimal()?.ChangeStateToInteractState();
+            if (name == "Master")
+            {
+                LobbyCharacterManager_Friend.Instance.GetMaster()?.ChangeStateToInteractState();
+            }
+            else if (name == "Animal")
+            {
+                LobbyCharacterManager_Friend.Instance.GetAnimal()?.ChangeStateToInteractState();
+            }
         }
     }
     public void ChangeAnimalStateToInteractState()
     {
+        if (LobbyCharacterManager.Instance)
         LobbyCharacterManager.Instance.GetAnimal()?.ChangeStateToInteractState();
+        if (LobbyCharacterManager_Friend.Instance)
+        LobbyCharacterManager_Friend.Instance.GetAnimal()?.ChangeStateToInteractState();
     }
     // 인터페이스 영역
     /// <summary>
@@ -134,15 +151,30 @@ public class CocoDoogyBehaviour : BaseLobbyCharacterBehaviour
     /// </summary>
     public void OnCocoMasterEmotion()
     {
-        bool masterGoHome = LobbyCharacterManager.Instance.GetMaster().TimeToGoHome;
-        if(!(fsm.CurrentState == MoveState) || masterGoHome == true || IsCMInteracted == true || TimeToGoHome) return;
-        if (isInteracting == false)
+        if (LobbyCharacterManager.Instance)
         {
-            (InteractState as LCocoDoogyInteractState).SetCAM(1, true);
-            fsm.ChangeState(InteractState);
-            isInteracting = true;
+            bool masterGoHome = LobbyCharacterManager.Instance.GetMaster().TimeToGoHome;
+            if (!(fsm.CurrentState == MoveState) || masterGoHome == true || IsCMInteracted == true || TimeToGoHome) return;
+            if (isInteracting == false)
+            {
+                (InteractState as LCocoDoogyInteractState).SetCAM(1, true);
+                fsm.ChangeState(InteractState);
+                isInteracting = true;
+            }
+            else return;
         }
-        else return;
+        if (LobbyCharacterManager_Friend.Instance)
+        {
+            bool masterGoHome = LobbyCharacterManager_Friend.Instance.GetMaster().TimeToGoHome;
+            if (!(fsm.CurrentState == MoveState) || masterGoHome == true || IsCMInteracted == true || TimeToGoHome) return;
+            if (isInteracting == false)
+            {
+                (InteractState as LCocoDoogyInteractState).SetCAM(1, true);
+                fsm.ChangeState(InteractState);
+                isInteracting = true;
+            }
+            else return;
+        }
     }
 
     public override void OnLobbyBeginDrag(Vector3 position)

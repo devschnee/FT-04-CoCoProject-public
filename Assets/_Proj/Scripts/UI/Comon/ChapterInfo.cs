@@ -40,10 +40,12 @@ public class ChapterInfo : MonoBehaviour
         Button chapterButton = chapterInstance.GetComponent<Button>();
         if (chapterButton != null)
         {
-            if (UserData.Local.passedTutorials == 2)
-            {
+            //if (UserData.Local.passedTutorials >= 3)
+            //{
+            //NOTE: 조건문 제거: passedTutorials가 3 미만인 상황에서 로비로 올 수가 없도록 처리되어 있습니다.
+            //위의 조건문을 남길 경우(원래는 UserData.Local.passedTutorials == 2였음) 스테이지 선택 패널이 열리지 않습니다.
                 chapterButton.onClick.AddListener(() => OpenStage(data.chapter_id));
-            }
+            //}
             if (!UserData.Local.progress.scores.ContainsKey($"stage_1_10"))
             {
                 if(data.chapter_id == "chapter_2")

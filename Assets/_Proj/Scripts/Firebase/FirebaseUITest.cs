@@ -24,16 +24,16 @@ public class FirebaseUITest : MonoBehaviour
         switch (control_dropdown.value)
         {
             case 0:
-                await FirebaseManager.Instance.UpdateLocalUserDataCategory(UserData.Local.inventory);
+                await FirebaseManager.Instance.UploadLocalUserDataCategory(UserData.Local.inventory);
                 break;
             case 1:
-                await FirebaseManager.Instance.UpdateLocalUserDataCategory(UserData.Local.lobby);
+                await FirebaseManager.Instance.UploadLocalUserDataCategory(UserData.Local.lobby);
                 break;
             case 2:
-                await FirebaseManager.Instance.UpdateLocalUserDataCategory(UserData.Local.eventArchive);
+                await FirebaseManager.Instance.UploadLocalUserDataCategory(UserData.Local.eventArchive);
                 break;
             case 3:
-                await FirebaseManager.Instance.UpdateLocalUserDataCategory(UserData.Local.friends);
+                await FirebaseManager.Instance.UploadLocalUserDataCategory(UserData.Local.friends);
                 break;
         }
     }

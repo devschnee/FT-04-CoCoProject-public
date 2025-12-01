@@ -589,7 +589,7 @@ MonoBehaviour:
   tileSize: 1
   blockingMask:
     serializedVersion: 2
-    m_Bits: 324224
+    m_Bits: 325248
   groundMask:
     serializedVersion: 2
     m_Bits: 131840
@@ -599,7 +599,7 @@ MonoBehaviour:
   throughLayer:
     serializedVersion: 2
     m_Bits: 2048
-  requiredHoldtime: 0.9
+  requiredHoldtime: 1
   allowFall: 1
   allowSlope: 0
   immuneTime: 5
@@ -993,7 +993,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalType: 0
   anim: {fileID: 1505846247401271268}
-  buffalo: {fileID: 0}
-  turtle: {fileID: 0}
-  boar: {fileID: 7038002128938173689}
-  hello: 0

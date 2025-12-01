@@ -551,7 +551,7 @@ MonoBehaviour:
   moveSpeed: 5
   blockLayer:
     serializedVersion: 2
-    m_Bits: 394112
+    m_Bits: 402304
   ridableLayer:
     serializedVersion: 2
     m_Bits: 262408
@@ -1296,10 +1296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalType: 1
   anim: {fileID: 5053057577503155839}
-  buffalo: {fileID: 0}
-  turtle: {fileID: 7930319231910958796}
-  boar: {fileID: 0}
-  hello: 0
 --- !u!95 &5053057577503155839 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6606228269694984070, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}

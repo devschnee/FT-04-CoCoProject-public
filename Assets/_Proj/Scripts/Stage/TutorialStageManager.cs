@@ -57,7 +57,9 @@ public class TutorialStageManager : MonoBehaviour, IStageManager
             await FirebaseManager.Instance.FindMapDataByStageID("stage_0_1");
         if (UserData.Local.passedTutorials == 1) 
             await FirebaseManager.Instance.FindMapDataByStageID("stage_0_2");
-        if (UserData.Local.passedTutorials >= 2)
+        if (UserData.Local.passedTutorials == 2) 
+            await FirebaseManager.Instance.FindMapDataByStageID("stage_0_3");
+        if (UserData.Local.passedTutorials >= 3)
         {
             //??? 여기로 들어올 수가 없는 상황임. 메인으로 보내버리기
             SceneManager.LoadScene("Main");
@@ -156,6 +158,8 @@ public class TutorialStageManager : MonoBehaviour, IStageManager
 
         if (UserData.Local.passedTutorials == 1)
         await FirebaseManager.Instance.FindMapDataByStageID("stage_0_2");
+        if (UserData.Local.passedTutorials == 2)
+        await FirebaseManager.Instance.FindMapDataByStageID("stage_0_3");
         StartCoroutine(ClearStageRoutine());
     }
 
@@ -193,7 +197,7 @@ public class TutorialStageManager : MonoBehaviour, IStageManager
         //자 생각을 해보자. 이 클래스의 이 코루틴이 호출될 수 있는 조건은
         //1. 패스한 튜토리얼이 1일 때(왜냐면 클리어함과 동시에 +1하므로) -> 다음 스테이지로 stage_0_2를 미리 준비시킴.
         //2. 패스한 튜토리얼이 2일 때 -> 다음 스테이지를 비우고, 메인 씬을 로드함.
-        if (UserData.Local.passedTutorials < 2)
+        if (UserData.Local.passedTutorials < 3)
         {
             SceneManager.LoadScene("Chapter0_StageScene");
         }

@@ -38,6 +38,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
     [Header("For Flow Water")]
     public bool IsMoving => isMoving;
     public bool IsFalling => isFalling;
+    public bool IsLifting => isLifting;
 
     private static Dictionary<int, float> gloablShockImmunity = new();
     [Header("Min : [Iron Balls'] Lift Rising Time + Hold + Fall + 0.2f")]
@@ -378,6 +379,12 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
         {
             Vector3 fallTarget = currPos + Vector3.down * tileSize;
             yield return StartCoroutine(MoveTo(fallTarget));
+
+            // 도착 후 정확히 타일 위치로 y 스냅
+            Vector3 snapped = transform.position;
+            snapped.y = Mathf.Round(snapped.y / tileSize) * tileSize;
+            transform.position = snapped;
+
             currPos = transform.position;
             fell = true;
         }

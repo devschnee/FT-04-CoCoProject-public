@@ -46,7 +46,7 @@ public class UserDataGoodsStore : IGoodsStore
         int newValue = Mathf.Max(0, amount);
 
         goods[goodsId] = newValue;
-        UserData.Local.flag |= UserDataDirtyFlag.Wallet;
+        //UserData.Local.flag |= UserDataDirtyFlag.Goods;
         goods.Save();
     }
 }

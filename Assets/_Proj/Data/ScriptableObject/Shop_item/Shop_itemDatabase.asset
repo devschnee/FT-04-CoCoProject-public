@@ -36,10 +36,10 @@ MonoBehaviour:
     shop_item_count: 1
   - shop_item_id: 90008
     shop_item_Package_id: 110001
-    shop_item_count: 5
+    shop_item_count: 50000
   - shop_item_id: 90009
     shop_item_Package_id: 110002
-    shop_item_count: 5
+    shop_item_count: 500
   - shop_item_id: 90010
     shop_item_Package_id: 110003
     shop_item_count: 4
@@ -78,4 +78,19 @@ MonoBehaviour:
     shop_item_count: 1
   - shop_item_id: 90018
     shop_item_Package_id: 40004
+    shop_item_count: 1
+  - shop_item_id: 90019
+    shop_item_Package_id: 10010
+    shop_item_count: 1
+  - shop_item_id: 90020
+    shop_item_Package_id: 10021
+    shop_item_count: 1
+  - shop_item_id: 90021
+    shop_item_Package_id: 10014
+    shop_item_count: 1
+  - shop_item_id: 90022
+    shop_item_Package_id: 10018
+    shop_item_count: 1
+  - shop_item_id: 90023
+    shop_item_Package_id: 10020
     shop_item_count: 1

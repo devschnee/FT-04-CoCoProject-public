@@ -132,7 +132,9 @@ public class ShockDetectionTower : MonoBehaviour, ISignalSender, ISignalReceiver
         {
             if (Receiver is DoorBlock door)
             {
-                door.OpenPermanently();
+                //door.OpenPermanently();
+                // NOTE : ▼ 12/01 기획팀 요청(기획 변경)으로 Tower도 Switch와 같이 일반적인 신호 받도록 변경. 만약 기획이 원래대로 변경된다면 이 라인을 주석처리 하고 윗 라인을 주석 해제해주면 됨.
+                Receiver.ReceiveSignal(); 
                 Debug.Log($"[Tower] {name}: 문에 신호 전송(영구 열림) 완료");
             }
             else

@@ -5,34 +5,38 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.AI;
-
-public class LobbyCharacterManager : MonoBehaviour
+public interface ILobbyCharacterManager
 {
-    [SerializeField] GameObject plane;
-    [SerializeField] EditModeController editController;
-    [SerializeField] float interactDistance = 10f;
+    public List<LobbyWaypoint> Waypoints { get; }
+}
+public class LobbyCharacterManager : MonoBehaviour, ILobbyCharacterManager
+{
+    [SerializeField] protected GameObject plane;
+    [SerializeField] protected EditModeController editController;
+    [SerializeField] protected float interactDistance = 10f;
     //[SerializeField] WaypointsControl waypointsControl; // 보류
 
-    private LMCharacterInit lobbyChracterInit; // 씬 시작시 초기화
-    private LMWaypoints getWaypoints; // 웨이포인트 얻기
-    private LMCharacterRoutineControl routineControl; // 코코두기, 안드로이드 루틴 스케쥴러
-    private NavMeshSurface planeSurface; // Bake 용
-    private CocoDoogyBehaviour coco; // 코코두기 제어 용
-    private MasterBehaviour master; // 안드로이드 제어 용
-    private AnimalBehaviour animal; // 코코두기 상호작용 용
+    protected LMCharacterInit lobbyChracterInit; // 씬 시작시 초기화
+    protected LMWaypoints getWaypoints; // 웨이포인트 얻기
+    protected LMCharacterRoutineControl routineControl; // 코코두기, 안드로이드 루틴 스케쥴러
+    protected NavMeshSurface planeSurface; // Bake 용
+    protected CocoDoogyBehaviour coco; // 코코두기 제어 용
+    protected MasterBehaviour master; // 안드로이드 제어 용
+    protected AnimalBehaviour animal; // 코코두기 상호작용 용
 
     public bool IsEditMode { get; private set; } // 에딧컨트롤러에서 받아오기
     public bool IsInitMode { get; private set; } = true; // 씬 첫 초기화 모드인지 판단
-    private int originalLayer; // 평상 시 레이어
-    private int editableLayer; // 편집모드 시 레이어
-    private float interactionCooldown = 0;
-    private Collider[] animalHits; // 코코두기가 상호작용할 동물들 콜라이더 배열(OverlapSphere)
+    protected int originalLayer; // 평상 시 레이어
+    protected int editableLayer; // 편집모드 시 레이어
+    protected float interactionCooldown = 0;
+    protected Collider[] animalHits; // 코코두기가 상호작용할 동물들 콜라이더 배열(OverlapSphere)
 
+    List<LobbyWaypoint> ILobbyCharacterManager.Waypoints { get => Waypoints; }
     public List<LobbyWaypoint> Waypoints { get; private set; } = new();
-    private List<ILobbyState> lobbyCharacter = new(); // 맵에 활성화 된 캐릭터들 모음
+    protected List<ILobbyState> lobbyCharacter = new(); // 맵에 활성화 된 캐릭터들 모음
     public List<ILobbyState> LobbyCharacter => lobbyCharacter;
 
-    private static event Action<BaseLobbyCharacterBehaviour> HeyManager;
+    protected static event Action<BaseLobbyCharacterBehaviour> HeyManager;
     
     public static LobbyCharacterManager Instance { get; private set; }
 

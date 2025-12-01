@@ -10,6 +10,7 @@ public class Joystick : MonoBehaviour
     [SerializeField] private Image bg;
     [SerializeField] private Image handle;
     public float moveRange = 75f; // 핸들 움직임 최대 반경(pixel)
+    [SerializeField] private Image[] fourSlices; // 조이스틱 4방향 하이라이터
 
     private static float sharedSnapAngleThreshold = 13;
     private static bool sharedEnhanceFourDir = true;
@@ -35,6 +36,7 @@ public class Joystick : MonoBehaviour
     // 패널 켜졌을 떄 조이스틱을 잠그기 위한 변수
     public bool IsLocked { get; set; } = false;
 
+   
     IEnumerator Start()
     {
         snapAngleThreshold = sharedSnapAngleThreshold >= 0 ? sharedSnapAngleThreshold : snapAngleThreshold;
@@ -51,6 +53,8 @@ public class Joystick : MonoBehaviour
         
         yield return null;
         onUiSetup?.Invoke(snapAngleThreshold, enhanceFourDir);
+
+        ResetJoystick();
     }
 
 
@@ -303,7 +307,7 @@ public class Joystick : MonoBehaviour
         //핸들 각도 스냅(8방향 기준으로)
         inputNormal = SnapDirection(inputNormal, enhanceFourDir);
 
-
+        FourDirHighlightUI(InputDir);
         InputDir = new Vector3(inputNormal.x, 0, inputNormal.y);
     }
 
@@ -322,9 +326,23 @@ public class Joystick : MonoBehaviour
         InputDir = Vector3.zero;
         handle.rectTransform.anchoredPosition = Vector2.zero;
         rectTransform.anchoredPosition = initPos;
+        for (int i = 0; i < fourSlices.Length; i++) fourSlices[i].enabled = false;
     }
 
+    private void FourDirHighlightUI(Vector3 dir)
+    {
+        if (dir.sqrMagnitude < 0.0001f)
+        {
+            for (int i = 0; i < fourSlices.Length; i++) fourSlices[i].enabled = false;
+            return;
+        }
 
+        int idx;
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.z)) idx = dir.x > 0 ? 1 : 3; // Right 1 Left 3
+        else idx = dir.z > 0 ? 0 : 2; // Up 0 Down 2
+
+        for (int i = 0; i < fourSlices.Length; i++) fourSlices[i].enabled = (i == idx);
+    }
 
     public void ApplyOptions(float snapAngleThreshold, bool enhanceFourDir)
     {

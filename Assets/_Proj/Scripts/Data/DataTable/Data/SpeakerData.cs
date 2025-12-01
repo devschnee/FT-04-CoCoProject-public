@@ -14,7 +14,7 @@ public class SpeakerData
 
     public enum SpeakerId
     {
-        coco, hog, tortoise, buffalo, android_owner
+        coco, hog, tortoise, buffalo, android_owner, helper
     }
 
 

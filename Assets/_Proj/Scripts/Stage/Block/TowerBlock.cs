@@ -15,16 +15,4 @@ public class TowerBlock : Block, ISignalSender
         AudioEvents.Raise(SFXKey.InGameObject, 6, pooled: true, pos: transform.position);
         Receiver.ReceiveSignal();
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
