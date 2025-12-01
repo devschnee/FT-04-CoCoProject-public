@@ -1191,6 +1191,7 @@ GameObject:
   - component: {fileID: 8109054248799410065}
   - component: {fileID: 3943418248447292808}
   - component: {fileID: 4783360611792866784}
+  - component: {fileID: -1806159117931656642}
   m_Layer: 5
   m_Name: ResultPanel
   m_TagString: Untagged
@@ -1261,6 +1262,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-1806159117931656642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453361144966758240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b255ed87ca84b4c917ce0c2adbd01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInDuration: 0.18
+  fadeOutDuration: 0.12
+  startScale: 0.9
+  peakScale: 1.05
+  endScale: 1
+  scaleUpDuration: 0.2
+  scaleDownDuration: 0.15
 --- !u!1 &7706662156769000069
 GameObject:
   m_ObjectHideFlags: 0

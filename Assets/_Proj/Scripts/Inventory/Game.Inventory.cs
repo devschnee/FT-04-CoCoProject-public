@@ -70,6 +70,8 @@ namespace Game.Inventory
                 //rangeFunc(40000, 50000, id) ? CodexType. :
                 UserData.Local.codex[type, id] = true;
             }
+
+            CodexRedDotManager.Recalculate();
         }
 
         ////_counts[(cat, id)] = next;

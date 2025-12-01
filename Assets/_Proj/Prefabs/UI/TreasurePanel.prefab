@@ -557,6 +557,7 @@ GameObject:
   - component: {fileID: 5240482828733248562}
   - component: {fileID: 1718372373007641640}
   - component: {fileID: 2572651563248126167}
+  - component: {fileID: -6674952606943285875}
   m_Layer: 5
   m_Name: TreasurePanel
   m_TagString: Untagged
@@ -629,6 +630,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-6674952606943285875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797989374318923906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b255ed87ca84b4c917ce0c2adbd01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInDuration: 0.18
+  fadeOutDuration: 0.12
+  startScale: 0.9
+  peakScale: 1.05
+  endScale: 1
+  scaleUpDuration: 0.2
+  scaleDownDuration: 0.15
 --- !u!1 &2975866423230494490
 GameObject:
   m_ObjectHideFlags: 0

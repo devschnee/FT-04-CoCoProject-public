@@ -72,6 +72,7 @@ public class VideoPlayerController : MonoBehaviour
         AudioManager.Instance.EnterCutscene();
 
         player.Stop();
+        ClearVideoFrame();
         player.source = VideoSource.Url;
         player.url = url;
 
@@ -116,5 +117,15 @@ public class VideoPlayerController : MonoBehaviour
     {
         Debug.LogError("[Cutscene] ERROR: " + msg);
         isPlaying = false;
+    }
+    public void ClearVideoFrame()
+    {
+        if (player.targetTexture != null)
+        {
+            RenderTexture rt = player.targetTexture;
+            RenderTexture.active = rt;
+            GL.Clear(true, true, Color.black);
+            RenderTexture.active = null;
+        }
     }
 }

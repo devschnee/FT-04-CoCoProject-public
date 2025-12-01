@@ -4,6 +4,7 @@ dialogue_0_1_0,1,left,coco,Neutral,"그런데 주인은 어디 갔지?",0.04,sfx
 dialogue_0_1_0,2,left,coco,Neutral,"킁킁… 주인의 냄새가 조금은 남은것 같은데... ",0.04,sfx_none,null
 dialogue_0_1_0,3,left,coco,Happy,"아하! 주인은 날 믿고 먼저 간거야! 내가 혼자서도 집을 찾아갈 수 있다고",0.04,sfx_none,null
 dialogue_0_1_0,4,left,coco,Neutral,"어서 집으로 돌아가자!",0.04,sfx_none,null
+dialogue_0_1_0,5,left,helper,Neutral,"화면을 터치해서 코코두기를 움직여 보세요!",0.04,sfx_none,null
 dialogue_0_1_1,0,left,coco,Neutral,"언덕이 있네. 주변을 둘러 보자!",0.04,sfx_none,null
 dialogue_0_1_1,1,left,coco,Neutral,"올라갈 경사로가 있을 지 몰라",0.04,sfx_none,null
 dialogue_0_1_2,0,left,coco,Happy,"주인과 함게 하는 산책은 언제나 즐거워!",0.04,sfx_none,null
@@ -11,15 +12,26 @@ dialogue_0_1_2,1,left,coco,Neutral,"주인도 산길을 즐겼겠지?",0.04,sfx_
 dialogue_0_1_10,0,left,coco,Sad,"산길을 겨우 내려왔어. 집까지 얼마나 남았을까?",0.04,sfx_none,null
 dialogue_0_1_10,1,left,coco,Neutral,"조금 지친 것 같아, 저 나무 아래서 잠시 쉬다가야지.",0.04,sfx_none,null
 dialogue_0_2_0,0,left,coco,Neutral,"으음… 얼마나 쉬었지?",0.04,sfx_none,null
-dialogue_0_2_0,1,left,coco,Surprised,"헉, 벌써 해가 지잖아!",0.04,sfx_none,null
+dialogue_0_2_0,1,left,coco,Surprised,"앗, 벌써 해가 지잖아!",0.04,sfx_none,null
 dialogue_0_2_0,2,left,coco,Neutral,"얼른 집으로 돌아가자.",0.04,sfx_none,null
-dialogue_0_2_1,0,left,coco,Neutral,"상자가 길을 막고 있네, 움직여서 쭈욱 밀어볼 수 있을 것 같아!",0.04,sfx_none,null
-dialogue_0_2_2,0,left,coco,Neutral,"경사로쪽으로 밀기 힘들것 같은데… 옆으로 밀어볼까?",0.04,sfx_none,null
-dialogue_0_2_3,0,left,coco,Neutral,"길이 끊어져있네? 상자로 어떻게 매울수 있지 않을까?",0.04,sfx_none,null
-dialogue_0_2_10,0,left,coco,Happy,"드디어 도착…! 나 혼자 힘으로 여기까지 왔어!\n주인이 분명 칭찬하겠지!",0.04,sfx_none,null
-dialogue_1_1_0,0,left,coco,Neutral,"주인이 날 두고 또 먼저 갔어… 아! 혹시 술래잡기 놀이인가?\n주인이 먼저 집으로 가고, 내가 술래가 돼서 주인을 찾아야 하는 놀이!",0.04,sfx_none,null
-dialogue_1_1_0,1,left,coco,Neutral,"좋아… 당장 주인을 찾으러 가야지!",0.04,sfx_none,null
-dialogue_1_1_1,0,left,coco,Happy,"우와, 하늘에서 떨어진 별 조각인가? 꼭 나한테 인사하는 것 같아.",0.04,sfx_none,null
+dialogue_0_2_1,0,left,coco,Neutral,"상자가 길을 막고 있네... 살짝 밀면 지나갈 수 있을 것 같아!",0.04,sfx_none,null
+dialogue_0_2_2,0,left,coco,Neutral,"경사 쪽으로 밀면 안 움직일 것 같아… 옆으로 밀어볼까?",0.04,sfx_none,null
+dialogue_0_2_3,0,left,coco,Neutral,"높은 곳은 언제나 좋은 것 같아!",0.04,sfx_none,null
+dialogue_0_2_3,1,left,coco,Neutral,"주인은 종종 높은 곳에 올라서 조용히 풍경을 바라보곤 했어.",0.04,sfx_none,null
+dialogue_0_2_3,2,left,coco,Happy,"나도 주인이 보던 풍경을 따라 보고 싶어!",0.04,sfx_none,null
+dialogue_0_2_3,3,left,helper,Neutral,"두 손가락으로 화면을 드래그 해서 화면을 움직여 보세요!",0.04,sfx_none,null
+dialogue_0_2_4,0,left,coco,Neutral,"끄응.. 역시 상자 2개를 동시에 밀기 힘든 것 같아. 옆으로 하나씩 밀어볼까?",0.04,sfx_none,null
+dialogue_0_2_10,0,left,coco,Neutral,"우와… 생각보다 멀리까지 왔나봐. 여전히 갈 길이 머네… 조금만 쉬어야겠어.",0.04,sfx_none,null
+dialogue_0_3_0,0,left,coco,Surprised,"!!! 언제적 꿈이지?",0.04,sfx_none,null
+dialogue_0_3_0,1,left,coco,Sad,"주인… 얼른 보고싶어",0.04,sfx_none,null
+dialogue_0_3_1,0,left,coco,Surprised,"구덩이잖아! 어떻게 지나가지?",0.04,sfx_none,null
+dialogue_0_3_1,1,left,coco,Surprised,"옆의 상자를 밀어 떨어트리면… 상자를 밟고 지나갈 수 있지 않을까?",0.04,sfx_none,null
+dialogue_0_3_1,2,left,helper,Neutral,"상자를 구덩이로 밀어보세요!",0.04,sfx_none,null
+dialogue_0_3_2,0,left,coco,Neutral,"또 구덩이잖아? 요즘 자꾸 없던 구덩이가 생기는 것 같아.",0.04,sfx_none,null
+dialogue_0_3_2,1,left,coco,Neutral,"…누가 일부러 남겨놓는 걸까?",0.04,sfx_none,null
+dialogue_0_3_3,0,left,coco,Happy,"킁... 집이 코앞이야. 주인 냄새가 희미하게 나!",0.04,sfx_none,null
+dialogue_0_3_3,1,left,coco,Happy,"구덩이도 이제는 점점 재밌어, 헤헤",0.04,sfx_none,null
+dialogue_0_3_10,0,left,coco,Happy,"드디어 도착…! 나 혼자 힘으로 여기까지 왔어!\n주인이 분명 칭찬하겠지!",0.04,sfx_none,null
 dialogue_1_1_1,1,left,coco,Happy,"한번 가까이 가보자!",0.04,sfx_none,null
 dialogue_1_1_10,0,left,coco,Neutral,"보물들을 모아가면 주인이 좋아하겠지? 보물들을 모아가보자!",0.04,sfx_none,null
 dialogue_1_2_0,0,left,coco,Neutral,"산 산책도 좋지만 가끔 이런 길도 좋은 것 같아.",0.04,sfx_none,null

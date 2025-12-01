@@ -220,9 +220,9 @@ MonoBehaviour:
     shop_item_category: 7
   - shop_id: 80020
     shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 1"
-    shop_icon: Icons/Shop/icon_help_ground
+    shop_icon: Icons/Deco/icon_deco_fireplace
     shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B81\""
-    shop_item: 90003
+    shop_item: 90019
     shop_type: 0
     shop_price: 2000
     shop_stock: 5
@@ -250,9 +250,9 @@ MonoBehaviour:
     shop_item_category: 8
   - shop_id: 80023
     shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 2"
-    shop_icon: Icons/Shop/icon_help_ground
+    shop_icon: Icons/Deco/icon_deco_cloud_table
     shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B82\""
-    shop_item: 90003
+    shop_item: 90020
     shop_type: 0
     shop_price: 2000
     shop_stock: 5
@@ -280,9 +280,9 @@ MonoBehaviour:
     shop_item_category: 6
   - shop_id: 80026
     shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 3"
-    shop_icon: Icons/Shop/icon_help_ground
+    shop_icon: Icons/Deco/icon_deco_generator
     shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B83\""
-    shop_item: 90003
+    shop_item: 90021
     shop_type: 0
     shop_price: 2000
     shop_stock: 5
@@ -310,9 +310,9 @@ MonoBehaviour:
     shop_item_category: 6
   - shop_id: 80029
     shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 4"
-    shop_icon: Icons/Shop/icon_help_ground
+    shop_icon: Icons/Deco/icon_deco_wood_chair
     shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B84\""
-    shop_item: 90003
+    shop_item: 90022
     shop_type: 0
     shop_price: 2000
     shop_stock: 5
@@ -340,9 +340,9 @@ MonoBehaviour:
     shop_item_category: 6
   - shop_id: 80032
     shop_name: "\uB370\uCF54 \uD14C\uC2A4\uD2B8 5"
-    shop_icon: Icons/Shop/icon_help_ground
+    shop_icon: Icons/Deco/icon_deco_log_chair
     shop_desc: "\"\uB370\uCF54 \uD14C\uC2A4\uD2B85\""
-    shop_item: 90003
+    shop_item: 90023
     shop_type: 0
     shop_price: 2000
     shop_stock: 5

@@ -96,7 +96,7 @@ public class TestOnly_StageManager : MonoBehaviour, IStageManager
         //TODO: 3. 가져온 맵 정보로 모든 블록이 생성되고 연결까지 끝나면 가리고 있던 부분을 치워줌.
 
         camControl.FindWayPoint();
-        yield return camControl.StartCoroutine(camControl.CameraWalking(.1f));
+        yield return camControl.StartCoroutine(camControl.CameraWalking(12f));
 
         //Todo : 컷씬 지난후 대화가 있다면 여기서 실행
         

@@ -18,17 +18,17 @@ shop_id,shop_name,shop_icon,shop_desc,shop_item,shop_type,shop_price,shop_stock,
 80017,초록지붕집,Icons/Shop/icon_green_roof_home,"대가족이 살았던 초록 지붕이 매력적인 집입니다.",90017,coin,300,1,home,all
 80018,붉은 외벽집,Icons/Shop/icon_red_home,"상점을 개조한 붉은색 외관의 집입니다.",90018,coin,300,1,home,all
 80019,동물 테스트 1,Icons/Shop/icon_donkey,"동물친구 테스트 1",90001,cap,1000,1,animal,bird
-80020,데코 테스트 1,Icons/Shop/icon_help_ground,"데코 테스트1",90003,cap,2000,5,deco,furniture
+80020,데코 테스트 1,Icons/Deco/icon_deco_fireplace,"데코 테스트1",90019,cap,2000,5,deco,furniture
 80021,코스튬 테스트 1,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 1",90005,cap,4000,1,costume,body
 80022,동물 테스트 2,Icons/Shop/icon_donkey,"동물친구 테스트 2",90001,cap,1000,1,animal,rat
-80023,데코 테스트 2,Icons/Shop/icon_help_ground,"데코 테스트2",90003,cap,2000,5,deco,prop
+80023,데코 테스트 2,Icons/Deco/icon_deco_cloud_table,"데코 테스트2",90020,cap,2000,5,deco,prop
 80024,코스튬 테스트 2,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 2",90005,cap,4000,1,costume,body
 80025,동물 테스트 3,Icons/Shop/icon_donkey,"동물친구 테스트 3",90001,cap,1000,1,animal,pig
-80026,데코 테스트 3,Icons/Shop/icon_help_ground,"데코 테스트3",90003,cap,2000,5,deco,plant
+80026,데코 테스트 3,Icons/Deco/icon_deco_generator,"데코 테스트3",90021,cap,2000,5,deco,plant
 80027,코스튬 테스트 3,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 3",90005,cap,4000,1,costume,tail
 80028,동물 테스트 4,Icons/Shop/icon_donkey,"동물친구 테스트 4",90001,cap,1000,1,animal,pig
-80029,데코 테스트 4,Icons/Shop/icon_help_ground,"데코 테스트4",90003,cap,2000,5,deco,structure
+80029,데코 테스트 4,Icons/Deco/icon_deco_wood_chair,"데코 테스트4",90022,cap,2000,5,deco,structure
 80030,코스튬 테스트 4,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 4",90005,cap,4000,1,costume,head
 80031,동물 테스트 5,Icons/Shop/icon_donkey,"동물친구 테스트 5",90001,cap,1000,1,animal,pig
-80032,데코 테스트 5,Icons/Shop/icon_help_ground,"데코 테스트5",90003,cap,2000,5,deco,structure
+80032,데코 테스트 5,Icons/Deco/icon_deco_log_chair,"데코 테스트5",90023,cap,2000,5,deco,structure
 80033,코스튬 테스트 5,Icons/Shop/icon_cowboy_hat,"코스튬 테스트 5",90005,cap,4000,1,costume,head

@@ -369,8 +369,8 @@ MonoBehaviour:
   visibleAngle: 360
   forwardDir: {x: 0, y: 0, z: 1}
   lineWidth: 0.05
-  lineColor: {r: 1, g: 1, b: 1, a: 0}
-  fillColor: {r: 0.19999999, g: 0.34691733, b: 1, a: 0.78039217}
+  lineColor: {r: 1, g: 0.6967314, b: 0.23113209, a: 0}
+  fillColor: {r: 0.4811321, g: 0.14751692, b: 0.15075007, a: 0.79607844}
   softEdge: 0.048
   rippleOnShock: 1
   rippleWidthMul: 2.2
@@ -808,10 +808,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalType: 2
   anim: {fileID: 7758893229281467685}
-  buffalo: {fileID: 7842754840454281407}
-  turtle: {fileID: 0}
-  boar: {fileID: 0}
-  hello: 0
 --- !u!95 &7758893229281467685 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5688514589227935450, guid: ad0058799afa43640919848d26f0f33b, type: 3}

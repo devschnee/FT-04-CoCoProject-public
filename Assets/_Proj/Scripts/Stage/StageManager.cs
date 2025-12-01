@@ -95,7 +95,6 @@ public class StageManager : MonoBehaviour, IStageManager, IQuestBehaviour
         LinkSignals();
 
         //가림막치워주기
-        fp.GetComponent<FadeController>().FadeOut();
         //if (isTest)
         //{
         //    var dataTest = DataManager.Instance.Stage.GetMapNameData(mapNameToLoad);
@@ -107,6 +106,9 @@ public class StageManager : MonoBehaviour, IStageManager, IQuestBehaviour
 
         //    yield return null;
         //}
+
+        yield return new WaitForSeconds(.5f);
+        fp.GetComponent<FadeController>().FadeOut();
 
         var data = DataManager.Instance.Stage.GetData(currentStageId);
         var data_start_cutscene = DataManager.Instance.Stage.GetStartCutsceneUrl(currentStageId);
@@ -182,6 +184,9 @@ public class StageManager : MonoBehaviour, IStageManager, IQuestBehaviour
             yield return PlayCutscene(data_end_cutscene);
         }
 
+        var fp = StageUIManager.Instance.FadePanel;
+        fp.SetActive(true);
+        fp.GetComponent<CanvasRenderer>().SetAlpha(1);
         // 메인씬으로 이동
         //Todo : 챕터에 따라 스테이지 선택화면 분기
         SceneManager.LoadScene("Main");

@@ -226,7 +226,7 @@ MonoBehaviour:
   forwardDir: {x: 0, y: 0, z: 1}
   lineWidth: 0.05
   lineColor: {r: 1, g: 0.2, b: 0.6, a: 0}
-  fillColor: {r: 0.98481005, g: 1, b: 0.19999999, a: 0.72156864}
+  fillColor: {r: 0.13705945, g: 0.15495086, b: 0.3773585, a: 0.69411767}
   softEdge: 0.041
   rippleOnShock: 1
   rippleWidthMul: 2.1

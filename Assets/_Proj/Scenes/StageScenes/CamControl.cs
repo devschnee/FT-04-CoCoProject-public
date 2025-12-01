@@ -119,9 +119,10 @@ public class CamControl : MonoBehaviour
     //}
 
     // 속도가 높을수록 카메라 속도 빨라짐. 속도 일정하게 유지하면서 이동하는 카메라워킹
+    // KHJ - NOTE : 카메라의 속도는 이 함수를 호출하는 각 스크립트(StageManager.cs || TestOnly_StageManager.cs)에서 조절
     public IEnumerator CameraWalking(float speed = 6f)
     {
-        if (wayPoint[0] == null || wayPoint[4] == null)
+        if (wayPoint[0] == null || wayPoint[1] == null)
         {
             Debug.LogError("WayPoint null!");
             yield break;
@@ -157,6 +158,8 @@ public class CamControl : MonoBehaviour
             if (i < wayPoint.Length - 2 && waitTime > 0f)
                 yield return new WaitForSeconds(waitTime);
         }
+        // Joystick.cs에서 플레이어가 생성되면 SetFollowingPlayer를 호출함.
+        //SetFollowingPlayer(true);
     }
 
 
@@ -164,7 +167,7 @@ public class CamControl : MonoBehaviour
     //카메라워킹 끝나면 플레이어한테 가야한다
     //웨이포인트 쓰는데 시작지점은 end블록 끝 지점은 start블록
 
-    // 11/21 KHJ - TODO : 이동이 끝나고 플레이어를 찾아서 연결해줬으면 이후에 터치가 두 손가락으로 들어왔을(<-Joystick.cs에서 처리) 때 캠의 타게팅을 플레이어에 고정시키던 것을 주변을 둘러볼 수 있도록 바꿔야 함. 터치가 손가락 하나이하가 되면 다시 플레이어 타겟팅
+    // 11/21 KHJ - TODO : 이동이 끝나고 플레이어를 찾아서 연결해줬으면 이후에 터치가 두 손가락으로 들어왔을(<-Joystick.cs에서 처리) 때 캠의 타게팅을 플레이어에 고정시키던 것을 주변을 둘러볼 수 있도록 바꿔야 함. 터치가 손가락 하나 이하가 되면 다시 플레이어 타겟팅
 
     // KHJ - 카메라 추적 상태 설정
     public void SetFollowingPlayer(bool follow)

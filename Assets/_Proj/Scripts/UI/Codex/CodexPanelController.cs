@@ -26,6 +26,14 @@ public class CodexPanelController : MonoBehaviour
     [SerializeField] private Button nextButton;
     [SerializeField] private List<CodexTypeButton> typeButtons;
 
+    //12.01mj   
+    [Header("Type Red Dots")]  // 🔴 카테고리 버튼 위 빨간점들
+    [SerializeField] private GameObject animalRedDot;
+    [SerializeField] private GameObject decoRedDot;
+    [SerializeField] private GameObject costumeRedDot;
+    [SerializeField] private GameObject artifactRedDot;
+    [SerializeField] private GameObject homeRedDot;
+
     [Header("Settings")]
     [SerializeField, Min(1)] private int pageSize = 8;
     [SerializeField] private CodexType defaultType = CodexType.animal;
@@ -38,6 +46,23 @@ public class CodexPanelController : MonoBehaviour
     {
         UIPanelAnimator.Open(gameObject);
         StartCoroutine(DelayInit());
+
+        //12.01mj   
+        CodexRedDotManager.OnStateChanged += ApplyRedDots;
+        ApplyRedDots(CodexRedDotManager.Current);
+    }
+    //12.01mj   
+    private void OnDisable()
+    {
+        CodexRedDotManager.OnStateChanged -= ApplyRedDots;
+    }
+    private void ApplyRedDots(CodexRedDotState state)
+    {
+        if (animalRedDot) animalRedDot.SetActive(state.hasAnimal);
+        if (decoRedDot) decoRedDot.SetActive(state.hasDeco);
+        if (costumeRedDot) costumeRedDot.SetActive(state.hasCostume);
+        if (artifactRedDot) artifactRedDot.SetActive(state.hasArtifact);
+        if (homeRedDot) homeRedDot.SetActive(state.hasHome);
     }
 
     private void Close()
@@ -168,6 +193,13 @@ public class CodexPanelController : MonoBehaviour
         var hashset = UserData.Local.codex.newlyUnlocked[type.ToString().ToLower()];
         if (hashset.Contains(itemId)) hashset.Remove(itemId);
         UserData.Local.codex.Save();
+
+        //12.01mj
+        // 🔴 도감 읽었으니까 빨간점 재계산
+        CodexRedDotManager.Recalculate();
+
+        // 🔴 슬롯들에 있는 빨간점(해당 페이지)도 다시 구성
+        RebuildPage();
     }
 
     // 슬롯 클릭 (잠금)
