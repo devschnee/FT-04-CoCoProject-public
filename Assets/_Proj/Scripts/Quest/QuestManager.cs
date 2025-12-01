@@ -195,5 +195,9 @@ public class QuestManager : MonoBehaviour
         }
 
         UserData.Local.quest.Save();
+
+        //12.01mj
+        //  퀘스트 진행도 바뀔 때마다 빨간 점 다시 계산
+        QuestRedDotManager.Recalculate();
     }
 }

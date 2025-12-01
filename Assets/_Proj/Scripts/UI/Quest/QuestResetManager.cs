@@ -69,6 +69,9 @@ public static class QuestResetManager
 
         UserData.Local.quest.lastDailyResetAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         //UserData.Local.flag |= UserDataDirtyFlag.Quest;
+
+        //12.01mj
+        QuestRedDotManager.Recalculate();
     }
 
     private static void ResetWeekly()
@@ -84,5 +87,8 @@ public static class QuestResetManager
 
         UserData.Local.quest.lastWeeklyResetAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         //UserData.Local.flag |= UserDataDirtyFlag.Quest;
+
+        //12.01mj
+        QuestRedDotManager.Recalculate();
     }
 }

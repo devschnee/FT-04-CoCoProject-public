@@ -18,6 +18,11 @@ public class QuestPanelController : MonoBehaviour
     [SerializeField] private Button weeklyTabButton;
     [SerializeField] private Button achievementTabButton;
 
+    [Header("Tab Red Dots")]            // 12.01 MJ
+    [SerializeField] private GameObject dailyRedDot;        // 일일 탭 빨간 점
+    [SerializeField] private GameObject weeklyRedDot;       // 주간 탭 빨간 점
+    [SerializeField] private GameObject achievementRedDot;  // 업적 탭 빨간 점
+
     [Header("Areas")]
     [SerializeField] private GameObject dailyWeeklyArea;
     [SerializeField] private GameObject achievementArea;
@@ -64,6 +69,10 @@ public class QuestPanelController : MonoBehaviour
     {
         QuestResetManager.OnQuestReset += HandleQuestReset;
 
+        //12.01 MJ
+        QuestRedDotManager.OnStateChanged += ApplyRedDots;
+        ApplyRedDots(QuestRedDotManager.Current);   // 현재 상태 바로 반영
+
         currentType = QuestType.daily;
         UpdateTabVisual();
 
@@ -82,6 +91,9 @@ public class QuestPanelController : MonoBehaviour
     private void OnDisable()
     {
         QuestResetManager.OnQuestReset -= HandleQuestReset;
+
+        //  12.01 MJ
+        QuestRedDotManager.OnStateChanged -= ApplyRedDots;
     }
 
     // 리셋 발생 시 자동 Refresh
@@ -204,6 +216,9 @@ public class QuestPanelController : MonoBehaviour
         //UserData.Local.flag |= UserDataDirtyFlag.Wallet;
         UserData.Local.Save();
 
+        //12.01 MJ
+        QuestRedDotManager.Recalculate();
+
         if (rewardPopup)
         {
             Sprite icon = GetRewardIcon(rewardId);
@@ -298,5 +313,15 @@ public class QuestPanelController : MonoBehaviour
             }
         }
         return null;
+    }
+    /// <summary>
+    /// QuestRedDotManager에서 계산한 상태를
+    /// 탭 빨간 점 3개에 반영
+    /// </summary>
+    private void ApplyRedDots(QuestRedDotState state)
+    {
+        if (dailyRedDot) dailyRedDot.SetActive(state.hasDaily);
+        if (weeklyRedDot) weeklyRedDot.SetActive(state.hasWeekly);
+        if (achievementRedDot) achievementRedDot.SetActive(state.hasAchievement);
     }
 }
