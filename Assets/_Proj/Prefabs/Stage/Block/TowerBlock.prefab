@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbac09f3a83121449eddbcae6fc9ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relayRadius: 4
+  relayRadius: 0.1
   relayDelay: 1
   towerCooldown: 0.1
   useOcclusion: 1
