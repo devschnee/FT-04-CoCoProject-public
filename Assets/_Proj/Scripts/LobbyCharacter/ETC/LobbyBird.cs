@@ -11,10 +11,25 @@ public class LobbyBird : MonoBehaviour
     [SerializeField] float startSound;
     private WaitForSeconds startDelay;
     private WaitForSeconds wStartSound;
+    private bool canBirdsong = true;
+
+    private LobbySkyController skyController;
+    private Material afternoonSkybox;
+    private Material nightSkybox;
+    private Material dawnSkybox;
 
     private void Awake()
     {
         startDelay = new WaitForSeconds(Random.Range(17f, 23f));
+        skyController = FindFirstObjectByType<LobbySkyController>();
+        afternoonSkybox = skyController.afternoonSkybox;
+        nightSkybox = skyController.nightSkybox;
+        dawnSkybox = skyController.dawnSkybox;
+    }
+
+    private void OnEnable()
+    {
+        skyController.OnSkyboxChanged += HandleChangedSkybox;
     }
 
     private void Start()
@@ -27,7 +42,13 @@ public class LobbyBird : MonoBehaviour
 
     private void OnDisable()
     {
+        skyController.OnSkyboxChanged -= HandleChangedSkybox;
         StopAllCoroutines();
+    }
+
+    private void HandleChangedSkybox(Material mat)
+    {
+        canBirdsong = mat != nightSkybox && mat != dawnSkybox && mat != afternoonSkybox;
     }
 
     private IEnumerator MoveBird()
@@ -40,7 +61,7 @@ public class LobbyBird : MonoBehaviour
             bird.transform.LookAt(endPoint);
             bird.SetActive(true);
 
-            StartCoroutine(BirdSong());
+            if (canBirdsong) StartCoroutine(BirdSong());
             
             float t = 0;
 

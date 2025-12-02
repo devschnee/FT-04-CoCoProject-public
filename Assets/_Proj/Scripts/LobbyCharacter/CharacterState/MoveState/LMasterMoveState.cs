@@ -83,7 +83,8 @@ public class LMasterMoveState : LobbyCharacterBaseState
                 yield return wait;
                 // 로비 매니저에게 나 끝났어요 호출 하면 로비매니저가 SetActive false 처리
                 fsm.ChangeState(owner.EditState);
-                LobbyCharacterManager.RaiseCharacterEvent(owner);
+                if (LobbyCharacterManager.Instance) LobbyCharacterManager.RaiseCharacterEvent(owner);
+                else if (LobbyCharacterManager_Friend.Instance) LobbyCharacterManager_Friend.RaiseCharacterEvent(owner);
 
                 yield break;
             }
@@ -123,7 +124,8 @@ public class LMasterMoveState : LobbyCharacterBaseState
                     route.ResetFirstTime();
                     fsm.ChangeState(owner.EditState);
                     // 로비 매니저에게 나 끝났어요 호출 하면 로비매니저가 SetActive false 처리
-                    LobbyCharacterManager.RaiseCharacterEvent(owner);
+                    if (LobbyCharacterManager.Instance) LobbyCharacterManager.RaiseCharacterEvent(owner);
+                    else if (LobbyCharacterManager_Friend.Instance) LobbyCharacterManager_Friend.RaiseCharacterEvent(owner);
                     yield break;
                 }
                 else

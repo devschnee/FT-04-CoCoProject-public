@@ -257,6 +257,10 @@ public class LobbyCharacterManager_Friend : MonoBehaviour, ILobbyCharacterManage
     
 
     // 코코두기 안드로이드 전용 이벤트
+    public static void RaiseCharacterEvent(BaseLobbyCharacterBehaviour who)
+    {
+        HeyManager?.Invoke(who);
+    }
     
     private void DeactivateChar(BaseLobbyCharacterBehaviour who)
     {

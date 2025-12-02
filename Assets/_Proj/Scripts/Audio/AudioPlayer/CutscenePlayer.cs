@@ -35,7 +35,7 @@ public class CutscenePlayer : AudioPlayerControl
                 if (DOTween.IsTweening(src, true)) src.DOKill();
                 if (src.volume != 1)
                 {
-                    src.DOFade(0.7f, 0.5f);
+                    src.DOFade(initVolume, 0.5f);
                 }
                 else { }
             }
@@ -59,7 +59,7 @@ public class CutscenePlayer : AudioPlayerControl
             if (src != null)
             {
                 if (DOTween.IsTweening(src, true)) src.DOKill();
-                src.DOFade(0.7f, 0.5f);
+                src.DOFade(initVolume, 0.5f);
             }
         }
     }
@@ -101,7 +101,7 @@ public class CutscenePlayer : AudioPlayerControl
         foreach (var src in activeSources)
         {
             if (DOTween.IsTweening(src, true)) src.DOKill();
-            src.DOFade(1, 0.5f);
+            src.DOFade(initVolume, 0.5f);
         }
     }
 

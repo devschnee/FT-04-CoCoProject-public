@@ -288,7 +288,7 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
 
     public void PlayStageBGM(AudioClip clip)
     {
-        bgmGroup.PlayBGMForResources(clip, 2, 1, true);
+        bgmGroup.PlayBGMForResources(clip, 3, 0.01f, true);
         Debug.Log("StageBGM 시작");
     }
 

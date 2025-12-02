@@ -110,12 +110,22 @@ public abstract class AudioPlayerControl
                     {
                         src.DOKill();
                     }
-                    src.DOFade(0, 0.2f).OnComplete(() => {src.Stop(); src.volume = initVolume;});
+                    src.DOFade(0, 0.2f).OnComplete(() => 
+                    {
+                        src.Stop();
+                        src.loop = false; 
+                        src.volume = initVolume;
+                        src.pitch = 1f;
+                        src.clip = null; 
+                    });
                 }
-                src.loop = false;
-                src.volume = volumeValue;
-                src.pitch = 1f;
-                src.clip = null; 
+                else
+                {
+                    src.loop = false;
+                    src.volume = initVolume;
+                    src.pitch = 1f;
+                    src.clip = null; 
+                }
             }
         }
     }

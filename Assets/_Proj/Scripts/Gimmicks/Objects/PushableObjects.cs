@@ -214,7 +214,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
     #region Movement
     // 단순 이동(1칸 Lerp 이동)
-    public IEnumerator MoveTo(Vector3 target)
+    public IEnumerator MoveTo(Vector3 target, bool isFallingIntoWater = false)
     {
         //이동 시작 순간 내 머리 위에 있는 콜라이더, 주변 콜라이더 전부 켜주기
 
@@ -240,6 +240,19 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
                 }
             }
         }
+
+        // LSH 추가 1202 나무박스 물에 떨어지는 순간 소리추가
+        if (isFallingIntoWater && gameObject.layer == LayerMask.NameToLayer("WoodBox"))
+        {
+            RaycastHit hit;
+            if (Physics.BoxCast(target, new Vector3(0.4f, 0.05f, 0.4f), Vector3.down, out hit, Quaternion.identity, 1.2f))
+            {
+                int layer = hit.collider.gameObject.layer;
+
+                if (layer == LayerMask.NameToLayer("Water")) AudioEvents.Raise(SFXKey.InGameObject, 8, pooled: true, pos: transform.position);
+            }
+        }
+        //
 
         isMoving = true;
         Vector3 start = transform.position;
@@ -378,7 +391,7 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
             groundMask))
         {
             Vector3 fallTarget = currPos + Vector3.down * tileSize;
-            yield return StartCoroutine(MoveTo(fallTarget));
+            yield return StartCoroutine(MoveTo(fallTarget, true));
 
             // 도착 후 정확히 타일 위치로 y 스냅
             Vector3 snapped = transform.position;
@@ -387,6 +400,14 @@ public abstract class PushableObjects : MonoBehaviour, IPushHandler, IRider
 
             currPos = transform.position;
             fell = true;
+            
+            // LSH 추가 1202 나무박스 물이 아닌 땅에 떨어질 시 소리 추가
+            RaycastHit hit;
+            if (Physics.BoxCast(snapped, new Vector3(0.4f, 0.05f, 0.4f), Vector3.down, out hit, Quaternion.identity, 1.2f) && gameObject.layer == LayerMask.NameToLayer("WoodBox"))
+            {
+                int layer = hit.collider.gameObject.layer;
+                if (!(layer == LayerMask.NameToLayer("Water"))) AudioEvents.Raise(SFXKey.InGameObject, 0, pooled: true, pos: transform.position);
+            }
         }
         isFalling = false;
         isLifting = false;

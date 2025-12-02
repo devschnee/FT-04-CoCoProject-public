@@ -119,6 +119,8 @@ public class StageManager : MonoBehaviour, IStageManager, IQuestBehaviour
         //TODO: 3. 가져온 맵 정보로 모든 블록이 생성되고 연결까지 끝나면 가리고 있던 부분을 치워줌.
         AudioClip bgmClip = DataManager.Instance.Stage.GetAudioClip(currentStageId);
         AudioEvents.RaiseStageBGM(bgmClip);
+        // LSH 추가 1202
+        yield return null;
 
         camControl.FindWayPoint();
         yield return camControl.StartCoroutine(camControl.CameraWalking(6.5f));

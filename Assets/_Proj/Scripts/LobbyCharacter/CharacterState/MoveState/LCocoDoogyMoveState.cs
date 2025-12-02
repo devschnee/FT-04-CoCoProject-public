@@ -112,7 +112,8 @@ public class LCocoDoogyMoveState : LobbyCharacterBaseState
                 Debug.Log($"currentIndex = 1 : {currentIndex}");
                 // 로비 매니저에게 나 끝났어요 호출 하면 로비매니저가 SetActive false 처리
                 fsm.ChangeState(owner.EditState);
-                LobbyCharacterManager.RaiseCharacterEvent(owner);
+                if (LobbyCharacterManager.Instance) LobbyCharacterManager.RaiseCharacterEvent(owner);
+                else if (LobbyCharacterManager_Friend.Instance) LobbyCharacterManager_Friend.RaiseCharacterEvent(owner);
 
                 yield break;
             }

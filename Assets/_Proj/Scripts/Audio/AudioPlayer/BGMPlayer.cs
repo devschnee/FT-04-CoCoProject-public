@@ -19,7 +19,7 @@ public class BGMPlayer : AudioPlayerControl
         currentSource = gObj.AddComponent<AudioSource>();
         activeSources.Add(currentSource);
         currentSource.outputAudioMixerGroup = group;
-        currentSource.volume = 1f;
+        currentSource.volume = 0.8f;
         initVolume = currentSource.volume;
     }
 
@@ -44,7 +44,7 @@ public class BGMPlayer : AudioPlayerControl
             currentSource.loop = loop;
             //currentSource.volume = 0f;
             currentSource.Play();
-            currentSource.DOFade(1f, fadeIn);
+            currentSource.DOFade(initVolume, fadeIn);
         });
     }
     
@@ -85,7 +85,7 @@ public class BGMPlayer : AudioPlayerControl
                 currentSource.loop = loop;
                 //currentSource.volume = 0f;
                 currentSource.Play();
-                currentSource.DOFade(1f, fadeIn);
+                currentSource.DOFade(initVolume, fadeIn);
             });
         }
         else

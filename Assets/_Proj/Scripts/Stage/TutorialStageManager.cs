@@ -120,6 +120,8 @@ public class TutorialStageManager : MonoBehaviour, IStageManager
 
         AudioClip bgmClip = DataManager.Instance.Stage.GetAudioClip(currentStageId);
         AudioEvents.RaiseStageBGM(bgmClip);
+        // LSH 추가 1202
+        yield return null;
 
         camControl.FindWayPoint();
         yield return camControl.StartCoroutine(camControl.CameraWalking(5f));
