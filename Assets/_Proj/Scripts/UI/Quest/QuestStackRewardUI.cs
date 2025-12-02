@@ -22,6 +22,9 @@ public class QuestStackRewardUI : MonoBehaviour
     [SerializeField] private Sprite[] closedChestSprites;
     [SerializeField] private Sprite[] openedChestSprites;
 
+    [Header("Stack Reward Red Dots")]
+    [SerializeField] private GameObject[] stackRewardRedDots;  
+
     [Header("Popup")]
     [SerializeField] private QuestRewardPopup rewardPopup;
 
@@ -132,6 +135,8 @@ public class QuestStackRewardUI : MonoBehaviour
 
     private void RefreshChestStates()
     {
+        if (stackQuests == null) return;
+
         for (int i = 0; i < stageRewardButtons.Length && i < stackQuests.Length; i++)
         {
             QuestData q = stackQuests[i];
@@ -139,10 +144,22 @@ public class QuestStackRewardUI : MonoBehaviour
             bool canReceive = clearedCount >= q.quest_value;
             bool received = IsRewardReceived(i);
 
-            stageRewardButtons[i].interactable = canReceive && !received;
-            stageRewardIcons[i].sprite = received ? openedChestSprites[i] : closedChestSprites[i];
+            // ✅ 기존 로직 그대로 유지
+            if (stageRewardButtons[i])
+                stageRewardButtons[i].interactable = canReceive && !received;
+
+            if (stageRewardIcons != null && i < stageRewardIcons.Length && stageRewardIcons[i])
+                stageRewardIcons[i].sprite = received ? openedChestSprites[i] : closedChestSprites[i];
+
+            // 🔴 여기만 추가: "받을 수 있는데 아직 안 받은 상자"에만 점 ON
+            if (stackRewardRedDots != null && i < stackRewardRedDots.Length && stackRewardRedDots[i])
+            {
+                bool showDot = canReceive && !received;
+                stackRewardRedDots[i].SetActive(showDot);
+            }
         }
     }
+
 
     // questpanelcontroller에서 긁어옴
     private void OnClickReceiveReward(int index)
