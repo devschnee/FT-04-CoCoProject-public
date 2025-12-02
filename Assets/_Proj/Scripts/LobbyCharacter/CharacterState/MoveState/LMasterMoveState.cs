@@ -115,6 +115,7 @@ public class LMasterMoveState : LobbyCharacterBaseState
                     }
 
                     charAgent.MoveToLastPoint(startPoint);
+                    (owner as MasterBehaviour).SetTimeToGoHome(true);
                     while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
                     {
                         yield return null;
