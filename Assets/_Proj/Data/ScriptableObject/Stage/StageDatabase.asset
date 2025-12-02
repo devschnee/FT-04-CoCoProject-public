@@ -321,7 +321,7 @@ MonoBehaviour:
     stage_desc: "\uB2EC\uBE5B\uC774 \uD750\uB974\uB294 \uAC15\uAC00\uC785\uB2C8\uB2E4.\\n\uC794\uC794\uD55C
       \uBB3C\uACB0\uC5D0 \uBC24\uBE5B\uC774 \uBE44\uCE69\uB2C8\uB2E4."
     map_id: map_2_1
-    start_cutscene: -1
+    start_cutscene: Movie/Stage/stage_2_1_start.mp4
     start_talk: -1
     end_talk: -1
     end_cutscene: -1
@@ -371,7 +371,7 @@ MonoBehaviour:
     start_cutscene: -1
     start_talk: -1
     end_talk: -1
-    end_cutscene: -1
+    end_cutscene: Movie/Stage/stage_2_3_end.mp4
     treasure_01_id: treasure_2_3_1
     treasure_02_id: treasure_2_3_2
     treasure_03_id: treasure_2_3_3

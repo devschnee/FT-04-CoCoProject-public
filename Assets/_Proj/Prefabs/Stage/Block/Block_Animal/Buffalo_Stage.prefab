@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782eec62a348f6640ac6c0f2b27d9299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionSeconds: 0.1
+  interactionSeconds: 0.25
   jumpDuration: 0.75
   jumpY:
     serializedVersion: 2

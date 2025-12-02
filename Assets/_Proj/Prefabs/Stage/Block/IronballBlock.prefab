@@ -68,7 +68,7 @@ MonoBehaviour:
   requiredHoldtime: 0.4
   allowFall: 1
   allowSlope: 0
-  immuneTime: 5
+  immuneTime: 2.6
   overrideLiftTiming: 1
   overrideRiseSec: 0.3
   overrideHangSec: 1
@@ -76,7 +76,7 @@ MonoBehaviour:
   flow: {fileID: 5130774834560676477, guid: b4cd3f06419b67046b7fced9fed33f79, type: 3}
   shockwave: {fileID: 3683261028050005787}
   shockPing: {fileID: 8611777253475136124}
-  orbCoolTime: 6
+  orbCoolTime: 2.6
   probeUp: 0.1
   probeDown: 0.6
   sphereRadius: 0.35
