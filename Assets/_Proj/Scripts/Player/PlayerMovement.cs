@@ -54,15 +54,12 @@ public class PlayerMovement : MonoBehaviour, IRider
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+        rb.interpolation = RigidbodyInterpolation.None;
 
 
         // Strategy Pattern: 시작 시 전략 컴포넌트들을 가져옴
         moveStrategies = new List<IMoveStrategy>(GetComponents<IMoveStrategy>());
     }
-
-
-
-
 
 
     void FixedUpdate()
@@ -290,9 +287,22 @@ public class PlayerMovement : MonoBehaviour, IRider
 
 
         // 회전 처리
-        Quaternion targetRot = Quaternion.LookRotation(new Vector3(joystick.InputDir.x, 0, joystick.InputDir.z), Vector3.up);
-        Quaternion smoothRot = Quaternion.Slerp(rb.rotation, targetRot, rotateLerp * Time.fixedDeltaTime);
-        rb.MoveRotation(smoothRot);
+        float t = Mathf.Clamp01(rotateLerp * Time.fixedDeltaTime);
+
+        // 회전 시 떨림 보정 Deadzone + 정규화
+        Vector3 lookInput = new Vector3(joystick.InputDir.x, 0, joystick.InputDir.z);
+        if (lookInput.sqrMagnitude > 0.0005f)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(lookInput.normalized, Vector3.up);
+            Quaternion smoothRot = Quaternion.Slerp(rb.rotation, targetRot, t);
+            rb.MoveRotation(smoothRot);
+        }
+
+        ////float rotSpeed = rotateLerp;
+        //Quaternion targetRot = Quaternion.LookRotation(new Vector3(joystick.InputDir.x, 0, joystick.InputDir.z), Vector3.up);
+        //Quaternion smoothRot = Quaternion.Slerp(rb.rotation, targetRot, rotateLerp * Time.fixedDeltaTime);
+        ////Quaternion smoothRot = Quaternion.RotateTowards(rb.rotation, targetRot, rotSpeed * Time.fixedDeltaTime * 60f);
+        //rb.MoveRotation(smoothRot);
     }
 
 
