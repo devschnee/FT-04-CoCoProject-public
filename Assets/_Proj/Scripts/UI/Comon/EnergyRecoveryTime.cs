@@ -35,7 +35,7 @@ public class EnergyRecoveryTime : MonoBehaviour
             if (currentEnergy >= 5)
             {
                 isRunning = false;
-                energyRecoveryTime.gameObject.SetActive(false);
+                energyRecoveryTime.text = $"최대!";
                 yield break;
             }
 
