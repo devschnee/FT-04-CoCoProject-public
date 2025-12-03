@@ -32,6 +32,9 @@ dialogue_0_3_2,1,left,coco,Neutral,"…누가 일부러 남겨놓는 걸까?",0.
 dialogue_0_3_3,0,left,coco,Happy,"킁... 집이 코앞이야. 주인 냄새가 희미하게 나!",0.04,sfx_none,null
 dialogue_0_3_3,1,left,coco,Happy,"구덩이도 이제는 점점 재밌어, 헤헤",0.04,sfx_none,null
 dialogue_0_3_10,0,left,coco,Happy,"드디어 도착…! 나 혼자 힘으로 여기까지 왔어!\n주인이 분명 칭찬하겠지!",0.04,sfx_none,null
+dialogue_1_1_0,0,left,coco,Neutral,"주인이 날 두고 또 먼저 갔어… 아! 혹시 술래잡기 놀이인가?\n주인이 먼저 집으로 가고, 내가 술래가 돼서 주인을 찾아야 하는 놀이!",0.04,sfx_none,null
+dialogue_1_1_0,1,left,coco,Neutral,"좋아… 당장 주인을 찾으러 가야지!",0.04,sfx_none,null
+dialogue_1_1_1,0,left,coco,Happy,"우와, 하늘에서 떨어진 별 조각인가? 꼭 나한테 인사하는 것 같아.",0.04,sfx_none,null
 dialogue_1_1_1,1,left,coco,Happy,"한번 가까이 가보자!",0.04,sfx_none,null
 dialogue_1_1_10,0,left,coco,Neutral,"보물들을 모아가면 주인이 좋아하겠지? 보물들을 모아가보자!",0.04,sfx_none,null
 dialogue_1_2_0,0,left,coco,Neutral,"산 산책도 좋지만 가끔 이런 길도 좋은 것 같아.",0.04,sfx_none,null

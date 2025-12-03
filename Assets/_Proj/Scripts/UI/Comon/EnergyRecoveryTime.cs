@@ -43,7 +43,7 @@ public class EnergyRecoveryTime : MonoBehaviour
             DateTimeOffset lastOffset = DateTimeOffset.FromUnixTimeSeconds(lastEnergyTime);
 
             TimeSpan elapsed = DateTimeOffset.UtcNow - lastOffset;
-            int recoverSeconds = 1800; //
+            int recoverSeconds = 60; //테스트 후 1800으로 변경
 
             // 다음 1개 회복까지 남은 시간
             int remainSec = recoverSeconds - (int)elapsed.TotalSeconds;
