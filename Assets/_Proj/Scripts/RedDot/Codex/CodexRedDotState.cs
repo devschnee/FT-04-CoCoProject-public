@@ -66,7 +66,7 @@ public static class CodexRedDotManager
             case CodexType.artifact:
                 // ✅ 일반 유물 50000번대 + 재화유물 110001~110003 둘 다 인정
                 return (50000 < itemId && itemId < 60000)
-                       || (110001 <= itemId && itemId <= 110003);
+                       || (110002 <= itemId && itemId <= 110003);
 
             default:
                 return false;
