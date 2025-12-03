@@ -1193,6 +1193,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6606228269694984065, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.0814429
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606228269694984065, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.050857667
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606228269694984065, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.017533723
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606228269694984065, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0.002529066
+      objectReference: {fileID: 0}
     - target: {fileID: 6606228269694984067, guid: a6002dee3229d954384f4b1de9a0901d, type: 3}
       propertyPath: m_Height
       value: 0.71

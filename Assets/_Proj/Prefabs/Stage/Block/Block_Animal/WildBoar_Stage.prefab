@@ -892,6 +892,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3863027491269863610, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.07723375
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863027491269863610, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.05199113
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863027491269863610, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.016865896
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863027491269863610, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0.0005684736
+      objectReference: {fileID: 0}
     - target: {fileID: 3863027491269863611, guid: 023c0ce81d8bdf5458946ec72db0b403, type: 3}
       propertyPath: m_Avatar
       value: 
