@@ -91,7 +91,7 @@ MonoBehaviour:
   rb: {fileID: 2751089994372822744}
   moveSpeed: 5
   accel: 25
-  rotateLerp: 12
+  rotateLerp: 14
   slopeMask:
     serializedVersion: 2
     m_Bits: 16384
