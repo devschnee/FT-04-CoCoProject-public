@@ -32,14 +32,15 @@ public class SceneAudio : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("씬오디오 시작해요");
-        StartBGM();    
+        //StartBGM();    
     }
 
     public void StartBGM()
     {
        if (AudioManager.Instance != null)
        {
+            Debug.Log("씬오디오 시작해요");
+
             if (bgmType == BGMType.Main)
             {
                 StartCoroutine(PlayMainSceneBGM());
@@ -76,7 +77,7 @@ public class SceneAudio : MonoBehaviour
     {
         while (true)
         {
-            AudioManager.Instance.PlayAudio(BGMKey.Main, -1, fadeInTime, fadeOutTime, false);
+            AudioManager.Instance.PlayAudio(BGMKey.Main, -1, fadeInTime, fadeOutTime, false, forcePlay: true);
             var clip = AudioManager.Instance.GetBGMClip();
             Debug.Log($"재생 중인 배경음 : {clip.name}, 길이 : {clip.length}");
             yield return new WaitForSeconds(clip.length);

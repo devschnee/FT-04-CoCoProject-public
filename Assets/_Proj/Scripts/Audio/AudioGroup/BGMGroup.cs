@@ -5,9 +5,9 @@ public class BGMGroup : BaseAudioGroup
     private BGMPlayer player;
     private AudioSource audioS;
 
-    public void PlayBGM(AudioClip clip, float fadeIn, float fadeOut, bool loop)
+    public void PlayBGM(AudioClip clip, float fadeIn, float fadeOut, bool loop, bool forcePlay = false)
     {
-        player.PlayAudio(clip, fadeIn, fadeOut, loop);
+        player.PlayAudio(clip, fadeIn, fadeOut, loop, forcePlay);
     }
 
     public void PlayBGMForResources(AudioClip clip, float fadeIn, float fadeOut, bool loop)
@@ -42,6 +42,7 @@ public class BGMGroup : BaseAudioGroup
     }
     public override void ResetPlayer(float volumeValue)
     {
+        Debug.Log($"BGMPlayer : Reset 시작");
         player.ResetAll(volumeValue);
     }
     public override void SetVolumeHalf()

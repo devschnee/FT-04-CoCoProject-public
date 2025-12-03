@@ -32,7 +32,13 @@ public class UIPlayer : AudioPlayerControl
     public override void PauseAll() { }
     public override void ResumeAll() { }
     public override void StopAll() { }
-    public override void ResetAll(float volumeValue) { }
+    public override void ResetAll(float volumeValue)
+    {
+        foreach (var src in activeSources)
+        {
+            src.volume = volumeValue;
+        }
+    }
     public override void SetVolumeHalf() { }
     public override void SetVolumeNormal() { }
     public override void SetVolumeZero() { }

@@ -145,12 +145,12 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     }
 
     // 재생
-    public void PlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null)
+    public void PlayAudio(Enum key, int index = -1, float fadeIn = 0, float fadeOut = 0, bool loop = false, bool pooled = false, Vector3? pos = null, bool forcePlay = false)
     {
         switch (key)
         {
             case BGMKey bk:
-                PlayAudio(bk, index, fadeIn, fadeOut, loop);
+                PlayAudio(bk, index, fadeIn, fadeOut, loop, forcePlay);
                 break;
             case SFXKey sk:
                 PlayAudio(sk, index, loop, pooled, pos);
@@ -185,28 +185,30 @@ public class AudioManager : MonoBehaviour, IAudioGroupSetting
     // 각 씬에 있는 메인 BGM을 이벤트로 재생
     private void OnSceneLoaded(Scene scne, LoadSceneMode mode)
     {
-        // sAudio = FindFirstObjectByType<SceneAudio>();
-        // if (sAudio != null)
-        // {
-        //     sAudio.StartBGM();
-        // }
-
-        // 중요: 씬 챕터 추가시 if 문에 추가해 스테이지 전용 오디오소스 볼륨 크기로 돌아갑니다.
+        // 중요: 스테이지 씬 챕터 추가시 기존 스테이지 씬 이름 처럼 _StageScene으로 해주세요
         if (scne.name.Contains("_StageScene"))
         {
             AudioGroupController.ResetAllAudioGroupInGame();
         }
-        else AudioGroupController.ResetAllAudioGroupOutGame();
+        else
+        {
+            AudioGroupController.ResetAllAudioGroupOutGame();
+            sAudio = FindFirstObjectByType<SceneAudio>();
+            if (sAudio != null)
+            {
+                sAudio.StartBGM();
+            }
+        }
         Debug.Log("오디오 그룹 초기화 완료");
     }
 
     #region 오디오 재생 분기
-    private void PlayAudio(BGMKey key, int index = -1, float fadeIn = 1f, float fadeOut = 1f, bool loop = true)
+    private void PlayAudio(BGMKey key, int index = -1, float fadeIn = 1f, float fadeOut = 1f, bool loop = true, bool forcePlay = false)
     {
         var clip = libraryProvider.GetClip(AudioType.BGM, key, index);
         if (clip == null) return;
         BGMClip = clip;
-        bgmGroup.PlayBGM(clip, fadeIn, fadeOut, loop);
+        bgmGroup.PlayBGM(clip, fadeIn, fadeOut, loop, forcePlay);
     }
     private void PlayAudio(SFXKey key, int index = -1, bool loop = false, bool pooled = false, Vector3? pos = null)
     {
