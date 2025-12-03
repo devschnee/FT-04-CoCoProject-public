@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 529257569822649610}
-  - component: {fileID: 6965938134304537035}
+  - component: {fileID: 5404448422324537773}
   m_Layer: 0
   m_Name: GrassThreeProp
   m_TagString: Untagged
@@ -267,7 +267,7 @@ Transform:
   - {fileID: 1631591239298072424}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6965938134304537035
+--- !u!65 &5404448422324537773
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -15,4 +15,4 @@ MonoBehaviour:
   blockType: 17
   blockName: GrassFourProp
   icon: {fileID: 21300000, guid: 9000e8521ce54df4ba3399003e2b15ba, type: 3}
-  prefab: {fileID: 2338404574653266739, guid: b03e6aac453ae984bb80ba590a6b4d79, type: 3}
+  prefab: {fileID: 2338404574653266739, guid: bc66dc1ae60426343ad3563fb7212024, type: 3}
