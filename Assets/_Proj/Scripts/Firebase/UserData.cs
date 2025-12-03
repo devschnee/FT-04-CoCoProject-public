@@ -92,6 +92,8 @@ public class UserData : IUserData
         //public DateTime lastActive;
         public long lastActiveTime;
 
+        public long lastEnergyTime;
+
         //프로필에 표시될 아이콘, 프로필에 표시될 애장품 목록.
         public Dictionary<string, int> profile = new();
         public Master()
@@ -102,6 +104,7 @@ public class UserData : IUserData
             createdAt = ((DateTimeOffset)now).ToUnixTimeSeconds();
             lastLoginAt = ((DateTimeOffset)now).ToUnixTimeSeconds();
             lastActiveTime = ((DateTimeOffset)now).ToUnixTimeSeconds();
+            lastEnergyTime = ((DateTimeOffset)now).ToUnixTimeSeconds();
 
             string[] enums = Enum.GetNames(typeof(ProfileType));
             for (int i = 0; i < enums.Length; i++)
