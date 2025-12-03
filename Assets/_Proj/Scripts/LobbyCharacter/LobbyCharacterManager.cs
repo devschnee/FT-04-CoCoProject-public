@@ -67,6 +67,7 @@ public class LobbyCharacterManager : MonoBehaviour, ILobbyCharacterManager
     private void OnEnable()
     {
         HeyManager += DeactivateChar;
+        editController.OnChangedLobby += ResetNavMeshSurfaceAndWayPoint;
     }
 
     private void Start()
@@ -103,7 +104,7 @@ public class LobbyCharacterManager : MonoBehaviour, ILobbyCharacterManager
             }
             else if (!IsEditMode)
             {
-                planeSurface.BuildNavMesh();
+                //planeSurface.BuildNavMesh();
                 if (SettingManager.Instance != null) SettingManager.Instance.RefreshAnimalPositionEntryList();
                 foreach (var lC in lobbyCharacter)
                 {
@@ -201,6 +202,7 @@ public class LobbyCharacterManager : MonoBehaviour, ILobbyCharacterManager
     private void OnDisable()
     {
         HeyManager -= DeactivateChar;
+        editController.OnChangedLobby -= ResetNavMeshSurfaceAndWayPoint;
     }
 
     private void OnDestroy()
@@ -227,6 +229,12 @@ public class LobbyCharacterManager : MonoBehaviour, ILobbyCharacterManager
         }
 
         RefreshAniamlHitsArray();
+    }
+
+    private void ResetNavMeshSurfaceAndWayPoint()
+    {
+        InitWayPoint();
+        planeSurface.BuildNavMesh();
     }
 
     private void RefreshAniamlHitsArray()

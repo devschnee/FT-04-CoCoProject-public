@@ -29,19 +29,18 @@ public class LCocoDoogyIdleState : LobbyCharacterBaseState
         if (owner.IsDestroyed() || !owner.isActiveAndEnabled) owner.StopAllCoroutines();
         if (LobbyCharacterManager.Instance.IsEditMode && fsm.CurrentState != owner.EditState)
         {
-            owner.StopAllCoroutines();
             fsm.ChangeState(owner.EditState);
         }
     }
 
     public override void OnStateExit()
     {
-        owner.StopAllCoroutines();
+        owner.StopCoroutine(WaitThenMove());
     }
     
     private IEnumerator WaitThenMove()
     {
-        yield return new WaitForSeconds(Random.Range(2f, 3f));
+        yield return new WaitForSeconds(3f);
         fsm.ChangeState(owner.MoveState);
         yield break;
     }
@@ -73,19 +72,18 @@ public class LMasterIdleState : LobbyCharacterBaseState
         if (owner.IsDestroyed() || !owner.isActiveAndEnabled) owner.StopAllCoroutines();
         if (LobbyCharacterManager.Instance.IsEditMode && fsm.CurrentState != owner.EditState)
         {
-            owner.StopAllCoroutines();
             fsm.ChangeState(owner.EditState);
         }
     }
 
     public override void OnStateExit()
     {
-        owner.StopAllCoroutines();
+        owner.StopCoroutine(WaitThenMove());
     }
     
     private IEnumerator WaitThenMove()
     {
-        yield return new WaitForSeconds(Random.Range(2f, 3f));
+        yield return new WaitForSeconds(3f);
         fsm.ChangeState(owner.MoveState);
         yield break;
     }
@@ -117,19 +115,18 @@ public class LAnimalIdleState : LobbyCharacterBaseState
         if (owner.IsDestroyed() || !owner.isActiveAndEnabled) owner.StopAllCoroutines();
         if (LobbyCharacterManager.Instance.IsEditMode && fsm.CurrentState != owner.EditState)
         {
-            owner.StopAllCoroutines();
             fsm.ChangeState(owner.EditState);
         }
     }
 
     public override void OnStateExit()
     {
-        owner.StopAllCoroutines();
+        owner.StopCoroutine(WaitThenMove());
     }
     
     private IEnumerator WaitThenMove()
     {
-        yield return new WaitForSeconds(Random.Range(2f, 3f));
+        yield return new WaitForSeconds(3f);
         fsm.ChangeState(owner.MoveState);
         yield break;
     }

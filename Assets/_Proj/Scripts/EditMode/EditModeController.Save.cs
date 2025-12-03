@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.AI;
 using Game.Inventory;
 using UnityEngine.Assertions.Must;
 
@@ -358,12 +357,7 @@ public partial class EditModeController : IQuestBehaviour
         if (!saveButton) return;
         saveButton.gameObject.SetActive(false);
         saveButton.onClick.RemoveAllListeners();
-        // LSH 추가 1127
-        saveButton.onClick.AddListener(() => 
-        {
-            OnSaveClicked();
-            if (LobbyCharacterManager.Instance != null) LobbyCharacterManager.Instance.InitWayPoint();
-        });
+        saveButton.onClick.AddListener(OnSaveClicked);
     }
 
     private void WireBackButton()
@@ -408,12 +402,7 @@ public partial class EditModeController : IQuestBehaviour
         if (!savedOkButton) return;
 
         savedOkButton.onClick.RemoveAllListeners();
-        savedOkButton.onClick.AddListener(() => 
-        {
-            savedInfoPanel?.SetActive(false); 
-            //LSH 추가 1121
-            if (LobbyCharacterManager.Instance != null) LobbyCharacterManager.Instance.InitWayPoint();
-        });
+        savedOkButton.onClick.AddListener(() => { savedInfoPanel?.SetActive(false); });
     }
 
     #endregion

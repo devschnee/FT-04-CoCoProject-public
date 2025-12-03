@@ -87,6 +87,9 @@ public partial class EditModeController : MonoBehaviour
     public static System.Action<bool> HomePreviewActiveChanged;
     public bool IsHomePreviewActive => homePreview != null;
     private bool homePreviewConfirmed = false;
+
+    // LSH 추가 1203
+    public event Action OnChangedLobby;
     #endregion
 
 

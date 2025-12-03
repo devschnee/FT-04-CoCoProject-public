@@ -35,11 +35,11 @@ public class LMCharacterRoutineControl
 
     private IEnumerator CocoRoutine()
     {
-        Vector3 spawnPos = SpawnPoint.GetSpawnPoint(lobbyManager.Waypoints[0].transform.position);
 
         //if (LobbyCharacterManager.Instance.IsEditMode) yield return wait;
         if (LobbyCharacterManager.Instance.IsEditMode == false)
         {
+            Vector3 spawnPos = SpawnPoint.GetSpawnPoint(lobbyManager.Waypoints[0].transform.position);
             coco.transform.position = spawnPos;
             yield return delay = new (5f); // 로비 시작 후 좀 있다가 생성하는게 이쁘지 않을까?
             coco.gameObject.SetActive(true);
@@ -55,11 +55,11 @@ public class LMCharacterRoutineControl
     }
     private IEnumerator MasterRoutine()
     {
-        Vector3 spawnPos = SpawnPoint.GetSpawnPoint(lobbyManager.Waypoints[0].transform.position);
 
         //if (LobbyCharacterManager.Instance.IsEditMode) yield return wait;
         if (LobbyCharacterManager.Instance.IsEditMode == false)
         {
+            Vector3 spawnPos = SpawnPoint.GetSpawnPoint(lobbyManager.Waypoints[0].transform.position);
             master.transform.position = spawnPos;
             yield return delay = new (10f);
             master.gameObject.SetActive(true);

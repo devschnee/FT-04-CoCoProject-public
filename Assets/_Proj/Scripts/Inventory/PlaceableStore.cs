@@ -244,7 +244,7 @@ public class PlaceableStore : MonoBehaviour
             switch (p.cat)
             {
                 case PlaceableCategory.Home:
-                    go.AddComponent<NavMeshModifier>();
+                    if (go.GetComponent<NavMeshModifier>() == null) go.AddComponent<NavMeshModifier>();
                     var homeModifier = go.GetComponent<NavMeshModifier>();
                     homeModifier.overrideArea = true;
                     homeModifier.area = 1;

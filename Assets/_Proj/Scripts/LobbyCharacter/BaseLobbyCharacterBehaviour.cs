@@ -82,6 +82,7 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
             fsm.UpdateState();
             //charAgent.MoveValueChanged();
         }
+        if (hasBeenInit && gameObject.layer == LayerMask.NameToLayer("Editable") && fsm.CurrentState != EditState) fsm.ChangeState(EditState);
     }
 
     protected virtual void OnDisable()

@@ -267,7 +267,7 @@ public class AudioPool
     {
         CleanupActiveList();
 
-        foreach (var src in activePool)
+        foreach (var src in poolList)
         {
             if (src != null)
             {
@@ -284,7 +284,7 @@ public class AudioPool
     {
         CleanupActiveList();
 
-        foreach (var src in activePool)
+        foreach (var src in poolList)
         {
             if (src != null)
             {
@@ -301,7 +301,7 @@ public class AudioPool
     {
         CleanupActiveList();
 
-        foreach (var src in activePool)
+        foreach (var src in poolList)
         {
             if (src != null)
             {

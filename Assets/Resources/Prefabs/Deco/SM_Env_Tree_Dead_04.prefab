@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 64005397218154244}
   - component: {fileID: 64223917385518256}
   - component: {fileID: 1457080696638976898}
+  - component: {fileID: -2672473147113922695}
   m_Layer: 6
   m_Name: SM_Env_Tree_Dead_04
   m_TagString: Untagged
@@ -109,9 +110,9 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 43773895737221158, guid: 29ac53e77d07dbe4f805212eec9f7de2, type: 2}
 --- !u!64 &64472446124028696
@@ -131,9 +132,9 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 43973908757023732, guid: 29ac53e77d07dbe4f805212eec9f7de2, type: 2}
 --- !u!64 &64609502430916112
@@ -153,9 +154,9 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 43241645162401736, guid: 29ac53e77d07dbe4f805212eec9f7de2, type: 2}
 --- !u!64 &64005397218154244
@@ -175,9 +176,9 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 43814179888966262, guid: 29ac53e77d07dbe4f805212eec9f7de2, type: 2}
 --- !u!64 &64223917385518256
@@ -197,9 +198,9 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 43805551277755778, guid: 29ac53e77d07dbe4f805212eec9f7de2, type: 2}
 --- !u!114 &1457080696638976898
@@ -223,3 +224,24 @@ MonoBehaviour:
   useMaterialPropertyBlock: 1
   colorPropName: _BaseColor
   useFullTransformPathForKey: 0
+--- !u!65 &-2672473147113922695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056765537674294}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 12.473458, z: 5}
+  m_Center: {x: 0, y: 5.4568725, z: 0}

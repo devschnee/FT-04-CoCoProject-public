@@ -189,15 +189,18 @@ public partial class EditModeController
     }
     private System.Collections.IEnumerator HideSavedPanelDelayed()
     {
+        
         // 2초 대기
-        yield return new WaitForSeconds(2f);
+        // LSH 추가 1203 savedButton에 있던 로비캐릭터 초기화 작업을 여기서 이벤트로 묶음
+        yield return new WaitForSeconds(1f);
+        Debug.Log("로비변경되었습니다");
+        OnChangedLobby?.Invoke();
+        yield return new WaitForSeconds(1f);
 
         if (savedInfoPanel)
             savedInfoPanel.SetActive(false);
 
         // 기존 확인 버튼에서 하던 작업도 여기서 수행
-        if (LobbyCharacterManager.Instance != null)
-            LobbyCharacterManager.Instance.InitWayPoint();
 
         savedInfoRoutine = null;
     }

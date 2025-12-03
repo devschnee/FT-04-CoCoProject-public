@@ -34,6 +34,11 @@ public class LCocoDoogyMoveState : LobbyCharacterBaseState
         // 드래그 엔드하면 Enter에서 두갈래로 가야하겠지?
         if (isDragged)
         {
+            if (!init) 
+            {
+                route.RefreshList();
+                init = true;
+            }
             draggedPos = (owner as CocoDoogyBehaviour).LastDragEndPos;
             route.RearragneList(currentIndex, draggedPos);
             isDragged = false;

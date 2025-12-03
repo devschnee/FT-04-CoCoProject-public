@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 23550911502730192}
   - component: {fileID: 64056060863521246}
   - component: {fileID: 568094296264321647}
+  - component: {fileID: -6994561162387369258}
   m_Layer: 6
   m_Name: SM_Env_Big_Tree_Base_01
   m_TagString: Untagged
@@ -192,9 +193,9 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 43723409729355528, guid: ff135a3952fe1a8408bd1dc04a450aab, type: 2}
 --- !u!114 &568094296264321647
@@ -219,3 +220,24 @@ MonoBehaviour:
   useMaterialPropertyBlock: 1
   colorPropName: _BaseColor
   useFullTransformPathForKey: 0
+--- !u!65 &-6994561162387369258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672147471839840}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.555396, y: 0.8934724, z: 7.2406588}
+  m_Center: {x: -0.00000011920929, y: 0.4467362, z: -0.000002503395}
