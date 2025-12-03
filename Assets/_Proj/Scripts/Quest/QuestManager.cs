@@ -46,11 +46,10 @@ public class QuestManager : MonoBehaviour
         //touch_animals: 로비 터치 핸들링하는거 아무거나 됨.
         //change_deployment: 로비 저장하는거가 해주면 됨 됨.
         //collect_cap, use_cap: 처리됨. 재화서비스가 해주면 됨. 됨
-        //quest_stack류: 수하씨가 만든 퀘스트 보상 처리가 해주면 됨. 반쯤 됨.
+        //quest_stack류: 수하씨가 만든 퀘스트 보상 처리가 해주면 됨.
         //unique_stage_clear: 이건 처리됨. 프로그레스매니저가 해줌. 됨
-
-        //login, stage_clear, touch_animals, send_like, receive_like, visit_lobby, change_deployment, collect_cap, use_cap,
-        //collect_star, daily_quest_stack, weekly_quest_stack, connet_guest, unique_stage_clear
+        //visit_lobby: 로비 방문 됨.
+        
             List<QuestData> dataList = new();
         switch (behaviour)
         {
@@ -191,7 +190,16 @@ public class QuestManager : MonoBehaviour
                     }
                 }
             break;
-        
+            case FriendLobbyManager fm:
+                dataList =
+                        DataManager.Instance.Quest.Database.questList.FindAll(x => x.quest_object == QuestObject.visit_lobby);
+                foreach (var d in dataList)
+                {
+                    UserData.Local.quest.progress[d.quest_id]++;
+                }
+
+                break;
+
         }
 
         UserData.Local.quest.Save();

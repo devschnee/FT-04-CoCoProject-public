@@ -1,6 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-public class FriendLobbyManager : MonoBehaviour
+public class FriendLobbyManager : MonoBehaviour, IQuestBehaviour
 {
     public UserData.Master FriendMaster { get; private set; }
     public UserData.Lobby FriendLobby { get; private set; }
@@ -21,6 +21,7 @@ public class FriendLobbyManager : MonoBehaviour
 
     public void Init(UserData friend, string friendUid)
     {
+        QuestManager.Instance.Handle(this);
         Friend = friend;
         FriendMaster = friend.master;
         FriendLobby = friend.lobby;
