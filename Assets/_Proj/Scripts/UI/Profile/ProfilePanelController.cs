@@ -42,7 +42,15 @@ public class ProfilePanelController : MonoBehaviour
     {
         //_auth = FirebaseAuth.DefaultInstance;
     }
+    private void Start()
+    {
+        UserData.Local.master.onMasterUpdate += SetupUserInfo;
+    }
 
+    private void OnDestroy()
+    {
+        UserData.Local.master.onMasterUpdate -= SetupUserInfo;
+    }
     private void OnEnable()
     {
         SetupUserInfo();

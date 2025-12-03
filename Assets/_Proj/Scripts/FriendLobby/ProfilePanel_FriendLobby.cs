@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ProfilePanel_FriendLobby : MonoBehaviour
 {
-    private UserData Friend => FriendLobbyManager.Instance.Friend;
+    private UserData.Master FriendMaster => FriendLobbyManager.Instance.FriendMaster;
     private string Uid => FriendLobbyManager.Instance.Uid;
     [Header("Basic Info")]
     [SerializeField] private TMP_Text nicknameText;
@@ -27,33 +27,46 @@ public class ProfilePanel_FriendLobby : MonoBehaviour
         UIPanelAnimator.Open(gameObject);
     }
 
+    
+
     private void OnEnable()
     {
         SetupFriendInfo();
+        SetupFriendMuseum();
+        FriendMaster.onMasterUpdate += SetupFriendInfo;
+        FriendMaster.onMasterUpdate += SetupFriendMuseum;
 
-        animalIcon.Initialize(null, ProfileType.animal, Friend.master[ProfileType.animal]);
-        decoIcon.Initialize(null, ProfileType.deco, Friend.master[ProfileType.deco]);
-        costumeIcon.Initialize(null, ProfileType.costume, Friend.master[ProfileType.costume]);
-        artifactIcon.Initialize(null, ProfileType.artifact, Friend.master[ProfileType.artifact]);
     }
 
+    private void OnDisable()
+    {
+        FriendMaster.onMasterUpdate -= SetupFriendInfo;
+        FriendMaster.onMasterUpdate -= SetupFriendMuseum;
+    }
+    private void SetupFriendMuseum()
+    {
+        animalIcon.Initialize(null, ProfileType.animal, FriendMaster[ProfileType.animal]);
+        decoIcon.Initialize(null, ProfileType.deco, FriendMaster[ProfileType.deco]);
+        costumeIcon.Initialize(null, ProfileType.costume, FriendMaster[ProfileType.costume]);
+        artifactIcon.Initialize(null, ProfileType.artifact, FriendMaster[ProfileType.artifact]);
+    }
 
     private void SetupFriendInfo()
     {
         //var user = _auth.CurrentUser;
         
 
-        if (nicknameText) nicknameText.text = Friend.master.nickName ?? "-";
+        if (nicknameText) nicknameText.text = FriendMaster.nickName ?? "-";
         if (uidText) uidText.text = Uid ?? "-";
         if (joindateText)
         {
-            var createdAt = Friend.master.createdAt;
+            var createdAt = FriendMaster.createdAt;
             DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(createdAt);
             string formatted = dateTimeOffset.ToLocalTime().ToString("yyyy/MM/dd");
             joindateText.text = formatted;
         }
-        profileBigImage.sprite = DataManager.Instance.Profile.GetIcon(Friend.master[ProfileType.icon]);
-        totalLikeText.text = $"누적 로비 좋아요  :  {Friend.master.totalLikes}";
+        profileBigImage.sprite = DataManager.Instance.Profile.GetIcon(FriendMaster[ProfileType.icon]);
+        totalLikeText.text = $"누적 로비 좋아요  :  {FriendMaster.totalLikes}";
 
 
     }

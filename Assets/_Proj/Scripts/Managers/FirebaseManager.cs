@@ -538,6 +538,9 @@ public class FirebaseManager : MonoBehaviour, IQuestBehaviour
             case UserDataDirtyFlag.Quest:
                 nodeString = "quest";
                 break;
+            case UserDataDirtyFlag.Likes:
+                nodeString = "likes";
+                break;
             default:
                 break;
         }
@@ -561,6 +564,7 @@ public class FirebaseManager : MonoBehaviour, IQuestBehaviour
                     nodeString == "friends" ? category.GetRawJsonValue().FromJson<UserData.Friends>() :
                     nodeString == "codex" ? category.GetRawJsonValue().FromJson<UserData.Codex>() :
                     nodeString == "quest" ? category.GetRawJsonValue().FromJson<UserData.Quest>() :
+                    nodeString == "likes" ? category.GetRawJsonValue().FromJson<UserData.Likes>() :
                     null;
 
                
@@ -576,6 +580,7 @@ public class FirebaseManager : MonoBehaviour, IQuestBehaviour
                     nodeString == "friends" ? new UserData.Friends() :
                     nodeString == "codex" ? new UserData.Codex() :
                     nodeString == "quest" ? new UserData.Quest() :
+                    nodeString == "likes" ? new UserData.Likes() :
                     null;
             }
         }
@@ -659,6 +664,7 @@ public class FirebaseManager : MonoBehaviour, IQuestBehaviour
                               category is UserData.Progress ? "progress" :
                               category is UserData.Preferences ? "preferences" :
                               category is UserData.Quest ? "quest" :
+                              category is UserData.Likes ? "likes" :
                               "UndefinedNode";
 
         try
@@ -1085,7 +1091,61 @@ public class FirebaseManager : MonoBehaviour, IQuestBehaviour
     #endregion
 
 
+    #region 좋아요 보내기 기능 관련 API
 
+    public async Task ToggleFollowPlayer(string uid)
+    {
+        try
+        {
+            UserData targetData = await DownloadUserData(uid);
+            var targetLikes = targetData.likes ?? new();
+            var targetLikesFollowers = targetLikes.followers ?? new();
+            var targetMaster = targetData.master;
+            int initialCount = targetMaster.totalLikes;
+            int delta = 0;
+            if (targetLikesFollowers.Contains(Auth.CurrentUser.UserId))
+            {
+                targetLikesFollowers.Remove(Auth.CurrentUser.UserId);
+                delta = -1;
+            }
+            else
+            {
+                targetLikesFollowers.Add(Auth.CurrentUser.UserId);
+                delta = 1;
+            }
+
+            //대상의 데이터 핸들링이 끝났음.
+
+            var myLikes = UserData.Local.likes;
+            var myLikesFollowings = myLikes.followings ?? new();
+
+            if (targetLikesFollowers.Contains(Auth.CurrentUser.UserId))
+                if (!myLikesFollowings.Contains(uid))
+                    myLikesFollowings.Add(uid);
+
+            if (!targetLikesFollowers.Contains(Auth.CurrentUser.UserId))
+                if (myLikesFollowings.Contains(uid))
+                    myLikesFollowings.Remove(uid);
+
+            targetMaster.totalLikes += delta;
+
+            var targetFlag = targetData.flag;
+            targetData.flag |= UserDataDirtyFlag.Master;
+            targetData.flag |= UserDataDirtyFlag.Likes;
+            string flagString = JsonConvert.SerializeObject(targetData.flag);
+            _ = UserDataRef.Child(uid).Child("flag").SetRawJsonValueAsync(flagString);
+            _ = UploadUserDataCategory(uid, targetLikes);
+            _ = UploadUserDataCategory(uid, targetMaster);
+            await UploadUserDataCategory(Auth.CurrentUser.UserId, myLikes);
+
+        }
+        catch (FirebaseException fe)
+        {
+            Debug.LogWarning($"[좋아요 기능]: 에러 발생: {fe.Message}");
+        }
+    }
+
+    #endregion
 
 
 

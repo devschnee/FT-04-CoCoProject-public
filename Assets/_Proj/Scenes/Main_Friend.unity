@@ -5334,6 +5334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29b0a9a646a0a1498c9ef0195fc79c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  likeButton: {fileID: 1262999655}
+  likeButtonImage: {fileID: 397780040}
 --- !u!4 &422563143
 Transform:
   m_ObjectHideFlags: 0
