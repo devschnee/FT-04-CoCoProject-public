@@ -1,8 +1,5 @@
-﻿using NUnit.Framework.Internal;
-using System;
+﻿using System;
 using UnityEngine;
-using UnityEngine.Splines;
-using static UnityEngine.ParticleSystem;
 
 public class Treasure : MonoBehaviour
 {
@@ -72,7 +69,7 @@ public class Treasure : MonoBehaviour
             //sprite.material.SetColor(_baseColorID, new Color(0.5f, 0.5f, 0.5f, 1f));
             sprite.material.SetColor(_glowColorID, new Color(0.6f, 0.6f, 0.6f, 1f)); 
         }
-        // isCollected = true; 
+         isCollected = true;
     }
 
     public void Init(string id)
@@ -84,64 +81,122 @@ public class Treasure : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (isCollected) return;
         if (StageUIManager.Instance.stageManager.isTest) return;
 
-        if (other.CompareTag("Player"))
+        // KHJ - 이미 먹은 보물의 패널 분기
+        if (isCollected)
         {
-            isCollected = true;
-            // LSH 추가 1128
-            AudioEvents.Raise(UIKey.Stage, 4);
-            StageUIManager.Instance.TreasurePanel.SetActive(true);
-            StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
-            StageUIManager.Instance.CocoDoogyImage.sprite = StageUIManager.Instance.CoCoDoogySprite;
-
-            var data = DataManager.Instance.Treasure.GetData(treasureId);
-
-            switch(data.treasureType)
+            if (other.CompareTag("Player"))
             {
-                case TreasureType.deco:
-                    TreasureUI(data);
-                    break;
-                case TreasureType.costume:
-                    TreasureUI(data);
-                    break;
-                case TreasureType.artifact:
-                    TreasureUI(data);
-                    break;
-                case TreasureType.coin:
-                    TreasureUI(data);
-                    break;
-                case TreasureType.cap:
-                    TreasureUI(data);
-                    break;
+                AudioEvents.Raise(UIKey.Stage, 4);
+                StageUIManager.Instance.TreasureCollectedPanel.SetActive(true);
+                StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
+                StageUIManager.Instance.CocoDoogyCollectedImage.sprite = StageUIManager.Instance.CoCoDoogySprite;
+
+                var data = DataManager.Instance.Treasure.GetData(treasureId);
+
+                switch (data.treasureType)
+                {
+                    case TreasureType.deco:
+                        TreasureCollectedUI(data);
+                        break;
+                    case TreasureType.costume:
+                        TreasureCollectedUI(data);
+                        break;
+                    case TreasureType.artifact:
+                        TreasureCollectedUI(data);
+                        break;
+                    case TreasureType.coin:
+                        TreasureCollectedUI(data);
+                        break;
+                    case TreasureType.cap:
+                        TreasureCollectedUI(data);
+                        break;
+                }
+
+                Joystick joystick = FindAnyObjectByType<Joystick>();
+                if (joystick != null)
+                {
+                    joystick.IsLocked = true;
+                }
+                // 플레이어 이동 막기
+                other.GetComponent<PlayerMovement>().enabled = false;
+
+                // 확인 버튼 클릭 시 호출되도록 이벤트 등록
+                StageUIManager.Instance.OnTreasureCollectedConfirm = () => OnQuitAction(() =>
+                {
+                    StageUIManager.Instance.stageManager.OnTreasureCollected(treasureIndex);
+                    StageUIManager.Instance.TreasureCollectedPanel.SetActive(false);
+                    StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(true);
+                    joystick.IsLocked = false;
+                    other.GetComponent<PlayerMovement>().enabled = true;
+                    //sprite.color = new Color(1, 1, 1, 0);
+                    sprite.gameObject.SetActive(false);
+                    particle.SetActive(false);
+                    artifactParticleSystem.SetActive(false);
+                    StageUIManager.Instance.stageGetTreasureCount++;
+                    StageUIManager.Instance.CollecTreausreCountText.text = $"{StageUIManager.Instance.stageGetTreasureCount} / 3";
+                });
             }
-
-            Joystick joystick = FindAnyObjectByType<Joystick>();
-            if (joystick != null)
+        }
+        else
+        {
+            if (other.CompareTag("Player"))
             {
-                // KHJ - Treasure Panel이 켜졌으니 조이스틱 입력 잠금
-                joystick.IsLocked = true;
+                isCollected = true;
+                // LSH 추가 1128
+                AudioEvents.Raise(UIKey.Stage, 4);
+                StageUIManager.Instance.TreasurePanel.SetActive(true);
+                StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
+                StageUIManager.Instance.CocoDoogyImage.sprite = StageUIManager.Instance.CoCoDoogySprite;
+
+                var data = DataManager.Instance.Treasure.GetData(treasureId);
+
+                switch (data.treasureType)
+                {
+                    case TreasureType.deco:
+                        TreasureUI(data);
+                        break;
+                    case TreasureType.costume:
+                        TreasureUI(data);
+                        break;
+                    case TreasureType.artifact:
+                        TreasureUI(data);
+                        break;
+                    case TreasureType.coin:
+                        TreasureUI(data);
+                        break;
+                    case TreasureType.cap:
+                        TreasureUI(data);
+                        break;
+                }
+
+                Joystick joystick = FindAnyObjectByType<Joystick>();
+                if (joystick != null)
+                {
+                    // KHJ - Treasure Panel이 켜졌으니 조이스틱 입력 잠금
+                    joystick.IsLocked = true;
+                }
+                // 플레이어 이동 막기
+                other.GetComponent<PlayerMovement>().enabled = false;
+
+                // 확인 버튼 클릭 시 호출되도록 이벤트 등록
+                StageUIManager.Instance.OnTreasureConfirm = () => OnQuitAction(() =>
+                {
+
+                    StageUIManager.Instance.stageManager.OnTreasureCollected(treasureIndex);
+                    StageUIManager.Instance.TreasurePanel.SetActive(false);
+                    StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(true);
+                    joystick.IsLocked = false;
+                    other.GetComponent<PlayerMovement>().enabled = true;
+                    //sprite.color = new Color(1, 1, 1, 0);
+                    sprite.gameObject.SetActive(false);
+                    particle.SetActive(false);
+                    artifactParticleSystem.SetActive(false);
+                    StageUIManager.Instance.stageGetTreasureCount++;
+                    StageUIManager.Instance.CollecTreausreCountText.text = $"{StageUIManager.Instance.stageGetTreasureCount} / 3";
+                });
             }
-            // 플레이어 이동 막기
-            other.GetComponent<PlayerMovement>().enabled = false;
-
-            // 확인 버튼 클릭 시 호출되도록 이벤트 등록
-            StageUIManager.Instance.OnTreasureConfirm = () => OnQuitAction(() =>
-            {
-                
-                StageUIManager.Instance.stageManager.OnTreasureCollected(treasureIndex);
-                StageUIManager.Instance.TreasurePanel.SetActive(false);
-                StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(true);
-                joystick.IsLocked = false;
-                other.GetComponent<PlayerMovement>().enabled = true;
-                //sprite.color = new Color(1, 1, 1, 0);
-                sprite.gameObject.SetActive(false);
-                particle.SetActive(false);
-                artifactParticleSystem.SetActive(false);
-                StageUIManager.Instance.stageGetTreasureCount++;
-                StageUIManager.Instance.CollecTreausreCountText.text = $"{StageUIManager.Instance.stageGetTreasureCount} / 3";
-            });
         }
     }
 
@@ -179,6 +234,42 @@ public class Treasure : MonoBehaviour
                 break;
         }
         StageUIManager.Instance.CocoDoogyDesc.text = data.coco_coment;
+    }
+
+    private static void TreasureCollectedUI(TreasureData data)
+    {
+        var transData = DataManager.Instance.Codex.GetData(data.view_codex_id);
+        StageUIManager.Instance.TreasureCollectedName.text = transData.codex_name;
+        StageUIManager.Instance.TreasureCollectedDesc.text = transData.codex_lore;
+        StageUIManager.Instance.TreasureCollectedImage.sprite = DataManager.Instance.Codex.GetCodexIcon(data.view_codex_id);
+
+        var typeTMP = StageUIManager.Instance.TreasureCollectedType;
+        var countTMP = StageUIManager.Instance.TreasureCollectedCount;
+        switch (data.treasureType)
+        {
+            case TreasureType.coin:
+            case TreasureType.cap:
+                typeTMP.text = "수량";
+                typeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+                countTMP.text = data.count.ToString();
+                break;
+            case TreasureType.deco:
+                typeTMP.text = "조경";
+                typeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+                countTMP.text = data.count.ToString();
+                break;
+            case TreasureType.costume:
+                typeTMP.text = "치장";
+                typeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+                countTMP.text = data.count.ToString();
+                break;
+            case TreasureType.artifact:
+                typeTMP.text = "유물";
+                typeTMP.alignment = TMPro.TextAlignmentOptions.Center;
+                countTMP.text = "";
+                break;
+        }
+        StageUIManager.Instance.CocoDoogyCollectedDesc.text = data.coco_coment;
     }
 
     public void OnQuitAction(Action action)
