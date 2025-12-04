@@ -10,26 +10,39 @@ public class FriendLobbyUIController : MonoBehaviour
     [SerializeField] Image likeButtonImage;
     bool isAwait = false;
 
+    bool IsFollowing => UserData.Local.likes.followings.Contains(FriendLobbyManager.Instance.Uid);
+
     private void Awake()
     {
-        likeButton.onClick.AddListener(async() => await ToggleLike());
+        
+    }
+    public async void Start()
+    {
+        SetLikeButton();
         Recolor();
+    }
+    private void SetLikeButton()
+    {
+        likeButton.interactable = !isAwait;
+        likeButton.onClick.AddListener(async() => await ToggleLike());
+
+
     }
     public async Task ToggleLike()
     {
         isAwait = true;
         likeButton.interactable = !isAwait;
-        await FirebaseManager.Instance.ToggleFollowPlayer(FriendLobbyManager.Instance.Uid);
+
+        await FirebaseManager.Instance.FollowPlayer_Outbound(FriendLobbyManager.Instance.Uid, !IsFollowing);
+
+        isAwait = false;
         Recolor();
     }
 
     public async void Recolor()
     {
-        var friendLikes = await FirebaseManager.Instance.DownloadUserDataCategory(FriendLobbyManager.Instance.Uid, UserDataDirtyFlag.Likes) as UserData.Likes;
-        isAwait = false;
         likeButton.interactable = !isAwait;
-        var isOn = friendLikes.followers.Contains(FirebaseAuth.DefaultInstance.CurrentUser.UserId);
-        likeButtonImage.color = isOn ? Color.white : new Color(0,0,0,0.5f);
+        likeButtonImage.color = IsFollowing ? Color.white : new Color(0,0,0,0.5f);
     }
 
     public void ReturnToMyLobby()
