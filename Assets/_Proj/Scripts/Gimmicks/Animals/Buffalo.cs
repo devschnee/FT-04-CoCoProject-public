@@ -93,6 +93,14 @@ public class Buffalo : MonoBehaviour, IPlayerFinder
     {
         if (!playerTrans || !interactionBtn || !ring) return;
 
+        // 대화가 생성되면 버튼을 숨김
+        if (DialogueManager.Instance != null && DialogueManager.Instance.isDialogueActive)
+        {
+            if (interactionBtn.gameObject.activeSelf)
+                interactionBtn.gameObject.SetActive(false);
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position + Vector3.up * 0.5f, playerTrans.position);
         bool inRange = distance <= detectRadius;
 

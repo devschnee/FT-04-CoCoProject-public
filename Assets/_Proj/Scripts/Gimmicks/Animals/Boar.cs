@@ -81,6 +81,13 @@ public class Boar : PushableObjects, IDashDirection, IPlayerFinder
     void DetectPlayer()
     {
         if (playerTrans == null) return;
+        // 대화가 생성되면 버튼을 숨김
+        if (DialogueManager.Instance != null && DialogueManager.Instance.isDialogueActive)
+        {
+            if (btnGroup.activeSelf)
+                btnGroup.SetActive(false);
+            return;
+        }
         if (isMoving || isFalling || isCooldown)
         {
             if (btnGroup.activeSelf)

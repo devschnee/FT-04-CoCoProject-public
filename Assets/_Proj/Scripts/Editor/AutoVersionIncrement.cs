@@ -6,7 +6,7 @@ using UnityEngine;
 public class AutoVersionIncrement : IPreprocessBuildWithReport
 {
     public int callbackOrder => 0;
-    private const int PatchLimit = 500;
+    private const int PatchLimit = 9;
     private const int MinorLimit = 9;
 
     public void OnPreprocessBuild(BuildReport report)

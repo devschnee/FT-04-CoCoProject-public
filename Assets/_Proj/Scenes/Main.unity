@@ -811,6 +811,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2622350639374623639, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2900964805002306341, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
       propertyPath: questDatabase
       value: 
@@ -935,6 +939,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -48
       objectReference: {fileID: 0}
+    - target: {fileID: 5190214277248034744, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
+      propertyPath: rootCloseBtn
+      value: 
+      objectReference: {fileID: 54818904}
+    - target: {fileID: 5190214277248034744, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
+      propertyPath: profileInfoIconBtn
+      value: 
+      objectReference: {fileID: 54818907}
     - target: {fileID: 6154331363038308131, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1147,6 +1159,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7981839035163700164, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
   m_PrefabInstance: {fileID: 54818902}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &54818907 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4945810403461359998, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
+  m_PrefabInstance: {fileID: 54818902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &66011775
 GameObject:
   m_ObjectHideFlags: 0

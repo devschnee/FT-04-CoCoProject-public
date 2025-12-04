@@ -83,7 +83,13 @@ public class Turtle : MonoBehaviour, IDashDirection, IPlayerFinder
     void DetectPlayer()
     {
         if (!playerTrans || !btnGroup) return;
-
+        // 대화가 생성되면 버튼을 숨김
+        if (DialogueManager.Instance != null && DialogueManager.Instance.isDialogueActive)
+        {
+            if (btnGroup.activeSelf)
+                btnGroup.SetActive(false);
+            return;
+        }
         float dist = Vector3.Distance(transform.position + Vector3.up * 0.5f, playerTrans.position);
         bool inRange = dist <= detectRadius;
 
