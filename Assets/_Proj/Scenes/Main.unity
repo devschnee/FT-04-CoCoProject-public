@@ -803,6 +803,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900964805002306341, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
+      propertyPath: questDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f4ad7d5eaba5db448cb78c661265ce2, type: 2}
     - target: {fileID: 3128954769727831656, guid: cc9eae4fae7d0dd4a861cd68da132a37, type: 3}
       propertyPath: m_IsActive
       value: 0
