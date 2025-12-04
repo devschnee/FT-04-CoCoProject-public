@@ -17,7 +17,6 @@ public class StageUIManager : MonoBehaviour
     public Button QuitButton;
     public Button ExitButton;
     public Button TreasureConfirmButton;
-    public Button TreasureCollectedConfirmButton;
 
     [Header("Panel")]
     public GameObject OptionPanel;
@@ -44,15 +43,6 @@ public class StageUIManager : MonoBehaviour
     public Image CocoDoogyImage;
     public TextMeshProUGUI CocoDoogyDesc;
 
-    [Header("TreasureCollectedPanel")]
-    public Image TreasureCollectedImage;
-    public TextMeshProUGUI TreasureCollectedName;
-    public TextMeshProUGUI TreasureCollectedType;
-    public TextMeshProUGUI TreasureCollectedCount;
-    public TextMeshProUGUI TreasureCollectedDesc;
-    public Image CocoDoogyCollectedImage;
-    public TextMeshProUGUI CocoDoogyCollectedDesc;
-
     [Header("DialoguePanel")]
     public Image DialogueSpeakerLeft;
     public Image DialogueSpeakerRight;
@@ -65,7 +55,6 @@ public class StageUIManager : MonoBehaviour
     public Sprite CoCoDoogySprite;
     public Sprite[] ResultCoCoDoogySprite;
     public Action OnTreasureConfirm;
-    public Action OnTreasureCollectedConfirm;
 
     public TextMeshProUGUI CollecTreausreCountText;
 
@@ -94,11 +83,6 @@ public class StageUIManager : MonoBehaviour
         {
             OnTreasureConfirm?.Invoke();
             OnTreasureConfirm = null;
-        });
-        TreasureCollectedConfirmButton.onClick.AddListener(() =>
-        {
-            OnTreasureCollectedConfirm?.Invoke();
-            OnTreasureCollectedConfirm = null;
         });
 
         Overlay.SetActive(false);
