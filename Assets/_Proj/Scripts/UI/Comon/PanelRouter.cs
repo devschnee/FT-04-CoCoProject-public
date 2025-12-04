@@ -122,6 +122,12 @@ public class PanelRouter : MonoBehaviour
         current = chapterPanel;
     }
 
+    public void SelectDimClose()
+    {
+        selectStageDimOverlay.SetActive(false);
+        GameObject stageDetail = GameObject.Find("StageDetailPanel(Clone)");
+        stageDetail.SetActive(false);
+    }
 
     void Toggle(GameObject target)
     {
@@ -151,6 +157,7 @@ public class PanelRouter : MonoBehaviour
         dimOverlay.GetComponent<Image>().color = new Color(0, 0, 0, 0.7f);
         dimOverlay.GetComponent<Image>().sprite = null;
     }
+
 
     void Update()
     {
