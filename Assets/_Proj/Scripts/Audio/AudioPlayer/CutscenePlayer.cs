@@ -30,48 +30,20 @@ public class CutscenePlayer : AudioPlayerControl
     {
         foreach (var src in activeSources)
         {
-            if (src != null)
-            {
-                if (DOTween.IsTweening(src, true)) src.DOKill();
-                if (src.volume != 1)
-                {
-                    src.DOFade(initVolume, 0.5f);
-                }
-                else { }
-            }
+            src.volume = initVolume;
         }
     }
     public override void PauseAll()
     {
-        foreach (var src in activeSources)
-        {
-            if (src != null)
-            {
-                if (DOTween.IsTweening(src, true)) src.DOKill();
-                src.DOFade(0, 0.5f);
-            }
-        }
     }
     public override void ResumeAll()
     {
-        foreach (var src in activeSources)
-        {
-            if (src != null)
-            {
-                if (DOTween.IsTweening(src, true)) src.DOKill();
-                src.DOFade(initVolume, 0.5f);
-            }
-        }
     }
     public override void StopAll()
     {
         foreach (var src in activeSources)
         {
-            if (src != null) 
-            {
-                if (DOTween.IsTweening(src, true)) src.DOKill();
-                src.DOFade(0, 0.5f);
-            } 
+            src.volume = 0f;
         }
     }
     public override void ResetAll(float volumeValue)
@@ -82,7 +54,7 @@ public class CutscenePlayer : AudioPlayerControl
             {
                 if (DOTween.IsTweening(src, true)) src.DOKill();
                 src.loop = false;
-                src.volume = volumeValue;
+                src.volume = 0f;
                 src.pitch = 1f;
                 src.clip = null;
             }
@@ -90,23 +62,12 @@ public class CutscenePlayer : AudioPlayerControl
     }
     public override void SetVolumeHalf()
     {
-        foreach (var src in activeSources)
-        {
-            if (DOTween.IsTweening(src, true)) src.DOKill();
-            src.DOFade(0.5f, 0.5f);
-        }
     }
     public override void SetVolumeNormal()
     {
-        foreach (var src in activeSources)
-        {
-            if (DOTween.IsTweening(src, true)) src.DOKill();
-            src.DOFade(initVolume, 0.5f);
-        }
     }
 
     public override void SetVolumeZero()
     {
-        base.SetVolumeZero();
     }
 }

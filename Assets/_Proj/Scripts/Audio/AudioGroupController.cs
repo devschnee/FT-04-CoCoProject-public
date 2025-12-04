@@ -96,10 +96,17 @@ public class AudioGroupController
     {
         foreach (IAudioController aG in audioGroups)
         {
-            if (aG is CutsceneGroup) continue;
 
-            if (isEntering) aG.PausePlayer();
-            else aG.ResumePlayer();
+            if (isEntering)
+            {
+                if (aG is CutsceneGroup) aG.PlayPlayer();
+                else aG.PausePlayer();  
+            }
+            else
+            {
+                if (aG is CutsceneGroup) aG.StopPlayer();
+                else aG.ResumePlayer();  
+            }
         }
     }
 }
