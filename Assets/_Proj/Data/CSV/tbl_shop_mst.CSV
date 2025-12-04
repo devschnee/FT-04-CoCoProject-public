@@ -10,7 +10,7 @@ shop_id,shop_name,shop_icon,shop_desc,shop_item,shop_type,shop_price,shop_stock,
 80009,병뚜껑,Icons/Shop/icon_cap,"상점에서 사용 가능한 무료 재화입니다.",90009,coin,1000,-1,goods,cap
 80010,유료 코인,Icons/Shop/icon_coin,"상점에서 사용 가능한 유료 재화입니다.",90010,cash,5000,-1,goods,coin
 80011,기본 배경,Icons/Shop/icon_basic,"익숙하지만 정겨운\n배경입니다.",90011,cap,10000,1,background,all
-80012,크리스마스 겨,Icons/Shop/icon_winter,"춥지만 가슴이 따뜻해지는, 아름다운 배경입니다.",90012,coin,200,1,background,all
+80012,크리스마스 겨울,Icons/Shop/icon_winter,"춥지만 가슴이 따뜻해지는, 아름다운 배경입니다.",90012,coin,200,1,background,all
 80013,시원한 여름,Icons/Shop/icon_summer,"왠지 바다다~!를 외쳐야만 할 것 같습니다.",90013,coin,200,1,background,all
 80014,나무 패키지,Icons/Shop/icon_tree_package,"멋진 나무들을 한번에\n구매할 수 있는\n패키지입니다.",90014,cap,25000,5,package,all
 80015,식물 패키지,Icons/Shop/icon_plant_package,"아름다운 식물들을\n한번에 구매할 수 있는\n패키지입니다.",90015,cap,15000,5,package,all

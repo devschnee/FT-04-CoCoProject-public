@@ -132,7 +132,7 @@ MonoBehaviour:
     shop_group: 4
     shop_item_category: 0
   - shop_id: 80012
-    shop_name: "\uD06C\uB9AC\uC2A4\uB9C8\uC2A4 \uACA8"
+    shop_name: "\uD06C\uB9AC\uC2A4\uB9C8\uC2A4 \uACA8\uC6B8"
     shop_icon: Icons/Shop/icon_winter
     shop_desc: "\"\uCDA5\uC9C0\uB9CC \uAC00\uC2B4\uC774 \uB530\uB73B\uD574\uC9C0\uB294,
       \uC544\uB984\uB2E4\uC6B4 \uBC30\uACBD\uC785\uB2C8\uB2E4.\""

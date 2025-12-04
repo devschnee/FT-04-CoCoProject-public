@@ -90,6 +90,7 @@ public class StageUIManager : MonoBehaviour
         ResultPanel.SetActive(false);
         
         stageIdInformation = FindAnyObjectByType<StageIdInformation>();
+        stageImage.sprite = ResultCoCoDoogySprite[0];
         stageGetTreasureCount = 0;
     }
 

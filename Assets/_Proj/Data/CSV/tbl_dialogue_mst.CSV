@@ -2,16 +2,16 @@ dialogue_id,seq,speaker_position,speaker_id,emotion,text,char_delay,sound_type,s
 dialogue_0_1_0,0,left,coco,Neutral,"오랜만에 옛날 꿈을 꾼 것 같아.",0.04,sfx_none,null
 dialogue_0_1_0,1,left,coco,Neutral,"그런데 주인은 어디 갔지?",0.04,sfx_none,null
 dialogue_0_1_0,2,left,coco,Neutral,"킁킁… 주인의 냄새가 조금은 남은것 같은데... ",0.04,sfx_none,null
-dialogue_0_1_0,3,left,coco,Happy,"아하! 주인은 날 믿고 먼저 간거야! 내가 혼자서도 집을 찾아갈 수 있다고",0.04,sfx_none,null
+dialogue_0_1_0,3,left,coco,Happy,"아하! 주인은 날 믿고 먼저 간거야! 내가 혼자서도 집을 찾아갈 수 있다고.",0.04,sfx_none,null
 dialogue_0_1_0,4,left,coco,Neutral,"어서 집으로 돌아가자!",0.04,sfx_none,null
 dialogue_0_1_0,5,left,helper,Neutral,"화면을 터치해서 코코두기를 움직여 보세요!",0.04,sfx_none,null
 dialogue_0_1_1,0,left,coco,Neutral,"언덕이 있네. 주변을 둘러 보자!",0.04,sfx_none,null
-dialogue_0_1_1,1,left,coco,Neutral,"올라갈 경사로가 있을 지 몰라",0.04,sfx_none,null
+dialogue_0_1_1,1,left,coco,Neutral,"올라갈 경사로가 있을 지 몰라!",0.04,sfx_none,null
 dialogue_0_1_2,0,left,coco,Happy,"주인과 함게 하는 산책은 언제나 즐거워!",0.04,sfx_none,null
 dialogue_0_1_2,1,left,coco,Neutral,"주인도 산길을 즐겼겠지?",0.04,sfx_none,null
 dialogue_0_1_10,0,left,coco,Sad,"산길을 겨우 내려왔어. 집까지 얼마나 남았을까?",0.04,sfx_none,null
 dialogue_0_1_10,1,left,coco,Neutral,"조금 지친 것 같아, 저 나무 아래서 잠시 쉬다가야지.",0.04,sfx_none,null
-dialogue_0_2_0,0,left,coco,Neutral,"으음… 얼마나 쉬었지?",0.04,sfx_none,null
+dialogue_0_2_0,0,left,coco,Neutral,"으음… 깜빡 잠들었네. 오랜만에 옛날 꿈을 꿨어...",0.04,sfx_none,null
 dialogue_0_2_0,1,left,coco,Surprised,"앗, 벌써 해가 지잖아!",0.04,sfx_none,null
 dialogue_0_2_0,2,left,coco,Neutral,"얼른 집으로 돌아가자.",0.04,sfx_none,null
 dialogue_0_2_1,0,left,coco,Neutral,"상자가 길을 막고 있네... 살짝 밀면 지나갈 수 있을 것 같아!",0.04,sfx_none,null
@@ -20,17 +20,17 @@ dialogue_0_2_3,0,left,coco,Neutral,"높은 곳은 언제나 좋은 것 같아!",
 dialogue_0_2_3,1,left,coco,Neutral,"주인은 종종 높은 곳에 올라서 조용히 풍경을 바라보곤 했어.",0.04,sfx_none,null
 dialogue_0_2_3,2,left,coco,Happy,"나도 주인이 보던 풍경을 따라 보고 싶어!",0.04,sfx_none,null
 dialogue_0_2_3,3,left,helper,Neutral,"두 손가락으로 화면을 드래그 해서 화면을 움직여 보세요!",0.04,sfx_none,null
-dialogue_0_2_4,0,left,coco,Neutral,"끄응.. 역시 상자 2개를 동시에 밀기 힘든 것 같아. 옆으로 하나씩 밀어볼까?",0.04,sfx_none,null
+dialogue_0_2_4,0,left,coco,Neutral,"끄응... 역시 상자 2개를 동시에 밀기 힘든 것 같아. 옆으로 하나씩 밀어볼까?",0.04,sfx_none,null
 dialogue_0_2_10,0,left,coco,Neutral,"우와… 생각보다 멀리까지 왔나봐. 여전히 갈 길이 머네… 조금만 쉬어야겠어.",0.04,sfx_none,null
 dialogue_0_3_0,0,left,coco,Surprised,"!!! 언제적 꿈이지?",0.04,sfx_none,null
-dialogue_0_3_0,1,left,coco,Sad,"주인… 얼른 보고싶어",0.04,sfx_none,null
+dialogue_0_3_0,1,left,coco,Sad,"주인… 얼른 보고싶어.",0.04,sfx_none,null
 dialogue_0_3_1,0,left,coco,Surprised,"구덩이잖아! 어떻게 지나가지?",0.04,sfx_none,null
 dialogue_0_3_1,1,left,coco,Surprised,"옆의 상자를 밀어 떨어트리면… 상자를 밟고 지나갈 수 있지 않을까?",0.04,sfx_none,null
 dialogue_0_3_1,2,left,helper,Neutral,"상자를 구덩이로 밀어보세요!",0.04,sfx_none,null
 dialogue_0_3_2,0,left,coco,Neutral,"또 구덩이잖아? 요즘 자꾸 없던 구덩이가 생기는 것 같아.",0.04,sfx_none,null
 dialogue_0_3_2,1,left,coco,Neutral,"…누가 일부러 남겨놓는 걸까?",0.04,sfx_none,null
 dialogue_0_3_3,0,left,coco,Happy,"킁... 집이 코앞이야. 주인 냄새가 희미하게 나!",0.04,sfx_none,null
-dialogue_0_3_3,1,left,coco,Happy,"구덩이도 이제는 점점 재밌어, 헤헤",0.04,sfx_none,null
+dialogue_0_3_3,1,left,coco,Happy,"구덩이도 이제는 점점 재밌어, 헤헤.",0.04,sfx_none,null
 dialogue_0_3_10,0,left,coco,Happy,"드디어 도착…! 나 혼자 힘으로 여기까지 왔어!\n주인이 분명 칭찬하겠지!",0.04,sfx_none,null
 dialogue_1_1_0,0,left,coco,Neutral,"주인이 날 두고 또 먼저 갔어… 아! 혹시 술래잡기 놀이인가?\n주인이 먼저 집으로 가고, 내가 술래가 돼서 주인을 찾아야 하는 놀이!",0.04,sfx_none,null
 dialogue_1_1_0,1,left,coco,Neutral,"좋아… 당장 주인을 찾으러 가야지!",0.04,sfx_none,null
@@ -122,9 +122,9 @@ dialogue_3_2_1,8,right,buffalo,Neutral,"너, 이 산에 대해 전혀 모르는�
 dialogue_3_3_1,0,right,buffalo,Neutral,"이 산엔 무서운 괴담이 있어.",0.04,sfx_none,null
 dialogue_3_3_1,1,left,coco,Surprised,"무서운 괴담이라니? 어떤 건데?",0.04,sfx_none,null
 dialogue_3_3_1,2,right,buffalo,Neutral,"이 산에서는 바람 타고 '띵…띵…'하는 소리가 계속 나거든.",0.04,sfx_none,null
-dialogue_3_3_1,3,right,buffalo,Neutral,"(바람 소리 사이로, 금속이 부딪히는 듯한 미세한 소리를 듣는다.",0.04,sfx_none,null
+dialogue_3_3_1,3,right,buffalo,Neutral,"(바람 소리 사이로, 금속이 부딪히는 듯한 미세한 소리를 듣는다.)",0.04,sfx_none,null
 dialogue_3_3_1,4,right,buffalo,Surprised,"…! 들려? 이 소리가 사람도 동물도 잡아먹는,",0.04,sfx_none,null
-dialogue_3_3_1,5,right,buffalo,Surprised,"거인처럼 큰 짐승이 내는 소리라는 괴담이 있어.",0.04,sfx_none,null
+dialogue_3_3_1,5,right,buffalo,Surprised,,0.04,sfx_none,null
 dialogue_3_3_1,6,left,coco,Surprised,"…!",0.04,sfx_none,null
 dialogue_3_4_1,0,left,coco,Surprised,"거, 거인 짐승이 진짜 있는 거야?",0.04,sfx_none,null
 dialogue_3_4_1,1,right,buffalo,Neutral,"그래. 이 소리로 희생양의 궁금증을 자아내고, 가까이 오기만을 기다려.",0.04,sfx_none,null
@@ -193,7 +193,7 @@ dialogue_3_10_10,4,right,buffalo,Happy,"…이상하게 가슴이 두근거려.\
 dialogue_3_10_10,5,left,coco,Happy,"별 소리를! 네가 너의 소중한 친구를 보여줬으니까…",0.04,sfx_none,null
 dialogue_3_10_10,6,left,coco,Happy,"나도 내 소중한 존재를 너에게 꼭 소개해주고 싶어!",0.04,sfx_none,null
 dialogue_3_10_10,7,right,buffalo,Happy,"그래. 나도 기대되네.",0.04,sfx_none,null
-dialogue_3_10_11,8,right,buffalo,Happy, "아, 근데 나를 찾으러 이 산에 와도 난 없을지도 몰라.\n난 이제 여기저기 다니느라 바쁠 예정이거든.",,,
+dialogue_3_10_10,8,right,buffalo,Happy, "아, 근데 나를 찾으러 이 산에 와도 난 없을지도 몰라.\n난 이제 여기저기 다니느라 바쁠 예정이거든.",,,
 dialogue_3_10_10,9,left,coco,Happy,"응! 내가 너를 찾으러 갈게!\n너 발굽 소리가 워낙 커서, 어디 있어도 금방 알아챌 것 같아.",0.04,sfx_none,null
 dialogue_2_1_0,0,left,coco,Neutral,"오늘도 술래잡기 시간인가? 어서 주인을 쫓아가자!",0.04,sfx_none,null
 dialogue_2_1_1,0,left,coco,Sad,"으… 물 웅덩이야! 물은 무서운데...",0.04,sfx_none,null
