@@ -97,7 +97,14 @@ public class LobbyCharacterManager : MonoBehaviour, ILobbyCharacterManager
                             lC.InEdit();
                             mono.gameObject.layer = editableLayer;
                         }
-                        
+                        if ((mono as CocoDoogyBehaviour) && coco != null && coco.gameObject.layer == originalLayer)
+                        {
+                            mono.gameObject.layer = editableLayer;
+                        }
+                        if ((mono as MasterBehaviour) && master != null && master.gameObject.layer == originalLayer)
+                        {
+                            mono.gameObject.layer = editableLayer;
+                        }
                     }
                 }
                 //Debug.Log("편집모드 진입");
@@ -114,6 +121,14 @@ public class LobbyCharacterManager : MonoBehaviour, ILobbyCharacterManager
                         if (mono.isActiveAndEnabled)
                         {
                             lC.InNormal();
+                            mono.gameObject.layer = originalLayer;
+                        }
+                        if ((mono as CocoDoogyBehaviour) && coco != null && coco.gameObject.layer == editableLayer)
+                        {
+                            mono.gameObject.layer = originalLayer;
+                        }
+                        if ((mono as MasterBehaviour) && master != null && master.gameObject.layer == editableLayer)
+                        {
                             mono.gameObject.layer = originalLayer;
                         }
                     }

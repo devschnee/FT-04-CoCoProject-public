@@ -161,7 +161,7 @@ public class QuestManager : MonoBehaviour
 
                     if ((string)value == "GoogleLogin")
                         dataList =
-                            DataManager.Instance.Quest.Database.questList.FindAll(x => x.quest_object == QuestObject.login);
+                            DataManager.Instance.Quest.Database.questList.FindAll(x => x.quest_object == QuestObject.connect_guest);
                     
                     foreach (var d in dataList)
                     {
@@ -199,7 +199,22 @@ public class QuestManager : MonoBehaviour
                 }
 
                 break;
+            case FriendLobbyUIController friendLobbyUI:
 
+                //좋아요 보내기 퀘스트 수행: 퀘스트의 목표가 좋아요 보내기인 것만 남김.
+                if (((string)value).Contains("SendLike"))
+                {
+                    dataList = DataManager.Instance.Quest.Database.questList.FindAll(x => x.quest_object == QuestObject.send_like);
+
+                    //반복 가능 퀘스트: 일일 / 주간
+                    if (((string)value).Contains("Repeatable"))
+                        dataList = dataList.FindAll(x => x.quest_type == QuestType.daily || x.quest_type == QuestType.weekly);
+
+                    foreach (var d in dataList)
+                        UserData.Local.quest.progress[d.quest_id]++;
+
+                }
+                break;
         }
 
         UserData.Local.quest.Save();

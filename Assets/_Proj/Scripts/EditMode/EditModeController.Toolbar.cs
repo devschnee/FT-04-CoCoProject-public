@@ -386,9 +386,16 @@ public partial class EditModeController
     {
         if (!CurrentTarget) return;
 
-        if (IsHome(CurrentTarget) && IsInventoryTempObject(CurrentTarget))
+        // 항상 태그 기준 루트 Transform 사용
+        Transform root = CurrentTarget;
+        TryGetPlaceableTag(CurrentTarget, out var ptag);
+        if (ptag != null)
+            root = ptag.transform;
+
+        // 집 프리뷰 취소
+        if (IsHome(root) && IsInventoryTempObject(root))
         {
-            var previewGo = CurrentTarget.gameObject;
+            var previewGo = root.gameObject;
 
             SelectTarget(null);
             actionToolbar?.Hide();
@@ -408,7 +415,8 @@ public partial class EditModeController
             return;
         }
 
-        if (TryGetPlaceableTag(CurrentTarget, out var ptag))
+        // Animal / Deco 인벤 반환
+        if (ptag != null)
         {
             if (ptag.category == PlaceableCategory.Animal)
                 AnimalReturnedToInventory?.Invoke(ptag.id);
@@ -417,7 +425,7 @@ public partial class EditModeController
                 InventoryService.I.Add(ptag.id, 1);
         }
 
-        var go = CurrentTarget.gameObject;
+        var go = root.gameObject;
         SelectTarget(null);
         actionToolbar?.Hide();
         Destroy(go);
@@ -425,6 +433,7 @@ public partial class EditModeController
         hasUnsavedChanges = true;
         pendingFromInventory = null;
     }
+
     #endregion
 
     #region Return To Inventory
@@ -432,30 +441,34 @@ public partial class EditModeController
     {
         if (!t || !TryGetPlaceableTag(t, out var tag)) return;
 
-        if (t == CurrentTarget) SelectTarget(null);
+        // 항상 PlaceableTag가 달린 루트 Transform 기준으로 처리
+        Transform root = tag.transform;
+
+        if (root == CurrentTarget)
+            SelectTarget(null);
+
         actionToolbar?.Hide();
 
         switch (tag.category)
         {
             case PlaceableCategory.Deco:
                 {
-                    // 1) 인벤 수량은 바로 올려줌 (편집 중엔 인벤에서 다시 꺼낼 수 있어야 하니까)
+                    // 1) 인벤 수량은 바로 올려줌
                     if (InventoryService.I != null)
                         InventoryService.I.Add(tag.id, 1);
 
-                    // 2) "인벤에서 막 꺼낸 임시 오브젝트"인지, 원래 씬에 있던 오브젝트인지 구분
-                    bool isTemp = IsInventoryTempObject(t);
+                    // 2) 이 오브젝트가 '인벤에서 막 꺼낸 임시 오브젝트'인지 확인
+                    bool isTemp = IsInventoryTempObject(root);
 
                     if (isTemp)
                     {
-                        // 인벤에서 꺼낸 임시 데코 → 그냥 삭제해도 됨 (원래 씬에 없었음)
-                        Destroy(t.gameObject);
+                        // 인벤에서 꺼낸 임시 데코 → 통째로 삭제
+                        Destroy(root.gameObject);
                     }
                     else
                     {
-                        // 씬에 원래 있던 데코 → 저장 안 하고 나갈 수도 있으니 Destroy 금지
-                        // 바로 사라져 보이게만 하고, baseline 복원 시 다시 켜지게 둠
-                        t.gameObject.SetActive(false);
+                        // 씬에 원래 있던 데코 → 비활성화만
+                        root.gameObject.SetActive(false);
                     }
 
                     hasUnsavedChanges = true;
@@ -463,19 +476,25 @@ public partial class EditModeController
                 }
 
             case PlaceableCategory.Animal:
-                AnimalReturnedToInventory?.Invoke(tag.id);
-                // LSH 추가 1127
-                ETCEvent.InvokeDeleteAnimalPos(t);
-                //
-                Destroy(t.gameObject);
-                hasUnsavedChanges = true;
-                break;
+                {
+                    AnimalReturnedToInventory?.Invoke(tag.id);
+
+                    // LSH 추가 1127 : 위치 삭제 이벤트도 루트 기준으로
+                    ETCEvent.InvokeDeleteAnimalPos(root);
+
+                    // 🔥 루트 오브젝트를 삭제해야 화면에서 완전히 사라짐
+                    Destroy(root.gameObject);
+
+                    hasUnsavedChanges = true;
+                    break;
+                }
 
             case PlaceableCategory.Home:
                 Debug.Log("[ReturnToInventory] Home은 인벤 버튼이 없습니다.");
                 break;
         }
     }
+
 
     #endregion
 

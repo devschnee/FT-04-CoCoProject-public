@@ -61,7 +61,6 @@ public class LobbyCharacterAnim
     {
         //int number = UnityEngine.Random.Range(0, masterClick.Length);
         anim.Play("Click0");
-        anim.speed = 3f;
         
     }
 

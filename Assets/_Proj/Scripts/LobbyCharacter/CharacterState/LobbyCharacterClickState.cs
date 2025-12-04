@@ -49,7 +49,7 @@ public class LMasterClickState : LobbyCharacterBaseState
         charAnim.ClickMaster();
 
         // 소리 수정하슈
-        AudioEvents.Raise(SFXKey.OutGameMaster, 0, loop: false, pooled: true, pos: owner.transform.position);
+        AudioEvents.Raise(UIKey.AchievementPop, 0);
         //AudioEvents.Raise(SFXKey.CocodoogyFootstep, pooled: true, pos: owner.transform.position);
     }
     
@@ -59,7 +59,6 @@ public class LMasterClickState : LobbyCharacterBaseState
     {
         charAnim.DefaultAnimSpeed();
         if (agent.enabled && agent.isStopped) agent.isStopped = false;
-        
     }
 }
 

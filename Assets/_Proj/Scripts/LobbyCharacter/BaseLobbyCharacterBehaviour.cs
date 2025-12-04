@@ -83,6 +83,11 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
             //charAgent.MoveValueChanged();
         }
         if (hasBeenInit && gameObject.layer == LayerMask.NameToLayer("Editable") && fsm.CurrentState != EditState) fsm.ChangeState(EditState);
+        if (hasBeenInit && gameObject.layer == LayerMask.NameToLayer("InLobbyObject") && LobbyCharacterManager.Instance.IsEditMode && fsm.CurrentState != EditState) 
+        {
+            gameObject.layer = LayerMask.NameToLayer("Editable");
+            fsm.ChangeState(EditState);
+        }
     }
 
     protected virtual void OnDisable()
@@ -131,13 +136,9 @@ public abstract class BaseLobbyCharacterBehaviour : MonoBehaviour, ILobbyInterac
     // 애니메이션 이벤트 마지막 부분에
     public void FromAToB()
     {
-        StartCoroutine(EndAnim());
+        fsm.ChangeState(IdleState); 
     }
-    protected IEnumerator EndAnim()
-    {
-        yield return new WaitForSeconds(1f);
-        fsm.ChangeState(IdleState);
-    }
+    
     /// <summary>
     /// 상호작용 상태로 만들어버리기
     /// </summary>

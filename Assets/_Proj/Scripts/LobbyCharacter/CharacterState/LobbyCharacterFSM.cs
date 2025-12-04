@@ -13,7 +13,7 @@ public class LobbyCharacterFSM
 
     public void ChangeState(LobbyCharacterBaseState nextState)
     {
-        if (nextState == currentState) return;
+        //if (nextState == currentState) return;
 
         currentState?.OnStateExit(); // 다음 state 가기 전에 저장 용도로?
         currentState = nextState;

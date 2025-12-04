@@ -4,32 +4,43 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class FriendLobbyUIController : MonoBehaviour
+public class FriendLobbyUIController : MonoBehaviour, IQuestBehaviour
 {
     [SerializeField] Button likeButton;
     [SerializeField] Image likeButtonImage;
     bool isAwait = false;
 
-    private void Awake()
+    bool IsFollowing => UserData.Local.likes.followings.Contains(FriendLobbyManager.Instance.Uid);
+
+    public async void Start()
     {
-        likeButton.onClick.AddListener(async() => await ToggleLike());
+        SetLikeButton();
         Recolor();
+    }
+    private void SetLikeButton()
+    {
+        likeButton.interactable = !isAwait;
+        likeButton.onClick.AddListener(async() => await ToggleLike());
+
+
     }
     public async Task ToggleLike()
     {
         isAwait = true;
         likeButton.interactable = !isAwait;
-        await FirebaseManager.Instance.ToggleFollowPlayer(FriendLobbyManager.Instance.Uid);
+
+        await FirebaseManager.Instance.FollowPlayer_Outbound(FriendLobbyManager.Instance.Uid, !IsFollowing);
+
+        if (IsFollowing)
+            QuestManager.Instance.Handle(this, "SendLike_Repeatable");
+        isAwait = false;
         Recolor();
     }
 
     public async void Recolor()
     {
-        var friendLikes = await FirebaseManager.Instance.DownloadUserDataCategory(FriendLobbyManager.Instance.Uid, UserDataDirtyFlag.Likes) as UserData.Likes;
-        isAwait = false;
         likeButton.interactable = !isAwait;
-        var isOn = friendLikes.followers.Contains(FirebaseAuth.DefaultInstance.CurrentUser.UserId);
-        likeButtonImage.color = isOn ? Color.white : new Color(0,0,0,0.5f);
+        likeButtonImage.color = IsFollowing ? Color.white : new Color(0,0,0,0.5f);
     }
 
     public void ReturnToMyLobby()
