@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Treasure : MonoBehaviour
 {
@@ -88,55 +90,7 @@ public class Treasure : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                AudioEvents.Raise(UIKey.Stage, 4);
-                StageUIManager.Instance.TreasureCollectedPanel.SetActive(true);
-                StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
-                StageUIManager.Instance.CocoDoogyCollectedImage.sprite = StageUIManager.Instance.CoCoDoogySprite;
-
-                var data = DataManager.Instance.Treasure.GetData(treasureId);
-
-                switch (data.treasureType)
-                {
-                    case TreasureType.deco:
-                        TreasureCollectedUI(data);
-                        break;
-                    case TreasureType.costume:
-                        TreasureCollectedUI(data);
-                        break;
-                    case TreasureType.artifact:
-                        TreasureCollectedUI(data);
-                        break;
-                    case TreasureType.coin:
-                        TreasureCollectedUI(data);
-                        break;
-                    case TreasureType.cap:
-                        TreasureCollectedUI(data);
-                        break;
-                }
-
-                Joystick joystick = FindAnyObjectByType<Joystick>();
-                if (joystick != null)
-                {
-                    joystick.IsLocked = true;
-                }
-                // 플레이어 이동 막기
-                other.GetComponent<PlayerMovement>().enabled = false;
-
-                // 확인 버튼 클릭 시 호출되도록 이벤트 등록
-                StageUIManager.Instance.OnTreasureCollectedConfirm = () => OnQuitAction(() =>
-                {
-                    StageUIManager.Instance.stageManager.OnTreasureCollected(treasureIndex);
-                    StageUIManager.Instance.TreasureCollectedPanel.SetActive(false);
-                    StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(true);
-                    joystick.IsLocked = false;
-                    other.GetComponent<PlayerMovement>().enabled = true;
-                    //sprite.color = new Color(1, 1, 1, 0);
-                    sprite.gameObject.SetActive(false);
-                    particle.SetActive(false);
-                    artifactParticleSystem.SetActive(false);
-                    StageUIManager.Instance.stageGetTreasureCount++;
-                    StageUIManager.Instance.CollecTreausreCountText.text = $"{StageUIManager.Instance.stageGetTreasureCount} / 3";
-                });
+                StartCoroutine(CollectedTreasureAS(other));
             }
         }
         else
@@ -190,9 +144,10 @@ public class Treasure : MonoBehaviour
                     joystick.IsLocked = false;
                     other.GetComponent<PlayerMovement>().enabled = true;
                     //sprite.color = new Color(1, 1, 1, 0);
-                    sprite.gameObject.SetActive(false);
-                    particle.SetActive(false);
-                    artifactParticleSystem.SetActive(false);
+                    this.gameObject.SetActive(false);
+                    //sprite.gameObject.SetActive(false);
+                    //particle.SetActive(false);
+                    //artifactParticleSystem.SetActive(false);
                     StageUIManager.Instance.stageGetTreasureCount++;
                     StageUIManager.Instance.CollecTreausreCountText.text = $"{StageUIManager.Instance.stageGetTreasureCount} / 3";
                 });
@@ -236,44 +191,39 @@ public class Treasure : MonoBehaviour
         StageUIManager.Instance.CocoDoogyDesc.text = data.coco_coment;
     }
 
-    private static void TreasureCollectedUI(TreasureData data)
-    {
-        var transData = DataManager.Instance.Codex.GetData(data.view_codex_id);
-        StageUIManager.Instance.TreasureCollectedName.text = transData.codex_name;
-        StageUIManager.Instance.TreasureCollectedDesc.text = transData.codex_lore;
-        StageUIManager.Instance.TreasureCollectedImage.sprite = DataManager.Instance.Codex.GetCodexIcon(data.view_codex_id);
-
-        var typeTMP = StageUIManager.Instance.TreasureCollectedType;
-        var countTMP = StageUIManager.Instance.TreasureCollectedCount;
-        switch (data.treasureType)
-        {
-            case TreasureType.coin:
-            case TreasureType.cap:
-                typeTMP.text = "수량";
-                typeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
-                countTMP.text = data.count.ToString();
-                break;
-            case TreasureType.deco:
-                typeTMP.text = "조경";
-                typeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
-                countTMP.text = data.count.ToString();
-                break;
-            case TreasureType.costume:
-                typeTMP.text = "치장";
-                typeTMP.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
-                countTMP.text = data.count.ToString();
-                break;
-            case TreasureType.artifact:
-                typeTMP.text = "유물";
-                typeTMP.alignment = TMPro.TextAlignmentOptions.Center;
-                countTMP.text = "";
-                break;
-        }
-        StageUIManager.Instance.CocoDoogyCollectedDesc.text = data.coco_coment;
-    }
-
     public void OnQuitAction(Action action)
     {
         action?.Invoke();
+    }
+
+    // KHJ - 이미 획득한 보물은 팝업창 n초 후 자동으로 꺼지도록
+    IEnumerator CollectedTreasureAS(Collider other)
+    {
+        AudioEvents.Raise(UIKey.Stage, 4);
+        StageUIManager.Instance.TreasureCollectedPanel.SetActive(true);
+        StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
+
+        Joystick joystick = FindAnyObjectByType<Joystick>();
+        if (joystick != null)
+        {
+            joystick.IsLocked = true;
+        }
+        // 플레이어 이동 막기
+        other.GetComponent<PlayerMovement>().enabled = false;
+
+        yield return new WaitForSeconds(1.5f);
+
+        StageUIManager.Instance.stageManager.OnTreasureCollected(treasureIndex);
+        StageUIManager.Instance.TreasureCollectedPanel.SetActive(false);
+        StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(true);
+        joystick.IsLocked = false;
+        other.GetComponent<PlayerMovement>().enabled = true;
+        //sprite.color = new Color(1, 1, 1, 0);
+        gameObject.SetActive(false);
+        //sprite.gameObject.SetActive(false);
+        //particle.SetActive(false);
+        //artifactParticleSystem.SetActive(false);
+        StageUIManager.Instance.stageGetTreasureCount++;
+        StageUIManager.Instance.CollecTreausreCountText.text = $"{StageUIManager.Instance.stageGetTreasureCount} / 3";
     }
 }
