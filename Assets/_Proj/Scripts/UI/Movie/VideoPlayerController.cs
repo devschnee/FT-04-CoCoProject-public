@@ -2,6 +2,7 @@
 using UnityEngine.Video;
 using System.Collections;
 using UnityEngine.Android;
+using UnityEngine.UI;
 
 public class VideoPlayerController : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class VideoPlayerController : MonoBehaviour
         cutsceneSource.playOnAwake = false;
         cutsceneSource.loop = false;
         cutsceneSource.spatialBlend = 0f;
+
+        StageUIManager.Instance.videoImage.GetComponentInChildren<Button>().onClick.AddListener(() => OnFinished(player));
     }
     //LSH 1117 추가
     void Start()
