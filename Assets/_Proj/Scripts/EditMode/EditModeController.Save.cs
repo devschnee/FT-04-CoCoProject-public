@@ -615,7 +615,7 @@ public partial class EditModeController : IQuestBehaviour
         go.transform.position = new Vector3(0f, 0f, -20f);
 
         // 🔹 DecoDatabase 8번, 18번만 Y축 180도 회전
-        if (cat == PlaceableCategory.Deco && (data.Id == 10008 || data.Id == 10018))
+        if (cat == PlaceableCategory.Deco && (data.Id == 10008 || data.Id == 10018 || data.Id == 10010|| data.Id == 10019))
         {
             go.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }

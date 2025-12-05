@@ -86,6 +86,11 @@ public class ProfileIconSelector : MonoBehaviour
         _selectedId = id;
         _selectedSprite = icon;
 
+        // 12.05mj 이 아이콘은 이제 “본 것”으로 처리 → 빨간점 제거
+        ProfileRedDotManager.MarkSeenIcon(id);
+
+        slot.SetNewDotVisible(false);
+
         foreach (Transform t in slotParent)
         {
             var s = t.GetComponent<ProfileIconSlot>();
