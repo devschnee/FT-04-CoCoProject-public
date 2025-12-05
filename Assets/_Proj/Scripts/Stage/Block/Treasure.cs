@@ -90,6 +90,7 @@ public class Treasure : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
+                DisableImmediate();
                 StartCoroutine(CollectedTreasureAS(other));
             }
         }
@@ -203,21 +204,21 @@ public class Treasure : MonoBehaviour
         StageUIManager.Instance.TreasureCollectedPanel.SetActive(true);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(false);
 
-        Joystick joystick = FindAnyObjectByType<Joystick>();
-        if (joystick != null)
-        {
-            joystick.IsLocked = true;
-        }
+        //Joystick joystick = FindAnyObjectByType<Joystick>();
+        //if (joystick != null)
+        //{
+        //    joystick.IsLocked = true;
+        //}
         // 플레이어 이동 막기
-        other.GetComponent<PlayerMovement>().enabled = false;
+        //other.GetComponent<PlayerMovement>().enabled = false;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.3f);
 
         StageUIManager.Instance.stageManager.OnTreasureCollected(treasureIndex);
         StageUIManager.Instance.TreasureCollectedPanel.SetActive(false);
         StageUIManager.Instance.OptionOpenButton.gameObject.SetActive(true);
-        joystick.IsLocked = false;
-        other.GetComponent<PlayerMovement>().enabled = true;
+        //joystick.IsLocked = false;
+        //other.GetComponent<PlayerMovement>().enabled = true;
         //sprite.color = new Color(1, 1, 1, 0);
         gameObject.SetActive(false);
         //sprite.gameObject.SetActive(false);
@@ -225,5 +226,18 @@ public class Treasure : MonoBehaviour
         //artifactParticleSystem.SetActive(false);
         StageUIManager.Instance.stageGetTreasureCount++;
         StageUIManager.Instance.CollecTreausreCountText.text = $"{StageUIManager.Instance.stageGetTreasureCount} / 3";
+    }
+
+    private void DisableImmediate()
+    {
+        var col = GetComponent<Collider>();
+        col.enabled = false;
+        if (sprite != null)
+        {
+            //sprite.material.SetColor(_baseColorID, new Color(0.5f, 0.5f, 0.5f, 1f));
+            sprite.material.SetColor(_glowColorID, new Color(0f, 0f, 0f, 0f));
+        }
+        if (particle != null) particle.SetActive(false);
+        if (artifactParticleSystem != null) artifactParticleSystem.SetActive(false);
     }
 }
