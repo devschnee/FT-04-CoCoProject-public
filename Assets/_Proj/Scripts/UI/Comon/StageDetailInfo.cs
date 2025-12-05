@@ -54,7 +54,7 @@ public class StageDetailInfo : MonoBehaviour
 
     async void EnterStage()
     {
-        if (UserData.Local.goods[GoodsType.energy] < consume)
+        if (UserData.Local.goods[110001] < consume)
         {
             //Todo : 행동력이 부족하다면 추가 팝업 보여주고 리턴
             print("행동려기부족카당");
