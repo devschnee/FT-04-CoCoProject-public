@@ -163,7 +163,8 @@ public class PanelRouter : MonoBehaviour
     {
         if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            if (optionPanel && optionPanel.activeSelf) CloseCurrent();
+
+            if (optionPanel && optionPanel.activeSelf) optionPanel.GetComponent<OptionPanelController>().HandleEscapeKey();
             else Toggle(optionPanel);
         }
     }
