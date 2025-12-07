@@ -55,8 +55,8 @@ MonoBehaviour:
   joystick: {fileID: 0}
   rb: {fileID: 2751089994372822744}
   smoothTime: 0.09
-  moveSpeed: 5
-  accel: 25
+  moveSpeed: 4
+  accel: 18
   rotateLerp: 11
   slopeMask:
     serializedVersion: 2
