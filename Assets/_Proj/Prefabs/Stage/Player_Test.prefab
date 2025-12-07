@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
   rb: {fileID: 2751089994372822744}
-  smoothTime: 0.07
+  smoothTime: 0.08
   moveSpeed: 5
   accel: 25
   rotateLerp: 11

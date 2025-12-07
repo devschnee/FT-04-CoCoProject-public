@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bg: {fileID: 3741844359892225386}
   handle: {fileID: 4347364168840844820}
-  moveRange: 120
+  moveRange: 85
   fourSlices:
   - {fileID: 6294538328363613341}
   - {fileID: 4584931018266638317}
