@@ -12,7 +12,7 @@ public class Joystick : MonoBehaviour
     public float moveRange = 75f; // 핸들 움직임 최대 반경(pixel)
     [SerializeField] private Image[] fourSlices; // 조이스틱 4방향 하이라이터
 
-    private static float sharedSnapAngleThreshold = 25;
+    private static float sharedSnapAngleThreshold = 13;
     private static bool sharedEnhanceFourDir = true;
     private float snapAngleThreshold = 13f;
     private bool enhanceFourDir;

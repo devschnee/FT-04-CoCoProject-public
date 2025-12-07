@@ -54,10 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
   rb: {fileID: 2751089994372822744}
-  smoothTime: 0.085
+  smoothTime: 0.08
   moveSpeed: 4
-  accel: 15
-  rotateLerp: 11
+  accel: 12
+  rotateLerp: 9
   slopeMask:
     serializedVersion: 2
     m_Bits: 16384
