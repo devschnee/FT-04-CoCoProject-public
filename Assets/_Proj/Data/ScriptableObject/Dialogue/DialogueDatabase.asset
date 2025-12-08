@@ -2113,8 +2113,8 @@ MonoBehaviour:
     speaker_position: 1
     speaker_id: 2
     emotion: 0
-    text: "\uAC19\uC774 \uB098\uAC00\uB824\uBA74\xB7\xB7\xB7. \uC870\uAE08\uB9CC
-      \uB3C4\uC640\uC904 \uC218 \uC788\uACA0\uB098?"
+    text: "\uAC19\uC774 \uB098\uAC00\uB824\uBA74\xB7\xB7\xB7 \uC870\uAE08\uB9CC \uB3C4\uC640\uC904
+      \uC218 \uC788\uACA0\uB098?"
     char_delay: 0.04
     sound_type: 1
     sound_key: null
