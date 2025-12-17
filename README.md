@@ -6,11 +6,11 @@ CoCoDoogy [기업협약 프로젝트]
 
 코코두기 플레이 영상
 
-My TIL link is https://youtu.be/HmJ0po1_HL0
+https://youtu.be/WJiAdnbbeG4
 
 코코두기 맵에디터 영상
 
-My TIL link is https://youtu.be/CyaZSgbOMAA
+https://youtu.be/dpCA9EOCIJI
 
 ## 1. 코코두기
 
